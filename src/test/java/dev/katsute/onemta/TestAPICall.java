@@ -65,18 +65,6 @@ public class TestAPICall {
         Assertions.assertEquals("POST", method.get(),
                                 Workflow.errorSupplier("Expected POST method"));
         Assertions.assertTrue(formENC.get(), Workflow.errorSupplier("Expected form to be encoded"));
-
-        method.set(null);
-        Assertions.assertDoesNotThrow(call::DELETE,
-                                      Workflow.errorSupplier("Expected DELETE to not throw"));
-        Assertions.assertEquals("DELETE", method.get(),
-                                Workflow.errorSupplier("Expected DELETE method"));
-
-        method.set(null);
-        Assertions.assertDoesNotThrow(call::PATCH,
-                                      Workflow.errorSupplier("Expected PATCH to not throw"));
-        Assertions.assertEquals("PATCH", method.get(),
-                                Workflow.errorSupplier("Expected PATCH method"));
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -95,13 +83,6 @@ public class TestAPICall {
         Response<Json.JsonObject> POST(
             @Field("test") final String test
         );
-
-        @Endpoint(method = "DELETE", value = "/")
-        Response<Json.JsonObject> DELETE();
-
-        @FormUrlEncoded
-        @Endpoint(method = "PATCH", value = "/")
-        Response<Json.JsonObject> PATCH();
 
     }
 
