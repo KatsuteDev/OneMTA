@@ -16,13 +16,10 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
+package dev.katsute.onemta.bus;
 
-package dev.katsute.onemta;
+import dev.katsute.onemta.types.TransitRoute;
 
-public class OneMTA {
-
-    public static class Builder {
-
-    }
+public abstract class BusRoute extends TransitRoute {
 
 }

@@ -16,13 +16,32 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
+package dev.katsute.onemta.exception;
 
-package dev.katsute.onemta;
+/**
+ * Thrown if the Json is malformed.
+ *
+ * @since 1.0.0
+ * @version 2.2.1
+ * @author Katsute
+ */
+public final class JsonSyntaxException extends RuntimeException {
 
-public class OneMTA {
+    private final String raw;
 
-    public static class Builder {
+    public JsonSyntaxException(final String message, final String raw){
+        super(message);
+        this.raw = raw;
+    }
 
+    /**
+     * Returns the raw string.
+     *
+     * @return raw string
+     * @since 2.2.0
+     */
+    public final String getRaw(){
+        return raw;
     }
 
 }

@@ -16,13 +16,23 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
+package dev.katsute.onemta.exception;
 
-package dev.katsute.onemta;
+/**
+ * Thrown if an exception occurs in a static initializer.
+ *
+ * @since 2.4.0
+ * @version 2.4.0
+ * @author Katsute
+ */
+public final class StaticInitializerException extends RuntimeException {
 
-public class OneMTA {
+    StaticInitializerException(){ }
 
-    public static class Builder {
+    StaticInitializerException(final String message){ super(message); }
 
-    }
+    public StaticInitializerException(final String message, final Throwable cause){ super(message, cause); }
+
+    StaticInitializerException(final Throwable cause){ super(cause); }
 
 }
