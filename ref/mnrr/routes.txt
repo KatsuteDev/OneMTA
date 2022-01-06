@@ -1,0 +1,12 @@
+route_id,agency_id,route_short_name,route_long_name,route_desc,route_type,route_url,route_color,route_text_color
+10,5,,MNR Shore Line East,,2,,555555,FFFFFF
+11,2,,Haverstraw Ferry,,4,,009B3A,FFFFFF
+12,3,,Hudson Rail Link(Spuyten Duyvil),,3,,009B3A,FFFFFF
+13,3,,Hudson Rail Link(Riverdale),,3,,009B3A,FFFFFF
+14,2,,Newburgh Ferry,,4,,009B3A,FFFFFF
+3,1,,New Haven,,2,,EE0034,FFFFFF
+4,1,,New Canaan,,2,,EE0034,FFFFFF
+5,1,,Danbury,,2,,EE0034,FFFFFF
+6,1,,Waterbury,,2,,EE0034,FFFFFF
+1,1,,Hudson,,2,,009B3A,FFFFFF
+2,1,,Harlem,,2,,0039A6,FFFFFF
