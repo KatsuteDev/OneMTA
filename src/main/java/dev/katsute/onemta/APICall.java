@@ -83,6 +83,8 @@ class APICall {
 
         if(method.getAnnotation(FormUrlEncoded.class) != null)
             formUrlEncoded = true;
+        if(method.getAnnotation(Protobuf.class) != null)
+            protobuf = true;
 
         for(int i = 0, size = method.getParameterAnnotations().length; i < size; i++){
             final Object arg = args[i];
@@ -112,6 +114,7 @@ class APICall {
     private final Map<String,String> queries  = new HashMap<>();
 
     private boolean formUrlEncoded = false;
+    private boolean protobuf       = false;
     private final Map<String,String> fields = new HashMap<>();
 
     final APICall withHeader(final String header, final String value){
@@ -152,6 +155,15 @@ class APICall {
 
     final APICall formUrlEncoded(final boolean formUrlEncoded){
         this.formUrlEncoded = formUrlEncoded;
+        return this;
+    }
+
+    final APICall protobuf(){
+        return protobuf(true);
+    }
+
+    final APICall protobuf(final boolean protobuf){
+        this.protobuf = true;
         return this;
     }
 
@@ -355,6 +367,7 @@ class APICall {
                 final StringBuilder OUT = new StringBuilder();
                 while((buffer = IN.readLine()) != null)
                     OUT.append(buffer);
+                // todo: add protobuf parser
                 body = OUT.toString();
             }catch(final IOException ignored){
                 body = "{}";

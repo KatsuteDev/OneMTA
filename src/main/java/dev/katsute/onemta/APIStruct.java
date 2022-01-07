@@ -62,6 +62,13 @@ abstract class APIStruct {
     }
 
     @Documented
+    @Target(METHOD)
+    @Retention(RUNTIME)
+    @interface Protobuf {
+
+    }
+
+    @Documented
     @Target(PARAMETER)
     @Retention(RUNTIME)
     @interface Header {

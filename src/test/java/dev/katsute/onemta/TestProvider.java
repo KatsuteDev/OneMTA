@@ -16,6 +16,20 @@ import java.util.stream.Stream;
 
 public abstract class TestProvider {
 
+    private static File bus = new File("src/test/java/resources/bus.txt");
+
+    public static OneMTA getOneMTA(){
+        try{
+            return OneMTA.create(strip(readFile(bus)), null);
+        }catch(final IOException e){
+            final StringWriter sw = new StringWriter();
+            final PrintWriter pw = new PrintWriter(sw);
+            e.printStackTrace(pw);
+            Assertions.fail(Workflow.errorSupplier(sw.toString()));
+            return null;
+        }
+    }
+
     // java 9
 
     public static String readFile(final File file) throws IOException{

@@ -18,10 +18,20 @@
 
 package dev.katsute.onemta;
 
+import dev.katsute.onemta.types.DataResource;
+
 public abstract class OneMTA {
 
-    public static OneMTABuilder create(){
-        return new OneMTABuilder();
+    OneMTA(){ }
+
+    public static OneMTA create(final String busToken, final String subwayToken){
+        return new OneMTAImpl(busToken, subwayToken);
     }
+
+    public static OneMTA create(final String busToken, final String subwayToken, final DataResource... resources){
+        return new OneMTAImpl(busToken, subwayToken, resources);
+    }
+
+    public abstract void print();
 
 }
