@@ -18,6 +18,8 @@
 
 package dev.katsute.onemta;
 
+import com.google.protobuf.ExtensionRegistry;
+import com.google.transit.realtime.GtfsRealtime;
 import dev.katsute.onemta.exception.ReflectedClassException;
 import dev.katsute.onemta.exception.StaticInitializerException;
 
@@ -28,6 +30,7 @@ import java.net.HttpURLConnection;
 import java.net.URI;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.security.cert.Extension;
 import java.time.Duration;
 import java.util.*;
 import java.util.function.Function;
@@ -158,15 +161,6 @@ class APICall {
         return this;
     }
 
-    final APICall protobuf(){
-        return protobuf(true);
-    }
-
-    final APICall protobuf(final boolean protobuf){
-        this.protobuf = true;
-        return this;
-    }
-
     final APICall withField(final String field, final Object value){
         return withField(field, value, false);
     }
@@ -177,6 +171,29 @@ class APICall {
         else
             fields.put(field, encoded ? Objects.toString(value) : Java9.URLEncoder.encode(Objects.toString(value), StandardCharsets.UTF_8));
         return this;
+    }
+
+    // protobuf
+
+    final APICall protobuf(){
+        return protobuf(true);
+    }
+
+    final APICall protobuf(final boolean protobuf){
+        this.protobuf = true;
+        return this;
+    }
+
+    private static final ExtensionRegistry registry = ExtensionRegistry.newInstance();
+
+    static{
+        try{
+            registry.add(NYCTSubwayProto.nyctFeedHeader);
+            registry.add(NYCTSubwayProto.nyctTripDescriptor);
+            registry.add(NYCTSubwayProto.nyctStopTimeUpdate);
+        }catch(final Throwable e){
+            throw new StaticInitializerException("Failed to initialize ExtensionRegistry, please report this to the maintainers of OneMTA", e);
+        }
     }
 
     // call
@@ -301,11 +318,11 @@ class APICall {
                     );
 
                 if(formUrlEncoded){
-                    // request.header("Content-Type", "application/x-www-form-urlencoded");
+                    // request.header("Content-Type", protobuf ? "application/x-google-protobuf" : "application/x-www-form-urlencoded");
                     JDK11.HttpRequestBuilder_Header
                         .invoke(HttpRequestBuilder_Instance,
                             "Content-Type",
-                            "application/x-www-form-urlencoded"
+                            protobuf ? "application/x-google-protobuf" : "application/x-www-form-urlencoded"
                         );
 
                     // request.method(method, HttpRequest.BodyPublishers.ofString(data));
@@ -347,7 +364,7 @@ class APICall {
                 conn.setRequestProperty(entry.getKey(), entry.getValue());
 
             conn.setRequestProperty("Cache-Control", "no-cache, no-store, must-revalidate");
-            conn.setRequestProperty("Accept", "application/json; charset=UTF-8");
+            conn.setRequestProperty("Accept", protobuf ? "application/x-google-protobuf" : "application/json; charset=UTF-8");
             conn.setConnectTimeout(10_000);
             conn.setReadTimeout(10_000);
 
@@ -362,18 +379,23 @@ class APICall {
                 }
             }
 
-            try(final BufferedReader IN = new BufferedReader(new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8))){
-                String buffer;
-                final StringBuilder OUT = new StringBuilder();
-                while((buffer = IN.readLine()) != null)
-                    OUT.append(buffer);
-                // todo: add protobuf parser
-                body = OUT.toString();
-            }catch(final IOException ignored){
-                body = "{}";
-            }finally{
-                conn.disconnect();
-            }
+            if(!protobuf)
+                try(final BufferedReader IN = new BufferedReader(new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8))){
+                    String buffer;
+                    final StringBuilder OUT = new StringBuilder();
+                    while((buffer = IN.readLine()) != null)
+                        OUT.append(buffer);
+                    body = OUT.toString();
+                }catch(final IOException ignored){
+                    body = "{}";
+                }finally{
+                    conn.disconnect();
+                }
+            else
+                try(final InputStream IN = conn.getInputStream()){
+                    final GtfsRealtime.FeedMessage feed = GtfsRealtime.FeedMessage.parseFrom(IN, registry);
+
+                }
 
             code = conn.getResponseCode();
         }

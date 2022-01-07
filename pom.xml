@@ -279,6 +279,7 @@
             <artifactId>protobuf-java</artifactId>
             <version>3.19.2</version>
         </dependency>
+
         <!-- tests -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>

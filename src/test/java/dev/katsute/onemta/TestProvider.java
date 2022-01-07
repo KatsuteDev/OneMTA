@@ -2,7 +2,6 @@ package dev.katsute.onemta;
 
 import dev.katsute.jcore.Workflow;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Assumptions;
 import org.junit.jupiter.params.provider.Arguments;
 
 import java.io.*;
@@ -16,11 +15,12 @@ import java.util.stream.Stream;
 
 public abstract class TestProvider {
 
-    private static File bus = new File("src/test/java/resources/bus.txt");
+    private static final File bus    = new File("src/test/java/resources/bus.txt");
+    private static final File subway = new File("src/test/java/resources/subway.txt");
 
     public static OneMTA getOneMTA(){
         try{
-            return OneMTA.create(strip(readFile(bus)), null);
+            return OneMTA.create(strip(readFile(bus)), strip(readFile(subway)));
         }catch(final IOException e){
             final StringWriter sw = new StringWriter();
             final PrintWriter pw = new PrintWriter(sw);

@@ -18,6 +18,6 @@
 
 package dev.katsute.onemta;
 
-abstract class MTABusSchema {
+abstract class MTASubwaySchema {
 
 }
