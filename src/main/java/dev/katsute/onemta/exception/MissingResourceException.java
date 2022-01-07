@@ -16,14 +16,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-package dev.katsute.onemta.types;
+package dev.katsute.onemta.exception;
 
-public abstract class TransitStop {
-
-    public abstract String getStopName();
-
-    public abstract double getStopLatitude();
-
-    public abstract double getStopLongitude();
-
+public class MissingResourceException extends RuntimeException {
 }

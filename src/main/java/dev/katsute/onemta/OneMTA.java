@@ -16,13 +16,12 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-
 package dev.katsute.onemta;
 
-public class OneMTA {
+public abstract class OneMTA {
 
-    public static class Builder {
-
+    public static OneMTABuilder create(){
+        return new OneMTABuilder();
     }
 
 }

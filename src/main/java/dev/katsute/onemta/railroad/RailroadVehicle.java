@@ -16,10 +16,10 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-package dev.katsute.onemta.bus;
+package dev.katsute.onemta.railroad;
 
 import dev.katsute.onemta.types.TransitVehicle;
 
-public abstract class Bus extends TransitVehicle {
+public abstract class RailroadVehicle extends TransitVehicle<RailroadRoute> {
 
 }

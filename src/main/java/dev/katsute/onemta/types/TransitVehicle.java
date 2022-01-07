@@ -18,6 +18,8 @@
 
 package dev.katsute.onemta.types;
 
-public abstract class TransitVehicle<L extends TransitLine> {
+public abstract class TransitVehicle<R extends TransitRoute> {
+
+    public abstract R getLine();
 
 }

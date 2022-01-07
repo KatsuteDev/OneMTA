@@ -20,6 +20,4 @@ package dev.katsute.onemta.bus;
 
 import dev.katsute.onemta.types.TransitRoute;
 
-public abstract class BusRoute extends TransitRoute {
-
-}
+public abstract class BusRoute extends TransitRoute { }

@@ -23,10 +23,9 @@ import dev.katsute.onemta.exception.StaticInitializerException;
 
 import java.io.*;
 import java.lang.annotation.Annotation;
-import java.lang.reflect.Field;
-import java.lang.reflect.Proxy;
 import java.lang.reflect.*;
-import java.net.*;
+import java.net.HttpURLConnection;
+import java.net.URI;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.time.Duration;

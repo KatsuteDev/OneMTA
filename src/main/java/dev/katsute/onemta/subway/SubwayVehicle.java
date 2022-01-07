@@ -20,6 +20,6 @@ package dev.katsute.onemta.subway;
 
 import dev.katsute.onemta.types.TransitVehicle;
 
-public abstract class Subway extends TransitVehicle {
+public abstract class SubwayVehicle extends TransitVehicle<SubwayRoute> {
 
 }

@@ -18,6 +18,10 @@
 
 package dev.katsute.onemta.types;
 
-public abstract class TransitLine {
+public abstract class TransitAgency {
+
+    public abstract String getAgencyID();
+
+    public abstract String getAgencyName();
 
 }
