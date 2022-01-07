@@ -18,7 +18,11 @@
 
 package dev.katsute.onemta;
 
+import dev.katsute.onemta.bus.BusStop;
+import dev.katsute.onemta.bus.BusVehicle;
 import dev.katsute.onemta.types.DataResource;
+
+import java.util.List;
 
 public abstract class OneMTA {
 
@@ -33,5 +37,19 @@ public abstract class OneMTA {
     }
 
     public abstract void print();
+
+    public abstract BusStop getBusStop(final int stopID);
+
+    public abstract BusStop getBusStop(final int stopID, final String line);
+
+    public abstract BusStop getBusStop(final int stopID, final String line, final int direction);
+
+    public abstract BusVehicle getBus(final int busID);
+
+    public abstract List<BusVehicle> getBusses();
+
+    public abstract List<BusVehicle> getBusses(final String line);
+
+    public abstract List<BusVehicle> getBusses(final String line, final int direction);
 
 }

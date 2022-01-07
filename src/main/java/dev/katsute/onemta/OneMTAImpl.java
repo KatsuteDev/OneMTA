@@ -18,9 +18,12 @@
 
 package dev.katsute.onemta;
 
+import dev.katsute.onemta.bus.BusStop;
+import dev.katsute.onemta.bus.BusVehicle;
 import dev.katsute.onemta.types.DataResource;
 
 import java.util.Arrays;
+import java.util.List;
 
 import static dev.katsute.onemta.MTAService.*;
 
@@ -48,6 +51,41 @@ final class OneMTAImpl extends OneMTA {
     @Override
     public void print(){
         System.out.println(busService.getVehicle(busToken, null, "M1", null).raw());
+    }
+
+    @Override
+    public BusStop getBusStop(final int stopID){
+        return null;
+    }
+
+    @Override
+    public BusStop getBusStop(final int stopID, final String line){
+        return null;
+    }
+
+    @Override
+    public BusStop getBusStop(final int stopID, final String line, final int direction){
+        return null;
+    }
+
+    @Override
+    public BusVehicle getBus(final int busID){
+        return null;
+    }
+
+    @Override
+    public List<BusVehicle> getBusses(){
+        return null;
+    }
+
+    @Override
+    public List<BusVehicle> getBusses(final String line){
+        return null;
+    }
+
+    @Override
+    public List<BusVehicle> getBusses(final String line, final int direction){
+        return null;
     }
 
 }

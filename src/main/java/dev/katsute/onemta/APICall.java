@@ -19,7 +19,6 @@
 package dev.katsute.onemta;
 
 import com.google.protobuf.ExtensionRegistry;
-import com.google.transit.realtime.GtfsRealtime;
 import dev.katsute.onemta.exception.ReflectedClassException;
 import dev.katsute.onemta.exception.StaticInitializerException;
 
@@ -30,7 +29,6 @@ import java.net.HttpURLConnection;
 import java.net.URI;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
-import java.security.cert.Extension;
 import java.time.Duration;
 import java.util.*;
 import java.util.function.Function;
@@ -393,8 +391,10 @@ class APICall {
                 }
             else
                 try(final InputStream IN = conn.getInputStream()){
-                    final GtfsRealtime.FeedMessage feed = GtfsRealtime.FeedMessage.parseFrom(IN, registry);
-
+                    //return GTFSRealtimeProto.FeedMessage.parseFrom(IN, registry);
+                }finally{
+                    conn.disconnect();
+                    body = "{}";
                 }
 
             code = conn.getResponseCode();
