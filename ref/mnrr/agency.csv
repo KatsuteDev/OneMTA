@@ -1,0 +1,5 @@
+agency_id,agency_name,agency_url,agency_timezone,agency_phone,agency_lang
+1,Metro-North Railroad,http://www.mta.info/mnr,America/New_York,212-532-4900,EN
+2,NY Waterway,http://www.nywaterway.com/,America/New_York,800-533-3779,EN
+5,Shore Line East,http://www.shorelineeast.com,America/New_York,877-287-4337,EN
+3,MNR Hudson Rail Link,http://www.mta.info/mnr/html/raillink/raillinkpage.htm,America/New_York,212-532-4900,EN

@@ -1,0 +1,9 @@
+.idea
+target
+*.iml
+
+# testing
+/src/test/java/resources/*.txt
+
+# protobuf
+/protobuf/**/*.java

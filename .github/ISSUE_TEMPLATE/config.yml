@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: MTA Google Group
+    url: https://groups.google.com/g/mtadeveloperresources
+    about: Official Google group for MTA developers

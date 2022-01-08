@@ -1,0 +1,830 @@
+{
+  "Siri": {
+    "ServiceDelivery": {
+      "ResponseTimestamp": "2022-01-07T13:37:51.356-05:00",
+      "VehicleMonitoringDelivery": [
+        {
+          "VehicleActivity": [
+            {
+              "MonitoredVehicleJourney": {
+                "LineRef": "MTA NYCT_M1",
+                "DirectionRef": "1",
+                "FramedVehicleJourneyRef": {
+                  "DataFrameRef": "2022-01-07",
+                  "DatedVehicleJourneyRef": "MTA NYCT_OF_A2-Weekday-SDon-071700_M7_204"
+                },
+                "JourneyPatternRef": "MTA_M010012",
+                "PublishedLineName": "M1",
+                "OperatorRef": "MTA NYCT",
+                "OriginRef": "MTA_405284",
+                "DestinationName": "EAST VILLAGE 8 ST via 5 AV",
+                "OriginAimedDepartureTime": "2022-01-07T13:57:00.000-05:00",
+                "SituationRef": [
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:alert:119502"
+                  }
+                ],
+                "Monitored": true,
+                "VehicleLocation": {
+                  "Longitude": -73.990592,
+                  "Latitude": 40.73029
+                },
+                "Bearing": 73.663956,
+                "ProgressRate": "noProgress",
+                "ProgressStatus": "layover",
+                "BlockRef": "MTA NYCT_OF_A2-Weekday-SDon_E_OF_29640_M1-122",
+                "VehicleRef": "MTA NYCT_3882",
+                "MonitoredCall": {
+                  "AimedArrivalTime": "2022-01-07T13:33:00.420-05:00",
+                  "ExpectedArrivalTime": "2022-01-07T13:37:52.356-05:00",
+                  "ExpectedDepartureTime": "2022-01-07T13:37:52.356-05:00",
+                  "Extensions": {
+                    "Distances": {
+                      "CallDistanceAlongRoute": 12315.42,
+                      "PresentableDistance": "at stop",
+                      "DistanceFromCall": 0,
+                      "StopsFromCall": 0
+                    }
+                  },
+                  "StopPointRef": "MTA_403793",
+                  "VisitNumber": 1,
+                  "StopPointName": "4 AV/E 9 ST"
+                },
+                "OnwardCalls": {}
+              },
+              "RecordedAtTime": "2022-01-07T13:37:32.000-05:00"
+            },
+            {
+              "MonitoredVehicleJourney": {
+                "LineRef": "MTA NYCT_M1",
+                "DirectionRef": "1",
+                "FramedVehicleJourneyRef": {
+                  "DataFrameRef": "2022-01-07",
+                  "DatedVehicleJourneyRef": "MTA NYCT_OF_A2-Weekday-SDon-076200_M1_112"
+                },
+                "JourneyPatternRef": "MTA_M010014",
+                "PublishedLineName": "M1",
+                "OperatorRef": "MTA NYCT",
+                "OriginRef": "MTA_405284",
+                "DestinationName": "GRAND ST via 5 AV/BROADWAY",
+                "SituationRef": [
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:alert:119502"
+                  }
+                ],
+                "Monitored": true,
+                "VehicleLocation": {
+                  "Longitude": -73.972845,
+                  "Latitude": 40.764506
+                },
+                "Bearing": 233.64658,
+                "ProgressRate": "normalProgress",
+                "BlockRef": "MTA NYCT_OF_A2-Weekday-SDon_E_OF_31500_M1-104",
+                "VehicleRef": "MTA NYCT_9568",
+                "MonitoredCall": {
+                  "AimedArrivalTime": "2022-01-07T13:43:14.436-05:00",
+                  "ExpectedArrivalTime": "2022-01-07T13:37:56.535-05:00",
+                  "ExpectedDepartureTime": "2022-01-07T13:37:56.535-05:00",
+                  "Extensions": {
+                    "Distances": {
+                      "CallDistanceAlongRoute": 7639.61,
+                      "PresentableDistance": "at stop",
+                      "DistanceFromCall": 12.42,
+                      "StopsFromCall": 0
+                    },
+                    "Capacities": {
+                      "EstimatedPassengerCount": 7
+                    }
+                  },
+                  "StopPointRef": "MTA_400512",
+                  "VisitNumber": 1,
+                  "StopPointName": "5 AV/W 59 ST"
+                },
+                "OnwardCalls": {}
+              },
+              "RecordedAtTime": "2022-01-07T13:37:50.879-05:00"
+            },
+            {
+              "MonitoredVehicleJourney": {
+                "LineRef": "MTA NYCT_M1",
+                "DirectionRef": "1",
+                "FramedVehicleJourneyRef": {
+                  "DataFrameRef": "2022-01-07",
+                  "DatedVehicleJourneyRef": "MTA NYCT_OF_A2-Weekday-SDon-077200_M1_130"
+                },
+                "JourneyPatternRef": "MTA_M010012",
+                "PublishedLineName": "M1",
+                "OperatorRef": "MTA NYCT",
+                "OriginRef": "MTA_405284",
+                "DestinationName": "EAST VILLAGE 8 ST via 5 AV",
+                "SituationRef": [
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:alert:119502"
+                  }
+                ],
+                "Monitored": true,
+                "VehicleLocation": {
+                  "Longitude": -73.961151,
+                  "Latitude": 40.780518
+                },
+                "Bearing": 233.3168,
+                "ProgressRate": "normalProgress",
+                "BlockRef": "MTA NYCT_OF_A2-Weekday-SDon_E_OF_46140_M1-130",
+                "VehicleRef": "MTA NYCT_3829",
+                "MonitoredCall": {
+                  "AimedArrivalTime": "2022-01-07T13:33:31.383-05:00",
+                  "ExpectedArrivalTime": "2022-01-07T13:37:52.356-05:00",
+                  "ExpectedDepartureTime": "2022-01-07T13:37:52.356-05:00",
+                  "Extensions": {
+                    "Distances": {
+                      "CallDistanceAlongRoute": 5607.6,
+                      "PresentableDistance": "at stop",
+                      "DistanceFromCall": 15.05,
+                      "StopsFromCall": 0
+                    }
+                  },
+                  "StopPointRef": "MTA_400119",
+                  "VisitNumber": 1,
+                  "StopPointName": "5 AV/E 84 ST"
+                },
+                "OnwardCalls": {}
+              },
+              "RecordedAtTime": "2022-01-07T13:37:32.000-05:00"
+            },
+            {
+              "MonitoredVehicleJourney": {
+                "LineRef": "MTA NYCT_M1",
+                "DirectionRef": "0",
+                "FramedVehicleJourneyRef": {
+                  "DataFrameRef": "2022-01-07",
+                  "DatedVehicleJourneyRef": "MTA NYCT_OF_A2-Weekday-SDon-081300_M1_127"
+                },
+                "JourneyPatternRef": "MTA_M010006",
+                "PublishedLineName": "M1",
+                "OperatorRef": "MTA NYCT",
+                "OriginRef": "MTA_400001",
+                "DestinationName": "HARLEM 147 ST via MADISON AV",
+                "SituationRef": [
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:alert:119502"
+                  }
+                ],
+                "Monitored": true,
+                "VehicleLocation": {
+                  "Longitude": -73.989854,
+                  "Latitude": 40.733771
+                },
+                "Bearing": 88.7897,
+                "ProgressRate": "normalProgress",
+                "BlockRef": "MTA NYCT_OF_A2-Weekday-SDon_E_OF_29100_M1-121",
+                "VehicleRef": "MTA NYCT_3883",
+                "MonitoredCall": {
+                  "AimedArrivalTime": "2022-01-07T13:35:38.460-05:00",
+                  "ExpectedArrivalTime": "2022-01-07T13:37:52.356-05:00",
+                  "ExpectedDepartureTime": "2022-01-07T13:37:52.356-05:00",
+                  "Extensions": {
+                    "Distances": {
+                      "CallDistanceAlongRoute": 291.21,
+                      "PresentableDistance": "at stop",
+                      "DistanceFromCall": 18.47,
+                      "StopsFromCall": 0
+                    }
+                  },
+                  "StopPointRef": "MTA_400003",
+                  "VisitNumber": 1,
+                  "StopPointName": "4 AV/E 13 ST"
+                },
+                "OnwardCalls": {}
+              },
+              "RecordedAtTime": "2022-01-07T13:37:31.000-05:00"
+            },
+            {
+              "MonitoredVehicleJourney": {
+                "LineRef": "MTA NYCT_M1",
+                "DirectionRef": "1",
+                "FramedVehicleJourneyRef": {
+                  "DataFrameRef": "2022-01-07",
+                  "DatedVehicleJourneyRef": "MTA NYCT_OF_A2-Weekday-SDon-078200_M1_131"
+                },
+                "JourneyPatternRef": "MTA_M010014",
+                "PublishedLineName": "M1",
+                "OperatorRef": "MTA NYCT",
+                "OriginRef": "MTA_405284",
+                "DestinationName": "GRAND ST via 5 AV/BROADWAY",
+                "SituationRef": [
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:alert:119502"
+                  }
+                ],
+                "Monitored": true,
+                "VehicleLocation": {
+                  "Longitude": -73.954389,
+                  "Latitude": 40.789785
+                },
+                "Bearing": 233.79335,
+                "ProgressRate": "normalProgress",
+                "BlockRef": "MTA NYCT_OF_A2-Weekday-SDon_E_OF_23040_M1-108",
+                "VehicleRef": "MTA NYCT_9567",
+                "MonitoredCall": {
+                  "AimedArrivalTime": "2022-01-07T13:32:20.393-05:00",
+                  "ExpectedArrivalTime": "2022-01-07T13:38:16.714-05:00",
+                  "ExpectedDepartureTime": "2022-01-07T13:38:16.714-05:00",
+                  "Extensions": {
+                    "Distances": {
+                      "CallDistanceAlongRoute": 4494.06,
+                      "PresentableDistance": "approaching",
+                      "DistanceFromCall": 78.8,
+                      "StopsFromCall": 0
+                    }
+                  },
+                  "StopPointRef": "MTA_404081",
+                  "VisitNumber": 1,
+                  "StopPointName": "5 AV/E 98 ST"
+                },
+                "OnwardCalls": {}
+              },
+              "RecordedAtTime": "2022-01-07T13:37:29.767-05:00"
+            },
+            {
+              "MonitoredVehicleJourney": {
+                "LineRef": "MTA NYCT_M1",
+                "DirectionRef": "1",
+                "FramedVehicleJourneyRef": {
+                  "DataFrameRef": "2022-01-07",
+                  "DatedVehicleJourneyRef": "MTA NYCT_OF_A2-Weekday-SDon-081200_M1_132"
+                },
+                "JourneyPatternRef": "MTA_M010012",
+                "PublishedLineName": "M1",
+                "OperatorRef": "MTA NYCT",
+                "OriginRef": "MTA_405284",
+                "DestinationName": "EAST VILLAGE 8 ST via 5 AV",
+                "SituationRef": [
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:alert:119502"
+                  }
+                ],
+                "Monitored": true,
+                "VehicleLocation": {
+                  "Longitude": -73.935869,
+                  "Latitude": 40.821039
+                },
+                "Bearing": 232.6443,
+                "ProgressRate": "normalProgress",
+                "BlockRef": "MTA NYCT_OF_A2-Weekday-SDon_E_OF_34020_M1-106",
+                "VehicleRef": "MTA NYCT_9586",
+                "MonitoredCall": {
+                  "AimedArrivalTime": "2022-01-07T13:32:31.475-05:00",
+                  "Extensions": {
+                    "Distances": {
+                      "CallDistanceAlongRoute": 93.27,
+                      "PresentableDistance": "approaching",
+                      "DistanceFromCall": 90.26,
+                      "StopsFromCall": 0
+                    },
+                    "Capacities": {
+                      "EstimatedPassengerCount": 7
+                    }
+                  },
+                  "StopPointRef": "MTA_400088",
+                  "VisitNumber": 1,
+                  "StopPointName": "MALCOLM X BL/W 145 ST"
+                },
+                "OnwardCalls": {}
+              },
+              "RecordedAtTime": "2022-01-07T13:37:50.013-05:00"
+            },
+            {
+              "MonitoredVehicleJourney": {
+                "LineRef": "MTA NYCT_M1",
+                "DirectionRef": "0",
+                "FramedVehicleJourneyRef": {
+                  "DataFrameRef": "2022-01-07",
+                  "DatedVehicleJourneyRef": "MTA NYCT_OF_A2-Weekday-SDon-078900_M1_102"
+                },
+                "JourneyPatternRef": "MTA_M010006",
+                "PublishedLineName": "M1",
+                "OperatorRef": "MTA NYCT",
+                "OriginRef": "MTA_400001",
+                "DestinationName": "HARLEM 147 ST via MADISON AV",
+                "SituationRef": [
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:alert:119502"
+                  }
+                ],
+                "Monitored": true,
+                "VehicleLocation": {
+                  "Longitude": -73.976197,
+                  "Latitude": 40.757028
+                },
+                "Bearing": 52.765167,
+                "ProgressRate": "normalProgress",
+                "BlockRef": "MTA NYCT_OF_A2-Weekday-SDon_E_OF_27600_M1-116",
+                "VehicleRef": "MTA NYCT_3828",
+                "MonitoredCall": {
+                  "AimedArrivalTime": "2022-01-07T13:39:15.411-05:00",
+                  "ExpectedArrivalTime": "2022-01-07T13:38:20.299-05:00",
+                  "ExpectedDepartureTime": "2022-01-07T13:38:20.299-05:00",
+                  "Extensions": {
+                    "Distances": {
+                      "CallDistanceAlongRoute": 3381.08,
+                      "PresentableDistance": "approaching",
+                      "DistanceFromCall": 95.94,
+                      "StopsFromCall": 0
+                    }
+                  },
+                  "StopPointRef": "MTA_400360",
+                  "VisitNumber": 1,
+                  "StopPointName": "MADISON AV/E 49 ST"
+                },
+                "OnwardCalls": {}
+              },
+              "RecordedAtTime": "2022-01-07T13:37:40.000-05:00"
+            },
+            {
+              "MonitoredVehicleJourney": {
+                "LineRef": "MTA NYCT_M1",
+                "DirectionRef": "0",
+                "FramedVehicleJourneyRef": {
+                  "DataFrameRef": "2022-01-07",
+                  "DatedVehicleJourneyRef": "MTA NYCT_OF_A2-Weekday-SDon-077100_M7_210"
+                },
+                "JourneyPatternRef": "MTA_M010007",
+                "PublishedLineName": "M1",
+                "OperatorRef": "MTA NYCT",
+                "OriginRef": "MTA_903130",
+                "DestinationName": "HARLEM 147 ST via MADISON AV",
+                "SituationRef": [
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:alert:119502"
+                  }
+                ],
+                "Monitored": true,
+                "VehicleLocation": {
+                  "Longitude": -73.967378,
+                  "Latitude": 40.76911
+                },
+                "Bearing": 53.92145,
+                "ProgressRate": "normalProgress",
+                "BlockRef": "MTA NYCT_OF_A2-Weekday-SDon_E_OF_27000_M1-115",
+                "VehicleRef": "MTA NYCT_3879",
+                "MonitoredCall": {
+                  "AimedArrivalTime": "2022-01-07T13:40:23.428-05:00",
+                  "ExpectedArrivalTime": "2022-01-07T13:38:16.253-05:00",
+                  "ExpectedDepartureTime": "2022-01-07T13:38:16.253-05:00",
+                  "Extensions": {
+                    "Distances": {
+                      "CallDistanceAlongRoute": 6303.66,
+                      "PresentableDistance": "approaching",
+                      "DistanceFromCall": 127.34,
+                      "StopsFromCall": 0
+                    }
+                  },
+                  "StopPointRef": "MTA_400029",
+                  "VisitNumber": 1,
+                  "StopPointName": "MADISON AV/E 69 ST"
+                },
+                "OnwardCalls": {}
+              },
+              "RecordedAtTime": "2022-01-07T13:37:26.000-05:00"
+            },
+            {
+              "MonitoredVehicleJourney": {
+                "LineRef": "MTA NYCT_M1",
+                "DirectionRef": "0",
+                "FramedVehicleJourneyRef": {
+                  "DataFrameRef": "2022-01-07",
+                  "DatedVehicleJourneyRef": "MTA NYCT_OF_A2-Weekday-SDon-076500_M1_101"
+                },
+                "JourneyPatternRef": "MTA_M010006",
+                "PublishedLineName": "M1",
+                "OperatorRef": "MTA NYCT",
+                "OriginRef": "MTA_400001",
+                "DestinationName": "HARLEM 147 ST via MADISON AV",
+                "SituationRef": [
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:alert:119502"
+                  }
+                ],
+                "Monitored": true,
+                "VehicleLocation": {
+                  "Longitude": -73.961242,
+                  "Latitude": 40.777528
+                },
+                "Bearing": 53.833252,
+                "ProgressRate": "normalProgress",
+                "BlockRef": "MTA NYCT_OF_A2-Weekday-SDon_E_OF_26400_M1-113",
+                "VehicleRef": "MTA NYCT_6761",
+                "MonitoredCall": {
+                  "AimedArrivalTime": "2022-01-07T13:37:39.447-05:00",
+                  "ExpectedArrivalTime": "2022-01-07T13:38:43.047-05:00",
+                  "ExpectedDepartureTime": "2022-01-07T13:38:43.047-05:00",
+                  "Extensions": {
+                    "Distances": {
+                      "CallDistanceAlongRoute": 6054.81,
+                      "PresentableDistance": "< 1 stop away",
+                      "DistanceFromCall": 165.3,
+                      "StopsFromCall": 0
+                    }
+                  },
+                  "StopPointRef": "MTA_400034",
+                  "VisitNumber": 1,
+                  "StopPointName": "MADISON AV/E 83 ST"
+                },
+                "OnwardCalls": {}
+              },
+              "RecordedAtTime": "2022-01-07T13:37:33.000-05:00"
+            },
+            {
+              "MonitoredVehicleJourney": {
+                "LineRef": "MTA NYCT_M1",
+                "DirectionRef": "1",
+                "FramedVehicleJourneyRef": {
+                  "DataFrameRef": "2022-01-07",
+                  "DatedVehicleJourneyRef": "MTA NYCT_OF_A2-Weekday-SDon-074100_M1_110"
+                },
+                "JourneyPatternRef": "MTA_M010012",
+                "PublishedLineName": "M1",
+                "OperatorRef": "MTA NYCT",
+                "OriginRef": "MTA_405284",
+                "DestinationName": "EAST VILLAGE 8 ST via 5 AV",
+                "SituationRef": [
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:alert:119502"
+                  }
+                ],
+                "Monitored": true,
+                "VehicleLocation": {
+                  "Longitude": -73.984003,
+                  "Latitude": 40.749196
+                },
+                "Bearing": 233.85431,
+                "ProgressRate": "normalProgress",
+                "BlockRef": "MTA NYCT_OF_A2-Weekday-SDon_E_OF_30060_M1-123",
+                "VehicleRef": "MTA NYCT_3833",
+                "MonitoredCall": {
+                  "AimedArrivalTime": "2022-01-07T13:40:27.468-05:00",
+                  "ExpectedArrivalTime": "2022-01-07T13:39:13.780-05:00",
+                  "ExpectedDepartureTime": "2022-01-07T13:39:13.780-05:00",
+                  "Extensions": {
+                    "Distances": {
+                      "CallDistanceAlongRoute": 9791.8,
+                      "PresentableDistance": "< 1 stop away",
+                      "DistanceFromCall": 219.99,
+                      "StopsFromCall": 0
+                    }
+                  },
+                  "StopPointRef": "MTA_400324",
+                  "VisitNumber": 1,
+                  "StopPointName": "5 AV/W 33 ST"
+                },
+                "OnwardCalls": {}
+              },
+              "RecordedAtTime": "2022-01-07T13:37:43.000-05:00"
+            },
+            {
+              "MonitoredVehicleJourney": {
+                "LineRef": "MTA NYCT_M1",
+                "DirectionRef": "1",
+                "FramedVehicleJourneyRef": {
+                  "DataFrameRef": "2022-01-07",
+                  "DatedVehicleJourneyRef": "MTA NYCT_OF_A2-Weekday-SDon-079200_M1_114"
+                },
+                "JourneyPatternRef": "MTA_M010012",
+                "PublishedLineName": "M1",
+                "OperatorRef": "MTA NYCT",
+                "OriginRef": "MTA_405284",
+                "DestinationName": "EAST VILLAGE 8 ST via 5 AV",
+                "SituationRef": [
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:alert:119502"
+                  }
+                ],
+                "Monitored": true,
+                "VehicleLocation": {
+                  "Longitude": -73.946818,
+                  "Latitude": 40.800159
+                },
+                "Bearing": 233.80171,
+                "ProgressRate": "normalProgress",
+                "BlockRef": "MTA NYCT_OF_A2-Weekday-SDon_E_OF_22320_M1-107",
+                "VehicleRef": "MTA NYCT_3868",
+                "MonitoredCall": {
+                  "AimedArrivalTime": "2022-01-07T13:31:59.403-05:00",
+                  "ExpectedArrivalTime": "2022-01-07T13:39:27.177-05:00",
+                  "ExpectedDepartureTime": "2022-01-07T13:39:27.177-05:00",
+                  "Extensions": {
+                    "Distances": {
+                      "CallDistanceAlongRoute": 3393.34,
+                      "PresentableDistance": "< 1 stop away",
+                      "DistanceFromCall": 296.08,
+                      "StopsFromCall": 0
+                    }
+                  },
+                  "StopPointRef": "MTA_400105",
+                  "VisitNumber": 1,
+                  "StopPointName": "5 AV/W 112 ST"
+                },
+                "OnwardCalls": {}
+              },
+              "RecordedAtTime": "2022-01-07T13:37:45.000-05:00"
+            }
+          ],
+          "ResponseTimestamp": "2022-01-07T13:37:51.356-05:00",
+          "ValidUntil": "2022-01-07T13:38:51.356-05:00"
+        }
+      ],
+      "SituationExchangeDelivery": [
+        {
+          "Situations": {
+            "PtSituationElement": [
+              {
+                "PublicationWindow": {
+                  "StartTime": "2022-01-07T10:55:12.000-05:00"
+                },
+                "Severity": "undefined",
+                "Summary": "You may experience a longer wait for this bus.",
+                "Description": "You may experience a longer wait for this bus.",
+                "Affects": {
+                  "VehicleJourneys": {
+                    "AffectedVehicleJourney": [
+                      {
+                        "LineRef": "MTA NYCT_M55"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M66"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M72"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M79+"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M86+"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M96"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M98"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M100"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M101"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M102"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M103"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M104"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M106"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M116"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M1"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M2"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M3"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M4"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M5"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M7"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M8"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M9"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M10"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M11"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M12"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M14A+"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M14D+"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M15"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M15+"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M20"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M21"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M22"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M23+"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M31"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M34A+"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M34+"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M35"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M42"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M50"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M57"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M60+"
+                      }
+                    ]
+                  }
+                },
+                "CreationTime": "2022-01-07T08:22:37.000-05:00",
+                "SituationNumber": "MTA NYCT_lmm:alert:119502"
+              }
+            ]
+          }
+        },
+        {
+          "Situations": {
+            "PtSituationElement": [
+              {
+                "PublicationWindow": {
+                  "StartTime": "2022-01-07T10:55:12.000-05:00"
+                },
+                "Severity": "undefined",
+                "Summary": "You may experience a longer wait for this bus.",
+                "Description": "You may experience a longer wait for this bus.",
+                "Affects": {
+                  "VehicleJourneys": {
+                    "AffectedVehicleJourney": [
+                      {
+                        "LineRef": "MTA NYCT_M55"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M66"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M72"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M79+"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M86+"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M96"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M98"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M100"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M101"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M102"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M103"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M104"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M106"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M116"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M1"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M2"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M3"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M4"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M5"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M7"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M8"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M9"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M10"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M11"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M12"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M14A+"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M14D+"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M15"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M15+"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M20"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M21"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M22"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M23+"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M31"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M34A+"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M34+"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M35"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M42"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M50"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M57"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M60+"
+                      }
+                    ]
+                  }
+                },
+                "CreationTime": "2022-01-07T08:22:37.000-05:00",
+                "SituationNumber": "MTA NYCT_lmm:alert:119502"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
