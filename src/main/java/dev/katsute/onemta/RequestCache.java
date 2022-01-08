@@ -31,11 +31,11 @@ final class RequestCache {
     private final List<CachedData> cache = new ArrayList<>();
 
     RequestCache(){
-        this(30);
+        this(-1);
     }
 
     RequestCache(final int retainCacheSeconds){
-        this.retainCacheSeconds = Math.min(retainCacheSeconds, 30);
+        this.retainCacheSeconds = Math.min(retainCacheSeconds, 60);
     }
 
     synchronized final JsonObject getJSON(

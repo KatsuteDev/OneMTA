@@ -20,7 +20,6 @@ package dev.katsute.onemta;
 
 import dev.katsute.onemta.bus.BusStop;
 import dev.katsute.onemta.bus.BusVehicle;
-import dev.katsute.onemta.types.DataResource;
 
 import java.util.Arrays;
 import java.util.List;
@@ -47,7 +46,7 @@ final class OneMTAImpl extends OneMTA {
 
     @Override
     public void print(){
-        
+
     }
 
     @Override

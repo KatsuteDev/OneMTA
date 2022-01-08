@@ -18,10 +18,17 @@
 
 package dev.katsute.onemta.exception;
 
+/**
+ * Throw if there is an error while executing the request.
+ *
+ * @since 1.0.0
+ * @version 1.0.0
+ * @author Katsute
+ */
 public final class HttpException extends RuntimeException {
 
-    public HttpException(final Throwable cause){
-        super(cause);
+    public HttpException(final String url, final Throwable cause){
+        super("Failed to execute request on \"" + url + "\": " + cause.getMessage(), cause);
     }
 
 }

@@ -19,17 +19,17 @@
 package dev.katsute.onemta.exception;
 
 /**
- * Thrown if the Json is malformed.
+ * Thrown if the CSV is malformed.
  *
  * @since 1.0.0
  * @version 1.0.0
  * @author Katsute
  */
-public final class JsonSyntaxException extends RuntimeException {
+public final class CSVSyntaxException extends RuntimeException {
 
     private final String raw;
 
-    public JsonSyntaxException(final String message, final String raw){
+    public CSVSyntaxException(final String message, final String raw){
         super(message);
         this.raw = raw;
     }

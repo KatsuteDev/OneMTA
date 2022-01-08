@@ -56,7 +56,7 @@ abstract class Requests {
                 return (JsonObject) Json.parse(OUT.toString());
             }
         }catch(final IOException e){
-            throw new HttpException(e);
+            throw new HttpException(url, e);
         }finally{
             if(conn != null)
                 conn.disconnect();
@@ -89,7 +89,7 @@ abstract class Requests {
                 return FeedMessage.parseFrom(IN, registry);
             }
         }catch(final IOException e){
-            throw new HttpException(e);
+            throw new HttpException(url, e);
         }finally{
             if(conn != null)
                 conn.disconnect();

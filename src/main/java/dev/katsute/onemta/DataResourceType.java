@@ -16,7 +16,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-package dev.katsute.onemta.types;
+package dev.katsute.onemta;
 
 public enum DataResourceType {
 

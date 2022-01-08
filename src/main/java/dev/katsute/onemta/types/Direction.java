@@ -18,6 +18,54 @@
 
 package dev.katsute.onemta.types;
 
+/**
+ * The direction for a bus or subway.
+ *
+ * @since 1.0.0
+ * @version 1.0.0
+ * @author Katsute
+ */
 public enum Direction {
+
+    /**
+     * Uptown, Bronx, and Queens bound trains; also Grand Central bound Shuttle trains.
+     */
+    NORTH(1),
+
+    /**
+     * Downtown, Brooklyn, and Manhattan bound trains; also Times Square bound Shuttle trains.
+     */
+    SOUTH(3),
+
+    /**
+     * Buses going from the first stop to the last stop.
+     * <br>
+     * Ex: M1 'Harlem - East Village' going towards 'Harlem - 147 Street'
+     */
+    FORWARD(0),
+
+    /**
+     * Buses going from the last stop to the first stop.
+     * <br>
+     * Ex: M1 'Harlem - East Village' going towards 'Harlem - East Village'
+     */
+    REVERSE(1);
+
+    private final int direction;
+
+    Direction(final int direction){
+        this.direction = direction;
+    }
+
+    /**
+     * Returns the GTFS direction ID.
+     *
+     * @return gtfs direction
+     *
+     * @author Katsute
+     */
+    public final int getDirection(){
+        return direction;
+    }
 
 }
