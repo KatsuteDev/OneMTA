@@ -49,7 +49,7 @@ final class OneMTAImpl extends OneMTA {
     @Override
     public void print(){
         System.out.println(BusService.getVehicle(busToken, null, "M1", null));
-        System.out.println(SubwayService.getSI(subwayToken));
+        System.out.println(SubwayService.get1234567(subwayToken));
     }
 
     @Override

@@ -18,5 +18,10 @@
 
 package dev.katsute.onemta.exception;
 
-public final class MissingResourceException extends RuntimeException {
+public final class HttpException extends RuntimeException {
+
+    public HttpException(final Throwable cause){
+        super(cause);
+    }
+
 }

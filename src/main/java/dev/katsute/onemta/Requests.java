@@ -19,6 +19,7 @@
 package dev.katsute.onemta;
 
 import com.google.protobuf.ExtensionRegistry;
+import dev.katsute.onemta.exception.HttpException;
 
 import java.io.*;
 import java.net.*;
@@ -47,16 +48,15 @@ abstract class Requests {
                 while((buffer = IN.readLine()) != null)
                     OUT.append(buffer);
                 return (Json.JsonObject) Json.parse(OUT.toString());
-            }catch(IOException e){
-                return (Json.JsonObject) Json.parse("{}");
+            }catch(final IOException e){
+                throw new HttpException(e);
             }
-        }catch(IOException e){
-            e.printStackTrace();
+        }catch(final IOException e){
+            throw new HttpException(e);
         }finally{
             if(conn != null)
                 conn.disconnect();
         }
-        return null;
     }
 
     private static final ExtensionRegistry registry = ExtensionRegistry.newInstance();
@@ -80,13 +80,12 @@ abstract class Requests {
             try(final InputStream IN = conn.getInputStream()){
                 return GTFSRealtimeProto.FeedMessage.parseFrom(IN, registry);
             }
-        }catch(IOException e){
-            e.printStackTrace();
+        }catch(final IOException e){
+            throw new HttpException(e);
         }finally{
             if(conn != null)
                 conn.disconnect();
         }
-        return null;
     }
 
     // [{}|\\^\[\]`]
