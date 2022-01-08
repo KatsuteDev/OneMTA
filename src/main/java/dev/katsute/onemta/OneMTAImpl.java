@@ -33,6 +33,7 @@ final class OneMTAImpl extends OneMTA {
     private final transient String subwayToken;
     private final DataResource[] resources;
 
+    private int cacheSeconds = 30;
 
     OneMTAImpl(final String busToken, final String subwayToken){
         this(busToken, subwayToken, new DataResource[0]);
@@ -44,7 +45,7 @@ final class OneMTAImpl extends OneMTA {
         this.resources   = Arrays.copyOf(resources, resources.length);
     }
 
-    //
+    // methods
 
     @Override
     public void print(){

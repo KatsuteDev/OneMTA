@@ -22,8 +22,8 @@ import java.io.File;
 
 public abstract class DataResource {
 
-    public static DataResource of(final File file, final DataResourceType type){
-        return new DataResource(file, type) {};
+    public static DataResource create(final File file, final DataResourceType type){
+        return new DataResource(file, type){};
     }
 
     //

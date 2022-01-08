@@ -19,6 +19,8 @@
 package dev.katsute.onemta;
 
 import com.google.protobuf.ExtensionRegistry;
+import dev.katsute.onemta.GTFSRealtimeProto.FeedMessage;
+import dev.katsute.onemta.Json.JsonObject;
 import dev.katsute.onemta.exception.HttpException;
 
 import java.io.*;
@@ -31,7 +33,7 @@ import java.util.stream.Collectors;
 
 abstract class Requests {
 
-    static Json.JsonObject getJSON(
+    static JsonObject getJSON(
         final String url,
         final Map<String,String> query,
         final Map<String,String> headers
@@ -47,7 +49,7 @@ abstract class Requests {
                 final StringBuilder OUT = new StringBuilder();
                 while((buffer = IN.readLine()) != null)
                     OUT.append(buffer);
-                return (Json.JsonObject) Json.parse(OUT.toString());
+                return (JsonObject) Json.parse(OUT.toString());
             }catch(final IOException e){
                 throw new HttpException(e);
             }
@@ -67,7 +69,7 @@ abstract class Requests {
         registry.add(NYCTSubwayProto.nyctStopTimeUpdate);
     }
 
-    static GTFSRealtimeProto.FeedMessage getProtobuf(
+    static FeedMessage getProtobuf(
         final String url,
         final Map<String,String> query,
         final Map<String,String> headers
@@ -78,7 +80,7 @@ abstract class Requests {
         try{
             conn = getConnection(url, query, headers);
             try(final InputStream IN = conn.getInputStream()){
-                return GTFSRealtimeProto.FeedMessage.parseFrom(IN, registry);
+                return FeedMessage.parseFrom(IN, registry);
             }
         }catch(final IOException e){
             throw new HttpException(e);
