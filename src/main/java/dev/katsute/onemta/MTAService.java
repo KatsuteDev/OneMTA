@@ -1,102 +1,158 @@
 package dev.katsute.onemta;
 
+import dev.katsute.onemta.GTFSRealtimeProto.FeedMessage;
+import dev.katsute.onemta.Json.JsonObject;
+
+import java.util.HashMap;
+
 abstract class MTAService {
 
-    @SuppressWarnings("DefaultAnnotationParam")
-    interface MTABusService {
+    interface BusService {
 
         String baseURL = "http://bustime.mta.info/api/siri/";
 
-        static MTABusService create(){
-            return APICall.create(baseURL, MTABusService.class);
+        static JsonObject getVehicle(
+            final String token,
+            final Integer vehicle,
+            final String line,
+            final Integer direction
+        ){
+            return Requests.getJSON(
+                baseURL + "vehicle-monitoring.json",
+                new HashMap<>(){{
+                    put("key", token);
+                    if(vehicle != null) put("VehicleRef", String.valueOf(vehicle));
+                    if(line != null) put("LineRef", line);
+                    if(direction != null) put("DirectionRef", String.valueOf(direction));
+                }},
+                new HashMap<>()
+            );
         }
 
-        @APIStruct.Endpoint(method="GET", value="vehicle-monitoring.json")
-        APIStruct.Response<Json.JsonObject> getVehicle(
-            @APIStruct.Query("key")           final String token,
-            @APIStruct.Query("VehicleRef")    final Integer vehicle,
-            @APIStruct.Query("LineRef")       final String line,
-            @APIStruct.Query("DirectionRef")  final Integer direction
-        );
-
-        @APIStruct.Endpoint(method="GET", value="stop-monitoring.json")
-        APIStruct.Response<Json.JsonObject> getStop(
-            @APIStruct.Query("key")           final String token,
-            @APIStruct.Query("MonitoringRef") final Integer stop,
-            @APIStruct.Query("LineRef")       final String line,
-            @APIStruct.Query("DirectionRef")  final Integer direction
-        );
+        static JsonObject getStop(
+            final String token,
+            final Integer stop,
+            final String line,
+            final Integer direction
+        ){
+            return Requests.getJSON(
+                baseURL + "stop-monitoring.json",
+                new HashMap<>(){{
+                    put("key", token);
+                    if(stop != null) put("MonitoringRef", String.valueOf(stop));
+                    if(line != null) put("LineRef", line);
+                    if(direction != null) put("DirectionRef", String.valueOf(direction));
+                }},
+                new HashMap<>()
+            );
+        }
 
     }
 
-    @SuppressWarnings({"DefaultAnnotationParam", "SpellCheckingInspection"})
-    interface MTASubwayService {
+    @SuppressWarnings({"SpellCheckingInspection"})
+    interface SubwayService {
 
         String baseURL = "https://api-endpoint.mta.info/Dataservice/mtagtfsfeeds/";
 
-        static MTASubwayService create(){
-            return APICall.create(baseURL, MTASubwayService.class);
+        static FeedMessage getACE(final String token){
+            return Requests.getProtobuf(
+                baseURL + "nyct%2Fgtfs-ace",
+                new HashMap<>(),
+                new HashMap<>(){{
+                    put("x-api-key", token);
+                }}
+            );
         }
 
-        @APIStruct.Protobuf
-        @APIStruct.Endpoint(method="GET", value="nyct%2Fgtfs-ace")
-        APIStruct.Response<Json.JsonObject> getACE(
-            @APIStruct.Header("x-api-key") final String token
-        );
+        static FeedMessage getBDFM(final String token){
+            return Requests.getProtobuf(
+                baseURL + "nyct%2Fgtfs-bdfm",
+                new HashMap<>(),
+                new HashMap<>(){{
+                    put("x-api-key", token);
+                }}
+            );
+        }
 
-        @APIStruct.Protobuf
-        @APIStruct.Endpoint(method="GET", value="nyct%2Fgtfs-bdfm")
-        APIStruct.Response<Json.JsonObject> getBDFM(
-            @APIStruct.Header("x-api-key") final String token
-        );
+        static FeedMessage getG(final String token){
+            return Requests.getProtobuf(
+                baseURL + "nyct%2Fgtfs-g",
+                new HashMap<>(),
+                new HashMap<>(){{
+                    put("x-api-key", token);
+                }}
+            );
+        }
 
-        @APIStruct.Protobuf
-        @APIStruct.Endpoint(method="GET", value="nyct%2Fgtfs-g")
-        APIStruct.Response<Json.JsonObject> getG(
-            @APIStruct.Header("x-api-key") final String token
-        );
+        static FeedMessage getJZ(final String token){
+            return Requests.getProtobuf(
+                baseURL + "nyct%2Fgtfs-jz",
+                new HashMap<>(),
+                new HashMap<>(){{
+                    put("x-api-key", token);
+                }}
+            );
+        }
 
-        @APIStruct.Protobuf
-        @APIStruct.Endpoint(method="GET", value="nyct%2Fgtfs-jz")
-        APIStruct.Response<Json.JsonObject> getJZ(
-            @APIStruct.Header("x-api-key") final String token
-        );
+        static FeedMessage getNQRW(final String token){
+            return Requests.getProtobuf(
+                baseURL + "nyct%2Fgtfs-nqrw",
+                new HashMap<>(),
+                new HashMap<>(){{
+                    put("x-api-key", token);
+                }}
+            );
+        }
 
-        @APIStruct.Protobuf
-        @APIStruct.Endpoint(method="GET", value="nyct%2Fgtfs-nqrw")
-        APIStruct.Response<Json.JsonObject> getNQRW(
-            @APIStruct.Header("x-api-key") final String token
-        );
+        static FeedMessage getL(final String token){
+            return Requests.getProtobuf(
+                baseURL + "nyct%2Fgtfs-l",
+                new HashMap<>(),
+                new HashMap<>(){{
+                    put("x-api-key", token);
+                }}
+            );
+        }
 
-        @APIStruct.Protobuf
-        @APIStruct.Endpoint(method="GET", value="nyct%2Fgtfs-l")
-        APIStruct.Response<Json.JsonObject> getL(
-            @APIStruct.Header("x-api-key") final String token
-        );
+        static FeedMessage get1234567(final String token){
+            return Requests.getProtobuf(
+                baseURL + "nyct%2Fgtfs",
+                new HashMap<>(),
+                new HashMap<>(){{
+                    put("x-api-key", token);
+                }}
+            );
+        }
 
-        @APIStruct.Protobuf
-        @APIStruct.Endpoint(method="GET", value="nyct%2Fgtfs")
-        APIStruct.Response<Json.JsonObject> get1234567(
-            @APIStruct.Header("x-api-key") final String token
-        );
+        static FeedMessage getSI(final String token){
+            return Requests.getProtobuf(
+                baseURL + "nyct%2Fgtfs-si",
+                new HashMap<>(),
+                new HashMap<>(){{
+                    put("x-api-key", token);
+                }}
+            );
+        }
 
-        @APIStruct.Protobuf
-        @APIStruct.Endpoint(method="GET", value="nyct%2Fgtfs-si")
-        APIStruct.Response<Json.JsonObject> getSI(
-            @APIStruct.Header("x-api-key") final String token
-        );
+        static FeedMessage getLIRR(final String token){
+            return Requests.getProtobuf(
+                baseURL + "nyct%2Fgtfs-lirr",
+                new HashMap<>(),
+                new HashMap<>(){{
+                    put("x-api-key", token);
+                }}
+            );
+        }
 
-        @APIStruct.Protobuf
-        @APIStruct.Endpoint(method="GET", value="nyct%2Fgtfs-lirr")
-        APIStruct.Response<Json.JsonObject> getLIRR(
-            @APIStruct.Header("x-api-key") final String token
-        );
-
-        @APIStruct.Protobuf
-        @APIStruct.Endpoint(method="GET", value="nyct%2Fgtfs-mnr")
-        APIStruct.Response<Json.JsonObject> getMNRR(
-            @APIStruct.Header("x-api-key") final String token
-        );
+        static FeedMessage getMNRR(final String token){
+            return Requests.getProtobuf(
+                baseURL + "nyct%2Fgtfs-mnr",
+                new HashMap<>(),
+                new HashMap<>(){{
+                    put("x-api-key", token);
+                }}
+            );
+        }
 
     }
 

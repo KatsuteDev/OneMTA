@@ -1,11 +1,27 @@
+/*
+ * Copyright (C) 2021-2022 Katsute <https://github.com/Katsute>
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ */
+
 package dev.katsute.onemta;
 
 import com.google.protobuf.ExtensionRegistry;
-import dev.katsute.onemta.exception.StaticInitializerException;
 
 import java.io.*;
-import java.net.HttpURLConnection;
-import java.net.URI;
+import java.net.*;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.regex.MatchResult;
@@ -17,18 +33,30 @@ abstract class Requests {
     static Json.JsonObject getJSON(
         final String url,
         final Map<String,String> query,
-        final Map<String,String> requestProperty
+        final Map<String,String> headers
     ){
-        try(final BufferedReader IN = new BufferedReader(new InputStreamReader(getInputStream(url, query, requestProperty)))){
-            String buffer;
-            final StringBuilder OUT = new StringBuilder();
-            while((buffer = IN.readLine()) != null)
-                OUT.append(buffer);
-            final String body = OUT.toString();
-            return (Json.JsonObject) Json.parse(body);
+
+        headers.put("Accept", "application/json; charset=UTF-8");
+
+        HttpURLConnection conn = null;
+        try{
+            conn = getConnection(url, query, headers);
+            try(final BufferedReader IN = new BufferedReader(new InputStreamReader(conn.getInputStream()))){
+                String buffer;
+                final StringBuilder OUT = new StringBuilder();
+                while((buffer = IN.readLine()) != null)
+                    OUT.append(buffer);
+                return (Json.JsonObject) Json.parse(OUT.toString());
+            }catch(IOException e){
+                return (Json.JsonObject) Json.parse("{}");
+            }
         }catch(IOException e){
-            return (Json.JsonObject) Json.parse("{}");
+            e.printStackTrace();
+        }finally{
+            if(conn != null)
+                conn.disconnect();
         }
+        return null;
     }
 
     private static final ExtensionRegistry registry = ExtensionRegistry.newInstance();
@@ -42,13 +70,23 @@ abstract class Requests {
     static GTFSRealtimeProto.FeedMessage getProtobuf(
         final String url,
         final Map<String,String> query,
-        final Map<String,String> requestProperty
+        final Map<String,String> headers
     ){
-        try(final InputStream IN = getInputStream(url, query, requestProperty)){
-            return GTFSRealtimeProto.FeedMessage.parseDelimitedFrom(IN, registry);
+        headers.put("Accept", "application/x-google-protobuf");
+
+        HttpURLConnection conn = null;
+        try{
+            conn = getConnection(url, query, headers);
+            try(final InputStream IN = conn.getInputStream()){
+                return GTFSRealtimeProto.FeedMessage.parseFrom(IN, registry);
+            }
         }catch(IOException e){
-            return null;
+            e.printStackTrace();
+        }finally{
+            if(conn != null)
+                conn.disconnect();
         }
+        return null;
     }
 
     // [{}|\\^\[\]`]
@@ -56,17 +94,32 @@ abstract class Requests {
 
     private static final URIEncoder encoder = new URIEncoder();
 
-    private static InputStream getInputStream(
+    private static HttpURLConnection getConnection(
         final String url,
         final Map<String,String> query,
-        final Map<String,String> requestProperty
-    ){
+        final Map<String,String> headers
+    ) throws IOException{
         final String URL =
             url +
             // path args
             (query.isEmpty() ? "" : '?' + query.entrySet().stream().map(e -> e.getKey() + '=' + e.getValue()).collect(Collectors.joining("&"))); // query
 
-        return null;
+        final HttpURLConnection conn = (HttpURLConnection) URI
+            .create(Regex9.replaceAll(URL, blockedURI.matcher(URL), encoder))
+            .toURL()
+            .openConnection();
+
+        headers.put("Cache-Control", "no-cache, no-store, must-revalidate");
+
+        for(final Map.Entry<String, String> entry : headers.entrySet())
+            conn.setRequestProperty(entry.getKey(), entry.getValue());
+
+        conn.setConnectTimeout(10_000);
+        conn.setReadTimeout(10_000);
+
+        conn.setRequestMethod("GET");
+
+        return conn;
     }
 
     private static class URIEncoder implements Function<MatchResult,String> {

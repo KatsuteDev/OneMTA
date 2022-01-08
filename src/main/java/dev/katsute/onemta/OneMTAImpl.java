@@ -33,8 +33,6 @@ final class OneMTAImpl extends OneMTA {
     private final transient String subwayToken;
     private final DataResource[] resources;
 
-    private final MTABusService busService       = MTABusService.create();
-    private final MTASubwayService subwayService = MTASubwayService.create();
 
     OneMTAImpl(final String busToken, final String subwayToken){
         this(busToken, subwayToken, new DataResource[0]);
@@ -50,7 +48,8 @@ final class OneMTAImpl extends OneMTA {
 
     @Override
     public void print(){
-        System.out.println(busService.getVehicle(busToken, null, "M1", null).raw());
+        System.out.println(BusService.getVehicle(busToken, null, "M1", null));
+        System.out.println(SubwayService.getSI(subwayToken));
     }
 
     @Override
