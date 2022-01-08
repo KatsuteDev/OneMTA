@@ -25,32 +25,29 @@ import dev.katsute.onemta.types.DataResource;
 import java.util.Arrays;
 import java.util.List;
 
-import static dev.katsute.onemta.MTAService.*;
-
 final class OneMTAImpl extends OneMTA {
 
     private final transient String busToken;
     private final transient String subwayToken;
     private final DataResource[] resources;
 
-    private int cacheSeconds = 30;
+    private final MTAService service = new MTAService();
 
     OneMTAImpl(final String busToken, final String subwayToken){
-        this(busToken, subwayToken, new DataResource[0]);
+        this(busToken, subwayToken, (DataResource[]) null);
     }
 
     OneMTAImpl(final String busToken, final String subwayToken, final DataResource... resources){
         this.busToken    = busToken;
         this.subwayToken = subwayToken;
-        this.resources   = Arrays.copyOf(resources, resources.length);
+        this.resources   = resources == null ? new DataResource[0] : Arrays.copyOf(resources, resources.length);
     }
 
     // methods
 
     @Override
     public void print(){
-        System.out.println(BusService.getVehicle(busToken, null, "M1", null));
-        System.out.println(SubwayService.get1234567(subwayToken));
+        
     }
 
     @Override

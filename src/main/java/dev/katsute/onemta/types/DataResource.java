@@ -23,25 +23,27 @@ import java.io.File;
 public abstract class DataResource {
 
     public static DataResource create(final File file, final DataResourceType type){
-        return new DataResource(file, type){};
+        return new DataResource(){
+
+            private final DataResourceType t = type;
+            private final File f = file;
+
+            public final File getFile(){
+                return f;
+            }
+
+            public final DataResourceType getType(){
+                return t;
+            }
+        };
     }
 
     //
 
-    private final DataResourceType type;
-    private final File file;
+    private DataResource(){ }
 
-    private DataResource(final File file, final DataResourceType type){
-        this.file = file;
-        this.type = type;
-    }
+    public abstract File getFile();
 
-    public final File getFile(){
-        return file;
-    }
-
-    public final DataResourceType getType(){
-        return type;
-    }
+    public abstract DataResourceType getType();
 
 }

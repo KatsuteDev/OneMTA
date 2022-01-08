@@ -1,3 +1,21 @@
+/*
+ * Copyright (C) 2021-2022 Katsute <https://github.com/Katsute>
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ */
+
 package dev.katsute.onemta;
 
 import dev.katsute.onemta.GTFSRealtimeProto.FeedMessage;
@@ -7,20 +25,51 @@ import java.util.*;
 
 final class RequestCache {
 
-    static JsonObject getJSON(
-        final String url,
-        final Map<String,String> query,
-        final Map<String,String> headers
-    ){
+    // how long to retain cached data in seconds
+    private final int retainCacheSeconds;
+    // cache, concurrency safe due to synchronized methods
+    private final List<CachedData> cache = new ArrayList<>();
 
+    RequestCache(){
+        this(30);
     }
 
-    static FeedMessage getProtobuf(
+    RequestCache(final int retainCacheSeconds){
+        this.retainCacheSeconds = Math.min(retainCacheSeconds, 30);
+    }
+
+    synchronized final JsonObject getJSON(
         final String url,
         final Map<String,String> query,
         final Map<String,String> headers
     ){
+        // return cached result
+        cache.removeIf(CachedData::isExpired);
+        for(final CachedData cd : cache)
+            if(cd.equals(url, query,headers))
+                return cd.getJson();
 
+        // return and cache new result
+        final JsonObject json = Requests.getJSON(url, query, headers);
+        cache.add(new CachedData(url, query, headers, json));
+        return json;
+    }
+
+    synchronized final FeedMessage getProtobuf(
+        final String url,
+        final Map<String,String> query,
+        final Map<String,String> headers
+    ){
+        // return cached result
+        cache.removeIf(CachedData::isExpired);
+        for(final CachedData cd : cache)
+            if(cd.equals(url, query,headers))
+                return cd.getProtobuf();
+
+        // return and cache new result
+        final FeedMessage protobuf = Requests.getProtobuf(url, query, headers);
+        cache.add(new CachedData(url, query, headers, protobuf));
+        return protobuf;
     }
 
     class CachedData {
@@ -28,40 +77,24 @@ final class RequestCache {
         private final String url;
         private final Map<String,String> query;
         private final Map<String,String> headers;
-        private final Object data;
+
+        private final Object object;
+
         private final long expires;
 
         CachedData(
             final String url,
             final Map<String,String> query,
             final Map<String,String> headers,
-            final JsonObject data
-        ){
-            this(url, query, headers, (Object) data);
-        }
-
-        CachedData(
-            final String url,
-            final Map<String,String> query,
-            final Map<String,String> headers,
-            final FeedMessage data
-        ){
-            this(url, query, headers, (Object) data);
-        }
-
-        CachedData(
-            final String url,
-            final Map<String,String> query,
-            final Map<String,String> headers,
-            final Object data
+            final Object object
         ){
             this.url = url;
             this.query = new HashMap<>(query);
             this.headers = new HashMap<>(headers);
 
-            this.data = data;
+            this.object = object;
 
-            this.expires = (System.currentTimeMillis() / 1000L) + 30;
+            this.expires = (System.currentTimeMillis() / 1000L) + retainCacheSeconds;
         }
 
         final boolean isExpired(){
@@ -69,22 +102,15 @@ final class RequestCache {
         }
 
         final JsonObject getJson(){
-            return (JsonObject) data;
+            return (JsonObject) object;
         }
 
         final FeedMessage getProtobuf(){
-            return (FeedMessage) data;
+            return (FeedMessage) object;
         }
 
-        @Override
-        public boolean equals(final Object o){
-            if(this == o) return true;
-            if(o == null || getClass() != o.getClass()) return false;
-            if(isExpired()) return false;
-
-            final CachedData that = (CachedData) o;
-
-            return url.equals(that.url) && query.equals(that.query) && headers.equals(that.headers);
+        public final boolean equals(final String url, final Map<String,String> query, final Map<String,String> headers){
+            return !isExpired() && this.url.equals(url) && this.query.equals(query) && this.headers.equals(headers);
         }
 
     }

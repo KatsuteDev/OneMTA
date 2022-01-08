@@ -25,6 +25,7 @@ import dev.katsute.onemta.exception.HttpException;
 
 import java.io.*;
 import java.net.*;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.regex.MatchResult;
@@ -38,20 +39,21 @@ abstract class Requests {
         final Map<String,String> query,
         final Map<String,String> headers
     ){
-
-        headers.put("Accept", "application/json; charset=UTF-8");
-
         HttpURLConnection conn = null;
         try{
-            conn = getConnection(url, query, headers);
+            conn = getConnection(
+                url,
+                new HashMap<>(query),
+                new HashMap<>(headers){{
+                    put("Accept", "application/json; charset=UTF-8");
+                }}
+            );
             try(final BufferedReader IN = new BufferedReader(new InputStreamReader(conn.getInputStream()))){
                 String buffer;
                 final StringBuilder OUT = new StringBuilder();
                 while((buffer = IN.readLine()) != null)
                     OUT.append(buffer);
                 return (JsonObject) Json.parse(OUT.toString());
-            }catch(final IOException e){
-                throw new HttpException(e);
             }
         }catch(final IOException e){
             throw new HttpException(e);
@@ -74,11 +76,15 @@ abstract class Requests {
         final Map<String,String> query,
         final Map<String,String> headers
     ){
-        headers.put("Accept", "application/x-google-protobuf");
-
         HttpURLConnection conn = null;
         try{
-            conn = getConnection(url, query, headers);
+            conn = getConnection(
+                url,
+                new HashMap<>(query),
+                new HashMap<>(headers){{
+                    put("Accept", "application/x-google-protobuf");
+                }}
+            );
             try(final InputStream IN = conn.getInputStream()){
                 return FeedMessage.parseFrom(IN, registry);
             }
