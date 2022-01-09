@@ -22,7 +22,7 @@ package dev.katsute.onemta.exception;
  * Thrown if the Json is malformed.
  *
  * @since 1.0.0
- * @version 2.2.1
+ * @version 1.0.0
  * @author Katsute
  */
 public final class JsonSyntaxException extends RuntimeException {
@@ -38,7 +38,8 @@ public final class JsonSyntaxException extends RuntimeException {
      * Returns the raw string.
      *
      * @return raw string
-     * @since 2.2.0
+     *
+     * @since 1.0.0
      */
     public final String getRaw(){
         return raw;

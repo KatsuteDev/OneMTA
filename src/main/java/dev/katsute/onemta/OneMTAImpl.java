@@ -18,14 +18,14 @@
 
 package dev.katsute.onemta;
 
-import dev.katsute.onemta.bus.BusStop;
-import dev.katsute.onemta.bus.BusVehicle;
-import dev.katsute.onemta.types.DataResource;
+import dev.katsute.onemta.bus.*;
+import dev.katsute.onemta.exception.MissingResourceException;
+import dev.katsute.onemta.railroad.*;
+import dev.katsute.onemta.subway.*;
+import dev.katsute.onemta.types.BusDirection;
+import dev.katsute.onemta.types.SubwayDirection;
 
 import java.util.Arrays;
-import java.util.List;
-
-import static dev.katsute.onemta.MTAService.*;
 
 final class OneMTAImpl extends OneMTA {
 
@@ -33,37 +33,37 @@ final class OneMTAImpl extends OneMTA {
     private final transient String subwayToken;
     private final DataResource[] resources;
 
+    private final MTAService service = new MTAService();
 
     OneMTAImpl(final String busToken, final String subwayToken){
-        this(busToken, subwayToken, new DataResource[0]);
+        this(busToken, subwayToken, (DataResource[]) null);
     }
 
     OneMTAImpl(final String busToken, final String subwayToken, final DataResource... resources){
         this.busToken    = busToken;
         this.subwayToken = subwayToken;
-        this.resources   = Arrays.copyOf(resources, resources.length);
+        this.resources   = resources == null ? new DataResource[0] : Arrays.copyOf(resources, resources.length);
     }
 
-    //
+    // resources
+
+    DataResource getDataResource(final DataResourceType type){
+        for(final DataResource resource : resources)
+            if(resource.getType() == type)
+                return resource;
+        throw new MissingResourceException(type);
+    }
+
+    // methods
+
 
     @Override
-    public void print(){
-        System.out.println(BusService.getVehicle(busToken, null, "M1", null));
-        System.out.println(SubwayService.get1234567(subwayToken));
+    public BusRoute getBusRoute(final String route){
+        return null;
     }
 
     @Override
     public BusStop getBusStop(final int stopID){
-        return null;
-    }
-
-    @Override
-    public BusStop getBusStop(final int stopID, final String line){
-        return null;
-    }
-
-    @Override
-    public BusStop getBusStop(final int stopID, final String line, final int direction){
         return null;
     }
 
@@ -73,17 +73,80 @@ final class OneMTAImpl extends OneMTA {
     }
 
     @Override
-    public List<BusVehicle> getBusses(){
+    public BusVehicle[] getBusses(){
+        return new BusVehicle[0];
+    }
+
+    @Override
+    public BusVehicle[] getBusses(final String route){
+        return new BusVehicle[0];
+    }
+
+    @Override
+    public BusVehicle[] getBusses(final String route, final BusDirection direction){
+        return new BusVehicle[0];
+    }
+
+    @Override
+    public BusVehicle[] getBusses(final BusRoute route){
+        return new BusVehicle[0];
+    }
+
+    @Override
+    public BusVehicle[] getBusses(final BusRoute route, final BusDirection direction){
+        return new BusVehicle[0];
+    }
+
+    @Override
+    public SubwayRoute getSubwayRoute(final String route){
         return null;
     }
 
     @Override
-    public List<BusVehicle> getBusses(final String line){
+    public SubwayStop getSubwayStop(final String stopID){
         return null;
     }
 
     @Override
-    public List<BusVehicle> getBusses(final String line, final int direction){
+    public SubwayStop getSubwayStop(final String stopID, final SubwayDirection direction){
+        return null;
+    }
+
+    @Override
+    public SubwayVehicle getSubwayTrain(final String trainID){
+        System.out.println(service.subway.get1234567(subwayToken));
+        return null;
+    }
+
+    @Override
+    public RailroadRoute getLIRRRoute(final String route){
+        return null;
+    }
+
+    @Override
+    public RailroadStop getLIRRStop(final String stopId){
+        return null;
+    }
+
+    @Override
+    public RailroadVehicle getLIRRTrain(final String trainID){
+        System.out.println(service.lirr.getLIRR(subwayToken));
+        return null;
+    }
+
+    @Override
+    public RailroadRoute getMNRRoute(final String route){
+        return null;
+    }
+
+    @Override
+    public RailroadStop getMNRStop(final String stopId){
+        return null;
+    }
+
+    @Override
+    public RailroadVehicle getMNRTrain(final String trainID){
+        System.out.println(service.mnrr.getMNRR(subwayToken));
         return null;
     }
 

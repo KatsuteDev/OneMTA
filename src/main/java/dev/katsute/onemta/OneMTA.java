@@ -18,11 +18,11 @@
 
 package dev.katsute.onemta;
 
-import dev.katsute.onemta.bus.BusStop;
-import dev.katsute.onemta.bus.BusVehicle;
-import dev.katsute.onemta.types.DataResource;
-
-import java.util.List;
+import dev.katsute.onemta.bus.*;
+import dev.katsute.onemta.railroad.*;
+import dev.katsute.onemta.subway.*;
+import dev.katsute.onemta.types.BusDirection;
+import dev.katsute.onemta.types.SubwayDirection;
 
 public abstract class OneMTA {
 
@@ -36,20 +36,46 @@ public abstract class OneMTA {
         return new OneMTAImpl(busToken, subwayToken, resources);
     }
 
-    public abstract void print();
+    // bus methods
 
-    public abstract BusStop getBusStop(final int stopID);
+    public abstract BusRoute getBusRoute(final String route);
 
-    public abstract BusStop getBusStop(final int stopID, final String line);
-
-    public abstract BusStop getBusStop(final int stopID, final String line, final int direction);
+    public abstract BusStop getBusStop(final int stopID); // todo: make bus stop class fulfill requests instead, accept line & direction parameters in BusStop#getVehicles(...)
 
     public abstract BusVehicle getBus(final int busID);
 
-    public abstract List<BusVehicle> getBusses();
+    public abstract BusVehicle[] getBusses();
 
-    public abstract List<BusVehicle> getBusses(final String line);
+    public abstract BusVehicle[] getBusses(final String route);
 
-    public abstract List<BusVehicle> getBusses(final String line, final int direction);
+    public abstract BusVehicle[] getBusses(final String route, final BusDirection direction);
+
+    public abstract BusVehicle[] getBusses(final BusRoute route);
+
+    public abstract BusVehicle[] getBusses(final BusRoute route, final BusDirection direction);
+
+    // subway methods
+
+    public abstract SubwayRoute getSubwayRoute(final String route);
+
+    public abstract SubwayStop getSubwayStop(final String stopID); // todo: same as bus stop, use SubwayStop#getVehicles(...)
+
+    public abstract SubwayStop getSubwayStop(final String stopID, final SubwayDirection direction);
+
+    public abstract SubwayVehicle getSubwayTrain(final String trainID);
+
+    // train methods
+
+    public abstract RailroadRoute getLIRRRoute(final String route);
+
+    public abstract RailroadStop getLIRRStop(final String stopId);
+
+    public abstract RailroadVehicle getLIRRTrain(final String trainID);
+
+    public abstract RailroadRoute getMNRRoute(final String route);
+
+    public abstract RailroadStop getMNRStop(final String stopId);
+
+    public abstract RailroadVehicle getMNRTrain(final String trainID);
 
 }

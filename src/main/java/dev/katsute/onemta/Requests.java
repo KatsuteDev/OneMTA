@@ -19,10 +19,13 @@
 package dev.katsute.onemta;
 
 import com.google.protobuf.ExtensionRegistry;
+import dev.katsute.onemta.GTFSRealtimeProto.FeedMessage;
+import dev.katsute.onemta.Json.JsonObject;
 import dev.katsute.onemta.exception.HttpException;
 
 import java.io.*;
 import java.net.*;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.regex.MatchResult;
@@ -31,28 +34,29 @@ import java.util.stream.Collectors;
 
 abstract class Requests {
 
-    static Json.JsonObject getJSON(
+    static JsonObject getJSON(
         final String url,
         final Map<String,String> query,
         final Map<String,String> headers
     ){
-
-        headers.put("Accept", "application/json; charset=UTF-8");
-
         HttpURLConnection conn = null;
         try{
-            conn = getConnection(url, query, headers);
+            conn = getConnection(
+                url,
+                new HashMap<>(query),
+                new HashMap<>(headers){{
+                    put("Accept", "application/json; charset=UTF-8");
+                }}
+            );
             try(final BufferedReader IN = new BufferedReader(new InputStreamReader(conn.getInputStream()))){
                 String buffer;
                 final StringBuilder OUT = new StringBuilder();
                 while((buffer = IN.readLine()) != null)
                     OUT.append(buffer);
-                return (Json.JsonObject) Json.parse(OUT.toString());
-            }catch(final IOException e){
-                throw new HttpException(e);
+                return (JsonObject) Json.parse(OUT.toString());
             }
         }catch(final IOException e){
-            throw new HttpException(e);
+            throw new HttpException(url, e);
         }finally{
             if(conn != null)
                 conn.disconnect();
@@ -62,26 +66,35 @@ abstract class Requests {
     private static final ExtensionRegistry registry = ExtensionRegistry.newInstance();
 
     static{
-        registry.add(NYCTSubwayProto.nyctFeedHeader);
-        registry.add(NYCTSubwayProto.nyctTripDescriptor);
-        registry.add(NYCTSubwayProto.nyctStopTimeUpdate);
+        NYCTSubwayProto.registerAllExtensions(registry);
+        MTARRProto.registerAllExtensions(registry);
+        LIRRProto.registerAllExtensions(registry);
+        MNRRProto.registerAllExtensions(registry);
     }
 
-    static GTFSRealtimeProto.FeedMessage getProtobuf(
+    static FeedMessage getProtobuf(
         final String url,
         final Map<String,String> query,
         final Map<String,String> headers
     ){
-        headers.put("Accept", "application/x-google-protobuf");
-
         HttpURLConnection conn = null;
         try{
-            conn = getConnection(url, query, headers);
+            conn = getConnection(
+                url,
+                new HashMap<>(query),
+                new HashMap<>(headers){{
+                    put("Accept", "application/x-protobuf");
+                }}
+            );
             try(final InputStream IN = conn.getInputStream()){
-                return GTFSRealtimeProto.FeedMessage.parseFrom(IN, registry);
+                return FeedMessage.parseFrom(IN, registry);
             }
         }catch(final IOException e){
-            throw new HttpException(e);
+            if(conn != null)
+                try{
+                    throw new HttpException(url, conn.getResponseCode() + " " + conn.getResponseMessage(), e);
+                }catch(final IOException ignored){}
+            throw new HttpException(url, e);
         }finally{
             if(conn != null)
                 conn.disconnect();

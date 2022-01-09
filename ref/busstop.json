@@ -1,0 +1,59 @@
+{
+  "Siri": {
+    "ServiceDelivery": {
+      "ResponseTimestamp": "2022-01-08T21:33:13.248-05:00",
+      "StopMonitoringDelivery": [
+        {
+          "MonitoredStopVisit": [
+            {
+              "MonitoredVehicleJourney": {
+                "LineRef": "MTA NYCT_M1",
+                "DirectionRef": "1",
+                "FramedVehicleJourneyRef": {
+                  "DataFrameRef": "2022-01-08",
+                  "DatedVehicleJourneyRef": "MTA NYCT_OF_A2-Saturday-131900_M1_143"
+                },
+                "JourneyPatternRef": "MTA_M010014",
+                "PublishedLineName": "M1",
+                "OperatorRef": "MTA NYCT",
+                "OriginRef": "MTA_405284",
+                "DestinationName": "GRAND ST via 5 AV/BROADWAY",
+                "OriginAimedDepartureTime": "2022-01-08T21:59:00.000-05:00",
+                "Monitored": true,
+                "VehicleLocation": {
+                  "Longitude": -73.937509,
+                  "Latitude": 40.818551
+                },
+                "Bearing": 53.156837,
+                "ProgressRate": "normalProgress",
+                "ProgressStatus": "prevTrip",
+                "BlockRef": "MTA NYCT_OF_A2-Saturday_A_OF_46860_M1-131",
+                "VehicleRef": "MTA NYCT_9567",
+                "MonitoredCall": {
+                  "AimedArrivalTime": "2022-01-08T21:59:00.258-05:00",
+                  "ExpectedArrivalTime": "2022-01-08T21:59:00.000-05:00",
+                  "ExpectedDepartureTime": "2022-01-08T21:59:00.000-05:00",
+                  "Extensions": {
+                    "Distances": {
+                      "CallDistanceAlongRoute": 0,
+                      "PresentableDistance": "0.6 miles away",
+                      "DistanceFromCall": 1043.69,
+                      "StopsFromCall": 1
+                    }
+                  },
+                  "StopPointRef": "MTA_405284",
+                  "VisitNumber": 1,
+                  "StopPointName": "MALCOLM X BL/W 146 ST"
+                },
+                "OnwardCalls": {}
+              },
+              "RecordedAtTime": "2022-01-08T21:33:11.120-05:00"
+            }
+          ],
+          "ResponseTimestamp": "2022-01-08T21:33:13.248-05:00",
+          "ValidUntil": "2022-01-08T21:34:13.248-05:00"
+        }
+      ]
+    }
+  }
+}

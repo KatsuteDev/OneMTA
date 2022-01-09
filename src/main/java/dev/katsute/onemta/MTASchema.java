@@ -18,13 +18,20 @@
 
 package dev.katsute.onemta;
 
+import dev.katsute.onemta.Json.JsonObject;
+import dev.katsute.onemta.bus.BusStop;
+
 abstract class MTASchema {
 
-    static class BusSchema {
+    static abstract class BusSchema {
+
+        static BusStop asBusStop(final OneMTA mta, final JsonObject json){
+            return null;
+        }
 
     }
 
-    static class SubwaySchema {
+    static abstract class SubwaySchema {
 
     }
 

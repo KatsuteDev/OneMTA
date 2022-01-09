@@ -1,0 +1,16 @@
+syntax = "proto2";
+
+import "gtfs-realtime.proto";
+option java_package = "dev.katsute.onemta";
+option java_outer_classname = "LIRRProto";
+option optimize_for = CODE_SIZE;
+
+package transit_realtime;
+
+message MtaStopTimeUpdate {
+  extend transit_realtime.TripUpdate.StopTimeUpdate {
+  optional string track = 1005;
+  //can add additional fields here without having to extend StopTimeUpdate again
+  }
+}
+
