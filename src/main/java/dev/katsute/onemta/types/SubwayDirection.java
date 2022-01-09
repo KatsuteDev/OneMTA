@@ -48,7 +48,7 @@ public enum SubwayDirection {
      *
      * @return gtfs direction
      *
-     * @author Katsute
+     * @since 1.0.0
      */
     public final int getDirection(){
         return direction;
