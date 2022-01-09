@@ -18,14 +18,57 @@
 
 package dev.katsute.onemta.types;
 
+/**
+ * Represents a transit stop.
+ *
+ * @param <I> stop id format
+ *
+ * @see dev.katsute.onemta.Bus.Stop
+ * @see dev.katsute.onemta.Subway.Stop
+ * @see dev.katsute.onemta.LIRR.Stop
+ * @see dev.katsute.onemta.MNR.Stop
+ * @since 1.0.0
+ * @version 1.0.0
+ * @author Katsute
+ */
 public abstract class TransitStop<I> {
 
+    /**
+     * Returns the stop ID.
+     *
+     * @return stop ID
+     *
+     * @since 1.0.0
+     */
     public abstract I getStopID();
 
+    /**
+     * Returns the stop name.
+     *
+     * @return stop name
+     *
+     * @since 1.0.0
+     */
     public abstract String getStopName();
 
+    /**
+     * Returns the stop latitude.
+     *
+     * @return stop latitude
+     *
+     * @see #getStopLongitude()
+     * @since 1.0.0
+     */
     public abstract double getStopLatitude();
 
+    /**
+     * Returns the stop longitude
+     *
+     * @return stop longitude
+     *
+     * @see #getStopLatitude()
+     * @since 1.0.0
+     */
     public abstract double getStopLongitude();
 
 }

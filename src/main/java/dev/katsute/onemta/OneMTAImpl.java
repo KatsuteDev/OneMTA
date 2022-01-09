@@ -56,17 +56,17 @@ final class OneMTAImpl extends OneMTA {
 
 
     @Override
-    public Bus.Route getBus(final String route){
+    public Bus.Route getBusRoute(final String route_id){
         return null;
     }
 
     @Override
-    public Bus.Stop getBusStop(final int stopID){
+    public Bus.Stop getBusStop(final int stop_id){
         return null;
     }
 
     @Override
-    public Bus.Vehicle getBus(final int busID){
+    public Bus.Vehicle getBus(final int bus_id){
         return null;
     }
 
@@ -76,72 +76,52 @@ final class OneMTAImpl extends OneMTA {
     }
 
     @Override
-    public Bus.Vehicle[] getBusses(final String route){
-        return new Bus.Vehicle[0];
-    }
-
-    @Override
-    public Bus.Vehicle[] getBusses(final String route, final BusDirection direction){
-        return new Bus.Vehicle[0];
-    }
-
-    @Override
-    public Bus.Vehicle[] getBusses(final Bus.Route route){
-        return new Bus.Vehicle[0];
-    }
-
-    @Override
-    public Bus.Vehicle[] getBusses(final Bus.Route route, final BusDirection direction){
-        return new Bus.Vehicle[0];
-    }
-
-    @Override
-    public Subway.Route getSubwayRoute(final String route){
+    public Subway.Route getSubwayRoute(final String route_id){
         return null;
     }
 
     @Override
-    public Subway.Stop getSubwayStop(final String stopID){
+    public Subway.Stop getSubwayStop(final String stop_id){
         return null;
     }
 
     @Override
-    public Subway.Stop getSubway(final String stopID, final SubwayDirection direction){
+    public Subway.Stop getSubwayStop(final String stop_id, final SubwayDirection direction){
         return null;
     }
 
     @Override
-    public Subway.Vehicle getSubwayTrain(final String trainID){
+    public Subway.Vehicle getSubwayTrain(final String train_id){
         return null;
     }
 
     @Override
-    public LIRR.Route getLIRRRoute(final String route){
+    public LIRR.Route getLIRRRoute(final String route_id){
         return null;
     }
 
     @Override
-    public LIRR.Stop getLIRRStop(final String stopId){
+    public LIRR.Stop getLIRRStop(final String stop_id){
         return null;
     }
 
     @Override
-    public LIRR.Vehicle getLIRRTrain(final String trainID){
+    public LIRR.Vehicle getLIRRTrain(final String train_id){
         return null;
     }
 
     @Override
-    public MNR.Route getMNRRoute(final String route){
+    public MNR.Route getMNRRoute(final String route_id){
         return null;
     }
 
     @Override
-    public MNR.Stop getMNRStop(final String stopId){
+    public MNR.Stop getMNRStop(final String stop_id){
         return null;
     }
 
     @Override
-    public MNR.Vehicle getMNRTrain(final String trainID){
+    public MNR.Vehicle getMNRTrain(final String train_id){
         return null;
     }
 

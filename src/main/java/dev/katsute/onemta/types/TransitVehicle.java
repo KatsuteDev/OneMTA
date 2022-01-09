@@ -20,6 +20,19 @@ package dev.katsute.onemta.types;
 
 import dev.katsute.onemta.attribute.RouteReference;
 
+/**
+ * Represents a transit vehicle.
+ *
+ * @param <R> vehicle route type
+ *
+ * @see dev.katsute.onemta.Bus.Vehicle
+ * @see dev.katsute.onemta.Subway.Vehicle
+ * @see dev.katsute.onemta.LIRR.Vehicle
+ * @see dev.katsute.onemta.MNR.Vehicle
+ * @since 1.0.0
+ * @version 1.0.0
+ * @author Katsute
+ */
 public abstract class TransitVehicle<R extends TransitRoute> implements RouteReference<R> {
 
 }

@@ -18,6 +18,14 @@
 
 package dev.katsute.onemta.exception;
 
+/**
+ * Thrown if the {@link dev.katsute.onemta.DataResource} could not be read.
+ *
+ * @see dev.katsute.onemta.DataResource
+ * @since 1.0.0
+ * @version 1.0.0
+ * @author Katsute
+ */
 public final class DataResourceException extends RuntimeException {
 
     public DataResourceException(final String message){

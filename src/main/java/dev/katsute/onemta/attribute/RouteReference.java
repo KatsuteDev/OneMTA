@@ -20,8 +20,25 @@ package dev.katsute.onemta.attribute;
 
 import dev.katsute.onemta.types.TransitRoute;
 
+/**
+ * Indicates that the object can refer to a {@link TransitRoute}.
+ *
+ * @param <T> route type
+ *
+ * @since 1.0.0
+ * @version 1.0.0
+ * @author Katsute
+ */
 public interface RouteReference<T extends TransitRoute> {
-    
+
+    /**
+     * Returns the route.
+     *
+     * @return route
+     *
+     * @see TransitRoute
+     * @since 1.0.0
+     */
     T getRoute();
-    
+
 }

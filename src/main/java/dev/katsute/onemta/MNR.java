@@ -22,8 +22,10 @@ import dev.katsute.onemta.types.*;
 
 public abstract class MNR {
 
+    // todo: get vehicles for route
     public abstract static class Route extends TransitRoute { }
 
+    // todo: get vehicles for stop
     public abstract static class Stop extends TransitStop<Integer> {
 
         public abstract String getStopCode();

@@ -18,8 +18,23 @@
 
 package dev.katsute.onemta.attribute;
 
+/**
+ * Indicates that the {@link dev.katsute.onemta.types.TransitRoute} has a short name.
+ *
+ * @see dev.katsute.onemta.types.TransitRoute
+ * @since 1.0.0
+ * @version 1.0.0
+ * @author Katsute
+ */
 public interface RouteShortName {
 
+    /**
+     * Returns the route short name.
+     *
+     * @return route short name
+     *
+     * @since 1.0.0
+     */
     String getRouteShortName();
 
 }

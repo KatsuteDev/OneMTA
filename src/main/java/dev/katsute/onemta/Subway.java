@@ -23,15 +23,19 @@ import dev.katsute.onemta.types.*;
 
 public abstract class Subway {
 
+    // todo: get vehicles for route
     public abstract static class Route extends TransitRoute implements RouteShortName, RouteDescription { }
 
-    // todo: add utility method to check if N/S stops are the same: Subway.Stop#isSameStop(...)
+    // todo: get vehicles for stop
     public abstract static class Stop extends TransitStop<String> {
 
         public abstract SubwayDirection getDirection();
 
+        public abstract boolean isSameStop(final Stop stop);
+
     }
 
+    // todo: add utility methods for isExpress, isLocal
     public abstract static class Vehicle extends TransitVehicle<Route> { }
 
 }

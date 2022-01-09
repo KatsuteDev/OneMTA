@@ -25,7 +25,6 @@ import java.util.Objects;
 
 import static dev.katsute.onemta.Bus.*;
 
-// should require data resources for all boroughs
 abstract class OneMTASchema_Bus extends OneMTASchema {
 
     static Route asRoute(final OneMTA mta, final String route_id){

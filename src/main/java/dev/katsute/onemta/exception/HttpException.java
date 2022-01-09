@@ -18,8 +18,6 @@
 
 package dev.katsute.onemta.exception;
 
-import java.net.HttpURLConnection;
-
 /**
  * Throw if there is an error while executing the request.
  *

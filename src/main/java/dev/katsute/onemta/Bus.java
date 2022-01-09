@@ -21,12 +21,23 @@ package dev.katsute.onemta;
 import dev.katsute.onemta.attribute.*;
 import dev.katsute.onemta.types.*;
 
+/**
+ * Contains all bus related methods. For the bus vehicle use {@link Vehicle}.
+ *
+ * @since 1.0.0
+ * @version 1.0.0
+ * @author Katsute
+ */
 public abstract class Bus {
 
+    // todo: add utility methods for isSBS, isExpress, isShuttle, isLimited
+    // todo: get vehicles for route
     public abstract static class Route extends TransitRoute implements RouteShortName, RouteDescription { }
 
+    // todo: get vehicles for stop
     public abstract static class Stop extends TransitStop<Integer> implements RouteDescription { }
 
+    // todo: add utility methods for isSBS, isExpress, isShuttle, isLimited
     public abstract static class Vehicle extends TransitVehicle<Route> {
 
         public abstract int getID();

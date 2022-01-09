@@ -23,6 +23,7 @@ import dev.katsute.onemta.types.TransitAgency;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.regex.Pattern;
 
 import static dev.katsute.onemta.Subway.*;
 
@@ -151,6 +152,15 @@ abstract class OneMTASchema_Subway extends OneMTASchema {
             @Override
             public final SubwayDirection getDirection(){
                 return stopDirection;
+            }
+
+            private final Pattern direction = Pattern.compile("N|S$");
+
+            @Override
+            public final boolean isSameStop(final Stop stop){
+                return this == stop ||
+                   (stop != null &&
+                    direction.matcher(getStopID()).replaceAll("").equals(direction.matcher(stop.getStopID()).replaceAll("")));
             }
 
             // live feed

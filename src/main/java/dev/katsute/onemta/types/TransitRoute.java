@@ -18,16 +18,57 @@
 
 package dev.katsute.onemta.types;
 
-public abstract class TransitRoute {
+import dev.katsute.onemta.attribute.AgencyReference;
 
+/**
+ * Represents a transit route.
+ *
+ * @see dev.katsute.onemta.Bus.Route
+ * @see dev.katsute.onemta.Subway.Route
+ * @see dev.katsute.onemta.LIRR.Route
+ * @see dev.katsute.onemta.MNR.Route
+ * @since 1.0.0
+ * @version 1.0.0
+ * @author Katsute
+ */
+public abstract class TransitRoute implements AgencyReference {
+
+    /**
+     * Returns the route ID.
+     *
+     * @return route ID
+     *
+     * @since 1.0.0
+     */
     public abstract String getRouteID();
 
-    public abstract TransitAgency getAgency();
-
+    /**
+     * Returns the route name.
+     *
+     * @return route name
+     *
+     * @since 1.0.0
+     */
     public abstract String getRouteName();
 
+    /**
+     * Returns the route color as it appears on MTA maps.
+     *
+     * @return route color
+     *
+     * @see #getRouteTextColor()
+     * @since 1.0.0
+     */
     public abstract String getRouteColor();
 
+    /**
+     * Returns the text color as it appears on MTA maps.
+     *
+     * @return route text color
+     *
+     * @see #getRouteColor()
+     * @since 1.0.0
+     */
     public abstract String getRouteTextColor();
 
 }

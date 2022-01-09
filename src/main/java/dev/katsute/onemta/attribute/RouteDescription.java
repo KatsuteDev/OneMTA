@@ -18,8 +18,23 @@
 
 package dev.katsute.onemta.attribute;
 
+/**
+ * Indicates that the {@link dev.katsute.onemta.types.TransitRoute} has a description.
+ *
+ * @see dev.katsute.onemta.types.TransitRoute
+ * @since 1.0.0
+ * @version 1.0.0
+ * @author Katsute
+ */
 public interface RouteDescription {
 
+    /**
+     * Returns the route description.
+     *
+     * @return route description
+     *
+     * @since 1.0.0
+     */
     String getRouteDescription();
 
 }

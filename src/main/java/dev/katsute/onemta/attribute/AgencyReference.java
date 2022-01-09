@@ -20,8 +20,22 @@ package dev.katsute.onemta.attribute;
 
 import dev.katsute.onemta.types.TransitAgency;
 
+/**
+ * Indicates that the object can have an agency.
+ *
+ * @since 1.0.0
+ * @version 1.0.0
+ * @author Katsute
+ */
 public interface AgencyReference {
 
+    /**
+     * Returns the transit agency.
+     *
+     * @return transit agency
+     *
+     * @since 1.0.0
+     */
     TransitAgency getAgency();
 
 }
