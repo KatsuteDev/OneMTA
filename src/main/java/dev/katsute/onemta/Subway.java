@@ -18,13 +18,14 @@
 
 package dev.katsute.onemta;
 
+import dev.katsute.onemta.attribute.RouteReference;
 import dev.katsute.onemta.types.*;
 
 public abstract class Subway {
 
     public abstract static class Route extends TransitRoute { }
 
-    public abstract static class Stop extends TransitStop<String> {
+    public abstract static class Stop extends TransitStop<String> implements RouteReference<Route> {
 
         public abstract SubwayDirection getDirection();
 

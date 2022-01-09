@@ -18,9 +18,7 @@
 
 package dev.katsute.onemta.types;
 
-import dev.katsute.onemta.attribute.RouteReference;
-
-public abstract class TransitStop<I,R extends TransitRoute> implements RouteReference<R> {
+public abstract class TransitStop<I> {
 
     public abstract I getStopID();
 

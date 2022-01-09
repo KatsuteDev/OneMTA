@@ -25,7 +25,7 @@ public abstract class LIRR {
 
     public abstract static class Route extends TransitRoute { }
 
-    public abstract static class Stop extends TransitStop<Integer,Route> {
+    public abstract static class Stop extends TransitStop<Integer> {
 
         public abstract String getStopCode();
 

@@ -18,10 +18,20 @@
 
 package dev.katsute.onemta;
 
-abstract class OneMTASchema {
+import static dev.katsute.onemta.Subway.*;
 
-    protected static DataResource getDataResource(final OneMTA mta, final DataResourceType type){
-        return ((OneMTAImpl) mta).getDataResource(type);
+abstract class OneMTASchema_Subway extends OneMTASchema {
+
+    static Route asRoute(final OneMTA mta, final String route){
+
+    }
+
+    static Stop asStop(final OneMTA mta, final int stop, final Route route){
+
+    }
+
+    static Vehicle asVehicle(final OneMTA mta, final int id, final Route route){
+
     }
 
 }
