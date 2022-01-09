@@ -18,23 +18,27 @@
 
 package dev.katsute.onemta;
 
+import com.google.protobuf.ExtensionRegistry;
 import dev.katsute.onemta.GTFSRealtimeProto.FeedMessage;
 import dev.katsute.onemta.Json.JsonObject;
 
 import java.util.HashMap;
 
+@SuppressWarnings("SpellCheckingInspection")
 final class MTAService {
 
     private final RequestCache cache = new RequestCache();
 
     MTAService(){ }
 
-    final BusService bus = new BusService();
-    final SubwayService subway = new SubwayService();
+    final BusService bus        = new BusService();
+    final SubwayService subway  = new SubwayService();
+    final LIRRService lirr    = new LIRRService();
+    final MNRRService mnrr    = new MNRRService();
 
     final class BusService {
 
-        String baseURL = "http://bustime.mta.info/api/siri/";
+        private final String baseURL = "http://bustime.mta.info/api/siri/";
 
         private BusService(){ }
 
@@ -47,10 +51,10 @@ final class MTAService {
             return cache.getJSON(
                 baseURL + "vehicle-monitoring.json",
                 new HashMap<>(){{
-                    put("key", token);
-                    if(vehicle != null) put("VehicleRef", String.valueOf(vehicle));
-                    if(line != null) put("LineRef", line);
-                    if(direction != null) put("DirectionRef", String.valueOf(direction));
+                                            put("key", token);
+                    if(vehicle != null)     put("VehicleRef", String.valueOf(vehicle));
+                    if(line != null)        put("LineRef", line);
+                    if(direction != null)   put("DirectionRef", String.valueOf(direction));
                 }},
                 new HashMap<>()
             );
@@ -65,10 +69,10 @@ final class MTAService {
             return cache.getJSON(
                 baseURL + "stop-monitoring.json",
                 new HashMap<>(){{
-                    put("key", token);
-                    if(stop != null) put("MonitoringRef", String.valueOf(stop));
-                    if(line != null) put("LineRef", line);
-                    if(direction != null) put("DirectionRef", String.valueOf(direction));
+                                            put("key", token);
+                    if(stop != null)        put("MonitoringRef", String.valueOf(stop));
+                    if(line != null)        put("LineRef", line);
+                    if(direction != null)   put("DirectionRef", String.valueOf(direction));
                 }},
                 new HashMap<>()
             );
@@ -76,10 +80,9 @@ final class MTAService {
 
     }
 
-    @SuppressWarnings({"SpellCheckingInspection"})
     final class SubwayService {
 
-        String baseURL = "https://api-endpoint.mta.info/Dataservice/mtagtfsfeeds/";
+        private final String baseURL = "https://api-endpoint.mta.info/Dataservice/mtagtfsfeeds/";
 
         private SubwayService(){ }
 
@@ -163,19 +166,36 @@ final class MTAService {
             );
         }
 
+    }
+
+    @SuppressWarnings("FieldCanBeLocal")
+    final class LIRRService {
+        private final String baseURL = "https://api-endpoint.mta.info/Dataservice/mtagtfsfeeds/";
+
+        private LIRRService(){ }
+
         final FeedMessage getLIRR(final String token){
             return cache.getProtobuf(
-                baseURL + "nyct%2Fgtfs-lirr",
+                baseURL + "lirr%2Fgtfs-lirr",
                 new HashMap<>(),
-                new HashMap<>(){{
+                new HashMap<>() {{
                     put("x-api-key", token);
                 }}
             );
         }
 
+    }
+
+    @SuppressWarnings("FieldCanBeLocal")
+    final class MNRRService {
+
+        private MNRRService(){ }
+
+        private final String baseURL = "https://api-endpoint.mta.info/Dataservice/mtagtfsfeeds/";
+
         final FeedMessage getMNRR(final String token){
             return cache.getProtobuf(
-                baseURL + "nyct%2Fgtfs-mnr",
+                baseURL + "mnr%2Fgtfs-mnr",
                 new HashMap<>(),
                 new HashMap<>(){{
                     put("x-api-key", token);

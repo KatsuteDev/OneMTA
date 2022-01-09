@@ -18,13 +18,13 @@
 
 package dev.katsute.onemta.subway;
 
-import dev.katsute.onemta.types.Direction;
+import dev.katsute.onemta.types.BusDirection;
 import dev.katsute.onemta.types.TransitStop;
 
 public abstract class SubwayStop extends TransitStop {
 
     public abstract String getStopID();
 
-    public abstract Direction getDirection();
+    public abstract BusDirection getDirection();
 
 }

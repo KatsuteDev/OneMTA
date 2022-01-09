@@ -8,7 +8,8 @@ public class TestWIP {
     public void test(){
         final OneMTA mta = TestProvider.getOneMTA();
 
-        mta.print();
+        //mta.getLIRR(null);
+        mta.getMNRTrain(null);
     }
 
 }

@@ -18,6 +18,7 @@
 
 package dev.katsute.onemta;
 
+import com.google.protobuf.ExtensionRegistry;
 import dev.katsute.onemta.GTFSRealtimeProto.FeedMessage;
 import dev.katsute.onemta.Json.JsonObject;
 

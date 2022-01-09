@@ -66,9 +66,10 @@ abstract class Requests {
     private static final ExtensionRegistry registry = ExtensionRegistry.newInstance();
 
     static{
-        registry.add(NYCTSubwayProto.nyctFeedHeader);
-        registry.add(NYCTSubwayProto.nyctTripDescriptor);
-        registry.add(NYCTSubwayProto.nyctStopTimeUpdate);
+        NYCTSubwayProto.registerAllExtensions(registry);
+        MTARRProto.registerAllExtensions(registry);
+        LIRRProto.registerAllExtensions(registry);
+        MNRRProto.registerAllExtensions(registry);
     }
 
     static FeedMessage getProtobuf(
@@ -82,13 +83,17 @@ abstract class Requests {
                 url,
                 new HashMap<>(query),
                 new HashMap<>(headers){{
-                    put("Accept", "application/x-google-protobuf");
+                    put("Accept", "application/x-protobuf");
                 }}
             );
             try(final InputStream IN = conn.getInputStream()){
                 return FeedMessage.parseFrom(IN, registry);
             }
         }catch(final IOException e){
+            if(conn != null)
+                try{
+                    throw new HttpException(url, conn.getResponseCode() + " " + conn.getResponseMessage(), e);
+                }catch(final IOException ignored){}
             throw new HttpException(url, e);
         }finally{
             if(conn != null)

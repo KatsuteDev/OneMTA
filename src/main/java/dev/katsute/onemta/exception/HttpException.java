@@ -18,6 +18,8 @@
 
 package dev.katsute.onemta.exception;
 
+import java.net.HttpURLConnection;
+
 /**
  * Throw if there is an error while executing the request.
  *
@@ -29,6 +31,10 @@ public final class HttpException extends RuntimeException {
 
     public HttpException(final String url, final Throwable cause){
         super("Failed to execute request on \"" + url + "\": " + cause.getMessage(), cause);
+    }
+
+    public HttpException(final String url, final String message, final Throwable cause){
+        super("Failed to execute request on \"" + url + "\": " + cause.getMessage() + "\nProbably caused by: " + message, cause);
     }
 
 }

@@ -1048,7 +1048,7 @@ abstract class GTFSRealtimeProto {
     /**
      * <pre>
      * Version of the feed specification.
-     * The current version is 2.0.
+     * The current version is 2.0.  Valid versions are "2.0", "1.0".
      * </pre>
      *
      * <code>required string gtfs_realtime_version = 1;</code>
@@ -1058,7 +1058,7 @@ abstract class GTFSRealtimeProto {
     /**
      * <pre>
      * Version of the feed specification.
-     * The current version is 2.0.
+     * The current version is 2.0.  Valid versions are "2.0", "1.0".
      * </pre>
      *
      * <code>required string gtfs_realtime_version = 1;</code>
@@ -1068,7 +1068,7 @@ abstract class GTFSRealtimeProto {
     /**
      * <pre>
      * Version of the feed specification.
-     * The current version is 2.0.
+     * The current version is 2.0.  Valid versions are "2.0", "1.0".
      * </pre>
      *
      * <code>required string gtfs_realtime_version = 1;</code>
@@ -1268,7 +1268,7 @@ abstract class GTFSRealtimeProto {
     /**
      * <pre>
      * Version of the feed specification.
-     * The current version is 2.0.
+     * The current version is 2.0.  Valid versions are "2.0", "1.0".
      * </pre>
      *
      * <code>required string gtfs_realtime_version = 1;</code>
@@ -1281,7 +1281,7 @@ abstract class GTFSRealtimeProto {
     /**
      * <pre>
      * Version of the feed specification.
-     * The current version is 2.0.
+     * The current version is 2.0.  Valid versions are "2.0", "1.0".
      * </pre>
      *
      * <code>required string gtfs_realtime_version = 1;</code>
@@ -1305,7 +1305,7 @@ abstract class GTFSRealtimeProto {
     /**
      * <pre>
      * Version of the feed specification.
-     * The current version is 2.0.
+     * The current version is 2.0.  Valid versions are "2.0", "1.0".
      * </pre>
      *
      * <code>required string gtfs_realtime_version = 1;</code>
@@ -1625,7 +1625,7 @@ abstract class GTFSRealtimeProto {
       /**
        * <pre>
        * Version of the feed specification.
-       * The current version is 2.0.
+       * The current version is 2.0.  Valid versions are "2.0", "1.0".
        * </pre>
        *
        * <code>required string gtfs_realtime_version = 1;</code>
@@ -1637,7 +1637,7 @@ abstract class GTFSRealtimeProto {
       /**
        * <pre>
        * Version of the feed specification.
-       * The current version is 2.0.
+       * The current version is 2.0.  Valid versions are "2.0", "1.0".
        * </pre>
        *
        * <code>required string gtfs_realtime_version = 1;</code>
@@ -1660,7 +1660,7 @@ abstract class GTFSRealtimeProto {
       /**
        * <pre>
        * Version of the feed specification.
-       * The current version is 2.0.
+       * The current version is 2.0.  Valid versions are "2.0", "1.0".
        * </pre>
        *
        * <code>required string gtfs_realtime_version = 1;</code>
@@ -1682,7 +1682,7 @@ abstract class GTFSRealtimeProto {
       /**
        * <pre>
        * Version of the feed specification.
-       * The current version is 2.0.
+       * The current version is 2.0.  Valid versions are "2.0", "1.0".
        * </pre>
        *
        * <code>required string gtfs_realtime_version = 1;</code>
@@ -1702,7 +1702,7 @@ abstract class GTFSRealtimeProto {
       /**
        * <pre>
        * Version of the feed specification.
-       * The current version is 2.0.
+       * The current version is 2.0.  Valid versions are "2.0", "1.0".
        * </pre>
        *
        * <code>required string gtfs_realtime_version = 1;</code>
@@ -1717,7 +1717,7 @@ abstract class GTFSRealtimeProto {
       /**
        * <pre>
        * Version of the feed specification.
-       * The current version is 2.0.
+       * The current version is 2.0.  Valid versions are "2.0", "1.0".
        * </pre>
        *
        * <code>required string gtfs_realtime_version = 1;</code>
@@ -3506,6 +3506,21 @@ abstract class GTFSRealtimeProto {
      * @return The delay.
      */
     int getDelay();
+
+    /**
+     * <code>optional .transit_realtime.TripUpdate.TripProperties trip_properties = 6;</code>
+     * @return Whether the tripProperties field is set.
+     */
+    boolean hasTripProperties();
+    /**
+     * <code>optional .transit_realtime.TripUpdate.TripProperties trip_properties = 6;</code>
+     * @return The tripProperties.
+     */
+    dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties getTripProperties();
+    /**
+     * <code>optional .transit_realtime.TripUpdate.TripProperties trip_properties = 6;</code>
+     */
+    dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripPropertiesOrBuilder getTripPropertiesOrBuilder();
   }
   /**
    * <pre>
@@ -4477,7 +4492,8 @@ abstract class GTFSRealtimeProto {
          * stops, although not necessarily according to the times of the schedule.
          * At least one of arrival and departure must be provided. If the schedule
          * for this stop contains both arrival and departure times then so must
-         * this update.
+         * this update. Frequency-based trips (GTFS frequencies.txt with exact_times = 0)
+         * should not have a SCHEDULED value and should use UNSCHEDULED instead.
          * </pre>
          *
          * <code>SCHEDULED = 0;</code>
@@ -4504,6 +4520,19 @@ abstract class GTFSRealtimeProto {
          * <code>NO_DATA = 2;</code>
          */
         NO_DATA(2),
+        /**
+         * <pre>
+         * The vehicle is operating a trip defined in GTFS frequencies.txt with exact_times = 0.
+         * This value should not be used for trips that are not defined in GTFS frequencies.txt,
+         * or trips in GTFS frequencies.txt with exact_times = 1. Trips containing StopTimeUpdates
+         * with ScheduleRelationship=UNSCHEDULED must also set TripDescriptor.ScheduleRelationship=UNSCHEDULED.
+         * NOTE: This field is still experimental, and subject to change. It may be
+         * formally adopted in the future.
+         * </pre>
+         *
+         * <code>UNSCHEDULED = 3;</code>
+         */
+        UNSCHEDULED(3),
         ;
 
         /**
@@ -4512,7 +4541,8 @@ abstract class GTFSRealtimeProto {
          * stops, although not necessarily according to the times of the schedule.
          * At least one of arrival and departure must be provided. If the schedule
          * for this stop contains both arrival and departure times then so must
-         * this update.
+         * this update. Frequency-based trips (GTFS frequencies.txt with exact_times = 0)
+         * should not have a SCHEDULED value and should use UNSCHEDULED instead.
          * </pre>
          *
          * <code>SCHEDULED = 0;</code>
@@ -4539,6 +4569,19 @@ abstract class GTFSRealtimeProto {
          * <code>NO_DATA = 2;</code>
          */
         public static final int NO_DATA_VALUE = 2;
+        /**
+         * <pre>
+         * The vehicle is operating a trip defined in GTFS frequencies.txt with exact_times = 0.
+         * This value should not be used for trips that are not defined in GTFS frequencies.txt,
+         * or trips in GTFS frequencies.txt with exact_times = 1. Trips containing StopTimeUpdates
+         * with ScheduleRelationship=UNSCHEDULED must also set TripDescriptor.ScheduleRelationship=UNSCHEDULED.
+         * NOTE: This field is still experimental, and subject to change. It may be
+         * formally adopted in the future.
+         * </pre>
+         *
+         * <code>UNSCHEDULED = 3;</code>
+         */
+        public static final int UNSCHEDULED_VALUE = 3;
 
 
         public final int getNumber() {
@@ -4564,6 +4607,7 @@ abstract class GTFSRealtimeProto {
             case 0: return SCHEDULED;
             case 1: return SKIPPED;
             case 2: return NO_DATA;
+            case 3: return UNSCHEDULED;
             default: return null;
           }
         }
@@ -5557,6 +5601,1176 @@ abstract class GTFSRealtimeProto {
 
     }
 
+    public interface TripPropertiesOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:transit_realtime.TripUpdate.TripProperties)
+        com.google.protobuf.GeneratedMessageV3.
+            ExtendableMessageOrBuilder<TripProperties> {
+
+      /**
+       * <pre>
+       * Defines the identifier of a new trip that is a duplicate of an existing trip defined in (CSV) GTFS trips.txt
+       * but will start at a different service date and/or time (defined using the TripProperties.start_date and
+       * TripProperties.start_time fields). See definition of trips.trip_id in (CSV) GTFS. Its value must be different
+       * than the ones used in the (CSV) GTFS. Required if schedule_relationship=DUPLICATED, otherwise this field must not
+       * be populated and will be ignored by consumers.
+       * NOTE: This field is still experimental, and subject to change. It may be formally adopted in the future.
+       * </pre>
+       *
+       * <code>optional string trip_id = 1;</code>
+       * @return Whether the tripId field is set.
+       */
+      boolean hasTripId();
+      /**
+       * <pre>
+       * Defines the identifier of a new trip that is a duplicate of an existing trip defined in (CSV) GTFS trips.txt
+       * but will start at a different service date and/or time (defined using the TripProperties.start_date and
+       * TripProperties.start_time fields). See definition of trips.trip_id in (CSV) GTFS. Its value must be different
+       * than the ones used in the (CSV) GTFS. Required if schedule_relationship=DUPLICATED, otherwise this field must not
+       * be populated and will be ignored by consumers.
+       * NOTE: This field is still experimental, and subject to change. It may be formally adopted in the future.
+       * </pre>
+       *
+       * <code>optional string trip_id = 1;</code>
+       * @return The tripId.
+       */
+      java.lang.String getTripId();
+      /**
+       * <pre>
+       * Defines the identifier of a new trip that is a duplicate of an existing trip defined in (CSV) GTFS trips.txt
+       * but will start at a different service date and/or time (defined using the TripProperties.start_date and
+       * TripProperties.start_time fields). See definition of trips.trip_id in (CSV) GTFS. Its value must be different
+       * than the ones used in the (CSV) GTFS. Required if schedule_relationship=DUPLICATED, otherwise this field must not
+       * be populated and will be ignored by consumers.
+       * NOTE: This field is still experimental, and subject to change. It may be formally adopted in the future.
+       * </pre>
+       *
+       * <code>optional string trip_id = 1;</code>
+       * @return The bytes for tripId.
+       */
+      com.google.protobuf.ByteString
+          getTripIdBytes();
+
+      /**
+       * <pre>
+       * Service date on which the DUPLICATED trip will be run, in YYYYMMDD format. Required if
+       * schedule_relationship=DUPLICATED, otherwise this field must not be populated and will be ignored by consumers.
+       * NOTE: This field is still experimental, and subject to change. It may be formally adopted in the future.
+       * </pre>
+       *
+       * <code>optional string start_date = 2;</code>
+       * @return Whether the startDate field is set.
+       */
+      boolean hasStartDate();
+      /**
+       * <pre>
+       * Service date on which the DUPLICATED trip will be run, in YYYYMMDD format. Required if
+       * schedule_relationship=DUPLICATED, otherwise this field must not be populated and will be ignored by consumers.
+       * NOTE: This field is still experimental, and subject to change. It may be formally adopted in the future.
+       * </pre>
+       *
+       * <code>optional string start_date = 2;</code>
+       * @return The startDate.
+       */
+      java.lang.String getStartDate();
+      /**
+       * <pre>
+       * Service date on which the DUPLICATED trip will be run, in YYYYMMDD format. Required if
+       * schedule_relationship=DUPLICATED, otherwise this field must not be populated and will be ignored by consumers.
+       * NOTE: This field is still experimental, and subject to change. It may be formally adopted in the future.
+       * </pre>
+       *
+       * <code>optional string start_date = 2;</code>
+       * @return The bytes for startDate.
+       */
+      com.google.protobuf.ByteString
+          getStartDateBytes();
+
+      /**
+       * <pre>
+       * Defines the departure start time of the trip when it’s duplicated. See definition of stop_times.departure_time
+       * in (CSV) GTFS. Scheduled arrival and departure times for the duplicated trip are calculated based on the offset
+       * between the original trip departure_time and this field. For example, if a GTFS trip has stop A with a
+       * departure_time of 10:00:00 and stop B with departure_time of 10:01:00, and this field is populated with the value
+       * of 10:30:00, stop B on the duplicated trip will have a scheduled departure_time of 10:31:00. Real-time prediction
+       * delay values are applied to this calculated schedule time to determine the predicted time. For example, if a
+       * departure delay of 30 is provided for stop B, then the predicted departure time is 10:31:30. Real-time
+       * prediction time values do not have any offset applied to them and indicate the predicted time as provided.
+       * For example, if a departure time representing 10:31:30 is provided for stop B, then the predicted departure time
+       * is 10:31:30. This field is required if schedule_relationship is DUPLICATED, otherwise this field must not be
+       * populated and will be ignored by consumers.
+       * NOTE: This field is still experimental, and subject to change. It may be formally adopted in the future.
+       * </pre>
+       *
+       * <code>optional string start_time = 3;</code>
+       * @return Whether the startTime field is set.
+       */
+      boolean hasStartTime();
+      /**
+       * <pre>
+       * Defines the departure start time of the trip when it’s duplicated. See definition of stop_times.departure_time
+       * in (CSV) GTFS. Scheduled arrival and departure times for the duplicated trip are calculated based on the offset
+       * between the original trip departure_time and this field. For example, if a GTFS trip has stop A with a
+       * departure_time of 10:00:00 and stop B with departure_time of 10:01:00, and this field is populated with the value
+       * of 10:30:00, stop B on the duplicated trip will have a scheduled departure_time of 10:31:00. Real-time prediction
+       * delay values are applied to this calculated schedule time to determine the predicted time. For example, if a
+       * departure delay of 30 is provided for stop B, then the predicted departure time is 10:31:30. Real-time
+       * prediction time values do not have any offset applied to them and indicate the predicted time as provided.
+       * For example, if a departure time representing 10:31:30 is provided for stop B, then the predicted departure time
+       * is 10:31:30. This field is required if schedule_relationship is DUPLICATED, otherwise this field must not be
+       * populated and will be ignored by consumers.
+       * NOTE: This field is still experimental, and subject to change. It may be formally adopted in the future.
+       * </pre>
+       *
+       * <code>optional string start_time = 3;</code>
+       * @return The startTime.
+       */
+      java.lang.String getStartTime();
+      /**
+       * <pre>
+       * Defines the departure start time of the trip when it’s duplicated. See definition of stop_times.departure_time
+       * in (CSV) GTFS. Scheduled arrival and departure times for the duplicated trip are calculated based on the offset
+       * between the original trip departure_time and this field. For example, if a GTFS trip has stop A with a
+       * departure_time of 10:00:00 and stop B with departure_time of 10:01:00, and this field is populated with the value
+       * of 10:30:00, stop B on the duplicated trip will have a scheduled departure_time of 10:31:00. Real-time prediction
+       * delay values are applied to this calculated schedule time to determine the predicted time. For example, if a
+       * departure delay of 30 is provided for stop B, then the predicted departure time is 10:31:30. Real-time
+       * prediction time values do not have any offset applied to them and indicate the predicted time as provided.
+       * For example, if a departure time representing 10:31:30 is provided for stop B, then the predicted departure time
+       * is 10:31:30. This field is required if schedule_relationship is DUPLICATED, otherwise this field must not be
+       * populated and will be ignored by consumers.
+       * NOTE: This field is still experimental, and subject to change. It may be formally adopted in the future.
+       * </pre>
+       *
+       * <code>optional string start_time = 3;</code>
+       * @return The bytes for startTime.
+       */
+      com.google.protobuf.ByteString
+          getStartTimeBytes();
+    }
+    /**
+     * <pre>
+     * Defines updated properties of the trip
+     * NOTE: This message is still experimental, and subject to change. It may be formally adopted in the future.
+     * </pre>
+     *
+     * Protobuf type {@code transit_realtime.TripUpdate.TripProperties}
+     */
+    public static final class TripProperties extends
+        com.google.protobuf.GeneratedMessageV3.ExtendableMessage<
+          TripProperties> implements
+        // @@protoc_insertion_point(message_implements:transit_realtime.TripUpdate.TripProperties)
+        TripPropertiesOrBuilder {
+    private static final long serialVersionUID = 0L;
+      // Use TripProperties.newBuilder() to construct.
+      private TripProperties(com.google.protobuf.GeneratedMessageV3.ExtendableBuilder<dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties, ?> builder) {
+        super(builder);
+      }
+      private TripProperties() {
+        tripId_ = "";
+        startDate_ = "";
+        startTime_ = "";
+      }
+
+      @java.lang.Override
+      @SuppressWarnings({"unused"})
+      protected java.lang.Object newInstance(
+          UnusedPrivateParameter unused) {
+        return new TripProperties();
+      }
+
+      @java.lang.Override
+      public final com.google.protobuf.UnknownFieldSet
+      getUnknownFields() {
+        return this.unknownFields;
+      }
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return dev.katsute.onemta.GTFSRealtimeProto.internal_static_transit_realtime_TripUpdate_TripProperties_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return dev.katsute.onemta.GTFSRealtimeProto.internal_static_transit_realtime_TripUpdate_TripProperties_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties.class, dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties.Builder.class);
+      }
+
+      private int bitField0_;
+      public static final int TRIP_ID_FIELD_NUMBER = 1;
+      private volatile java.lang.Object tripId_;
+      /**
+       * <pre>
+       * Defines the identifier of a new trip that is a duplicate of an existing trip defined in (CSV) GTFS trips.txt
+       * but will start at a different service date and/or time (defined using the TripProperties.start_date and
+       * TripProperties.start_time fields). See definition of trips.trip_id in (CSV) GTFS. Its value must be different
+       * than the ones used in the (CSV) GTFS. Required if schedule_relationship=DUPLICATED, otherwise this field must not
+       * be populated and will be ignored by consumers.
+       * NOTE: This field is still experimental, and subject to change. It may be formally adopted in the future.
+       * </pre>
+       *
+       * <code>optional string trip_id = 1;</code>
+       * @return Whether the tripId field is set.
+       */
+      @java.lang.Override
+      public boolean hasTripId() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <pre>
+       * Defines the identifier of a new trip that is a duplicate of an existing trip defined in (CSV) GTFS trips.txt
+       * but will start at a different service date and/or time (defined using the TripProperties.start_date and
+       * TripProperties.start_time fields). See definition of trips.trip_id in (CSV) GTFS. Its value must be different
+       * than the ones used in the (CSV) GTFS. Required if schedule_relationship=DUPLICATED, otherwise this field must not
+       * be populated and will be ignored by consumers.
+       * NOTE: This field is still experimental, and subject to change. It may be formally adopted in the future.
+       * </pre>
+       *
+       * <code>optional string trip_id = 1;</code>
+       * @return The tripId.
+       */
+      @java.lang.Override
+      public java.lang.String getTripId() {
+        java.lang.Object ref = tripId_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            tripId_ = s;
+          }
+          return s;
+        }
+      }
+      /**
+       * <pre>
+       * Defines the identifier of a new trip that is a duplicate of an existing trip defined in (CSV) GTFS trips.txt
+       * but will start at a different service date and/or time (defined using the TripProperties.start_date and
+       * TripProperties.start_time fields). See definition of trips.trip_id in (CSV) GTFS. Its value must be different
+       * than the ones used in the (CSV) GTFS. Required if schedule_relationship=DUPLICATED, otherwise this field must not
+       * be populated and will be ignored by consumers.
+       * NOTE: This field is still experimental, and subject to change. It may be formally adopted in the future.
+       * </pre>
+       *
+       * <code>optional string trip_id = 1;</code>
+       * @return The bytes for tripId.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getTripIdBytes() {
+        java.lang.Object ref = tripId_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          tripId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      public static final int START_DATE_FIELD_NUMBER = 2;
+      private volatile java.lang.Object startDate_;
+      /**
+       * <pre>
+       * Service date on which the DUPLICATED trip will be run, in YYYYMMDD format. Required if
+       * schedule_relationship=DUPLICATED, otherwise this field must not be populated and will be ignored by consumers.
+       * NOTE: This field is still experimental, and subject to change. It may be formally adopted in the future.
+       * </pre>
+       *
+       * <code>optional string start_date = 2;</code>
+       * @return Whether the startDate field is set.
+       */
+      @java.lang.Override
+      public boolean hasStartDate() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <pre>
+       * Service date on which the DUPLICATED trip will be run, in YYYYMMDD format. Required if
+       * schedule_relationship=DUPLICATED, otherwise this field must not be populated and will be ignored by consumers.
+       * NOTE: This field is still experimental, and subject to change. It may be formally adopted in the future.
+       * </pre>
+       *
+       * <code>optional string start_date = 2;</code>
+       * @return The startDate.
+       */
+      @java.lang.Override
+      public java.lang.String getStartDate() {
+        java.lang.Object ref = startDate_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            startDate_ = s;
+          }
+          return s;
+        }
+      }
+      /**
+       * <pre>
+       * Service date on which the DUPLICATED trip will be run, in YYYYMMDD format. Required if
+       * schedule_relationship=DUPLICATED, otherwise this field must not be populated and will be ignored by consumers.
+       * NOTE: This field is still experimental, and subject to change. It may be formally adopted in the future.
+       * </pre>
+       *
+       * <code>optional string start_date = 2;</code>
+       * @return The bytes for startDate.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getStartDateBytes() {
+        java.lang.Object ref = startDate_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          startDate_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      public static final int START_TIME_FIELD_NUMBER = 3;
+      private volatile java.lang.Object startTime_;
+      /**
+       * <pre>
+       * Defines the departure start time of the trip when it’s duplicated. See definition of stop_times.departure_time
+       * in (CSV) GTFS. Scheduled arrival and departure times for the duplicated trip are calculated based on the offset
+       * between the original trip departure_time and this field. For example, if a GTFS trip has stop A with a
+       * departure_time of 10:00:00 and stop B with departure_time of 10:01:00, and this field is populated with the value
+       * of 10:30:00, stop B on the duplicated trip will have a scheduled departure_time of 10:31:00. Real-time prediction
+       * delay values are applied to this calculated schedule time to determine the predicted time. For example, if a
+       * departure delay of 30 is provided for stop B, then the predicted departure time is 10:31:30. Real-time
+       * prediction time values do not have any offset applied to them and indicate the predicted time as provided.
+       * For example, if a departure time representing 10:31:30 is provided for stop B, then the predicted departure time
+       * is 10:31:30. This field is required if schedule_relationship is DUPLICATED, otherwise this field must not be
+       * populated and will be ignored by consumers.
+       * NOTE: This field is still experimental, and subject to change. It may be formally adopted in the future.
+       * </pre>
+       *
+       * <code>optional string start_time = 3;</code>
+       * @return Whether the startTime field is set.
+       */
+      @java.lang.Override
+      public boolean hasStartTime() {
+        return ((bitField0_ & 0x00000004) != 0);
+      }
+      /**
+       * <pre>
+       * Defines the departure start time of the trip when it’s duplicated. See definition of stop_times.departure_time
+       * in (CSV) GTFS. Scheduled arrival and departure times for the duplicated trip are calculated based on the offset
+       * between the original trip departure_time and this field. For example, if a GTFS trip has stop A with a
+       * departure_time of 10:00:00 and stop B with departure_time of 10:01:00, and this field is populated with the value
+       * of 10:30:00, stop B on the duplicated trip will have a scheduled departure_time of 10:31:00. Real-time prediction
+       * delay values are applied to this calculated schedule time to determine the predicted time. For example, if a
+       * departure delay of 30 is provided for stop B, then the predicted departure time is 10:31:30. Real-time
+       * prediction time values do not have any offset applied to them and indicate the predicted time as provided.
+       * For example, if a departure time representing 10:31:30 is provided for stop B, then the predicted departure time
+       * is 10:31:30. This field is required if schedule_relationship is DUPLICATED, otherwise this field must not be
+       * populated and will be ignored by consumers.
+       * NOTE: This field is still experimental, and subject to change. It may be formally adopted in the future.
+       * </pre>
+       *
+       * <code>optional string start_time = 3;</code>
+       * @return The startTime.
+       */
+      @java.lang.Override
+      public java.lang.String getStartTime() {
+        java.lang.Object ref = startTime_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            startTime_ = s;
+          }
+          return s;
+        }
+      }
+      /**
+       * <pre>
+       * Defines the departure start time of the trip when it’s duplicated. See definition of stop_times.departure_time
+       * in (CSV) GTFS. Scheduled arrival and departure times for the duplicated trip are calculated based on the offset
+       * between the original trip departure_time and this field. For example, if a GTFS trip has stop A with a
+       * departure_time of 10:00:00 and stop B with departure_time of 10:01:00, and this field is populated with the value
+       * of 10:30:00, stop B on the duplicated trip will have a scheduled departure_time of 10:31:00. Real-time prediction
+       * delay values are applied to this calculated schedule time to determine the predicted time. For example, if a
+       * departure delay of 30 is provided for stop B, then the predicted departure time is 10:31:30. Real-time
+       * prediction time values do not have any offset applied to them and indicate the predicted time as provided.
+       * For example, if a departure time representing 10:31:30 is provided for stop B, then the predicted departure time
+       * is 10:31:30. This field is required if schedule_relationship is DUPLICATED, otherwise this field must not be
+       * populated and will be ignored by consumers.
+       * NOTE: This field is still experimental, and subject to change. It may be formally adopted in the future.
+       * </pre>
+       *
+       * <code>optional string start_time = 3;</code>
+       * @return The bytes for startTime.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getStartTimeBytes() {
+        java.lang.Object ref = startTime_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          startTime_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      public static dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties parseFrom(
+          java.nio.ByteBuffer data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties parseFrom(
+          java.nio.ByteBuffer data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input);
+      }
+      public static dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+
+      @java.lang.Override
+      public Builder newBuilderForType() { return newBuilder(); }
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
+      }
+      public static Builder newBuilder(dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+      @java.lang.Override
+      public Builder toBuilder() {
+        return this == DEFAULT_INSTANCE
+            ? new Builder() : new Builder().mergeFrom(this);
+      }
+
+      @java.lang.Override
+      protected Builder newBuilderForType(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        Builder builder = new Builder(parent);
+        return builder;
+      }
+      /**
+       * <pre>
+       * Defines updated properties of the trip
+       * NOTE: This message is still experimental, and subject to change. It may be formally adopted in the future.
+       * </pre>
+       *
+       * Protobuf type {@code transit_realtime.TripUpdate.TripProperties}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageV3.ExtendableBuilder<
+            dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties, Builder> implements
+          // @@protoc_insertion_point(builder_implements:transit_realtime.TripUpdate.TripProperties)
+          dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripPropertiesOrBuilder {
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return dev.katsute.onemta.GTFSRealtimeProto.internal_static_transit_realtime_TripUpdate_TripProperties_descriptor;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+          return dev.katsute.onemta.GTFSRealtimeProto.internal_static_transit_realtime_TripUpdate_TripProperties_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                  dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties.class, dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties.Builder.class);
+        }
+
+        // Construct using dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties.newBuilder()
+        private Builder() {
+          maybeForceBuilderInitialization();
+        }
+
+        private Builder(
+            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          super(parent);
+          maybeForceBuilderInitialization();
+        }
+        private void maybeForceBuilderInitialization() {
+          if (com.google.protobuf.GeneratedMessageV3
+                  .alwaysUseFieldBuilders) {
+          }
+        }
+        @java.lang.Override
+        public Builder clear() {
+          super.clear();
+          tripId_ = "";
+          bitField0_ = (bitField0_ & ~0x00000001);
+          startDate_ = "";
+          bitField0_ = (bitField0_ & ~0x00000002);
+          startTime_ = "";
+          bitField0_ = (bitField0_ & ~0x00000004);
+          return this;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+          return dev.katsute.onemta.GTFSRealtimeProto.internal_static_transit_realtime_TripUpdate_TripProperties_descriptor;
+        }
+
+        @java.lang.Override
+        public dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties getDefaultInstanceForType() {
+          return dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties.getDefaultInstance();
+        }
+
+        @java.lang.Override
+        public dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties build() {
+          dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties result = buildPartial();
+          if (!result.isInitialized()) {
+            throw newUninitializedMessageException(result);
+          }
+          return result;
+        }
+
+        @java.lang.Override
+        public dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties buildPartial() {
+          dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties result = new dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties(this);
+          int from_bitField0_ = bitField0_;
+          int to_bitField0_ = 0;
+          if (((from_bitField0_ & 0x00000001) != 0)) {
+            to_bitField0_ |= 0x00000001;
+          }
+          result.tripId_ = tripId_;
+          if (((from_bitField0_ & 0x00000002) != 0)) {
+            to_bitField0_ |= 0x00000002;
+          }
+          result.startDate_ = startDate_;
+          if (((from_bitField0_ & 0x00000004) != 0)) {
+            to_bitField0_ |= 0x00000004;
+          }
+          result.startTime_ = startTime_;
+          result.bitField0_ = to_bitField0_;
+          onBuilt();
+          return result;
+        }
+
+        @java.lang.Override
+        public Builder clone() {
+          return super.clone();
+        }
+        @java.lang.Override
+        public Builder setField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return super.setField(field, value);
+        }
+        @java.lang.Override
+        public Builder clearField(
+            com.google.protobuf.Descriptors.FieldDescriptor field) {
+          return super.clearField(field);
+        }
+        @java.lang.Override
+        public Builder clearOneof(
+            com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          return super.clearOneof(oneof);
+        }
+        @java.lang.Override
+        public Builder setRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            int index, java.lang.Object value) {
+          return super.setRepeatedField(field, index, value);
+        }
+        @java.lang.Override
+        public Builder addRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return super.addRepeatedField(field, value);
+        }
+        @java.lang.Override
+        public <Type> Builder setExtension(
+            com.google.protobuf.GeneratedMessage.GeneratedExtension<
+                dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties, Type> extension,
+            Type value) {
+          return super.setExtension(extension, value);
+        }
+        @java.lang.Override
+        public <Type> Builder setExtension(
+            com.google.protobuf.GeneratedMessage.GeneratedExtension<
+                dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties, java.util.List<Type>> extension,
+            int index, Type value) {
+          return super.setExtension(extension, index, value);
+        }
+        @java.lang.Override
+        public <Type> Builder addExtension(
+            com.google.protobuf.GeneratedMessage.GeneratedExtension<
+                dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties, java.util.List<Type>> extension,
+            Type value) {
+          return super.addExtension(extension, value);
+        }
+        @java.lang.Override
+        public <Type> Builder clearExtension(
+            com.google.protobuf.GeneratedMessage.GeneratedExtension<
+                dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties, ?> extension) {
+          return super.clearExtension(extension);
+        }
+        private int bitField0_;
+
+        private java.lang.Object tripId_ = "";
+        /**
+         * <pre>
+         * Defines the identifier of a new trip that is a duplicate of an existing trip defined in (CSV) GTFS trips.txt
+         * but will start at a different service date and/or time (defined using the TripProperties.start_date and
+         * TripProperties.start_time fields). See definition of trips.trip_id in (CSV) GTFS. Its value must be different
+         * than the ones used in the (CSV) GTFS. Required if schedule_relationship=DUPLICATED, otherwise this field must not
+         * be populated and will be ignored by consumers.
+         * NOTE: This field is still experimental, and subject to change. It may be formally adopted in the future.
+         * </pre>
+         *
+         * <code>optional string trip_id = 1;</code>
+         * @return Whether the tripId field is set.
+         */
+        public boolean hasTripId() {
+          return ((bitField0_ & 0x00000001) != 0);
+        }
+        /**
+         * <pre>
+         * Defines the identifier of a new trip that is a duplicate of an existing trip defined in (CSV) GTFS trips.txt
+         * but will start at a different service date and/or time (defined using the TripProperties.start_date and
+         * TripProperties.start_time fields). See definition of trips.trip_id in (CSV) GTFS. Its value must be different
+         * than the ones used in the (CSV) GTFS. Required if schedule_relationship=DUPLICATED, otherwise this field must not
+         * be populated and will be ignored by consumers.
+         * NOTE: This field is still experimental, and subject to change. It may be formally adopted in the future.
+         * </pre>
+         *
+         * <code>optional string trip_id = 1;</code>
+         * @return The tripId.
+         */
+        public java.lang.String getTripId() {
+          java.lang.Object ref = tripId_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            if (bs.isValidUtf8()) {
+              tripId_ = s;
+            }
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <pre>
+         * Defines the identifier of a new trip that is a duplicate of an existing trip defined in (CSV) GTFS trips.txt
+         * but will start at a different service date and/or time (defined using the TripProperties.start_date and
+         * TripProperties.start_time fields). See definition of trips.trip_id in (CSV) GTFS. Its value must be different
+         * than the ones used in the (CSV) GTFS. Required if schedule_relationship=DUPLICATED, otherwise this field must not
+         * be populated and will be ignored by consumers.
+         * NOTE: This field is still experimental, and subject to change. It may be formally adopted in the future.
+         * </pre>
+         *
+         * <code>optional string trip_id = 1;</code>
+         * @return The bytes for tripId.
+         */
+        public com.google.protobuf.ByteString
+            getTripIdBytes() {
+          java.lang.Object ref = tripId_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b =
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            tripId_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <pre>
+         * Defines the identifier of a new trip that is a duplicate of an existing trip defined in (CSV) GTFS trips.txt
+         * but will start at a different service date and/or time (defined using the TripProperties.start_date and
+         * TripProperties.start_time fields). See definition of trips.trip_id in (CSV) GTFS. Its value must be different
+         * than the ones used in the (CSV) GTFS. Required if schedule_relationship=DUPLICATED, otherwise this field must not
+         * be populated and will be ignored by consumers.
+         * NOTE: This field is still experimental, and subject to change. It may be formally adopted in the future.
+         * </pre>
+         *
+         * <code>optional string trip_id = 1;</code>
+         * @param value The tripId to set.
+         * @return This builder for chaining.
+         */
+        public Builder setTripId(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+          tripId_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * Defines the identifier of a new trip that is a duplicate of an existing trip defined in (CSV) GTFS trips.txt
+         * but will start at a different service date and/or time (defined using the TripProperties.start_date and
+         * TripProperties.start_time fields). See definition of trips.trip_id in (CSV) GTFS. Its value must be different
+         * than the ones used in the (CSV) GTFS. Required if schedule_relationship=DUPLICATED, otherwise this field must not
+         * be populated and will be ignored by consumers.
+         * NOTE: This field is still experimental, and subject to change. It may be formally adopted in the future.
+         * </pre>
+         *
+         * <code>optional string trip_id = 1;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearTripId() {
+          bitField0_ = (bitField0_ & ~0x00000001);
+          tripId_ = getDefaultInstance().getTripId();
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * Defines the identifier of a new trip that is a duplicate of an existing trip defined in (CSV) GTFS trips.txt
+         * but will start at a different service date and/or time (defined using the TripProperties.start_date and
+         * TripProperties.start_time fields). See definition of trips.trip_id in (CSV) GTFS. Its value must be different
+         * than the ones used in the (CSV) GTFS. Required if schedule_relationship=DUPLICATED, otherwise this field must not
+         * be populated and will be ignored by consumers.
+         * NOTE: This field is still experimental, and subject to change. It may be formally adopted in the future.
+         * </pre>
+         *
+         * <code>optional string trip_id = 1;</code>
+         * @param value The bytes for tripId to set.
+         * @return This builder for chaining.
+         */
+        public Builder setTripIdBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+          tripId_ = value;
+          onChanged();
+          return this;
+        }
+
+        private java.lang.Object startDate_ = "";
+        /**
+         * <pre>
+         * Service date on which the DUPLICATED trip will be run, in YYYYMMDD format. Required if
+         * schedule_relationship=DUPLICATED, otherwise this field must not be populated and will be ignored by consumers.
+         * NOTE: This field is still experimental, and subject to change. It may be formally adopted in the future.
+         * </pre>
+         *
+         * <code>optional string start_date = 2;</code>
+         * @return Whether the startDate field is set.
+         */
+        public boolean hasStartDate() {
+          return ((bitField0_ & 0x00000002) != 0);
+        }
+        /**
+         * <pre>
+         * Service date on which the DUPLICATED trip will be run, in YYYYMMDD format. Required if
+         * schedule_relationship=DUPLICATED, otherwise this field must not be populated and will be ignored by consumers.
+         * NOTE: This field is still experimental, and subject to change. It may be formally adopted in the future.
+         * </pre>
+         *
+         * <code>optional string start_date = 2;</code>
+         * @return The startDate.
+         */
+        public java.lang.String getStartDate() {
+          java.lang.Object ref = startDate_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            if (bs.isValidUtf8()) {
+              startDate_ = s;
+            }
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <pre>
+         * Service date on which the DUPLICATED trip will be run, in YYYYMMDD format. Required if
+         * schedule_relationship=DUPLICATED, otherwise this field must not be populated and will be ignored by consumers.
+         * NOTE: This field is still experimental, and subject to change. It may be formally adopted in the future.
+         * </pre>
+         *
+         * <code>optional string start_date = 2;</code>
+         * @return The bytes for startDate.
+         */
+        public com.google.protobuf.ByteString
+            getStartDateBytes() {
+          java.lang.Object ref = startDate_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b =
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            startDate_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <pre>
+         * Service date on which the DUPLICATED trip will be run, in YYYYMMDD format. Required if
+         * schedule_relationship=DUPLICATED, otherwise this field must not be populated and will be ignored by consumers.
+         * NOTE: This field is still experimental, and subject to change. It may be formally adopted in the future.
+         * </pre>
+         *
+         * <code>optional string start_date = 2;</code>
+         * @param value The startDate to set.
+         * @return This builder for chaining.
+         */
+        public Builder setStartDate(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+          startDate_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * Service date on which the DUPLICATED trip will be run, in YYYYMMDD format. Required if
+         * schedule_relationship=DUPLICATED, otherwise this field must not be populated and will be ignored by consumers.
+         * NOTE: This field is still experimental, and subject to change. It may be formally adopted in the future.
+         * </pre>
+         *
+         * <code>optional string start_date = 2;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearStartDate() {
+          bitField0_ = (bitField0_ & ~0x00000002);
+          startDate_ = getDefaultInstance().getStartDate();
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * Service date on which the DUPLICATED trip will be run, in YYYYMMDD format. Required if
+         * schedule_relationship=DUPLICATED, otherwise this field must not be populated and will be ignored by consumers.
+         * NOTE: This field is still experimental, and subject to change. It may be formally adopted in the future.
+         * </pre>
+         *
+         * <code>optional string start_date = 2;</code>
+         * @param value The bytes for startDate to set.
+         * @return This builder for chaining.
+         */
+        public Builder setStartDateBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+          startDate_ = value;
+          onChanged();
+          return this;
+        }
+
+        private java.lang.Object startTime_ = "";
+        /**
+         * <pre>
+         * Defines the departure start time of the trip when it’s duplicated. See definition of stop_times.departure_time
+         * in (CSV) GTFS. Scheduled arrival and departure times for the duplicated trip are calculated based on the offset
+         * between the original trip departure_time and this field. For example, if a GTFS trip has stop A with a
+         * departure_time of 10:00:00 and stop B with departure_time of 10:01:00, and this field is populated with the value
+         * of 10:30:00, stop B on the duplicated trip will have a scheduled departure_time of 10:31:00. Real-time prediction
+         * delay values are applied to this calculated schedule time to determine the predicted time. For example, if a
+         * departure delay of 30 is provided for stop B, then the predicted departure time is 10:31:30. Real-time
+         * prediction time values do not have any offset applied to them and indicate the predicted time as provided.
+         * For example, if a departure time representing 10:31:30 is provided for stop B, then the predicted departure time
+         * is 10:31:30. This field is required if schedule_relationship is DUPLICATED, otherwise this field must not be
+         * populated and will be ignored by consumers.
+         * NOTE: This field is still experimental, and subject to change. It may be formally adopted in the future.
+         * </pre>
+         *
+         * <code>optional string start_time = 3;</code>
+         * @return Whether the startTime field is set.
+         */
+        public boolean hasStartTime() {
+          return ((bitField0_ & 0x00000004) != 0);
+        }
+        /**
+         * <pre>
+         * Defines the departure start time of the trip when it’s duplicated. See definition of stop_times.departure_time
+         * in (CSV) GTFS. Scheduled arrival and departure times for the duplicated trip are calculated based on the offset
+         * between the original trip departure_time and this field. For example, if a GTFS trip has stop A with a
+         * departure_time of 10:00:00 and stop B with departure_time of 10:01:00, and this field is populated with the value
+         * of 10:30:00, stop B on the duplicated trip will have a scheduled departure_time of 10:31:00. Real-time prediction
+         * delay values are applied to this calculated schedule time to determine the predicted time. For example, if a
+         * departure delay of 30 is provided for stop B, then the predicted departure time is 10:31:30. Real-time
+         * prediction time values do not have any offset applied to them and indicate the predicted time as provided.
+         * For example, if a departure time representing 10:31:30 is provided for stop B, then the predicted departure time
+         * is 10:31:30. This field is required if schedule_relationship is DUPLICATED, otherwise this field must not be
+         * populated and will be ignored by consumers.
+         * NOTE: This field is still experimental, and subject to change. It may be formally adopted in the future.
+         * </pre>
+         *
+         * <code>optional string start_time = 3;</code>
+         * @return The startTime.
+         */
+        public java.lang.String getStartTime() {
+          java.lang.Object ref = startTime_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            if (bs.isValidUtf8()) {
+              startTime_ = s;
+            }
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <pre>
+         * Defines the departure start time of the trip when it’s duplicated. See definition of stop_times.departure_time
+         * in (CSV) GTFS. Scheduled arrival and departure times for the duplicated trip are calculated based on the offset
+         * between the original trip departure_time and this field. For example, if a GTFS trip has stop A with a
+         * departure_time of 10:00:00 and stop B with departure_time of 10:01:00, and this field is populated with the value
+         * of 10:30:00, stop B on the duplicated trip will have a scheduled departure_time of 10:31:00. Real-time prediction
+         * delay values are applied to this calculated schedule time to determine the predicted time. For example, if a
+         * departure delay of 30 is provided for stop B, then the predicted departure time is 10:31:30. Real-time
+         * prediction time values do not have any offset applied to them and indicate the predicted time as provided.
+         * For example, if a departure time representing 10:31:30 is provided for stop B, then the predicted departure time
+         * is 10:31:30. This field is required if schedule_relationship is DUPLICATED, otherwise this field must not be
+         * populated and will be ignored by consumers.
+         * NOTE: This field is still experimental, and subject to change. It may be formally adopted in the future.
+         * </pre>
+         *
+         * <code>optional string start_time = 3;</code>
+         * @return The bytes for startTime.
+         */
+        public com.google.protobuf.ByteString
+            getStartTimeBytes() {
+          java.lang.Object ref = startTime_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b =
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            startTime_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <pre>
+         * Defines the departure start time of the trip when it’s duplicated. See definition of stop_times.departure_time
+         * in (CSV) GTFS. Scheduled arrival and departure times for the duplicated trip are calculated based on the offset
+         * between the original trip departure_time and this field. For example, if a GTFS trip has stop A with a
+         * departure_time of 10:00:00 and stop B with departure_time of 10:01:00, and this field is populated with the value
+         * of 10:30:00, stop B on the duplicated trip will have a scheduled departure_time of 10:31:00. Real-time prediction
+         * delay values are applied to this calculated schedule time to determine the predicted time. For example, if a
+         * departure delay of 30 is provided for stop B, then the predicted departure time is 10:31:30. Real-time
+         * prediction time values do not have any offset applied to them and indicate the predicted time as provided.
+         * For example, if a departure time representing 10:31:30 is provided for stop B, then the predicted departure time
+         * is 10:31:30. This field is required if schedule_relationship is DUPLICATED, otherwise this field must not be
+         * populated and will be ignored by consumers.
+         * NOTE: This field is still experimental, and subject to change. It may be formally adopted in the future.
+         * </pre>
+         *
+         * <code>optional string start_time = 3;</code>
+         * @param value The startTime to set.
+         * @return This builder for chaining.
+         */
+        public Builder setStartTime(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+          startTime_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * Defines the departure start time of the trip when it’s duplicated. See definition of stop_times.departure_time
+         * in (CSV) GTFS. Scheduled arrival and departure times for the duplicated trip are calculated based on the offset
+         * between the original trip departure_time and this field. For example, if a GTFS trip has stop A with a
+         * departure_time of 10:00:00 and stop B with departure_time of 10:01:00, and this field is populated with the value
+         * of 10:30:00, stop B on the duplicated trip will have a scheduled departure_time of 10:31:00. Real-time prediction
+         * delay values are applied to this calculated schedule time to determine the predicted time. For example, if a
+         * departure delay of 30 is provided for stop B, then the predicted departure time is 10:31:30. Real-time
+         * prediction time values do not have any offset applied to them and indicate the predicted time as provided.
+         * For example, if a departure time representing 10:31:30 is provided for stop B, then the predicted departure time
+         * is 10:31:30. This field is required if schedule_relationship is DUPLICATED, otherwise this field must not be
+         * populated and will be ignored by consumers.
+         * NOTE: This field is still experimental, and subject to change. It may be formally adopted in the future.
+         * </pre>
+         *
+         * <code>optional string start_time = 3;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearStartTime() {
+          bitField0_ = (bitField0_ & ~0x00000004);
+          startTime_ = getDefaultInstance().getStartTime();
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * Defines the departure start time of the trip when it’s duplicated. See definition of stop_times.departure_time
+         * in (CSV) GTFS. Scheduled arrival and departure times for the duplicated trip are calculated based on the offset
+         * between the original trip departure_time and this field. For example, if a GTFS trip has stop A with a
+         * departure_time of 10:00:00 and stop B with departure_time of 10:01:00, and this field is populated with the value
+         * of 10:30:00, stop B on the duplicated trip will have a scheduled departure_time of 10:31:00. Real-time prediction
+         * delay values are applied to this calculated schedule time to determine the predicted time. For example, if a
+         * departure delay of 30 is provided for stop B, then the predicted departure time is 10:31:30. Real-time
+         * prediction time values do not have any offset applied to them and indicate the predicted time as provided.
+         * For example, if a departure time representing 10:31:30 is provided for stop B, then the predicted departure time
+         * is 10:31:30. This field is required if schedule_relationship is DUPLICATED, otherwise this field must not be
+         * populated and will be ignored by consumers.
+         * NOTE: This field is still experimental, and subject to change. It may be formally adopted in the future.
+         * </pre>
+         *
+         * <code>optional string start_time = 3;</code>
+         * @param value The bytes for startTime to set.
+         * @return This builder for chaining.
+         */
+        public Builder setStartTimeBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+          startTime_ = value;
+          onChanged();
+          return this;
+        }
+        @java.lang.Override
+        public final Builder setUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.setUnknownFields(unknownFields);
+        }
+
+        @java.lang.Override
+        public final Builder mergeUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.mergeUnknownFields(unknownFields);
+        }
+
+
+        // @@protoc_insertion_point(builder_scope:transit_realtime.TripUpdate.TripProperties)
+      }
+
+      // @@protoc_insertion_point(class_scope:transit_realtime.TripUpdate.TripProperties)
+      private static final dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties DEFAULT_INSTANCE;
+      static {
+        DEFAULT_INSTANCE = new dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties();
+      }
+
+      public static dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      @java.lang.Deprecated public static final com.google.protobuf.Parser<TripProperties>
+          PARSER = new com.google.protobuf.AbstractParser<TripProperties>() {
+        @java.lang.Override
+        public TripProperties parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          Builder builder = newBuilder();
+          try {
+            builder.mergeFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw e.setUnfinishedMessage(builder.buildPartial());
+          } catch (java.io.IOException e) {
+            throw new com.google.protobuf.InvalidProtocolBufferException(
+                e.getMessage()).setUnfinishedMessage(
+                    builder.buildPartial());
+          }
+          return builder.buildPartial();
+        }
+      };
+
+      public static com.google.protobuf.Parser<TripProperties> parser() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Parser<TripProperties> getParserForType() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties getDefaultInstanceForType() {
+        return DEFAULT_INSTANCE;
+      }
+
+    }
+
     private int bitField0_;
     public static final int TRIP_FIELD_NUMBER = 1;
     private dev.katsute.onemta.GTFSRealtimeProto.TripDescriptor trip_;
@@ -5865,6 +7079,32 @@ abstract class GTFSRealtimeProto {
       return delay_;
     }
 
+    public static final int TRIP_PROPERTIES_FIELD_NUMBER = 6;
+    private dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties tripProperties_;
+    /**
+     * <code>optional .transit_realtime.TripUpdate.TripProperties trip_properties = 6;</code>
+     * @return Whether the tripProperties field is set.
+     */
+    @java.lang.Override
+    public boolean hasTripProperties() {
+      return ((bitField0_ & 0x00000010) != 0);
+    }
+    /**
+     * <code>optional .transit_realtime.TripUpdate.TripProperties trip_properties = 6;</code>
+     * @return The tripProperties.
+     */
+    @java.lang.Override
+    public dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties getTripProperties() {
+      return tripProperties_ == null ? dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties.getDefaultInstance() : tripProperties_;
+    }
+    /**
+     * <code>optional .transit_realtime.TripUpdate.TripProperties trip_properties = 6;</code>
+     */
+    @java.lang.Override
+    public dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripPropertiesOrBuilder getTripPropertiesOrBuilder() {
+      return tripProperties_ == null ? dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties.getDefaultInstance() : tripProperties_;
+    }
+
     public static dev.katsute.onemta.GTFSRealtimeProto.TripUpdate parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -6019,6 +7259,7 @@ abstract class GTFSRealtimeProto {
           getTripFieldBuilder();
           getVehicleFieldBuilder();
           getStopTimeUpdateFieldBuilder();
+          getTripPropertiesFieldBuilder();
         }
       }
       @java.lang.Override
@@ -6046,6 +7287,12 @@ abstract class GTFSRealtimeProto {
         bitField0_ = (bitField0_ & ~0x00000008);
         delay_ = 0;
         bitField0_ = (bitField0_ & ~0x00000010);
+        if (tripPropertiesBuilder_ == null) {
+          tripProperties_ = null;
+        } else {
+          tripPropertiesBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000020);
         return this;
       }
 
@@ -6106,6 +7353,14 @@ abstract class GTFSRealtimeProto {
         if (((from_bitField0_ & 0x00000010) != 0)) {
           result.delay_ = delay_;
           to_bitField0_ |= 0x00000008;
+        }
+        if (((from_bitField0_ & 0x00000020) != 0)) {
+          if (tripPropertiesBuilder_ == null) {
+            result.tripProperties_ = tripProperties_;
+          } else {
+            result.tripProperties_ = tripPropertiesBuilder_.build();
+          }
+          to_bitField0_ |= 0x00000010;
         }
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -7277,6 +8532,126 @@ abstract class GTFSRealtimeProto {
         onChanged();
         return this;
       }
+
+      private dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties tripProperties_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties, dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties.Builder, dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripPropertiesOrBuilder> tripPropertiesBuilder_;
+      /**
+       * <code>optional .transit_realtime.TripUpdate.TripProperties trip_properties = 6;</code>
+       * @return Whether the tripProperties field is set.
+       */
+      public boolean hasTripProperties() {
+        return ((bitField0_ & 0x00000020) != 0);
+      }
+      /**
+       * <code>optional .transit_realtime.TripUpdate.TripProperties trip_properties = 6;</code>
+       * @return The tripProperties.
+       */
+      public dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties getTripProperties() {
+        if (tripPropertiesBuilder_ == null) {
+          return tripProperties_ == null ? dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties.getDefaultInstance() : tripProperties_;
+        } else {
+          return tripPropertiesBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .transit_realtime.TripUpdate.TripProperties trip_properties = 6;</code>
+       */
+      public Builder setTripProperties(dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties value) {
+        if (tripPropertiesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          tripProperties_ = value;
+          onChanged();
+        } else {
+          tripPropertiesBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000020;
+        return this;
+      }
+      /**
+       * <code>optional .transit_realtime.TripUpdate.TripProperties trip_properties = 6;</code>
+       */
+      public Builder setTripProperties(
+          dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties.Builder builderForValue) {
+        if (tripPropertiesBuilder_ == null) {
+          tripProperties_ = builderForValue.build();
+          onChanged();
+        } else {
+          tripPropertiesBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000020;
+        return this;
+      }
+      /**
+       * <code>optional .transit_realtime.TripUpdate.TripProperties trip_properties = 6;</code>
+       */
+      public Builder mergeTripProperties(dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties value) {
+        if (tripPropertiesBuilder_ == null) {
+          if (((bitField0_ & 0x00000020) != 0) &&
+              tripProperties_ != null &&
+              tripProperties_ != dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties.getDefaultInstance()) {
+            tripProperties_ =
+              dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties.newBuilder(tripProperties_).mergeFrom(value).buildPartial();
+          } else {
+            tripProperties_ = value;
+          }
+          onChanged();
+        } else {
+          tripPropertiesBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000020;
+        return this;
+      }
+      /**
+       * <code>optional .transit_realtime.TripUpdate.TripProperties trip_properties = 6;</code>
+       */
+      public Builder clearTripProperties() {
+        if (tripPropertiesBuilder_ == null) {
+          tripProperties_ = null;
+          onChanged();
+        } else {
+          tripPropertiesBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000020);
+        return this;
+      }
+      /**
+       * <code>optional .transit_realtime.TripUpdate.TripProperties trip_properties = 6;</code>
+       */
+      public dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties.Builder getTripPropertiesBuilder() {
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return getTripPropertiesFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .transit_realtime.TripUpdate.TripProperties trip_properties = 6;</code>
+       */
+      public dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripPropertiesOrBuilder getTripPropertiesOrBuilder() {
+        if (tripPropertiesBuilder_ != null) {
+          return tripPropertiesBuilder_.getMessageOrBuilder();
+        } else {
+          return tripProperties_ == null ?
+              dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties.getDefaultInstance() : tripProperties_;
+        }
+      }
+      /**
+       * <code>optional .transit_realtime.TripUpdate.TripProperties trip_properties = 6;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties, dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties.Builder, dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripPropertiesOrBuilder>
+          getTripPropertiesFieldBuilder() {
+        if (tripPropertiesBuilder_ == null) {
+          tripPropertiesBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties, dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties.Builder, dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripPropertiesOrBuilder>(
+                  getTripProperties(),
+                  getParentForChildren(),
+                  isClean());
+          tripProperties_ = null;
+        }
+        return tripPropertiesBuilder_;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -7543,15 +8918,144 @@ abstract class GTFSRealtimeProto {
     dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CongestionLevel getCongestionLevel();
 
     /**
+     * <pre>
+     * If multi_carriage_status is populated with per-carriage OccupancyStatus,
+     * then this field should describe the entire vehicle with all carriages accepting passengers considered.
+     * </pre>
+     *
      * <code>optional .transit_realtime.VehiclePosition.OccupancyStatus occupancy_status = 9;</code>
      * @return Whether the occupancyStatus field is set.
      */
     boolean hasOccupancyStatus();
     /**
+     * <pre>
+     * If multi_carriage_status is populated with per-carriage OccupancyStatus,
+     * then this field should describe the entire vehicle with all carriages accepting passengers considered.
+     * </pre>
+     *
      * <code>optional .transit_realtime.VehiclePosition.OccupancyStatus occupancy_status = 9;</code>
      * @return The occupancyStatus.
      */
     dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.OccupancyStatus getOccupancyStatus();
+
+    /**
+     * <pre>
+     * A percentage value representing the degree of passenger occupancy of the vehicle.
+     * The values are represented as an integer without decimals. 0 means 0% and 100 means 100%.
+     * The value 100 should represent the total maximum occupancy the vehicle was designed for,
+     * including both seated and standing capacity, and current operating regulations allow.
+     * It is possible that the value goes over 100 if there are currently more passengers than what the vehicle was designed for.
+     * The precision of occupancy_percentage should be low enough that you can't track a single person boarding and alighting for privacy reasons.
+     * If multi_carriage_status is populated with per-carriage occupancy_percentage,
+     * then this field should describe the entire vehicle with all carriages accepting passengers considered.
+     * This field is still experimental, and subject to change. It may be formally adopted in the future.
+     * </pre>
+     *
+     * <code>optional uint32 occupancy_percentage = 10;</code>
+     * @return Whether the occupancyPercentage field is set.
+     */
+    boolean hasOccupancyPercentage();
+    /**
+     * <pre>
+     * A percentage value representing the degree of passenger occupancy of the vehicle.
+     * The values are represented as an integer without decimals. 0 means 0% and 100 means 100%.
+     * The value 100 should represent the total maximum occupancy the vehicle was designed for,
+     * including both seated and standing capacity, and current operating regulations allow.
+     * It is possible that the value goes over 100 if there are currently more passengers than what the vehicle was designed for.
+     * The precision of occupancy_percentage should be low enough that you can't track a single person boarding and alighting for privacy reasons.
+     * If multi_carriage_status is populated with per-carriage occupancy_percentage,
+     * then this field should describe the entire vehicle with all carriages accepting passengers considered.
+     * This field is still experimental, and subject to change. It may be formally adopted in the future.
+     * </pre>
+     *
+     * <code>optional uint32 occupancy_percentage = 10;</code>
+     * @return The occupancyPercentage.
+     */
+    int getOccupancyPercentage();
+
+    /**
+     * <pre>
+     * Details of the multiple carriages of this given vehicle.
+     * The first occurrence represents the first carriage of the vehicle,
+     * given the current direction of travel.
+     * The number of occurrences of the multi_carriage_details
+     * field represents the number of carriages of the vehicle.
+     * It also includes non boardable carriages,
+     * like engines, maintenance carriages, etc… as they provide valuable
+     * information to passengers about where to stand on a platform.
+     * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+     * </pre>
+     *
+     * <code>repeated .transit_realtime.VehiclePosition.CarriageDetails multi_carriage_details = 11;</code>
+     */
+    java.util.List<dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails>
+        getMultiCarriageDetailsList();
+    /**
+     * <pre>
+     * Details of the multiple carriages of this given vehicle.
+     * The first occurrence represents the first carriage of the vehicle,
+     * given the current direction of travel.
+     * The number of occurrences of the multi_carriage_details
+     * field represents the number of carriages of the vehicle.
+     * It also includes non boardable carriages,
+     * like engines, maintenance carriages, etc… as they provide valuable
+     * information to passengers about where to stand on a platform.
+     * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+     * </pre>
+     *
+     * <code>repeated .transit_realtime.VehiclePosition.CarriageDetails multi_carriage_details = 11;</code>
+     */
+    dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails getMultiCarriageDetails(int index);
+    /**
+     * <pre>
+     * Details of the multiple carriages of this given vehicle.
+     * The first occurrence represents the first carriage of the vehicle,
+     * given the current direction of travel.
+     * The number of occurrences of the multi_carriage_details
+     * field represents the number of carriages of the vehicle.
+     * It also includes non boardable carriages,
+     * like engines, maintenance carriages, etc… as they provide valuable
+     * information to passengers about where to stand on a platform.
+     * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+     * </pre>
+     *
+     * <code>repeated .transit_realtime.VehiclePosition.CarriageDetails multi_carriage_details = 11;</code>
+     */
+    int getMultiCarriageDetailsCount();
+    /**
+     * <pre>
+     * Details of the multiple carriages of this given vehicle.
+     * The first occurrence represents the first carriage of the vehicle,
+     * given the current direction of travel.
+     * The number of occurrences of the multi_carriage_details
+     * field represents the number of carriages of the vehicle.
+     * It also includes non boardable carriages,
+     * like engines, maintenance carriages, etc… as they provide valuable
+     * information to passengers about where to stand on a platform.
+     * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+     * </pre>
+     *
+     * <code>repeated .transit_realtime.VehiclePosition.CarriageDetails multi_carriage_details = 11;</code>
+     */
+    java.util.List<? extends dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetailsOrBuilder>
+        getMultiCarriageDetailsOrBuilderList();
+    /**
+     * <pre>
+     * Details of the multiple carriages of this given vehicle.
+     * The first occurrence represents the first carriage of the vehicle,
+     * given the current direction of travel.
+     * The number of occurrences of the multi_carriage_details
+     * field represents the number of carriages of the vehicle.
+     * It also includes non boardable carriages,
+     * like engines, maintenance carriages, etc… as they provide valuable
+     * information to passengers about where to stand on a platform.
+     * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+     * </pre>
+     *
+     * <code>repeated .transit_realtime.VehiclePosition.CarriageDetails multi_carriage_details = 11;</code>
+     */
+    dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetailsOrBuilder getMultiCarriageDetailsOrBuilder(
+        int index);
   }
   /**
    * <pre>
@@ -7575,6 +9079,7 @@ abstract class GTFSRealtimeProto {
       currentStatus_ = 2;
       congestionLevel_ = 0;
       occupancyStatus_ = 0;
+      multiCarriageDetails_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
@@ -7870,9 +9375,8 @@ abstract class GTFSRealtimeProto {
 
     /**
      * <pre>
-     * The degree of passenger occupancy of the vehicle. This field is still
-     * experimental, and subject to change. It may be formally adopted in the
-     * future.
+     * The degree of passenger occupancy of the vehicle or carriage. This field is still
+     * experimental, and subject to change. It may be formally adopted in the future.
      * </pre>
      *
      * Protobuf enum {@code transit_realtime.VehiclePosition.OccupancyStatus}
@@ -7881,7 +9385,7 @@ abstract class GTFSRealtimeProto {
         implements com.google.protobuf.ProtocolMessageEnum {
       /**
        * <pre>
-       * The vehicle is considered empty by most measures, and has few or no
+       * The vehicle or carriage is considered empty by most measures, and has few or no
        * passengers onboard, but is still accepting passengers.
        * </pre>
        *
@@ -7890,7 +9394,7 @@ abstract class GTFSRealtimeProto {
       EMPTY(0),
       /**
        * <pre>
-       * The vehicle has a relatively large percentage of seats available.
+       * The vehicle or carriage has a relatively large percentage of seats available.
        * What percentage of free seats out of the total seats available is to be
        * considered large enough to fall into this category is determined at the
        * discretion of the producer.
@@ -7901,7 +9405,7 @@ abstract class GTFSRealtimeProto {
       MANY_SEATS_AVAILABLE(1),
       /**
        * <pre>
-       * The vehicle has a relatively small percentage of seats available.
+       * The vehicle or carriage has a relatively small percentage of seats available.
        * What percentage of free seats out of the total seats available is to be
        * considered small enough to fall into this category is determined at the
        * discretion of the feed producer.
@@ -7912,7 +9416,7 @@ abstract class GTFSRealtimeProto {
       FEW_SEATS_AVAILABLE(2),
       /**
        * <pre>
-       * The vehicle can currently accommodate only standing passengers.
+       * The vehicle or carriage can currently accommodate only standing passengers.
        * </pre>
        *
        * <code>STANDING_ROOM_ONLY = 3;</code>
@@ -7920,7 +9424,7 @@ abstract class GTFSRealtimeProto {
       STANDING_ROOM_ONLY(3),
       /**
        * <pre>
-       * The vehicle can currently accommodate only standing passengers
+       * The vehicle or carriage can currently accommodate only standing passengers
        * and has limited space for them.
        * </pre>
        *
@@ -7929,7 +9433,7 @@ abstract class GTFSRealtimeProto {
       CRUSHED_STANDING_ROOM_ONLY(4),
       /**
        * <pre>
-       * The vehicle is considered full by most measures, but may still be
+       * The vehicle or carriage is considered full by most measures, but may still be
        * allowing passengers to board.
        * </pre>
        *
@@ -7938,17 +9442,34 @@ abstract class GTFSRealtimeProto {
       FULL(5),
       /**
        * <pre>
-       * The vehicle is not accepting additional passengers.
+       * The vehicle or carriage is not accepting passengers, but usually accepts passengers for boarding.
        * </pre>
        *
        * <code>NOT_ACCEPTING_PASSENGERS = 6;</code>
        */
       NOT_ACCEPTING_PASSENGERS(6),
+      /**
+       * <pre>
+       * The vehicle or carriage doesn't have any occupancy data available at that time.
+       * </pre>
+       *
+       * <code>NO_DATA_AVAILABLE = 7;</code>
+       */
+      NO_DATA_AVAILABLE(7),
+      /**
+       * <pre>
+       * The vehicle or carriage is not boardable and never accepts passengers.
+       * Useful for special vehicles or carriages (engine, maintenance carriage, etc…).
+       * </pre>
+       *
+       * <code>NOT_BOARDABLE = 8;</code>
+       */
+      NOT_BOARDABLE(8),
       ;
 
       /**
        * <pre>
-       * The vehicle is considered empty by most measures, and has few or no
+       * The vehicle or carriage is considered empty by most measures, and has few or no
        * passengers onboard, but is still accepting passengers.
        * </pre>
        *
@@ -7957,7 +9478,7 @@ abstract class GTFSRealtimeProto {
       public static final int EMPTY_VALUE = 0;
       /**
        * <pre>
-       * The vehicle has a relatively large percentage of seats available.
+       * The vehicle or carriage has a relatively large percentage of seats available.
        * What percentage of free seats out of the total seats available is to be
        * considered large enough to fall into this category is determined at the
        * discretion of the producer.
@@ -7968,7 +9489,7 @@ abstract class GTFSRealtimeProto {
       public static final int MANY_SEATS_AVAILABLE_VALUE = 1;
       /**
        * <pre>
-       * The vehicle has a relatively small percentage of seats available.
+       * The vehicle or carriage has a relatively small percentage of seats available.
        * What percentage of free seats out of the total seats available is to be
        * considered small enough to fall into this category is determined at the
        * discretion of the feed producer.
@@ -7979,7 +9500,7 @@ abstract class GTFSRealtimeProto {
       public static final int FEW_SEATS_AVAILABLE_VALUE = 2;
       /**
        * <pre>
-       * The vehicle can currently accommodate only standing passengers.
+       * The vehicle or carriage can currently accommodate only standing passengers.
        * </pre>
        *
        * <code>STANDING_ROOM_ONLY = 3;</code>
@@ -7987,7 +9508,7 @@ abstract class GTFSRealtimeProto {
       public static final int STANDING_ROOM_ONLY_VALUE = 3;
       /**
        * <pre>
-       * The vehicle can currently accommodate only standing passengers
+       * The vehicle or carriage can currently accommodate only standing passengers
        * and has limited space for them.
        * </pre>
        *
@@ -7996,7 +9517,7 @@ abstract class GTFSRealtimeProto {
       public static final int CRUSHED_STANDING_ROOM_ONLY_VALUE = 4;
       /**
        * <pre>
-       * The vehicle is considered full by most measures, but may still be
+       * The vehicle or carriage is considered full by most measures, but may still be
        * allowing passengers to board.
        * </pre>
        *
@@ -8005,12 +9526,29 @@ abstract class GTFSRealtimeProto {
       public static final int FULL_VALUE = 5;
       /**
        * <pre>
-       * The vehicle is not accepting additional passengers.
+       * The vehicle or carriage is not accepting passengers, but usually accepts passengers for boarding.
        * </pre>
        *
        * <code>NOT_ACCEPTING_PASSENGERS = 6;</code>
        */
       public static final int NOT_ACCEPTING_PASSENGERS_VALUE = 6;
+      /**
+       * <pre>
+       * The vehicle or carriage doesn't have any occupancy data available at that time.
+       * </pre>
+       *
+       * <code>NO_DATA_AVAILABLE = 7;</code>
+       */
+      public static final int NO_DATA_AVAILABLE_VALUE = 7;
+      /**
+       * <pre>
+       * The vehicle or carriage is not boardable and never accepts passengers.
+       * Useful for special vehicles or carriages (engine, maintenance carriage, etc…).
+       * </pre>
+       *
+       * <code>NOT_BOARDABLE = 8;</code>
+       */
+      public static final int NOT_BOARDABLE_VALUE = 8;
 
 
       public final int getNumber() {
@@ -8040,6 +9578,8 @@ abstract class GTFSRealtimeProto {
           case 4: return CRUSHED_STANDING_ROOM_ONLY;
           case 5: return FULL;
           case 6: return NOT_ACCEPTING_PASSENGERS;
+          case 7: return NO_DATA_AVAILABLE;
+          case 8: return NOT_BOARDABLE;
           default: return null;
         }
       }
@@ -8087,6 +9627,1219 @@ abstract class GTFSRealtimeProto {
       }
 
       // @@protoc_insertion_point(enum_scope:transit_realtime.VehiclePosition.OccupancyStatus)
+    }
+
+    public interface CarriageDetailsOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:transit_realtime.VehiclePosition.CarriageDetails)
+        com.google.protobuf.GeneratedMessageV3.
+            ExtendableMessageOrBuilder<CarriageDetails> {
+
+      /**
+       * <pre>
+       * Identification of the carriage. Should be unique per vehicle.
+       * </pre>
+       *
+       * <code>optional string id = 1;</code>
+       * @return Whether the id field is set.
+       */
+      boolean hasId();
+      /**
+       * <pre>
+       * Identification of the carriage. Should be unique per vehicle.
+       * </pre>
+       *
+       * <code>optional string id = 1;</code>
+       * @return The id.
+       */
+      java.lang.String getId();
+      /**
+       * <pre>
+       * Identification of the carriage. Should be unique per vehicle.
+       * </pre>
+       *
+       * <code>optional string id = 1;</code>
+       * @return The bytes for id.
+       */
+      com.google.protobuf.ByteString
+          getIdBytes();
+
+      /**
+       * <pre>
+       * User visible label that may be shown to the passenger to help identify
+       * the carriage. Example: "7712", "Car ABC-32", etc...
+       * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+       * </pre>
+       *
+       * <code>optional string label = 2;</code>
+       * @return Whether the label field is set.
+       */
+      boolean hasLabel();
+      /**
+       * <pre>
+       * User visible label that may be shown to the passenger to help identify
+       * the carriage. Example: "7712", "Car ABC-32", etc...
+       * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+       * </pre>
+       *
+       * <code>optional string label = 2;</code>
+       * @return The label.
+       */
+      java.lang.String getLabel();
+      /**
+       * <pre>
+       * User visible label that may be shown to the passenger to help identify
+       * the carriage. Example: "7712", "Car ABC-32", etc...
+       * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+       * </pre>
+       *
+       * <code>optional string label = 2;</code>
+       * @return The bytes for label.
+       */
+      com.google.protobuf.ByteString
+          getLabelBytes();
+
+      /**
+       * <pre>
+       * Occupancy status for this given carriage, in this vehicle
+       * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+       * </pre>
+       *
+       * <code>optional .transit_realtime.VehiclePosition.OccupancyStatus occupancy_status = 3 [default = NO_DATA_AVAILABLE];</code>
+       * @return Whether the occupancyStatus field is set.
+       */
+      boolean hasOccupancyStatus();
+      /**
+       * <pre>
+       * Occupancy status for this given carriage, in this vehicle
+       * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+       * </pre>
+       *
+       * <code>optional .transit_realtime.VehiclePosition.OccupancyStatus occupancy_status = 3 [default = NO_DATA_AVAILABLE];</code>
+       * @return The occupancyStatus.
+       */
+      dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.OccupancyStatus getOccupancyStatus();
+
+      /**
+       * <pre>
+       * Occupancy percentage for this given carriage, in this vehicle.
+       * Follows the same rules as "VehiclePosition.occupancy_percentage"
+       * -1 in case data is not available for this given carriage (as protobuf defaults to 0 otherwise)
+       * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+       * </pre>
+       *
+       * <code>optional int32 occupancy_percentage = 4 [default = -1];</code>
+       * @return Whether the occupancyPercentage field is set.
+       */
+      boolean hasOccupancyPercentage();
+      /**
+       * <pre>
+       * Occupancy percentage for this given carriage, in this vehicle.
+       * Follows the same rules as "VehiclePosition.occupancy_percentage"
+       * -1 in case data is not available for this given carriage (as protobuf defaults to 0 otherwise)
+       * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+       * </pre>
+       *
+       * <code>optional int32 occupancy_percentage = 4 [default = -1];</code>
+       * @return The occupancyPercentage.
+       */
+      int getOccupancyPercentage();
+
+      /**
+       * <pre>
+       * Identifies the order of this carriage with respect to the other
+       * carriages in the vehicle's list of CarriageDetails.
+       * The first carriage in the direction of travel must have a value of 1.
+       * The second value corresponds to the second carriage in the direction
+       * of travel and must have a value of 2, and so forth.
+       * For example, the first carriage in the direction of travel has a value of 1.
+       * If the second carriage in the direction of travel has a value of 3,
+       * consumers will discard data for all carriages (i.e., the multi_carriage_details field).
+       * Carriages without data must be represented with a valid carriage_sequence number and the fields
+       * without data should be omitted (alternately, those fields could also be included and set to the "no data" values).
+       * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+       * </pre>
+       *
+       * <code>optional uint32 carriage_sequence = 5;</code>
+       * @return Whether the carriageSequence field is set.
+       */
+      boolean hasCarriageSequence();
+      /**
+       * <pre>
+       * Identifies the order of this carriage with respect to the other
+       * carriages in the vehicle's list of CarriageDetails.
+       * The first carriage in the direction of travel must have a value of 1.
+       * The second value corresponds to the second carriage in the direction
+       * of travel and must have a value of 2, and so forth.
+       * For example, the first carriage in the direction of travel has a value of 1.
+       * If the second carriage in the direction of travel has a value of 3,
+       * consumers will discard data for all carriages (i.e., the multi_carriage_details field).
+       * Carriages without data must be represented with a valid carriage_sequence number and the fields
+       * without data should be omitted (alternately, those fields could also be included and set to the "no data" values).
+       * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+       * </pre>
+       *
+       * <code>optional uint32 carriage_sequence = 5;</code>
+       * @return The carriageSequence.
+       */
+      int getCarriageSequence();
+    }
+    /**
+     * <pre>
+     * Carriage specific details, used for vehicles composed of several carriages
+     * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+     * </pre>
+     *
+     * Protobuf type {@code transit_realtime.VehiclePosition.CarriageDetails}
+     */
+    public static final class CarriageDetails extends
+        com.google.protobuf.GeneratedMessageV3.ExtendableMessage<
+          CarriageDetails> implements
+        // @@protoc_insertion_point(message_implements:transit_realtime.VehiclePosition.CarriageDetails)
+        CarriageDetailsOrBuilder {
+    private static final long serialVersionUID = 0L;
+      // Use CarriageDetails.newBuilder() to construct.
+      private CarriageDetails(com.google.protobuf.GeneratedMessageV3.ExtendableBuilder<dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails, ?> builder) {
+        super(builder);
+      }
+      private CarriageDetails() {
+        id_ = "";
+        label_ = "";
+        occupancyStatus_ = 7;
+        occupancyPercentage_ = -1;
+      }
+
+      @java.lang.Override
+      @SuppressWarnings({"unused"})
+      protected java.lang.Object newInstance(
+          UnusedPrivateParameter unused) {
+        return new CarriageDetails();
+      }
+
+      @java.lang.Override
+      public final com.google.protobuf.UnknownFieldSet
+      getUnknownFields() {
+        return this.unknownFields;
+      }
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return dev.katsute.onemta.GTFSRealtimeProto.internal_static_transit_realtime_VehiclePosition_CarriageDetails_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return dev.katsute.onemta.GTFSRealtimeProto.internal_static_transit_realtime_VehiclePosition_CarriageDetails_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails.class, dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails.Builder.class);
+      }
+
+      private int bitField0_;
+      public static final int ID_FIELD_NUMBER = 1;
+      private volatile java.lang.Object id_;
+      /**
+       * <pre>
+       * Identification of the carriage. Should be unique per vehicle.
+       * </pre>
+       *
+       * <code>optional string id = 1;</code>
+       * @return Whether the id field is set.
+       */
+      @java.lang.Override
+      public boolean hasId() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <pre>
+       * Identification of the carriage. Should be unique per vehicle.
+       * </pre>
+       *
+       * <code>optional string id = 1;</code>
+       * @return The id.
+       */
+      @java.lang.Override
+      public java.lang.String getId() {
+        java.lang.Object ref = id_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            id_ = s;
+          }
+          return s;
+        }
+      }
+      /**
+       * <pre>
+       * Identification of the carriage. Should be unique per vehicle.
+       * </pre>
+       *
+       * <code>optional string id = 1;</code>
+       * @return The bytes for id.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getIdBytes() {
+        java.lang.Object ref = id_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          id_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      public static final int LABEL_FIELD_NUMBER = 2;
+      private volatile java.lang.Object label_;
+      /**
+       * <pre>
+       * User visible label that may be shown to the passenger to help identify
+       * the carriage. Example: "7712", "Car ABC-32", etc...
+       * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+       * </pre>
+       *
+       * <code>optional string label = 2;</code>
+       * @return Whether the label field is set.
+       */
+      @java.lang.Override
+      public boolean hasLabel() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <pre>
+       * User visible label that may be shown to the passenger to help identify
+       * the carriage. Example: "7712", "Car ABC-32", etc...
+       * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+       * </pre>
+       *
+       * <code>optional string label = 2;</code>
+       * @return The label.
+       */
+      @java.lang.Override
+      public java.lang.String getLabel() {
+        java.lang.Object ref = label_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            label_ = s;
+          }
+          return s;
+        }
+      }
+      /**
+       * <pre>
+       * User visible label that may be shown to the passenger to help identify
+       * the carriage. Example: "7712", "Car ABC-32", etc...
+       * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+       * </pre>
+       *
+       * <code>optional string label = 2;</code>
+       * @return The bytes for label.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getLabelBytes() {
+        java.lang.Object ref = label_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          label_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      public static final int OCCUPANCY_STATUS_FIELD_NUMBER = 3;
+      private int occupancyStatus_;
+      /**
+       * <pre>
+       * Occupancy status for this given carriage, in this vehicle
+       * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+       * </pre>
+       *
+       * <code>optional .transit_realtime.VehiclePosition.OccupancyStatus occupancy_status = 3 [default = NO_DATA_AVAILABLE];</code>
+       * @return Whether the occupancyStatus field is set.
+       */
+      @java.lang.Override public boolean hasOccupancyStatus() {
+        return ((bitField0_ & 0x00000004) != 0);
+      }
+      /**
+       * <pre>
+       * Occupancy status for this given carriage, in this vehicle
+       * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+       * </pre>
+       *
+       * <code>optional .transit_realtime.VehiclePosition.OccupancyStatus occupancy_status = 3 [default = NO_DATA_AVAILABLE];</code>
+       * @return The occupancyStatus.
+       */
+      @java.lang.Override public dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.OccupancyStatus getOccupancyStatus() {
+        @SuppressWarnings("deprecation")
+        dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.OccupancyStatus result = dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.OccupancyStatus.valueOf(occupancyStatus_);
+        return result == null ? dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.OccupancyStatus.NO_DATA_AVAILABLE : result;
+      }
+
+      public static final int OCCUPANCY_PERCENTAGE_FIELD_NUMBER = 4;
+      private int occupancyPercentage_;
+      /**
+       * <pre>
+       * Occupancy percentage for this given carriage, in this vehicle.
+       * Follows the same rules as "VehiclePosition.occupancy_percentage"
+       * -1 in case data is not available for this given carriage (as protobuf defaults to 0 otherwise)
+       * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+       * </pre>
+       *
+       * <code>optional int32 occupancy_percentage = 4 [default = -1];</code>
+       * @return Whether the occupancyPercentage field is set.
+       */
+      @java.lang.Override
+      public boolean hasOccupancyPercentage() {
+        return ((bitField0_ & 0x00000008) != 0);
+      }
+      /**
+       * <pre>
+       * Occupancy percentage for this given carriage, in this vehicle.
+       * Follows the same rules as "VehiclePosition.occupancy_percentage"
+       * -1 in case data is not available for this given carriage (as protobuf defaults to 0 otherwise)
+       * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+       * </pre>
+       *
+       * <code>optional int32 occupancy_percentage = 4 [default = -1];</code>
+       * @return The occupancyPercentage.
+       */
+      @java.lang.Override
+      public int getOccupancyPercentage() {
+        return occupancyPercentage_;
+      }
+
+      public static final int CARRIAGE_SEQUENCE_FIELD_NUMBER = 5;
+      private int carriageSequence_;
+      /**
+       * <pre>
+       * Identifies the order of this carriage with respect to the other
+       * carriages in the vehicle's list of CarriageDetails.
+       * The first carriage in the direction of travel must have a value of 1.
+       * The second value corresponds to the second carriage in the direction
+       * of travel and must have a value of 2, and so forth.
+       * For example, the first carriage in the direction of travel has a value of 1.
+       * If the second carriage in the direction of travel has a value of 3,
+       * consumers will discard data for all carriages (i.e., the multi_carriage_details field).
+       * Carriages without data must be represented with a valid carriage_sequence number and the fields
+       * without data should be omitted (alternately, those fields could also be included and set to the "no data" values).
+       * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+       * </pre>
+       *
+       * <code>optional uint32 carriage_sequence = 5;</code>
+       * @return Whether the carriageSequence field is set.
+       */
+      @java.lang.Override
+      public boolean hasCarriageSequence() {
+        return ((bitField0_ & 0x00000010) != 0);
+      }
+      /**
+       * <pre>
+       * Identifies the order of this carriage with respect to the other
+       * carriages in the vehicle's list of CarriageDetails.
+       * The first carriage in the direction of travel must have a value of 1.
+       * The second value corresponds to the second carriage in the direction
+       * of travel and must have a value of 2, and so forth.
+       * For example, the first carriage in the direction of travel has a value of 1.
+       * If the second carriage in the direction of travel has a value of 3,
+       * consumers will discard data for all carriages (i.e., the multi_carriage_details field).
+       * Carriages without data must be represented with a valid carriage_sequence number and the fields
+       * without data should be omitted (alternately, those fields could also be included and set to the "no data" values).
+       * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+       * </pre>
+       *
+       * <code>optional uint32 carriage_sequence = 5;</code>
+       * @return The carriageSequence.
+       */
+      @java.lang.Override
+      public int getCarriageSequence() {
+        return carriageSequence_;
+      }
+
+      public static dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails parseFrom(
+          java.nio.ByteBuffer data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails parseFrom(
+          java.nio.ByteBuffer data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input);
+      }
+      public static dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+
+      @java.lang.Override
+      public Builder newBuilderForType() { return newBuilder(); }
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
+      }
+      public static Builder newBuilder(dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+      @java.lang.Override
+      public Builder toBuilder() {
+        return this == DEFAULT_INSTANCE
+            ? new Builder() : new Builder().mergeFrom(this);
+      }
+
+      @java.lang.Override
+      protected Builder newBuilderForType(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        Builder builder = new Builder(parent);
+        return builder;
+      }
+      /**
+       * <pre>
+       * Carriage specific details, used for vehicles composed of several carriages
+       * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+       * </pre>
+       *
+       * Protobuf type {@code transit_realtime.VehiclePosition.CarriageDetails}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageV3.ExtendableBuilder<
+            dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails, Builder> implements
+          // @@protoc_insertion_point(builder_implements:transit_realtime.VehiclePosition.CarriageDetails)
+          dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetailsOrBuilder {
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return dev.katsute.onemta.GTFSRealtimeProto.internal_static_transit_realtime_VehiclePosition_CarriageDetails_descriptor;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+          return dev.katsute.onemta.GTFSRealtimeProto.internal_static_transit_realtime_VehiclePosition_CarriageDetails_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                  dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails.class, dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails.Builder.class);
+        }
+
+        // Construct using dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails.newBuilder()
+        private Builder() {
+          maybeForceBuilderInitialization();
+        }
+
+        private Builder(
+            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          super(parent);
+          maybeForceBuilderInitialization();
+        }
+        private void maybeForceBuilderInitialization() {
+          if (com.google.protobuf.GeneratedMessageV3
+                  .alwaysUseFieldBuilders) {
+          }
+        }
+        @java.lang.Override
+        public Builder clear() {
+          super.clear();
+          id_ = "";
+          bitField0_ = (bitField0_ & ~0x00000001);
+          label_ = "";
+          bitField0_ = (bitField0_ & ~0x00000002);
+          occupancyStatus_ = 7;
+          bitField0_ = (bitField0_ & ~0x00000004);
+          occupancyPercentage_ = -1;
+          bitField0_ = (bitField0_ & ~0x00000008);
+          carriageSequence_ = 0;
+          bitField0_ = (bitField0_ & ~0x00000010);
+          return this;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+          return dev.katsute.onemta.GTFSRealtimeProto.internal_static_transit_realtime_VehiclePosition_CarriageDetails_descriptor;
+        }
+
+        @java.lang.Override
+        public dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails getDefaultInstanceForType() {
+          return dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails.getDefaultInstance();
+        }
+
+        @java.lang.Override
+        public dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails build() {
+          dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails result = buildPartial();
+          if (!result.isInitialized()) {
+            throw newUninitializedMessageException(result);
+          }
+          return result;
+        }
+
+        @java.lang.Override
+        public dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails buildPartial() {
+          dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails result = new dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails(this);
+          int from_bitField0_ = bitField0_;
+          int to_bitField0_ = 0;
+          if (((from_bitField0_ & 0x00000001) != 0)) {
+            to_bitField0_ |= 0x00000001;
+          }
+          result.id_ = id_;
+          if (((from_bitField0_ & 0x00000002) != 0)) {
+            to_bitField0_ |= 0x00000002;
+          }
+          result.label_ = label_;
+          if (((from_bitField0_ & 0x00000004) != 0)) {
+            to_bitField0_ |= 0x00000004;
+          }
+          result.occupancyStatus_ = occupancyStatus_;
+          if (((from_bitField0_ & 0x00000008) != 0)) {
+            to_bitField0_ |= 0x00000008;
+          }
+          result.occupancyPercentage_ = occupancyPercentage_;
+          if (((from_bitField0_ & 0x00000010) != 0)) {
+            result.carriageSequence_ = carriageSequence_;
+            to_bitField0_ |= 0x00000010;
+          }
+          result.bitField0_ = to_bitField0_;
+          onBuilt();
+          return result;
+        }
+
+        @java.lang.Override
+        public Builder clone() {
+          return super.clone();
+        }
+        @java.lang.Override
+        public Builder setField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return super.setField(field, value);
+        }
+        @java.lang.Override
+        public Builder clearField(
+            com.google.protobuf.Descriptors.FieldDescriptor field) {
+          return super.clearField(field);
+        }
+        @java.lang.Override
+        public Builder clearOneof(
+            com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          return super.clearOneof(oneof);
+        }
+        @java.lang.Override
+        public Builder setRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            int index, java.lang.Object value) {
+          return super.setRepeatedField(field, index, value);
+        }
+        @java.lang.Override
+        public Builder addRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return super.addRepeatedField(field, value);
+        }
+        @java.lang.Override
+        public <Type> Builder setExtension(
+            com.google.protobuf.GeneratedMessage.GeneratedExtension<
+                dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails, Type> extension,
+            Type value) {
+          return super.setExtension(extension, value);
+        }
+        @java.lang.Override
+        public <Type> Builder setExtension(
+            com.google.protobuf.GeneratedMessage.GeneratedExtension<
+                dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails, java.util.List<Type>> extension,
+            int index, Type value) {
+          return super.setExtension(extension, index, value);
+        }
+        @java.lang.Override
+        public <Type> Builder addExtension(
+            com.google.protobuf.GeneratedMessage.GeneratedExtension<
+                dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails, java.util.List<Type>> extension,
+            Type value) {
+          return super.addExtension(extension, value);
+        }
+        @java.lang.Override
+        public <Type> Builder clearExtension(
+            com.google.protobuf.GeneratedMessage.GeneratedExtension<
+                dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails, ?> extension) {
+          return super.clearExtension(extension);
+        }
+        private int bitField0_;
+
+        private java.lang.Object id_ = "";
+        /**
+         * <pre>
+         * Identification of the carriage. Should be unique per vehicle.
+         * </pre>
+         *
+         * <code>optional string id = 1;</code>
+         * @return Whether the id field is set.
+         */
+        public boolean hasId() {
+          return ((bitField0_ & 0x00000001) != 0);
+        }
+        /**
+         * <pre>
+         * Identification of the carriage. Should be unique per vehicle.
+         * </pre>
+         *
+         * <code>optional string id = 1;</code>
+         * @return The id.
+         */
+        public java.lang.String getId() {
+          java.lang.Object ref = id_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            if (bs.isValidUtf8()) {
+              id_ = s;
+            }
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <pre>
+         * Identification of the carriage. Should be unique per vehicle.
+         * </pre>
+         *
+         * <code>optional string id = 1;</code>
+         * @return The bytes for id.
+         */
+        public com.google.protobuf.ByteString
+            getIdBytes() {
+          java.lang.Object ref = id_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b =
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            id_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <pre>
+         * Identification of the carriage. Should be unique per vehicle.
+         * </pre>
+         *
+         * <code>optional string id = 1;</code>
+         * @param value The id to set.
+         * @return This builder for chaining.
+         */
+        public Builder setId(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+          id_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * Identification of the carriage. Should be unique per vehicle.
+         * </pre>
+         *
+         * <code>optional string id = 1;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearId() {
+          bitField0_ = (bitField0_ & ~0x00000001);
+          id_ = getDefaultInstance().getId();
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * Identification of the carriage. Should be unique per vehicle.
+         * </pre>
+         *
+         * <code>optional string id = 1;</code>
+         * @param value The bytes for id to set.
+         * @return This builder for chaining.
+         */
+        public Builder setIdBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+          id_ = value;
+          onChanged();
+          return this;
+        }
+
+        private java.lang.Object label_ = "";
+        /**
+         * <pre>
+         * User visible label that may be shown to the passenger to help identify
+         * the carriage. Example: "7712", "Car ABC-32", etc...
+         * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+         * </pre>
+         *
+         * <code>optional string label = 2;</code>
+         * @return Whether the label field is set.
+         */
+        public boolean hasLabel() {
+          return ((bitField0_ & 0x00000002) != 0);
+        }
+        /**
+         * <pre>
+         * User visible label that may be shown to the passenger to help identify
+         * the carriage. Example: "7712", "Car ABC-32", etc...
+         * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+         * </pre>
+         *
+         * <code>optional string label = 2;</code>
+         * @return The label.
+         */
+        public java.lang.String getLabel() {
+          java.lang.Object ref = label_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            if (bs.isValidUtf8()) {
+              label_ = s;
+            }
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <pre>
+         * User visible label that may be shown to the passenger to help identify
+         * the carriage. Example: "7712", "Car ABC-32", etc...
+         * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+         * </pre>
+         *
+         * <code>optional string label = 2;</code>
+         * @return The bytes for label.
+         */
+        public com.google.protobuf.ByteString
+            getLabelBytes() {
+          java.lang.Object ref = label_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b =
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            label_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <pre>
+         * User visible label that may be shown to the passenger to help identify
+         * the carriage. Example: "7712", "Car ABC-32", etc...
+         * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+         * </pre>
+         *
+         * <code>optional string label = 2;</code>
+         * @param value The label to set.
+         * @return This builder for chaining.
+         */
+        public Builder setLabel(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+          label_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * User visible label that may be shown to the passenger to help identify
+         * the carriage. Example: "7712", "Car ABC-32", etc...
+         * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+         * </pre>
+         *
+         * <code>optional string label = 2;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearLabel() {
+          bitField0_ = (bitField0_ & ~0x00000002);
+          label_ = getDefaultInstance().getLabel();
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * User visible label that may be shown to the passenger to help identify
+         * the carriage. Example: "7712", "Car ABC-32", etc...
+         * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+         * </pre>
+         *
+         * <code>optional string label = 2;</code>
+         * @param value The bytes for label to set.
+         * @return This builder for chaining.
+         */
+        public Builder setLabelBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+          label_ = value;
+          onChanged();
+          return this;
+        }
+
+        private int occupancyStatus_ = 7;
+        /**
+         * <pre>
+         * Occupancy status for this given carriage, in this vehicle
+         * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+         * </pre>
+         *
+         * <code>optional .transit_realtime.VehiclePosition.OccupancyStatus occupancy_status = 3 [default = NO_DATA_AVAILABLE];</code>
+         * @return Whether the occupancyStatus field is set.
+         */
+        @java.lang.Override public boolean hasOccupancyStatus() {
+          return ((bitField0_ & 0x00000004) != 0);
+        }
+        /**
+         * <pre>
+         * Occupancy status for this given carriage, in this vehicle
+         * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+         * </pre>
+         *
+         * <code>optional .transit_realtime.VehiclePosition.OccupancyStatus occupancy_status = 3 [default = NO_DATA_AVAILABLE];</code>
+         * @return The occupancyStatus.
+         */
+        @java.lang.Override
+        public dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.OccupancyStatus getOccupancyStatus() {
+          @SuppressWarnings("deprecation")
+          dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.OccupancyStatus result = dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.OccupancyStatus.valueOf(occupancyStatus_);
+          return result == null ? dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.OccupancyStatus.NO_DATA_AVAILABLE : result;
+        }
+        /**
+         * <pre>
+         * Occupancy status for this given carriage, in this vehicle
+         * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+         * </pre>
+         *
+         * <code>optional .transit_realtime.VehiclePosition.OccupancyStatus occupancy_status = 3 [default = NO_DATA_AVAILABLE];</code>
+         * @param value The occupancyStatus to set.
+         * @return This builder for chaining.
+         */
+        public Builder setOccupancyStatus(dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.OccupancyStatus value) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          bitField0_ |= 0x00000004;
+          occupancyStatus_ = value.getNumber();
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * Occupancy status for this given carriage, in this vehicle
+         * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+         * </pre>
+         *
+         * <code>optional .transit_realtime.VehiclePosition.OccupancyStatus occupancy_status = 3 [default = NO_DATA_AVAILABLE];</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearOccupancyStatus() {
+          bitField0_ = (bitField0_ & ~0x00000004);
+          occupancyStatus_ = 7;
+          onChanged();
+          return this;
+        }
+
+        private int occupancyPercentage_ = -1;
+        /**
+         * <pre>
+         * Occupancy percentage for this given carriage, in this vehicle.
+         * Follows the same rules as "VehiclePosition.occupancy_percentage"
+         * -1 in case data is not available for this given carriage (as protobuf defaults to 0 otherwise)
+         * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+         * </pre>
+         *
+         * <code>optional int32 occupancy_percentage = 4 [default = -1];</code>
+         * @return Whether the occupancyPercentage field is set.
+         */
+        @java.lang.Override
+        public boolean hasOccupancyPercentage() {
+          return ((bitField0_ & 0x00000008) != 0);
+        }
+        /**
+         * <pre>
+         * Occupancy percentage for this given carriage, in this vehicle.
+         * Follows the same rules as "VehiclePosition.occupancy_percentage"
+         * -1 in case data is not available for this given carriage (as protobuf defaults to 0 otherwise)
+         * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+         * </pre>
+         *
+         * <code>optional int32 occupancy_percentage = 4 [default = -1];</code>
+         * @return The occupancyPercentage.
+         */
+        @java.lang.Override
+        public int getOccupancyPercentage() {
+          return occupancyPercentage_;
+        }
+        /**
+         * <pre>
+         * Occupancy percentage for this given carriage, in this vehicle.
+         * Follows the same rules as "VehiclePosition.occupancy_percentage"
+         * -1 in case data is not available for this given carriage (as protobuf defaults to 0 otherwise)
+         * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+         * </pre>
+         *
+         * <code>optional int32 occupancy_percentage = 4 [default = -1];</code>
+         * @param value The occupancyPercentage to set.
+         * @return This builder for chaining.
+         */
+        public Builder setOccupancyPercentage(int value) {
+          bitField0_ |= 0x00000008;
+          occupancyPercentage_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * Occupancy percentage for this given carriage, in this vehicle.
+         * Follows the same rules as "VehiclePosition.occupancy_percentage"
+         * -1 in case data is not available for this given carriage (as protobuf defaults to 0 otherwise)
+         * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+         * </pre>
+         *
+         * <code>optional int32 occupancy_percentage = 4 [default = -1];</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearOccupancyPercentage() {
+          bitField0_ = (bitField0_ & ~0x00000008);
+          occupancyPercentage_ = -1;
+          onChanged();
+          return this;
+        }
+
+        private int carriageSequence_ ;
+        /**
+         * <pre>
+         * Identifies the order of this carriage with respect to the other
+         * carriages in the vehicle's list of CarriageDetails.
+         * The first carriage in the direction of travel must have a value of 1.
+         * The second value corresponds to the second carriage in the direction
+         * of travel and must have a value of 2, and so forth.
+         * For example, the first carriage in the direction of travel has a value of 1.
+         * If the second carriage in the direction of travel has a value of 3,
+         * consumers will discard data for all carriages (i.e., the multi_carriage_details field).
+         * Carriages without data must be represented with a valid carriage_sequence number and the fields
+         * without data should be omitted (alternately, those fields could also be included and set to the "no data" values).
+         * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+         * </pre>
+         *
+         * <code>optional uint32 carriage_sequence = 5;</code>
+         * @return Whether the carriageSequence field is set.
+         */
+        @java.lang.Override
+        public boolean hasCarriageSequence() {
+          return ((bitField0_ & 0x00000010) != 0);
+        }
+        /**
+         * <pre>
+         * Identifies the order of this carriage with respect to the other
+         * carriages in the vehicle's list of CarriageDetails.
+         * The first carriage in the direction of travel must have a value of 1.
+         * The second value corresponds to the second carriage in the direction
+         * of travel and must have a value of 2, and so forth.
+         * For example, the first carriage in the direction of travel has a value of 1.
+         * If the second carriage in the direction of travel has a value of 3,
+         * consumers will discard data for all carriages (i.e., the multi_carriage_details field).
+         * Carriages without data must be represented with a valid carriage_sequence number and the fields
+         * without data should be omitted (alternately, those fields could also be included and set to the "no data" values).
+         * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+         * </pre>
+         *
+         * <code>optional uint32 carriage_sequence = 5;</code>
+         * @return The carriageSequence.
+         */
+        @java.lang.Override
+        public int getCarriageSequence() {
+          return carriageSequence_;
+        }
+        /**
+         * <pre>
+         * Identifies the order of this carriage with respect to the other
+         * carriages in the vehicle's list of CarriageDetails.
+         * The first carriage in the direction of travel must have a value of 1.
+         * The second value corresponds to the second carriage in the direction
+         * of travel and must have a value of 2, and so forth.
+         * For example, the first carriage in the direction of travel has a value of 1.
+         * If the second carriage in the direction of travel has a value of 3,
+         * consumers will discard data for all carriages (i.e., the multi_carriage_details field).
+         * Carriages without data must be represented with a valid carriage_sequence number and the fields
+         * without data should be omitted (alternately, those fields could also be included and set to the "no data" values).
+         * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+         * </pre>
+         *
+         * <code>optional uint32 carriage_sequence = 5;</code>
+         * @param value The carriageSequence to set.
+         * @return This builder for chaining.
+         */
+        public Builder setCarriageSequence(int value) {
+          bitField0_ |= 0x00000010;
+          carriageSequence_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * Identifies the order of this carriage with respect to the other
+         * carriages in the vehicle's list of CarriageDetails.
+         * The first carriage in the direction of travel must have a value of 1.
+         * The second value corresponds to the second carriage in the direction
+         * of travel and must have a value of 2, and so forth.
+         * For example, the first carriage in the direction of travel has a value of 1.
+         * If the second carriage in the direction of travel has a value of 3,
+         * consumers will discard data for all carriages (i.e., the multi_carriage_details field).
+         * Carriages without data must be represented with a valid carriage_sequence number and the fields
+         * without data should be omitted (alternately, those fields could also be included and set to the "no data" values).
+         * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+         * </pre>
+         *
+         * <code>optional uint32 carriage_sequence = 5;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearCarriageSequence() {
+          bitField0_ = (bitField0_ & ~0x00000010);
+          carriageSequence_ = 0;
+          onChanged();
+          return this;
+        }
+        @java.lang.Override
+        public final Builder setUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.setUnknownFields(unknownFields);
+        }
+
+        @java.lang.Override
+        public final Builder mergeUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.mergeUnknownFields(unknownFields);
+        }
+
+
+        // @@protoc_insertion_point(builder_scope:transit_realtime.VehiclePosition.CarriageDetails)
+      }
+
+      // @@protoc_insertion_point(class_scope:transit_realtime.VehiclePosition.CarriageDetails)
+      private static final dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails DEFAULT_INSTANCE;
+      static {
+        DEFAULT_INSTANCE = new dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails();
+      }
+
+      public static dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      @java.lang.Deprecated public static final com.google.protobuf.Parser<CarriageDetails>
+          PARSER = new com.google.protobuf.AbstractParser<CarriageDetails>() {
+        @java.lang.Override
+        public CarriageDetails parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          Builder builder = newBuilder();
+          try {
+            builder.mergeFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw e.setUnfinishedMessage(builder.buildPartial());
+          } catch (java.io.IOException e) {
+            throw new com.google.protobuf.InvalidProtocolBufferException(
+                e.getMessage()).setUnfinishedMessage(
+                    builder.buildPartial());
+          }
+          return builder.buildPartial();
+        }
+      };
+
+      public static com.google.protobuf.Parser<CarriageDetails> parser() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Parser<CarriageDetails> getParserForType() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails getDefaultInstanceForType() {
+        return DEFAULT_INSTANCE;
+      }
+
     }
 
     private int bitField0_;
@@ -8386,6 +11139,11 @@ abstract class GTFSRealtimeProto {
     public static final int OCCUPANCY_STATUS_FIELD_NUMBER = 9;
     private int occupancyStatus_;
     /**
+     * <pre>
+     * If multi_carriage_status is populated with per-carriage OccupancyStatus,
+     * then this field should describe the entire vehicle with all carriages accepting passengers considered.
+     * </pre>
+     *
      * <code>optional .transit_realtime.VehiclePosition.OccupancyStatus occupancy_status = 9;</code>
      * @return Whether the occupancyStatus field is set.
      */
@@ -8393,6 +11151,11 @@ abstract class GTFSRealtimeProto {
       return ((bitField0_ & 0x00000100) != 0);
     }
     /**
+     * <pre>
+     * If multi_carriage_status is populated with per-carriage OccupancyStatus,
+     * then this field should describe the entire vehicle with all carriages accepting passengers considered.
+     * </pre>
+     *
      * <code>optional .transit_realtime.VehiclePosition.OccupancyStatus occupancy_status = 9;</code>
      * @return The occupancyStatus.
      */
@@ -8400,6 +11163,149 @@ abstract class GTFSRealtimeProto {
       @SuppressWarnings("deprecation")
       dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.OccupancyStatus result = dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.OccupancyStatus.valueOf(occupancyStatus_);
       return result == null ? dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.OccupancyStatus.EMPTY : result;
+    }
+
+    public static final int OCCUPANCY_PERCENTAGE_FIELD_NUMBER = 10;
+    private int occupancyPercentage_;
+    /**
+     * <pre>
+     * A percentage value representing the degree of passenger occupancy of the vehicle.
+     * The values are represented as an integer without decimals. 0 means 0% and 100 means 100%.
+     * The value 100 should represent the total maximum occupancy the vehicle was designed for,
+     * including both seated and standing capacity, and current operating regulations allow.
+     * It is possible that the value goes over 100 if there are currently more passengers than what the vehicle was designed for.
+     * The precision of occupancy_percentage should be low enough that you can't track a single person boarding and alighting for privacy reasons.
+     * If multi_carriage_status is populated with per-carriage occupancy_percentage,
+     * then this field should describe the entire vehicle with all carriages accepting passengers considered.
+     * This field is still experimental, and subject to change. It may be formally adopted in the future.
+     * </pre>
+     *
+     * <code>optional uint32 occupancy_percentage = 10;</code>
+     * @return Whether the occupancyPercentage field is set.
+     */
+    @java.lang.Override
+    public boolean hasOccupancyPercentage() {
+      return ((bitField0_ & 0x00000200) != 0);
+    }
+    /**
+     * <pre>
+     * A percentage value representing the degree of passenger occupancy of the vehicle.
+     * The values are represented as an integer without decimals. 0 means 0% and 100 means 100%.
+     * The value 100 should represent the total maximum occupancy the vehicle was designed for,
+     * including both seated and standing capacity, and current operating regulations allow.
+     * It is possible that the value goes over 100 if there are currently more passengers than what the vehicle was designed for.
+     * The precision of occupancy_percentage should be low enough that you can't track a single person boarding and alighting for privacy reasons.
+     * If multi_carriage_status is populated with per-carriage occupancy_percentage,
+     * then this field should describe the entire vehicle with all carriages accepting passengers considered.
+     * This field is still experimental, and subject to change. It may be formally adopted in the future.
+     * </pre>
+     *
+     * <code>optional uint32 occupancy_percentage = 10;</code>
+     * @return The occupancyPercentage.
+     */
+    @java.lang.Override
+    public int getOccupancyPercentage() {
+      return occupancyPercentage_;
+    }
+
+    public static final int MULTI_CARRIAGE_DETAILS_FIELD_NUMBER = 11;
+    private java.util.List<dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails> multiCarriageDetails_;
+    /**
+     * <pre>
+     * Details of the multiple carriages of this given vehicle.
+     * The first occurrence represents the first carriage of the vehicle,
+     * given the current direction of travel.
+     * The number of occurrences of the multi_carriage_details
+     * field represents the number of carriages of the vehicle.
+     * It also includes non boardable carriages,
+     * like engines, maintenance carriages, etc… as they provide valuable
+     * information to passengers about where to stand on a platform.
+     * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+     * </pre>
+     *
+     * <code>repeated .transit_realtime.VehiclePosition.CarriageDetails multi_carriage_details = 11;</code>
+     */
+    @java.lang.Override
+    public java.util.List<dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails> getMultiCarriageDetailsList() {
+      return multiCarriageDetails_;
+    }
+    /**
+     * <pre>
+     * Details of the multiple carriages of this given vehicle.
+     * The first occurrence represents the first carriage of the vehicle,
+     * given the current direction of travel.
+     * The number of occurrences of the multi_carriage_details
+     * field represents the number of carriages of the vehicle.
+     * It also includes non boardable carriages,
+     * like engines, maintenance carriages, etc… as they provide valuable
+     * information to passengers about where to stand on a platform.
+     * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+     * </pre>
+     *
+     * <code>repeated .transit_realtime.VehiclePosition.CarriageDetails multi_carriage_details = 11;</code>
+     */
+    @java.lang.Override
+    public java.util.List<? extends dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetailsOrBuilder>
+        getMultiCarriageDetailsOrBuilderList() {
+      return multiCarriageDetails_;
+    }
+    /**
+     * <pre>
+     * Details of the multiple carriages of this given vehicle.
+     * The first occurrence represents the first carriage of the vehicle,
+     * given the current direction of travel.
+     * The number of occurrences of the multi_carriage_details
+     * field represents the number of carriages of the vehicle.
+     * It also includes non boardable carriages,
+     * like engines, maintenance carriages, etc… as they provide valuable
+     * information to passengers about where to stand on a platform.
+     * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+     * </pre>
+     *
+     * <code>repeated .transit_realtime.VehiclePosition.CarriageDetails multi_carriage_details = 11;</code>
+     */
+    @java.lang.Override
+    public int getMultiCarriageDetailsCount() {
+      return multiCarriageDetails_.size();
+    }
+    /**
+     * <pre>
+     * Details of the multiple carriages of this given vehicle.
+     * The first occurrence represents the first carriage of the vehicle,
+     * given the current direction of travel.
+     * The number of occurrences of the multi_carriage_details
+     * field represents the number of carriages of the vehicle.
+     * It also includes non boardable carriages,
+     * like engines, maintenance carriages, etc… as they provide valuable
+     * information to passengers about where to stand on a platform.
+     * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+     * </pre>
+     *
+     * <code>repeated .transit_realtime.VehiclePosition.CarriageDetails multi_carriage_details = 11;</code>
+     */
+    @java.lang.Override
+    public dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails getMultiCarriageDetails(int index) {
+      return multiCarriageDetails_.get(index);
+    }
+    /**
+     * <pre>
+     * Details of the multiple carriages of this given vehicle.
+     * The first occurrence represents the first carriage of the vehicle,
+     * given the current direction of travel.
+     * The number of occurrences of the multi_carriage_details
+     * field represents the number of carriages of the vehicle.
+     * It also includes non boardable carriages,
+     * like engines, maintenance carriages, etc… as they provide valuable
+     * information to passengers about where to stand on a platform.
+     * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+     * </pre>
+     *
+     * <code>repeated .transit_realtime.VehiclePosition.CarriageDetails multi_carriage_details = 11;</code>
+     */
+    @java.lang.Override
+    public dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetailsOrBuilder getMultiCarriageDetailsOrBuilder(
+        int index) {
+      return multiCarriageDetails_.get(index);
     }
 
     public static dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition parseFrom(
@@ -8533,6 +11439,7 @@ abstract class GTFSRealtimeProto {
           getTripFieldBuilder();
           getVehicleFieldBuilder();
           getPositionFieldBuilder();
+          getMultiCarriageDetailsFieldBuilder();
         }
       }
       @java.lang.Override
@@ -8568,6 +11475,14 @@ abstract class GTFSRealtimeProto {
         bitField0_ = (bitField0_ & ~0x00000080);
         occupancyStatus_ = 0;
         bitField0_ = (bitField0_ & ~0x00000100);
+        occupancyPercentage_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000200);
+        if (multiCarriageDetailsBuilder_ == null) {
+          multiCarriageDetails_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000400);
+        } else {
+          multiCarriageDetailsBuilder_.clear();
+        }
         return this;
       }
 
@@ -8644,6 +11559,19 @@ abstract class GTFSRealtimeProto {
           to_bitField0_ |= 0x00000100;
         }
         result.occupancyStatus_ = occupancyStatus_;
+        if (((from_bitField0_ & 0x00000200) != 0)) {
+          result.occupancyPercentage_ = occupancyPercentage_;
+          to_bitField0_ |= 0x00000200;
+        }
+        if (multiCarriageDetailsBuilder_ == null) {
+          if (((bitField0_ & 0x00000400) != 0)) {
+            multiCarriageDetails_ = java.util.Collections.unmodifiableList(multiCarriageDetails_);
+            bitField0_ = (bitField0_ & ~0x00000400);
+          }
+          result.multiCarriageDetails_ = multiCarriageDetails_;
+        } else {
+          result.multiCarriageDetails_ = multiCarriageDetailsBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -9544,6 +12472,11 @@ abstract class GTFSRealtimeProto {
 
       private int occupancyStatus_ = 0;
       /**
+       * <pre>
+       * If multi_carriage_status is populated with per-carriage OccupancyStatus,
+       * then this field should describe the entire vehicle with all carriages accepting passengers considered.
+       * </pre>
+       *
        * <code>optional .transit_realtime.VehiclePosition.OccupancyStatus occupancy_status = 9;</code>
        * @return Whether the occupancyStatus field is set.
        */
@@ -9551,6 +12484,11 @@ abstract class GTFSRealtimeProto {
         return ((bitField0_ & 0x00000100) != 0);
       }
       /**
+       * <pre>
+       * If multi_carriage_status is populated with per-carriage OccupancyStatus,
+       * then this field should describe the entire vehicle with all carriages accepting passengers considered.
+       * </pre>
+       *
        * <code>optional .transit_realtime.VehiclePosition.OccupancyStatus occupancy_status = 9;</code>
        * @return The occupancyStatus.
        */
@@ -9561,6 +12499,11 @@ abstract class GTFSRealtimeProto {
         return result == null ? dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.OccupancyStatus.EMPTY : result;
       }
       /**
+       * <pre>
+       * If multi_carriage_status is populated with per-carriage OccupancyStatus,
+       * then this field should describe the entire vehicle with all carriages accepting passengers considered.
+       * </pre>
+       *
        * <code>optional .transit_realtime.VehiclePosition.OccupancyStatus occupancy_status = 9;</code>
        * @param value The occupancyStatus to set.
        * @return This builder for chaining.
@@ -9575,6 +12518,11 @@ abstract class GTFSRealtimeProto {
         return this;
       }
       /**
+       * <pre>
+       * If multi_carriage_status is populated with per-carriage OccupancyStatus,
+       * then this field should describe the entire vehicle with all carriages accepting passengers considered.
+       * </pre>
+       *
        * <code>optional .transit_realtime.VehiclePosition.OccupancyStatus occupancy_status = 9;</code>
        * @return This builder for chaining.
        */
@@ -9583,6 +12531,549 @@ abstract class GTFSRealtimeProto {
         occupancyStatus_ = 0;
         onChanged();
         return this;
+      }
+
+      private int occupancyPercentage_ ;
+      /**
+       * <pre>
+       * A percentage value representing the degree of passenger occupancy of the vehicle.
+       * The values are represented as an integer without decimals. 0 means 0% and 100 means 100%.
+       * The value 100 should represent the total maximum occupancy the vehicle was designed for,
+       * including both seated and standing capacity, and current operating regulations allow.
+       * It is possible that the value goes over 100 if there are currently more passengers than what the vehicle was designed for.
+       * The precision of occupancy_percentage should be low enough that you can't track a single person boarding and alighting for privacy reasons.
+       * If multi_carriage_status is populated with per-carriage occupancy_percentage,
+       * then this field should describe the entire vehicle with all carriages accepting passengers considered.
+       * This field is still experimental, and subject to change. It may be formally adopted in the future.
+       * </pre>
+       *
+       * <code>optional uint32 occupancy_percentage = 10;</code>
+       * @return Whether the occupancyPercentage field is set.
+       */
+      @java.lang.Override
+      public boolean hasOccupancyPercentage() {
+        return ((bitField0_ & 0x00000200) != 0);
+      }
+      /**
+       * <pre>
+       * A percentage value representing the degree of passenger occupancy of the vehicle.
+       * The values are represented as an integer without decimals. 0 means 0% and 100 means 100%.
+       * The value 100 should represent the total maximum occupancy the vehicle was designed for,
+       * including both seated and standing capacity, and current operating regulations allow.
+       * It is possible that the value goes over 100 if there are currently more passengers than what the vehicle was designed for.
+       * The precision of occupancy_percentage should be low enough that you can't track a single person boarding and alighting for privacy reasons.
+       * If multi_carriage_status is populated with per-carriage occupancy_percentage,
+       * then this field should describe the entire vehicle with all carriages accepting passengers considered.
+       * This field is still experimental, and subject to change. It may be formally adopted in the future.
+       * </pre>
+       *
+       * <code>optional uint32 occupancy_percentage = 10;</code>
+       * @return The occupancyPercentage.
+       */
+      @java.lang.Override
+      public int getOccupancyPercentage() {
+        return occupancyPercentage_;
+      }
+      /**
+       * <pre>
+       * A percentage value representing the degree of passenger occupancy of the vehicle.
+       * The values are represented as an integer without decimals. 0 means 0% and 100 means 100%.
+       * The value 100 should represent the total maximum occupancy the vehicle was designed for,
+       * including both seated and standing capacity, and current operating regulations allow.
+       * It is possible that the value goes over 100 if there are currently more passengers than what the vehicle was designed for.
+       * The precision of occupancy_percentage should be low enough that you can't track a single person boarding and alighting for privacy reasons.
+       * If multi_carriage_status is populated with per-carriage occupancy_percentage,
+       * then this field should describe the entire vehicle with all carriages accepting passengers considered.
+       * This field is still experimental, and subject to change. It may be formally adopted in the future.
+       * </pre>
+       *
+       * <code>optional uint32 occupancy_percentage = 10;</code>
+       * @param value The occupancyPercentage to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOccupancyPercentage(int value) {
+        bitField0_ |= 0x00000200;
+        occupancyPercentage_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * A percentage value representing the degree of passenger occupancy of the vehicle.
+       * The values are represented as an integer without decimals. 0 means 0% and 100 means 100%.
+       * The value 100 should represent the total maximum occupancy the vehicle was designed for,
+       * including both seated and standing capacity, and current operating regulations allow.
+       * It is possible that the value goes over 100 if there are currently more passengers than what the vehicle was designed for.
+       * The precision of occupancy_percentage should be low enough that you can't track a single person boarding and alighting for privacy reasons.
+       * If multi_carriage_status is populated with per-carriage occupancy_percentage,
+       * then this field should describe the entire vehicle with all carriages accepting passengers considered.
+       * This field is still experimental, and subject to change. It may be formally adopted in the future.
+       * </pre>
+       *
+       * <code>optional uint32 occupancy_percentage = 10;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearOccupancyPercentage() {
+        bitField0_ = (bitField0_ & ~0x00000200);
+        occupancyPercentage_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.util.List<dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails> multiCarriageDetails_ =
+        java.util.Collections.emptyList();
+      private void ensureMultiCarriageDetailsIsMutable() {
+        if (!((bitField0_ & 0x00000400) != 0)) {
+          multiCarriageDetails_ = new java.util.ArrayList<dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails>(multiCarriageDetails_);
+          bitField0_ |= 0x00000400;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails, dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails.Builder, dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetailsOrBuilder> multiCarriageDetailsBuilder_;
+
+      /**
+       * <pre>
+       * Details of the multiple carriages of this given vehicle.
+       * The first occurrence represents the first carriage of the vehicle,
+       * given the current direction of travel.
+       * The number of occurrences of the multi_carriage_details
+       * field represents the number of carriages of the vehicle.
+       * It also includes non boardable carriages,
+       * like engines, maintenance carriages, etc… as they provide valuable
+       * information to passengers about where to stand on a platform.
+       * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+       * </pre>
+       *
+       * <code>repeated .transit_realtime.VehiclePosition.CarriageDetails multi_carriage_details = 11;</code>
+       */
+      public java.util.List<dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails> getMultiCarriageDetailsList() {
+        if (multiCarriageDetailsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(multiCarriageDetails_);
+        } else {
+          return multiCarriageDetailsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <pre>
+       * Details of the multiple carriages of this given vehicle.
+       * The first occurrence represents the first carriage of the vehicle,
+       * given the current direction of travel.
+       * The number of occurrences of the multi_carriage_details
+       * field represents the number of carriages of the vehicle.
+       * It also includes non boardable carriages,
+       * like engines, maintenance carriages, etc… as they provide valuable
+       * information to passengers about where to stand on a platform.
+       * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+       * </pre>
+       *
+       * <code>repeated .transit_realtime.VehiclePosition.CarriageDetails multi_carriage_details = 11;</code>
+       */
+      public int getMultiCarriageDetailsCount() {
+        if (multiCarriageDetailsBuilder_ == null) {
+          return multiCarriageDetails_.size();
+        } else {
+          return multiCarriageDetailsBuilder_.getCount();
+        }
+      }
+      /**
+       * <pre>
+       * Details of the multiple carriages of this given vehicle.
+       * The first occurrence represents the first carriage of the vehicle,
+       * given the current direction of travel.
+       * The number of occurrences of the multi_carriage_details
+       * field represents the number of carriages of the vehicle.
+       * It also includes non boardable carriages,
+       * like engines, maintenance carriages, etc… as they provide valuable
+       * information to passengers about where to stand on a platform.
+       * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+       * </pre>
+       *
+       * <code>repeated .transit_realtime.VehiclePosition.CarriageDetails multi_carriage_details = 11;</code>
+       */
+      public dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails getMultiCarriageDetails(int index) {
+        if (multiCarriageDetailsBuilder_ == null) {
+          return multiCarriageDetails_.get(index);
+        } else {
+          return multiCarriageDetailsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <pre>
+       * Details of the multiple carriages of this given vehicle.
+       * The first occurrence represents the first carriage of the vehicle,
+       * given the current direction of travel.
+       * The number of occurrences of the multi_carriage_details
+       * field represents the number of carriages of the vehicle.
+       * It also includes non boardable carriages,
+       * like engines, maintenance carriages, etc… as they provide valuable
+       * information to passengers about where to stand on a platform.
+       * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+       * </pre>
+       *
+       * <code>repeated .transit_realtime.VehiclePosition.CarriageDetails multi_carriage_details = 11;</code>
+       */
+      public Builder setMultiCarriageDetails(
+          int index, dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails value) {
+        if (multiCarriageDetailsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMultiCarriageDetailsIsMutable();
+          multiCarriageDetails_.set(index, value);
+          onChanged();
+        } else {
+          multiCarriageDetailsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Details of the multiple carriages of this given vehicle.
+       * The first occurrence represents the first carriage of the vehicle,
+       * given the current direction of travel.
+       * The number of occurrences of the multi_carriage_details
+       * field represents the number of carriages of the vehicle.
+       * It also includes non boardable carriages,
+       * like engines, maintenance carriages, etc… as they provide valuable
+       * information to passengers about where to stand on a platform.
+       * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+       * </pre>
+       *
+       * <code>repeated .transit_realtime.VehiclePosition.CarriageDetails multi_carriage_details = 11;</code>
+       */
+      public Builder setMultiCarriageDetails(
+          int index, dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails.Builder builderForValue) {
+        if (multiCarriageDetailsBuilder_ == null) {
+          ensureMultiCarriageDetailsIsMutable();
+          multiCarriageDetails_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          multiCarriageDetailsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Details of the multiple carriages of this given vehicle.
+       * The first occurrence represents the first carriage of the vehicle,
+       * given the current direction of travel.
+       * The number of occurrences of the multi_carriage_details
+       * field represents the number of carriages of the vehicle.
+       * It also includes non boardable carriages,
+       * like engines, maintenance carriages, etc… as they provide valuable
+       * information to passengers about where to stand on a platform.
+       * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+       * </pre>
+       *
+       * <code>repeated .transit_realtime.VehiclePosition.CarriageDetails multi_carriage_details = 11;</code>
+       */
+      public Builder addMultiCarriageDetails(dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails value) {
+        if (multiCarriageDetailsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMultiCarriageDetailsIsMutable();
+          multiCarriageDetails_.add(value);
+          onChanged();
+        } else {
+          multiCarriageDetailsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Details of the multiple carriages of this given vehicle.
+       * The first occurrence represents the first carriage of the vehicle,
+       * given the current direction of travel.
+       * The number of occurrences of the multi_carriage_details
+       * field represents the number of carriages of the vehicle.
+       * It also includes non boardable carriages,
+       * like engines, maintenance carriages, etc… as they provide valuable
+       * information to passengers about where to stand on a platform.
+       * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+       * </pre>
+       *
+       * <code>repeated .transit_realtime.VehiclePosition.CarriageDetails multi_carriage_details = 11;</code>
+       */
+      public Builder addMultiCarriageDetails(
+          int index, dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails value) {
+        if (multiCarriageDetailsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMultiCarriageDetailsIsMutable();
+          multiCarriageDetails_.add(index, value);
+          onChanged();
+        } else {
+          multiCarriageDetailsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Details of the multiple carriages of this given vehicle.
+       * The first occurrence represents the first carriage of the vehicle,
+       * given the current direction of travel.
+       * The number of occurrences of the multi_carriage_details
+       * field represents the number of carriages of the vehicle.
+       * It also includes non boardable carriages,
+       * like engines, maintenance carriages, etc… as they provide valuable
+       * information to passengers about where to stand on a platform.
+       * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+       * </pre>
+       *
+       * <code>repeated .transit_realtime.VehiclePosition.CarriageDetails multi_carriage_details = 11;</code>
+       */
+      public Builder addMultiCarriageDetails(
+          dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails.Builder builderForValue) {
+        if (multiCarriageDetailsBuilder_ == null) {
+          ensureMultiCarriageDetailsIsMutable();
+          multiCarriageDetails_.add(builderForValue.build());
+          onChanged();
+        } else {
+          multiCarriageDetailsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Details of the multiple carriages of this given vehicle.
+       * The first occurrence represents the first carriage of the vehicle,
+       * given the current direction of travel.
+       * The number of occurrences of the multi_carriage_details
+       * field represents the number of carriages of the vehicle.
+       * It also includes non boardable carriages,
+       * like engines, maintenance carriages, etc… as they provide valuable
+       * information to passengers about where to stand on a platform.
+       * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+       * </pre>
+       *
+       * <code>repeated .transit_realtime.VehiclePosition.CarriageDetails multi_carriage_details = 11;</code>
+       */
+      public Builder addMultiCarriageDetails(
+          int index, dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails.Builder builderForValue) {
+        if (multiCarriageDetailsBuilder_ == null) {
+          ensureMultiCarriageDetailsIsMutable();
+          multiCarriageDetails_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          multiCarriageDetailsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Details of the multiple carriages of this given vehicle.
+       * The first occurrence represents the first carriage of the vehicle,
+       * given the current direction of travel.
+       * The number of occurrences of the multi_carriage_details
+       * field represents the number of carriages of the vehicle.
+       * It also includes non boardable carriages,
+       * like engines, maintenance carriages, etc… as they provide valuable
+       * information to passengers about where to stand on a platform.
+       * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+       * </pre>
+       *
+       * <code>repeated .transit_realtime.VehiclePosition.CarriageDetails multi_carriage_details = 11;</code>
+       */
+      public Builder addAllMultiCarriageDetails(
+          java.lang.Iterable<? extends dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails> values) {
+        if (multiCarriageDetailsBuilder_ == null) {
+          ensureMultiCarriageDetailsIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, multiCarriageDetails_);
+          onChanged();
+        } else {
+          multiCarriageDetailsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Details of the multiple carriages of this given vehicle.
+       * The first occurrence represents the first carriage of the vehicle,
+       * given the current direction of travel.
+       * The number of occurrences of the multi_carriage_details
+       * field represents the number of carriages of the vehicle.
+       * It also includes non boardable carriages,
+       * like engines, maintenance carriages, etc… as they provide valuable
+       * information to passengers about where to stand on a platform.
+       * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+       * </pre>
+       *
+       * <code>repeated .transit_realtime.VehiclePosition.CarriageDetails multi_carriage_details = 11;</code>
+       */
+      public Builder clearMultiCarriageDetails() {
+        if (multiCarriageDetailsBuilder_ == null) {
+          multiCarriageDetails_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000400);
+          onChanged();
+        } else {
+          multiCarriageDetailsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Details of the multiple carriages of this given vehicle.
+       * The first occurrence represents the first carriage of the vehicle,
+       * given the current direction of travel.
+       * The number of occurrences of the multi_carriage_details
+       * field represents the number of carriages of the vehicle.
+       * It also includes non boardable carriages,
+       * like engines, maintenance carriages, etc… as they provide valuable
+       * information to passengers about where to stand on a platform.
+       * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+       * </pre>
+       *
+       * <code>repeated .transit_realtime.VehiclePosition.CarriageDetails multi_carriage_details = 11;</code>
+       */
+      public Builder removeMultiCarriageDetails(int index) {
+        if (multiCarriageDetailsBuilder_ == null) {
+          ensureMultiCarriageDetailsIsMutable();
+          multiCarriageDetails_.remove(index);
+          onChanged();
+        } else {
+          multiCarriageDetailsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Details of the multiple carriages of this given vehicle.
+       * The first occurrence represents the first carriage of the vehicle,
+       * given the current direction of travel.
+       * The number of occurrences of the multi_carriage_details
+       * field represents the number of carriages of the vehicle.
+       * It also includes non boardable carriages,
+       * like engines, maintenance carriages, etc… as they provide valuable
+       * information to passengers about where to stand on a platform.
+       * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+       * </pre>
+       *
+       * <code>repeated .transit_realtime.VehiclePosition.CarriageDetails multi_carriage_details = 11;</code>
+       */
+      public dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails.Builder getMultiCarriageDetailsBuilder(
+          int index) {
+        return getMultiCarriageDetailsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <pre>
+       * Details of the multiple carriages of this given vehicle.
+       * The first occurrence represents the first carriage of the vehicle,
+       * given the current direction of travel.
+       * The number of occurrences of the multi_carriage_details
+       * field represents the number of carriages of the vehicle.
+       * It also includes non boardable carriages,
+       * like engines, maintenance carriages, etc… as they provide valuable
+       * information to passengers about where to stand on a platform.
+       * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+       * </pre>
+       *
+       * <code>repeated .transit_realtime.VehiclePosition.CarriageDetails multi_carriage_details = 11;</code>
+       */
+      public dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetailsOrBuilder getMultiCarriageDetailsOrBuilder(
+          int index) {
+        if (multiCarriageDetailsBuilder_ == null) {
+          return multiCarriageDetails_.get(index);  } else {
+          return multiCarriageDetailsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <pre>
+       * Details of the multiple carriages of this given vehicle.
+       * The first occurrence represents the first carriage of the vehicle,
+       * given the current direction of travel.
+       * The number of occurrences of the multi_carriage_details
+       * field represents the number of carriages of the vehicle.
+       * It also includes non boardable carriages,
+       * like engines, maintenance carriages, etc… as they provide valuable
+       * information to passengers about where to stand on a platform.
+       * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+       * </pre>
+       *
+       * <code>repeated .transit_realtime.VehiclePosition.CarriageDetails multi_carriage_details = 11;</code>
+       */
+      public java.util.List<? extends dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetailsOrBuilder>
+           getMultiCarriageDetailsOrBuilderList() {
+        if (multiCarriageDetailsBuilder_ != null) {
+          return multiCarriageDetailsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(multiCarriageDetails_);
+        }
+      }
+      /**
+       * <pre>
+       * Details of the multiple carriages of this given vehicle.
+       * The first occurrence represents the first carriage of the vehicle,
+       * given the current direction of travel.
+       * The number of occurrences of the multi_carriage_details
+       * field represents the number of carriages of the vehicle.
+       * It also includes non boardable carriages,
+       * like engines, maintenance carriages, etc… as they provide valuable
+       * information to passengers about where to stand on a platform.
+       * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+       * </pre>
+       *
+       * <code>repeated .transit_realtime.VehiclePosition.CarriageDetails multi_carriage_details = 11;</code>
+       */
+      public dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails.Builder addMultiCarriageDetailsBuilder() {
+        return getMultiCarriageDetailsFieldBuilder().addBuilder(
+            dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails.getDefaultInstance());
+      }
+      /**
+       * <pre>
+       * Details of the multiple carriages of this given vehicle.
+       * The first occurrence represents the first carriage of the vehicle,
+       * given the current direction of travel.
+       * The number of occurrences of the multi_carriage_details
+       * field represents the number of carriages of the vehicle.
+       * It also includes non boardable carriages,
+       * like engines, maintenance carriages, etc… as they provide valuable
+       * information to passengers about where to stand on a platform.
+       * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+       * </pre>
+       *
+       * <code>repeated .transit_realtime.VehiclePosition.CarriageDetails multi_carriage_details = 11;</code>
+       */
+      public dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails.Builder addMultiCarriageDetailsBuilder(
+          int index) {
+        return getMultiCarriageDetailsFieldBuilder().addBuilder(
+            index, dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails.getDefaultInstance());
+      }
+      /**
+       * <pre>
+       * Details of the multiple carriages of this given vehicle.
+       * The first occurrence represents the first carriage of the vehicle,
+       * given the current direction of travel.
+       * The number of occurrences of the multi_carriage_details
+       * field represents the number of carriages of the vehicle.
+       * It also includes non boardable carriages,
+       * like engines, maintenance carriages, etc… as they provide valuable
+       * information to passengers about where to stand on a platform.
+       * This message/field is still experimental, and subject to change. It may be formally adopted in the future.
+       * </pre>
+       *
+       * <code>repeated .transit_realtime.VehiclePosition.CarriageDetails multi_carriage_details = 11;</code>
+       */
+      public java.util.List<dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails.Builder>
+           getMultiCarriageDetailsBuilderList() {
+        return getMultiCarriageDetailsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails, dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails.Builder, dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetailsOrBuilder>
+          getMultiCarriageDetailsFieldBuilder() {
+        if (multiCarriageDetailsBuilder_ == null) {
+          multiCarriageDetailsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails, dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails.Builder, dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetailsOrBuilder>(
+                  multiCarriageDetails_,
+                  ((bitField0_ & 0x00000400) != 0),
+                  getParentForChildren(),
+                  isClean());
+          multiCarriageDetails_ = null;
+        }
+        return multiCarriageDetailsBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -9855,6 +13346,71 @@ abstract class GTFSRealtimeProto {
      * <code>optional .transit_realtime.TranslatedString description_text = 11;</code>
      */
     dev.katsute.onemta.GTFSRealtimeProto.TranslatedStringOrBuilder getDescriptionTextOrBuilder();
+
+    /**
+     * <pre>
+     * Text for alert header to be used in text-to-speech implementations. This field is the text-to-speech version of header_text.
+     * </pre>
+     *
+     * <code>optional .transit_realtime.TranslatedString tts_header_text = 12;</code>
+     * @return Whether the ttsHeaderText field is set.
+     */
+    boolean hasTtsHeaderText();
+    /**
+     * <pre>
+     * Text for alert header to be used in text-to-speech implementations. This field is the text-to-speech version of header_text.
+     * </pre>
+     *
+     * <code>optional .transit_realtime.TranslatedString tts_header_text = 12;</code>
+     * @return The ttsHeaderText.
+     */
+    dev.katsute.onemta.GTFSRealtimeProto.TranslatedString getTtsHeaderText();
+    /**
+     * <pre>
+     * Text for alert header to be used in text-to-speech implementations. This field is the text-to-speech version of header_text.
+     * </pre>
+     *
+     * <code>optional .transit_realtime.TranslatedString tts_header_text = 12;</code>
+     */
+    dev.katsute.onemta.GTFSRealtimeProto.TranslatedStringOrBuilder getTtsHeaderTextOrBuilder();
+
+    /**
+     * <pre>
+     * Text for full description for the alert to be used in text-to-speech implementations. This field is the text-to-speech version of description_text.
+     * </pre>
+     *
+     * <code>optional .transit_realtime.TranslatedString tts_description_text = 13;</code>
+     * @return Whether the ttsDescriptionText field is set.
+     */
+    boolean hasTtsDescriptionText();
+    /**
+     * <pre>
+     * Text for full description for the alert to be used in text-to-speech implementations. This field is the text-to-speech version of description_text.
+     * </pre>
+     *
+     * <code>optional .transit_realtime.TranslatedString tts_description_text = 13;</code>
+     * @return The ttsDescriptionText.
+     */
+    dev.katsute.onemta.GTFSRealtimeProto.TranslatedString getTtsDescriptionText();
+    /**
+     * <pre>
+     * Text for full description for the alert to be used in text-to-speech implementations. This field is the text-to-speech version of description_text.
+     * </pre>
+     *
+     * <code>optional .transit_realtime.TranslatedString tts_description_text = 13;</code>
+     */
+    dev.katsute.onemta.GTFSRealtimeProto.TranslatedStringOrBuilder getTtsDescriptionTextOrBuilder();
+
+    /**
+     * <code>optional .transit_realtime.Alert.SeverityLevel severity_level = 14 [default = UNKNOWN_SEVERITY];</code>
+     * @return Whether the severityLevel field is set.
+     */
+    boolean hasSeverityLevel();
+    /**
+     * <code>optional .transit_realtime.Alert.SeverityLevel severity_level = 14 [default = UNKNOWN_SEVERITY];</code>
+     * @return The severityLevel.
+     */
+    dev.katsute.onemta.GTFSRealtimeProto.Alert.SeverityLevel getSeverityLevel();
   }
   /**
    * <pre>
@@ -9878,6 +13434,7 @@ abstract class GTFSRealtimeProto {
       informedEntity_ = java.util.Collections.emptyList();
       cause_ = 1;
       effect_ = 8;
+      severityLevel_ = 1;
     }
 
     @java.lang.Override
@@ -10170,6 +13727,14 @@ abstract class GTFSRealtimeProto {
        * <code>STOP_MOVED = 9;</code>
        */
       STOP_MOVED(9),
+      /**
+       * <code>NO_EFFECT = 10;</code>
+       */
+      NO_EFFECT(10),
+      /**
+       * <code>ACCESSIBILITY_ISSUE = 11;</code>
+       */
+      ACCESSIBILITY_ISSUE(11),
       ;
 
       /**
@@ -10214,6 +13779,14 @@ abstract class GTFSRealtimeProto {
        * <code>STOP_MOVED = 9;</code>
        */
       public static final int STOP_MOVED_VALUE = 9;
+      /**
+       * <code>NO_EFFECT = 10;</code>
+       */
+      public static final int NO_EFFECT_VALUE = 10;
+      /**
+       * <code>ACCESSIBILITY_ISSUE = 11;</code>
+       */
+      public static final int ACCESSIBILITY_ISSUE_VALUE = 11;
 
 
       public final int getNumber() {
@@ -10245,6 +13818,8 @@ abstract class GTFSRealtimeProto {
           case 7: return OTHER_EFFECT;
           case 8: return UNKNOWN_EFFECT;
           case 9: return STOP_MOVED;
+          case 10: return NO_EFFECT;
+          case 11: return ACCESSIBILITY_ISSUE;
           default: return null;
         }
       }
@@ -10292,6 +13867,124 @@ abstract class GTFSRealtimeProto {
       }
 
       // @@protoc_insertion_point(enum_scope:transit_realtime.Alert.Effect)
+    }
+
+    /**
+     * <pre>
+     * Severity of this alert.
+     * </pre>
+     *
+     * Protobuf enum {@code transit_realtime.Alert.SeverityLevel}
+     */
+    public enum SeverityLevel
+        implements com.google.protobuf.ProtocolMessageEnum {
+      /**
+       * <code>UNKNOWN_SEVERITY = 1;</code>
+       */
+      UNKNOWN_SEVERITY(1),
+      /**
+       * <code>INFO = 2;</code>
+       */
+      INFO(2),
+      /**
+       * <code>WARNING = 3;</code>
+       */
+      WARNING(3),
+      /**
+       * <code>SEVERE = 4;</code>
+       */
+      SEVERE(4),
+      ;
+
+      /**
+       * <code>UNKNOWN_SEVERITY = 1;</code>
+       */
+      public static final int UNKNOWN_SEVERITY_VALUE = 1;
+      /**
+       * <code>INFO = 2;</code>
+       */
+      public static final int INFO_VALUE = 2;
+      /**
+       * <code>WARNING = 3;</code>
+       */
+      public static final int WARNING_VALUE = 3;
+      /**
+       * <code>SEVERE = 4;</code>
+       */
+      public static final int SEVERE_VALUE = 4;
+
+
+      public final int getNumber() {
+        return value;
+      }
+
+      /**
+       * @param value The numeric wire value of the corresponding enum entry.
+       * @return The enum associated with the given numeric wire value.
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static SeverityLevel valueOf(int value) {
+        return forNumber(value);
+      }
+
+      /**
+       * @param value The numeric wire value of the corresponding enum entry.
+       * @return The enum associated with the given numeric wire value.
+       */
+      public static SeverityLevel forNumber(int value) {
+        switch (value) {
+          case 1: return UNKNOWN_SEVERITY;
+          case 2: return INFO;
+          case 3: return WARNING;
+          case 4: return SEVERE;
+          default: return null;
+        }
+      }
+
+      public static com.google.protobuf.Internal.EnumLiteMap<SeverityLevel>
+          internalGetValueMap() {
+        return internalValueMap;
+      }
+      private static final com.google.protobuf.Internal.EnumLiteMap<
+          SeverityLevel> internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<SeverityLevel>() {
+              public SeverityLevel findValueByNumber(int number) {
+                return SeverityLevel.forNumber(number);
+              }
+            };
+
+      public final com.google.protobuf.Descriptors.EnumValueDescriptor
+          getValueDescriptor() {
+        return getDescriptor().getValues().get(ordinal());
+      }
+      public final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptorForType() {
+        return getDescriptor();
+      }
+      public static final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptor() {
+        return dev.katsute.onemta.GTFSRealtimeProto.Alert.getDescriptor().getEnumTypes().get(2);
+      }
+
+      private static final SeverityLevel[] VALUES = values();
+
+      public static SeverityLevel valueOf(
+          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+        if (desc.getType() != getDescriptor()) {
+          throw new java.lang.IllegalArgumentException(
+            "EnumValueDescriptor is not for this type.");
+        }
+        return VALUES[desc.getIndex()];
+      }
+
+      private final int value;
+
+      private SeverityLevel(int value) {
+        this.value = value;
+      }
+
+      // @@protoc_insertion_point(enum_scope:transit_realtime.Alert.SeverityLevel)
     }
 
     private int bitField0_;
@@ -10580,6 +14273,101 @@ abstract class GTFSRealtimeProto {
       return descriptionText_ == null ? dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.getDefaultInstance() : descriptionText_;
     }
 
+    public static final int TTS_HEADER_TEXT_FIELD_NUMBER = 12;
+    private dev.katsute.onemta.GTFSRealtimeProto.TranslatedString ttsHeaderText_;
+    /**
+     * <pre>
+     * Text for alert header to be used in text-to-speech implementations. This field is the text-to-speech version of header_text.
+     * </pre>
+     *
+     * <code>optional .transit_realtime.TranslatedString tts_header_text = 12;</code>
+     * @return Whether the ttsHeaderText field is set.
+     */
+    @java.lang.Override
+    public boolean hasTtsHeaderText() {
+      return ((bitField0_ & 0x00000020) != 0);
+    }
+    /**
+     * <pre>
+     * Text for alert header to be used in text-to-speech implementations. This field is the text-to-speech version of header_text.
+     * </pre>
+     *
+     * <code>optional .transit_realtime.TranslatedString tts_header_text = 12;</code>
+     * @return The ttsHeaderText.
+     */
+    @java.lang.Override
+    public dev.katsute.onemta.GTFSRealtimeProto.TranslatedString getTtsHeaderText() {
+      return ttsHeaderText_ == null ? dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.getDefaultInstance() : ttsHeaderText_;
+    }
+    /**
+     * <pre>
+     * Text for alert header to be used in text-to-speech implementations. This field is the text-to-speech version of header_text.
+     * </pre>
+     *
+     * <code>optional .transit_realtime.TranslatedString tts_header_text = 12;</code>
+     */
+    @java.lang.Override
+    public dev.katsute.onemta.GTFSRealtimeProto.TranslatedStringOrBuilder getTtsHeaderTextOrBuilder() {
+      return ttsHeaderText_ == null ? dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.getDefaultInstance() : ttsHeaderText_;
+    }
+
+    public static final int TTS_DESCRIPTION_TEXT_FIELD_NUMBER = 13;
+    private dev.katsute.onemta.GTFSRealtimeProto.TranslatedString ttsDescriptionText_;
+    /**
+     * <pre>
+     * Text for full description for the alert to be used in text-to-speech implementations. This field is the text-to-speech version of description_text.
+     * </pre>
+     *
+     * <code>optional .transit_realtime.TranslatedString tts_description_text = 13;</code>
+     * @return Whether the ttsDescriptionText field is set.
+     */
+    @java.lang.Override
+    public boolean hasTtsDescriptionText() {
+      return ((bitField0_ & 0x00000040) != 0);
+    }
+    /**
+     * <pre>
+     * Text for full description for the alert to be used in text-to-speech implementations. This field is the text-to-speech version of description_text.
+     * </pre>
+     *
+     * <code>optional .transit_realtime.TranslatedString tts_description_text = 13;</code>
+     * @return The ttsDescriptionText.
+     */
+    @java.lang.Override
+    public dev.katsute.onemta.GTFSRealtimeProto.TranslatedString getTtsDescriptionText() {
+      return ttsDescriptionText_ == null ? dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.getDefaultInstance() : ttsDescriptionText_;
+    }
+    /**
+     * <pre>
+     * Text for full description for the alert to be used in text-to-speech implementations. This field is the text-to-speech version of description_text.
+     * </pre>
+     *
+     * <code>optional .transit_realtime.TranslatedString tts_description_text = 13;</code>
+     */
+    @java.lang.Override
+    public dev.katsute.onemta.GTFSRealtimeProto.TranslatedStringOrBuilder getTtsDescriptionTextOrBuilder() {
+      return ttsDescriptionText_ == null ? dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.getDefaultInstance() : ttsDescriptionText_;
+    }
+
+    public static final int SEVERITY_LEVEL_FIELD_NUMBER = 14;
+    private int severityLevel_;
+    /**
+     * <code>optional .transit_realtime.Alert.SeverityLevel severity_level = 14 [default = UNKNOWN_SEVERITY];</code>
+     * @return Whether the severityLevel field is set.
+     */
+    @java.lang.Override public boolean hasSeverityLevel() {
+      return ((bitField0_ & 0x00000080) != 0);
+    }
+    /**
+     * <code>optional .transit_realtime.Alert.SeverityLevel severity_level = 14 [default = UNKNOWN_SEVERITY];</code>
+     * @return The severityLevel.
+     */
+    @java.lang.Override public dev.katsute.onemta.GTFSRealtimeProto.Alert.SeverityLevel getSeverityLevel() {
+      @SuppressWarnings("deprecation")
+      dev.katsute.onemta.GTFSRealtimeProto.Alert.SeverityLevel result = dev.katsute.onemta.GTFSRealtimeProto.Alert.SeverityLevel.valueOf(severityLevel_);
+      return result == null ? dev.katsute.onemta.GTFSRealtimeProto.Alert.SeverityLevel.UNKNOWN_SEVERITY : result;
+    }
+
     public static dev.katsute.onemta.GTFSRealtimeProto.Alert parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -10713,6 +14501,8 @@ abstract class GTFSRealtimeProto {
           getUrlFieldBuilder();
           getHeaderTextFieldBuilder();
           getDescriptionTextFieldBuilder();
+          getTtsHeaderTextFieldBuilder();
+          getTtsDescriptionTextFieldBuilder();
         }
       }
       @java.lang.Override
@@ -10752,6 +14542,20 @@ abstract class GTFSRealtimeProto {
           descriptionTextBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000040);
+        if (ttsHeaderTextBuilder_ == null) {
+          ttsHeaderText_ = null;
+        } else {
+          ttsHeaderTextBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000080);
+        if (ttsDescriptionTextBuilder_ == null) {
+          ttsDescriptionText_ = null;
+        } else {
+          ttsDescriptionTextBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000100);
+        severityLevel_ = 1;
+        bitField0_ = (bitField0_ & ~0x00000200);
         return this;
       }
 
@@ -10830,6 +14634,26 @@ abstract class GTFSRealtimeProto {
           }
           to_bitField0_ |= 0x00000010;
         }
+        if (((from_bitField0_ & 0x00000080) != 0)) {
+          if (ttsHeaderTextBuilder_ == null) {
+            result.ttsHeaderText_ = ttsHeaderText_;
+          } else {
+            result.ttsHeaderText_ = ttsHeaderTextBuilder_.build();
+          }
+          to_bitField0_ |= 0x00000020;
+        }
+        if (((from_bitField0_ & 0x00000100) != 0)) {
+          if (ttsDescriptionTextBuilder_ == null) {
+            result.ttsDescriptionText_ = ttsDescriptionText_;
+          } else {
+            result.ttsDescriptionText_ = ttsDescriptionTextBuilder_.build();
+          }
+          to_bitField0_ |= 0x00000040;
+        }
+        if (((from_bitField0_ & 0x00000200) != 0)) {
+          to_bitField0_ |= 0x00000080;
+        }
+        result.severityLevel_ = severityLevel_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -12117,6 +15941,361 @@ abstract class GTFSRealtimeProto {
           descriptionText_ = null;
         }
         return descriptionTextBuilder_;
+      }
+
+      private dev.katsute.onemta.GTFSRealtimeProto.TranslatedString ttsHeaderText_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          dev.katsute.onemta.GTFSRealtimeProto.TranslatedString, dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Builder, dev.katsute.onemta.GTFSRealtimeProto.TranslatedStringOrBuilder> ttsHeaderTextBuilder_;
+      /**
+       * <pre>
+       * Text for alert header to be used in text-to-speech implementations. This field is the text-to-speech version of header_text.
+       * </pre>
+       *
+       * <code>optional .transit_realtime.TranslatedString tts_header_text = 12;</code>
+       * @return Whether the ttsHeaderText field is set.
+       */
+      public boolean hasTtsHeaderText() {
+        return ((bitField0_ & 0x00000080) != 0);
+      }
+      /**
+       * <pre>
+       * Text for alert header to be used in text-to-speech implementations. This field is the text-to-speech version of header_text.
+       * </pre>
+       *
+       * <code>optional .transit_realtime.TranslatedString tts_header_text = 12;</code>
+       * @return The ttsHeaderText.
+       */
+      public dev.katsute.onemta.GTFSRealtimeProto.TranslatedString getTtsHeaderText() {
+        if (ttsHeaderTextBuilder_ == null) {
+          return ttsHeaderText_ == null ? dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.getDefaultInstance() : ttsHeaderText_;
+        } else {
+          return ttsHeaderTextBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * Text for alert header to be used in text-to-speech implementations. This field is the text-to-speech version of header_text.
+       * </pre>
+       *
+       * <code>optional .transit_realtime.TranslatedString tts_header_text = 12;</code>
+       */
+      public Builder setTtsHeaderText(dev.katsute.onemta.GTFSRealtimeProto.TranslatedString value) {
+        if (ttsHeaderTextBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ttsHeaderText_ = value;
+          onChanged();
+        } else {
+          ttsHeaderTextBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000080;
+        return this;
+      }
+      /**
+       * <pre>
+       * Text for alert header to be used in text-to-speech implementations. This field is the text-to-speech version of header_text.
+       * </pre>
+       *
+       * <code>optional .transit_realtime.TranslatedString tts_header_text = 12;</code>
+       */
+      public Builder setTtsHeaderText(
+          dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Builder builderForValue) {
+        if (ttsHeaderTextBuilder_ == null) {
+          ttsHeaderText_ = builderForValue.build();
+          onChanged();
+        } else {
+          ttsHeaderTextBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000080;
+        return this;
+      }
+      /**
+       * <pre>
+       * Text for alert header to be used in text-to-speech implementations. This field is the text-to-speech version of header_text.
+       * </pre>
+       *
+       * <code>optional .transit_realtime.TranslatedString tts_header_text = 12;</code>
+       */
+      public Builder mergeTtsHeaderText(dev.katsute.onemta.GTFSRealtimeProto.TranslatedString value) {
+        if (ttsHeaderTextBuilder_ == null) {
+          if (((bitField0_ & 0x00000080) != 0) &&
+              ttsHeaderText_ != null &&
+              ttsHeaderText_ != dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.getDefaultInstance()) {
+            ttsHeaderText_ =
+              dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.newBuilder(ttsHeaderText_).mergeFrom(value).buildPartial();
+          } else {
+            ttsHeaderText_ = value;
+          }
+          onChanged();
+        } else {
+          ttsHeaderTextBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000080;
+        return this;
+      }
+      /**
+       * <pre>
+       * Text for alert header to be used in text-to-speech implementations. This field is the text-to-speech version of header_text.
+       * </pre>
+       *
+       * <code>optional .transit_realtime.TranslatedString tts_header_text = 12;</code>
+       */
+      public Builder clearTtsHeaderText() {
+        if (ttsHeaderTextBuilder_ == null) {
+          ttsHeaderText_ = null;
+          onChanged();
+        } else {
+          ttsHeaderTextBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000080);
+        return this;
+      }
+      /**
+       * <pre>
+       * Text for alert header to be used in text-to-speech implementations. This field is the text-to-speech version of header_text.
+       * </pre>
+       *
+       * <code>optional .transit_realtime.TranslatedString tts_header_text = 12;</code>
+       */
+      public dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Builder getTtsHeaderTextBuilder() {
+        bitField0_ |= 0x00000080;
+        onChanged();
+        return getTtsHeaderTextFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * Text for alert header to be used in text-to-speech implementations. This field is the text-to-speech version of header_text.
+       * </pre>
+       *
+       * <code>optional .transit_realtime.TranslatedString tts_header_text = 12;</code>
+       */
+      public dev.katsute.onemta.GTFSRealtimeProto.TranslatedStringOrBuilder getTtsHeaderTextOrBuilder() {
+        if (ttsHeaderTextBuilder_ != null) {
+          return ttsHeaderTextBuilder_.getMessageOrBuilder();
+        } else {
+          return ttsHeaderText_ == null ?
+              dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.getDefaultInstance() : ttsHeaderText_;
+        }
+      }
+      /**
+       * <pre>
+       * Text for alert header to be used in text-to-speech implementations. This field is the text-to-speech version of header_text.
+       * </pre>
+       *
+       * <code>optional .transit_realtime.TranslatedString tts_header_text = 12;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          dev.katsute.onemta.GTFSRealtimeProto.TranslatedString, dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Builder, dev.katsute.onemta.GTFSRealtimeProto.TranslatedStringOrBuilder>
+          getTtsHeaderTextFieldBuilder() {
+        if (ttsHeaderTextBuilder_ == null) {
+          ttsHeaderTextBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              dev.katsute.onemta.GTFSRealtimeProto.TranslatedString, dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Builder, dev.katsute.onemta.GTFSRealtimeProto.TranslatedStringOrBuilder>(
+                  getTtsHeaderText(),
+                  getParentForChildren(),
+                  isClean());
+          ttsHeaderText_ = null;
+        }
+        return ttsHeaderTextBuilder_;
+      }
+
+      private dev.katsute.onemta.GTFSRealtimeProto.TranslatedString ttsDescriptionText_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          dev.katsute.onemta.GTFSRealtimeProto.TranslatedString, dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Builder, dev.katsute.onemta.GTFSRealtimeProto.TranslatedStringOrBuilder> ttsDescriptionTextBuilder_;
+      /**
+       * <pre>
+       * Text for full description for the alert to be used in text-to-speech implementations. This field is the text-to-speech version of description_text.
+       * </pre>
+       *
+       * <code>optional .transit_realtime.TranslatedString tts_description_text = 13;</code>
+       * @return Whether the ttsDescriptionText field is set.
+       */
+      public boolean hasTtsDescriptionText() {
+        return ((bitField0_ & 0x00000100) != 0);
+      }
+      /**
+       * <pre>
+       * Text for full description for the alert to be used in text-to-speech implementations. This field is the text-to-speech version of description_text.
+       * </pre>
+       *
+       * <code>optional .transit_realtime.TranslatedString tts_description_text = 13;</code>
+       * @return The ttsDescriptionText.
+       */
+      public dev.katsute.onemta.GTFSRealtimeProto.TranslatedString getTtsDescriptionText() {
+        if (ttsDescriptionTextBuilder_ == null) {
+          return ttsDescriptionText_ == null ? dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.getDefaultInstance() : ttsDescriptionText_;
+        } else {
+          return ttsDescriptionTextBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * Text for full description for the alert to be used in text-to-speech implementations. This field is the text-to-speech version of description_text.
+       * </pre>
+       *
+       * <code>optional .transit_realtime.TranslatedString tts_description_text = 13;</code>
+       */
+      public Builder setTtsDescriptionText(dev.katsute.onemta.GTFSRealtimeProto.TranslatedString value) {
+        if (ttsDescriptionTextBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ttsDescriptionText_ = value;
+          onChanged();
+        } else {
+          ttsDescriptionTextBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000100;
+        return this;
+      }
+      /**
+       * <pre>
+       * Text for full description for the alert to be used in text-to-speech implementations. This field is the text-to-speech version of description_text.
+       * </pre>
+       *
+       * <code>optional .transit_realtime.TranslatedString tts_description_text = 13;</code>
+       */
+      public Builder setTtsDescriptionText(
+          dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Builder builderForValue) {
+        if (ttsDescriptionTextBuilder_ == null) {
+          ttsDescriptionText_ = builderForValue.build();
+          onChanged();
+        } else {
+          ttsDescriptionTextBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000100;
+        return this;
+      }
+      /**
+       * <pre>
+       * Text for full description for the alert to be used in text-to-speech implementations. This field is the text-to-speech version of description_text.
+       * </pre>
+       *
+       * <code>optional .transit_realtime.TranslatedString tts_description_text = 13;</code>
+       */
+      public Builder mergeTtsDescriptionText(dev.katsute.onemta.GTFSRealtimeProto.TranslatedString value) {
+        if (ttsDescriptionTextBuilder_ == null) {
+          if (((bitField0_ & 0x00000100) != 0) &&
+              ttsDescriptionText_ != null &&
+              ttsDescriptionText_ != dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.getDefaultInstance()) {
+            ttsDescriptionText_ =
+              dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.newBuilder(ttsDescriptionText_).mergeFrom(value).buildPartial();
+          } else {
+            ttsDescriptionText_ = value;
+          }
+          onChanged();
+        } else {
+          ttsDescriptionTextBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000100;
+        return this;
+      }
+      /**
+       * <pre>
+       * Text for full description for the alert to be used in text-to-speech implementations. This field is the text-to-speech version of description_text.
+       * </pre>
+       *
+       * <code>optional .transit_realtime.TranslatedString tts_description_text = 13;</code>
+       */
+      public Builder clearTtsDescriptionText() {
+        if (ttsDescriptionTextBuilder_ == null) {
+          ttsDescriptionText_ = null;
+          onChanged();
+        } else {
+          ttsDescriptionTextBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000100);
+        return this;
+      }
+      /**
+       * <pre>
+       * Text for full description for the alert to be used in text-to-speech implementations. This field is the text-to-speech version of description_text.
+       * </pre>
+       *
+       * <code>optional .transit_realtime.TranslatedString tts_description_text = 13;</code>
+       */
+      public dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Builder getTtsDescriptionTextBuilder() {
+        bitField0_ |= 0x00000100;
+        onChanged();
+        return getTtsDescriptionTextFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * Text for full description for the alert to be used in text-to-speech implementations. This field is the text-to-speech version of description_text.
+       * </pre>
+       *
+       * <code>optional .transit_realtime.TranslatedString tts_description_text = 13;</code>
+       */
+      public dev.katsute.onemta.GTFSRealtimeProto.TranslatedStringOrBuilder getTtsDescriptionTextOrBuilder() {
+        if (ttsDescriptionTextBuilder_ != null) {
+          return ttsDescriptionTextBuilder_.getMessageOrBuilder();
+        } else {
+          return ttsDescriptionText_ == null ?
+              dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.getDefaultInstance() : ttsDescriptionText_;
+        }
+      }
+      /**
+       * <pre>
+       * Text for full description for the alert to be used in text-to-speech implementations. This field is the text-to-speech version of description_text.
+       * </pre>
+       *
+       * <code>optional .transit_realtime.TranslatedString tts_description_text = 13;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          dev.katsute.onemta.GTFSRealtimeProto.TranslatedString, dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Builder, dev.katsute.onemta.GTFSRealtimeProto.TranslatedStringOrBuilder>
+          getTtsDescriptionTextFieldBuilder() {
+        if (ttsDescriptionTextBuilder_ == null) {
+          ttsDescriptionTextBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              dev.katsute.onemta.GTFSRealtimeProto.TranslatedString, dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Builder, dev.katsute.onemta.GTFSRealtimeProto.TranslatedStringOrBuilder>(
+                  getTtsDescriptionText(),
+                  getParentForChildren(),
+                  isClean());
+          ttsDescriptionText_ = null;
+        }
+        return ttsDescriptionTextBuilder_;
+      }
+
+      private int severityLevel_ = 1;
+      /**
+       * <code>optional .transit_realtime.Alert.SeverityLevel severity_level = 14 [default = UNKNOWN_SEVERITY];</code>
+       * @return Whether the severityLevel field is set.
+       */
+      @java.lang.Override public boolean hasSeverityLevel() {
+        return ((bitField0_ & 0x00000200) != 0);
+      }
+      /**
+       * <code>optional .transit_realtime.Alert.SeverityLevel severity_level = 14 [default = UNKNOWN_SEVERITY];</code>
+       * @return The severityLevel.
+       */
+      @java.lang.Override
+      public dev.katsute.onemta.GTFSRealtimeProto.Alert.SeverityLevel getSeverityLevel() {
+        @SuppressWarnings("deprecation")
+        dev.katsute.onemta.GTFSRealtimeProto.Alert.SeverityLevel result = dev.katsute.onemta.GTFSRealtimeProto.Alert.SeverityLevel.valueOf(severityLevel_);
+        return result == null ? dev.katsute.onemta.GTFSRealtimeProto.Alert.SeverityLevel.UNKNOWN_SEVERITY : result;
+      }
+      /**
+       * <code>optional .transit_realtime.Alert.SeverityLevel severity_level = 14 [default = UNKNOWN_SEVERITY];</code>
+       * @param value The severityLevel to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSeverityLevel(dev.katsute.onemta.GTFSRealtimeProto.Alert.SeverityLevel value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000200;
+        severityLevel_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional .transit_realtime.Alert.SeverityLevel severity_level = 14 [default = UNKNOWN_SEVERITY];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSeverityLevel() {
+        bitField0_ = (bitField0_ & ~0x00000200);
+        severityLevel_ = 1;
+        onChanged();
+        return this;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -13686,7 +17865,9 @@ abstract class GTFSRealtimeProto {
      * The trip_id from the GTFS feed that this selector refers to.
      * For non frequency-based trips, this field is enough to uniquely identify
      * the trip. For frequency-based trip, start_time and start_date might also be
-     * necessary.
+     * necessary. When schedule_relationship is DUPLICATED within a TripUpdate, the trip_id identifies the trip from
+     * static GTFS to be duplicated. When schedule_relationship is DUPLICATED within a VehiclePosition, the trip_id
+     * identifies the new duplicate trip and must contain the value for the corresponding TripUpdate.TripProperties.trip_id.
      * </pre>
      *
      * <code>optional string trip_id = 1;</code>
@@ -13698,7 +17879,9 @@ abstract class GTFSRealtimeProto {
      * The trip_id from the GTFS feed that this selector refers to.
      * For non frequency-based trips, this field is enough to uniquely identify
      * the trip. For frequency-based trip, start_time and start_date might also be
-     * necessary.
+     * necessary. When schedule_relationship is DUPLICATED within a TripUpdate, the trip_id identifies the trip from
+     * static GTFS to be duplicated. When schedule_relationship is DUPLICATED within a VehiclePosition, the trip_id
+     * identifies the new duplicate trip and must contain the value for the corresponding TripUpdate.TripProperties.trip_id.
      * </pre>
      *
      * <code>optional string trip_id = 1;</code>
@@ -13710,7 +17893,9 @@ abstract class GTFSRealtimeProto {
      * The trip_id from the GTFS feed that this selector refers to.
      * For non frequency-based trips, this field is enough to uniquely identify
      * the trip. For frequency-based trip, start_time and start_date might also be
-     * necessary.
+     * necessary. When schedule_relationship is DUPLICATED within a TripUpdate, the trip_id identifies the trip from
+     * static GTFS to be duplicated. When schedule_relationship is DUPLICATED within a VehiclePosition, the trip_id
+     * identifies the new duplicate trip and must contain the value for the corresponding TripUpdate.TripProperties.trip_id.
      * </pre>
      *
      * <code>optional string trip_id = 1;</code>
@@ -13751,9 +17936,7 @@ abstract class GTFSRealtimeProto {
     /**
      * <pre>
      * The direction_id from the GTFS feed trips.txt file, indicating the
-     * direction of travel for trips this selector refers to. This field is
-     * still experimental, and subject to change. It may be formally adopted in
-     * the future.
+     * direction of travel for trips this selector refers to.
      * </pre>
      *
      * <code>optional uint32 direction_id = 6;</code>
@@ -13763,9 +17946,7 @@ abstract class GTFSRealtimeProto {
     /**
      * <pre>
      * The direction_id from the GTFS feed trips.txt file, indicating the
-     * direction of travel for trips this selector refers to. This field is
-     * still experimental, and subject to change. It may be formally adopted in
-     * the future.
+     * direction of travel for trips this selector refers to.
      * </pre>
      *
      * <code>optional uint32 direction_id = 6;</code>
@@ -13778,7 +17959,7 @@ abstract class GTFSRealtimeProto {
      * The initially scheduled start time of this trip instance.
      * When the trip_id corresponds to a non-frequency-based trip, this field
      * should either be omitted or be equal to the value in the GTFS feed. When
-     * the trip_id corresponds to a frequency-based trip, the start_time must be
+     * the trip_id correponds to a frequency-based trip, the start_time must be
      * specified for trip updates and vehicle positions. If the trip corresponds
      * to exact_times=1 GTFS record, then start_time must be some multiple
      * (including zero) of headway_secs later than frequencies.txt start_time for
@@ -13801,7 +17982,7 @@ abstract class GTFSRealtimeProto {
      * The initially scheduled start time of this trip instance.
      * When the trip_id corresponds to a non-frequency-based trip, this field
      * should either be omitted or be equal to the value in the GTFS feed. When
-     * the trip_id corresponds to a frequency-based trip, the start_time must be
+     * the trip_id correponds to a frequency-based trip, the start_time must be
      * specified for trip updates and vehicle positions. If the trip corresponds
      * to exact_times=1 GTFS record, then start_time must be some multiple
      * (including zero) of headway_secs later than frequencies.txt start_time for
@@ -13824,7 +18005,7 @@ abstract class GTFSRealtimeProto {
      * The initially scheduled start time of this trip instance.
      * When the trip_id corresponds to a non-frequency-based trip, this field
      * should either be omitted or be equal to the value in the GTFS feed. When
-     * the trip_id corresponds to a frequency-based trip, the start_time must be
+     * the trip_id correponds to a frequency-based trip, the start_time must be
      * specified for trip updates and vehicle positions. If the trip corresponds
      * to exact_times=1 GTFS record, then start_time must be some multiple
      * (including zero) of headway_secs later than frequencies.txt start_time for
@@ -13994,6 +18175,10 @@ abstract class GTFSRealtimeProto {
        * An extra trip that was added in addition to a running schedule, for
        * example, to replace a broken vehicle or to respond to sudden passenger
        * load.
+       * NOTE: Currently, behavior is unspecified for feeds that use this mode. There are discussions on the GTFS GitHub
+       * [(1)](https://github.com/google/transit/issues/106) [(2)](https://github.com/google/transit/pull/221)
+       * [(3)](https://github.com/google/transit/pull/219) around fully specifying or deprecating ADDED trips and the
+       * documentation will be updated when those discussions are finalized.
        * </pre>
        *
        * <code>ADDED = 1;</code>
@@ -14001,8 +18186,8 @@ abstract class GTFSRealtimeProto {
       ADDED(1),
       /**
        * <pre>
-       * A trip that is running with no schedule associated to it, for example, if
-       * there is no schedule at all.
+       * A trip that is running with no schedule associated to it (GTFS frequencies.txt exact_times=0).
+       * Trips with ScheduleRelationship=UNSCHEDULED must also set all StopTimeUpdates.ScheduleRelationship=UNSCHEDULED.
        * </pre>
        *
        * <code>UNSCHEDULED = 2;</code>
@@ -14016,6 +18201,37 @@ abstract class GTFSRealtimeProto {
        * <code>CANCELED = 3;</code>
        */
       CANCELED(3),
+      /**
+       * <pre>
+       * Should not be used - for backwards-compatibility only.
+       * </pre>
+       *
+       * <code>REPLACEMENT = 5 [deprecated = true];</code>
+       */
+      @java.lang.Deprecated
+      REPLACEMENT(5),
+      /**
+       * <pre>
+       * An extra trip that was added in addition to a running schedule, for example, to replace a broken vehicle or to
+       * respond to sudden passenger load. Used with TripUpdate.TripProperties.trip_id, TripUpdate.TripProperties.start_date,
+       * and TripUpdate.TripProperties.start_time to copy an existing trip from static GTFS but start at a different service
+       * date and/or time. Duplicating a trip is allowed if the service related to the original trip in (CSV) GTFS
+       * (in calendar.txt or calendar_dates.txt) is operating within the next 30 days. The trip to be duplicated is
+       * identified via TripUpdate.TripDescriptor.trip_id. This enumeration does not modify the existing trip referenced by
+       * TripUpdate.TripDescriptor.trip_id - if a producer wants to cancel the original trip, it must publish a separate
+       * TripUpdate with the value of CANCELED. Trips defined in GTFS frequencies.txt with exact_times that is empty or
+       * equal to 0 cannot be duplicated. The VehiclePosition.TripDescriptor.trip_id for the new trip must contain
+       * the matching value from TripUpdate.TripProperties.trip_id and VehiclePosition.TripDescriptor.ScheduleRelationship
+       * must also be set to DUPLICATED.
+       * Existing producers and consumers that were using the ADDED enumeration to represent duplicated trips must follow
+       * the migration guide (https://github.com/google/transit/tree/master/gtfs-realtime/spec/en/examples/migration-duplicated.md)
+       * to transition to the DUPLICATED enumeration.
+       * NOTE: This field is still experimental, and subject to change. It may be formally adopted in the future.
+       * </pre>
+       *
+       * <code>DUPLICATED = 6;</code>
+       */
+      DUPLICATED(6),
       ;
 
       /**
@@ -14032,6 +18248,10 @@ abstract class GTFSRealtimeProto {
        * An extra trip that was added in addition to a running schedule, for
        * example, to replace a broken vehicle or to respond to sudden passenger
        * load.
+       * NOTE: Currently, behavior is unspecified for feeds that use this mode. There are discussions on the GTFS GitHub
+       * [(1)](https://github.com/google/transit/issues/106) [(2)](https://github.com/google/transit/pull/221)
+       * [(3)](https://github.com/google/transit/pull/219) around fully specifying or deprecating ADDED trips and the
+       * documentation will be updated when those discussions are finalized.
        * </pre>
        *
        * <code>ADDED = 1;</code>
@@ -14039,8 +18259,8 @@ abstract class GTFSRealtimeProto {
       public static final int ADDED_VALUE = 1;
       /**
        * <pre>
-       * A trip that is running with no schedule associated to it, for example, if
-       * there is no schedule at all.
+       * A trip that is running with no schedule associated to it (GTFS frequencies.txt exact_times=0).
+       * Trips with ScheduleRelationship=UNSCHEDULED must also set all StopTimeUpdates.ScheduleRelationship=UNSCHEDULED.
        * </pre>
        *
        * <code>UNSCHEDULED = 2;</code>
@@ -14054,6 +18274,36 @@ abstract class GTFSRealtimeProto {
        * <code>CANCELED = 3;</code>
        */
       public static final int CANCELED_VALUE = 3;
+      /**
+       * <pre>
+       * Should not be used - for backwards-compatibility only.
+       * </pre>
+       *
+       * <code>REPLACEMENT = 5 [deprecated = true];</code>
+       */
+      @java.lang.Deprecated public static final int REPLACEMENT_VALUE = 5;
+      /**
+       * <pre>
+       * An extra trip that was added in addition to a running schedule, for example, to replace a broken vehicle or to
+       * respond to sudden passenger load. Used with TripUpdate.TripProperties.trip_id, TripUpdate.TripProperties.start_date,
+       * and TripUpdate.TripProperties.start_time to copy an existing trip from static GTFS but start at a different service
+       * date and/or time. Duplicating a trip is allowed if the service related to the original trip in (CSV) GTFS
+       * (in calendar.txt or calendar_dates.txt) is operating within the next 30 days. The trip to be duplicated is
+       * identified via TripUpdate.TripDescriptor.trip_id. This enumeration does not modify the existing trip referenced by
+       * TripUpdate.TripDescriptor.trip_id - if a producer wants to cancel the original trip, it must publish a separate
+       * TripUpdate with the value of CANCELED. Trips defined in GTFS frequencies.txt with exact_times that is empty or
+       * equal to 0 cannot be duplicated. The VehiclePosition.TripDescriptor.trip_id for the new trip must contain
+       * the matching value from TripUpdate.TripProperties.trip_id and VehiclePosition.TripDescriptor.ScheduleRelationship
+       * must also be set to DUPLICATED.
+       * Existing producers and consumers that were using the ADDED enumeration to represent duplicated trips must follow
+       * the migration guide (https://github.com/google/transit/tree/master/gtfs-realtime/spec/en/examples/migration-duplicated.md)
+       * to transition to the DUPLICATED enumeration.
+       * NOTE: This field is still experimental, and subject to change. It may be formally adopted in the future.
+       * </pre>
+       *
+       * <code>DUPLICATED = 6;</code>
+       */
+      public static final int DUPLICATED_VALUE = 6;
 
 
       public final int getNumber() {
@@ -14080,6 +18330,8 @@ abstract class GTFSRealtimeProto {
           case 1: return ADDED;
           case 2: return UNSCHEDULED;
           case 3: return CANCELED;
+          case 5: return REPLACEMENT;
+          case 6: return DUPLICATED;
           default: return null;
         }
       }
@@ -14137,7 +18389,9 @@ abstract class GTFSRealtimeProto {
      * The trip_id from the GTFS feed that this selector refers to.
      * For non frequency-based trips, this field is enough to uniquely identify
      * the trip. For frequency-based trip, start_time and start_date might also be
-     * necessary.
+     * necessary. When schedule_relationship is DUPLICATED within a TripUpdate, the trip_id identifies the trip from
+     * static GTFS to be duplicated. When schedule_relationship is DUPLICATED within a VehiclePosition, the trip_id
+     * identifies the new duplicate trip and must contain the value for the corresponding TripUpdate.TripProperties.trip_id.
      * </pre>
      *
      * <code>optional string trip_id = 1;</code>
@@ -14152,7 +18406,9 @@ abstract class GTFSRealtimeProto {
      * The trip_id from the GTFS feed that this selector refers to.
      * For non frequency-based trips, this field is enough to uniquely identify
      * the trip. For frequency-based trip, start_time and start_date might also be
-     * necessary.
+     * necessary. When schedule_relationship is DUPLICATED within a TripUpdate, the trip_id identifies the trip from
+     * static GTFS to be duplicated. When schedule_relationship is DUPLICATED within a VehiclePosition, the trip_id
+     * identifies the new duplicate trip and must contain the value for the corresponding TripUpdate.TripProperties.trip_id.
      * </pre>
      *
      * <code>optional string trip_id = 1;</code>
@@ -14178,7 +18434,9 @@ abstract class GTFSRealtimeProto {
      * The trip_id from the GTFS feed that this selector refers to.
      * For non frequency-based trips, this field is enough to uniquely identify
      * the trip. For frequency-based trip, start_time and start_date might also be
-     * necessary.
+     * necessary. When schedule_relationship is DUPLICATED within a TripUpdate, the trip_id identifies the trip from
+     * static GTFS to be duplicated. When schedule_relationship is DUPLICATED within a VehiclePosition, the trip_id
+     * identifies the new duplicate trip and must contain the value for the corresponding TripUpdate.TripProperties.trip_id.
      * </pre>
      *
      * <code>optional string trip_id = 1;</code>
@@ -14264,9 +18522,7 @@ abstract class GTFSRealtimeProto {
     /**
      * <pre>
      * The direction_id from the GTFS feed trips.txt file, indicating the
-     * direction of travel for trips this selector refers to. This field is
-     * still experimental, and subject to change. It may be formally adopted in
-     * the future.
+     * direction of travel for trips this selector refers to.
      * </pre>
      *
      * <code>optional uint32 direction_id = 6;</code>
@@ -14279,9 +18535,7 @@ abstract class GTFSRealtimeProto {
     /**
      * <pre>
      * The direction_id from the GTFS feed trips.txt file, indicating the
-     * direction of travel for trips this selector refers to. This field is
-     * still experimental, and subject to change. It may be formally adopted in
-     * the future.
+     * direction of travel for trips this selector refers to.
      * </pre>
      *
      * <code>optional uint32 direction_id = 6;</code>
@@ -14299,7 +18553,7 @@ abstract class GTFSRealtimeProto {
      * The initially scheduled start time of this trip instance.
      * When the trip_id corresponds to a non-frequency-based trip, this field
      * should either be omitted or be equal to the value in the GTFS feed. When
-     * the trip_id corresponds to a frequency-based trip, the start_time must be
+     * the trip_id correponds to a frequency-based trip, the start_time must be
      * specified for trip updates and vehicle positions. If the trip corresponds
      * to exact_times=1 GTFS record, then start_time must be some multiple
      * (including zero) of headway_secs later than frequencies.txt start_time for
@@ -14325,7 +18579,7 @@ abstract class GTFSRealtimeProto {
      * The initially scheduled start time of this trip instance.
      * When the trip_id corresponds to a non-frequency-based trip, this field
      * should either be omitted or be equal to the value in the GTFS feed. When
-     * the trip_id corresponds to a frequency-based trip, the start_time must be
+     * the trip_id correponds to a frequency-based trip, the start_time must be
      * specified for trip updates and vehicle positions. If the trip corresponds
      * to exact_times=1 GTFS record, then start_time must be some multiple
      * (including zero) of headway_secs later than frequencies.txt start_time for
@@ -14362,7 +18616,7 @@ abstract class GTFSRealtimeProto {
      * The initially scheduled start time of this trip instance.
      * When the trip_id corresponds to a non-frequency-based trip, this field
      * should either be omitted or be equal to the value in the GTFS feed. When
-     * the trip_id corresponds to a frequency-based trip, the start_time must be
+     * the trip_id correponds to a frequency-based trip, the start_time must be
      * specified for trip updates and vehicle positions. If the trip corresponds
      * to exact_times=1 GTFS record, then start_time must be some multiple
      * (including zero) of headway_secs later than frequencies.txt start_time for
@@ -14777,7 +19031,9 @@ abstract class GTFSRealtimeProto {
        * The trip_id from the GTFS feed that this selector refers to.
        * For non frequency-based trips, this field is enough to uniquely identify
        * the trip. For frequency-based trip, start_time and start_date might also be
-       * necessary.
+       * necessary. When schedule_relationship is DUPLICATED within a TripUpdate, the trip_id identifies the trip from
+       * static GTFS to be duplicated. When schedule_relationship is DUPLICATED within a VehiclePosition, the trip_id
+       * identifies the new duplicate trip and must contain the value for the corresponding TripUpdate.TripProperties.trip_id.
        * </pre>
        *
        * <code>optional string trip_id = 1;</code>
@@ -14791,7 +19047,9 @@ abstract class GTFSRealtimeProto {
        * The trip_id from the GTFS feed that this selector refers to.
        * For non frequency-based trips, this field is enough to uniquely identify
        * the trip. For frequency-based trip, start_time and start_date might also be
-       * necessary.
+       * necessary. When schedule_relationship is DUPLICATED within a TripUpdate, the trip_id identifies the trip from
+       * static GTFS to be duplicated. When schedule_relationship is DUPLICATED within a VehiclePosition, the trip_id
+       * identifies the new duplicate trip and must contain the value for the corresponding TripUpdate.TripProperties.trip_id.
        * </pre>
        *
        * <code>optional string trip_id = 1;</code>
@@ -14816,7 +19074,9 @@ abstract class GTFSRealtimeProto {
        * The trip_id from the GTFS feed that this selector refers to.
        * For non frequency-based trips, this field is enough to uniquely identify
        * the trip. For frequency-based trip, start_time and start_date might also be
-       * necessary.
+       * necessary. When schedule_relationship is DUPLICATED within a TripUpdate, the trip_id identifies the trip from
+       * static GTFS to be duplicated. When schedule_relationship is DUPLICATED within a VehiclePosition, the trip_id
+       * identifies the new duplicate trip and must contain the value for the corresponding TripUpdate.TripProperties.trip_id.
        * </pre>
        *
        * <code>optional string trip_id = 1;</code>
@@ -14840,7 +19100,9 @@ abstract class GTFSRealtimeProto {
        * The trip_id from the GTFS feed that this selector refers to.
        * For non frequency-based trips, this field is enough to uniquely identify
        * the trip. For frequency-based trip, start_time and start_date might also be
-       * necessary.
+       * necessary. When schedule_relationship is DUPLICATED within a TripUpdate, the trip_id identifies the trip from
+       * static GTFS to be duplicated. When schedule_relationship is DUPLICATED within a VehiclePosition, the trip_id
+       * identifies the new duplicate trip and must contain the value for the corresponding TripUpdate.TripProperties.trip_id.
        * </pre>
        *
        * <code>optional string trip_id = 1;</code>
@@ -14862,7 +19124,9 @@ abstract class GTFSRealtimeProto {
        * The trip_id from the GTFS feed that this selector refers to.
        * For non frequency-based trips, this field is enough to uniquely identify
        * the trip. For frequency-based trip, start_time and start_date might also be
-       * necessary.
+       * necessary. When schedule_relationship is DUPLICATED within a TripUpdate, the trip_id identifies the trip from
+       * static GTFS to be duplicated. When schedule_relationship is DUPLICATED within a VehiclePosition, the trip_id
+       * identifies the new duplicate trip and must contain the value for the corresponding TripUpdate.TripProperties.trip_id.
        * </pre>
        *
        * <code>optional string trip_id = 1;</code>
@@ -14879,7 +19143,9 @@ abstract class GTFSRealtimeProto {
        * The trip_id from the GTFS feed that this selector refers to.
        * For non frequency-based trips, this field is enough to uniquely identify
        * the trip. For frequency-based trip, start_time and start_date might also be
-       * necessary.
+       * necessary. When schedule_relationship is DUPLICATED within a TripUpdate, the trip_id identifies the trip from
+       * static GTFS to be duplicated. When schedule_relationship is DUPLICATED within a VehiclePosition, the trip_id
+       * identifies the new duplicate trip and must contain the value for the corresponding TripUpdate.TripProperties.trip_id.
        * </pre>
        *
        * <code>optional string trip_id = 1;</code>
@@ -15009,9 +19275,7 @@ abstract class GTFSRealtimeProto {
       /**
        * <pre>
        * The direction_id from the GTFS feed trips.txt file, indicating the
-       * direction of travel for trips this selector refers to. This field is
-       * still experimental, and subject to change. It may be formally adopted in
-       * the future.
+       * direction of travel for trips this selector refers to.
        * </pre>
        *
        * <code>optional uint32 direction_id = 6;</code>
@@ -15024,9 +19288,7 @@ abstract class GTFSRealtimeProto {
       /**
        * <pre>
        * The direction_id from the GTFS feed trips.txt file, indicating the
-       * direction of travel for trips this selector refers to. This field is
-       * still experimental, and subject to change. It may be formally adopted in
-       * the future.
+       * direction of travel for trips this selector refers to.
        * </pre>
        *
        * <code>optional uint32 direction_id = 6;</code>
@@ -15039,9 +19301,7 @@ abstract class GTFSRealtimeProto {
       /**
        * <pre>
        * The direction_id from the GTFS feed trips.txt file, indicating the
-       * direction of travel for trips this selector refers to. This field is
-       * still experimental, and subject to change. It may be formally adopted in
-       * the future.
+       * direction of travel for trips this selector refers to.
        * </pre>
        *
        * <code>optional uint32 direction_id = 6;</code>
@@ -15057,9 +19317,7 @@ abstract class GTFSRealtimeProto {
       /**
        * <pre>
        * The direction_id from the GTFS feed trips.txt file, indicating the
-       * direction of travel for trips this selector refers to. This field is
-       * still experimental, and subject to change. It may be formally adopted in
-       * the future.
+       * direction of travel for trips this selector refers to.
        * </pre>
        *
        * <code>optional uint32 direction_id = 6;</code>
@@ -15078,7 +19336,7 @@ abstract class GTFSRealtimeProto {
        * The initially scheduled start time of this trip instance.
        * When the trip_id corresponds to a non-frequency-based trip, this field
        * should either be omitted or be equal to the value in the GTFS feed. When
-       * the trip_id corresponds to a frequency-based trip, the start_time must be
+       * the trip_id correponds to a frequency-based trip, the start_time must be
        * specified for trip updates and vehicle positions. If the trip corresponds
        * to exact_times=1 GTFS record, then start_time must be some multiple
        * (including zero) of headway_secs later than frequencies.txt start_time for
@@ -15103,7 +19361,7 @@ abstract class GTFSRealtimeProto {
        * The initially scheduled start time of this trip instance.
        * When the trip_id corresponds to a non-frequency-based trip, this field
        * should either be omitted or be equal to the value in the GTFS feed. When
-       * the trip_id corresponds to a frequency-based trip, the start_time must be
+       * the trip_id correponds to a frequency-based trip, the start_time must be
        * specified for trip updates and vehicle positions. If the trip corresponds
        * to exact_times=1 GTFS record, then start_time must be some multiple
        * (including zero) of headway_secs later than frequencies.txt start_time for
@@ -15139,7 +19397,7 @@ abstract class GTFSRealtimeProto {
        * The initially scheduled start time of this trip instance.
        * When the trip_id corresponds to a non-frequency-based trip, this field
        * should either be omitted or be equal to the value in the GTFS feed. When
-       * the trip_id corresponds to a frequency-based trip, the start_time must be
+       * the trip_id correponds to a frequency-based trip, the start_time must be
        * specified for trip updates and vehicle positions. If the trip corresponds
        * to exact_times=1 GTFS record, then start_time must be some multiple
        * (including zero) of headway_secs later than frequencies.txt start_time for
@@ -15174,7 +19432,7 @@ abstract class GTFSRealtimeProto {
        * The initially scheduled start time of this trip instance.
        * When the trip_id corresponds to a non-frequency-based trip, this field
        * should either be omitted or be equal to the value in the GTFS feed. When
-       * the trip_id corresponds to a frequency-based trip, the start_time must be
+       * the trip_id correponds to a frequency-based trip, the start_time must be
        * specified for trip updates and vehicle positions. If the trip corresponds
        * to exact_times=1 GTFS record, then start_time must be some multiple
        * (including zero) of headway_secs later than frequencies.txt start_time for
@@ -15207,7 +19465,7 @@ abstract class GTFSRealtimeProto {
        * The initially scheduled start time of this trip instance.
        * When the trip_id corresponds to a non-frequency-based trip, this field
        * should either be omitted or be equal to the value in the GTFS feed. When
-       * the trip_id corresponds to a frequency-based trip, the start_time must be
+       * the trip_id correponds to a frequency-based trip, the start_time must be
        * specified for trip updates and vehicle positions. If the trip corresponds
        * to exact_times=1 GTFS record, then start_time must be some multiple
        * (including zero) of headway_secs later than frequencies.txt start_time for
@@ -15235,7 +19493,7 @@ abstract class GTFSRealtimeProto {
        * The initially scheduled start time of this trip instance.
        * When the trip_id corresponds to a non-frequency-based trip, this field
        * should either be omitted or be equal to the value in the GTFS feed. When
-       * the trip_id corresponds to a frequency-based trip, the start_time must be
+       * the trip_id correponds to a frequency-based trip, the start_time must be
        * specified for trip updates and vehicle positions. If the trip corresponds
        * to exact_times=1 GTFS record, then start_time must be some multiple
        * (including zero) of headway_secs later than frequencies.txt start_time for
@@ -16629,6 +20887,27 @@ abstract class GTFSRealtimeProto {
      */
     com.google.protobuf.ByteString
         getStopIdBytes();
+
+    /**
+     * <pre>
+     * Corresponds to trip direction_id in GTFS trips.txt. If provided the
+     * route_id must also be provided.
+     * </pre>
+     *
+     * <code>optional uint32 direction_id = 6;</code>
+     * @return Whether the directionId field is set.
+     */
+    boolean hasDirectionId();
+    /**
+     * <pre>
+     * Corresponds to trip direction_id in GTFS trips.txt. If provided the
+     * route_id must also be provided.
+     * </pre>
+     *
+     * <code>optional uint32 direction_id = 6;</code>
+     * @return The directionId.
+     */
+    int getDirectionId();
   }
   /**
    * <pre>
@@ -16897,6 +21176,35 @@ abstract class GTFSRealtimeProto {
       }
     }
 
+    public static final int DIRECTION_ID_FIELD_NUMBER = 6;
+    private int directionId_;
+    /**
+     * <pre>
+     * Corresponds to trip direction_id in GTFS trips.txt. If provided the
+     * route_id must also be provided.
+     * </pre>
+     *
+     * <code>optional uint32 direction_id = 6;</code>
+     * @return Whether the directionId field is set.
+     */
+    @java.lang.Override
+    public boolean hasDirectionId() {
+      return ((bitField0_ & 0x00000020) != 0);
+    }
+    /**
+     * <pre>
+     * Corresponds to trip direction_id in GTFS trips.txt. If provided the
+     * route_id must also be provided.
+     * </pre>
+     *
+     * <code>optional uint32 direction_id = 6;</code>
+     * @return The directionId.
+     */
+    @java.lang.Override
+    public int getDirectionId() {
+      return directionId_;
+    }
+
     public static dev.katsute.onemta.GTFSRealtimeProto.EntitySelector parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -17045,6 +21353,8 @@ abstract class GTFSRealtimeProto {
         bitField0_ = (bitField0_ & ~0x00000008);
         stopId_ = "";
         bitField0_ = (bitField0_ & ~0x00000010);
+        directionId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000020);
         return this;
       }
 
@@ -17097,6 +21407,10 @@ abstract class GTFSRealtimeProto {
           to_bitField0_ |= 0x00000010;
         }
         result.stopId_ = stopId_;
+        if (((from_bitField0_ & 0x00000020) != 0)) {
+          result.directionId_ = directionId_;
+          to_bitField0_ |= 0x00000020;
+        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -17628,6 +21942,65 @@ abstract class GTFSRealtimeProto {
   }
   bitField0_ |= 0x00000010;
         stopId_ = value;
+        onChanged();
+        return this;
+      }
+
+      private int directionId_ ;
+      /**
+       * <pre>
+       * Corresponds to trip direction_id in GTFS trips.txt. If provided the
+       * route_id must also be provided.
+       * </pre>
+       *
+       * <code>optional uint32 direction_id = 6;</code>
+       * @return Whether the directionId field is set.
+       */
+      @java.lang.Override
+      public boolean hasDirectionId() {
+        return ((bitField0_ & 0x00000020) != 0);
+      }
+      /**
+       * <pre>
+       * Corresponds to trip direction_id in GTFS trips.txt. If provided the
+       * route_id must also be provided.
+       * </pre>
+       *
+       * <code>optional uint32 direction_id = 6;</code>
+       * @return The directionId.
+       */
+      @java.lang.Override
+      public int getDirectionId() {
+        return directionId_;
+      }
+      /**
+       * <pre>
+       * Corresponds to trip direction_id in GTFS trips.txt. If provided the
+       * route_id must also be provided.
+       * </pre>
+       *
+       * <code>optional uint32 direction_id = 6;</code>
+       * @param value The directionId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDirectionId(int value) {
+        bitField0_ |= 0x00000020;
+        directionId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Corresponds to trip direction_id in GTFS trips.txt. If provided the
+       * route_id must also be provided.
+       * </pre>
+       *
+       * <code>optional uint32 direction_id = 6;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDirectionId() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        directionId_ = 0;
         onChanged();
         return this;
       }
@@ -19277,10 +23650,20 @@ abstract class GTFSRealtimeProto {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_transit_realtime_TripUpdate_StopTimeUpdate_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_transit_realtime_TripUpdate_TripProperties_descriptor;
+  private static final
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_transit_realtime_TripUpdate_TripProperties_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_transit_realtime_VehiclePosition_descriptor;
   private static final
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_transit_realtime_VehiclePosition_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_transit_realtime_VehiclePosition_CarriageDetails_descriptor;
+  private static final
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_transit_realtime_VehiclePosition_CarriageDetails_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_transit_realtime_Alert_descriptor;
   private static final
@@ -19331,101 +23714,127 @@ abstract class GTFSRealtimeProto {
   static {
     java.lang.String[] descriptorData = {
       "\n\023gtfs-realtime.proto\022\020transit_realtime\"" +
-      "q\n\013FeedMessage\022,\n\006header\030\001 \002(\0132\034.transit" +
+      "y\n\013FeedMessage\022,\n\006header\030\001 \002(\0132\034.transit" +
       "_realtime.FeedHeader\022,\n\006entity\030\002 \003(\0132\034.t" +
-      "ransit_realtime.FeedEntity*\006\010\350\007\020\320\017\"\317\001\n\nF" +
-      "eedHeader\022\035\n\025gtfs_realtime_version\030\001 \002(\t" +
-      "\022Q\n\016incrementality\030\002 \001(\0162+.transit_realt" +
-      "ime.FeedHeader.Incrementality:\014FULL_DATA" +
-      "SET\022\021\n\ttimestamp\030\003 \001(\004\"4\n\016Incrementality" +
-      "\022\020\n\014FULL_DATASET\020\000\022\020\n\014DIFFERENTIAL\020\001*\006\010\350" +
-      "\007\020\320\017\"\312\001\n\nFeedEntity\022\n\n\002id\030\001 \002(\t\022\031\n\nis_de" +
-      "leted\030\002 \001(\010:\005false\0221\n\013trip_update\030\003 \001(\0132" +
-      "\034.transit_realtime.TripUpdate\0222\n\007vehicle" +
-      "\030\004 \001(\0132!.transit_realtime.VehiclePositio" +
-      "n\022&\n\005alert\030\005 \001(\0132\027.transit_realtime.Aler" +
-      "t*\006\010\350\007\020\320\017\"\232\005\n\nTripUpdate\022.\n\004trip\030\001 \002(\0132 " +
-      ".transit_realtime.TripDescriptor\0224\n\007vehi" +
-      "cle\030\003 \001(\0132#.transit_realtime.VehicleDesc" +
-      "riptor\022E\n\020stop_time_update\030\002 \003(\0132+.trans" +
-      "it_realtime.TripUpdate.StopTimeUpdate\022\021\n" +
-      "\ttimestamp\030\004 \001(\004\022\r\n\005delay\030\005 \001(\005\032I\n\rStopT" +
-      "imeEvent\022\r\n\005delay\030\001 \001(\005\022\014\n\004time\030\002 \001(\003\022\023\n" +
-      "\013uncertainty\030\003 \001(\005*\006\010\350\007\020\320\017\032\351\002\n\016StopTimeU" +
-      "pdate\022\025\n\rstop_sequence\030\001 \001(\r\022\017\n\007stop_id\030" +
-      "\004 \001(\t\022;\n\007arrival\030\002 \001(\0132*.transit_realtim" +
-      "e.TripUpdate.StopTimeEvent\022=\n\tdeparture\030" +
-      "\003 \001(\0132*.transit_realtime.TripUpdate.Stop" +
-      "TimeEvent\022j\n\025schedule_relationship\030\005 \001(\016" +
-      "2@.transit_realtime.TripUpdate.StopTimeU" +
-      "pdate.ScheduleRelationship:\tSCHEDULED\"?\n" +
-      "\024ScheduleRelationship\022\r\n\tSCHEDULED\020\000\022\013\n\007" +
-      "SKIPPED\020\001\022\013\n\007NO_DATA\020\002*\006\010\350\007\020\320\017*\006\010\350\007\020\320\017\"\340" +
-      "\006\n\017VehiclePosition\022.\n\004trip\030\001 \001(\0132 .trans" +
-      "it_realtime.TripDescriptor\0224\n\007vehicle\030\010 " +
-      "\001(\0132#.transit_realtime.VehicleDescriptor" +
-      "\022,\n\010position\030\002 \001(\0132\032.transit_realtime.Po" +
-      "sition\022\035\n\025current_stop_sequence\030\003 \001(\r\022\017\n" +
-      "\007stop_id\030\007 \001(\t\022Z\n\016current_status\030\004 \001(\01623" +
-      ".transit_realtime.VehiclePosition.Vehicl" +
-      "eStopStatus:\rIN_TRANSIT_TO\022\021\n\ttimestamp\030" +
-      "\005 \001(\004\022K\n\020congestion_level\030\006 \001(\01621.transi" +
-      "t_realtime.VehiclePosition.CongestionLev" +
-      "el\022K\n\020occupancy_status\030\t \001(\01621.transit_r" +
-      "ealtime.VehiclePosition.OccupancyStatus\"" +
-      "G\n\021VehicleStopStatus\022\017\n\013INCOMING_AT\020\000\022\016\n" +
-      "\nSTOPPED_AT\020\001\022\021\n\rIN_TRANSIT_TO\020\002\"}\n\017Cong" +
-      "estionLevel\022\034\n\030UNKNOWN_CONGESTION_LEVEL\020" +
-      "\000\022\024\n\020RUNNING_SMOOTHLY\020\001\022\017\n\013STOP_AND_GO\020\002" +
-      "\022\016\n\nCONGESTION\020\003\022\025\n\021SEVERE_CONGESTION\020\004\"" +
-      "\257\001\n\017OccupancyStatus\022\t\n\005EMPTY\020\000\022\030\n\024MANY_S" +
-      "EATS_AVAILABLE\020\001\022\027\n\023FEW_SEATS_AVAILABLE\020" +
-      "\002\022\026\n\022STANDING_ROOM_ONLY\020\003\022\036\n\032CRUSHED_STA" +
-      "NDING_ROOM_ONLY\020\004\022\010\n\004FULL\020\005\022\034\n\030NOT_ACCEP" +
-      "TING_PASSENGERS\020\006*\006\010\350\007\020\320\017\"\266\006\n\005Alert\0222\n\ra" +
-      "ctive_period\030\001 \003(\0132\033.transit_realtime.Ti" +
-      "meRange\0229\n\017informed_entity\030\005 \003(\0132 .trans" +
-      "it_realtime.EntitySelector\022;\n\005cause\030\006 \001(" +
-      "\0162\035.transit_realtime.Alert.Cause:\rUNKNOW" +
-      "N_CAUSE\022>\n\006effect\030\007 \001(\0162\036.transit_realti" +
-      "me.Alert.Effect:\016UNKNOWN_EFFECT\022/\n\003url\030\010" +
-      " \001(\0132\".transit_realtime.TranslatedString" +
-      "\0227\n\013header_text\030\n \001(\0132\".transit_realtime" +
-      ".TranslatedString\022<\n\020description_text\030\013 " +
-      "\001(\0132\".transit_realtime.TranslatedString\"" +
-      "\330\001\n\005Cause\022\021\n\rUNKNOWN_CAUSE\020\001\022\017\n\013OTHER_CA" +
-      "USE\020\002\022\025\n\021TECHNICAL_PROBLEM\020\003\022\n\n\006STRIKE\020\004" +
-      "\022\021\n\rDEMONSTRATION\020\005\022\014\n\010ACCIDENT\020\006\022\013\n\007HOL" +
-      "IDAY\020\007\022\013\n\007WEATHER\020\010\022\017\n\013MAINTENANCE\020\t\022\020\n\014" +
-      "CONSTRUCTION\020\n\022\023\n\017POLICE_ACTIVITY\020\013\022\025\n\021M" +
-      "EDICAL_EMERGENCY\020\014\"\265\001\n\006Effect\022\016\n\nNO_SERV" +
-      "ICE\020\001\022\023\n\017REDUCED_SERVICE\020\002\022\026\n\022SIGNIFICAN" +
-      "T_DELAYS\020\003\022\n\n\006DETOUR\020\004\022\026\n\022ADDITIONAL_SER" +
-      "VICE\020\005\022\024\n\020MODIFIED_SERVICE\020\006\022\020\n\014OTHER_EF" +
-      "FECT\020\007\022\022\n\016UNKNOWN_EFFECT\020\010\022\016\n\nSTOP_MOVED" +
-      "\020\t*\006\010\350\007\020\320\017\"/\n\tTimeRange\022\r\n\005start\030\001 \001(\004\022\013" +
-      "\n\003end\030\002 \001(\004*\006\010\350\007\020\320\017\"i\n\010Position\022\020\n\010latit" +
-      "ude\030\001 \002(\002\022\021\n\tlongitude\030\002 \002(\002\022\017\n\007bearing\030" +
-      "\003 \001(\002\022\020\n\010odometer\030\004 \001(\001\022\r\n\005speed\030\005 \001(\002*\006" +
-      "\010\350\007\020\320\017\"\240\002\n\016TripDescriptor\022\017\n\007trip_id\030\001 \001" +
-      "(\t\022\020\n\010route_id\030\005 \001(\t\022\024\n\014direction_id\030\006 \001" +
-      "(\r\022\022\n\nstart_time\030\002 \001(\t\022\022\n\nstart_date\030\003 \001" +
-      "(\t\022T\n\025schedule_relationship\030\004 \001(\01625.tran" +
-      "sit_realtime.TripDescriptor.ScheduleRela" +
-      "tionship\"O\n\024ScheduleRelationship\022\r\n\tSCHE" +
-      "DULED\020\000\022\t\n\005ADDED\020\001\022\017\n\013UNSCHEDULED\020\002\022\014\n\010C" +
-      "ANCELED\020\003*\006\010\350\007\020\320\017\"M\n\021VehicleDescriptor\022\n" +
+      "ransit_realtime.FeedEntity*\006\010\350\007\020\320\017*\006\010\250F\020" +
+      "\220N\"\327\001\n\nFeedHeader\022\035\n\025gtfs_realtime_versi" +
+      "on\030\001 \002(\t\022Q\n\016incrementality\030\002 \001(\0162+.trans" +
+      "it_realtime.FeedHeader.Incrementality:\014F" +
+      "ULL_DATASET\022\021\n\ttimestamp\030\003 \001(\004\"4\n\016Increm" +
+      "entality\022\020\n\014FULL_DATASET\020\000\022\020\n\014DIFFERENTI" +
+      "AL\020\001*\006\010\350\007\020\320\017*\006\010\250F\020\220N\"\322\001\n\nFeedEntity\022\n\n\002i" +
+      "d\030\001 \002(\t\022\031\n\nis_deleted\030\002 \001(\010:\005false\0221\n\013tr" +
+      "ip_update\030\003 \001(\0132\034.transit_realtime.TripU" +
+      "pdate\0222\n\007vehicle\030\004 \001(\0132!.transit_realtim" +
+      "e.VehiclePosition\022&\n\005alert\030\005 \001(\0132\027.trans" +
+      "it_realtime.Alert*\006\010\350\007\020\320\017*\006\010\250F\020\220N\"\344\006\n\nTr" +
+      "ipUpdate\022.\n\004trip\030\001 \002(\0132 .transit_realtim" +
+      "e.TripDescriptor\0224\n\007vehicle\030\003 \001(\0132#.tran" +
+      "sit_realtime.VehicleDescriptor\022E\n\020stop_t" +
+      "ime_update\030\002 \003(\0132+.transit_realtime.Trip" +
+      "Update.StopTimeUpdate\022\021\n\ttimestamp\030\004 \001(\004" +
+      "\022\r\n\005delay\030\005 \001(\005\022D\n\017trip_properties\030\006 \001(\013" +
+      "2+.transit_realtime.TripUpdate.TripPrope" +
+      "rties\032Q\n\rStopTimeEvent\022\r\n\005delay\030\001 \001(\005\022\014\n" +
+      "\004time\030\002 \001(\003\022\023\n\013uncertainty\030\003 \001(\005*\006\010\350\007\020\320\017" +
+      "*\006\010\250F\020\220N\032\202\003\n\016StopTimeUpdate\022\025\n\rstop_sequ" +
+      "ence\030\001 \001(\r\022\017\n\007stop_id\030\004 \001(\t\022;\n\007arrival\030\002" +
+      " \001(\0132*.transit_realtime.TripUpdate.StopT" +
+      "imeEvent\022=\n\tdeparture\030\003 \001(\0132*.transit_re" +
+      "altime.TripUpdate.StopTimeEvent\022j\n\025sched" +
+      "ule_relationship\030\005 \001(\0162@.transit_realtim" +
+      "e.TripUpdate.StopTimeUpdate.ScheduleRela" +
+      "tionship:\tSCHEDULED\"P\n\024ScheduleRelations" +
+      "hip\022\r\n\tSCHEDULED\020\000\022\013\n\007SKIPPED\020\001\022\013\n\007NO_DA" +
+      "TA\020\002\022\017\n\013UNSCHEDULED\020\003*\006\010\350\007\020\320\017*\006\010\250F\020\220N\032Y\n" +
+      "\016TripProperties\022\017\n\007trip_id\030\001 \001(\t\022\022\n\nstar" +
+      "t_date\030\002 \001(\t\022\022\n\nstart_time\030\003 \001(\t*\006\010\350\007\020\320\017" +
+      "*\006\010\250F\020\220N*\006\010\350\007\020\320\017*\006\010\250F\020\220N\"\337\t\n\017VehiclePosi" +
+      "tion\022.\n\004trip\030\001 \001(\0132 .transit_realtime.Tr" +
+      "ipDescriptor\0224\n\007vehicle\030\010 \001(\0132#.transit_" +
+      "realtime.VehicleDescriptor\022,\n\010position\030\002" +
+      " \001(\0132\032.transit_realtime.Position\022\035\n\025curr" +
+      "ent_stop_sequence\030\003 \001(\r\022\017\n\007stop_id\030\007 \001(\t" +
+      "\022Z\n\016current_status\030\004 \001(\01623.transit_realt" +
+      "ime.VehiclePosition.VehicleStopStatus:\rI" +
+      "N_TRANSIT_TO\022\021\n\ttimestamp\030\005 \001(\004\022K\n\020conge" +
+      "stion_level\030\006 \001(\01621.transit_realtime.Veh" +
+      "iclePosition.CongestionLevel\022K\n\020occupanc" +
+      "y_status\030\t \001(\01621.transit_realtime.Vehicl" +
+      "ePosition.OccupancyStatus\022\034\n\024occupancy_p" +
+      "ercentage\030\n \001(\r\022Q\n\026multi_carriage_detail" +
+      "s\030\013 \003(\01321.transit_realtime.VehiclePositi" +
+      "on.CarriageDetails\032\331\001\n\017CarriageDetails\022\n" +
+      "\n\002id\030\001 \001(\t\022\r\n\005label\030\002 \001(\t\022^\n\020occupancy_s" +
+      "tatus\030\003 \001(\01621.transit_realtime.VehiclePo" +
+      "sition.OccupancyStatus:\021NO_DATA_AVAILABL" +
+      "E\022 \n\024occupancy_percentage\030\004 \001(\005:\002-1\022\031\n\021c" +
+      "arriage_sequence\030\005 \001(\r*\006\010\350\007\020\320\017*\006\010\250F\020\220N\"G" +
+      "\n\021VehicleStopStatus\022\017\n\013INCOMING_AT\020\000\022\016\n\n" +
+      "STOPPED_AT\020\001\022\021\n\rIN_TRANSIT_TO\020\002\"}\n\017Conge" +
+      "stionLevel\022\034\n\030UNKNOWN_CONGESTION_LEVEL\020\000" +
+      "\022\024\n\020RUNNING_SMOOTHLY\020\001\022\017\n\013STOP_AND_GO\020\002\022" +
+      "\016\n\nCONGESTION\020\003\022\025\n\021SEVERE_CONGESTION\020\004\"\331" +
+      "\001\n\017OccupancyStatus\022\t\n\005EMPTY\020\000\022\030\n\024MANY_SE" +
+      "ATS_AVAILABLE\020\001\022\027\n\023FEW_SEATS_AVAILABLE\020\002" +
+      "\022\026\n\022STANDING_ROOM_ONLY\020\003\022\036\n\032CRUSHED_STAN" +
+      "DING_ROOM_ONLY\020\004\022\010\n\004FULL\020\005\022\034\n\030NOT_ACCEPT" +
+      "ING_PASSENGERS\020\006\022\025\n\021NO_DATA_AVAILABLE\020\007\022" +
+      "\021\n\rNOT_BOARDABLE\020\010*\006\010\350\007\020\320\017*\006\010\250F\020\220N\"\200\t\n\005A" +
+      "lert\0222\n\ractive_period\030\001 \003(\0132\033.transit_re" +
+      "altime.TimeRange\0229\n\017informed_entity\030\005 \003(" +
+      "\0132 .transit_realtime.EntitySelector\022;\n\005c" +
+      "ause\030\006 \001(\0162\035.transit_realtime.Alert.Caus" +
+      "e:\rUNKNOWN_CAUSE\022>\n\006effect\030\007 \001(\0162\036.trans" +
+      "it_realtime.Alert.Effect:\016UNKNOWN_EFFECT" +
+      "\022/\n\003url\030\010 \001(\0132\".transit_realtime.Transla" +
+      "tedString\0227\n\013header_text\030\n \001(\0132\".transit" +
+      "_realtime.TranslatedString\022<\n\020descriptio" +
+      "n_text\030\013 \001(\0132\".transit_realtime.Translat" +
+      "edString\022;\n\017tts_header_text\030\014 \001(\0132\".tran" +
+      "sit_realtime.TranslatedString\022@\n\024tts_des" +
+      "cription_text\030\r \001(\0132\".transit_realtime.T" +
+      "ranslatedString\022O\n\016severity_level\030\016 \001(\0162" +
+      "%.transit_realtime.Alert.SeverityLevel:\020" +
+      "UNKNOWN_SEVERITY\"\330\001\n\005Cause\022\021\n\rUNKNOWN_CA" +
+      "USE\020\001\022\017\n\013OTHER_CAUSE\020\002\022\025\n\021TECHNICAL_PROB" +
+      "LEM\020\003\022\n\n\006STRIKE\020\004\022\021\n\rDEMONSTRATION\020\005\022\014\n\010" +
+      "ACCIDENT\020\006\022\013\n\007HOLIDAY\020\007\022\013\n\007WEATHER\020\010\022\017\n\013" +
+      "MAINTENANCE\020\t\022\020\n\014CONSTRUCTION\020\n\022\023\n\017POLIC" +
+      "E_ACTIVITY\020\013\022\025\n\021MEDICAL_EMERGENCY\020\014\"\335\001\n\006" +
+      "Effect\022\016\n\nNO_SERVICE\020\001\022\023\n\017REDUCED_SERVIC" +
+      "E\020\002\022\026\n\022SIGNIFICANT_DELAYS\020\003\022\n\n\006DETOUR\020\004\022" +
+      "\026\n\022ADDITIONAL_SERVICE\020\005\022\024\n\020MODIFIED_SERV" +
+      "ICE\020\006\022\020\n\014OTHER_EFFECT\020\007\022\022\n\016UNKNOWN_EFFEC" +
+      "T\020\010\022\016\n\nSTOP_MOVED\020\t\022\r\n\tNO_EFFECT\020\n\022\027\n\023AC" +
+      "CESSIBILITY_ISSUE\020\013\"H\n\rSeverityLevel\022\024\n\020" +
+      "UNKNOWN_SEVERITY\020\001\022\010\n\004INFO\020\002\022\013\n\007WARNING\020" +
+      "\003\022\n\n\006SEVERE\020\004*\006\010\350\007\020\320\017*\006\010\250F\020\220N\"7\n\tTimeRan" +
+      "ge\022\r\n\005start\030\001 \001(\004\022\013\n\003end\030\002 \001(\004*\006\010\350\007\020\320\017*\006" +
+      "\010\250F\020\220N\"q\n\010Position\022\020\n\010latitude\030\001 \002(\002\022\021\n\t" +
+      "longitude\030\002 \002(\002\022\017\n\007bearing\030\003 \001(\002\022\020\n\010odom" +
+      "eter\030\004 \001(\001\022\r\n\005speed\030\005 \001(\002*\006\010\350\007\020\320\017*\006\010\250F\020\220" +
+      "N\"\315\002\n\016TripDescriptor\022\017\n\007trip_id\030\001 \001(\t\022\020\n" +
+      "\010route_id\030\005 \001(\t\022\024\n\014direction_id\030\006 \001(\r\022\022\n" +
+      "\nstart_time\030\002 \001(\t\022\022\n\nstart_date\030\003 \001(\t\022T\n" +
+      "\025schedule_relationship\030\004 \001(\01625.transit_r" +
+      "ealtime.TripDescriptor.ScheduleRelations" +
+      "hip\"t\n\024ScheduleRelationship\022\r\n\tSCHEDULED" +
+      "\020\000\022\t\n\005ADDED\020\001\022\017\n\013UNSCHEDULED\020\002\022\014\n\010CANCEL" +
+      "ED\020\003\022\023\n\013REPLACEMENT\020\005\032\002\010\001\022\016\n\nDUPLICATED\020" +
+      "\006*\006\010\350\007\020\320\017*\006\010\250F\020\220N\"U\n\021VehicleDescriptor\022\n" +
       "\n\002id\030\001 \001(\t\022\r\n\005label\030\002 \001(\t\022\025\n\rlicense_pla" +
-      "te\030\003 \001(\t*\006\010\350\007\020\320\017\"\222\001\n\016EntitySelector\022\021\n\ta" +
-      "gency_id\030\001 \001(\t\022\020\n\010route_id\030\002 \001(\t\022\022\n\nrout" +
-      "e_type\030\003 \001(\005\022.\n\004trip\030\004 \001(\0132 .transit_rea" +
-      "ltime.TripDescriptor\022\017\n\007stop_id\030\005 \001(\t*\006\010" +
-      "\350\007\020\320\017\"\226\001\n\020TranslatedString\022C\n\013translatio" +
-      "n\030\001 \003(\0132..transit_realtime.TranslatedStr" +
-      "ing.Translation\0325\n\013Translation\022\014\n\004text\030\001" +
-      " \002(\t\022\020\n\010language\030\002 \001(\t*\006\010\350\007\020\320\017*\006\010\350\007\020\320\017B)" +
-      "\n\022dev.katsute.onemtaB\021GTFSRealtimeProtoH" +
-      "\002"
+      "te\030\003 \001(\t*\006\010\350\007\020\320\017*\006\010\250F\020\220N\"\260\001\n\016EntitySelec" +
+      "tor\022\021\n\tagency_id\030\001 \001(\t\022\020\n\010route_id\030\002 \001(\t" +
+      "\022\022\n\nroute_type\030\003 \001(\005\022.\n\004trip\030\004 \001(\0132 .tra" +
+      "nsit_realtime.TripDescriptor\022\017\n\007stop_id\030" +
+      "\005 \001(\t\022\024\n\014direction_id\030\006 \001(\r*\006\010\350\007\020\320\017*\006\010\250F" +
+      "\020\220N\"\246\001\n\020TranslatedString\022C\n\013translation\030" +
+      "\001 \003(\0132..transit_realtime.TranslatedStrin" +
+      "g.Translation\032=\n\013Translation\022\014\n\004text\030\001 \002" +
+      "(\t\022\020\n\010language\030\002 \001(\t*\006\010\350\007\020\320\017*\006\010\250F\020\220N*\006\010\350" +
+      "\007\020\320\017*\006\010\250F\020\220NB)\n\022dev.katsute.onemtaB\021GTFS" +
+      "RealtimeProtoH\002"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -19454,7 +23863,7 @@ abstract class GTFSRealtimeProto {
     internal_static_transit_realtime_TripUpdate_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_transit_realtime_TripUpdate_descriptor,
-        new java.lang.String[] { "Trip", "Vehicle", "StopTimeUpdate", "Timestamp", "Delay", });
+        new java.lang.String[] { "Trip", "Vehicle", "StopTimeUpdate", "Timestamp", "Delay", "TripProperties", });
     internal_static_transit_realtime_TripUpdate_StopTimeEvent_descriptor =
       internal_static_transit_realtime_TripUpdate_descriptor.getNestedTypes().get(0);
     internal_static_transit_realtime_TripUpdate_StopTimeEvent_fieldAccessorTable = new
@@ -19467,18 +23876,30 @@ abstract class GTFSRealtimeProto {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_transit_realtime_TripUpdate_StopTimeUpdate_descriptor,
         new java.lang.String[] { "StopSequence", "StopId", "Arrival", "Departure", "ScheduleRelationship", });
+    internal_static_transit_realtime_TripUpdate_TripProperties_descriptor =
+      internal_static_transit_realtime_TripUpdate_descriptor.getNestedTypes().get(2);
+    internal_static_transit_realtime_TripUpdate_TripProperties_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_transit_realtime_TripUpdate_TripProperties_descriptor,
+        new java.lang.String[] { "TripId", "StartDate", "StartTime", });
     internal_static_transit_realtime_VehiclePosition_descriptor =
       getDescriptor().getMessageTypes().get(4);
     internal_static_transit_realtime_VehiclePosition_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_transit_realtime_VehiclePosition_descriptor,
-        new java.lang.String[] { "Trip", "Vehicle", "Position", "CurrentStopSequence", "StopId", "CurrentStatus", "Timestamp", "CongestionLevel", "OccupancyStatus", });
+        new java.lang.String[] { "Trip", "Vehicle", "Position", "CurrentStopSequence", "StopId", "CurrentStatus", "Timestamp", "CongestionLevel", "OccupancyStatus", "OccupancyPercentage", "MultiCarriageDetails", });
+    internal_static_transit_realtime_VehiclePosition_CarriageDetails_descriptor =
+      internal_static_transit_realtime_VehiclePosition_descriptor.getNestedTypes().get(0);
+    internal_static_transit_realtime_VehiclePosition_CarriageDetails_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_transit_realtime_VehiclePosition_CarriageDetails_descriptor,
+        new java.lang.String[] { "Id", "Label", "OccupancyStatus", "OccupancyPercentage", "CarriageSequence", });
     internal_static_transit_realtime_Alert_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_transit_realtime_Alert_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_transit_realtime_Alert_descriptor,
-        new java.lang.String[] { "ActivePeriod", "InformedEntity", "Cause", "Effect", "Url", "HeaderText", "DescriptionText", });
+        new java.lang.String[] { "ActivePeriod", "InformedEntity", "Cause", "Effect", "Url", "HeaderText", "DescriptionText", "TtsHeaderText", "TtsDescriptionText", "SeverityLevel", });
     internal_static_transit_realtime_TimeRange_descriptor =
       getDescriptor().getMessageTypes().get(6);
     internal_static_transit_realtime_TimeRange_fieldAccessorTable = new
@@ -19508,7 +23929,7 @@ abstract class GTFSRealtimeProto {
     internal_static_transit_realtime_EntitySelector_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_transit_realtime_EntitySelector_descriptor,
-        new java.lang.String[] { "AgencyId", "RouteId", "RouteType", "Trip", "StopId", });
+        new java.lang.String[] { "AgencyId", "RouteId", "RouteType", "Trip", "StopId", "DirectionId", });
     internal_static_transit_realtime_TranslatedString_descriptor =
       getDescriptor().getMessageTypes().get(11);
     internal_static_transit_realtime_TranslatedString_fieldAccessorTable = new
