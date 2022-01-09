@@ -18,10 +18,54 @@
 
 package dev.katsute.onemta;
 
+import dev.katsute.onemta.types.TransitAgency;
+
+import java.util.Objects;
+
 abstract class OneMTASchema {
 
     protected static DataResource getDataResource(final OneMTA mta, final DataResourceType type){
         return ((OneMTAImpl) mta).getDataResource(type);
+    }
+
+    static TransitAgency asAgency(final String agency_id, final DataResource resource){
+        return new TransitAgency() {
+
+            private final String agencyID   = agency_id.toUpperCase();
+            private final String agencyName = resource.getData("agency.csv").getValue("agency_id", agencyID, "agency_name");
+
+            // static data
+
+            @Override
+            public final String getAgencyID(){
+                return agencyID;
+            }
+
+            @Override
+            public final String getAgencyName(){
+                return agencyName;
+            }
+
+            // Java
+
+            @Override
+            public final boolean equals(final Object o){
+                return this == o ||
+                   (o != null &&
+                    getClass() == o.getClass() &&
+                    Objects.equals(agencyID, ((TransitAgency) o).getAgencyID()) &&
+                    Objects.equals(agencyName, ((TransitAgency) o).getAgencyName()));
+            }
+
+            @Override
+            public final String toString(){
+                return "TransitAgency{" +
+                       "agencyID='" + agencyID + '\'' +
+                       ", agencyName='" + agencyName + '\'' +
+                       '}';
+            }
+
+        };
     }
 
 }

@@ -24,10 +24,6 @@ public abstract class TransitRoute {
 
     public abstract TransitAgency getAgency();
 
-    public abstract String getRouteShortName();
-
-    public abstract String getRouteLongName();
-
     public abstract String getRouteName();
 
     public abstract String getRouteColor();

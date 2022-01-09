@@ -18,14 +18,15 @@
 
 package dev.katsute.onemta;
 
-import dev.katsute.onemta.attribute.RouteReference;
+import dev.katsute.onemta.attribute.*;
 import dev.katsute.onemta.types.*;
 
 public abstract class Subway {
 
-    public abstract static class Route extends TransitRoute { }
+    public abstract static class Route extends TransitRoute implements RouteShortName, RouteDescription { }
 
-    public abstract static class Stop extends TransitStop<String> implements RouteReference<Route> {
+    // todo: add utility method to check if N/S stops are the same: Subway.Stop#isSameStop(...)
+    public abstract static class Stop extends TransitStop<String> {
 
         public abstract SubwayDirection getDirection();
 

@@ -18,13 +18,14 @@
 
 package dev.katsute.onemta;
 
+import dev.katsute.onemta.attribute.*;
 import dev.katsute.onemta.types.*;
 
 public abstract class Bus {
 
-    public abstract static class Route extends TransitRoute { }
+    public abstract static class Route extends TransitRoute implements RouteShortName, RouteDescription { }
 
-    public abstract static class Stop extends TransitStop<Integer> { }
+    public abstract static class Stop extends TransitStop<Integer> implements RouteDescription { }
 
     public abstract static class Vehicle extends TransitVehicle<Route> {
 

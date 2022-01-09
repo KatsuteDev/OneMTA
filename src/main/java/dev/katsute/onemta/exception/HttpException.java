@@ -30,11 +30,11 @@ import java.net.HttpURLConnection;
 public final class HttpException extends RuntimeException {
 
     public HttpException(final String url, final Throwable cause){
-        super("Failed to execute request on \"" + url + "\": " + cause.getMessage(), cause);
+        super("Failed to execute request on '" + url + "': " + cause.getMessage(), cause);
     }
 
     public HttpException(final String url, final String message, final Throwable cause){
-        super("Failed to execute request on \"" + url + "\": " + cause.getMessage() + "\nProbably caused by: " + message, cause);
+        super("Failed to execute request on '" + url + "': " + cause.getMessage() + "\nProbably caused by: " + message, cause);
     }
 
 }

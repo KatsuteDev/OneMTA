@@ -21,6 +21,7 @@ package dev.katsute.onemta;
 import dev.katsute.onemta.types.BusDirection;
 import dev.katsute.onemta.types.SubwayDirection;
 
+// todo: add utility methods to convert long names to ids: Bus.Stop#fromName(...) & Subway.Stop#fromName(...)
 public abstract class OneMTA {
 
     OneMTA(){ }

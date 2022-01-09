@@ -1,8 +1,0 @@
-note_id,note_mark,note_title,note_desc
-D,D,,Stops only to discharge customers
-G,G,,Train may depart GCT one (1) minute earlier than time shown if all customers have boarded
-H,H,,Train may depart 5 minutes earlier than the time shown
-R,R,,Stops only to recieve customers
-S,S,,Regular Station Stop
-B,B,,Bus
-Y,Y,,"This trains departure time is subject to adjustment, based on the game ending time."

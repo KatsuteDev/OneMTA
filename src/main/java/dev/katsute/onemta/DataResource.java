@@ -54,8 +54,8 @@ public abstract class DataResource {
             }
 
             @Override
-            CSV getData(final String key){
-                return data.get(key);
+            final CSV getData(final String key){
+                return Objects.requireNonNull(data.get(key), "Failed to find csv with name '" + key + "'");
             }
 
             @Override
