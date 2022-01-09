@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021-2022 Katsute <https://github.com/Katsute>
+ * Copyright (C) 2022 Katsute <https://github.com/Katsute>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,10 +16,12 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-package dev.katsute.onemta.railroad;
+package dev.katsute.onemta.attribute;
 
-import dev.katsute.onemta.types.TransitVehicle;
+import dev.katsute.onemta.types.TransitAgency;
 
-public abstract class RailroadVehicle extends TransitVehicle<RailroadRoute> {
+public interface AgencyReference {
+
+    TransitAgency getAgency();
 
 }

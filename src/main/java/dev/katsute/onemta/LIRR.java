@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021-2022 Katsute <https://github.com/Katsute>
+ * Copyright (C) 2022 Katsute <https://github.com/Katsute>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,21 +18,23 @@
 
 package dev.katsute.onemta;
 
-import dev.katsute.onemta.Json.JsonObject;
-import dev.katsute.onemta.bus.BusStop;
+import dev.katsute.onemta.types.*;
 
-abstract class MTASchema {
+@SuppressWarnings("SpellCheckingInspection")
+public abstract class LIRR {
 
-    static abstract class BusSchema {
+    public abstract static class Route extends TransitRoute { }
 
-        static BusStop asBusStop(final OneMTA mta, final JsonObject json){
-            return null;
-        }
+    public abstract static class Stop extends TransitStop<Integer,Route> {
+
+        public abstract String getStopCode();
+
+        public abstract String getStopDescription();
+
+        public abstract boolean hasWheelchairBoarding();
 
     }
 
-    static abstract class SubwaySchema {
-
-    }
+    public abstract static class Vehicle extends TransitVehicle<Route> { }
 
 }

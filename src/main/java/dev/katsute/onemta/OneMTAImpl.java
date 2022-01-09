@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021-2022 Katsute <https://github.com/Katsute>
+ * Copyright (C) 2022 Katsute <https://github.com/Katsute>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,10 +18,7 @@
 
 package dev.katsute.onemta;
 
-import dev.katsute.onemta.bus.*;
 import dev.katsute.onemta.exception.MissingResourceException;
-import dev.katsute.onemta.railroad.*;
-import dev.katsute.onemta.subway.*;
 import dev.katsute.onemta.types.BusDirection;
 import dev.katsute.onemta.types.SubwayDirection;
 
@@ -29,11 +26,12 @@ import java.util.Arrays;
 
 final class OneMTAImpl extends OneMTA {
 
-    private final transient String busToken;
-    private final transient String subwayToken;
-    private final DataResource[] resources;
+    final transient String busToken;
+    final transient String subwayToken;
 
-    private final MTAService service = new MTAService();
+    final MTAService service = new MTAService();
+
+    private final DataResource[] resources;
 
     OneMTAImpl(final String busToken, final String subwayToken){
         this(busToken, subwayToken, (DataResource[]) null);
@@ -58,95 +56,92 @@ final class OneMTAImpl extends OneMTA {
 
 
     @Override
-    public BusRoute getBusRoute(final String route){
+    public Bus.Route getBus(final String route){
         return null;
     }
 
     @Override
-    public BusStop getBusStop(final int stopID){
+    public Bus.Stop getBusStop(final int stopID){
         return null;
     }
 
     @Override
-    public BusVehicle getBus(final int busID){
+    public Bus.Vehicle getBus(final int busID){
         return null;
     }
 
     @Override
-    public BusVehicle[] getBusses(){
-        return new BusVehicle[0];
+    public Bus.Vehicle[] getBusses(){
+        return new Bus.Vehicle[0];
     }
 
     @Override
-    public BusVehicle[] getBusses(final String route){
-        return new BusVehicle[0];
+    public Bus.Vehicle[] getBusses(final String route){
+        return new Bus.Vehicle[0];
     }
 
     @Override
-    public BusVehicle[] getBusses(final String route, final BusDirection direction){
-        return new BusVehicle[0];
+    public Bus.Vehicle[] getBusses(final String route, final BusDirection direction){
+        return new Bus.Vehicle[0];
     }
 
     @Override
-    public BusVehicle[] getBusses(final BusRoute route){
-        return new BusVehicle[0];
+    public Bus.Vehicle[] getBusses(final Bus.Route route){
+        return new Bus.Vehicle[0];
     }
 
     @Override
-    public BusVehicle[] getBusses(final BusRoute route, final BusDirection direction){
-        return new BusVehicle[0];
+    public Bus.Vehicle[] getBusses(final Bus.Route route, final BusDirection direction){
+        return new Bus.Vehicle[0];
     }
 
     @Override
-    public SubwayRoute getSubwayRoute(final String route){
+    public Subway.Route getSubwayRoute(final String route){
         return null;
     }
 
     @Override
-    public SubwayStop getSubwayStop(final String stopID){
+    public Subway.Stop getSubwayStop(final String stopID){
         return null;
     }
 
     @Override
-    public SubwayStop getSubwayStop(final String stopID, final SubwayDirection direction){
+    public Subway.Stop getSubway(final String stopID, final SubwayDirection direction){
         return null;
     }
 
     @Override
-    public SubwayVehicle getSubwayTrain(final String trainID){
-        System.out.println(service.subway.get1234567(subwayToken));
+    public Subway.Vehicle getSubwayTrain(final String trainID){
         return null;
     }
 
     @Override
-    public RailroadRoute getLIRRRoute(final String route){
+    public LIRR.Route getLIRRRoute(final String route){
         return null;
     }
 
     @Override
-    public RailroadStop getLIRRStop(final String stopId){
+    public LIRR.Stop getLIRRStop(final String stopId){
         return null;
     }
 
     @Override
-    public RailroadVehicle getLIRRTrain(final String trainID){
-        System.out.println(service.lirr.getLIRR(subwayToken));
+    public LIRR.Vehicle getLIRRTrain(final String trainID){
         return null;
     }
 
     @Override
-    public RailroadRoute getMNRRoute(final String route){
+    public MNR.Route getMNRRoute(final String route){
         return null;
     }
 
     @Override
-    public RailroadStop getMNRStop(final String stopId){
+    public MNR.Stop getMNRStop(final String stopId){
         return null;
     }
 
     @Override
-    public RailroadVehicle getMNRTrain(final String trainID){
-        System.out.println(service.mnrr.getMNRR(subwayToken));
+    public MNR.Vehicle getMNRTrain(final String trainID){
         return null;
     }
 

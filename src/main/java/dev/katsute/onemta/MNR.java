@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021-2022 Katsute <https://github.com/Katsute>
+ * Copyright (C) 2022 Katsute <https://github.com/Katsute>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,18 +16,24 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-package dev.katsute.onemta.railroad;
+package dev.katsute.onemta;
 
-import dev.katsute.onemta.types.TransitStop;
+import dev.katsute.onemta.types.*;
 
-public abstract class RailroadStop extends TransitStop {
+public abstract class MNR {
 
-    public abstract int getStopID();
+    public abstract static class Route extends TransitRoute { }
 
-    public abstract String getStopCode();
+    public abstract static class Stop extends TransitStop<Integer,Route> {
 
-    public abstract String getStopDescription();
+        public abstract String getStopCode();
 
-    public abstract boolean hasWheelchairBoarding();
+        public abstract String getStopDescription();
+
+        public abstract boolean hasWheelchairBoarding();
+
+    }
+
+    public abstract static class Vehicle extends TransitVehicle<Route> { }
 
 }

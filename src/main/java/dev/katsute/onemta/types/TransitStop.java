@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021-2022 Katsute <https://github.com/Katsute>
+ * Copyright (C) 2022 Katsute <https://github.com/Katsute>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,7 +18,11 @@
 
 package dev.katsute.onemta.types;
 
-public abstract class TransitStop {
+import dev.katsute.onemta.attribute.RouteReference;
+
+public abstract class TransitStop<I,R extends TransitRoute> implements RouteReference<R> {
+
+    public abstract I getStopID();
 
     public abstract String getStopName();
 

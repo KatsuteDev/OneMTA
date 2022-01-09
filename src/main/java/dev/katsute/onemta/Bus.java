@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021-2022 Katsute <https://github.com/Katsute>
+ * Copyright (C) 2022 Katsute <https://github.com/Katsute>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,10 +16,27 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-package dev.katsute.onemta.subway;
+package dev.katsute.onemta;
 
-import dev.katsute.onemta.types.TransitVehicle;
+import dev.katsute.onemta.types.*;
 
-public abstract class SubwayVehicle extends TransitVehicle<SubwayRoute> {
+public abstract class Bus {
+
+    public abstract static class Route extends TransitRoute { }
+
+    public abstract static class Stop extends TransitStop<Integer,Route> { }
+
+    public abstract static class Vehicle extends TransitVehicle<Route> {
+
+        public abstract int getID();
+
+        public abstract double getLatitude();
+
+        public abstract double getLongitude();
+
+        public abstract double getBearing();
+
+    }
+
 
 }
