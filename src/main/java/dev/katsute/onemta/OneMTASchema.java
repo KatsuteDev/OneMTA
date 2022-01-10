@@ -25,7 +25,11 @@ import java.util.Objects;
 abstract class OneMTASchema {
 
     protected static DataResource getDataResource(final OneMTA mta, final DataResourceType type){
-        return ((OneMTAImpl) mta).getDataResource(type);
+        return cast(mta).getDataResource(type);
+    }
+
+    protected static OneMTAImpl cast(final OneMTA mta){
+        return (OneMTAImpl) mta;
     }
 
     static TransitAgency asAgency(final String agency_id, final DataResource resource){

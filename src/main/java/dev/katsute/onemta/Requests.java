@@ -44,7 +44,7 @@ abstract class Requests {
             conn = getConnection(
                 url,
                 new HashMap<>(query),
-                new HashMap<>(headers){{
+                new HashMap<String,String>(headers){{
                     put("Accept", "application/json; charset=UTF-8");
                 }}
             );
@@ -66,10 +66,12 @@ abstract class Requests {
     private static final ExtensionRegistry registry = ExtensionRegistry.newInstance();
 
     static{
-        NYCTSubwayProto.registerAllExtensions(registry);
-        MTARRProto.registerAllExtensions(registry);
-        LIRRProto.registerAllExtensions(registry);
-        MNRRProto.registerAllExtensions(registry);
+        NYCTSubwayProto     .registerAllExtensions(registry);
+        MTARRProto          .registerAllExtensions(registry);
+        LIRRProto           .registerAllExtensions(registry);
+        MNRRProto           .registerAllExtensions(registry);
+        CrowdingProto       .registerAllExtensions(registry);
+        ServiceStatusProto  .registerAllExtensions(registry);
     }
 
     static FeedMessage getProtobuf(
@@ -81,8 +83,8 @@ abstract class Requests {
         try{
             conn = getConnection(
                 url,
-                new HashMap<>(query),
-                new HashMap<>(headers){{
+                new HashMap<String,String>(query),
+                new HashMap<String,String>(headers){{
                     put("Accept", "application/x-protobuf");
                 }}
             );

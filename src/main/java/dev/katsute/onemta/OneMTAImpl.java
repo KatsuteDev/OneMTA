@@ -54,6 +54,10 @@ final class OneMTAImpl extends OneMTA {
 
     // bus methods
 
+    public final Object test(){
+        return service.subway.get1234567(subwayToken);
+    }
+
     @Override
     public final Bus.Route getBusRoute(final String route_id){
         return OneMTASchema_Bus.asRoute(this, route_id);
@@ -66,7 +70,7 @@ final class OneMTAImpl extends OneMTA {
 
     @Override
     public final Bus.Vehicle getBus(final int bus_id){
-        return OneMTASchema_Bus.asVehicle(this, bus_id);
+        return null;
     }
 
     @Override
@@ -96,7 +100,7 @@ final class OneMTAImpl extends OneMTA {
 
     @Override
     public final Subway.Vehicle getSubwayTrain(final int train_id){
-        return OneMTASchema_Subway.asVehicle(this, train_id);
+        return null;
     }
 
     // lirr methods
@@ -118,7 +122,7 @@ final class OneMTAImpl extends OneMTA {
 
     @Override
     public final LIRR.Vehicle getLIRRTrain(final String train_id){
-        return OneMTASchema_LIRR.asVehicle(this, train_id);
+        return null;
     }
 
     // mnrr methods
@@ -140,7 +144,7 @@ final class OneMTAImpl extends OneMTA {
 
     @Override
     public final MNR.Vehicle getMNRTrain(final String train_id){
-        return OneMTASchema_MNR.asVehicle(this, train_id);
+        return null;
     }
 
 }
