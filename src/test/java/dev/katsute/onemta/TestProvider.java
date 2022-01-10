@@ -2,6 +2,7 @@ package dev.katsute.onemta;
 
 import dev.katsute.jcore.Workflow;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Assumptions;
 import org.junit.jupiter.params.provider.Arguments;
 
 import java.io.*;
@@ -18,8 +19,14 @@ public abstract class TestProvider {
     private static final File bus    = new File("src/test/java/resources/bus.txt");
     private static final File subway = new File("src/test/java/resources/subway.txt");
 
+    private static final boolean hasBus    = bus.exists();
+    private static final boolean hasSubway = subway.exists();
+
     public static OneMTA getOneMTA(){
         try{
+            if(!hasBus && !hasSubway)
+                Assumptions.assumeTrue(false, Workflow.warningSupplier("Skipping tests, no token defined"));
+
             return OneMTA.create(strip(readFile(bus)), strip(readFile(subway)));
         }catch(final IOException e){
             final StringWriter sw = new StringWriter();

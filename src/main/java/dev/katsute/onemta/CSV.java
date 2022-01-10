@@ -44,7 +44,7 @@ class CSV {
         final List<String> row = new ArrayList<>();
 
         while(matcher.find())
-            row.add(Objects.requireNonNullElse(matcher.group(2), matcher.group(1)));
+            row.add(matcher.group(2) != null ? matcher.group(2) : matcher.group(1));
         return row;
     }
 

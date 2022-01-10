@@ -55,7 +55,7 @@ final class OneMTAImpl extends OneMTA {
     // bus methods
 
     public final Object test(){
-        return service.mnrr.getMNRR(subwayToken);
+        return service.subway.get1234567(subwayToken);
     }
 
     @Override
