@@ -16,41 +16,35 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-package dev.katsute.onemta.types;
-
-import dev.katsute.onemta.attribute.LocationReference;
+package dev.katsute.onemta.attribute;
 
 /**
- * Represents a transit stop.
+ * Indicates that the object has a location.
  *
- * @param <I> stop id format
- *
- * @see dev.katsute.onemta.Bus.Stop
- * @see dev.katsute.onemta.Subway.Stop
- * @see dev.katsute.onemta.LIRR.Stop
- * @see dev.katsute.onemta.MNR.Stop
  * @since 1.0.0
  * @version 1.0.0
  * @author Katsute
  */
-public abstract class TransitStop<I> implements LocationReference {
+public interface LocationReference {
 
     /**
-     * Returns the stop ID.
+     * Object latitude.
      *
-     * @return stop ID
+     * @return latitude
      *
+     * @see #getLongitude()
      * @since 1.0.0
      */
-    public abstract I getStopID();
+    double getLatitude();
 
     /**
-     * Returns the stop name.
+     * Object longitude.
      *
-     * @return stop name
+     * @return longitude
      *
+     * @see #getLatitude()
      * @since 1.0.0
      */
-    public abstract String getStopName();
+    double getLongitude();
 
 }

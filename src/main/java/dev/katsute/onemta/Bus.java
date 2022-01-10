@@ -22,7 +22,7 @@ import dev.katsute.onemta.attribute.*;
 import dev.katsute.onemta.types.*;
 
 /**
- * Contains all bus related methods. For the bus vehicle use {@link Vehicle}.
+ * Contains all bus related methods. For the bus vehicle see {@link Vehicle}.
  *
  * @since 1.0.0
  * @version 1.0.0
@@ -38,14 +38,24 @@ public abstract class Bus {
     public abstract static class Stop extends TransitStop<Integer> implements RouteDescription { }
 
     // todo: add utility methods for isSBS, isExpress, isShuttle, isLimited
-    public abstract static class Vehicle extends TransitVehicle<Route> {
+    public abstract static class Vehicle extends TransitVehicle<Route> implements LocationReference {
 
+        /**
+         * Returns the vehicle number that is visible on the side and front of the bus.
+         *
+         * @return vehicle number
+         *
+         * @since 1.0.0
+         */
         public abstract int getID();
 
-        public abstract double getLatitude();
-
-        public abstract double getLongitude();
-
+        /**
+         * Returns the current bearing of the vehicle in degrees, 0 meaning north.
+         *
+         * @return vehicle bearing
+         *
+         * @since 1.0.0
+         */
         public abstract double getBearing();
 
     }

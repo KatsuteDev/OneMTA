@@ -181,12 +181,12 @@ abstract class OneMTASchema_Bus extends OneMTASchema {
             }
 
             @Override
-            public final double getStopLatitude(){
+            public final double getLatitude(){
                 return stopLat;
             }
 
             @Override
-            public final double getStopLongitude(){
+            public final double getLongitude(){
                 return stopLon;
             }
 

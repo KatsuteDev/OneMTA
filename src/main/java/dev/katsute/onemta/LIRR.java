@@ -20,6 +20,13 @@ package dev.katsute.onemta;
 
 import dev.katsute.onemta.types.*;
 
+/**
+ * Contains all Long Island Railroad (LIRR) related methods.
+ *
+ * @since 1.0.0
+ * @version 1.0.0
+ * @author Katsute
+ */
 @SuppressWarnings("SpellCheckingInspection")
 public abstract class LIRR {
 
@@ -29,10 +36,31 @@ public abstract class LIRR {
     // todo: get vehicles for stop
     public abstract static class Stop extends TransitStop<Integer> {
 
+        /**
+         * Returns the stop code for the stop.
+         *
+         * @return stop code
+         *
+         * @since 1.0.0
+         */
         public abstract String getStopCode();
 
+        /**
+         * Returns the stop description.
+         *
+         * @return stop description
+         *
+         * @since 1.0.0
+         */
         public abstract String getStopDescription();
 
+        /**
+         * Returns if the stop is wheelchair accesible.
+         *
+         * @return wheelchair accesible
+         *
+         * @since 1.0.0
+         */
         public abstract boolean hasWheelchairBoarding();
 
     }
