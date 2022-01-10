@@ -18,7 +18,8 @@
 
 package dev.katsute.onemta;
 
-import dev.katsute.onemta.attribute.*;
+import dev.katsute.onemta.attribute.RouteDescription;
+import dev.katsute.onemta.attribute.RouteShortName;
 import dev.katsute.onemta.types.*;
 
 /**

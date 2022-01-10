@@ -18,12 +18,12 @@
 
 package dev.katsute.onemta;
 
+import dev.katsute.onemta.exception.JsonSyntaxException;
+
 import java.io.*;
 import java.util.*;
 import java.util.function.Function;
 import java.util.regex.*;
-
-import dev.katsute.onemta.exception.JsonSyntaxException;
 
 /**
  * <a href="https://github.com/KatsuteDev/Mal4J/blob/main/src/main/java/com/kttdevelopment/mal4j/Json.java">https://github.com/KatsuteDev/Mal4J/blob/main/src/main/java/com/kttdevelopment/mal4j/Json.java</a>
