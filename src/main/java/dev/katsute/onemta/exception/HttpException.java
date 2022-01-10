@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021-2022 Katsute <https://github.com/Katsute>
+ * Copyright (C) 2022 Katsute <https://github.com/Katsute>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,8 +18,6 @@
 
 package dev.katsute.onemta.exception;
 
-import java.net.HttpURLConnection;
-
 /**
  * Throw if there is an error while executing the request.
  *
@@ -30,11 +28,11 @@ import java.net.HttpURLConnection;
 public final class HttpException extends RuntimeException {
 
     public HttpException(final String url, final Throwable cause){
-        super("Failed to execute request on \"" + url + "\": " + cause.getMessage(), cause);
+        super("Failed to execute request on '" + url + "': " + cause.getMessage(), cause);
     }
 
     public HttpException(final String url, final String message, final Throwable cause){
-        super("Failed to execute request on \"" + url + "\": " + cause.getMessage() + "\nProbably caused by: " + message, cause);
+        super("Failed to execute request on '" + url + "': " + cause.getMessage() + "\nProbably caused by: " + message, cause);
     }
 
 }

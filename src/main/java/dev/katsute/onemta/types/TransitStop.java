@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021-2022 Katsute <https://github.com/Katsute>
+ * Copyright (C) 2022 Katsute <https://github.com/Katsute>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,12 +18,39 @@
 
 package dev.katsute.onemta.types;
 
-public abstract class TransitStop {
+import dev.katsute.onemta.attribute.LocationReference;
 
+/**
+ * Represents a transit stop.
+ *
+ * @param <I> stop id format
+ *
+ * @see dev.katsute.onemta.Bus.Stop
+ * @see dev.katsute.onemta.Subway.Stop
+ * @see dev.katsute.onemta.LIRR.Stop
+ * @see dev.katsute.onemta.MNR.Stop
+ * @since 1.0.0
+ * @version 1.0.0
+ * @author Katsute
+ */
+public abstract class TransitStop<I> implements LocationReference {
+
+    /**
+     * Returns the stop ID.
+     *
+     * @return stop ID
+     *
+     * @since 1.0.0
+     */
+    public abstract I getStopID();
+
+    /**
+     * Returns the stop name.
+     *
+     * @return stop name
+     *
+     * @since 1.0.0
+     */
     public abstract String getStopName();
-
-    public abstract double getStopLatitude();
-
-    public abstract double getStopLongitude();
 
 }

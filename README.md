@@ -24,7 +24,7 @@
 
 # Overview
 
-TBD
+[**Disclaimer:**](#disclaimer) The MTA API [Terms and Conditions](https://api.mta.info/#/DataFeedAgreement) prohibits developers from giving users direct access to MTA servers. Any realtime data that is retrieved in this library must be served to users on your own servers.
 
 - [Overview](#overview)
 - [Installation](#installation)
@@ -34,6 +34,10 @@ TBD
 - [Disclaimer](#disclaimer)
 
 # Installation
+
+OneMTA requires at least Java 8. OneMTA also requires the [protobuf-java](https://mvnrepository.com/artifact/com.google.protobuf/protobuf-java) library to be installed.
+
+Compiled jars can be found on Maven Central and the releases tab.
 
 TBD
 
@@ -58,13 +62,24 @@ TBD
 - Have a suggestion or looking for inspiration? Check out our [discussions](https://github.com/KatsuteDev/OneMTA/discussions).
 - Want to further expand our project or site? [Fork](https://github.com/KatsuteDev/OneMTA/fork) this repository and submit a [pull request](https://github.com/KatsuteDev/OneMTA/pulls).
 
+### Updating Protobufs
+
+- Download latest protobufs from [OneBusAway/onebusaway-gtfs-realtime-api](https://github.com/OneBusAway/onebusaway-gtfs-realtime-api/tree/master/src/main/proto/com/google/transit/realtime)
+- Save proto files in `/protobuf`
+- Change options and imports as defined in the `profobuf.sh` comments
+- Run `protobuf.sh`
+- Change all classes to abstract package private and add `SuppressWarnings("all")`
+
 ### Running Tests Locally
 
-TBD
+For local tests you can use Java 8+, however only methods in the Java 8 API may be used. The `src/main/java9` folder should not be marked as a source root.
+
+- (Bus) Run tests locally by adding a text file named `bus.txt` that contains the bus token in the `src/test/java/resources` directory.
+- (Subway) Run tests locally by adding a text file named `subway.txt` that contains the subway in the `src/test/java/resources` directory.
 
 ### Running Tests Remotely
 
-TBD
+Devs running remote tests may do so by running the `MTA CI` workflow manually in the actions tab of your fork. Note that this requires two secrets, a `BUS_TOKEN` which contains the bus token, and a `SUBWAY_TOKEN` which contains the subway token.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -78,5 +93,7 @@ This library is released under the [GNU General Public License (GPL) v2.0](https
 
 - [@Katsute](https://github.com/Katsute) and [@KatsuteDev](https://github.com/KatsuteDev) are not affiliated with the MTA.
 - By using the MTA API you are subject to their [Terms and Conditions](https://api.mta.info/#/DataFeedAgreement).
+
+  > In developing your app, you will provide that the MTA data feed is available to others only from a non-MTA server. Accordingly, you will download and store the MTA data feed on a non-MTA server which users of your App will access in order to obtain data. MTA prohibits the development of an app that would make the data available to others directly from MTA's server(s).
 
 <p align="right">(<a href="#top">back to top</a>)</p>

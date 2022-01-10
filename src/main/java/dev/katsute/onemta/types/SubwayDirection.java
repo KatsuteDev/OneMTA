@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021-2022 Katsute <https://github.com/Katsute>
+ * Copyright (C) 2022 Katsute <https://github.com/Katsute>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -48,10 +48,29 @@ public enum SubwayDirection {
      *
      * @return gtfs direction
      *
-     * @author Katsute
+     * @since 1.0.0
      */
     public final int getDirection(){
         return direction;
+    }
+
+    /**
+     * Converts a GTFS direction ID to an enum.
+     *
+     * @param direction gtfs direction
+     * @return direction
+     *
+     * @since 1.0.0
+     */
+    public static SubwayDirection asDirection(final int direction){
+        switch(direction){
+            case 1:
+                return NORTH;
+            case 3:
+                return SOUTH;
+            default:
+                return null;
+        }
     }
 
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021-2022 Katsute <https://github.com/Katsute>
+ * Copyright (C) 2022 Katsute <https://github.com/Katsute>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -52,12 +52,16 @@ class CSV {
         return new ArrayList<>(headers);
     }
 
+    public final int getHeaderIndex(final String header){
+        return headers.indexOf(header);
+    }
+
     public final List<List<String>> getRows(){
         return new ArrayList<>(rows);
     }
 
     public final List<String> getRow(final String keyHeader, final String key){
-        final int index = headers.indexOf(keyHeader);
+        final int index = getHeaderIndex(keyHeader);
         if(index == -1) return null;
         for(final List<String> row : rows)
             if(row.get(index).equals(key))
@@ -66,7 +70,7 @@ class CSV {
     }
 
     public final String getValue(final String keyHeader, final String key, final String valueHeader){
-        final int index = headers.indexOf(valueHeader);
+         final int index = getHeaderIndex(valueHeader);
         if(index == -1) return null;
         final List<String> row = getRow(keyHeader, key);
         return

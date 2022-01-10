@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021-2022 Katsute <https://github.com/Katsute>
+ * Copyright (C) 2022 Katsute <https://github.com/Katsute>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -54,8 +54,8 @@ public abstract class DataResource {
             }
 
             @Override
-            CSV getData(final String key){
-                return data.get(key);
+            final CSV getData(final String key){
+                return Objects.requireNonNull(data.get(key), "Failed to find csv with name '" + key + "'");
             }
 
             @Override

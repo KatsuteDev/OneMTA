@@ -16,33 +16,29 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-package dev.katsute.onemta.types;
+package dev.katsute.onemta.attribute;
+
+import dev.katsute.onemta.types.TransitRoute;
 
 /**
- * Represents a transit agency.
+ * Indicates that the object can refer to a {@link TransitRoute}.
+ *
+ * @param <T> route type
  *
  * @since 1.0.0
  * @version 1.0.0
  * @author Katsute
  */
-public abstract class TransitAgency {
+public interface RouteReference<T extends TransitRoute> {
 
     /**
-     * Returns the transit agency ID.
+     * Returns the route.
      *
-     * @return agency ID
+     * @return route
      *
+     * @see TransitRoute
      * @since 1.0.0
      */
-    public abstract String getAgencyID();
-
-    /**
-     * Returns the transit agency name.
-     *
-     * @return agency name
-     *
-     * @since 1.0.0
-     */
-    public abstract String getAgencyName();
+    T getRoute();
 
 }

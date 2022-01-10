@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021-2022 Katsute <https://github.com/Katsute>
+ * Copyright (C) 2022 Katsute <https://github.com/Katsute>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,8 +18,21 @@
 
 package dev.katsute.onemta.types;
 
-public abstract class TransitVehicle<R extends TransitRoute> {
+import dev.katsute.onemta.attribute.RouteReference;
 
-    public abstract R getLine();
+/**
+ * Represents a transit vehicle.
+ *
+ * @param <R> vehicle route type
+ *
+ * @see dev.katsute.onemta.Bus.Vehicle
+ * @see dev.katsute.onemta.Subway.Vehicle
+ * @see dev.katsute.onemta.LIRR.Vehicle
+ * @see dev.katsute.onemta.MNR.Vehicle
+ * @since 1.0.0
+ * @version 1.0.0
+ * @author Katsute
+ */
+public abstract class TransitVehicle<R extends TransitRoute> implements RouteReference<R> {
 
 }

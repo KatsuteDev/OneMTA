@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021-2022 Katsute <https://github.com/Katsute>
+ * Copyright (C) 2022 Katsute <https://github.com/Katsute>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,12 +18,9 @@
 
 package dev.katsute.onemta;
 
-import dev.katsute.onemta.bus.*;
-import dev.katsute.onemta.railroad.*;
-import dev.katsute.onemta.subway.*;
-import dev.katsute.onemta.types.BusDirection;
 import dev.katsute.onemta.types.SubwayDirection;
 
+@SuppressWarnings("SpellCheckingInspection")
 public abstract class OneMTA {
 
     OneMTA(){ }
@@ -38,44 +35,42 @@ public abstract class OneMTA {
 
     // bus methods
 
-    public abstract BusRoute getBusRoute(final String route);
+    public abstract Bus.Route getBusRoute(final String route_id);
 
-    public abstract BusStop getBusStop(final int stopID); // todo: make bus stop class fulfill requests instead, accept line & direction parameters in BusStop#getVehicles(...)
+    public abstract Bus.Stop getBusStop(final int stop_id);
 
-    public abstract BusVehicle getBus(final int busID);
+    public abstract Bus.Vehicle getBus(final int bus_id);
 
-    public abstract BusVehicle[] getBusses();
-
-    public abstract BusVehicle[] getBusses(final String route);
-
-    public abstract BusVehicle[] getBusses(final String route, final BusDirection direction);
-
-    public abstract BusVehicle[] getBusses(final BusRoute route);
-
-    public abstract BusVehicle[] getBusses(final BusRoute route, final BusDirection direction);
+    public abstract Bus.Vehicle[] getBusses(); // todo: add warning that this is strongly discouraged and rate limited
 
     // subway methods
 
-    public abstract SubwayRoute getSubwayRoute(final String route);
+    public abstract Subway.Route getSubwayRoute(final String route_id);
 
-    public abstract SubwayStop getSubwayStop(final String stopID); // todo: same as bus stop, use SubwayStop#getVehicles(...)
+    public abstract Subway.Stop getSubwayStop(final String stop_id);
 
-    public abstract SubwayStop getSubwayStop(final String stopID, final SubwayDirection direction);
+    public abstract Subway.Stop getSubwayStop(final String stop_id, final SubwayDirection direction);
 
-    public abstract SubwayVehicle getSubwayTrain(final String trainID);
+    public abstract Subway.Vehicle getSubwayTrain(final int train_id);
 
-    // train methods
+    // lirr methods
 
-    public abstract RailroadRoute getLIRRRoute(final String route);
+    public abstract LIRR.Route getLIRRRoute(final String route_id);
 
-    public abstract RailroadStop getLIRRStop(final String stopId);
+    public abstract LIRR.Stop getLIRRStop(final int stop_id);
 
-    public abstract RailroadVehicle getLIRRTrain(final String trainID);
+    public abstract LIRR.Stop getLIRRStop(final String stop_code);
 
-    public abstract RailroadRoute getMNRRoute(final String route);
+    public abstract LIRR.Vehicle getLIRRTrain(final String train_id);
 
-    public abstract RailroadStop getMNRStop(final String stopId);
+    // mnrr methods
 
-    public abstract RailroadVehicle getMNRTrain(final String trainID);
+    public abstract MNR.Route getMNRRoute(final String route_id);
+
+    public abstract MNR.Stop getMNRStop(final int stop_id);
+
+    public abstract MNR.Stop getMNRStop(final String stop_code);
+
+    public abstract MNR.Vehicle getMNRTrain(final String train_id);
 
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021-2022 Katsute <https://github.com/Katsute>
+ * Copyright (C) 2022 Katsute <https://github.com/Katsute>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,6 +18,14 @@
 
 package dev.katsute.onemta.exception;
 
+/**
+ * Thrown if the {@link dev.katsute.onemta.DataResource} could not be read.
+ *
+ * @see dev.katsute.onemta.DataResource
+ * @since 1.0.0
+ * @version 1.0.0
+ * @author Katsute
+ */
 public final class DataResourceException extends RuntimeException {
 
     public DataResourceException(final String message){
