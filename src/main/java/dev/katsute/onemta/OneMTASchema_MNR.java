@@ -170,7 +170,7 @@ abstract class OneMTASchema_MNR extends OneMTASchema {
     }
 
     static Vehicle asVehicle(final OneMTA mta, final String train_id){
-
+        return null;
     }
 
 }

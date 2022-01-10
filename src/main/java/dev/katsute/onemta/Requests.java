@@ -66,10 +66,12 @@ abstract class Requests {
     private static final ExtensionRegistry registry = ExtensionRegistry.newInstance();
 
     static{
-        NYCTSubwayProto.registerAllExtensions(registry);
-        MTARRProto.registerAllExtensions(registry);
-        LIRRProto.registerAllExtensions(registry);
-        MNRRProto.registerAllExtensions(registry);
+        NYCTSubwayProto     .registerAllExtensions(registry);
+        MTARRProto          .registerAllExtensions(registry);
+        LIRRProto           .registerAllExtensions(registry);
+        MNRRProto           .registerAllExtensions(registry);
+        CrowdingProto       .registerAllExtensions(registry);
+        ServiceStatusProto  .registerAllExtensions(registry);
     }
 
     static FeedMessage getProtobuf(

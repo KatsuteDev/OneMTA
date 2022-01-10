@@ -18,6 +18,7 @@
 
 package dev.katsute.onemta;
 
+import dev.katsute.onemta.Json.JsonObject;
 import dev.katsute.onemta.types.TransitAgency;
 
 import java.util.List;
@@ -157,7 +158,7 @@ abstract class OneMTASchema_Bus extends OneMTASchema {
 
         return new Stop() {
 
-            private final int stopID = stop_id;
+            private final int stopID      = stop_id;
             private final String stopName = row.get(csv.getHeaderIndex("stop_name"));
             private final String stopDesc = row.get(csv.getHeaderIndex("stop_desc"));
             private final double stopLat  = Double.parseDouble(row.get(csv.getHeaderIndex("stop_lat")));
@@ -205,8 +206,8 @@ abstract class OneMTASchema_Bus extends OneMTASchema {
         };
     }
 
-    static Vehicle asVehicle(final OneMTA mta, final int bus_id){
-
+    static Vehicle asVehicle(final OneMTA mta, final JsonObject json){
+        return null;
     }
 
 }

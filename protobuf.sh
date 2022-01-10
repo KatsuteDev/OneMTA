@@ -41,6 +41,20 @@ protobuf/bin/protoc -I=protobuf --java_out=protobuf  protobuf/gtfs-realtime-LIRR
 
 protobuf/bin/protoc -I=protobuf --java_out=protobuf  protobuf/gtfs-realtime-MNR.proto
 
+# import "gtfs-realtime.proto";
+# option java_package = "dev.katsute.onemta";
+# option java_outer_classname = "CrowdingProto";
+# option optimize_for = CODE_SIZE;
+
+protobuf/bin/protoc -I=protobuf --java_out=protobuf  protobuf/gtfs-realtime-crowding.proto
+
+# import "gtfs-realtime.proto";
+# option java_package = "dev.katsute.onemta";
+# option java_outer_classname = "ServiceStatusProto";
+# option optimize_for = CODE_SIZE;
+
+protobuf/bin/protoc -I=protobuf --java_out=protobuf  protobuf/gtfs-realtime-service-status.proto
+
 cp protobuf/dev/katsute/onemta/*.java src/main/java/dev/katsute/onemta
 
 echo ""

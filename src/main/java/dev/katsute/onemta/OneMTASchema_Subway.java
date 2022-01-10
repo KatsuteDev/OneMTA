@@ -177,7 +177,7 @@ abstract class OneMTASchema_Subway extends OneMTASchema {
     }
 
     static Vehicle asVehicle(final OneMTA mta, final int subway_id){
-
+        return null;
     }
 
 }
