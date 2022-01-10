@@ -51,13 +51,15 @@ public abstract class OneMTA {
 
     public abstract Subway.Stop getSubwayStop(final String stop_id, final SubwayDirection direction);
 
-    public abstract Subway.Vehicle getSubwayTrain(final String train_id);
+    public abstract Subway.Vehicle getSubwayTrain(final int train_id);
 
     // lirr methods
 
     public abstract LIRR.Route getLIRRRoute(final String route_id);
 
-    public abstract LIRR.Stop getLIRRStop(final String stop_id);
+    public abstract LIRR.Stop getLIRRStop(final int stop_id);
+
+    public abstract LIRR.Stop getLIRRStop(final String stop_code);
 
     public abstract LIRR.Vehicle getLIRRTrain(final String train_id);
 
@@ -65,7 +67,9 @@ public abstract class OneMTA {
 
     public abstract MNR.Route getMNRRoute(final String route_id);
 
-    public abstract MNR.Stop getMNRStop(final String stop_id);
+    public abstract MNR.Stop getMNRStop(final int stop_id);
+
+    public abstract MNR.Stop getMNRStop(final String stop_code);
 
     public abstract MNR.Vehicle getMNRTrain(final String train_id);
 

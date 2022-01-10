@@ -205,7 +205,7 @@ abstract class OneMTASchema_Bus extends OneMTASchema {
         };
     }
 
-    static Vehicle asVehicle(final OneMTA mta, final int id, final Route route){
+    static Vehicle asVehicle(final OneMTA mta, final int bus_id){
 
     }
 

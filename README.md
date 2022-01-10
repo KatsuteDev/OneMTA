@@ -24,7 +24,7 @@
 
 # Overview
 
-TBD
+[**Disclaimer:**](#disclaimer) The MTA API [Terms and Conditions](https://api.mta.info/#/DataFeedAgreement) prohibits developers from giving users direct access to MTA servers. Any realtime data that is retrieved in this library must be served to users on your own servers.
 
 - [Overview](#overview)
 - [Installation](#installation)
@@ -34,6 +34,10 @@ TBD
 - [Disclaimer](#disclaimer)
 
 # Installation
+
+OneMTA requires at least Java 8. OneMTA also requires the [protobuf-java](https://mvnrepository.com/artifact/com.google.protobuf/protobuf-java) library to be installed.
+
+Compiled jars can be found on Maven Central and the releases tab.
 
 TBD
 
@@ -68,11 +72,14 @@ TBD
 
 ### Running Tests Locally
 
-TBD
+For local tests you can use Java 8+, however only methods in the Java 8 API may be used. The `src/main/java9` folder should not be marked as a source root.
+
+- (Bus) Run tests locally by adding a text file named `bus.txt` that contains the bus token in the `src/test/java/resources` directory.
+- (Subway) Run tests locally by adding a text file named `subway.txt` that contains the subway in the `src/test/java/resources` directory.
 
 ### Running Tests Remotely
 
-TBD
+Devs running remote tests may do so by running the `MTA CI` workflow manually in the actions tab of your fork. Note that this requires two secrets, a `BUS_TOKEN` which contains the bus token, and a `SUBWAY_TOKEN` which contains the subway token.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 

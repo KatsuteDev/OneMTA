@@ -25,6 +25,7 @@ import java.util.Objects;
 
 import static dev.katsute.onemta.MNR.*;
 
+@SuppressWarnings("SpellCheckingInspection")
 abstract class OneMTASchema_MNR extends OneMTASchema {
 
     static Route asRoute(final OneMTA mta, final String route_id){
@@ -85,6 +86,18 @@ abstract class OneMTASchema_MNR extends OneMTASchema {
             }
 
         };
+    }
+
+    static Stop asStop(final OneMTA mta, final String stop_code){
+        // find row
+        final DataResource resource = getDataResource(mta, DataResourceType.MetroNorthRailroad);
+        final CSV csv               = resource.getData("stops.csv");
+        final List<String> row      = csv.getRow("stop_code", stop_code.toUpperCase());
+
+        // instantiate
+         Objects.requireNonNull(row, "Failed to find MNR stop with stopcode '" + stop_code.toUpperCase() + "'");
+
+         return asStop(mta, Integer.parseInt(row.get(csv.getHeaderIndex("stop_id"))));
     }
 
     static Stop asStop(final OneMTA mta, final int stop_id){
@@ -156,7 +169,7 @@ abstract class OneMTASchema_MNR extends OneMTASchema {
         };
     }
 
-    static Vehicle asVehicle(final OneMTA mta, final int id, final Route route){
+    static Vehicle asVehicle(final OneMTA mta, final String train_id){
 
     }
 

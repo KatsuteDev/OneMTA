@@ -54,4 +54,23 @@ public enum SubwayDirection {
         return direction;
     }
 
+    /**
+     * Converts a GTFS direction ID to an enum.
+     *
+     * @param direction gtfs direction
+     * @return direction
+     *
+     * @since 1.0.0
+     */
+    public static SubwayDirection asDirection(final int direction){
+        switch(direction){
+            case 1:
+                return NORTH;
+            case 3:
+                return SOUTH;
+            default:
+                return null;
+        }
+    }
+
 }

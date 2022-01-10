@@ -19,11 +19,11 @@
 package dev.katsute.onemta;
 
 import dev.katsute.onemta.exception.MissingResourceException;
-import dev.katsute.onemta.types.BusDirection;
 import dev.katsute.onemta.types.SubwayDirection;
 
 import java.util.Arrays;
 
+@SuppressWarnings("SpellCheckingInspection")
 final class OneMTAImpl extends OneMTA {
 
     final transient String busToken;
@@ -52,77 +52,95 @@ final class OneMTAImpl extends OneMTA {
         throw new MissingResourceException(type);
     }
 
-    // methods
-
+    // bus methods
 
     @Override
-    public Bus.Route getBusRoute(final String route_id){
-        return null;
+    public final Bus.Route getBusRoute(final String route_id){
+        return OneMTASchema_Bus.asRoute(this, route_id);
     }
 
     @Override
-    public Bus.Stop getBusStop(final int stop_id){
-        return null;
+    public final Bus.Stop getBusStop(final int stop_id){
+        return OneMTASchema_Bus.asStop(this, stop_id);
     }
 
     @Override
-    public Bus.Vehicle getBus(final int bus_id){
-        return null;
+    public final Bus.Vehicle getBus(final int bus_id){
+        return OneMTASchema_Bus.asVehicle(this, bus_id);
     }
 
     @Override
-    public Bus.Vehicle[] getBusses(){
+    public final Bus.Vehicle[] getBusses(){
         return new Bus.Vehicle[0];
     }
 
+    // subway methods
+
     @Override
-    public Subway.Route getSubwayRoute(final String route_id){
-        return null;
+    public final Subway.Route getSubwayRoute(final String route_id){
+        return OneMTASchema_Subway.asRoute(this, route_id);
     }
 
     @Override
-    public Subway.Stop getSubwayStop(final String stop_id){
-        return null;
+    public final Subway.Stop getSubwayStop(final String stop_id){
+        return OneMTASchema_Subway.asStop(this, stop_id);
     }
 
     @Override
-    public Subway.Stop getSubwayStop(final String stop_id, final SubwayDirection direction){
-        return null;
+    public final Subway.Stop getSubwayStop(final String stop_id, final SubwayDirection direction){
+        return OneMTASchema_Subway.asStop(
+            this,
+            OneMTASchema_Subway.direction.matcher(stop_id).replaceAll("") + (direction == SubwayDirection.NORTH ? 'N' : 'S')
+        );
     }
 
     @Override
-    public Subway.Vehicle getSubwayTrain(final String train_id){
-        return null;
+    public final Subway.Vehicle getSubwayTrain(final int train_id){
+        return OneMTASchema_Subway.asVehicle(this, train_id);
+    }
+
+    // lirr methods
+
+    @Override
+    public final LIRR.Route getLIRRRoute(final String route_id){
+        return OneMTASchema_LIRR.asRoute(this, route_id);
     }
 
     @Override
-    public LIRR.Route getLIRRRoute(final String route_id){
-        return null;
+    public final LIRR.Stop getLIRRStop(final int stop_id){
+        return OneMTASchema_LIRR.asStop(this, stop_id);
     }
 
     @Override
-    public LIRR.Stop getLIRRStop(final String stop_id){
-        return null;
+    public final LIRR.Stop getLIRRStop(final String stop_code){
+        return OneMTASchema_LIRR.asStop(this, stop_code);
     }
 
     @Override
-    public LIRR.Vehicle getLIRRTrain(final String train_id){
-        return null;
+    public final LIRR.Vehicle getLIRRTrain(final String train_id){
+        return OneMTASchema_LIRR.asVehicle(this, train_id);
+    }
+
+    // mnrr methods
+
+    @Override
+    public final MNR.Route getMNRRoute(final String route_id){
+        return OneMTASchema_MNR.asRoute(this, route_id);
     }
 
     @Override
-    public MNR.Route getMNRRoute(final String route_id){
-        return null;
+    public final MNR.Stop getMNRStop(final int stop_id){
+        return OneMTASchema_MNR.asStop(this, stop_id);
     }
 
     @Override
-    public MNR.Stop getMNRStop(final String stop_id){
-        return null;
+    public final MNR.Stop getMNRStop(final String stop_code){
+        return OneMTASchema_MNR.asStop(this, stop_code);
     }
 
     @Override
-    public MNR.Vehicle getMNRTrain(final String train_id){
-        return null;
+    public final MNR.Vehicle getMNRTrain(final String train_id){
+        return OneMTASchema_MNR.asVehicle(this, train_id);
     }
 
 }

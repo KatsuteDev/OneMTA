@@ -88,6 +88,18 @@ abstract class OneMTASchema_LIRR extends OneMTASchema {
         };
     }
 
+    static Stop asStop(final OneMTA mta, final String stop_code){
+        // find row
+        final DataResource resource = getDataResource(mta, DataResourceType.LongIslandRailroad);
+        final CSV csv               = resource.getData("stops.csv");
+        final List<String> row      = csv.getRow("stop_code", stop_code.toUpperCase());
+
+        // instantiate
+         Objects.requireNonNull(row, "Failed to find LIRR stop with stopcode '" + stop_code.toUpperCase() + "'");
+
+         return asStop(mta, Integer.parseInt(row.get(csv.getHeaderIndex("stop_id"))));
+    }
+
     static Stop asStop(final OneMTA mta, final int stop_id){
         // find row
         final DataResource resource = getDataResource(mta, DataResourceType.LongIslandRailroad);
@@ -157,7 +169,7 @@ abstract class OneMTASchema_LIRR extends OneMTASchema {
         };
     }
 
-    static Vehicle asVehicle(final OneMTA mta, final int id, final Route route){
+    static Vehicle asVehicle(final OneMTA mta, final String train_id){
 
     }
 

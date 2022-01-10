@@ -29,6 +29,8 @@ import static dev.katsute.onemta.Subway.*;
 
 abstract class OneMTASchema_Subway extends OneMTASchema {
 
+    static final Pattern direction = Pattern.compile("N|S$");
+
     static Route asRoute(final OneMTA mta, final String route_id){
         // find row
         final DataResource resource = getDataResource(mta, DataResourceType.Subway);
@@ -113,9 +115,7 @@ abstract class OneMTASchema_Subway extends OneMTASchema {
         return new Stop() {
 
             private final String stopID   = stop_id;
-            private final String stopCode = row.get(csv.getHeaderIndex("stop_code"));
             private final String stopName = row.get(csv.getHeaderIndex("stop_name"));
-            private final String stopDesc = row.get(csv.getHeaderIndex("stop_desc"));
 
             private final double stopLat = Double.parseDouble(row.get(csv.getHeaderIndex("stop_lat")));
             private final double stopLon = Double.parseDouble(row.get(csv.getHeaderIndex("stop_lon")));
@@ -154,8 +154,6 @@ abstract class OneMTASchema_Subway extends OneMTASchema {
                 return stopDirection;
             }
 
-            private final Pattern direction = Pattern.compile("N|S$");
-
             @Override
             public final boolean isSameStop(final Stop stop){
                 return this == stop ||
@@ -178,7 +176,7 @@ abstract class OneMTASchema_Subway extends OneMTASchema {
         };
     }
 
-    static Vehicle asVehicle(final OneMTA mta, final int id, final Route route){
+    static Vehicle asVehicle(final OneMTA mta, final int subway_id){
 
     }
 

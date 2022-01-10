@@ -31,6 +31,8 @@ public enum BusDirection {
      * Buses going from the first stop to the last stop.
      * <br>
      * Ex: M1 'Harlem - East Village' going towards 'Harlem - 147 Street'
+     *
+     * @since 1.0.0
      */
     FORWARD(0),
 
@@ -38,6 +40,8 @@ public enum BusDirection {
      * Buses going from the last stop to the first stop.
      * <br>
      * Ex: M1 'Harlem - East Village' going towards 'Harlem - East Village'
+     *
+     * @since 1.0.0
      */
     REVERSE(1);
 
@@ -52,10 +56,29 @@ public enum BusDirection {
      *
      * @return gtfs direction
      *
-     * @author Katsute
+     * @since 1.0.0
      */
     public final int getDirection(){
         return direction;
+    }
+
+    /**
+     * Converts a GTFS direction ID to an enum.
+     *
+     * @param direction gtfs direction
+     * @return direction
+     *
+     * @since 1.0.0
+     */
+    public static BusDirection asDirection(final int direction){
+        switch(direction){
+            case 0:
+                return FORWARD;
+            case 1:
+                return REVERSE;
+            default:
+                return null;
+        }
     }
 
 }
