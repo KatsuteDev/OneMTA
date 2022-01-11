@@ -38,4 +38,14 @@ public abstract class MNR {
 
     public abstract static class Vehicle extends TransitVehicle<Route> implements LocationReference { }
 
+    public abstract static class Trip extends TransitTrip {
+
+        public abstract static class Stop extends TransitStopUpdate {
+
+            public abstract String getTrainStatus();
+
+        }
+
+    }
+
 }

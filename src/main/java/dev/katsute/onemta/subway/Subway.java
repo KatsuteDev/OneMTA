@@ -79,6 +79,12 @@ public abstract class Subway {
          */
         public abstract SubwayDirection getDirection();
 
+        public abstract static class Stop extends TransitStopUpdate {
+
+            public abstract int getActualTrack();
+
+        }
+
     }
 
 }

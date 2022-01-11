@@ -52,6 +52,14 @@ public abstract class LIRR {
          */
         public abstract RailroadDirection getDirection();
 
+        public abstract static class Stop extends TransitStopUpdate {
+
+            public abstract int getDelay();
+
+            public abstract String getTrainStatus();
+
+        }
+
     }
 
 }
