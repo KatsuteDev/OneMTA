@@ -16,38 +16,30 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-package dev.katsute.onemta.types;
+package dev.katsute.onemta.railroad;
 
 /**
- * The direction for a bus.
+ * The direction for a railroad.
  *
  * @since 1.0.0
  * @version 1.0.0
  * @author Katsute
  */
-public enum BusDirection {
+public enum RailroadDirection {
 
     /**
-     * Buses going from the first stop to the last stop.
-     * <br>
-     * Ex: M1 'Harlem - East Village' going towards 'Harlem - 147 Street'
-     *
-     * @since 1.0.0
+     * Manhattan bound trains.
      */
-    FORWARD(0),
+    MANHATTAN(0),
 
     /**
-     * Buses going from the last stop to the first stop.
-     * <br>
-     * Ex: M1 'Harlem - East Village' going towards 'Harlem - East Village'
-     *
-     * @since 1.0.0
+     * Long Island and Northeast bound trains.
      */
-    REVERSE(1);
+    ORIGIN(1);
 
     private final int direction;
 
-    BusDirection(final int direction){
+    RailroadDirection(final int direction){
         this.direction = direction;
     }
 
@@ -70,12 +62,12 @@ public enum BusDirection {
      *
      * @since 1.0.0
      */
-    public static BusDirection asDirection(final int direction){
+    public static RailroadDirection asDirection(final int direction){
         switch(direction){
             case 0:
-                return FORWARD;
+                return MANHATTAN;
             case 1:
-                return REVERSE;
+                return ORIGIN;
             default:
                 return null;
         }

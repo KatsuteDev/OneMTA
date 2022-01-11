@@ -16,20 +16,19 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-package dev.katsute.onemta;
+package dev.katsute.onemta.railroad;
 
-import dev.katsute.onemta.attribute.*;
+import dev.katsute.onemta.attribute.LocationReference;
 import dev.katsute.onemta.types.*;
 
 /**
- * Contains all Long Island Railroad (LIRR) related methods.
+ * Contains all Metro North Railroad (MNR) related methods.
  *
  * @since 1.0.0
  * @version 1.0.0
  * @author Katsute
  */
-@SuppressWarnings("SpellCheckingInspection")
-public abstract class LIRR {
+public abstract class MNR {
 
     // todo: get vehicles for route
     public abstract static class Route extends TransitRoute { }
@@ -37,6 +36,6 @@ public abstract class LIRR {
     // todo: get vehicles for stop
     public abstract static class Stop extends TransitStop<Integer> implements RailroadStop { }
 
-    public abstract static class Vehicle extends TransitVehicle<Route> implements BearingReference, LocationReference { }
+    public abstract static class Vehicle extends TransitVehicle<Route> implements LocationReference { }
 
 }

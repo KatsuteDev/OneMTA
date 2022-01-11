@@ -16,7 +16,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-package dev.katsute.onemta;
+package dev.katsute.onemta.subway;
 
 import dev.katsute.onemta.attribute.RouteDescription;
 import dev.katsute.onemta.attribute.RouteShortName;
@@ -66,5 +66,19 @@ public abstract class Subway {
 
     // todo: add utility methods for isExpress, isLocal
     public abstract static class Vehicle extends TransitVehicle<Route> { }
+
+    public abstract static class Trip extends TransitTrip {
+
+        /**
+         * Returns which direction the trip is going.
+         *
+         * @return direction
+         *
+         * @see SubwayDirection
+         * @since 1.0.0
+         */
+        public abstract SubwayDirection getDirection();
+
+    }
 
 }

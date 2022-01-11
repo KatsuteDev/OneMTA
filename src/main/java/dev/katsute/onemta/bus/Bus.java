@@ -16,7 +16,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-package dev.katsute.onemta;
+package dev.katsute.onemta.bus;
 
 import dev.katsute.onemta.attribute.*;
 import dev.katsute.onemta.types.*;

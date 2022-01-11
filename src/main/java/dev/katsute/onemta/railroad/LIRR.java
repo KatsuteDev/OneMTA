@@ -16,20 +16,21 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-package dev.katsute.onemta;
+package dev.katsute.onemta.railroad;
 
+import dev.katsute.onemta.attribute.BearingReference;
 import dev.katsute.onemta.attribute.LocationReference;
-import dev.katsute.onemta.attribute.RailroadStop;
 import dev.katsute.onemta.types.*;
 
 /**
- * Contains all Metro North Railroad (MNR) related methods.
+ * Contains all Long Island Railroad (LIRR) related methods.
  *
  * @since 1.0.0
  * @version 1.0.0
  * @author Katsute
  */
-public abstract class MNR {
+@SuppressWarnings("SpellCheckingInspection")
+public abstract class LIRR {
 
     // todo: get vehicles for route
     public abstract static class Route extends TransitRoute { }
@@ -37,6 +38,20 @@ public abstract class MNR {
     // todo: get vehicles for stop
     public abstract static class Stop extends TransitStop<Integer> implements RailroadStop { }
 
-    public abstract static class Vehicle extends TransitVehicle<Route> implements LocationReference { }
+    public abstract static class Vehicle extends TransitVehicle<Route> implements BearingReference, LocationReference { }
+
+    public abstract static class Trip extends TransitTrip {
+
+        /**
+         * Returns which direction the trip is going.
+         *
+         * @return direction
+         *
+         * @see RailroadDirection
+         * @since 1.0.0
+         */
+        public abstract RailroadDirection getDirection();
+
+    }
 
 }

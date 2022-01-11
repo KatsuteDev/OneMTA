@@ -23,7 +23,7 @@ import dev.katsute.onemta.types.TransitAgency;
 import java.util.List;
 import java.util.Objects;
 
-import static dev.katsute.onemta.MNR.*;
+import static dev.katsute.onemta.railroad.MNR.*;
 
 @SuppressWarnings("SpellCheckingInspection")
 abstract class OneMTASchema_MNR extends OneMTASchema {

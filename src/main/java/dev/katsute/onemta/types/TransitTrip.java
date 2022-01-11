@@ -16,42 +16,24 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-package dev.katsute.onemta.attribute;
+package dev.katsute.onemta.types;
 
 /**
- * Additional stop details for railroad stops.
+ * Represents the trip or schedule.
  *
  * @since 1.0.0
  * @version 1.0.0
  * @author Katsute
  */
-public interface RailroadStop {
+public abstract class TransitTrip {
 
     /**
-     * Returns the stop code for the stop.
+     * Returns the route ID for the trip.
      *
-     * @return stop code
+     * @return route ID
      *
      * @since 1.0.0
      */
-    String getStopCode();
-
-    /**
-     * Returns the stop description.
-     *
-     * @return stop description
-     *
-     * @since 1.0.0
-     */
-    String getStopDescription();
-
-    /**
-     * Returns if the stop is wheelchair accessible.
-     *
-     * @return wheelchair accessible
-     *
-     * @since 1.0.0
-     */
-    boolean hasWheelchairBoarding();
+    public abstract String getRouteID();
 
 }

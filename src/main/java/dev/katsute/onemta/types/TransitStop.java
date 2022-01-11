@@ -19,16 +19,20 @@
 package dev.katsute.onemta.types;
 
 import dev.katsute.onemta.attribute.LocationReference;
+import dev.katsute.onemta.bus.Bus;
+import dev.katsute.onemta.railroad.LIRR;
+import dev.katsute.onemta.railroad.MNR;
+import dev.katsute.onemta.subway.Subway;
 
 /**
  * Represents a transit stop.
  *
  * @param <I> stop id format
  *
- * @see dev.katsute.onemta.Bus.Stop
- * @see dev.katsute.onemta.Subway.Stop
- * @see dev.katsute.onemta.LIRR.Stop
- * @see dev.katsute.onemta.MNR.Stop
+ * @see Bus.Stop
+ * @see Subway.Stop
+ * @see LIRR.Stop
+ * @see MNR.Stop
  * @since 1.0.0
  * @version 1.0.0
  * @author Katsute
