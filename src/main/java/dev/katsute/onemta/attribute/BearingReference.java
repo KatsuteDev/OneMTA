@@ -16,27 +16,24 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-package dev.katsute.onemta;
-
-import dev.katsute.onemta.attribute.LocationReference;
-import dev.katsute.onemta.attribute.RailroadStop;
-import dev.katsute.onemta.types.*;
+package dev.katsute.onemta.attribute;
 
 /**
- * Contains all Metro North Railroad (MNR) related methods.
+ * Indicates that the object has a bearing.
  *
  * @since 1.0.0
  * @version 1.0.0
  * @author Katsute
  */
-public abstract class MNR {
+public interface BearingReference {
 
-    // todo: get vehicles for route
-    public abstract static class Route extends TransitRoute { }
-
-    // todo: get vehicles for stop
-    public abstract static class Stop extends TransitStop<Integer> implements RailroadStop { }
-
-    public abstract static class Vehicle extends TransitVehicle<Route> implements LocationReference { }
+    /**
+     * Returns the current bearing of the vehicle in degrees, 0 meaning north.
+     *
+     * @return vehicle bearing
+     *
+     * @since 1.0.0
+     */
+    double getBearing();
 
 }

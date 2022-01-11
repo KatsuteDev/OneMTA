@@ -18,6 +18,7 @@
 
 package dev.katsute.onemta;
 
+import dev.katsute.onemta.attribute.*;
 import dev.katsute.onemta.types.*;
 
 /**
@@ -34,37 +35,8 @@ public abstract class LIRR {
     public abstract static class Route extends TransitRoute { }
 
     // todo: get vehicles for stop
-    public abstract static class Stop extends TransitStop<Integer> {
+    public abstract static class Stop extends TransitStop<Integer> implements RailroadStop { }
 
-        /**
-         * Returns the stop code for the stop.
-         *
-         * @return stop code
-         *
-         * @since 1.0.0
-         */
-        public abstract String getStopCode();
-
-        /**
-         * Returns the stop description.
-         *
-         * @return stop description
-         *
-         * @since 1.0.0
-         */
-        public abstract String getStopDescription();
-
-        /**
-         * Returns if the stop is wheelchair accesible.
-         *
-         * @return wheelchair accesible
-         *
-         * @since 1.0.0
-         */
-        public abstract boolean hasWheelchairBoarding();
-
-    }
-
-    public abstract static class Vehicle extends TransitVehicle<Route> { }
+    public abstract static class Vehicle extends TransitVehicle<Route> implements BearingReference, LocationReference { }
 
 }

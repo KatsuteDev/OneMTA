@@ -38,7 +38,7 @@ public abstract class Bus {
     public abstract static class Stop extends TransitStop<Integer> implements RouteDescription { }
 
     // todo: add utility methods for isSBS, isExpress, isShuttle, isLimited
-    public abstract static class Vehicle extends TransitVehicle<Route> implements LocationReference {
+    public abstract static class Vehicle extends TransitVehicle<Route> implements BearingReference, LocationReference {
 
         /**
          * Returns the vehicle number that is visible on the side and front of the bus.
@@ -48,15 +48,6 @@ public abstract class Bus {
          * @since 1.0.0
          */
         public abstract int getID();
-
-        /**
-         * Returns the current bearing of the vehicle in degrees, 0 meaning north.
-         *
-         * @return vehicle bearing
-         *
-         * @since 1.0.0
-         */
-        public abstract double getBearing();
 
     }
 
