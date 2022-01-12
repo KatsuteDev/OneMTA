@@ -18,33 +18,10 @@
 
 package dev.katsute.onemta.attribute;
 
-/**
- * Indicates that the object has a location.
- *
- * @since 1.0.0
- * @version 1.0.0
- * @author Katsute
- */
 public interface LocationReference {
 
-    /**
-     * Object latitude.
-     *
-     * @return latitude
-     *
-     * @see #getLongitude()
-     * @since 1.0.0
-     */
-    double getLatitude();
+    Double getLatitude();
 
-    /**
-     * Object longitude.
-     *
-     * @return longitude
-     *
-     * @see #getLatitude()
-     * @since 1.0.0
-     */
-    double getLongitude();
+    Double getLongitude();
 
 }

@@ -18,16 +18,10 @@
 
 package dev.katsute.onemta.types;
 
-import java.util.Date;
+import dev.katsute.onemta.attribute.*;
 
-public abstract class TransitStopUpdate {
+public abstract class TransitStopUpdate<S extends TransitStop<I,?>, T extends TransitTrip<?,?,?>, I> implements TrackedSchedule, StopReference<S>, TripReference<T> {
 
-    public abstract Date getArrivalTime();
-
-    public abstract Date getDepartureTime();
-
-    public abstract String getStopID();
-
-    public abstract int getTrack();
+    public abstract I getStopID();
 
 }

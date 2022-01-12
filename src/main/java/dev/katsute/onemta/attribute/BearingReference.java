@@ -18,22 +18,8 @@
 
 package dev.katsute.onemta.attribute;
 
-/**
- * Indicates that the object has a bearing.
- *
- * @since 1.0.0
- * @version 1.0.0
- * @author Katsute
- */
 public interface BearingReference {
 
-    /**
-     * Returns the current bearing of the vehicle in degrees, 0 meaning north.
-     *
-     * @return vehicle bearing
-     *
-     * @since 1.0.0
-     */
-    double getBearing();
+    Double getBearing();
 
 }

@@ -18,40 +18,12 @@
 
 package dev.katsute.onemta.railroad;
 
-/**
- * Additional stop details for railroad stops.
- *
- * @since 1.0.0
- * @version 1.0.0
- * @author Katsute
- */
 public interface RailroadStop {
 
-    /**
-     * Returns the stop code for the stop.
-     *
-     * @return stop code
-     *
-     * @since 1.0.0
-     */
     String getStopCode();
 
-    /**
-     * Returns the stop description.
-     *
-     * @return stop description
-     *
-     * @since 1.0.0
-     */
     String getStopDescription();
 
-    /**
-     * Returns if the stop is wheelchair accessible.
-     *
-     * @return wheelchair accessible
-     *
-     * @since 1.0.0
-     */
-    boolean hasWheelchairBoarding();
+    Boolean hasWheelchairBoarding();
 
 }

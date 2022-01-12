@@ -18,22 +18,16 @@
 
 package dev.katsute.onemta.types;
 
-/**
- * Represents the trip or schedule.
- *
- * @since 1.0.0
- * @version 1.0.0
- * @author Katsute
- */
-public abstract class TransitTrip {
+import dev.katsute.onemta.attribute.RouteReference;
 
-    /**
-     * Returns the route ID for the trip.
-     *
-     * @return route ID
-     *
-     * @since 1.0.0
-     */
+public abstract class TransitTrip<V extends TransitVehicle<R,?,?,?,?>, R extends TransitRoute<?,?>, S extends TransitStopUpdate<?,?,?>> implements RouteReference<R> {
+
+    public abstract String getTripID();
+
     public abstract String getRouteID();
+
+    public abstract S[] getStopUpdates();
+
+    public abstract V getVehicle();
 
 }

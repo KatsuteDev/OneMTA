@@ -26,6 +26,7 @@ import dev.katsute.onemta.subway.Subway;
 import dev.katsute.onemta.subway.SubwayDirection;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 @SuppressWarnings("SpellCheckingInspection")
 final class OneMTAImpl extends OneMTA {
@@ -77,16 +78,104 @@ final class OneMTAImpl extends OneMTA {
         return null;
     }
 
-    @Override
-    public final Bus.Vehicle[] getBusses(){
-        return new Bus.Vehicle[0];
+    // subway methods
+
+    String resolveSubwayLine(final String route_id){
+        switch(route_id.toUpperCase()){
+            case "A":
+            case "C":
+            case "E":
+            case "SF":
+            case "SR":
+
+            case "B":
+            case "D":
+            case "F":
+            case "M":
+
+            case "G":
+
+            case "J":
+            case "Z":
+
+            case "N":
+            case "Q":
+            case "R":
+            case "W":
+
+            case "L":
+
+            case "1":
+            case "2":
+            case "3":
+            case "4":
+            case "5":
+            case "6":
+            case "7":
+            case "GS":
+
+            case "SIR":
+                return route_id.toUpperCase();
+
+            case "FX":
+            case "5X":
+            case "6X":
+            case "7X":
+                return String.valueOf(route_id.toUpperCase().charAt(0));
+            case "9":
+                return "GS";
+            case "S":
+            case "SI":
+                return "SIR";
+            default:
+                return null;
+        }
     }
 
-    // subway methods
+    GTFSRealtimeProto.FeedMessage resolveSubwayFeed(final String route_id){
+        switch(Objects.requireNonNull(resolveSubwayLine(route_id), "Subway route with ID '" + route_id + "' not found")){
+            case "A":
+            case "C":
+            case "E":
+            case "SF":
+            case "SR":
+                return service.subway.getACE(subwayToken);
+            case "B":
+            case "D":
+            case "F":
+            case "M":
+                return service.subway.getBDFM(subwayToken);
+            case "G":
+                return service.subway.getG(subwayToken);
+            case "J":
+            case "Z":
+                return service.subway.getJZ(subwayToken);
+            case "N":
+            case "Q":
+            case "R":
+            case "W":
+                return service.subway.getNQRW(subwayToken);
+            case "L":
+                return service.subway.getL(subwayToken);
+            case "1":
+            case "2":
+            case "3":
+            case "4":
+            case "5":
+            case "6":
+            case "7":
+            case "GS":
+                return service.subway.get1234567(subwayToken);
+            case "SIR":
+                return service.subway.getSI(subwayToken);
+            default:
+                return null;
+        }
+    }
 
     @Override
     public final Subway.Route getSubwayRoute(final String route_id){
-        return OneMTASchema_Subway.asRoute(this, route_id);
+        return OneMTASchema_Subway.asRoute(this, resolveSubwayLine(route_id));
     }
 
     @Override
@@ -110,7 +199,7 @@ final class OneMTAImpl extends OneMTA {
     // lirr methods
 
     @Override
-    public final LIRR.Route getLIRRRoute(final String route_id){
+    public final LIRR.Route getLIRRRoute(final int route_id){
         return OneMTASchema_LIRR.asRoute(this, route_id);
     }
 
@@ -132,7 +221,7 @@ final class OneMTAImpl extends OneMTA {
     // mnrr methods
 
     @Override
-    public final MNR.Route getMNRRoute(final String route_id){
+    public final MNR.Route getMNRRoute(final int route_id){
         return OneMTASchema_MNR.asRoute(this, route_id);
     }
 

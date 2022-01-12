@@ -45,8 +45,6 @@ public abstract class OneMTA {
 
     public abstract Bus.Vehicle getBus(final int bus_id);
 
-    public abstract Bus.Vehicle[] getBusses(); // todo: add warning that this is strongly discouraged and rate limited
-
     // subway methods
 
     public abstract Subway.Route getSubwayRoute(final String route_id);
@@ -59,7 +57,7 @@ public abstract class OneMTA {
 
     // lirr methods
 
-    public abstract LIRR.Route getLIRRRoute(final String route_id);
+    public abstract LIRR.Route getLIRRRoute(int route_id);
 
     public abstract LIRR.Stop getLIRRStop(final int stop_id);
 
@@ -69,7 +67,7 @@ public abstract class OneMTA {
 
     // mnrr methods
 
-    public abstract MNR.Route getMNRRoute(final String route_id);
+    public abstract MNR.Route getMNRRoute(int route_id);
 
     public abstract MNR.Stop getMNRStop(final int stop_id);
 

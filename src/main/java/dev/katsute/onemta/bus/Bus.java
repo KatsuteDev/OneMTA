@@ -21,41 +21,25 @@ package dev.katsute.onemta.bus;
 import dev.katsute.onemta.attribute.*;
 import dev.katsute.onemta.types.*;
 
-/**
- * Contains all bus related methods. For the bus vehicle see {@link Vehicle}.
- *
- * @since 1.0.0
- * @version 1.0.0
- * @author Katsute
- */
 public abstract class Bus {
 
     // todo: add utility methods for isSBS, isExpress, isShuttle, isLimited
-    // todo: get vehicles for route
-    public abstract static class Route extends TransitRoute implements RouteShortName, RouteDescription { }
+    public abstract static class Route extends TransitRoute<String,Vehicle> implements RouteShortName, RouteDescription { }
 
-    // todo: get vehicles for stop
-    public abstract static class Stop extends TransitStop<Integer> implements RouteDescription { }
+    public abstract static class Stop extends TransitStop<Integer,Vehicle> implements RouteDescription { }
 
     // todo: add utility methods for isSBS, isExpress, isShuttle, isLimited
-    public abstract static class Vehicle extends TransitVehicle<Route> implements BearingReference, LocationReference {
+    public abstract static class Vehicle extends TransitVehicle<Route,Trip,Stop,Integer,String> implements BearingReference, LocationReference {
 
-        /**
-         * Returns the vehicle number that is visible on the side and front of the bus.
-         *
-         * @return vehicle number
-         *
-         * @since 1.0.0
-         */
-        public abstract int getID();
+        public abstract Integer getID();
 
     }
 
-    public abstract static class Trip extends TransitTrip {
+    public abstract static class Trip extends TransitTrip<Vehicle,Route,TripStop> {
 
-        public abstract static class Stop extends TransitStopUpdate {
+    }
 
-        }
+    public abstract static class TripStop extends TransitStopUpdate<Stop,Trip,Integer> {
 
     }
 

@@ -111,6 +111,12 @@ abstract class OneMTASchema_Bus extends OneMTASchema {
 
             // live feed
 
+            @Override
+            public final Vehicle[] getVehicles(){
+                return new Vehicle[0];
+            }
+
+
             // Java
 
             @Override
@@ -158,11 +164,11 @@ abstract class OneMTASchema_Bus extends OneMTASchema {
 
         return new Stop() {
 
-            private final int stopID      = stop_id;
+            private final Integer stopID  = stop_id;
             private final String stopName = row.get(csv.getHeaderIndex("stop_name"));
             private final String stopDesc = row.get(csv.getHeaderIndex("stop_desc"));
-            private final double stopLat  = Double.parseDouble(row.get(csv.getHeaderIndex("stop_lat")));
-            private final double stopLon  = Double.parseDouble(row.get(csv.getHeaderIndex("stop_lon")));
+            private final Double stopLat  = Double.parseDouble(row.get(csv.getHeaderIndex("stop_lat")));
+            private final Double stopLon  = Double.parseDouble(row.get(csv.getHeaderIndex("stop_lon")));
 
             // static data
 
@@ -182,16 +188,21 @@ abstract class OneMTASchema_Bus extends OneMTASchema {
             }
 
             @Override
-            public final double getLatitude(){
+            public final Double getLatitude(){
                 return stopLat;
             }
 
             @Override
-            public final double getLongitude(){
+            public final Double getLongitude(){
                 return stopLon;
             }
 
             // live feed
+
+            @Override
+            public final Vehicle[] getVehicles(){
+                return new Vehicle[0];
+            }
 
             // Java
 

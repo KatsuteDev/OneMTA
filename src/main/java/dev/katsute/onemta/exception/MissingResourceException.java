@@ -20,14 +20,6 @@ package dev.katsute.onemta.exception;
 
 import dev.katsute.onemta.DataResourceType;
 
-/**
- * Thrown if a required {@link dev.katsute.onemta.DataResource} is missing. Note that for bus methods data resources for all boroughs are required.
- *
- * @since 1.0.0
- * @version 1.0.0
- * @author Katsute
- */
-@SuppressWarnings("GrazieInspection")
 public final class MissingResourceException extends RuntimeException {
 
     public MissingResourceException(final DataResourceType type){
