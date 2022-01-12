@@ -25,7 +25,8 @@ import dev.katsute.onemta.railroad.MNR;
 import dev.katsute.onemta.subway.Subway;
 import dev.katsute.onemta.subway.SubwayDirection;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Objects;
 
 @SuppressWarnings("SpellCheckingInspection")
 final class OneMTAImpl extends OneMTA {

@@ -22,13 +22,6 @@ import dev.katsute.onemta.attribute.RouteDescription;
 import dev.katsute.onemta.attribute.RouteShortName;
 import dev.katsute.onemta.types.*;
 
-/**
- * Contains all subway related methods. For the subway train see {@link Vehicle}.
- *
- * @since 1.0.0
- * @version 1.0.0
- * @author Katsute
- */
 public abstract class Subway {
 
     // todo: get vehicles for route
@@ -37,29 +30,8 @@ public abstract class Subway {
     // todo: get vehicles for stop
     public abstract static class Stop extends TransitStop<String> {
 
-        /**
-         * Returns which direction the station serves. Returns null if the direction is not specified.
-         *
-         * @return direction or null
-         *
-         * @see SubwayDirection
-         * @since 1.0.0
-         */
-        @SuppressWarnings("GrazieInspection")
         public abstract SubwayDirection getDirection();
 
-        /**
-         * Returns if two stops are referring to the same stop on the same line.
-         * <br>
-         * Ex: 901, 901N, and 901S count as the same stop.
-         * <br>
-         * Ex: 901 and 723 do not count as the same stop.
-         *
-         * @param stop other stop
-         * @return if the stop is the same
-         *
-         * @since 1.0.0
-         */
         public abstract Boolean isSameStop(final Stop stop);
 
     }
@@ -69,14 +41,6 @@ public abstract class Subway {
 
     public abstract static class Trip extends TransitTrip<Vehicle,Route,TripStop> {
 
-        /**
-         * Returns which direction the trip is going.
-         *
-         * @return direction
-         *
-         * @see SubwayDirection
-         * @since 1.0.0
-         */
         public abstract SubwayDirection getDirection();
 
     }

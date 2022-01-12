@@ -20,17 +20,6 @@ package dev.katsute.onemta.types;
 
 import dev.katsute.onemta.attribute.*;
 
-/**
- * Represents a transit stop update.
- *
- * @param <S> {@link TransitStop}
- * @param <T> {@link TransitTrip}
- * @param <I> stop ID format
- *
- * @since 1.0.0
- * @version 1.0.0
- * @author Katsute
- */
 public abstract class TransitStopUpdate<S extends TransitStop<I>, T extends TransitTrip<?,?,?>, I> implements TrackedSchedule, StopReference<S>, TripReference<T> {
 
     public abstract I getStopID();

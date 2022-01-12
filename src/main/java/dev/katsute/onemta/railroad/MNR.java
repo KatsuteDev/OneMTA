@@ -21,13 +21,6 @@ package dev.katsute.onemta.railroad;
 import dev.katsute.onemta.attribute.LocationReference;
 import dev.katsute.onemta.types.*;
 
-/**
- * Contains all Metro North Railroad (MNR) related methods.
- *
- * @since 1.0.0
- * @version 1.0.0
- * @author Katsute
- */
 public abstract class MNR {
 
     // todo: get vehicles for route
