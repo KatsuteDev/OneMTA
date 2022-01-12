@@ -23,7 +23,7 @@ import dev.katsute.onemta.types.TransitAgency;
 import java.util.List;
 import java.util.Objects;
 
-import static dev.katsute.onemta.LIRR.*;
+import static dev.katsute.onemta.railroad.LIRR.*;
 
 @SuppressWarnings("SpellCheckingInspection")
 abstract class OneMTASchema_LIRR extends OneMTASchema {

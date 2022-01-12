@@ -16,45 +16,61 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-package dev.katsute.onemta.types;
-
-import dev.katsute.onemta.attribute.LocationReference;
-import dev.katsute.onemta.bus.Bus;
-import dev.katsute.onemta.railroad.LIRR;
-import dev.katsute.onemta.railroad.MNR;
-import dev.katsute.onemta.subway.Subway;
+package dev.katsute.onemta.railroad;
 
 /**
- * Represents a transit stop.
+ * The direction for a railroad.
  *
- * @param <I> stop id format
- *
- * @see Bus.Stop
- * @see Subway.Stop
- * @see LIRR.Stop
- * @see MNR.Stop
  * @since 1.0.0
  * @version 1.0.0
  * @author Katsute
  */
-public abstract class TransitStop<I> implements LocationReference {
+public enum RailroadDirection {
 
     /**
-     * Returns the stop ID.
+     * Manhattan bound trains.
+     */
+    MANHATTAN(0),
+
+    /**
+     * Long Island and Northeast bound trains.
+     */
+    ORIGIN(1);
+
+    private final int direction;
+
+    RailroadDirection(final int direction){
+        this.direction = direction;
+    }
+
+    /**
+     * Returns the GTFS direction ID.
      *
-     * @return stop ID
+     * @return gtfs direction
      *
      * @since 1.0.0
      */
-    public abstract I getStopID();
+    public final int getDirection(){
+        return direction;
+    }
 
     /**
-     * Returns the stop name.
+     * Converts a GTFS direction ID to an enum.
      *
-     * @return stop name
+     * @param direction gtfs direction
+     * @return direction
      *
      * @since 1.0.0
      */
-    public abstract String getStopName();
+    public static RailroadDirection asDirection(final int direction){
+        switch(direction){
+            case 0:
+                return MANHATTAN;
+            case 1:
+                return ORIGIN;
+            default:
+                return null;
+        }
+    }
 
 }

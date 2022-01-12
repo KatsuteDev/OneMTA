@@ -18,13 +18,14 @@
 
 package dev.katsute.onemta;
 
-import com.google.protobuf.ExtensionRegistry;
 import dev.katsute.onemta.GTFSRealtimeProto.FeedMessage;
 import dev.katsute.onemta.Json.JsonObject;
 
 import java.util.*;
 
 final class RequestCache {
+
+    private static final int MINIMUM_CACHE = 60;
 
     // how long to retain cached data in seconds
     private final int retainCacheSeconds;
@@ -36,7 +37,7 @@ final class RequestCache {
     }
 
     RequestCache(final int retainCacheSeconds){
-        this.retainCacheSeconds = Math.min(retainCacheSeconds, 60);
+        this.retainCacheSeconds = Math.min(retainCacheSeconds, MINIMUM_CACHE);
     }
 
     synchronized final JsonObject getJSON(

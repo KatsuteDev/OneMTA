@@ -18,43 +18,16 @@
 
 package dev.katsute.onemta.types;
 
-import dev.katsute.onemta.attribute.LocationReference;
-import dev.katsute.onemta.bus.Bus;
-import dev.katsute.onemta.railroad.LIRR;
-import dev.katsute.onemta.railroad.MNR;
-import dev.katsute.onemta.subway.Subway;
+import java.util.Date;
 
-/**
- * Represents a transit stop.
- *
- * @param <I> stop id format
- *
- * @see Bus.Stop
- * @see Subway.Stop
- * @see LIRR.Stop
- * @see MNR.Stop
- * @since 1.0.0
- * @version 1.0.0
- * @author Katsute
- */
-public abstract class TransitStop<I> implements LocationReference {
+public abstract class TransitStopUpdate {
 
-    /**
-     * Returns the stop ID.
-     *
-     * @return stop ID
-     *
-     * @since 1.0.0
-     */
-    public abstract I getStopID();
+    public abstract Date getArrivalTime();
 
-    /**
-     * Returns the stop name.
-     *
-     * @return stop name
-     *
-     * @since 1.0.0
-     */
-    public abstract String getStopName();
+    public abstract Date getDepartureTime();
+
+    public abstract String getStopID();
+
+    public abstract int getTrack();
 
 }

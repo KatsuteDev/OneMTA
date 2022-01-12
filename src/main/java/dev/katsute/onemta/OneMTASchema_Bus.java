@@ -24,7 +24,7 @@ import dev.katsute.onemta.types.TransitAgency;
 import java.util.List;
 import java.util.Objects;
 
-import static dev.katsute.onemta.Bus.*;
+import static dev.katsute.onemta.bus.Bus.*;
 
 abstract class OneMTASchema_Bus extends OneMTASchema {
 

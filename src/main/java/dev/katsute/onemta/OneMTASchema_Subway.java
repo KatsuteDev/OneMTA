@@ -18,14 +18,14 @@
 
 package dev.katsute.onemta;
 
-import dev.katsute.onemta.types.SubwayDirection;
+import dev.katsute.onemta.subway.SubwayDirection;
 import dev.katsute.onemta.types.TransitAgency;
 
 import java.util.List;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
-import static dev.katsute.onemta.Subway.*;
+import static dev.katsute.onemta.subway.Subway.*;
 
 abstract class OneMTASchema_Subway extends OneMTASchema {
 

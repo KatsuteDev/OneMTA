@@ -19,16 +19,20 @@
 package dev.katsute.onemta.types;
 
 import dev.katsute.onemta.attribute.RouteReference;
+import dev.katsute.onemta.bus.Bus;
+import dev.katsute.onemta.railroad.LIRR;
+import dev.katsute.onemta.railroad.MNR;
+import dev.katsute.onemta.subway.Subway;
 
 /**
  * Represents a transit vehicle.
  *
  * @param <R> vehicle route type
  *
- * @see dev.katsute.onemta.Bus.Vehicle
- * @see dev.katsute.onemta.Subway.Vehicle
- * @see dev.katsute.onemta.LIRR.Vehicle
- * @see dev.katsute.onemta.MNR.Vehicle
+ * @see Bus.Vehicle
+ * @see Subway.Vehicle
+ * @see LIRR.Vehicle
+ * @see MNR.Vehicle
  * @since 1.0.0
  * @version 1.0.0
  * @author Katsute

@@ -16,45 +16,24 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-package dev.katsute.onemta.types;
-
-import dev.katsute.onemta.attribute.LocationReference;
-import dev.katsute.onemta.bus.Bus;
-import dev.katsute.onemta.railroad.LIRR;
-import dev.katsute.onemta.railroad.MNR;
-import dev.katsute.onemta.subway.Subway;
+package dev.katsute.onemta.attribute;
 
 /**
- * Represents a transit stop.
+ * Indicates that the object has a bearing.
  *
- * @param <I> stop id format
- *
- * @see Bus.Stop
- * @see Subway.Stop
- * @see LIRR.Stop
- * @see MNR.Stop
  * @since 1.0.0
  * @version 1.0.0
  * @author Katsute
  */
-public abstract class TransitStop<I> implements LocationReference {
+public interface BearingReference {
 
     /**
-     * Returns the stop ID.
+     * Returns the current bearing of the vehicle in degrees, 0 meaning north.
      *
-     * @return stop ID
+     * @return vehicle bearing
      *
      * @since 1.0.0
      */
-    public abstract I getStopID();
-
-    /**
-     * Returns the stop name.
-     *
-     * @return stop name
-     *
-     * @since 1.0.0
-     */
-    public abstract String getStopName();
+    double getBearing();
 
 }

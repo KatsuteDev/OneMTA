@@ -18,7 +18,11 @@
 
 package dev.katsute.onemta;
 
-import dev.katsute.onemta.types.SubwayDirection;
+import dev.katsute.onemta.bus.Bus;
+import dev.katsute.onemta.railroad.LIRR;
+import dev.katsute.onemta.railroad.MNR;
+import dev.katsute.onemta.subway.Subway;
+import dev.katsute.onemta.subway.SubwayDirection;
 
 @SuppressWarnings("SpellCheckingInspection")
 public abstract class OneMTA {

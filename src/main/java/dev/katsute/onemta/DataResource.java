@@ -35,9 +35,7 @@ public abstract class DataResource {
             private final Map<String,CSV> data = new HashMap<>();
 
             {
-                try{
-                    final ZipFile zip = new ZipFile(file);
-
+                try(final ZipFile zip = new ZipFile(file)){
                     final Enumeration<? extends ZipEntry> entries = zip.entries();
 
                     while(entries.hasMoreElements()){

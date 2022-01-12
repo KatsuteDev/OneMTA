@@ -16,63 +16,42 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-package dev.katsute.onemta.types;
-
-import dev.katsute.onemta.attribute.AgencyReference;
-import dev.katsute.onemta.bus.Bus;
-import dev.katsute.onemta.railroad.LIRR;
-import dev.katsute.onemta.railroad.MNR;
-import dev.katsute.onemta.subway.Subway;
+package dev.katsute.onemta.railroad;
 
 /**
- * Represents a transit route.
+ * Additional stop details for railroad stops.
  *
- * @see Bus.Route
- * @see Subway.Route
- * @see LIRR.Route
- * @see MNR.Route
  * @since 1.0.0
  * @version 1.0.0
  * @author Katsute
  */
-public abstract class TransitRoute implements AgencyReference {
+public interface RailroadStop {
 
     /**
-     * Returns the route ID.
+     * Returns the stop code for the stop.
      *
-     * @return route ID
+     * @return stop code
      *
      * @since 1.0.0
      */
-    public abstract String getRouteID();
+    String getStopCode();
 
     /**
-     * Returns the route name.
+     * Returns the stop description.
      *
-     * @return route name
+     * @return stop description
      *
      * @since 1.0.0
      */
-    public abstract String getRouteName();
+    String getStopDescription();
 
     /**
-     * Returns the route color as it appears on MTA maps.
+     * Returns if the stop is wheelchair accessible.
      *
-     * @return route color
+     * @return wheelchair accessible
      *
-     * @see #getRouteTextColor()
      * @since 1.0.0
      */
-    public abstract String getRouteColor();
-
-    /**
-     * Returns the text color as it appears on MTA maps.
-     *
-     * @return route text color
-     *
-     * @see #getRouteColor()
-     * @since 1.0.0
-     */
-    public abstract String getRouteTextColor();
+    boolean hasWheelchairBoarding();
 
 }

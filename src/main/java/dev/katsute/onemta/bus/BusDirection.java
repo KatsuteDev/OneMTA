@@ -16,63 +16,69 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-package dev.katsute.onemta.types;
-
-import dev.katsute.onemta.attribute.AgencyReference;
-import dev.katsute.onemta.bus.Bus;
-import dev.katsute.onemta.railroad.LIRR;
-import dev.katsute.onemta.railroad.MNR;
-import dev.katsute.onemta.subway.Subway;
+package dev.katsute.onemta.bus;
 
 /**
- * Represents a transit route.
+ * The direction for a bus.
  *
- * @see Bus.Route
- * @see Subway.Route
- * @see LIRR.Route
- * @see MNR.Route
  * @since 1.0.0
  * @version 1.0.0
  * @author Katsute
  */
-public abstract class TransitRoute implements AgencyReference {
+public enum BusDirection {
 
     /**
-     * Returns the route ID.
-     *
-     * @return route ID
+     * Buses going from the first stop to the last stop.
+     * <br>
+     * Ex: M1 'Harlem - East Village' going towards 'Harlem - 147 Street'
      *
      * @since 1.0.0
      */
-    public abstract String getRouteID();
+    FORWARD(0),
 
     /**
-     * Returns the route name.
-     *
-     * @return route name
+     * Buses going from the last stop to the first stop.
+     * <br>
+     * Ex: M1 'Harlem - East Village' going towards 'Harlem - East Village'
      *
      * @since 1.0.0
      */
-    public abstract String getRouteName();
+    REVERSE(1);
+
+    private final int direction;
+
+    BusDirection(final int direction){
+        this.direction = direction;
+    }
 
     /**
-     * Returns the route color as it appears on MTA maps.
+     * Returns the GTFS direction ID.
      *
-     * @return route color
+     * @return gtfs direction
      *
-     * @see #getRouteTextColor()
      * @since 1.0.0
      */
-    public abstract String getRouteColor();
+    public final int getDirection(){
+        return direction;
+    }
 
     /**
-     * Returns the text color as it appears on MTA maps.
+     * Converts a GTFS direction ID to an enum.
      *
-     * @return route text color
+     * @param direction gtfs direction
+     * @return direction
      *
-     * @see #getRouteColor()
      * @since 1.0.0
      */
-    public abstract String getRouteTextColor();
+    public static BusDirection asDirection(final int direction){
+        switch(direction){
+            case 0:
+                return FORWARD;
+            case 1:
+                return REVERSE;
+            default:
+                return null;
+        }
+    }
 
 }
