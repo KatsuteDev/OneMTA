@@ -52,6 +52,6 @@ public interface RailroadStop {
      *
      * @since 1.0.0
      */
-    boolean hasWheelchairBoarding();
+    Boolean hasWheelchairBoarding();
 
 }

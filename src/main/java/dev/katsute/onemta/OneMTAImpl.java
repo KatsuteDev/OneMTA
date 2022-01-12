@@ -105,7 +105,7 @@ final class OneMTAImpl extends OneMTA {
     // lirr methods
 
     @Override
-    public final LIRR.Route getLIRRRoute(final String route_id){
+    public final LIRR.Route getLIRRRoute(final int route_id){
         return OneMTASchema_LIRR.asRoute(this, route_id);
     }
 
@@ -127,7 +127,7 @@ final class OneMTAImpl extends OneMTA {
     // mnrr methods
 
     @Override
-    public final MNR.Route getMNRRoute(final String route_id){
+    public final MNR.Route getMNRRoute(final int route_id){
         return OneMTASchema_MNR.asRoute(this, route_id);
     }
 

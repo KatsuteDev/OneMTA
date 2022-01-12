@@ -18,9 +18,9 @@
 
 package dev.katsute.onemta;
 
-import dev.katsute.onemta.railroad.MNR;
 import dev.katsute.onemta.railroad.RailroadDirection;
 import dev.katsute.onemta.types.TransitAgency;
+import dev.katsute.onemta.types.VehicleStatus;
 
 import java.util.*;
 
@@ -30,18 +30,18 @@ import static dev.katsute.onemta.railroad.LIRR.*;
 @SuppressWarnings("SpellCheckingInspection")
 abstract class OneMTASchema_LIRR extends OneMTASchema {
 
-    static Route asRoute(final OneMTA mta, final String route_id){
+    static Route asRoute(final OneMTA mta, final int route_id){
         // find row
         final DataResource resource = getDataResource(mta, DataResourceType.LongIslandRailroad);
         final CSV csv               = resource.getData("routes.csv");
-        final List<String> row      = csv.getRow("route_id", route_id);
+        final List<String> row      = csv.getRow("route_id", String.valueOf(route_id));
 
         // instantiate
         Objects.requireNonNull(row, "Failed to find LIRR route with id '" + route_id + "'");
 
         return new Route() {
 
-            private final String routeID        = route_id;
+            private final Integer routeID       = route_id;
             private final String routeLongName  = row.get(csv.getHeaderIndex("route_long_name"));
             private final String routeColor     = row.get(csv.getHeaderIndex("route_color"));
             private final String routeTextColor = row.get(csv.getHeaderIndex("route_text_color"));
@@ -51,7 +51,7 @@ abstract class OneMTASchema_LIRR extends OneMTASchema {
             // static data
 
             @Override
-            public final String getRouteID(){
+            public final Integer getRouteID(){
                 return routeID;
             }
 
@@ -84,7 +84,7 @@ abstract class OneMTASchema_LIRR extends OneMTASchema {
                 return this == o ||
                    (o != null &&
                     getClass() == o.getClass() &&
-                    route_id.equals(((Route) o).getRouteID()));
+                    route_id == ((Route) o) .getRouteID());
             }
 
         };
@@ -118,10 +118,10 @@ abstract class OneMTASchema_LIRR extends OneMTASchema {
             private final String stopName = row.get(csv.getHeaderIndex("stop_name"));
             private final String stopDesc = row.get(csv.getHeaderIndex("stop_desc"));
 
-            private final double stopLat = Double.parseDouble(row.get(csv.getHeaderIndex("stop_lat")));
-            private final double stopLon = Double.parseDouble(row.get(csv.getHeaderIndex("stop_lon")));
+            private final Double stopLat  = Double.parseDouble(row.get(csv.getHeaderIndex("stop_lat")));
+            private final Double stopLon  = Double.parseDouble(row.get(csv.getHeaderIndex("stop_lon")));
 
-            private final boolean wheelchairAccessible = !row.get(csv.getHeaderIndex("wheelchair_boarding")).equals("2");
+            private final Boolean wheelchairAccessible = !row.get(csv.getHeaderIndex("wheelchair_boarding")).equals("2");
 
             @Override
             public final Integer getStopID(){
@@ -144,17 +144,17 @@ abstract class OneMTASchema_LIRR extends OneMTASchema {
             }
 
             @Override
-            public final double getLatitude(){
+            public final Double getLatitude(){
                 return stopLat;
             }
 
             @Override
-            public final double getLongitude(){
+            public final Double getLongitude(){
                 return stopLon;
             }
 
             @Override
-            public final boolean hasWheelchairBoarding(){
+            public final Boolean hasWheelchairBoarding(){
                 return wheelchairAccessible;
             }
 
@@ -171,8 +171,73 @@ abstract class OneMTASchema_LIRR extends OneMTASchema {
         };
     }
 
-    static Vehicle asVehicle(final OneMTA mta, final String train_id){
-        return null;
+    static Vehicle asVehicle(final OneMTA mta, final VehiclePosition vehicle, final TripUpdate tripUpdate){
+        return new Vehicle() {
+
+            private final Double latitude  = (double) vehicle.getPosition().getLatitude();
+            private final Double longitude = (double) vehicle.getPosition().getLongitude();
+            private final Double bearing   = (double) vehicle.getPosition().getBearing();
+
+            private final VehicleStatus status = VehicleStatus.asStatus(vehicle.getCurrentStatus().getNumber());
+
+            private final int stopID = Integer.parseInt(vehicle.getStopId());
+
+            private final int routeID = Integer.parseInt(tripUpdate.getTrip().getRouteId());
+
+            private final Trip trip = asTrip(mta, tripUpdate, this);
+
+            @Override
+            public final Double getLatitude(){
+                return latitude;
+            }
+
+            @Override
+            public final Double getLongitude(){
+                return longitude;
+            }
+
+            @Override
+            public final Double getBearing(){
+                return bearing;
+            }
+
+            @Override
+            public final VehicleStatus getCurrentStatus(){
+                return status;
+            }
+
+            @Override
+            public final Integer getStopID(){
+                return stopID;
+            }
+
+            @Override
+            public final Integer getRouteID(){
+                return routeID;
+            }
+
+            // onemta methods
+
+            private Stop stop = null;
+
+            @Override
+            public final Stop getStop(){
+                return stop != null ? stop : (stop = mta.getLIRRStop(stopID));
+            }
+
+            private Route route = null;
+
+            @Override
+            public final Route getRoute(){
+                return route != null ? route : (route = mta.getLIRRRoute(routeID));
+            }
+
+            @Override
+            public final Trip getTrip(){
+                return trip;
+            }
+
+        };
     }
 
     static Trip asTrip(final OneMTA mta, final TripUpdate tripUpdate, final Vehicle referringVehicle){
@@ -180,8 +245,23 @@ abstract class OneMTASchema_LIRR extends OneMTASchema {
 
             private final Vehicle vehicle = referringVehicle;
 
+            private final String tripID  = tripUpdate.getTrip().getTripId();
             private final String routeID = tripUpdate.getTrip().getRouteId();
             private final RailroadDirection direction = RailroadDirection.asDirection(tripUpdate.getTrip().getDirectionId());
+
+            private final List<TripStop> tripStops;
+
+            {
+                final List<TripStop> stops = new ArrayList<>();
+                for(final TripUpdate.StopTimeUpdate update : tripUpdate.getStopTimeUpdateList())
+                    stops.add(asTripStop(mta, update, this));
+                tripStops = Collections.unmodifiableList(stops);
+            }
+
+            @Override
+            public final String getTripId(){
+                return tripID;
+            }
 
             @Override
             public final String getRouteID(){
@@ -205,17 +285,8 @@ abstract class OneMTASchema_LIRR extends OneMTASchema {
                 return vehicle;
             }
 
-            private final List<TripUpdate.StopTimeUpdate> stopTimeUpdates = Collections.unmodifiableList(tripUpdate.getStopTimeUpdateList());
-            private List<TripStop> tripStops = null;
-
             @Override
             public final TripStop[] getStopUpdates(){
-                if(tripStops == null){
-                    final List<TripStop> stops = new ArrayList<>();
-                    for(final TripUpdate.StopTimeUpdate update : stopTimeUpdates)
-                        stops.add(asTripStop(mta, update, this));
-                    tripStops = Collections.unmodifiableList(stops);
-                }
                 return tripStops.toArray(new TripStop[0]);
             }
 
@@ -228,11 +299,11 @@ abstract class OneMTASchema_LIRR extends OneMTASchema {
 
             private final Trip trip      = referringTrip;
 
-            private final int stopID     = Integer.parseInt(stopTimeUpdate.getStopId());
-            private final long arrival   = stopTimeUpdate.getArrival().getTime();
-            private final long departure = stopTimeUpdate.getDeparture().getTime();
-            private final int delay      = stopTimeUpdate.getDeparture().getDelay();
-            private final int track      = Integer.parseInt(mnrStopTimeUpdate.getTrack());
+            private final Integer stopID = Integer.parseInt(stopTimeUpdate.getStopId());
+            private final Long arrival   = stopTimeUpdate.getArrival().getTime();
+            private final Long departure = stopTimeUpdate.getDeparture().getTime();
+            private final Integer delay  = stopTimeUpdate.getDeparture().getDelay();
+            private final Integer track  = Integer.parseInt(mnrStopTimeUpdate.getTrack());
             private final String status  = mnrStopTimeUpdate.getTrainStatus();
 
             @Override
@@ -241,7 +312,7 @@ abstract class OneMTASchema_LIRR extends OneMTASchema {
             }
 
             @Override
-            public final long getArrivalTimeEpochMillis(){
+            public final Long getArrivalTimeEpochMillis(){
                 return arrival;
             }
 
@@ -251,7 +322,7 @@ abstract class OneMTASchema_LIRR extends OneMTASchema {
             }
 
             @Override
-            public final long getDepartureTimeEpochMillis(){
+            public final Long getDepartureTimeEpochMillis(){
                 return departure;
             }
 
@@ -261,12 +332,12 @@ abstract class OneMTASchema_LIRR extends OneMTASchema {
             }
 
             @Override
-            public final int getDelay(){
+            public final Integer getDelay(){
                 return delay;
             }
 
             @Override
-            public final int getTrack(){
+            public final Integer getTrack(){
                 return track;
             }
 

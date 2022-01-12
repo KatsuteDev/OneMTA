@@ -18,14 +18,14 @@
 
 package dev.katsute.onemta;
 
-import dev.katsute.onemta.railroad.LIRR;
-import dev.katsute.onemta.railroad.RailroadDirection;
 import dev.katsute.onemta.subway.SubwayDirection;
 import dev.katsute.onemta.types.TransitAgency;
+import dev.katsute.onemta.types.VehicleStatus;
 
 import java.util.*;
 import java.util.regex.Pattern;
 
+import static dev.katsute.onemta.GTFSRealtimeProto.*;
 import static dev.katsute.onemta.subway.Subway.*;
 
 @SuppressWarnings("SpellCheckingInspection")
@@ -119,8 +119,8 @@ abstract class OneMTASchema_Subway extends OneMTASchema {
             private final String stopID   = stop_id;
             private final String stopName = row.get(csv.getHeaderIndex("stop_name"));
 
-            private final double stopLat = Double.parseDouble(row.get(csv.getHeaderIndex("stop_lat")));
-            private final double stopLon = Double.parseDouble(row.get(csv.getHeaderIndex("stop_lon")));
+            private final Double stopLat = Double.parseDouble(row.get(csv.getHeaderIndex("stop_lat")));
+            private final Double stopLon = Double.parseDouble(row.get(csv.getHeaderIndex("stop_lon")));
 
             private final SubwayDirection stopDirection =
                 stop_id.endsWith("N") || stop_id.endsWith("S")
@@ -142,12 +142,12 @@ abstract class OneMTASchema_Subway extends OneMTASchema {
             }
 
             @Override
-            public final double getLatitude(){
+            public final Double getLatitude(){
                 return stopLat;
             }
 
             @Override
-            public final double getLongitude(){
+            public final Double getLongitude(){
                 return stopLon;
             }
 
@@ -157,7 +157,7 @@ abstract class OneMTASchema_Subway extends OneMTASchema {
             }
 
             @Override
-            public final boolean isSameStop(final Stop stop){
+            public final Boolean isSameStop(final Stop stop){
                 return this == stop ||
                    (stop != null &&
                     direction.matcher(getStopID()).replaceAll("").equals(direction.matcher(stop.getStopID()).replaceAll("")));
@@ -178,18 +178,79 @@ abstract class OneMTASchema_Subway extends OneMTASchema {
         };
     }
 
-    static Vehicle asVehicle(final OneMTA mta, final int subway_id){
-        return null;
+    static Vehicle asVehicle(final OneMTA mta, final VehiclePosition vehicle, final TripUpdate tripUpdate){
+        return new Vehicle() {
+
+            private final VehicleStatus status = VehicleStatus.asStatus(vehicle.getCurrentStatus().getNumber());
+
+            private final String stopID = vehicle.getStopId();
+
+            private final String routeID =tripUpdate.getTrip().getRouteId();
+
+            private final Trip trip = asTrip(mta, tripUpdate, this);
+
+            @Override
+            public final VehicleStatus getCurrentStatus(){
+                return status;
+            }
+
+            @Override
+            public final String getStopID(){
+                return stopID;
+            }
+
+            @Override
+            public final String getRouteID(){
+                return routeID;
+            }
+
+            // onemta methods
+
+            private Stop stop = null;
+
+            @Override
+            public final Stop getStop(){
+                return stop != null ? stop : (stop = mta.getSubwayStop(stopID));
+            }
+
+            private Route route = null;
+
+            @Override
+            public final Route getRoute(){
+                return route != null ? route : (route = mta.getSubwayRoute(routeID));
+            }
+
+            @Override
+            public final Trip getTrip(){
+                return trip;
+            }
+
+        };
     }
 
-    static Trip asTrip(final OneMTA mta, final GTFSRealtimeProto.TripUpdate tripUpdate, final Vehicle referringVehicle){
+    static Trip asTrip(final OneMTA mta, final TripUpdate tripUpdate, final Vehicle referringVehicle){
         final NYCTSubwayProto.NyctTripDescriptor nyctTripDescriptor = tripUpdate.getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor);
         return new Trip() {
 
             private final Vehicle vehicle = referringVehicle;
 
-            private final String routeID            = tripUpdate.getTrip().getRouteId();
+            private final String tripID  = tripUpdate.getTrip().getTripId();
+            private final String routeID = tripUpdate.getTrip().getRouteId();
             private final SubwayDirection direction = SubwayDirection.asDirection(nyctTripDescriptor.getDirection().getNumber());
+
+            private final List<TripStop> tripStops;
+
+            {
+                final List<TripStop> stops = new ArrayList<>();
+                for(final TripUpdate.StopTimeUpdate update : tripUpdate.getStopTimeUpdateList())
+                    stops.add(asTripStop(mta, update, this));
+                tripStops = Collections.unmodifiableList(stops);
+            }
+
+            @Override
+            public final String getTripId(){
+                return tripID;
+            }
 
             @Override
             public final String getRouteID(){
@@ -213,34 +274,25 @@ abstract class OneMTASchema_Subway extends OneMTASchema {
                 return vehicle;
             }
 
-            private final List<GTFSRealtimeProto.TripUpdate.StopTimeUpdate> stopTimeUpdates = Collections.unmodifiableList(tripUpdate.getStopTimeUpdateList());
-            private List<TripStop> tripStops = null;
-
             @Override
             public final TripStop[] getStopUpdates(){
-                if(tripStops == null){
-                    final List<TripStop> stops = new ArrayList<>();
-                    for(final GTFSRealtimeProto.TripUpdate.StopTimeUpdate update : stopTimeUpdates)
-                        stops.add(asTripStop(mta, update, this));
-                    tripStops = Collections.unmodifiableList(stops);
-                }
                 return tripStops.toArray(new TripStop[0]);
             }
 
         };
     }
 
-    static TripStop asTripStop(final OneMTA mta, final GTFSRealtimeProto.TripUpdate.StopTimeUpdate stopTimeUpdate, final Trip referringTrip){
+    static TripStop asTripStop(final OneMTA mta, final TripUpdate.StopTimeUpdate stopTimeUpdate, final Trip referringTrip){
         final NYCTSubwayProto.NyctStopTimeUpdate nyctStopTimeUpdate = stopTimeUpdate.getExtension(NYCTSubwayProto.nyctStopTimeUpdate);
         return new TripStop() {
 
             private final Trip trip       = referringTrip;
 
-            private final String stopID   = stopTimeUpdate.getStopId();
-            private final long arrival    = stopTimeUpdate.getArrival().getTime();
-            private final long departure  = stopTimeUpdate.getDeparture().getTime();
-            private final int track       = Integer.parseInt(nyctStopTimeUpdate.getScheduledTrack());
-            private final int actualTrack = Integer.parseInt(nyctStopTimeUpdate.getActualTrack());
+            private final String stopID       = stopTimeUpdate.getStopId();
+            private final Long arrival        = stopTimeUpdate.getArrival().getTime();
+            private final Long departure      = stopTimeUpdate.getDeparture().getTime();
+            private final Integer track       = Integer.parseInt(nyctStopTimeUpdate.getScheduledTrack());
+            private final Integer actualTrack = Integer.parseInt(nyctStopTimeUpdate.getActualTrack());
 
             @Override
             public final String getStopID(){
@@ -248,7 +300,7 @@ abstract class OneMTASchema_Subway extends OneMTASchema {
             }
 
             @Override
-            public final long getArrivalTimeEpochMillis(){
+            public final Long getArrivalTimeEpochMillis(){
                 return arrival;
             }
 
@@ -258,7 +310,7 @@ abstract class OneMTASchema_Subway extends OneMTASchema {
             }
 
             @Override
-            public final long getDepartureTimeEpochMillis(){
+            public final Long getDepartureTimeEpochMillis(){
                 return departure;
             }
 
@@ -268,12 +320,12 @@ abstract class OneMTASchema_Subway extends OneMTASchema {
             }
 
             @Override
-            public final int getTrack(){
+            public final Integer getTrack(){
                 return track;
             }
 
             @Override
-            public final int getActualTrack(){
+            public final Integer getActualTrack(){
                 return actualTrack;
             }
 

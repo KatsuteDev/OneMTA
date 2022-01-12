@@ -22,14 +22,14 @@ import java.util.Date;
 
 public interface TrackedSchedule {
 
-    long getArrivalTimeEpochMillis();
+    Long getArrivalTimeEpochMillis();
 
     Date getArrivalTime();
 
-    long getDepartureTimeEpochMillis();
+    Long getDepartureTimeEpochMillis();
 
     Date getDepartureTime();
 
-    int getTrack();
+    Integer getTrack();
 
 }

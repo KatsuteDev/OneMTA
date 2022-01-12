@@ -16,24 +16,57 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-package dev.katsute.onemta.attribute;
+package dev.katsute.onemta.types;
 
 /**
- * Indicates that the object has a bearing.
+ * The current vehicle status.
  *
  * @since 1.0.0
  * @version 1.0.0
  * @author Katsute
  */
-public interface BearingReference {
+public enum VehicleStatus {
+
+    INCOMING_AT(0),
+    STOPPED_AT(1),
+    IN_TRANSIT_TO(2);
+
+    private final int status;
+
+    VehicleStatus(final int direction){
+        this.status = direction;
+    }
 
     /**
-     * Returns the current bearing of the vehicle in degrees, 0 meaning north.
+     * Returns the status ID.
      *
-     * @return vehicle bearing
+     * @return status
      *
      * @since 1.0.0
      */
-    Double getBearing();
+    public final int getStatus(){
+        return status;
+    }
+
+    /**
+     * Converts a status ID to an enum.
+     *
+     * @param status status ID
+     * @return status
+     *
+     * @since 1.0.0
+     */
+    public static VehicleStatus asStatus(final int status){
+        switch(status){
+            case 0:
+                return INCOMING_AT;
+            case 1:
+                return STOPPED_AT;
+            case 2:
+                return IN_TRANSIT_TO;
+            default:
+                return null;
+        }
+    }
 
 }

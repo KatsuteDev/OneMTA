@@ -29,7 +29,7 @@ import dev.katsute.onemta.types.TransitRoute;
  * @version 1.0.0
  * @author Katsute
  */
-public interface RouteReference<R extends TransitRoute> {
+public interface RouteReference<R extends TransitRoute<?>> {
 
     /**
      * Returns the route.

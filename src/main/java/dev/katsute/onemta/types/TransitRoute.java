@@ -35,7 +35,7 @@ import dev.katsute.onemta.subway.Subway;
  * @version 1.0.0
  * @author Katsute
  */
-public abstract class TransitRoute implements AgencyReference {
+public abstract class TransitRoute<I> implements AgencyReference {
 
     /**
      * Returns the route ID.
@@ -44,7 +44,7 @@ public abstract class TransitRoute implements AgencyReference {
      *
      * @since 1.0.0
      */
-    public abstract String getRouteID();
+    public abstract I getRouteID();
 
     /**
      * Returns the route name.

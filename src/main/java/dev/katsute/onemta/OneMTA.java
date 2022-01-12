@@ -57,7 +57,7 @@ public abstract class OneMTA {
 
     // lirr methods
 
-    public abstract LIRR.Route getLIRRRoute(final String route_id);
+    public abstract LIRR.Route getLIRRRoute(int route_id);
 
     public abstract LIRR.Stop getLIRRStop(final int stop_id);
 
@@ -67,7 +67,7 @@ public abstract class OneMTA {
 
     // mnrr methods
 
-    public abstract MNR.Route getMNRRoute(final String route_id);
+    public abstract MNR.Route getMNRRoute(int route_id);
 
     public abstract MNR.Stop getMNRStop(final int stop_id);
 

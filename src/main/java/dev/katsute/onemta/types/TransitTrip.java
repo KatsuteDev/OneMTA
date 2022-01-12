@@ -32,7 +32,9 @@ import dev.katsute.onemta.attribute.VehicleReference;
  * @version 1.0.0
  * @author Katsute
  */
-public abstract class TransitTrip<V extends TransitVehicle<R>, R extends TransitRoute, S extends TransitStopUpdate<?,?,?>> implements RouteReference<R>, VehicleReference<V> {
+public abstract class TransitTrip<V extends TransitVehicle<R,?,?,?,?>, R extends TransitRoute<?>, S extends TransitStopUpdate<?,?,?>> implements RouteReference<R>, VehicleReference<V> {
+
+    public abstract String getTripId();
 
     /**
      * Returns the route ID for the trip.

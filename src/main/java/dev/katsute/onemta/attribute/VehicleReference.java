@@ -29,7 +29,7 @@ import dev.katsute.onemta.types.*;
  * @version 1.0.0
  * @author Katsute
  */
-public interface VehicleReference<V extends TransitVehicle<?>> {
+public interface VehicleReference<V extends TransitVehicle<?,?,?,?,?>> {
 
     /**
      * Returns the vehicle.

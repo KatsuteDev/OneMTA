@@ -31,12 +31,12 @@ import dev.katsute.onemta.types.*;
 public abstract class MNR {
 
     // todo: get vehicles for route
-    public abstract static class Route extends TransitRoute { }
+    public abstract static class Route extends TransitRoute<Integer> { }
 
     // todo: get vehicles for stop
     public abstract static class Stop extends TransitStop<Integer> implements RailroadStop { }
 
-    public abstract static class Vehicle extends TransitVehicle<Route> implements LocationReference { }
+    public abstract static class Vehicle extends TransitVehicle<Route,Trip,Stop,Integer,Integer> implements LocationReference { }
 
     public abstract static class Trip extends TransitTrip<Vehicle,Route,TripStop> {
 

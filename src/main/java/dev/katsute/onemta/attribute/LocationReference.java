@@ -35,7 +35,7 @@ public interface LocationReference {
      * @see #getLongitude()
      * @since 1.0.0
      */
-    double getLatitude();
+    Double getLatitude();
 
     /**
      * Object longitude.
@@ -45,6 +45,6 @@ public interface LocationReference {
      * @see #getLatitude()
      * @since 1.0.0
      */
-    double getLongitude();
+    Double getLongitude();
 
 }

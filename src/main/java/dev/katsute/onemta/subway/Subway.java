@@ -32,7 +32,7 @@ import dev.katsute.onemta.types.*;
 public abstract class Subway {
 
     // todo: get vehicles for route
-    public abstract static class Route extends TransitRoute implements RouteShortName, RouteDescription { }
+    public abstract static class Route extends TransitRoute<String> implements RouteShortName, RouteDescription { }
 
     // todo: get vehicles for stop
     public abstract static class Stop extends TransitStop<String> {
@@ -60,12 +60,12 @@ public abstract class Subway {
          *
          * @since 1.0.0
          */
-        public abstract boolean isSameStop(final Stop stop);
+        public abstract Boolean isSameStop(final Stop stop);
 
     }
 
     // todo: add utility methods for isExpress, isLocal
-    public abstract static class Vehicle extends TransitVehicle<Route> { }
+    public abstract static class Vehicle extends TransitVehicle<Route,Trip,Stop,String,String> { }
 
     public abstract static class Trip extends TransitTrip<Vehicle,Route,TripStop> {
 
@@ -83,7 +83,7 @@ public abstract class Subway {
 
     public abstract static class TripStop extends TransitStopUpdate<Stop,Trip,String> {
 
-        public abstract int getActualTrack();
+        public abstract Integer getActualTrack();
 
     }
 
