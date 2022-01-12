@@ -20,9 +20,10 @@ package dev.katsute.onemta;
 
 import dev.katsute.onemta.types.TransitAgency;
 
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
+import static dev.katsute.onemta.GTFSRealtimeProto.*;
+import static dev.katsute.onemta.MNRRProto.*;
 import static dev.katsute.onemta.railroad.MNR.*;
 
 @SuppressWarnings("SpellCheckingInspection")
@@ -107,7 +108,7 @@ abstract class OneMTASchema_MNR extends OneMTASchema {
         final List<String> row      = csv.getRow("stop_id", String.valueOf(stop_id));
 
         // instantiate
-         Objects.requireNonNull(row, "Failed to find MNR stop with id '" + stop_id + "'");
+        Objects.requireNonNull(row, "Failed to find MNR stop with id '" + stop_id + "'");
 
         return new Stop(){
 
@@ -171,6 +172,111 @@ abstract class OneMTASchema_MNR extends OneMTASchema {
 
     static Vehicle asVehicle(final OneMTA mta, final String train_id){
         return null;
+    }
+
+    static Trip asTrip(final OneMTA mta, final TripUpdate tripUpdate, final Vehicle referringVehicle){
+        return new Trip() {
+
+            private final Vehicle vehicle = referringVehicle;
+
+            private final String routeID = tripUpdate.getTrip().getRouteId();
+
+            @Override
+            public final String getRouteID(){
+                return routeID;
+            }
+
+            // onemta methods
+
+            @Override
+            public final Route getRoute(){
+                return vehicle.getRoute();
+            }
+
+            @Override
+            public final Vehicle getVehicle(){
+                return vehicle;
+            }
+
+            private final List<TripUpdate.StopTimeUpdate> stopTimeUpdates = Collections.unmodifiableList(tripUpdate.getStopTimeUpdateList());
+            private List<TripStop> tripStops = null;
+
+            @Override
+            public final TripStop[] getStopUpdates(){
+                if(tripStops == null){
+                    final List<TripStop> stops = new ArrayList<>();
+                    for(final TripUpdate.StopTimeUpdate update : stopTimeUpdates)
+                        stops.add(asTripStop(mta, update, this));
+                    tripStops = Collections.unmodifiableList(stops);
+                }
+                return tripStops.toArray(new TripStop[0]);
+            }
+
+        };
+    }
+
+    static TripStop asTripStop(final OneMTA mta, final TripUpdate.StopTimeUpdate stopTimeUpdate, final Trip referringTrip){
+        final MnrStopTimeUpdate mnrStopTimeUpdate = stopTimeUpdate.getExtension(MNRRProto.mnrStopTimeUpdate);
+        return new TripStop() {
+
+            private final Trip trip      = referringTrip;
+
+            private final int stopID     = Integer.parseInt(stopTimeUpdate.getStopId());
+            private final long arrival   = stopTimeUpdate.getArrival().getTime();
+            private final long departure = stopTimeUpdate.getDeparture().getTime();
+            private final int track      = Integer.parseInt(mnrStopTimeUpdate.getTrack());
+            private final String status  = mnrStopTimeUpdate.getTrainStatus();
+
+            @Override
+            public final Integer getStopID(){
+                return stopID;
+            }
+
+            @Override
+            public final long getArrivalTimeEpochMillis(){
+                return arrival;
+            }
+
+            @Override
+            public final Date getArrivalTime(){
+                return new Date(arrival);
+            }
+
+            @Override
+            public final long getDepartureTimeEpochMillis(){
+                return departure;
+            }
+
+            @Override
+            public final Date getDepartureTime(){
+                return new Date(departure);
+            }
+
+            @Override
+            public final int getTrack(){
+                return track;
+            }
+
+            @Override
+            public final String getTrainStatus(){
+                return status;
+            }
+
+            // onemta methods
+
+            private Stop stop = null;
+
+            @Override
+            public final Stop getStop(){
+                return stop != null ? stop : (stop = mta.getMNRStop(stopID));
+            }
+
+            @Override
+            public final Trip getTrip(){
+                return trip;
+            }
+
+        };
     }
 
 }

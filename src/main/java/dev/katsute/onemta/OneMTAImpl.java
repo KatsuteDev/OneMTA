@@ -77,11 +77,6 @@ final class OneMTAImpl extends OneMTA {
         return null;
     }
 
-    @Override
-    public final Bus.Vehicle[] getBusses(){
-        return new Bus.Vehicle[0];
-    }
-
     // subway methods
 
     @Override

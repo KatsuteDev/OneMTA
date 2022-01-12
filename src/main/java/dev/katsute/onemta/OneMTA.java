@@ -45,8 +45,6 @@ public abstract class OneMTA {
 
     public abstract Bus.Vehicle getBus(final int bus_id);
 
-    public abstract Bus.Vehicle[] getBusses(); // todo: add warning that this is strongly discouraged and rate limited
-
     // subway methods
 
     public abstract Subway.Route getSubwayRoute(final String route_id);

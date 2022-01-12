@@ -51,11 +51,11 @@ public abstract class Bus {
 
     }
 
-    public abstract static class Trip extends TransitTrip {
+    public abstract static class Trip extends TransitTrip<Vehicle,Route,TripStop> {
 
-        public abstract static class Stop extends TransitStopUpdate {
+    }
 
-        }
+    public abstract static class TripStop extends TransitStopUpdate<Stop,Trip,Integer> {
 
     }
 

@@ -67,7 +67,7 @@ public abstract class Subway {
     // todo: add utility methods for isExpress, isLocal
     public abstract static class Vehicle extends TransitVehicle<Route> { }
 
-    public abstract static class Trip extends TransitTrip {
+    public abstract static class Trip extends TransitTrip<Vehicle,Route,TripStop> {
 
         /**
          * Returns which direction the trip is going.
@@ -79,11 +79,11 @@ public abstract class Subway {
          */
         public abstract SubwayDirection getDirection();
 
-        public abstract static class Stop extends TransitStopUpdate {
+    }
 
-            public abstract int getActualTrack();
+    public abstract static class TripStop extends TransitStopUpdate<Stop,Trip,String> {
 
-        }
+        public abstract int getActualTrack();
 
     }
 

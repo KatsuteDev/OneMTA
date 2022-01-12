@@ -40,7 +40,7 @@ public abstract class LIRR {
 
     public abstract static class Vehicle extends TransitVehicle<Route> implements BearingReference, LocationReference { }
 
-    public abstract static class Trip extends TransitTrip {
+    public abstract static class Trip extends TransitTrip<Vehicle,Route,TripStop> {
 
         /**
          * Returns which direction the trip is going.
@@ -52,13 +52,13 @@ public abstract class LIRR {
          */
         public abstract RailroadDirection getDirection();
 
-        public abstract static class Stop extends TransitStopUpdate {
+    }
 
-            public abstract int getDelay();
+    public abstract static class TripStop extends TransitStopUpdate<Stop,Trip,Integer> {
 
-            public abstract String getTrainStatus();
+        public abstract int getDelay();
 
-        }
+        public abstract String getTrainStatus();
 
     }
 

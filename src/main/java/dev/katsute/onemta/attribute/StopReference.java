@@ -16,36 +16,28 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-package dev.katsute.onemta.railroad;
+package dev.katsute.onemta.attribute;
 
-import dev.katsute.onemta.attribute.LocationReference;
-import dev.katsute.onemta.types.*;
+import dev.katsute.onemta.types.TransitStop;
 
 /**
- * Contains all Metro North Railroad (MNR) related methods.
+ * Indicates that the object can refer to a {@link dev.katsute.onemta.types.TransitStop}.
+ *
+ * @param <S> {@link TransitStop}
  *
  * @since 1.0.0
  * @version 1.0.0
  * @author Katsute
  */
-public abstract class MNR {
+public interface StopReference<S extends TransitStop<?>> {
 
-    // todo: get vehicles for route
-    public abstract static class Route extends TransitRoute { }
-
-    // todo: get vehicles for stop
-    public abstract static class Stop extends TransitStop<Integer> implements RailroadStop { }
-
-    public abstract static class Vehicle extends TransitVehicle<Route> implements LocationReference { }
-
-    public abstract static class Trip extends TransitTrip<Vehicle,Route,TripStop> {
-
-    }
-
-    public abstract static class TripStop extends TransitStopUpdate<Stop,Trip,Integer> {
-
-        public abstract String getTrainStatus();
-
-    }
+    /**
+     * Returns the stop.
+     *
+     * @return stop
+     *
+     * @since 1.0.0
+     */
+    S getStop();
 
 }
