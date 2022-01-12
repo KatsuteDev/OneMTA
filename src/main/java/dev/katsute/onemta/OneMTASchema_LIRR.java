@@ -259,7 +259,7 @@ abstract class OneMTASchema_LIRR extends OneMTASchema {
             }
 
             @Override
-            public final String getTripId(){
+            public final String getTripID(){
                 return tripID;
             }
 

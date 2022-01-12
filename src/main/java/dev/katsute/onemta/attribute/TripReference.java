@@ -18,7 +18,7 @@
 
 package dev.katsute.onemta.attribute;
 
-import dev.katsute.onemta.types.*;
+import dev.katsute.onemta.types.TransitTrip;
 
 /**
  * Indicates that the object can refer to a {@link dev.katsute.onemta.types.TransitTrip}.

@@ -248,7 +248,7 @@ abstract class OneMTASchema_Subway extends OneMTASchema {
             }
 
             @Override
-            public final String getTripId(){
+            public final String getTripID(){
                 return tripID;
             }
 

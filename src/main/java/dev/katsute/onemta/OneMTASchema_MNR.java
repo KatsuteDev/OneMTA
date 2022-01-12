@@ -252,7 +252,7 @@ abstract class OneMTASchema_MNR extends OneMTASchema {
             }
 
             @Override
-            public final String getTripId(){
+            public final String getTripID(){
                 return tripID;
             }
 
