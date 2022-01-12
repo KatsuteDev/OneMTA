@@ -26,10 +26,10 @@ import dev.katsute.onemta.types.*;
 public abstract class LIRR {
 
     // todo: get vehicles for route
-    public abstract static class Route extends TransitRoute<Integer> { }
+    public abstract static class Route extends TransitRoute<Integer,Vehicle> { }
 
     // todo: get vehicles for stop
-    public abstract static class Stop extends TransitStop<Integer> implements RailroadStop { }
+    public abstract static class Stop extends TransitStop<Integer,Vehicle> implements RailroadStop { }
 
     public abstract static class Vehicle extends TransitVehicle<Route,Trip,Stop,Integer,Integer> implements BearingReference, LocationReference { }
 

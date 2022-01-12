@@ -19,8 +19,9 @@
 package dev.katsute.onemta.types;
 
 import dev.katsute.onemta.attribute.AgencyReference;
+import dev.katsute.onemta.attribute.VehiclesReference;
 
-public abstract class TransitRoute<I> implements AgencyReference {
+public abstract class TransitRoute<I,V extends TransitVehicle<?,?,?,?,?>> implements AgencyReference, VehiclesReference<V> {
 
     public abstract I getRouteID();
 

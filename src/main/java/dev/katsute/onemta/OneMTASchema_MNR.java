@@ -77,6 +77,11 @@ abstract class OneMTASchema_MNR extends OneMTASchema {
 
             // live feed
 
+            @Override
+            public final Vehicle[] getVehicles(){
+                return new Vehicle[0];
+            }
+
             // Java
 
             @Override
@@ -123,6 +128,8 @@ abstract class OneMTASchema_MNR extends OneMTASchema {
 
             private final Boolean wheelchairAccessible = !row.get(csv.getHeaderIndex("wheelchair_boarding")).equals("2");
 
+            // static data
+
             @Override
             public final Integer getStopID(){
                 return stop_id;
@@ -158,7 +165,14 @@ abstract class OneMTASchema_MNR extends OneMTASchema {
                 return wheelchairAccessible;
             }
 
-            //
+            // live feed
+
+            @Override
+            public final Vehicle[] getVehicles(){
+                return new Vehicle[0];
+            }
+
+            // Java
 
             @Override
             public final boolean equals(final Object o){

@@ -24,11 +24,9 @@ import dev.katsute.onemta.types.*;
 public abstract class Bus {
 
     // todo: add utility methods for isSBS, isExpress, isShuttle, isLimited
-    // todo: get vehicles for route
-    public abstract static class Route extends TransitRoute<String> implements RouteShortName, RouteDescription { }
+    public abstract static class Route extends TransitRoute<String,Vehicle> implements RouteShortName, RouteDescription { }
 
-    // todo: get vehicles for stop
-    public abstract static class Stop extends TransitStop<Integer> implements RouteDescription { }
+    public abstract static class Stop extends TransitStop<Integer,Vehicle> implements RouteDescription { }
 
     // todo: add utility methods for isSBS, isExpress, isShuttle, isLimited
     public abstract static class Vehicle extends TransitVehicle<Route,Trip,Stop,Integer,String> implements BearingReference, LocationReference {

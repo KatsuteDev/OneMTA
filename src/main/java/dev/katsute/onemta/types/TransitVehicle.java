@@ -20,7 +20,7 @@ package dev.katsute.onemta.types;
 
 import dev.katsute.onemta.attribute.*;
 
-public abstract class TransitVehicle<R extends TransitRoute<RID>, T extends TransitTrip<?,?,?>, S extends TransitStop<SID>, SID, RID> implements RouteReference<R>, TripReference<T>, StopReference<S> {
+public abstract class TransitVehicle<R extends TransitRoute<RID,?>, T extends TransitTrip<?,?,?>, S extends TransitStop<SID,?>, SID, RID> implements RouteReference<R>, TripReference<T>, StopReference<S> {
 
     public abstract VehicleStatus getCurrentStatus();
 

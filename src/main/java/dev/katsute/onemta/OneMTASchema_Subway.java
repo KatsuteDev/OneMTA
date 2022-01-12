@@ -92,6 +92,11 @@ abstract class OneMTASchema_Subway extends OneMTASchema {
 
             // live feed
 
+            @Override
+            public final Vehicle[] getVehicles(){
+                return new Vehicle[0];
+            }
+
             // Java
 
             @Override
@@ -164,6 +169,11 @@ abstract class OneMTASchema_Subway extends OneMTASchema {
             }
 
             // live feed
+
+            @Override
+            public final Vehicle[] getVehicles(){
+                return new Vehicle[0];
+            }
 
             // Java
 

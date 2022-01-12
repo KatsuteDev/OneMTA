@@ -24,11 +24,9 @@ import dev.katsute.onemta.types.*;
 
 public abstract class Subway {
 
-    // todo: get vehicles for route
-    public abstract static class Route extends TransitRoute<String> implements RouteShortName, RouteDescription { }
+    public abstract static class Route extends TransitRoute<String,Vehicle> implements RouteShortName, RouteDescription { }
 
-    // todo: get vehicles for stop
-    public abstract static class Stop extends TransitStop<String> {
+    public abstract static class Stop extends TransitStop<String,Vehicle> {
 
         public abstract SubwayDirection getDirection();
 

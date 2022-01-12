@@ -20,7 +20,7 @@ package dev.katsute.onemta.types;
 
 import dev.katsute.onemta.attribute.*;
 
-public abstract class TransitStopUpdate<S extends TransitStop<I>, T extends TransitTrip<?,?,?>, I> implements TrackedSchedule, StopReference<S>, TripReference<T> {
+public abstract class TransitStopUpdate<S extends TransitStop<I,?>, T extends TransitTrip<?,?,?>, I> implements TrackedSchedule, StopReference<S>, TripReference<T> {
 
     public abstract I getStopID();
 

@@ -20,7 +20,7 @@ package dev.katsute.onemta.attribute;
 
 import dev.katsute.onemta.types.TransitStop;
 
-public interface StopReference<S extends TransitStop<?>> {
+public interface StopReference<S extends TransitStop<?,?>> {
 
     S getStop();
 
