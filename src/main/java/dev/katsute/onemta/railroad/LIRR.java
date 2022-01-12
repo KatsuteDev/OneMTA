@@ -22,13 +22,6 @@ import dev.katsute.onemta.attribute.BearingReference;
 import dev.katsute.onemta.attribute.LocationReference;
 import dev.katsute.onemta.types.*;
 
-/**
- * Contains all Long Island Railroad (LIRR) related methods.
- *
- * @since 1.0.0
- * @version 1.0.0
- * @author Katsute
- */
 @SuppressWarnings("SpellCheckingInspection")
 public abstract class LIRR {
 
@@ -42,14 +35,6 @@ public abstract class LIRR {
 
     public abstract static class Trip extends TransitTrip<Vehicle,Route,TripStop> {
 
-        /**
-         * Returns which direction the trip is going.
-         *
-         * @return direction
-         *
-         * @see RailroadDirection
-         * @since 1.0.0
-         */
         public abstract RailroadDirection getDirection();
 
     }

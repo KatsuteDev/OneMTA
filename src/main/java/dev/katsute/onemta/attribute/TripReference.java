@@ -20,24 +20,8 @@ package dev.katsute.onemta.attribute;
 
 import dev.katsute.onemta.types.TransitTrip;
 
-/**
- * Indicates that the object can refer to a {@link dev.katsute.onemta.types.TransitTrip}.
- *
- * @param <T> {@link TransitTrip}
- *
- * @since 1.0.0
- * @version 1.0.0
- * @author Katsute
- */
 public interface TripReference<T extends TransitTrip<?,?,?>> {
 
-    /**
-     * Returns the trip.
-     *
-     * @return trip
-     *
-     * @since 1.0.0
-     */
     T getTrip();
 
 }

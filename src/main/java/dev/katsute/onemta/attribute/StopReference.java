@@ -20,24 +20,8 @@ package dev.katsute.onemta.attribute;
 
 import dev.katsute.onemta.types.TransitStop;
 
-/**
- * Indicates that the object can refer to a {@link dev.katsute.onemta.types.TransitStop}.
- *
- * @param <S> {@link TransitStop}
- *
- * @since 1.0.0
- * @version 1.0.0
- * @author Katsute
- */
 public interface StopReference<S extends TransitStop<?>> {
 
-    /**
-     * Returns the stop.
-     *
-     * @return stop
-     *
-     * @since 1.0.0
-     */
     S getStop();
 
 }
