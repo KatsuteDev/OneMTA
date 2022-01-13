@@ -27,7 +27,7 @@ public abstract class MNR {
 
     public abstract static class Stop extends TransitStop<Integer,Vehicle> implements RailroadStop { }
 
-    public abstract static class Vehicle extends TransitVehicle<Route,Trip,Stop,Integer,Integer> implements LocationReference { }
+    public abstract static class Vehicle extends TransitVehicle<Route,Trip,Stop,Integer,Integer,Integer> implements LocationReference { }
 
     public abstract static class Trip extends TransitTrip<Vehicle,Route,TripStop> { }
 

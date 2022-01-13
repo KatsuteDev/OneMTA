@@ -193,11 +193,17 @@ abstract class OneMTASchema_Subway extends OneMTASchema {
 
             private final VehicleStatus status = VehicleStatus.asStatus(vehicle.getCurrentStatus().getNumber());
 
+            private final String vehicleID = tripUpdate.getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getTrainId();
             private final String stopID = vehicle.getStopId();
 
-            private final String routeID =tripUpdate.getTrip().getRouteId();
+            private final String routeID = tripUpdate.getTrip().getRouteId();
 
             private final Trip trip = asTrip(mta, tripUpdate, this);
+
+            @Override
+            public final String getVehicleID(){
+                return vehicleID;
+            }
 
             @Override
             public final VehicleStatus getCurrentStatus(){

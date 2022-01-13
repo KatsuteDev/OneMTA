@@ -21,6 +21,7 @@ package dev.katsute.onemta;
 import dev.katsute.onemta.types.TransitAgency;
 
 import java.util.Objects;
+import java.util.function.Supplier;
 
 abstract class OneMTASchema {
 
@@ -30,6 +31,14 @@ abstract class OneMTASchema {
 
     protected static OneMTAImpl cast(final OneMTA mta){
         return (OneMTAImpl) mta;
+    }
+
+    protected static <T> T requireNonNull(final Supplier<T> supplier){
+        try{
+            return supplier.get();
+        }catch(final NullPointerException ignored){
+            return null;
+        }
     }
 
     //

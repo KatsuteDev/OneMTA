@@ -20,7 +20,7 @@ package dev.katsute.onemta.attribute;
 
 import dev.katsute.onemta.types.TransitVehicle;
 
-public interface VehiclesReference<V extends TransitVehicle<?,?,?,?,?>> {
+public interface VehiclesReference<V extends TransitVehicle<?,?,?,?,?,?>> {
 
     V[] getVehicles();
 

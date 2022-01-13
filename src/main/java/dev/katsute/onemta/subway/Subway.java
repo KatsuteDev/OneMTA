@@ -34,7 +34,7 @@ public abstract class Subway {
     }
 
     // todo: add utility methods for isExpress, isLocal
-    public abstract static class Vehicle extends TransitVehicle<Route,Trip,Stop,String,String> { }
+    public abstract static class Vehicle extends TransitVehicle<Route,Trip,Stop,String,String,String> { }
 
     public abstract static class Trip extends TransitTrip<Vehicle,Route,TripStop> {
 

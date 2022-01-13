@@ -18,6 +18,7 @@
 
 package dev.katsute.onemta;
 
+import dev.katsute.onemta.railroad.LIRR;
 import dev.katsute.onemta.types.TransitAgency;
 import dev.katsute.onemta.types.VehicleStatus;
 
@@ -188,16 +189,22 @@ abstract class OneMTASchema_MNR extends OneMTASchema {
     static Vehicle asVehicle(final OneMTA mta, final VehiclePosition vehicle, final TripUpdate tripUpdate){
         return new Vehicle() {
 
-            private final Double latitude  = (double) vehicle.getPosition().getLatitude();
-            private final Double longitude = (double) vehicle.getPosition().getLongitude();
+            private final Integer vehicleID = requireNonNull(() -> Integer.parseInt(vehicle.getVehicle().getLabel()));
+
+            private final Double latitude  = requireNonNull( () -> (double) vehicle.getPosition().getLatitude());
+            private final Double longitude = requireNonNull( () -> (double) vehicle.getPosition().getLongitude());
 
             private final VehicleStatus status = VehicleStatus.asStatus(vehicle.getCurrentStatus().getNumber());
 
-            private final int stopID = Integer.parseInt(vehicle.getStopId());
-
-            private final int routeID = Integer.parseInt(tripUpdate.getTrip().getRouteId());
+            private final Integer stopID  = requireNonNull(() -> Integer.parseInt(vehicle.getStopId()));
+            private final Integer routeID = requireNonNull(() -> Integer.parseInt(tripUpdate.getTrip().getRouteId()));
 
             private final Trip trip = asTrip(mta, tripUpdate, this);
+
+            @Override
+            public final Integer getVehicleID(){
+                return vehicleID;
+            }
 
             @Override
             public final Double getLatitude(){
@@ -230,14 +237,14 @@ abstract class OneMTASchema_MNR extends OneMTASchema {
 
             @Override
             public final Stop getStop(){
-                return stop != null ? stop : (stop = mta.getMNRStop(stopID));
+                return stop != null ? stop : (stop = mta.getMNRStop(Objects.requireNonNull(stopID, "Stop ID must not be null")));
             }
 
             private Route route = null;
 
             @Override
             public final Route getRoute(){
-                return route != null ? route : (route = mta.getMNRRoute(routeID));
+                return route != null ? route : (route = mta.getMNRRoute(Objects.requireNonNull(routeID, "Route ID must not be null")));
             }
 
             @Override
@@ -253,8 +260,8 @@ abstract class OneMTASchema_MNR extends OneMTASchema {
 
             private final Vehicle vehicle = referringVehicle;
 
-            private final String tripID  = tripUpdate.getTrip().getTripId();
-            private final String routeID = tripUpdate.getTrip().getRouteId();
+            private final String tripID  = requireNonNull(() -> tripUpdate.getTrip().getTripId());
+            private final String routeID = requireNonNull(() -> tripUpdate.getTrip().getRouteId());
 
             private final List<TripStop> tripStops;
 
@@ -301,12 +308,14 @@ abstract class OneMTASchema_MNR extends OneMTASchema {
 
             private final Trip trip      = referringTrip;
 
-            private final Integer stopID = Integer.parseInt(stopTimeUpdate.getStopId());
-            private final Long arrival   = stopTimeUpdate.getArrival().getTime();
-            private final Long departure = stopTimeUpdate.getDeparture().getTime();
-            private final Integer delay  = stopTimeUpdate.getDeparture().getDelay();
-            private final String track   = mnrStopTimeUpdate.getTrack();
-            private final String status  = mnrStopTimeUpdate.getTrainStatus();
+            private final Integer stopID = requireNonNull(() -> Integer.parseInt(stopTimeUpdate.getStopId()));
+
+            private final Long arrival   = requireNonNull(() -> stopTimeUpdate.getArrival().getTime());
+            private final Long departure = requireNonNull(() -> stopTimeUpdate.getDeparture().getTime());
+            private final Integer delay  = requireNonNull(() -> stopTimeUpdate.getDeparture().getDelay());
+
+            private final String track   = requireNonNull(mnrStopTimeUpdate::getTrack);
+            private final String status  = requireNonNull(mnrStopTimeUpdate::getTrainStatus);
 
             @Override
             public final Integer getStopID(){
@@ -320,7 +329,7 @@ abstract class OneMTASchema_MNR extends OneMTASchema {
 
             @Override
             public final Date getArrivalTime(){
-                return new Date(arrival);
+                return arrival != null ? new Date(arrival) : null;
             }
 
             @Override
@@ -330,7 +339,7 @@ abstract class OneMTASchema_MNR extends OneMTASchema {
 
             @Override
             public final Date getDepartureTime(){
-                return new Date(departure);
+                return departure != null ? new Date(departure) : null;
             }
 
             @Override

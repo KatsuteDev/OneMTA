@@ -29,11 +29,7 @@ public abstract class Bus {
     public abstract static class Stop extends TransitStop<Integer,Vehicle> implements RouteDescription { }
 
     // todo: add utility methods for isSBS, isExpress, isShuttle, isLimited
-    public abstract static class Vehicle extends TransitVehicle<Route,Trip,Stop,Integer,String> implements BearingReference, LocationReference {
-
-        public abstract Integer getID();
-
-    }
+    public abstract static class Vehicle extends TransitVehicle<Route,Trip,Stop,Integer,String,Integer> implements BearingReference, LocationReference { }
 
     public abstract static class Trip extends TransitTrip<Vehicle,Route,TripStop> {
 
