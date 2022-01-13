@@ -16,12 +16,12 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-package dev.katsute.onemta.types;
+package dev.katsute.onemta.railroad;
 
-import dev.katsute.onemta.attribute.*;
+public interface RailroadTripStop {
 
-public abstract class TransitStopUpdate<S extends TransitStop<I,?>, T extends TransitTrip<?,?,?>, I, TS> implements TrackedSchedule<TS>, StopReference<S>, TripReference<T> {
+    Integer getDelay();
 
-    public abstract I getStopID();
+    String getTrainStatus();
 
 }

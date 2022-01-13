@@ -43,7 +43,7 @@ public abstract class Subway {
 
     }
 
-    public abstract static class TripStop extends TransitStopUpdate<Stop,Trip,String> {
+    public abstract static class TripStop extends TransitStopUpdate<Stop,Trip,String,Integer> {
 
         public abstract Integer getActualTrack();
 

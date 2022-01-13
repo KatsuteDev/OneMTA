@@ -39,12 +39,6 @@ public abstract class LIRR {
 
     }
 
-    public abstract static class TripStop extends TransitStopUpdate<Stop,Trip,Integer> {
-
-        public abstract Integer getDelay();
-
-        public abstract String getTrainStatus();
-
-    }
+    public abstract static class TripStop extends TransitStopUpdate<Stop,Trip,Integer,String> implements RailroadTripStop { }
 
 }

@@ -304,7 +304,8 @@ abstract class OneMTASchema_MNR extends OneMTASchema {
             private final Integer stopID = Integer.parseInt(stopTimeUpdate.getStopId());
             private final Long arrival   = stopTimeUpdate.getArrival().getTime();
             private final Long departure = stopTimeUpdate.getDeparture().getTime();
-            private final Integer track  = Integer.parseInt(mnrStopTimeUpdate.getTrack());
+            private final Integer delay  = stopTimeUpdate.getDeparture().getDelay();
+            private final String track   = mnrStopTimeUpdate.getTrack();
             private final String status  = mnrStopTimeUpdate.getTrainStatus();
 
             @Override
@@ -333,7 +334,12 @@ abstract class OneMTASchema_MNR extends OneMTASchema {
             }
 
             @Override
-            public final Integer getTrack(){
+            public final Integer getDelay(){
+                return delay;
+            }
+
+            @Override
+            public final String getTrack(){
                 return track;
             }
 

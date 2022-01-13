@@ -317,7 +317,7 @@ abstract class OneMTASchema_LIRR extends OneMTASchema {
             private final Long arrival   = stopTimeUpdate.getArrival().getTime();
             private final Long departure = stopTimeUpdate.getDeparture().getTime();
             private final Integer delay  = stopTimeUpdate.getDeparture().getDelay();
-            private final Integer track  = Integer.parseInt(mnrStopTimeUpdate.getTrack());
+            private final String track   = mnrStopTimeUpdate.getTrack();
             private final String status  = mnrStopTimeUpdate.getTrainStatus();
 
             @Override
@@ -351,7 +351,7 @@ abstract class OneMTASchema_LIRR extends OneMTASchema {
             }
 
             @Override
-            public final Integer getTrack(){
+            public final String getTrack(){
                 return track;
             }
 
