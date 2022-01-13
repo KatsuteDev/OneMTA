@@ -214,9 +214,6 @@
                         <!-- suppress missing documentation -->
                         <additionalOption>-Xdoclint:-missing</additionalOption>
                     </additionalOptions>
-                    <sourceFileExcludes>
-                        <exclude>**Proto.java</exclude>
-                    </sourceFileExcludes>
                     <!-- generate javadoc for /java and /java9 -->
                     <sourcepath>${project.basedir}/src/main/java;${project.basedir}/src/main/java9</sourcepath>
                 </configuration>
