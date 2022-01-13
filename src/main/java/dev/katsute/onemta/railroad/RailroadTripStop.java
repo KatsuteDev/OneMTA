@@ -18,7 +18,9 @@
 
 package dev.katsute.onemta.railroad;
 
-public interface RailroadTripStop {
+import dev.katsute.onemta.attribute.TrackedSchedule;
+
+public interface RailroadTripStop extends TrackedSchedule<String> {
 
     Integer getDelay();
 

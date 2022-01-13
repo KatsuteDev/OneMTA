@@ -39,6 +39,6 @@ public abstract class LIRR {
 
     }
 
-    public abstract static class TripStop extends TransitStopUpdate<Stop,Trip,Integer,String> implements RailroadTripStop { }
+    public abstract static class TripStop extends TransitStopUpdate<Stop,Trip,Integer> implements RailroadTripStop { }
 
 }

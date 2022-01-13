@@ -31,6 +31,6 @@ public abstract class MNR {
 
     public abstract static class Trip extends TransitTrip<Vehicle,Route,TripStop> { }
 
-    public abstract static class TripStop extends TransitStopUpdate<Stop,Trip,Integer,String> implements RailroadTripStop { }
+    public abstract static class TripStop extends TransitStopUpdate<Stop,Trip,Integer> implements RailroadTripStop { }
 
 }
