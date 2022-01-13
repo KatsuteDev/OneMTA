@@ -215,7 +215,7 @@
                         <additionalOption>-Xdoclint:-missing</additionalOption>
                     </additionalOptions>
                     <sourceFileExcludes>
-                        <exclude>dev/katsute/onemta/*Proto.java</exclude>
+                        <exclude>**Proto.java</exclude>
                     </sourceFileExcludes>
                     <!-- generate javadoc for /java and /java9 -->
                     <sourcepath>${project.basedir}/src/main/java;${project.basedir}/src/main/java9</sourcepath>
