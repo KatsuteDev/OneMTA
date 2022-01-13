@@ -41,7 +41,11 @@ public abstract class OneMTA {
 
     public abstract Bus.Route getBusRoute(final String route_id);
 
+    public abstract Bus.Route getBusRoute(final String route_id, final DataResourceType type);
+
     public abstract Bus.Stop getBusStop(final int stop_id);
+
+    public abstract Bus.Stop getBusStop(final int stop_id, final DataResourceType type);
 
     public abstract Bus.Vehicle getBus(final int bus_id);
 
@@ -53,7 +57,7 @@ public abstract class OneMTA {
 
     public abstract Subway.Stop getSubwayStop(final String stop_id, final SubwayDirection direction);
 
-    public abstract Subway.Vehicle getSubwayTrain(final int train_id);
+    public abstract Subway.Vehicle getSubwayTrain(final String train_id);
 
     // lirr methods
 

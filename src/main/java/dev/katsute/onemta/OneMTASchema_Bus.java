@@ -21,29 +21,65 @@ package dev.katsute.onemta;
 import dev.katsute.onemta.Json.JsonObject;
 import dev.katsute.onemta.types.TransitAgency;
 
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 import static dev.katsute.onemta.bus.Bus.*;
 
 abstract class OneMTASchema_Bus extends OneMTASchema {
 
     static Route asRoute(final OneMTA mta, final String route_id){
+        return asRoute(mta, route_id, null);
+    }
+
+    static Route asRoute(final OneMTA mta, final String route_id, final DataResourceType type){
+        final String id = route_id.toUpperCase();
         // populate bus resources
-        final DataResource[] resources = new DataResource[]{
-            getDataResource(mta, DataResourceType.Bus_Brooklyn),
-            getDataResource(mta, DataResourceType.Bus_Bronx),
-            getDataResource(mta, DataResourceType.Bus_Manhattan),
-            getDataResource(mta, DataResourceType.Bus_Queens),
-            getDataResource(mta, DataResourceType.Bus_StatenIsland)
-        };
+        final List<DataResource> resources = new ArrayList<>();
+
+        final List<DataResource> defaults = Arrays.asList(
+            /* 0 */ getDataResource(mta, DataResourceType.Bus_Brooklyn),
+            /* 1 */ getDataResource(mta, DataResourceType.Bus_Bronx),
+            /* 2 */ getDataResource(mta, DataResourceType.Bus_Manhattan),
+            /* 3 */ getDataResource(mta, DataResourceType.Bus_Queens),
+            /* 4 */ getDataResource(mta, DataResourceType.Bus_StatenIsland),
+            /* 5 */ getDataResource(mta, DataResourceType.Bus_Company)
+        );
+
+        // guess which resource route is from and prioritize that one first
+        {
+            int index = -1;
+            if(id.startsWith("BX"))
+                index = 1;
+            else if(id.startsWith("B"))
+                index = 0;
+            else if(id.startsWith("M"))
+                index = 2;
+            else if(id.startsWith("Q"))
+                index = 3;
+            else if(id.startsWith("S"))
+                index = 4;
+
+            if(index > -1){
+                final DataResource probableResource = defaults.get(index);
+                defaults.remove(index);
+                defaults.add(0, probableResource);
+            }
+        }
+
+        // populate resources
+        if(type != null){
+            resources.add(getDataResource(mta, type));
+            for(final DataResource r : defaults)
+                if(r.getType() != type)
+                    resources.add(r);
+        }else
+            resources.addAll(defaults);
 
         // find row
         DataResource d  = null;
         CSV c           = null;
         List<String> r  = null;
 
-        final String id = route_id.toUpperCase();
         for(final DataResource dr : resources)
             if(
                 (r =
@@ -63,12 +99,20 @@ abstract class OneMTASchema_Bus extends OneMTASchema {
 
         return new Route() {
 
-            private final String routeID        = id;
+            private final String routeID = id;
+
             private final String routeShortName = row.get(csv.getHeaderIndex("route_short_name"));
             private final String routeLongName  = row.get(csv.getHeaderIndex("route_long_name"));
             private final String routeDesc      = row.get(csv.getHeaderIndex("route_desc"));
+
             private final String routeColor     = row.get(csv.getHeaderIndex("route_color"));
             private final String routeTextColor = row.get(csv.getHeaderIndex("route_text_color"));
+
+            private final Boolean SBS     = routeShortName.endsWith("+") || routeLongName.contains("Select Bus Service");
+            private final Boolean express = routeShortName.startsWith("X") || routeShortName.endsWith("X") || routeLongName.contains("Express");
+            private final Boolean shuttle = routeLongName.contains("Shuttle");
+            private final Boolean limited = routeLongName.contains("Limited");
+
 
             private final TransitAgency agency = asAgency(row.get(csv.getHeaderIndex("agency_id")), resource);
 
@@ -105,6 +149,26 @@ abstract class OneMTASchema_Bus extends OneMTASchema {
             }
 
             @Override
+            public final Boolean isSelectBusService(){
+                return SBS;
+            }
+
+            @Override
+            public final Boolean isExpress(){
+                return express;
+            }
+
+            @Override
+            public final Boolean isShuttle(){
+                return shuttle;
+            }
+
+            @Override
+            public final Boolean isLimited(){
+                return limited;
+            }
+
+            @Override
             public final TransitAgency getAgency(){
                 return agency;
             }
@@ -115,7 +179,6 @@ abstract class OneMTASchema_Bus extends OneMTASchema {
             public final Vehicle[] getVehicles(){
                 return new Vehicle[0];
             }
-
 
             // Java
 
@@ -131,14 +194,32 @@ abstract class OneMTASchema_Bus extends OneMTASchema {
     }
 
     static Stop asStop(final OneMTA mta, final int stop_id){
+        return asStop(mta, stop_id, null);
+    }
+
+    static Stop asStop(final OneMTA mta, final int stop_id, final DataResourceType type){
         // populate bus resources
-        final DataResource[] resources = new DataResource[]{
+        final List<DataResource> resources = new ArrayList<>();
+
+        final List<DataResource> defaults = Arrays.asList(
             getDataResource(mta, DataResourceType.Bus_Brooklyn),
             getDataResource(mta, DataResourceType.Bus_Bronx),
             getDataResource(mta, DataResourceType.Bus_Manhattan),
             getDataResource(mta, DataResourceType.Bus_Queens),
-            getDataResource(mta, DataResourceType.Bus_StatenIsland)
-        };
+            getDataResource(mta, DataResourceType.Bus_StatenIsland),
+            getDataResource(mta, DataResourceType.Bus_Company)
+        );
+
+        // not possible to guess resource type, all boroughs use the full range of codes
+
+        // populate resources
+        if(type != null){
+            resources.add(getDataResource(mta, type));
+            for(final DataResource r : defaults)
+                if(r.getType() != type)
+                    resources.add(r);
+        }else
+            resources.addAll(defaults);
 
         // find row
         DataResource d  = null;

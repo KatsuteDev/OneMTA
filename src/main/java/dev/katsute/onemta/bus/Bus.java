@@ -23,21 +23,34 @@ import dev.katsute.onemta.types.*;
 
 public abstract class Bus {
 
-    // todo: add utility methods for isSBS, isExpress, isShuttle, isLimited
-    public abstract static class Route extends TransitRoute<String,Vehicle> implements RouteShortName, RouteDescription { }
+    public abstract static class Route extends TransitRoute<String,Vehicle> implements RouteShortName, RouteDescription {
+
+        public abstract Boolean isSelectBusService();
+
+        public abstract Boolean isExpress();
+
+        public abstract Boolean isShuttle();
+
+        public abstract Boolean isLimited();
+
+    }
 
     public abstract static class Stop extends TransitStop<Integer,Vehicle> implements RouteDescription { }
 
-    // todo: add utility methods for isSBS, isExpress, isShuttle, isLimited
-    public abstract static class Vehicle extends TransitVehicle<Route,Trip,Stop,Integer,String,Integer> implements BearingReference, LocationReference { }
+    public abstract static class Vehicle extends TransitVehicle<Route,Trip,Stop,Integer,String,Integer> implements BearingReference, LocationReference {
 
-    public abstract static class Trip extends TransitTrip<Vehicle,Route,TripStop> {
+        public abstract Boolean isSelectBusService();
+
+        public abstract Boolean isExpress();
+
+        public abstract Boolean isShuttle();
+
+        public abstract Boolean isLimited();
 
     }
 
-    public abstract static class TripStop extends TransitStopUpdate<Stop,Trip,Integer> {
+    public abstract static class Trip extends TransitTrip<Vehicle,Route,TripStop> { }
 
-    }
-
+    public abstract static class TripStop extends TransitStopUpdate<Stop,Trip,Integer> { }
 
 }

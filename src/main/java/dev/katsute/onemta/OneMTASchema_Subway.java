@@ -253,7 +253,11 @@ abstract class OneMTASchema_Subway extends OneMTASchema {
             private final String tripID  = requireNonNull(() -> tripUpdate.getTrip().getTripId());
             private final String routeID = requireNonNull(() -> tripUpdate.getTrip().getRouteId());
 
-            private final SubwayDirection direction = requireNonNull(() -> SubwayDirection.asDirection(nyctTripDescriptor.getDirection().getNumber()));
+            private final SubwayDirection direction = requireNonNull(
+                () -> nyctTripDescriptor.hasDirection()
+                ? SubwayDirection.asDirection(nyctTripDescriptor.getDirection().getNumber())
+                : SubwayDirection.NORTH
+            );
 
             private final List<TripStop> tripStops;
 

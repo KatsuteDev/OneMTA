@@ -26,6 +26,7 @@ public enum DataResourceType {
     Bus_Manhattan,
     Bus_Queens,
     Bus_StatenIsland,
+    Bus_Company,
     LongIslandRailroad,
     MetroNorthRailroad;
 

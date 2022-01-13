@@ -65,12 +65,22 @@ final class OneMTAImpl extends OneMTA {
 
     @Override
     public final Bus.Route getBusRoute(final String route_id){
-        return OneMTASchema_Bus.asRoute(this, route_id);
+        return getBusRoute(route_id, null);
+    }
+
+    @Override
+    public final Bus.Route getBusRoute(final String route_id, final DataResourceType type){
+        return OneMTASchema_Bus.asRoute(this, route_id, type);
     }
 
     @Override
     public final Bus.Stop getBusStop(final int stop_id){
-        return OneMTASchema_Bus.asStop(this, stop_id);
+        return getBusStop(stop_id, null);
+    }
+
+    @Override
+    public final Bus.Stop getBusStop(final int stop_id, final DataResourceType type){
+        return  OneMTASchema_Bus.asStop(this, stop_id, type);
     }
 
     @Override
@@ -192,7 +202,7 @@ final class OneMTAImpl extends OneMTA {
     }
 
     @Override
-    public final Subway.Vehicle getSubwayTrain(final int train_id){
+    public final Subway.Vehicle getSubwayTrain(final String train_id){
         return null;
     }
 
