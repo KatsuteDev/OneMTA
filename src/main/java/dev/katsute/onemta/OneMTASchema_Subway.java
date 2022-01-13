@@ -250,9 +250,10 @@ abstract class OneMTASchema_Subway extends OneMTASchema {
 
             private final Vehicle vehicle = referringVehicle;
 
-            private final String tripID  = tripUpdate.getTrip().getTripId();
-            private final String routeID = tripUpdate.getTrip().getRouteId();
-            private final SubwayDirection direction = SubwayDirection.asDirection(nyctTripDescriptor.getDirection().getNumber());
+            private final String tripID  = requireNonNull(() -> tripUpdate.getTrip().getTripId());
+            private final String routeID = requireNonNull(() -> tripUpdate.getTrip().getRouteId());
+
+            private final SubwayDirection direction = requireNonNull(() -> SubwayDirection.asDirection(nyctTripDescriptor.getDirection().getNumber()));
 
             private final List<TripStop> tripStops;
 
@@ -302,13 +303,15 @@ abstract class OneMTASchema_Subway extends OneMTASchema {
         final NYCTSubwayProto.NyctStopTimeUpdate nyctStopTimeUpdate = stopTimeUpdate.getExtension(NYCTSubwayProto.nyctStopTimeUpdate);
         return new TripStop() {
 
-            private final Trip trip       = referringTrip;
+            private final Trip trip = referringTrip;
 
-            private final String stopID       = stopTimeUpdate.getStopId();
-            private final Long arrival        = stopTimeUpdate.getArrival().getTime();
-            private final Long departure      = stopTimeUpdate.getDeparture().getTime();
-            private final Integer track       = Integer.parseInt(nyctStopTimeUpdate.getScheduledTrack());
-            private final Integer actualTrack = Integer.parseInt(nyctStopTimeUpdate.getActualTrack());
+            private final String stopID = requireNonNull(stopTimeUpdate::getStopId);
+
+            private final Long arrival        = requireNonNull(() -> stopTimeUpdate.getArrival().getTime());
+            private final Long departure      = requireNonNull(() -> stopTimeUpdate.getDeparture().getTime());
+
+            private final Integer track       = requireNonNull(() -> Integer.parseInt(nyctStopTimeUpdate.getScheduledTrack()));
+            private final Integer actualTrack = requireNonNull(() -> Integer.parseInt(nyctStopTimeUpdate.getActualTrack()));
 
             @Override
             public final String getStopID(){
@@ -322,7 +325,7 @@ abstract class OneMTASchema_Subway extends OneMTASchema {
 
             @Override
             public final Date getArrivalTime(){
-                return new Date(arrival);
+                return arrival != null ? new Date(arrival) : null;
             }
 
             @Override
@@ -332,7 +335,7 @@ abstract class OneMTASchema_Subway extends OneMTASchema {
 
             @Override
             public final Date getDepartureTime(){
-                return new Date(departure);
+                return departure != null ? new Date(departure) : null;
             }
 
             @Override
@@ -351,7 +354,7 @@ abstract class OneMTASchema_Subway extends OneMTASchema {
 
             @Override
             public final Stop getStop(){
-                return stop != null ? stop : (stop = mta.getSubwayStop(stopID));
+                return stop != null ? stop : (stop = mta.getSubwayStop(Objects.requireNonNull(stopID, "Stop ID must not be null")));
             }
 
             @Override

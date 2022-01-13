@@ -363,7 +363,7 @@ abstract class OneMTASchema_MNR extends OneMTASchema {
 
             @Override
             public final Stop getStop(){
-                return stop != null ? stop : (stop = mta.getMNRStop(stopID));
+                return stop != null ? stop : (stop = mta.getMNRStop(Objects.requireNonNull(stopID, "Stop ID must not be null")));
             }
 
             @Override
