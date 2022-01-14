@@ -18,7 +18,7 @@
 
 package dev.katsute.onemta.railroad;
 
-import dev.katsute.onemta.attribute.*;
+import dev.katsute.onemta.attribute.Location;
 import dev.katsute.onemta.types.*;
 
 public abstract class MNR {
@@ -27,7 +27,7 @@ public abstract class MNR {
 
     public abstract static class Stop extends RailroadStop<Vehicle> { }
 
-    public abstract static class Vehicle extends TransitVehicle<Route,Stop,Trip,Integer,Integer,Integer> implements Location, TrackedVehicleStatus { }
+    public abstract static class Vehicle extends GTFSVehicle<Route,Stop,Trip,Integer,Integer,Integer> implements Location { }
 
     public abstract static class Trip extends GTFSTransitTrip<Vehicle,Route,TripStop> { }
 

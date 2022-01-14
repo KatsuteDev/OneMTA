@@ -16,10 +16,10 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-package dev.katsute.onemta.attribute;
+package dev.katsute.onemta.types;
 
-public interface TrackedVehicleStatus {
+public abstract class GTFSVehicle<R extends TransitRoute<?,?>, S extends TransitStop<?,?>, T extends TransitTrip<?,?,?>, SID, RID, VID> extends TransitVehicle<R,S,T,SID,RID,VID> {
 
-    String getCurrentStatus();
+    public abstract String getCurrentStatus();
 
 }

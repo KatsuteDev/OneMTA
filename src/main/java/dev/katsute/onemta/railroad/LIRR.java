@@ -28,7 +28,7 @@ public abstract class LIRR {
 
     public abstract static class Stop extends RailroadStop<Vehicle> { }
 
-    public abstract static class Vehicle extends TransitVehicle<Route,Stop,Trip,Integer,Integer,Integer> implements Bearing, Location, TrackedVehicleStatus { }
+    public abstract static class Vehicle extends GTFSVehicle<Route,Stop,Trip,Integer,Integer,Integer>  implements Bearing, Location { }
 
     public abstract static class Trip extends GTFSTransitTrip<Vehicle,Route,TripStop> implements Direction<RailroadDirection> { }
 
