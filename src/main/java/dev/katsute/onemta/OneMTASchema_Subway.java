@@ -20,7 +20,6 @@ package dev.katsute.onemta;
 
 import dev.katsute.onemta.subway.SubwayDirection;
 import dev.katsute.onemta.types.TransitAgency;
-import dev.katsute.onemta.types.VehicleStatus;
 
 import java.util.*;
 import java.util.regex.Pattern;
@@ -191,7 +190,7 @@ abstract class OneMTASchema_Subway extends OneMTASchema {
     static Vehicle asVehicle(final OneMTA mta, final VehiclePosition vehicle, final TripUpdate tripUpdate){
         return new Vehicle() {
 
-            private final VehicleStatus status = VehicleStatus.asStatus(vehicle.getCurrentStatus().getNumber());
+            private final String status   = requireNonNull(() -> vehicle.getCurrentStatus().name());
 
             private final String vehicleID = tripUpdate.getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getTrainId();
             private final String stopID = vehicle.getStopId();
@@ -206,7 +205,7 @@ abstract class OneMTASchema_Subway extends OneMTASchema {
             }
 
             @Override
-            public final VehicleStatus getCurrentStatus(){
+            public final String getCurrentStatus(){
                 return status;
             }
 

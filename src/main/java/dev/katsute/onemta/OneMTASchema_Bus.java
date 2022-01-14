@@ -336,6 +336,7 @@ abstract class OneMTASchema_Bus extends OneMTASchema {
                     throw new RuntimeException(e);
                 }
             });
+
             private final Long expectedArrivalTime   = requireNonNull(() -> {
                 try{
                     return sdf.parse(monitoredCall.getString("ExpectedArrivalTime")).getTime();
@@ -343,6 +344,7 @@ abstract class OneMTASchema_Bus extends OneMTASchema {
                     throw new RuntimeException(e);
                 }
             });
+
             private final Long expectedDepartureTime = requireNonNull(() -> {
                 try{
                     return sdf.parse(monitoredCall.getString("ExpectedDepartureTime")).getTime();
@@ -515,6 +517,16 @@ abstract class OneMTASchema_Bus extends OneMTASchema {
             }
 
         };
+    }
+
+    // onwardcall seems to be always blank at the moment
+
+    static Trip asTrip(final OneMTA mta, final JsonObject onwardCalls, final Vehicle referringVehicle){
+        return null;
+    }
+
+    static TripStop asTripStop(final OneMTA mta, final JsonObject onwardCall, final Trip referringTrip){
+        return null;
     }
 
 }

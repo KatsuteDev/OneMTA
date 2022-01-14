@@ -19,7 +19,6 @@
 package dev.katsute.onemta;
 
 import dev.katsute.onemta.types.TransitAgency;
-import dev.katsute.onemta.types.VehicleStatus;
 
 import java.util.*;
 
@@ -193,7 +192,7 @@ abstract class OneMTASchema_MNR extends OneMTASchema {
             private final Double latitude  = requireNonNull( () -> (double) vehicle.getPosition().getLatitude());
             private final Double longitude = requireNonNull( () -> (double) vehicle.getPosition().getLongitude());
 
-            private final VehicleStatus status = VehicleStatus.asStatus(vehicle.getCurrentStatus().getNumber());
+            private final String status   = requireNonNull(() -> vehicle.getCurrentStatus().name());
 
             private final Integer stopID  = requireNonNull(() -> Integer.valueOf(vehicle.getStopId()));
             private final Integer routeID = requireNonNull(() -> Integer.valueOf(tripUpdate.getTrip().getRouteId()));
@@ -216,7 +215,7 @@ abstract class OneMTASchema_MNR extends OneMTASchema {
             }
 
             @Override
-            public final VehicleStatus getCurrentStatus(){
+            public final String getCurrentStatus(){
                 return status;
             }
 

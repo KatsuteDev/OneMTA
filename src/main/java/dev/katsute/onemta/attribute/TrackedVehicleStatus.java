@@ -18,10 +18,8 @@
 
 package dev.katsute.onemta.attribute;
 
-import dev.katsute.onemta.types.VehicleStatus;
-
 public interface TrackedVehicleStatus {
 
-    VehicleStatus getCurrentStatus();
+    String getCurrentStatus();
 
 }

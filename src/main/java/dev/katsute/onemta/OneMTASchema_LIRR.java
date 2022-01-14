@@ -20,7 +20,6 @@ package dev.katsute.onemta;
 
 import dev.katsute.onemta.railroad.RailroadDirection;
 import dev.katsute.onemta.types.TransitAgency;
-import dev.katsute.onemta.types.VehicleStatus;
 
 import java.util.*;
 
@@ -194,7 +193,7 @@ abstract class OneMTASchema_LIRR extends OneMTASchema {
             private final Double longitude = requireNonNull(() -> (double) vehicle.getPosition().getLongitude());
             private final Double bearing   = requireNonNull(() -> (double) vehicle.getPosition().getBearing());
 
-            private final VehicleStatus status = requireNonNull(() -> VehicleStatus.asStatus(vehicle.getCurrentStatus().getNumber()));
+            private final String status   = requireNonNull(() -> vehicle.getCurrentStatus().name());
 
             private final Integer stopID  = requireNonNull(() -> Integer.valueOf(vehicle.getStopId()));
             private final Integer routeID = requireNonNull(() -> Integer.valueOf(tripUpdate.getTrip().getRouteId()));
@@ -222,7 +221,7 @@ abstract class OneMTASchema_LIRR extends OneMTASchema {
             }
 
             @Override
-            public final VehicleStatus getCurrentStatus(){
+            public final String getCurrentStatus(){
                 return status;
             }
 

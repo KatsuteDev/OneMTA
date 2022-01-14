@@ -55,7 +55,7 @@ public class FeedExporter {
 
          Files.write(
             new File("reference/bus-vehicle-specific-siri.json").toPath(),
-            gson.toJson(JsonParser.parseString(mta.service.bus.getVehicle(mta.busToken, 3883, null, null).getRaw())).getBytes(StandardCharsets.UTF_8)
+            gson.toJson(JsonParser.parseString(mta.service.bus.getVehicle(mta.busToken, 3838, null, null).getRaw())).getBytes(StandardCharsets.UTF_8)
         );
     }
 
