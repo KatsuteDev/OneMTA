@@ -31,7 +31,7 @@ public abstract class Subway {
 
     }
 
-    public abstract static class Vehicle extends GTFSVehicle<Route,Stop,Trip,String,String,String> { }
+    public abstract static class Vehicle extends GTFSVehicle<Route,Stop,Trip,String,String> { }
 
     public abstract static class Trip extends GTFSTransitTrip<Vehicle,Route,TripStop> implements Direction<SubwayDirection> { }
 

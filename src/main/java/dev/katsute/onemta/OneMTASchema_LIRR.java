@@ -101,9 +101,9 @@ abstract class OneMTASchema_LIRR extends OneMTASchema {
         final List<String> row      = csv.getRow("stop_code", stop_code.toUpperCase());
 
         // instantiate
-         Objects.requireNonNull(row, "Failed to find LIRR stop with stopcode '" + stop_code.toUpperCase() + "'");
+        Objects.requireNonNull(row, "Failed to find LIRR stop with stopcode '" + stop_code.toUpperCase() + "'");
 
-         return asStop(mta, Integer.parseInt(row.get(csv.getHeaderIndex("stop_id"))));
+        return asStop(mta, Integer.parseInt(row.get(csv.getHeaderIndex("stop_id"))));
     }
 
     static Stop asStop(final OneMTA mta, final int stop_id){
@@ -113,7 +113,7 @@ abstract class OneMTASchema_LIRR extends OneMTASchema {
         final List<String> row      = csv.getRow("stop_id", String.valueOf(stop_id));
 
         // instantiate
-         Objects.requireNonNull(row, "Failed to find LIRR stop with id '" + stop_id + "'");
+        Objects.requireNonNull(row, "Failed to find LIRR stop with id '" + stop_id + "'");
 
         return new Stop(){
 
@@ -187,7 +187,7 @@ abstract class OneMTASchema_LIRR extends OneMTASchema {
     static Vehicle asVehicle(final OneMTA mta, final VehiclePosition vehicle, final TripUpdate tripUpdate){
         return new Vehicle() {
 
-            private final Integer vehicleID = requireNonNull(() -> Integer.valueOf(vehicle.getVehicle().getLabel()));
+            private final String vehicleID = requireNonNull(() -> vehicle.getVehicle().getLabel());
 
             private final Double latitude  = requireNonNull(() -> (double) vehicle.getPosition().getLatitude());
             private final Double longitude = requireNonNull(() -> (double) vehicle.getPosition().getLongitude());
@@ -201,7 +201,7 @@ abstract class OneMTASchema_LIRR extends OneMTASchema {
             private final Trip trip = asTrip(mta, tripUpdate, this);
 
             @Override
-            public final Integer getVehicleID(){
+            public final String getVehicleID(){
                 return vehicleID;
             }
 
