@@ -47,6 +47,28 @@ abstract class OneMTASchema_MNR extends OneMTASchema {
 
             private final TransitAgency agency = asAgency(row.get(csv.getHeaderIndex("agency_id")), resource);
 
+            private final List<Vehicle> vehicles;
+
+            {
+                final FeedMessage feed = cast(mta).service.mnrr.getMNRR(cast(mta).subwayToken);
+                final int len = feed.getEntityCount();
+
+                final List<Vehicle> vehicles = new ArrayList<>();
+                for(int i = 0; i < len; i++){
+                    final FeedEntity entity = feed.getEntity(0);
+                    if(
+                        !entity.hasVehicle() ||
+                        !entity.hasTripUpdate() ||
+                        Integer.parseInt(entity.getTripUpdate().getTrip().getRouteId()) != routeID
+                    )
+                        continue;
+
+                    vehicles.add(asVehicle(mta, entity.getVehicle(), entity.getTripUpdate()));
+                }
+
+                this.vehicles = Collections.unmodifiableList(vehicles);
+            }
+
             // static data
 
             @Override
@@ -78,7 +100,7 @@ abstract class OneMTASchema_MNR extends OneMTASchema {
 
             @Override
             public final Vehicle[] getVehicles(){
-                return new Vehicle[0];
+                return vehicles.toArray(new Vehicle[0]);
             }
 
             // Java
@@ -127,6 +149,28 @@ abstract class OneMTASchema_MNR extends OneMTASchema {
 
             private final Boolean wheelchairAccessible = !row.get(csv.getHeaderIndex("wheelchair_boarding")).equals("2");
 
+            private final List<Vehicle> vehicles;
+
+            {
+                final FeedMessage feed = cast(mta).service.mnrr.getMNRR(cast(mta).subwayToken);
+                final int len = feed.getEntityCount();
+
+                final List<Vehicle> vehicles = new ArrayList<>();
+                for(int i = 0; i < len; i++){
+                    final FeedEntity entity = feed.getEntity(0);
+                    if(
+                        !entity.hasVehicle() ||
+                        !entity.hasTripUpdate() ||
+                        Integer.parseInt(entity.getVehicle().getStopId()) != stopID
+                    )
+                        continue;
+
+                    vehicles.add(asVehicle(mta, entity.getVehicle(), entity.getTripUpdate()));
+                }
+
+                this.vehicles = Collections.unmodifiableList(vehicles);
+            }
+
             // static data
 
             @Override
@@ -168,7 +212,7 @@ abstract class OneMTASchema_MNR extends OneMTASchema {
 
             @Override
             public final Vehicle[] getVehicles(){
-                return new Vehicle[0];
+                return vehicles.toArray(new Vehicle[0]);
             }
 
             // Java
