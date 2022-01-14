@@ -51,8 +51,10 @@ final class MTAService {
                 baseURL + "vehicle-monitoring.json",
                 new HashMap<String,String>(){{
                                             put("key", token);
+                                            put("version", "2");
+                                            put("VehicleMonitoringDetailLevel", "calls");
                     if(vehicle != null)     put("VehicleRef", String.valueOf(vehicle));
-                    if(line != null)        put("LineRef", line);
+                    if(line != null)        put("LineRef", "MTA%20NYCT_" + line);
                     if(direction != null)   put("DirectionRef", String.valueOf(direction));
                 }},
                 new HashMap<>()
@@ -69,8 +71,10 @@ final class MTAService {
                 baseURL + "stop-monitoring.json",
                 new HashMap<String,String>(){{
                                             put("key", token);
+                                            put("version", "2");
+                                            put("OperatorRef", "MTA");
                     if(stop != null)        put("MonitoringRef", String.valueOf(stop));
-                    if(line != null)        put("LineRef", line);
+                    if(line != null)        put("LineRef", "MTA%20NYCT_" + line);
                     if(direction != null)   put("DirectionRef", String.valueOf(direction));
                 }},
                 new HashMap<>()

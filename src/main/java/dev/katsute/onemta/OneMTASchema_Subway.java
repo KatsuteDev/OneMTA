@@ -110,25 +110,26 @@ abstract class OneMTASchema_Subway extends OneMTASchema {
     }
 
     static Stop asStop(final OneMTA mta, final String stop_id){
+        final String stop = stop_id.toUpperCase();
         // find row
         final DataResource resource = getDataResource(mta, DataResourceType.Subway);
         final CSV csv               = resource.getData("stops.csv");
-        final List<String> row      = csv.getRow("stop_id", stop_id);
+        final List<String> row      = csv.getRow("stop_id", stop);
 
         // instantiate
-        Objects.requireNonNull(row, "Failed to find subway stop with id '" + stop_id + "'");
+        Objects.requireNonNull(row, "Failed to find subway stop with id '" + stop + "'");
 
         return new Stop() {
 
-            private final String stopID   = stop_id;
+            private final String stopID   = stop;
             private final String stopName = row.get(csv.getHeaderIndex("stop_name"));
 
             private final Double stopLat = Double.valueOf(row.get(csv.getHeaderIndex("stop_lat")));
             private final Double stopLon = Double.valueOf(row.get(csv.getHeaderIndex("stop_lon")));
 
             private final SubwayDirection stopDirection =
-                stop_id.endsWith("N") || stop_id.endsWith("S")
-                ? stop_id.endsWith("N")
+                stopID.endsWith("N") || stopID.endsWith("S")
+                ? stopID.endsWith("N")
                     ? SubwayDirection.NORTH
                     : SubwayDirection.SOUTH
                 : null;

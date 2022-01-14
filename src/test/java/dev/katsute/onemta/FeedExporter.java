@@ -22,12 +22,12 @@ public class FeedExporter {
         final Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
         Files.write(
-            new File("reference/bus-vehicle-siri.json").toPath(),
+            new File("reference/bus-stop-siri.json").toPath(),
             gson.toJson(JsonParser.parseString(mta.service.bus.getStop(mta.busToken, 400561, null, null).getRaw())).getBytes(StandardCharsets.UTF_8)
         );
 
         Files.write(
-            new File("reference/bus-stop-siri.json").toPath(),
+            new File("reference/bus-vehicle-siri.json").toPath(),
             gson.toJson(JsonParser.parseString(mta.service.bus.getVehicle(mta.busToken, null, "M1", null).getRaw())).getBytes(StandardCharsets.UTF_8)
         );
 

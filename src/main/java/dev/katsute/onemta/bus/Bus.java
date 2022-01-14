@@ -65,15 +65,11 @@ public abstract class Bus {
 
         public abstract Date getExpectedDepartureTime();
 
-        public abstract Double getStopDistanceFromOrigin();
-
         public abstract String getStopDistanceMessage();
 
-        public abstract Double getDistanceFromStop();
+        public abstract Integer getDistanceFromStop();
 
         public abstract Integer getStopsFromStop();
-
-        public abstract Integer getEstimatedPassengerCount();
 
         public abstract String getStopName();
 

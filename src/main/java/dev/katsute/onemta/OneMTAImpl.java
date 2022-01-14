@@ -18,6 +18,7 @@
 
 package dev.katsute.onemta;
 
+import dev.katsute.onemta.Json.JsonObject;
 import dev.katsute.onemta.bus.Bus;
 import dev.katsute.onemta.exception.MissingResourceException;
 import dev.katsute.onemta.railroad.LIRR;
@@ -59,10 +60,6 @@ final class OneMTAImpl extends OneMTA {
 
     // bus methods
 
-    public final Object test(){
-        return service.subway.get1234567(subwayToken);
-    }
-
     @Override
     public final Bus.Route getBusRoute(final String route_id){
         return getBusRoute(route_id, null);
@@ -70,7 +67,7 @@ final class OneMTAImpl extends OneMTA {
 
     @Override
     public final Bus.Route getBusRoute(final String route_id, final DataResourceType type){
-        return OneMTASchema_Bus.asRoute(this, route_id, type);
+        return OneMTASchema_Bus.asRoute(this, Objects.requireNonNull(route_id, "Route ID must not be null"), type);
     }
 
     @Override
@@ -85,7 +82,20 @@ final class OneMTAImpl extends OneMTA {
 
     @Override
     public final Bus.Vehicle getBus(final int bus_id){
-        return null;
+        final JsonObject json = service.bus.getVehicle(busToken, bus_id, null, null);
+
+        final JsonObject[] vehicleMonitoringDelivery = json
+            .getJsonObject("Siri")
+            .getJsonObject("ServiceDelivery")
+            .getJsonArray("VehicleMonitoringDelivery");
+
+        if(!vehicleMonitoringDelivery[0].containsKey("MonitoredVehicleJourney")) return null;
+
+        final JsonObject monitoredVehicleJourney = vehicleMonitoringDelivery[0]
+            .getJsonArray("VehicleActivity")[0]
+            .getJsonObject("MonitoredVehicleJourney");
+
+        return OneMTASchema_Bus.asVehicle(this, monitoredVehicleJourney, null, null);
     }
 
     // subway methods
@@ -185,19 +195,22 @@ final class OneMTAImpl extends OneMTA {
 
     @Override
     public final Subway.Route getSubwayRoute(final String route_id){
-        return OneMTASchema_Subway.asRoute(this, resolveSubwayLine(route_id));
+        return OneMTASchema_Subway.asRoute(this, Objects.requireNonNull(resolveSubwayLine(route_id), "Route ID must not be null"));
     }
 
     @Override
     public final Subway.Stop getSubwayStop(final String stop_id){
-        return OneMTASchema_Subway.asStop(this, stop_id);
+        return OneMTASchema_Subway.asStop(this, Objects.requireNonNull(stop_id, "Stop ID must not be null"));
     }
 
     @Override
     public final Subway.Stop getSubwayStop(final String stop_id, final SubwayDirection direction){
         return OneMTASchema_Subway.asStop(
             this,
-            OneMTASchema_Subway.direction.matcher(stop_id).replaceAll("") + (direction == SubwayDirection.NORTH ? 'N' : 'S')
+            OneMTASchema_Subway.direction
+                .matcher(Objects.requireNonNull(stop_id, "Stop ID must not be null"))
+                .replaceAll("") +
+                (Objects.requireNonNull(direction, "Direction must not be null") == SubwayDirection.NORTH ? 'N' : 'S')
         );
     }
 
@@ -220,7 +233,7 @@ final class OneMTAImpl extends OneMTA {
 
     @Override
     public final LIRR.Stop getLIRRStop(final String stop_code){
-        return OneMTASchema_LIRR.asStop(this, stop_code);
+        return OneMTASchema_LIRR.asStop(this, Objects.requireNonNull(stop_code, "Stop code must not be null"));
     }
 
     @Override
@@ -242,7 +255,7 @@ final class OneMTAImpl extends OneMTA {
 
     @Override
     public final MNR.Stop getMNRStop(final String stop_code){
-        return OneMTASchema_MNR.asStop(this, stop_code);
+        return OneMTASchema_MNR.asStop(this, Objects.requireNonNull(stop_code, "Stop code must not be null"));
     }
 
     @Override
