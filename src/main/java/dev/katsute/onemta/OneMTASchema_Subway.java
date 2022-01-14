@@ -311,11 +311,11 @@ abstract class OneMTASchema_Subway extends OneMTASchema {
 
             private final String stopID = requireNonNull(stopTimeUpdate::getStopId);
 
-            private final Long arrival        = requireNonNull(() -> stopTimeUpdate.getArrival().getTime());
-            private final Long departure      = requireNonNull(() -> stopTimeUpdate.getDeparture().getTime());
+            private final Long arrival   = requireNonNull(() -> stopTimeUpdate.getArrival().getTime());
+            private final Long departure = requireNonNull(() -> stopTimeUpdate.getDeparture().getTime());
 
-            private final Integer track       = requireNonNull(() -> Integer.valueOf(nyctStopTimeUpdate.getScheduledTrack()));
-            private final Integer actualTrack = requireNonNull(() -> Integer.valueOf(nyctStopTimeUpdate.getActualTrack()));
+            private final String track       = requireNonNull(nyctStopTimeUpdate::getScheduledTrack);
+            private final String actualTrack = requireNonNull(nyctStopTimeUpdate::getActualTrack);
 
             @Override
             public final String getStopID(){
@@ -343,12 +343,12 @@ abstract class OneMTASchema_Subway extends OneMTASchema {
             }
 
             @Override
-            public final Integer getTrack(){
+            public final String getTrack(){
                 return track;
             }
 
             @Override
-            public final Integer getActualTrack(){
+            public final String getActualTrack(){
                 return actualTrack;
             }
 
