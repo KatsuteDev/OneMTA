@@ -204,7 +204,7 @@ class Json {
     }
 
     private JsonObject openMap(final BufferedReader reader, final String json) throws IOException{
-        final JsonObject obj = new JsonObject();
+        final JsonObject obj = new JsonObject(json);
         String ln;
         while((ln = reader.readLine()) != null){
             ln = ln.trim();
@@ -257,7 +257,15 @@ class Json {
 
         private final Map<String,Object> map = new HashMap<>();
 
-        JsonObject(){ }
+        private final String raw;
+
+        JsonObject(){
+            this(null);
+        }
+
+        JsonObject(final String raw){
+            this.raw = raw;
+        }
 
         public final Object get(final String key){
             return map.get(key);
@@ -330,8 +338,12 @@ class Json {
             map.put(key, value);
         }
 
+        String getRaw(){
+            return raw;
+        }
+
         @Override
-        public String toString(){
+        public final String toString(){
             return "JsonObject{" +
                    "map=" + map +
                    '}';

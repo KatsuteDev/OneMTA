@@ -20,7 +20,7 @@ package dev.katsute.onemta.attribute;
 
 import java.util.Date;
 
-public interface TrackedSchedule {
+public interface TrackedSchedule<T> {
 
     Long getArrivalTimeEpochMillis();
 
@@ -30,6 +30,6 @@ public interface TrackedSchedule {
 
     Date getDepartureTime();
 
-    Integer getTrack();
+    T getTrack();
 
 }

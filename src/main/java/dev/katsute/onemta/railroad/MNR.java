@@ -19,6 +19,7 @@
 package dev.katsute.onemta.railroad;
 
 import dev.katsute.onemta.attribute.LocationReference;
+import dev.katsute.onemta.attribute.TrackedVehicleStatus;
 import dev.katsute.onemta.types.*;
 
 public abstract class MNR {
@@ -27,14 +28,10 @@ public abstract class MNR {
 
     public abstract static class Stop extends TransitStop<Integer,Vehicle> implements RailroadStop { }
 
-    public abstract static class Vehicle extends TransitVehicle<Route,Trip,Stop,Integer,Integer> implements LocationReference { }
+    public abstract static class Vehicle extends TransitVehicle<Route,Trip,Stop,Integer,Integer,Integer> implements LocationReference, TrackedVehicleStatus { }
 
     public abstract static class Trip extends TransitTrip<Vehicle,Route,TripStop> { }
 
-    public abstract static class TripStop extends TransitStopUpdate<Stop,Trip,Integer> {
-
-        public abstract String getTrainStatus();
-
-    }
+    public abstract static class TripStop extends TransitStopUpdate<Stop,Trip,Integer> implements RailroadTripStop { }
 
 }

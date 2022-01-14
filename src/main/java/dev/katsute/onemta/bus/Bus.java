@@ -21,27 +21,70 @@ package dev.katsute.onemta.bus;
 import dev.katsute.onemta.attribute.*;
 import dev.katsute.onemta.types.*;
 
+import java.util.Date;
+
 public abstract class Bus {
 
-    // todo: add utility methods for isSBS, isExpress, isShuttle, isLimited
-    public abstract static class Route extends TransitRoute<String,Vehicle> implements RouteShortName, RouteDescription { }
+    public abstract static class Route extends TransitRoute<String,Vehicle> implements RouteShortName, RouteDescription {
+
+        public abstract Boolean isSelectBusService();
+
+        public abstract Boolean isExpress();
+
+        public abstract Boolean isShuttle();
+
+        public abstract Boolean isLimited();
+
+    }
 
     public abstract static class Stop extends TransitStop<Integer,Vehicle> implements RouteDescription { }
 
-    // todo: add utility methods for isSBS, isExpress, isShuttle, isLimited
-    public abstract static class Vehicle extends TransitVehicle<Route,Trip,Stop,Integer,String> implements BearingReference, LocationReference {
+    public abstract static class Vehicle extends TransitVehicle<Route,Trip,Stop,Integer,String,Integer> implements BearingReference, LocationReference {
 
-        public abstract Integer getID();
+        public abstract Boolean isSelectBusService();
+
+        public abstract Boolean isExpress();
+
+        public abstract Boolean isShuttle();
+
+        public abstract Boolean isLimited();
+
+        public abstract BusDirection getDirection();
+
+        public abstract Integer getOriginStopCode();
+
+        public abstract Stop getOriginStop();
+
+        public abstract String getDestinationName();
+
+        public abstract String getProgressRate();
+
+        public abstract String getProgressStatus();
+
+        public abstract Date getAimedArrivalTime();
+
+        public abstract Date getExpectedArrivalTime();
+
+        public abstract Date getExpectedDepartureTime();
+
+        public abstract Double getStopDistanceFromOrigin();
+
+        public abstract String getStopDistanceMessage();
+
+        public abstract Double getDistanceFromStop();
+
+        public abstract Integer getStopsFromStop();
+
+        public abstract Integer getEstimatedPassengerCount();
+
+        public abstract Integer getVisitNumber();
+
+        public abstract String getStopName();
 
     }
 
-    public abstract static class Trip extends TransitTrip<Vehicle,Route,TripStop> {
+    public abstract static class Trip extends TransitTrip<Vehicle,Route,TripStop> { }
 
-    }
-
-    public abstract static class TripStop extends TransitStopUpdate<Stop,Trip,Integer> {
-
-    }
-
+    public abstract static class TripStop extends TransitStopUpdate<Stop,Trip,Integer> { }
 
 }

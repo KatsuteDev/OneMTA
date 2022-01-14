@@ -166,7 +166,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
+                <version>3.9.0</version>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
@@ -214,8 +214,8 @@
                         <!-- suppress missing documentation -->
                         <additionalOption>-Xdoclint:-missing</additionalOption>
                     </additionalOptions>
-                    <!-- generate javadoc for /java and /java11 -->
-                    <sourcepath>${project.basedir}/src/main/java;${project.basedir}/src/main/java11</sourcepath>
+                    <!-- generate javadoc for /java and /java9 -->
+                    <sourcepath>${project.basedir}/src/main/java;${project.basedir}/src/main/java9</sourcepath>
                 </configuration>
                 <executions>
                     <execution>

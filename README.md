@@ -24,7 +24,8 @@
 
 # Overview
 
-> ⚠ The MTA API [Terms and Conditions](https://api.mta.info/#/DataFeedAgreement) prohibits developers from giving users direct access to MTA servers. Any realtime data that is retrieved in this library must be served to users on your own servers.
+|⚠ The MTA API [Terms and Conditions](https://api.mta.info/#/DataFeedAgreement) prohibits developers from giving users direct access to MTA servers. Any realtime data that is retrieved in this library must be served to users on your own servers.|
+|---|
 
 - [Overview](#overview)
 - [Installation](#installation)
@@ -38,6 +39,8 @@
 OneMTA requires at least Java 8. OneMTA also requires the [protobuf-java](https://mvnrepository.com/artifact/com.google.protobuf/protobuf-java) library to be installed.
 
 Compiled jars can be found on Maven Central and the releases tab.
+
+Latest static data for the MTA is available at []http://web.mta.info/developers/developer-data-terms.html#data](http://web.mta.info/developers/developer-data-terms.html#data).
 
 TBD
 
@@ -62,11 +65,13 @@ TBD
 - Have a suggestion or looking for inspiration? Check out our [discussions](https://github.com/KatsuteDev/OneMTA/discussions).
 - Want to further expand our project or site? [Fork](https://github.com/KatsuteDev/OneMTA/fork) this repository and submit a [pull request](https://github.com/KatsuteDev/OneMTA/pulls).
 
-### Updating Protobufs
+Sample data available on [`reference`](https://github.com/KatsuteDev/OneMTA/tree/reference) branch.
 
-- Download latest protobufs from [OneBusAway/onebusaway-gtfs-realtime-api](https://github.com/OneBusAway/onebusaway-gtfs-realtime-api/tree/master/src/main/proto/com/google/transit/realtime)
+### Updating Protobuf Files
+
+- Download latest protobuf from [OneBusAway/onebusaway-gtfs-realtime-api](https://github.com/OneBusAway/onebusaway-gtfs-realtime-api/tree/master/src/main/proto/com/google/transit/realtime)
 - Save proto files in `/protobuf`
-- Change options and imports as defined in the `profobuf.sh` comments
+- Change options and imports as defined in the `protobuf.sh` comments
 - Run `protobuf.sh`
 - Change all classes to abstract package private and add `SuppressWarnings("all")`
 

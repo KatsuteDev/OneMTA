@@ -124,8 +124,8 @@ abstract class OneMTASchema_Subway extends OneMTASchema {
             private final String stopID   = stop_id;
             private final String stopName = row.get(csv.getHeaderIndex("stop_name"));
 
-            private final Double stopLat = Double.parseDouble(row.get(csv.getHeaderIndex("stop_lat")));
-            private final Double stopLon = Double.parseDouble(row.get(csv.getHeaderIndex("stop_lon")));
+            private final Double stopLat = Double.valueOf(row.get(csv.getHeaderIndex("stop_lat")));
+            private final Double stopLon = Double.valueOf(row.get(csv.getHeaderIndex("stop_lon")));
 
             private final SubwayDirection stopDirection =
                 stop_id.endsWith("N") || stop_id.endsWith("S")
@@ -193,11 +193,17 @@ abstract class OneMTASchema_Subway extends OneMTASchema {
 
             private final VehicleStatus status = VehicleStatus.asStatus(vehicle.getCurrentStatus().getNumber());
 
+            private final String vehicleID = tripUpdate.getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getTrainId();
             private final String stopID = vehicle.getStopId();
 
-            private final String routeID =tripUpdate.getTrip().getRouteId();
+            private final String routeID = tripUpdate.getTrip().getRouteId();
 
             private final Trip trip = asTrip(mta, tripUpdate, this);
+
+            @Override
+            public final String getVehicleID(){
+                return vehicleID;
+            }
 
             @Override
             public final VehicleStatus getCurrentStatus(){
@@ -244,9 +250,14 @@ abstract class OneMTASchema_Subway extends OneMTASchema {
 
             private final Vehicle vehicle = referringVehicle;
 
-            private final String tripID  = tripUpdate.getTrip().getTripId();
-            private final String routeID = tripUpdate.getTrip().getRouteId();
-            private final SubwayDirection direction = SubwayDirection.asDirection(nyctTripDescriptor.getDirection().getNumber());
+            private final String tripID  = requireNonNull(() -> tripUpdate.getTrip().getTripId());
+            private final String routeID = requireNonNull(() -> tripUpdate.getTrip().getRouteId());
+
+            private final SubwayDirection direction = requireNonNull(
+                () -> nyctTripDescriptor.hasDirection()
+                ? SubwayDirection.asDirection(nyctTripDescriptor.getDirection().getNumber())
+                : SubwayDirection.NORTH
+            );
 
             private final List<TripStop> tripStops;
 
@@ -296,13 +307,15 @@ abstract class OneMTASchema_Subway extends OneMTASchema {
         final NYCTSubwayProto.NyctStopTimeUpdate nyctStopTimeUpdate = stopTimeUpdate.getExtension(NYCTSubwayProto.nyctStopTimeUpdate);
         return new TripStop() {
 
-            private final Trip trip       = referringTrip;
+            private final Trip trip = referringTrip;
 
-            private final String stopID       = stopTimeUpdate.getStopId();
-            private final Long arrival        = stopTimeUpdate.getArrival().getTime();
-            private final Long departure      = stopTimeUpdate.getDeparture().getTime();
-            private final Integer track       = Integer.parseInt(nyctStopTimeUpdate.getScheduledTrack());
-            private final Integer actualTrack = Integer.parseInt(nyctStopTimeUpdate.getActualTrack());
+            private final String stopID = requireNonNull(stopTimeUpdate::getStopId);
+
+            private final Long arrival        = requireNonNull(() -> stopTimeUpdate.getArrival().getTime());
+            private final Long departure      = requireNonNull(() -> stopTimeUpdate.getDeparture().getTime());
+
+            private final Integer track       = requireNonNull(() -> Integer.valueOf(nyctStopTimeUpdate.getScheduledTrack()));
+            private final Integer actualTrack = requireNonNull(() -> Integer.valueOf(nyctStopTimeUpdate.getActualTrack()));
 
             @Override
             public final String getStopID(){
@@ -316,7 +329,7 @@ abstract class OneMTASchema_Subway extends OneMTASchema {
 
             @Override
             public final Date getArrivalTime(){
-                return new Date(arrival);
+                return arrival != null ? new Date(arrival) : null;
             }
 
             @Override
@@ -326,7 +339,7 @@ abstract class OneMTASchema_Subway extends OneMTASchema {
 
             @Override
             public final Date getDepartureTime(){
-                return new Date(departure);
+                return departure != null ? new Date(departure) : null;
             }
 
             @Override
@@ -345,7 +358,7 @@ abstract class OneMTASchema_Subway extends OneMTASchema {
 
             @Override
             public final Stop getStop(){
-                return stop != null ? stop : (stop = mta.getSubwayStop(stopID));
+                return stop != null ? stop : (stop = mta.getSubwayStop(Objects.requireNonNull(stopID, "Stop ID must not be null")));
             }
 
             @Override

@@ -18,8 +18,7 @@
 
 package dev.katsute.onemta.subway;
 
-import dev.katsute.onemta.attribute.RouteDescription;
-import dev.katsute.onemta.attribute.RouteShortName;
+import dev.katsute.onemta.attribute.*;
 import dev.katsute.onemta.types.*;
 
 public abstract class Subway {
@@ -35,7 +34,7 @@ public abstract class Subway {
     }
 
     // todo: add utility methods for isExpress, isLocal
-    public abstract static class Vehicle extends TransitVehicle<Route,Trip,Stop,String,String> { }
+    public abstract static class Vehicle extends TransitVehicle<Route,Trip,Stop,String,String,String> implements TrackedVehicleStatus { }
 
     public abstract static class Trip extends TransitTrip<Vehicle,Route,TripStop> {
 
@@ -43,7 +42,7 @@ public abstract class Subway {
 
     }
 
-    public abstract static class TripStop extends TransitStopUpdate<Stop,Trip,String> {
+    public abstract static class TripStop extends TransitStopUpdate<Stop,Trip,String> implements TrackedSchedule<Integer> {
 
         public abstract Integer getActualTrack();
 
