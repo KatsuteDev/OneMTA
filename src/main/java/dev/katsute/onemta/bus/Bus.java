@@ -77,8 +77,6 @@ public abstract class Bus {
 
         public abstract Integer getEstimatedPassengerCount();
 
-        public abstract Integer getVisitNumber();
-
         public abstract String getStopName();
 
     }

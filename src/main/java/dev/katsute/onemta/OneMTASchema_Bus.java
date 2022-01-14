@@ -358,8 +358,6 @@ abstract class OneMTASchema_Bus extends OneMTASchema {
 
             private final Integer estimatedCapacity = requireNonNull(() -> monitoredCall.getJsonObject("Extensions").getJsonObject("Capacities").getInt("EstimatedPassengerCount"));
 
-            private final Integer visitNumber = requireNonNull(() -> monitoredCall.getInt("VisitNumber"));
-
             @Override
             public final Integer getVehicleID(){
                 return vehicleID;
@@ -454,11 +452,6 @@ abstract class OneMTASchema_Bus extends OneMTASchema {
             @Override
             public final Integer getEstimatedPassengerCount(){
                 return estimatedCapacity;
-            }
-
-            @Override
-            public final Integer getVisitNumber(){
-                return visitNumber;
             }
 
             @Override

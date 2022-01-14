@@ -40,7 +40,7 @@ OneMTA requires at least Java 8. OneMTA also requires the [protobuf-java](https:
 
 Compiled jars can be found on Maven Central and the releases tab.
 
-Latest static data for the MTA is available at []http://web.mta.info/developers/developer-data-terms.html#data](http://web.mta.info/developers/developer-data-terms.html#data).
+Latest static data for the MTA is available at [http://web.mta.info/developers/developer-data-terms.html#data](http://web.mta.info/developers/developer-data-terms.html#data).
 
 TBD
 
@@ -65,7 +65,7 @@ TBD
 - Have a suggestion or looking for inspiration? Check out our [discussions](https://github.com/KatsuteDev/OneMTA/discussions).
 - Want to further expand our project or site? [Fork](https://github.com/KatsuteDev/OneMTA/fork) this repository and submit a [pull request](https://github.com/KatsuteDev/OneMTA/pulls).
 
-Sample data available on [`reference`](https://github.com/KatsuteDev/OneMTA/tree/reference) branch.
+Sample response data available on the [`reference`](https://github.com/KatsuteDev/OneMTA/tree/reference) branch.
 
 ### Updating Protobuf Files
 
