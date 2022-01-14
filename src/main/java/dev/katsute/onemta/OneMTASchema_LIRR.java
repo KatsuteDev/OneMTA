@@ -123,8 +123,8 @@ abstract class OneMTASchema_LIRR extends OneMTASchema {
             private final String stopName = row.get(csv.getHeaderIndex("stop_name"));
             private final String stopDesc = row.get(csv.getHeaderIndex("stop_desc"));
 
-            private final Double stopLat  = Double.parseDouble(row.get(csv.getHeaderIndex("stop_lat")));
-            private final Double stopLon  = Double.parseDouble(row.get(csv.getHeaderIndex("stop_lon")));
+            private final Double stopLat  = Double.valueOf(row.get(csv.getHeaderIndex("stop_lat")));
+            private final Double stopLon  = Double.valueOf(row.get(csv.getHeaderIndex("stop_lon")));
 
             private final Boolean wheelchairAccessible = !row.get(csv.getHeaderIndex("wheelchair_boarding")).equals("2");
 
@@ -188,7 +188,7 @@ abstract class OneMTASchema_LIRR extends OneMTASchema {
     static Vehicle asVehicle(final OneMTA mta, final VehiclePosition vehicle, final TripUpdate tripUpdate){
         return new Vehicle() {
 
-            private final Integer vehicleID = requireNonNull(() -> Integer.parseInt(vehicle.getVehicle().getLabel()));
+            private final Integer vehicleID = requireNonNull(() -> Integer.valueOf(vehicle.getVehicle().getLabel()));
 
             private final Double latitude  = requireNonNull(() -> (double) vehicle.getPosition().getLatitude());
             private final Double longitude = requireNonNull(() -> (double) vehicle.getPosition().getLongitude());
@@ -196,8 +196,8 @@ abstract class OneMTASchema_LIRR extends OneMTASchema {
 
             private final VehicleStatus status = requireNonNull(() -> VehicleStatus.asStatus(vehicle.getCurrentStatus().getNumber()));
 
-            private final Integer stopID  = requireNonNull(() -> Integer.parseInt(vehicle.getStopId()));
-            private final Integer routeID = requireNonNull(() -> Integer.parseInt(tripUpdate.getTrip().getRouteId()));
+            private final Integer stopID  = requireNonNull(() -> Integer.valueOf(vehicle.getStopId()));
+            private final Integer routeID = requireNonNull(() -> Integer.valueOf(tripUpdate.getTrip().getRouteId()));
 
             private final Trip trip = asTrip(mta, tripUpdate, this);
 
@@ -319,7 +319,7 @@ abstract class OneMTASchema_LIRR extends OneMTASchema {
 
             private final Trip trip      = referringTrip;
 
-            private final Integer stopID = requireNonNull(() -> Integer.parseInt(stopTimeUpdate.getStopId()));
+            private final Integer stopID = requireNonNull(() -> Integer.valueOf(stopTimeUpdate.getStopId()));
 
             private final Long arrival   = requireNonNull(() -> stopTimeUpdate.getArrival().getTime());
             private final Long departure = requireNonNull(() -> stopTimeUpdate.getDeparture().getTime());

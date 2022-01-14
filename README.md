@@ -24,7 +24,8 @@
 
 # Overview
 
-> ⚠ The MTA API [Terms and Conditions](https://api.mta.info/#/DataFeedAgreement) prohibits developers from giving users direct access to MTA servers. Any realtime data that is retrieved in this library must be served to users on your own servers.
+|⚠ The MTA API [Terms and Conditions](https://api.mta.info/#/DataFeedAgreement) prohibits developers from giving users direct access to MTA servers. Any realtime data that is retrieved in this library must be served to users on your own servers.|
+|---|
 
 - [Overview](#overview)
 - [Installation](#installation)
@@ -98,6 +99,6 @@ This library is released under the [GNU General Public License (GPL) v2.0](https
 - [@Katsute](https://github.com/Katsute) and [@KatsuteDev](https://github.com/KatsuteDev) are not affiliated with the MTA.
 - By using the MTA API you are subject to their [Terms and Conditions](https://api.mta.info/#/DataFeedAgreement).
 
-  > In developing your app, you will provide that the MTA data feed is available to others only from a non-MTA server. Accordingly, you will download and store the MTA data feed on a non-MTA server which users of your App will access in order to obtain data. MTA prohibits the development of an app that would make the data available to others directly from MTA server(s).
+  > In developing your app, you will provide that the MTA data feed is available to others only from a non-MTA server. Accordingly, you will download and store the MTA data feed on a non-MTA server which users of your App will access in order to obtain data. MTA prohibits the development of an app that would make the data available to others directly from MTA's server(s).
 
 <p align="right">(<a href="#top">back to top</a>)</p>

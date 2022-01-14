@@ -124,8 +124,8 @@ abstract class OneMTASchema_Subway extends OneMTASchema {
             private final String stopID   = stop_id;
             private final String stopName = row.get(csv.getHeaderIndex("stop_name"));
 
-            private final Double stopLat = Double.parseDouble(row.get(csv.getHeaderIndex("stop_lat")));
-            private final Double stopLon = Double.parseDouble(row.get(csv.getHeaderIndex("stop_lon")));
+            private final Double stopLat = Double.valueOf(row.get(csv.getHeaderIndex("stop_lat")));
+            private final Double stopLon = Double.valueOf(row.get(csv.getHeaderIndex("stop_lon")));
 
             private final SubwayDirection stopDirection =
                 stop_id.endsWith("N") || stop_id.endsWith("S")
@@ -314,8 +314,8 @@ abstract class OneMTASchema_Subway extends OneMTASchema {
             private final Long arrival        = requireNonNull(() -> stopTimeUpdate.getArrival().getTime());
             private final Long departure      = requireNonNull(() -> stopTimeUpdate.getDeparture().getTime());
 
-            private final Integer track       = requireNonNull(() -> Integer.parseInt(nyctStopTimeUpdate.getScheduledTrack()));
-            private final Integer actualTrack = requireNonNull(() -> Integer.parseInt(nyctStopTimeUpdate.getActualTrack()));
+            private final Integer track       = requireNonNull(() -> Integer.valueOf(nyctStopTimeUpdate.getScheduledTrack()));
+            private final Integer actualTrack = requireNonNull(() -> Integer.valueOf(nyctStopTimeUpdate.getActualTrack()));
 
             @Override
             public final String getStopID(){

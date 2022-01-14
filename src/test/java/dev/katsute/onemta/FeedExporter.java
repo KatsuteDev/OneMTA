@@ -45,4 +45,18 @@ public class FeedExporter {
         );
     }
 
+    @Test
+    public void exportBusVehicle() throws IOException{
+         final OneMTAImpl mta = (OneMTAImpl) TestProvider.getOneMTA();
+
+         assert mta != null;
+
+         final Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+         Files.write(
+            new File("reference/bus-vehicle-specific-siri.json").toPath(),
+            gson.toJson(JsonParser.parseString(mta.service.bus.getVehicle(mta.busToken, 3883, null, null).getRaw())).getBytes(StandardCharsets.UTF_8)
+        );
+    }
+
 }

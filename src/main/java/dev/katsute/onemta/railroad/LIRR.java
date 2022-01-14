@@ -18,8 +18,7 @@
 
 package dev.katsute.onemta.railroad;
 
-import dev.katsute.onemta.attribute.BearingReference;
-import dev.katsute.onemta.attribute.LocationReference;
+import dev.katsute.onemta.attribute.*;
 import dev.katsute.onemta.types.*;
 
 @SuppressWarnings("SpellCheckingInspection")
@@ -31,7 +30,7 @@ public abstract class LIRR {
     // todo: get vehicles for stop
     public abstract static class Stop extends TransitStop<Integer,Vehicle> implements RailroadStop { }
 
-    public abstract static class Vehicle extends TransitVehicle<Route,Trip,Stop,Integer,Integer,Integer> implements BearingReference, LocationReference { }
+    public abstract static class Vehicle extends TransitVehicle<Route,Trip,Stop,Integer,Integer,Integer> implements BearingReference, LocationReference, TrackedVehicleStatus { }
 
     public abstract static class Trip extends TransitTrip<Vehicle,Route,TripStop> {
 

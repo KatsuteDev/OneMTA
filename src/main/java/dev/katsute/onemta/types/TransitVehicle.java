@@ -24,8 +24,6 @@ public abstract class TransitVehicle<R extends TransitRoute<RID,?>, T extends Tr
 
     public abstract VID getVehicleID();
 
-    public abstract VehicleStatus getCurrentStatus();
-
     public abstract SID getStopID();
 
     public abstract RID getRouteID();

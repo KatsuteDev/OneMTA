@@ -21,6 +21,8 @@ package dev.katsute.onemta.bus;
 import dev.katsute.onemta.attribute.*;
 import dev.katsute.onemta.types.*;
 
+import java.util.Date;
+
 public abstract class Bus {
 
     public abstract static class Route extends TransitRoute<String,Vehicle> implements RouteShortName, RouteDescription {
@@ -46,6 +48,38 @@ public abstract class Bus {
         public abstract Boolean isShuttle();
 
         public abstract Boolean isLimited();
+
+        public abstract BusDirection getDirection();
+
+        public abstract Integer getOriginStopCode();
+
+        public abstract Stop getOriginStop();
+
+        public abstract String getDestinationName();
+
+        public abstract String getProgressRate();
+
+        public abstract String getProgressStatus();
+
+        public abstract Date getAimedArrivalTime();
+
+        public abstract Date getExpectedArrivalTime();
+
+        public abstract Date getExpectedDepartureTime();
+
+        public abstract Double getStopDistanceFromOrigin();
+
+        public abstract String getStopDistanceMessage();
+
+        public abstract Double getDistanceFromStop();
+
+        public abstract Integer getStopsFromStop();
+
+        public abstract Integer getEstimatedPassengerCount();
+
+        public abstract Integer getVisitNumber();
+
+        public abstract String getStopName();
 
     }
 
