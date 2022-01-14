@@ -31,11 +31,11 @@ public abstract class Subway {
 
     }
 
-    public abstract static class Vehicle extends TransitVehicle<Route,Trip,Stop,String,String,String> implements TrackedVehicleStatus { }
+    public abstract static class Vehicle extends TransitVehicle<Route,Stop,Trip,String,String,String> implements TrackedVehicleStatus { }
 
-    public abstract static class Trip extends TransitTrip<Vehicle,Route,TripStop> implements Direction<SubwayDirection> { }
+    public abstract static class Trip extends GTFSTransitTrip<Vehicle,Route,TripStop> implements Direction<SubwayDirection> { }
 
-    public abstract static class TripStop extends TransitStopUpdate<Stop,Trip,String> implements TrackedSchedule<Integer> {
+    public abstract static class TripStop extends GTFSTripStop<Stop,Trip,String,Integer> {
 
         public abstract Integer getActualTrack();
 

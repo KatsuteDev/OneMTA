@@ -16,20 +16,12 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-package dev.katsute.onemta.attribute;
+package dev.katsute.onemta.types;
 
-import java.util.Date;
+public abstract class GTFSTransitTrip<V extends TransitVehicle<?,?,?,?,?,?>, R extends TransitRoute<?,?>, S extends TransitTripStop<?,?,?>> extends TransitTrip<V,R,S> {
 
-public interface TrackedSchedule<T> {
+    public abstract String getTripID();
 
-    Long getArrivalTimeEpochMillis();
-
-    Date getArrivalTime();
-
-    Long getDepartureTimeEpochMillis();
-
-    Date getDepartureTime();
-
-    T getTrack();
+    public abstract String getRouteID();
 
 }

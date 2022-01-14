@@ -21,7 +21,7 @@ package dev.katsute.onemta.types;
 import dev.katsute.onemta.attribute.StopReference;
 import dev.katsute.onemta.attribute.TripReference;
 
-public abstract class TransitStopUpdate<S extends TransitStop<I,?>, T extends TransitTrip<?,?,?>, I> implements StopReference<S>, TripReference<T> {
+public abstract class TransitTripStop<S extends TransitStop<?,?>, T extends TransitTrip<?,?,?>, I> implements StopReference<S>, TripReference<T> {
 
     public abstract I getStopID();
 

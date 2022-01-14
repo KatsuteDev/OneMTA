@@ -18,12 +18,13 @@
 
 package dev.katsute.onemta.railroad;
 
-import dev.katsute.onemta.attribute.TrackedSchedule;
+import dev.katsute.onemta.types.GTFSTripStop;
+import dev.katsute.onemta.types.TransitTrip;
 
-public interface RailroadTripStop extends TrackedSchedule<String> {
+public abstract class RailroadTripStop<S extends RailroadStop<?>, T extends TransitTrip<?,?,?>, I, TR> extends GTFSTripStop<S,T,I,TR> {
 
-    Integer getDelay();
+    public abstract Integer getDelay();
 
-    String getTrainStatus();
+    public abstract String getTrainStatus();
 
 }

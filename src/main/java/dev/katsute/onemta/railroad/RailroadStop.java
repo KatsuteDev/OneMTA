@@ -18,12 +18,15 @@
 
 package dev.katsute.onemta.railroad;
 
-public interface RailroadStop {
+import dev.katsute.onemta.types.TransitStop;
+import dev.katsute.onemta.types.TransitVehicle;
 
-    String getStopCode();
+public abstract class RailroadStop<V extends TransitVehicle<?,?,?,?,?,?>> extends TransitStop<Integer,V> {
 
-    String getStopDescription();
+    public abstract String getStopCode();
 
-    Boolean hasWheelchairBoarding();
+    public abstract String getStopDescription();
+
+    public abstract Boolean hasWheelchairBoarding();
 
 }

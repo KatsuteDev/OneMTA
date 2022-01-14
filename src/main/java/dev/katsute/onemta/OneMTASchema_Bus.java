@@ -389,9 +389,11 @@ abstract class OneMTASchema_Bus extends OneMTASchema {
                 }
             });
 
-            private final String stopDistanceMessage    = requireNonNull(() -> monitoredCall.getString("ArrivalProximityText"));
+            private final String arrivalProximityText = requireNonNull(() -> monitoredCall.getString("ArrivalProximityText"));
             private final Integer distanceFromStop      = requireNonNull(() -> monitoredCall.getInt("DistanceFromCall"));
-            private final Integer stopsFromStop         = requireNonNull(() -> monitoredCall.getInt("NumberOfStopsAway"));
+            private final Integer stopsAway = requireNonNull(() -> monitoredCall.getInt("NumberOfStopsAway"));
+
+            private final Trip trip = asTrip(mta, monitoredVehicleJourney.getJsonObject("OnwardCalls"), this);
 
             @Override
             public final Integer getVehicleID(){
@@ -455,8 +457,18 @@ abstract class OneMTASchema_Bus extends OneMTASchema {
             }
 
             @Override
+            public final Long getAimedArrivalTimeEpochMillis(){
+                return aimedArrivalTime;
+            }
+
+            @Override
             public final Date getExpectedArrivalTime(){
                 return expectedArrivalTime != null ? new Date(expectedArrivalTime) : null;
+            }
+
+            @Override
+            public final Long getExpectedArrivalTimeEpochMillis(){
+                return expectedArrivalTime;
             }
 
             @Override
@@ -465,8 +477,13 @@ abstract class OneMTASchema_Bus extends OneMTASchema {
             }
 
             @Override
-            public final String getStopDistanceMessage(){
-                return stopDistanceMessage;
+            public final Long getExpectedDepartureTimeEpochMillis(){
+                return expectedDepartureTime;
+            }
+
+            @Override
+            public final String getArrivalProximityText(){
+                return arrivalProximityText;
             }
 
             @Override
@@ -475,8 +492,8 @@ abstract class OneMTASchema_Bus extends OneMTASchema {
             }
 
             @Override
-            public final Integer getStopsFromStop(){
-                return stopsFromStop;
+            public final Integer getStopsAway(){
+                return stopsAway;
             }
 
             @Override
@@ -536,18 +553,117 @@ abstract class OneMTASchema_Bus extends OneMTASchema {
 
             @Override
             public final Trip getTrip(){
-                return null;
+                return trip;
             }
 
         };
     }
 
     static Trip asTrip(final OneMTA mta, final JsonObject onwardCalls, final Vehicle referringVehicle){
-        return null;
+        return new Trip() {
+
+            private final Vehicle vehicle = referringVehicle;
+
+            private final List<TripStop> tripStops;
+
+            {
+                final List<TripStop> stops = new ArrayList<>();
+
+                for(final JsonObject obj : onwardCalls.getJsonArray("OnwardCall"))
+                    stops.add(asTripStop(mta, obj, this));
+                tripStops = Collections.unmodifiableList(stops);
+            }
+
+            // onemta methods
+
+            @Override
+            public final Vehicle getVehicle(){
+                return vehicle;
+            }
+
+            @Override
+            public final Route getRoute(){
+                return vehicle.getRoute();
+            }
+
+            @Override
+            public final TripStop[] getTripStops(){
+                return tripStops.toArray(new TripStop[0]);
+            }
+
+        };
     }
 
     static TripStop asTripStop(final OneMTA mta, final JsonObject onwardCall, final Trip referringTrip){
-        return null;
+        return new TripStop() {
+
+            private final Trip trip = referringTrip;
+
+            private final Integer stopID  = requireNonNull(() -> Integer.valueOf(onwardCall.getString("StopPointRef").substring(4)));
+            private final String stopName = requireNonNull(() -> onwardCall.getStringArray("StopPointName")[0]);
+
+            private final Long expectedArrivalTime = requireNonNull(() -> {
+                try{
+                    return sdf.parse(onwardCall.getString("ExpectedArrivalTime")).getTime();
+                }catch(final ParseException e){
+                    throw new RuntimeException(e);
+                }
+            });
+
+            private final String arrivalProximityText = requireNonNull(() -> onwardCall.getString("ArrivalProximityText"));
+            private final Integer distanceFromStop    = requireNonNull(() -> onwardCall.getInt("DistanceFromCall"));
+            private final Integer stopsAway           = requireNonNull(() -> onwardCall.getInt("NumberOfStopsAway"));
+
+            @Override
+            public final Date getExpectedArrivalTime(){
+                return expectedArrivalTime != null ? new Date(expectedArrivalTime) : null;
+            }
+
+            @Override
+            public final Long getExpectedArrivalTimeEpochMillis(){
+                return expectedArrivalTime;
+            }
+
+            @Override
+            public final String getArrivalProximityText(){
+                return arrivalProximityText;
+            }
+
+            @Override
+            public final Integer getDistanceFromStop(){
+                return distanceFromStop;
+            }
+
+            @Override
+            public final Integer getStopsAway(){
+                return stopsAway;
+            }
+
+            @Override
+            public final String getStopName(){
+                return stopName;
+            }
+
+            @Override
+            public final Integer getStopID(){
+                return stopID;
+            }
+
+            // onemta methods
+
+            private Stop stop = null;
+
+            @Override
+            public final Stop getStop(){
+                return stop != null ? stop : (stop = mta.getBusStop(Objects.requireNonNull(stopID, "Stop ID must not be null")));
+            }
+
+            @Override
+            public final Trip getTrip(){
+                return trip;
+            }
+
+        };
     }
 
 }

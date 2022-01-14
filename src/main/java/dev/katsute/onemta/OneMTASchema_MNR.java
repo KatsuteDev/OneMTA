@@ -293,7 +293,7 @@ abstract class OneMTASchema_MNR extends OneMTASchema {
             }
 
             @Override
-            public final TripStop[] getStopUpdates(){
+            public final TripStop[] getTripStops(){
                 return tripStops.toArray(new TripStop[0]);
             }
 

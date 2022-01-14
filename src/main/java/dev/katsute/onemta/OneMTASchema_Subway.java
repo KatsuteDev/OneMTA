@@ -296,7 +296,7 @@ abstract class OneMTASchema_Subway extends OneMTASchema {
             }
 
             @Override
-            public final TripStop[] getStopUpdates(){
+            public final TripStop[] getTripStops(){
                 return tripStops.toArray(new TripStop[0]);
             }
 
