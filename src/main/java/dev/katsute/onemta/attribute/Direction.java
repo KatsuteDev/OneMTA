@@ -16,15 +16,10 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-package dev.katsute.onemta.types;
+package dev.katsute.onemta.attribute;
 
-import dev.katsute.onemta.attribute.Location;
-import dev.katsute.onemta.attribute.VehiclesReference;
+public interface Direction<T extends Enum<?>> {
 
-public abstract class TransitStop<I,V extends TransitVehicle<?,?,?,?,?,?>> implements Location, VehiclesReference<V> {
-
-    public abstract I getStopID();
-
-    public abstract String getStopName();
+    T getDirection();
 
 }

@@ -18,7 +18,7 @@
 
 package dev.katsute.onemta.attribute;
 
-public interface LocationReference {
+public interface Location {
 
     Double getLatitude();
 

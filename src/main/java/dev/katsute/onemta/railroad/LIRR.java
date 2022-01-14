@@ -24,19 +24,13 @@ import dev.katsute.onemta.types.*;
 @SuppressWarnings("SpellCheckingInspection")
 public abstract class LIRR {
 
-    // todo: get vehicles for route
     public abstract static class Route extends TransitRoute<Integer,Vehicle> { }
 
-    // todo: get vehicles for stop
     public abstract static class Stop extends TransitStop<Integer,Vehicle> implements RailroadStop { }
 
-    public abstract static class Vehicle extends TransitVehicle<Route,Trip,Stop,Integer,Integer,Integer> implements BearingReference, LocationReference, TrackedVehicleStatus { }
+    public abstract static class Vehicle extends TransitVehicle<Route,Trip,Stop,Integer,Integer,Integer> implements Bearing, Location, TrackedVehicleStatus { }
 
-    public abstract static class Trip extends TransitTrip<Vehicle,Route,TripStop> {
-
-        public abstract RailroadDirection getDirection();
-
-    }
+    public abstract static class Trip extends TransitTrip<Vehicle,Route,TripStop> implements Direction<RailroadDirection> { }
 
     public abstract static class TripStop extends TransitStopUpdate<Stop,Trip,Integer> implements RailroadTripStop { }
 

@@ -39,7 +39,7 @@ public abstract class Bus {
 
     public abstract static class Stop extends TransitStop<Integer,Vehicle> implements RouteDescription { }
 
-    public abstract static class Vehicle extends TransitVehicle<Route,Trip,Stop,Integer,String,Integer> implements BearingReference, LocationReference {
+    public abstract static class Vehicle extends TransitVehicle<Route,Trip,Stop,Integer,String,Integer> implements Bearing, Location, Direction<BusDirection> {
 
         public abstract Boolean isSelectBusService();
 
@@ -48,8 +48,6 @@ public abstract class Bus {
         public abstract Boolean isShuttle();
 
         public abstract Boolean isLimited();
-
-        public abstract BusDirection getDirection();
 
         public abstract Integer getOriginStopCode();
 

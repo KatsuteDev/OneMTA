@@ -18,7 +18,7 @@
 
 package dev.katsute.onemta.attribute;
 
-public interface BearingReference {
+public interface Bearing {
 
     Double getBearing();
 
