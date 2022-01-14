@@ -47,6 +47,43 @@ abstract class OneMTASchema_LIRR extends OneMTASchema {
 
             private final TransitAgency agency = asAgency("LI", resource);
 
+            private final List<Vehicle> vehicles;
+
+            {
+                final String route = String.valueOf(route_id);
+
+                final FeedMessage feed = cast(mta).service.lirr.getLIRR(cast(mta).subwayToken);
+                final int len          = feed.getEntityCount();
+
+                TripUpdate tripUpdate = null;
+                String tripVehicle    = null;
+
+                final List<Vehicle> vehicles = new ArrayList<>();
+                for(int i = 0; i < len; i++){
+                    final FeedEntity entity = feed.getEntity(0);
+
+                    // get next trip
+                    if(entity.hasTripUpdate()){
+                        if( // only include trips with vehicle and on this route
+                            entity.getTripUpdate().hasVehicle() &&
+                            entity.getTripUpdate().getTrip().getRouteId().equals(route)
+                        ){
+                            tripUpdate  = entity.getTripUpdate();
+                            tripVehicle = tripUpdate.getVehicle().getLabel();
+                        }
+                    }else if( // get matching vehicle for trip
+                        entity.hasVehicle() &&
+                        entity.getVehicle().getVehicle().getLabel().equals(tripVehicle)
+                    ){
+                        vehicles.add(asVehicle(mta, entity.getVehicle(), tripUpdate));
+                        tripUpdate  = null;
+                        tripVehicle = null;
+                    }
+                }
+
+                this.vehicles = Collections.unmodifiableList(vehicles);
+            }
+
             // static data
 
             @Override
@@ -78,7 +115,7 @@ abstract class OneMTASchema_LIRR extends OneMTASchema {
 
             @Override
             public final Vehicle[] getVehicles(){
-                return new Vehicle[0];
+                return vehicles.toArray(new Vehicle[0]);
             }
 
             // Java
@@ -127,6 +164,44 @@ abstract class OneMTASchema_LIRR extends OneMTASchema {
 
             private final Boolean wheelchairAccessible = !row.get(csv.getHeaderIndex("wheelchair_boarding")).equals("2");
 
+            private final List<Vehicle> vehicles;
+
+            {
+                final String stop = String.valueOf(stop_id);
+
+                final FeedMessage feed = cast(mta).service.lirr.getLIRR(cast(mta).subwayToken);
+                final int len          = feed.getEntityCount();
+
+                TripUpdate tripUpdate = null;
+                String tripVehicle    = null;
+
+                final List<Vehicle> vehicles = new ArrayList<>();
+                for(int i = 0; i < len; i++){
+                    final FeedEntity entity = feed.getEntity(0);
+
+                    // get next trip
+                    if(entity.hasTripUpdate()){
+                        // only include trips with vehicles
+                        if(entity.getTripUpdate().hasVehicle()){
+                            tripUpdate  = entity.getTripUpdate();
+                            tripVehicle = tripUpdate.getVehicle().getLabel();
+                        }
+                    }else if( // get matching vehicle for trip
+                        entity.hasVehicle() &&
+                        entity.getVehicle().getVehicle().getLabel().equals(tripVehicle)
+                    ){
+                        // only include vehicles at this stop
+                        if(entity.getVehicle().getStopId().equals(stop)){
+                            vehicles.add(asVehicle(mta, entity.getVehicle(), tripUpdate));
+                            tripUpdate  = null;
+                            tripVehicle = null;
+                        }
+                    }
+                }
+
+                this.vehicles = Collections.unmodifiableList(vehicles);
+            }
+
             // static data
 
             @Override
@@ -168,7 +243,7 @@ abstract class OneMTASchema_LIRR extends OneMTASchema {
 
             @Override
             public final Vehicle[] getVehicles(){
-                return new Vehicle[0];
+                return vehicles.toArray(new Vehicle[0]);
             }
 
             // Java

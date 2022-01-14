@@ -26,7 +26,10 @@ import dev.katsute.onemta.railroad.MNR;
 import dev.katsute.onemta.subway.Subway;
 import dev.katsute.onemta.subway.SubwayDirection;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Objects;
+
+import static dev.katsute.onemta.GTFSRealtimeProto.*;
 
 @SuppressWarnings("SpellCheckingInspection")
 final class OneMTAImpl extends OneMTA {
@@ -151,7 +154,7 @@ final class OneMTAImpl extends OneMTA {
         }
     }
 
-    GTFSRealtimeProto.FeedMessage resolveSubwayFeed(final String route_id){
+    FeedMessage resolveSubwayFeed(final String route_id){
         switch(Objects.requireNonNull(resolveSubwayLine(route_id), "Subway route with ID '" + route_id + "' not found")){
             case "A":
             case "C":
@@ -240,6 +243,30 @@ final class OneMTAImpl extends OneMTA {
     public final LIRR.Vehicle getLIRRTrain(final String train_id){
         Objects.requireNonNull(train_id, "Train ID must not be null");
 
+        final FeedMessage feed = service.lirr.getLIRR(subwayToken);
+        final int len          = feed.getEntityCount();
+
+        TripUpdate tripUpdate = null;
+        String tripVehicle    = null;
+
+        for(int i = 0; i < len; i++){
+            final FeedEntity entity = feed.getEntity(0);
+
+            // get next trip
+            if(entity.hasTripUpdate()){
+                if( // only include trips with vehicle and with matching ID
+                    entity.getTripUpdate().hasVehicle() &&
+                    entity.getTripUpdate().getVehicle().getLabel().equals(train_id)
+                ){
+                    tripUpdate  = entity.getTripUpdate();
+                    tripVehicle = tripUpdate.getVehicle().getLabel();
+                }
+            }else if( // get matching vehicle for trip
+                entity.hasVehicle() &&
+                entity.getVehicle().getVehicle().getLabel().equals(tripVehicle)
+            )
+                return OneMTASchema_LIRR.asVehicle(this, entity.getVehicle(), tripUpdate);
+        }
         return null;
     }
 
@@ -263,11 +290,11 @@ final class OneMTAImpl extends OneMTA {
     @Override
     public final MNR.Vehicle getMNRTrain(final String train_id){
         Objects.requireNonNull(train_id, "Train ID must not be null");
-        final GTFSRealtimeProto.FeedMessage feed = service.mnrr.getMNRR(subwayToken);
+        final FeedMessage feed = service.mnrr.getMNRR(subwayToken);
         final int len = feed.getEntityCount();
 
         for(int i = 0; i < len; i++){
-            final GTFSRealtimeProto.FeedEntity entity = feed.getEntity(0);
+            final FeedEntity entity = feed.getEntity(0);
             if(
                 entity.hasVehicle() &&
                 entity.getVehicle().hasVehicle() &&

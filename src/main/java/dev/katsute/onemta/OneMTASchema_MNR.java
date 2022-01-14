@@ -51,19 +51,16 @@ abstract class OneMTASchema_MNR extends OneMTASchema {
 
             {
                 final FeedMessage feed = cast(mta).service.mnrr.getMNRR(cast(mta).subwayToken);
-                final int len = feed.getEntityCount();
+                final int len          = feed.getEntityCount();
 
                 final List<Vehicle> vehicles = new ArrayList<>();
                 for(int i = 0; i < len; i++){
                     final FeedEntity entity = feed.getEntity(0);
-                    if(
-                        !entity.hasVehicle() ||
-                        !entity.hasTripUpdate() ||
-                        Integer.parseInt(entity.getTripUpdate().getTrip().getRouteId()) != routeID
-                    )
-                        continue;
-
-                    vehicles.add(asVehicle(mta, entity.getVehicle(), entity.getTripUpdate()));
+                    // only include trips with vehicles
+                    if(entity.hasVehicle() && entity.hasTripUpdate())
+                        // only include vehicles on this route
+                        if(Integer.parseInt(entity.getTripUpdate().getTrip().getRouteId()) == routeID)
+                            vehicles.add(asVehicle(mta, entity.getVehicle(), entity.getTripUpdate()));
                 }
 
                 this.vehicles = Collections.unmodifiableList(vehicles);
@@ -153,19 +150,16 @@ abstract class OneMTASchema_MNR extends OneMTASchema {
 
             {
                 final FeedMessage feed = cast(mta).service.mnrr.getMNRR(cast(mta).subwayToken);
-                final int len = feed.getEntityCount();
+                final int len          = feed.getEntityCount();
 
                 final List<Vehicle> vehicles = new ArrayList<>();
                 for(int i = 0; i < len; i++){
                     final FeedEntity entity = feed.getEntity(0);
-                    if(
-                        !entity.hasVehicle() ||
-                        !entity.hasTripUpdate() ||
-                        Integer.parseInt(entity.getVehicle().getStopId()) != stopID
-                    )
-                        continue;
-
-                    vehicles.add(asVehicle(mta, entity.getVehicle(), entity.getTripUpdate()));
+                    // only include trips with vehicles
+                    if(entity.hasVehicle() && entity.hasTripUpdate())
+                        // only include vehicles at this stop
+                        if(Integer.parseInt(entity.getVehicle().getStopId()) == stopID)
+                        vehicles.add(asVehicle(mta, entity.getVehicle(), entity.getTripUpdate()));
                 }
 
                 this.vehicles = Collections.unmodifiableList(vehicles);
