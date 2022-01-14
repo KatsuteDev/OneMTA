@@ -36,7 +36,6 @@ abstract class Regex9 {
      * @param replacer replacement function
      * @return replaced string
      */
-    @SuppressWarnings("StringBufferMayBeStringBuilder")
     static String replaceAll(final String str, final java.util.regex.Matcher matcher, final Function<MatchResult, String> replacer) {
         Objects.requireNonNull(str);
         Objects.requireNonNull(matcher);

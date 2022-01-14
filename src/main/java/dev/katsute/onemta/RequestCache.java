@@ -36,6 +36,7 @@ final class RequestCache {
         this(-1);
     }
 
+    @SuppressWarnings("SameParameterValue")
     RequestCache(final int retainCacheSeconds){
         this.retainCacheSeconds = Math.min(retainCacheSeconds, MINIMUM_CACHE);
     }

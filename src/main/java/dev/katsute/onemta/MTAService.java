@@ -55,7 +55,7 @@ final class MTAService {
                     if(line != null)        put("LineRef", line);
                     if(direction != null)   put("DirectionRef", String.valueOf(direction));
                 }},
-                new HashMap<String,String>()
+                new HashMap<>()
             );
         }
 
@@ -73,7 +73,7 @@ final class MTAService {
                     if(line != null)        put("LineRef", line);
                     if(direction != null)   put("DirectionRef", String.valueOf(direction));
                 }},
-                new HashMap<String,String>()
+                new HashMap<>()
             );
         }
 
@@ -88,7 +88,7 @@ final class MTAService {
         final FeedMessage getACE(final String token){
             return cache.getProtobuf(
                 baseURL + "nyct%2Fgtfs-ace",
-                new HashMap<String,String>(),
+                new HashMap<>(),
                 new HashMap<String,String>(){{
                     put("x-api-key", token);
                 }}
@@ -98,7 +98,7 @@ final class MTAService {
         final FeedMessage getBDFM(final String token){
             return cache.getProtobuf(
                 baseURL + "nyct%2Fgtfs-bdfm",
-                new HashMap<String,String>(),
+                new HashMap<>(),
                 new HashMap<String,String>(){{
                     put("x-api-key", token);
                 }}
@@ -108,7 +108,7 @@ final class MTAService {
         final FeedMessage getG(final String token){
             return cache.getProtobuf(
                 baseURL + "nyct%2Fgtfs-g",
-                new HashMap<String,String>(),
+                new HashMap<>(),
                 new HashMap<String,String>(){{
                     put("x-api-key", token);
                 }}
@@ -118,7 +118,7 @@ final class MTAService {
         final FeedMessage getJZ(final String token){
             return cache.getProtobuf(
                 baseURL + "nyct%2Fgtfs-jz",
-                new HashMap<String,String>(),
+                new HashMap<>(),
                 new HashMap<String,String>(){{
                     put("x-api-key", token);
                 }}
@@ -128,7 +128,7 @@ final class MTAService {
         final FeedMessage getNQRW(final String token){
             return cache.getProtobuf(
                 baseURL + "nyct%2Fgtfs-nqrw",
-                new HashMap<String,String>(),
+                new HashMap<>(),
                 new HashMap<String,String>(){{
                     put("x-api-key", token);
                 }}
@@ -138,7 +138,7 @@ final class MTAService {
         final FeedMessage getL(final String token){
             return cache.getProtobuf(
                 baseURL + "nyct%2Fgtfs-l",
-                new HashMap<String,String>(),
+                new HashMap<>(),
                 new HashMap<String,String>(){{
                     put("x-api-key", token);
                 }}
@@ -148,7 +148,7 @@ final class MTAService {
         final FeedMessage get1234567(final String token){
             return cache.getProtobuf(
                 baseURL + "nyct%2Fgtfs",
-                new HashMap<String,String>(),
+                new HashMap<>(),
                 new HashMap<String,String>(){{
                     put("x-api-key", token);
                 }}
@@ -158,7 +158,7 @@ final class MTAService {
         final FeedMessage getSI(final String token){
             return cache.getProtobuf(
                 baseURL + "nyct%2Fgtfs-si",
-                new HashMap<String,String>(),
+                new HashMap<>(),
                 new HashMap<String,String>(){{
                     put("x-api-key", token);
                 }}
@@ -176,7 +176,7 @@ final class MTAService {
         final FeedMessage getLIRR(final String token){
             return cache.getProtobuf(
                 baseURL + "lirr%2Fgtfs-lirr",
-                new HashMap<String,String>(),
+                new HashMap<>(),
                 new HashMap<String,String>() {{
                     put("x-api-key", token);
                 }}
@@ -195,7 +195,7 @@ final class MTAService {
         final FeedMessage getMNRR(final String token){
             return cache.getProtobuf(
                 baseURL + "mnr%2Fgtfs-mnr",
-                new HashMap<String,String>(),
+                new HashMap<>(),
                 new HashMap<String,String>(){{
                     put("x-api-key", token);
                 }}
