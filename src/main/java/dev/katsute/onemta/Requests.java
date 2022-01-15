@@ -84,7 +84,7 @@ abstract class Requests {
         try{
             conn = getConnection(
                 url,
-                new HashMap<String,String>(query),
+                new HashMap<>(query),
                 new HashMap<String,String>(headers){{
                     put("Accept", "application/x-protobuf");
                 }}

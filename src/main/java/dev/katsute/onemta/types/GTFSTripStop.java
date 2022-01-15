@@ -18,14 +18,18 @@
 
 package dev.katsute.onemta.types;
 
-import dev.katsute.onemta.attribute.*;
+import java.util.Date;
 
-public abstract class TransitVehicle<R extends TransitRoute<?,?>, S extends TransitStop<?,?>, T extends TransitTrip<?,?,?>, SID, RID, VID> implements RouteReference<R>, StopReference<S>, TripReference<T> {
+public abstract class GTFSTripStop<S extends TransitStop<?,?>, T extends TransitTrip<?,?,?>, SID> extends TransitTripStop<S,T, SID> {
 
-    public abstract VID getVehicleID();
+    public abstract Long getArrivalTimeEpochMillis();
 
-    public abstract SID getStopID();
+    public abstract Date getArrivalTime();
 
-    public abstract RID getRouteID();
+    public abstract Long getDepartureTimeEpochMillis();
+
+    public abstract Date getDepartureTime();
+
+    public abstract String getTrack();
 
 }

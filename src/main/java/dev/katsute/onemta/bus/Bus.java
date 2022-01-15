@@ -39,7 +39,7 @@ public abstract class Bus {
 
     public abstract static class Stop extends TransitStop<Integer,Vehicle> implements RouteDescription { }
 
-    public abstract static class Vehicle extends TransitVehicle<Route,Trip,Stop,Integer,String,Integer> implements BearingReference, LocationReference {
+    public abstract static class Vehicle extends TransitVehicle<Route,Stop,Trip,Integer,String,Integer> implements Bearing, Location, Direction<BusDirection> {
 
         public abstract Boolean isSelectBusService();
 
@@ -48,8 +48,6 @@ public abstract class Bus {
         public abstract Boolean isShuttle();
 
         public abstract Boolean isLimited();
-
-        public abstract BusDirection getDirection();
 
         public abstract Integer getOriginStopCode();
 
@@ -63,21 +61,21 @@ public abstract class Bus {
 
         public abstract Date getAimedArrivalTime();
 
+        public abstract Long getAimedArrivalTimeEpochMillis();
+
         public abstract Date getExpectedArrivalTime();
+
+        public abstract Long getExpectedArrivalTimeEpochMillis();
 
         public abstract Date getExpectedDepartureTime();
 
-        public abstract Double getStopDistanceFromOrigin();
+        public abstract Long getExpectedDepartureTimeEpochMillis();
 
-        public abstract String getStopDistanceMessage();
+        public abstract String getArrivalProximityText();
 
-        public abstract Double getDistanceFromStop();
+        public abstract Integer getDistanceFromStop();
 
-        public abstract Integer getStopsFromStop();
-
-        public abstract Integer getEstimatedPassengerCount();
-
-        public abstract Integer getVisitNumber();
+        public abstract Integer getStopsAway();
 
         public abstract String getStopName();
 
@@ -85,6 +83,20 @@ public abstract class Bus {
 
     public abstract static class Trip extends TransitTrip<Vehicle,Route,TripStop> { }
 
-    public abstract static class TripStop extends TransitStopUpdate<Stop,Trip,Integer> { }
+    public abstract static class TripStop extends TransitTripStop<Stop,Trip,Integer> {
+
+        public abstract Date getExpectedArrivalTime();
+
+        public abstract Long getExpectedArrivalTimeEpochMillis();
+
+        public abstract String getArrivalProximityText();
+
+        public abstract Integer getDistanceFromStop();
+
+        public abstract Integer getStopsAway();
+
+        public abstract String getStopName();
+
+    }
 
 }

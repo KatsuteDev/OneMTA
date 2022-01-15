@@ -19,7 +19,6 @@
 package dev.katsute.onemta;
 
 import dev.katsute.onemta.types.TransitAgency;
-import dev.katsute.onemta.types.VehicleStatus;
 
 import java.util.*;
 
@@ -47,6 +46,25 @@ abstract class OneMTASchema_MNR extends OneMTASchema {
             private final String routeTextColor = row.get(csv.getHeaderIndex("route_text_color"));
 
             private final TransitAgency agency = asAgency(row.get(csv.getHeaderIndex("agency_id")), resource);
+
+            private final List<Vehicle> vehicles;
+
+            {
+                final FeedMessage feed = cast(mta).service.mnrr.getMNRR(cast(mta).subwayToken);
+                final int len          = feed.getEntityCount();
+
+                final List<Vehicle> vehicles = new ArrayList<>();
+                for(int i = 0; i < len; i++){
+                    final FeedEntity entity = feed.getEntity(0);
+                    // only include trips with vehicles
+                    if(entity.hasVehicle() && entity.hasTripUpdate())
+                        // only include vehicles on this route
+                        if(Integer.parseInt(entity.getTripUpdate().getTrip().getRouteId()) == routeID)
+                            vehicles.add(asVehicle(mta, entity.getVehicle(), entity.getTripUpdate()));
+                }
+
+                this.vehicles = Collections.unmodifiableList(vehicles);
+            }
 
             // static data
 
@@ -79,7 +97,7 @@ abstract class OneMTASchema_MNR extends OneMTASchema {
 
             @Override
             public final Vehicle[] getVehicles(){
-                return new Vehicle[0];
+                return vehicles.toArray(new Vehicle[0]);
             }
 
             // Java
@@ -102,9 +120,9 @@ abstract class OneMTASchema_MNR extends OneMTASchema {
         final List<String> row      = csv.getRow("stop_code", stop_code.toUpperCase());
 
         // instantiate
-         Objects.requireNonNull(row, "Failed to find MNR stop with stopcode '" + stop_code.toUpperCase() + "'");
+        Objects.requireNonNull(row, "Failed to find MNR stop with stopcode '" + stop_code.toUpperCase() + "'");
 
-         return asStop(mta, Integer.parseInt(row.get(csv.getHeaderIndex("stop_id"))));
+        return asStop(mta, Integer.parseInt(row.get(csv.getHeaderIndex("stop_id"))));
     }
 
     static Stop asStop(final OneMTA mta, final int stop_id){
@@ -127,6 +145,40 @@ abstract class OneMTASchema_MNR extends OneMTASchema {
             private final Double stopLon  = Double.valueOf(row.get(csv.getHeaderIndex("stop_lon")));
 
             private final Boolean wheelchairAccessible = !row.get(csv.getHeaderIndex("wheelchair_boarding")).equals("2");
+
+            private final List<Vehicle> vehicles;
+
+            {
+                final String stop = String.valueOf(stop_id);
+
+                final FeedMessage feed = cast(mta).service.mnrr.getMNRR(cast(mta).subwayToken);
+                final int len          = feed.getEntityCount();
+
+                final List<Vehicle> vehicles = new ArrayList<>();
+                OUTER:
+                for(int i = 0; i < len; i++){
+                    final FeedEntity entity = feed.getEntity(0);
+                    // only include trips with vehicles
+                    if(
+                        entity.hasVehicle() &&
+                        entity.hasTripUpdate()
+                    ){
+                        final TripUpdate tu = entity.getTripUpdate();
+                        final int len2 = tu.getStopTimeUpdateCount();
+                        // check all stops on train route
+                        for(int u = 0; u < len2; u++){
+                            final TripUpdate.StopTimeUpdate update = tu.getStopTimeUpdate(u);
+                            // check if this stop is en route
+                            if(update.getStopId().equalsIgnoreCase(stop)){
+                                vehicles.add(asVehicle(mta, entity.getVehicle(), entity.getTripUpdate()));
+                                continue OUTER;
+                            }
+                        }
+                    }
+                }
+
+                this.vehicles = Collections.unmodifiableList(vehicles);
+            }
 
             // static data
 
@@ -169,7 +221,7 @@ abstract class OneMTASchema_MNR extends OneMTASchema {
 
             @Override
             public final Vehicle[] getVehicles(){
-                return new Vehicle[0];
+                return vehicles.toArray(new Vehicle[0]);
             }
 
             // Java
@@ -188,12 +240,12 @@ abstract class OneMTASchema_MNR extends OneMTASchema {
     static Vehicle asVehicle(final OneMTA mta, final VehiclePosition vehicle, final TripUpdate tripUpdate){
         return new Vehicle() {
 
-            private final Integer vehicleID = requireNonNull(() -> Integer.valueOf(vehicle.getVehicle().getLabel()));
+            private final String vehicleID = requireNonNull(() -> vehicle.getVehicle().getLabel());
 
             private final Double latitude  = requireNonNull( () -> (double) vehicle.getPosition().getLatitude());
             private final Double longitude = requireNonNull( () -> (double) vehicle.getPosition().getLongitude());
 
-            private final VehicleStatus status = VehicleStatus.asStatus(vehicle.getCurrentStatus().getNumber());
+            private final String status   = requireNonNull(() -> vehicle.getCurrentStatus().name());
 
             private final Integer stopID  = requireNonNull(() -> Integer.valueOf(vehicle.getStopId()));
             private final Integer routeID = requireNonNull(() -> Integer.valueOf(tripUpdate.getTrip().getRouteId()));
@@ -201,7 +253,7 @@ abstract class OneMTASchema_MNR extends OneMTASchema {
             private final Trip trip = asTrip(mta, tripUpdate, this);
 
             @Override
-            public final Integer getVehicleID(){
+            public final String getVehicleID(){
                 return vehicleID;
             }
 
@@ -216,7 +268,7 @@ abstract class OneMTASchema_MNR extends OneMTASchema {
             }
 
             @Override
-            public final VehicleStatus getCurrentStatus(){
+            public final String getCurrentStatus(){
                 return status;
             }
 
@@ -294,7 +346,7 @@ abstract class OneMTASchema_MNR extends OneMTASchema {
             }
 
             @Override
-            public final TripStop[] getStopUpdates(){
+            public final TripStop[] getTripStops(){
                 return tripStops.toArray(new TripStop[0]);
             }
 

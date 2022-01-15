@@ -25,26 +25,19 @@ public abstract class Subway {
 
     public abstract static class Route extends TransitRoute<String,Vehicle> implements RouteShortName, RouteDescription { }
 
-    public abstract static class Stop extends TransitStop<String,Vehicle> {
-
-        public abstract SubwayDirection getDirection();
+    public abstract static class Stop extends TransitStop<String,Vehicle> implements Direction<SubwayDirection> {
 
         public abstract Boolean isSameStop(final Stop stop);
 
     }
 
-    // todo: add utility methods for isExpress, isLocal
-    public abstract static class Vehicle extends TransitVehicle<Route,Trip,Stop,String,String,String> implements TrackedVehicleStatus { }
+    public abstract static class Vehicle extends GTFSVehicle<Route,Stop,Trip,String,String> { }
 
-    public abstract static class Trip extends TransitTrip<Vehicle,Route,TripStop> {
+    public abstract static class Trip extends GTFSTransitTrip<Vehicle,Route,TripStop> implements Direction<SubwayDirection> { }
 
-        public abstract SubwayDirection getDirection();
+    public abstract static class TripStop extends GTFSTripStop<Stop,Trip,String> {
 
-    }
-
-    public abstract static class TripStop extends TransitStopUpdate<Stop,Trip,String> implements TrackedSchedule<Integer> {
-
-        public abstract Integer getActualTrack();
+        public abstract String getActualTrack();
 
     }
 

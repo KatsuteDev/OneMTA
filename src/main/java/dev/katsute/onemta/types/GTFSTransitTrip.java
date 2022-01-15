@@ -18,14 +18,10 @@
 
 package dev.katsute.onemta.types;
 
-import dev.katsute.onemta.attribute.*;
+public abstract class GTFSTransitTrip<V extends TransitVehicle<?,?,?,?,?,?>, R extends TransitRoute<?,?>, S extends TransitTripStop<?,?,?>> extends TransitTrip<V,R,S> {
 
-public abstract class TransitVehicle<R extends TransitRoute<?,?>, S extends TransitStop<?,?>, T extends TransitTrip<?,?,?>, SID, RID, VID> implements RouteReference<R>, StopReference<S>, TripReference<T> {
+    public abstract String getTripID();
 
-    public abstract VID getVehicleID();
-
-    public abstract SID getStopID();
-
-    public abstract RID getRouteID();
+    public abstract String getRouteID();
 
 }

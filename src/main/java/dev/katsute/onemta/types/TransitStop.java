@@ -18,12 +18,12 @@
 
 package dev.katsute.onemta.types;
 
-import dev.katsute.onemta.attribute.LocationReference;
+import dev.katsute.onemta.attribute.Location;
 import dev.katsute.onemta.attribute.VehiclesReference;
 
-public abstract class TransitStop<I,V extends TransitVehicle<?,?,?,?,?,?>> implements LocationReference, VehiclesReference<V> {
+public abstract class TransitStop<SID, V extends TransitVehicle<?,?,?,?,?,?>> implements Location, VehiclesReference<V> {
 
-    public abstract I getStopID();
+    public abstract SID getStopID();
 
     public abstract String getStopName();
 

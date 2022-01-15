@@ -117,8 +117,25 @@ abstract class OneMTASchema_Bus extends OneMTASchema {
             private final Boolean shuttle = routeLongName.contains("Shuttle");
             private final Boolean limited = routeLongName.contains("Limited");
 
-
             private final TransitAgency agency = asAgency(row.get(csv.getHeaderIndex("agency_id")), resource);
+
+            private final List<Vehicle> vehicles;
+
+            {
+                final JsonObject json = cast(mta).service.bus.getVehicle(cast(mta).busToken, null, routeID, null);
+
+
+                final JsonObject[] vehicleActivity = json
+                    .getJsonObject("Siri")
+                    .getJsonObject("ServiceDelivery")
+                    .getJsonArray("VehicleMonitoringDelivery")[0]
+                    .getJsonArray("VehicleActivity");
+
+                final List<Vehicle> vehicles = new ArrayList<>();
+                for(final JsonObject obj : vehicleActivity)
+                    vehicles.add(asVehicle(mta, obj.getJsonObject("MonitoredVehicleJourney"), this, null));
+                this.vehicles = Collections.unmodifiableList(vehicles);
+            }
 
             // static data
 
@@ -152,6 +169,8 @@ abstract class OneMTASchema_Bus extends OneMTASchema {
                 return routeTextColor;
             }
 
+            // onemta
+
             @Override
             public final Boolean isSelectBusService(){
                 return SBS;
@@ -181,7 +200,7 @@ abstract class OneMTASchema_Bus extends OneMTASchema {
 
             @Override
             public final Vehicle[] getVehicles(){
-                return new Vehicle[0];
+                return vehicles.toArray(new Vehicle[0]);
             }
 
             // Java
@@ -255,6 +274,23 @@ abstract class OneMTASchema_Bus extends OneMTASchema {
             private final Double stopLat  = Double.valueOf(row.get(csv.getHeaderIndex("stop_lat")));
             private final Double stopLon  = Double.valueOf(row.get(csv.getHeaderIndex("stop_lon")));
 
+            private final List<Vehicle> vehicles;
+
+            {
+                final JsonObject json = cast(mta).service.bus.getStop(cast(mta).busToken, stop_id, null, null);
+
+                final JsonObject[] monitoredStopVisit = json
+                    .getJsonObject("Siri")
+                    .getJsonObject("ServiceDelivery")
+                    .getJsonArray("StopMonitoringDelivery")[0]
+                    .getJsonArray("MonitoredStopVisit");
+
+                final List<Vehicle> vehicles = new ArrayList<>();
+                for(final JsonObject obj : monitoredStopVisit)
+                    vehicles.add(asVehicle(mta, obj.getJsonObject("MonitoredVehicleJourney"), null, this));
+                this.vehicles = Collections.unmodifiableList(vehicles);
+            }
+
             // static data
 
             @Override
@@ -286,7 +322,7 @@ abstract class OneMTASchema_Bus extends OneMTASchema {
 
             @Override
             public final Vehicle[] getVehicles(){
-                return new Vehicle[0];
+                return vehicles.toArray(new Vehicle[0]);
             }
 
             // Java
@@ -320,11 +356,11 @@ abstract class OneMTASchema_Bus extends OneMTASchema {
 
             private final String routeID  = requireNonNull(() -> monitoredVehicleJourney.getString("LineRef").substring(9));
             private final Integer stopID  = requireNonNull(() -> Integer.valueOf(monitoredCall.getString("StopPointRef").substring(4)));
-            private final String stopName = requireNonNull(() -> monitoredCall.getString("StopPointName"));
+            private final String stopName = requireNonNull(() -> monitoredCall.getStringArray("StopPointName")[0]);
 
             private final Integer originStopCode = requireNonNull(() -> Integer.valueOf(monitoredVehicleJourney.getString("OriginRef").substring(4)));
 
-            private final String destinationName = requireNonNull(() -> monitoredVehicleJourney.getString("DestinationName"));
+            private final String destinationName = requireNonNull(() -> monitoredVehicleJourney.getStringArray("DestinationName")[0]);
 
             private final String progressRate   = requireNonNull(() -> monitoredVehicleJourney.getString("ProgressRate"));
             private final String progressStatus = requireNonNull(() -> monitoredVehicleJourney.getString("ProgressStatus"));
@@ -336,6 +372,7 @@ abstract class OneMTASchema_Bus extends OneMTASchema {
                     throw new RuntimeException(e);
                 }
             });
+
             private final Long expectedArrivalTime   = requireNonNull(() -> {
                 try{
                     return sdf.parse(monitoredCall.getString("ExpectedArrivalTime")).getTime();
@@ -343,6 +380,7 @@ abstract class OneMTASchema_Bus extends OneMTASchema {
                     throw new RuntimeException(e);
                 }
             });
+
             private final Long expectedDepartureTime = requireNonNull(() -> {
                 try{
                     return sdf.parse(monitoredCall.getString("ExpectedDepartureTime")).getTime();
@@ -351,14 +389,11 @@ abstract class OneMTASchema_Bus extends OneMTASchema {
                 }
             });
 
-            private final Double stopDistanceFromOrigin = requireNonNull(() -> monitoredCall.getJsonObject("Extensions").getJsonObject("Distances").getDouble("CallDistanceAlongRoute"));
-            private final String stopDistanceMessage    = requireNonNull(() -> monitoredCall.getJsonObject("Extensions").getJsonObject("Distances").getString("PresentableDistance"));
-            private final Double distanceFromStop       = requireNonNull(() -> monitoredCall.getJsonObject("Extensions").getJsonObject("Distances").getDouble("DistanceFromCall"));
-            private final Integer stopsFromStop         = requireNonNull(() -> monitoredCall.getJsonObject("Extensions").getJsonObject("Distances").getInt("StopsFromCall"));
+            private final String arrivalProximityText = requireNonNull(() -> monitoredCall.getString("ArrivalProximityText"));
+            private final Integer distanceFromStop      = requireNonNull(() -> monitoredCall.getInt("DistanceFromCall"));
+            private final Integer stopsAway = requireNonNull(() -> monitoredCall.getInt("NumberOfStopsAway"));
 
-            private final Integer estimatedCapacity = requireNonNull(() -> monitoredCall.getJsonObject("Extensions").getJsonObject("Capacities").getInt("EstimatedPassengerCount"));
-
-            private final Integer visitNumber = requireNonNull(() -> monitoredCall.getInt("VisitNumber"));
+            private final Trip trip = asTrip(mta, monitoredVehicleJourney.getJsonObject("OnwardCalls"), this);
 
             @Override
             public final Integer getVehicleID(){
@@ -422,8 +457,18 @@ abstract class OneMTASchema_Bus extends OneMTASchema {
             }
 
             @Override
+            public final Long getAimedArrivalTimeEpochMillis(){
+                return aimedArrivalTime;
+            }
+
+            @Override
             public final Date getExpectedArrivalTime(){
                 return expectedArrivalTime != null ? new Date(expectedArrivalTime) : null;
+            }
+
+            @Override
+            public final Long getExpectedArrivalTimeEpochMillis(){
+                return expectedArrivalTime;
             }
 
             @Override
@@ -432,33 +477,23 @@ abstract class OneMTASchema_Bus extends OneMTASchema {
             }
 
             @Override
-            public final Double getStopDistanceFromOrigin(){
-                return stopDistanceFromOrigin;
+            public final Long getExpectedDepartureTimeEpochMillis(){
+                return expectedDepartureTime;
             }
 
             @Override
-            public final String getStopDistanceMessage(){
-                return stopDistanceMessage;
+            public final String getArrivalProximityText(){
+                return arrivalProximityText;
             }
 
             @Override
-            public final Double getDistanceFromStop(){
+            public final Integer getDistanceFromStop(){
                 return distanceFromStop;
             }
 
             @Override
-            public final Integer getStopsFromStop(){
-                return stopsFromStop;
-            }
-
-            @Override
-            public final Integer getEstimatedPassengerCount(){
-                return estimatedCapacity;
-            }
-
-            @Override
-            public final Integer getVisitNumber(){
-                return visitNumber;
+            public final Integer getStopsAway(){
+                return stopsAway;
             }
 
             @Override
@@ -518,7 +553,114 @@ abstract class OneMTASchema_Bus extends OneMTASchema {
 
             @Override
             public final Trip getTrip(){
-                return null;
+                return trip;
+            }
+
+        };
+    }
+
+    static Trip asTrip(final OneMTA mta, final JsonObject onwardCalls, final Vehicle referringVehicle){
+        return new Trip() {
+
+            private final Vehicle vehicle = referringVehicle;
+
+            private final List<TripStop> tripStops;
+
+            {
+                final List<TripStop> stops = new ArrayList<>();
+
+                for(final JsonObject obj : onwardCalls.getJsonArray("OnwardCall"))
+                    stops.add(asTripStop(mta, obj, this));
+                tripStops = Collections.unmodifiableList(stops);
+            }
+
+            // onemta methods
+
+            @Override
+            public final Vehicle getVehicle(){
+                return vehicle;
+            }
+
+            @Override
+            public final Route getRoute(){
+                return vehicle.getRoute();
+            }
+
+            @Override
+            public final TripStop[] getTripStops(){
+                return tripStops.toArray(new TripStop[0]);
+            }
+
+        };
+    }
+
+    static TripStop asTripStop(final OneMTA mta, final JsonObject onwardCall, final Trip referringTrip){
+        return new TripStop() {
+
+            private final Trip trip = referringTrip;
+
+            private final Integer stopID  = requireNonNull(() -> Integer.valueOf(onwardCall.getString("StopPointRef").substring(4)));
+            private final String stopName = requireNonNull(() -> onwardCall.getStringArray("StopPointName")[0]);
+
+            private final Long expectedArrivalTime = requireNonNull(() -> {
+                try{
+                    return sdf.parse(onwardCall.getString("ExpectedArrivalTime")).getTime();
+                }catch(final ParseException e){
+                    throw new RuntimeException(e);
+                }
+            });
+
+            private final String arrivalProximityText = requireNonNull(() -> onwardCall.getString("ArrivalProximityText"));
+            private final Integer distanceFromStop    = requireNonNull(() -> onwardCall.getInt("DistanceFromCall"));
+            private final Integer stopsAway           = requireNonNull(() -> onwardCall.getInt("NumberOfStopsAway"));
+
+            @Override
+            public final Date getExpectedArrivalTime(){
+                return expectedArrivalTime != null ? new Date(expectedArrivalTime) : null;
+            }
+
+            @Override
+            public final Long getExpectedArrivalTimeEpochMillis(){
+                return expectedArrivalTime;
+            }
+
+            @Override
+            public final String getArrivalProximityText(){
+                return arrivalProximityText;
+            }
+
+            @Override
+            public final Integer getDistanceFromStop(){
+                return distanceFromStop;
+            }
+
+            @Override
+            public final Integer getStopsAway(){
+                return stopsAway;
+            }
+
+            @Override
+            public final String getStopName(){
+                return stopName;
+            }
+
+            @Override
+            public final Integer getStopID(){
+                return stopID;
+            }
+
+            // onemta methods
+
+            private Stop stop = null;
+
+            @Override
+            public final Stop getStop(){
+                return stop != null ? stop : (stop = mta.getBusStop(Objects.requireNonNull(stopID, "Stop ID must not be null")));
+            }
+
+            @Override
+            public final Trip getTrip(){
+                return trip;
             }
 
         };
