@@ -149,17 +149,32 @@ abstract class OneMTASchema_MNR extends OneMTASchema {
             private final List<Vehicle> vehicles;
 
             {
+                final String stop = String.valueOf(stop_id);
+
                 final FeedMessage feed = cast(mta).service.mnrr.getMNRR(cast(mta).subwayToken);
                 final int len          = feed.getEntityCount();
 
                 final List<Vehicle> vehicles = new ArrayList<>();
+                OUTER:
                 for(int i = 0; i < len; i++){
                     final FeedEntity entity = feed.getEntity(0);
                     // only include trips with vehicles
-                    if(entity.hasVehicle() && entity.hasTripUpdate())
-                        // only include vehicles at this stop
-                        if(Integer.parseInt(entity.getVehicle().getStopId()) == stopID)
-                        vehicles.add(asVehicle(mta, entity.getVehicle(), entity.getTripUpdate()));
+                    if(
+                        entity.hasVehicle() &&
+                        entity.hasTripUpdate()
+                    ){
+                        final TripUpdate tu = entity.getTripUpdate();
+                        final int len2 = tu.getStopTimeUpdateCount();
+                        // check all stops on train route
+                        for(int u = 0; u < len2; u++){
+                            final TripUpdate.StopTimeUpdate update = tu.getStopTimeUpdate(u);
+                            // check if this stop is en route
+                            if(update.getStopId().equalsIgnoreCase(stop)){
+                                vehicles.add(asVehicle(mta, entity.getVehicle(), entity.getTripUpdate()));
+                                continue OUTER;
+                            }
+                        }
+                    }
                 }
 
                 this.vehicles = Collections.unmodifiableList(vehicles);

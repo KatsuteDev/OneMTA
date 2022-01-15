@@ -176,15 +176,29 @@ abstract class OneMTASchema_LIRR extends OneMTASchema {
                 String tripVehicle    = null;
 
                 final List<Vehicle> vehicles = new ArrayList<>();
+                OUTER:
                 for(int i = 0; i < len; i++){
                     final FeedEntity entity = feed.getEntity(0);
 
                     // get next trip
                     if(entity.hasTripUpdate()){
-                        // only include trips with vehicles
-                        if(entity.getTripUpdate().hasVehicle()){
-                            tripUpdate  = entity.getTripUpdate();
-                            tripVehicle = tripUpdate.getVehicle().getLabel();
+                        if( // only include trips at this stop
+                            entity.getTripUpdate().hasVehicle() &&
+                            entity.getTripUpdate().getStopTimeUpdateCount() > 0 &&
+                            entity.getTripUpdate().getStopTimeUpdate(0).getStopId().equalsIgnoreCase(stop)
+                        ){
+                            final TripUpdate tu = entity.getTripUpdate();
+                            final int len2 = tu.getStopTimeUpdateCount();
+                            // check all stops on train route
+                            for(int u = 0; u < len2; u++){
+                                final TripUpdate.StopTimeUpdate update = tu.getStopTimeUpdate(u);
+                                // check if this stop is en route
+                                if(update.getStopId().equalsIgnoreCase(stop)){
+                                    tripUpdate  = entity.getTripUpdate();
+                                    tripVehicle = tripUpdate.getVehicle().getLabel();
+                                    continue OUTER;
+                                }
+                            }
                         }
                     }else if( // get matching vehicle for trip
                         entity.hasVehicle() &&
