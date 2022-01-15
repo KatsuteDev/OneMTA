@@ -26,8 +26,7 @@ import dev.katsute.onemta.railroad.MNR;
 import dev.katsute.onemta.subway.Subway;
 import dev.katsute.onemta.subway.SubwayDirection;
 
-import java.util.Arrays;
-import java.util.Objects;
+import java.util.*;
 
 import static dev.katsute.onemta.GTFSRealtimeProto.*;
 
@@ -103,7 +102,9 @@ final class OneMTAImpl extends OneMTA {
     // subway methods
 
     String resolveSubwayLine(final String route_id){
-        switch(route_id.toUpperCase()){
+        final String route = (route_id.startsWith("0") ? route_id.substring(1) : route_id).toUpperCase();
+
+        switch(route){
             case "A":
             case "C":
             case "E":
@@ -219,6 +220,32 @@ final class OneMTAImpl extends OneMTA {
     @Override
     public final Subway.Vehicle getSubwayTrain(final String train_id){
         Objects.requireNonNull(train_id, "Train ID must not be null");
+
+        final FeedMessage feed = resolveSubwayFeed(train_id.substring(1, 3));
+        @SuppressWarnings("ConstantConditions") // resolve will handle NPE
+        final int len          = feed.getEntityCount();
+
+        TripUpdate tripUpdate = null;
+        String tripVehicle    = null;
+
+        for(int i = 0; i < len; i++){
+            final FeedEntity entity = feed.getEntity(0);
+
+            // get next trip
+            if(entity.hasTripUpdate()){
+                if( // find trip for train
+                    entity.getTripUpdate().getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getTrainId().equals(train_id)
+                ){
+                    tripUpdate  = entity.getTripUpdate();
+                    tripVehicle = tripUpdate.getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getTrainId();
+                }
+            }else if( // get matching vehicle for trip
+                entity.hasVehicle() &&
+                entity.getVehicle().getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getTrainId().equals(tripVehicle)
+            )
+                return OneMTASchema_Subway.asVehicle(this, entity.getVehicle(), tripUpdate);
+        }
+
         return null;
     }
 
@@ -267,6 +294,7 @@ final class OneMTAImpl extends OneMTA {
             )
                 return OneMTASchema_LIRR.asVehicle(this, entity.getVehicle(), tripUpdate);
         }
+
         return null;
     }
 
@@ -302,6 +330,7 @@ final class OneMTAImpl extends OneMTA {
             )
                 return OneMTASchema_MNR.asVehicle(this, entity.getVehicle(), entity.getTripUpdate());
         }
+
         return null;
     }
 
