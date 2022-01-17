@@ -25,14 +25,13 @@ public abstract class TestProvider {
     public static OneMTA getOneMTA(){
         try{
             if(!hasBus && !hasSubway)
-                Assumptions.assumeTrue(false, Workflow.warningSupplier("Skipping tests, no token defined"));
-
+                Workflow.annotateTest(() -> Assumptions.assumeTrue(false, "No token defined, skipping tests"));
             return OneMTA.create(strip(readFile(bus)), strip(readFile(subway)));
         }catch(final IOException e){
             final StringWriter sw = new StringWriter();
             final PrintWriter pw = new PrintWriter(sw);
             e.printStackTrace(pw);
-            Assertions.fail(Workflow.errorSupplier(sw.toString()));
+            Workflow.annotateTest(() -> Assertions.fail(sw.toString()));
             return null;
         }
     }

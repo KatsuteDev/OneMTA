@@ -14,21 +14,22 @@ final class TestCSV {
     final class TestHeader {
 
         @Test
-        public final void testHeader(){
-            final CSV csv = new CSV("header,header2");
-            assertEquals(
-                Arrays.asList("header", "header2"), csv.getHeaders(),
-                errorSupplier("Expected header to match")
-            );
+        final void testHeader(){
+            annotateTest(() -> {
+                final CSV csv = new CSV("header,header2");
+
+                assertEquals(Arrays.asList("header", "header2"), csv.getHeaders());
+            });
+
         }
 
         @Test
-        public final void testHeaderQuote(){
-            final CSV csv = new CSV("header,\"header,2\"");
-            assertEquals(
-                Arrays.asList("header", "header,2"), csv.getHeaders(),
-                errorSupplier("Expected header to match")
-            );
+        final void testHeaderQuote(){
+            annotateTest(() -> {
+                final CSV csv = new CSV("header,\"header,2\"");
+
+                assertEquals(Arrays.asList("header", "header,2"), csv.getHeaders());
+            });
         }
 
     }
@@ -37,38 +38,33 @@ final class TestCSV {
     final class TestRow {
 
         @Test
-        public final void testRow(){
-            final CSV csv = new CSV("key,value\n1,one\n2,two");
-            assertEquals(
-                Arrays.asList("1", "one"), csv.getRow("key", "1"),
-                errorSupplier("Expected row to match")
-            );
-            assertEquals(
-                Arrays.asList("2", "two"), csv.getRow("key", "2"),
-                errorSupplier("Expected row to match")
-            );
+        final void testRow(){
+            annotateTest(() -> {
+                final CSV csv = new CSV("key,value\n1,one\n2,two");
+
+                assertEquals(Arrays.asList("1", "one"), csv.getRow("key", "1"));
+                assertEquals(Arrays.asList("2", "two"), csv.getRow("key", "2"));
+            });
         }
 
         @Test
-        public final void testRowQuote(){
-            final CSV csv = new CSV("key,value\n\"1,\",\"one,\"\n\",2\",\",two\"");
-            assertEquals(
-                Arrays.asList("1,", "one,"), csv.getRow("key", "1,"),
-                errorSupplier("Expected row to match")
-            );
-            assertEquals(
-                Arrays.asList(",2", ",two"), csv.getRow("key", ",2"),
-                errorSupplier("Expected row to match")
-            );
+        final void testRowQuote(){
+            annotateTest(() -> {
+                final CSV csv = new CSV("key,value\n\"1,\",\"one,\"\n\",2\",\",two\"");
+
+                assertEquals(Arrays.asList("1,", "one,"), csv.getRow("key", "1,"));
+                assertEquals(Arrays.asList(",2", ",two"), csv.getRow("key", ",2"));
+            });
+
         }
 
         @Test
-        public final void testNull(){
-            final CSV csv = new CSV("key,value");
-            assertNull(
-                csv.getRow("key", "1"),
-                errorSupplier("Expected row to be null")
-            );
+        final void testNull(){
+            annotateTest(() -> {
+                final CSV csv = new CSV("key,value");
+
+                assertNull(csv.getRow("key", "1"));
+            });
         }
 
     }
@@ -77,42 +73,34 @@ final class TestCSV {
     final class TestRowValue {
 
         @Test
-        public final void testValue(){
-            final CSV csv = new CSV("key,value\n1,one\n2,two");
-            assertEquals(
-                "one", csv.getValue("key", "1", "value"),
-                errorSupplier("Expected value to match")
-            );
-            assertEquals(
-                "two", csv.getValue("key", "2", "value"),
-                errorSupplier("Expected value to match")
-            );
+        final void testValue(){
+            annotateTest(() -> {
+                final CSV csv = new CSV("key,value\n1,one\n2,two");
+
+                assertEquals("one", csv.getValue("key", "1", "value"));
+                assertEquals("two", csv.getValue("key", "2", "value"));
+            });
+
         }
 
         @Test
-        public final void testValueQuote(){
-            final CSV csv = new CSV("key,value\n\"1,\",\"one,\"\n\",2\",\",two\"");
-            assertEquals(
-                "one,", csv.getValue("key", "1,", "value"),
-                errorSupplier("Expected row to match")
-            );
-            assertEquals(
-                ",two", csv.getValue("key", ",2", "value"),
-                errorSupplier("Expected row to match")
-            );
+        final void testValueQuote(){
+            annotateTest(() -> {
+                final CSV csv = new CSV("key,value\n\"1,\",\"one,\"\n\",2\",\",two\"");
+
+                assertEquals("one,", csv.getValue("key", "1,", "value"));
+                assertEquals(",two", csv.getValue("key", ",2", "value"));
+            });
         }
 
         @Test
-        public final void testNull(){
-            final CSV csv = new CSV("key,value\n1,one");
-            assertNull(
-                csv.getValue("key", "1", "null"),
-                errorSupplier("Expected value to be null")
-            );
-            assertNull(
-                csv.getValue("key", "2", "null"),
-                errorSupplier("Expected value to be null")
-            );
+        final void testNull(){
+            annotateTest(() -> {
+                final CSV csv = new CSV("key,value\n1,one");
+
+                assertNull(csv.getValue("key", "1", "null"));
+                assertNull(csv.getValue("key", "2", "null"));
+            });
         }
 
     }
