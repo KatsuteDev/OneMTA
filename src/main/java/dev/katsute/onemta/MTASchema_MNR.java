@@ -27,9 +27,9 @@ import static dev.katsute.onemta.MNRRProto.*;
 import static dev.katsute.onemta.railroad.MNR.*;
 
 @SuppressWarnings("SpellCheckingInspection")
-abstract class OneMTASchema_MNR extends OneMTASchema {
+abstract class MTASchema_MNR extends MTASchema {
 
-    static Route asRoute(final OneMTA mta, final int route_id){
+    static Route asRoute(final MTA mta, final int route_id){
         // find row
         final DataResource resource = getDataResource(mta, DataResourceType.MetroNorthRailroad);
         final CSV csv               = resource.getData("routes.txt");
@@ -113,7 +113,7 @@ abstract class OneMTASchema_MNR extends OneMTASchema {
         };
     }
 
-    static Stop asStop(final OneMTA mta, final String stop_code){
+    static Stop asStop(final MTA mta, final String stop_code){
         // find row
         final DataResource resource = getDataResource(mta, DataResourceType.MetroNorthRailroad);
         final CSV csv               = resource.getData("stops.txt");
@@ -125,7 +125,7 @@ abstract class OneMTASchema_MNR extends OneMTASchema {
         return asStop(mta, Integer.parseInt(row.get(csv.getHeaderIndex("stop_id"))));
     }
 
-    static Stop asStop(final OneMTA mta, final int stop_id){
+    static Stop asStop(final MTA mta, final int stop_id){
         // find row
         final DataResource resource = getDataResource(mta, DataResourceType.MetroNorthRailroad);
         final CSV csv               = resource.getData("stops.txt");
@@ -237,7 +237,7 @@ abstract class OneMTASchema_MNR extends OneMTASchema {
         };
     }
 
-    static Vehicle asVehicle(final OneMTA mta, final VehiclePosition vehicle, final TripUpdate tripUpdate){
+    static Vehicle asVehicle(final MTA mta, final VehiclePosition vehicle, final TripUpdate tripUpdate){
         return new Vehicle() {
 
             private final String vehicleID = requireNonNull(() -> vehicle.getVehicle().getLabel());
@@ -306,7 +306,7 @@ abstract class OneMTASchema_MNR extends OneMTASchema {
         };
     }
 
-    static Trip asTrip(final OneMTA mta, final TripUpdate tripUpdate, final Vehicle referringVehicle){
+    static Trip asTrip(final MTA mta, final TripUpdate tripUpdate, final Vehicle referringVehicle){
         return new Trip() {
 
             private final Vehicle vehicle = referringVehicle;
@@ -353,7 +353,7 @@ abstract class OneMTASchema_MNR extends OneMTASchema {
         };
     }
 
-    static TripStop asTripStop(final OneMTA mta, final TripUpdate.StopTimeUpdate stopTimeUpdate, final Trip referringTrip){
+    static TripStop asTripStop(final MTA mta, final TripUpdate.StopTimeUpdate stopTimeUpdate, final Trip referringTrip){
         final MnrStopTimeUpdate mnrStopTimeUpdate = stopTimeUpdate.getExtension(MNRRProto.mnrStopTimeUpdate);
         return new TripStop() {
 

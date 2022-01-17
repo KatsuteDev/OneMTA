@@ -23,14 +23,14 @@ import dev.katsute.onemta.types.TransitAgency;
 import java.util.Objects;
 import java.util.function.Supplier;
 
-abstract class OneMTASchema {
+abstract class MTASchema {
 
-    protected static DataResource getDataResource(final OneMTA mta, final DataResourceType type){
+    protected static DataResource getDataResource(final MTA mta, final DataResourceType type){
         return cast(mta).getDataResource(type);
     }
 
-    protected static OneMTAImpl cast(final OneMTA mta){
-        return (OneMTAImpl) mta;
+    protected static MTAImpl cast(final MTA mta){
+        return (MTAImpl) mta;
     }
 
     protected static <T> T requireNonNull(final Supplier<T> supplier){

@@ -5,11 +5,11 @@ import org.junit.jupiter.api.Test;
 
 final class MTATests {
 
-    private static OneMTA MTA;
+    private static MTA mta;
 
     @BeforeAll
     static void beforeAll(){
-        MTA = TestProvider.getOneMTA();
+        mta = TestProvider.getOneMTA();
     }
 
     @Test

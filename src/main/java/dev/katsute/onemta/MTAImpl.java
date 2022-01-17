@@ -32,7 +32,7 @@ import java.util.Objects;
 import static dev.katsute.onemta.GTFSRealtimeProto.*;
 
 @SuppressWarnings("SpellCheckingInspection")
-final class OneMTAImpl extends OneMTA {
+final class MTAImpl extends MTA {
 
     final transient String busToken;
     final transient String subwayToken;
@@ -41,11 +41,11 @@ final class OneMTAImpl extends OneMTA {
 
     private final DataResource[] resources;
 
-    OneMTAImpl(final String busToken, final String subwayToken){
+    MTAImpl(final String busToken, final String subwayToken){
         this(busToken, subwayToken, (DataResource[]) null);
     }
 
-    OneMTAImpl(final String busToken, final String subwayToken, final DataResource... resources){
+    MTAImpl(final String busToken, final String subwayToken, final DataResource... resources){
         this.busToken    = busToken;
         this.subwayToken = subwayToken;
         this.resources   = resources == null ? new DataResource[0] : Arrays.copyOf(resources, resources.length);
@@ -69,7 +69,7 @@ final class OneMTAImpl extends OneMTA {
 
     @Override
     public final Bus.Route getBusRoute(final String route_id, final DataResourceType type){
-        return OneMTASchema_Bus.asRoute(this, Objects.requireNonNull(route_id, "Route ID must not be null"), type);
+        return MTASchema_Bus.asRoute(this, Objects.requireNonNull(route_id, "Route ID must not be null"), type);
     }
 
     @Override
@@ -79,7 +79,7 @@ final class OneMTAImpl extends OneMTA {
 
     @Override
     public final Bus.Stop getBusStop(final int stop_id, final DataResourceType type){
-        return  OneMTASchema_Bus.asStop(this, stop_id, type);
+        return  MTASchema_Bus.asStop(this, stop_id, type);
     }
 
     @Override
@@ -97,7 +97,7 @@ final class OneMTAImpl extends OneMTA {
             .getJsonArray("VehicleActivity")[0]
             .getJsonObject("MonitoredVehicleJourney");
 
-        return OneMTASchema_Bus.asVehicle(this, monitoredVehicleJourney, null, null);
+        return MTASchema_Bus.asVehicle(this, monitoredVehicleJourney, null, null);
     }
 
     // subway methods
@@ -204,7 +204,7 @@ final class OneMTAImpl extends OneMTA {
 
     @Override
     public final Subway.Route getSubwayRoute(final String route_id){
-        return OneMTASchema_Subway.asRoute(this, Objects.requireNonNull(resolveSubwayLine(route_id), "Route ID must not be null"));
+        return MTASchema_Subway.asRoute(this, Objects.requireNonNull(resolveSubwayLine(route_id), "Route ID must not be null"));
     }
 
     @Override
@@ -214,7 +214,7 @@ final class OneMTAImpl extends OneMTA {
 
     @Override
     public final Subway.Stop getSubwayStop(final String stop_id){
-        return OneMTASchema_Subway.asStop(this, Objects.requireNonNull(stop_id, "Stop ID must not be null"));
+        return MTASchema_Subway.asStop(this, Objects.requireNonNull(stop_id, "Stop ID must not be null"));
     }
 
     @Override
@@ -224,9 +224,9 @@ final class OneMTAImpl extends OneMTA {
 
     @Override
     public final Subway.Stop getSubwayStop(final String stop_id, final SubwayDirection direction){
-        return OneMTASchema_Subway.asStop(
-            this,
-            OneMTASchema_Subway.direction
+        return MTASchema_Subway.asStop(
+                this,
+                MTASchema_Subway.direction
                 .matcher(Objects.requireNonNull(stop_id, "Stop ID must not be null"))
                 .replaceAll("") +
                 (Objects.requireNonNull(direction, "Direction must not be null") == SubwayDirection.NORTH ? 'N' : 'S')
@@ -259,7 +259,7 @@ final class OneMTAImpl extends OneMTA {
                 entity.hasVehicle() &&
                 entity.getVehicle().getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getTrainId().equals(tripVehicle)
             )
-                return OneMTASchema_Subway.asVehicle(this, entity.getVehicle(), tripUpdate);
+                return MTASchema_Subway.asVehicle(this, entity.getVehicle(), tripUpdate);
         }
 
         return null;
@@ -269,17 +269,17 @@ final class OneMTAImpl extends OneMTA {
 
     @Override
     public final LIRR.Route getLIRRRoute(final int route_id){
-        return OneMTASchema_LIRR.asRoute(this, route_id);
+        return MTASchema_LIRR.asRoute(this, route_id);
     }
 
     @Override
     public final LIRR.Stop getLIRRStop(final int stop_id){
-        return OneMTASchema_LIRR.asStop(this, stop_id);
+        return MTASchema_LIRR.asStop(this, stop_id);
     }
 
     @Override
     public final LIRR.Stop getLIRRStop(final String stop_code){
-        return OneMTASchema_LIRR.asStop(this, Objects.requireNonNull(stop_code, "Stop code must not be null"));
+        return MTASchema_LIRR.asStop(this, Objects.requireNonNull(stop_code, "Stop code must not be null"));
     }
 
     @Override
@@ -308,7 +308,7 @@ final class OneMTAImpl extends OneMTA {
                 entity.hasVehicle() &&
                 entity.getVehicle().getVehicle().getLabel().equals(tripVehicle)
             )
-                return OneMTASchema_LIRR.asVehicle(this, entity.getVehicle(), tripUpdate);
+                return MTASchema_LIRR.asVehicle(this, entity.getVehicle(), tripUpdate);
         }
 
         return null;
@@ -318,17 +318,17 @@ final class OneMTAImpl extends OneMTA {
 
     @Override
     public final MNR.Route getMNRRoute(final int route_id){
-        return OneMTASchema_MNR.asRoute(this, route_id);
+        return MTASchema_MNR.asRoute(this, route_id);
     }
 
     @Override
     public final MNR.Stop getMNRStop(final int stop_id){
-        return OneMTASchema_MNR.asStop(this, stop_id);
+        return MTASchema_MNR.asStop(this, stop_id);
     }
 
     @Override
     public final MNR.Stop getMNRStop(final String stop_code){
-        return OneMTASchema_MNR.asStop(this, Objects.requireNonNull(stop_code, "Stop code must not be null"));
+        return MTASchema_MNR.asStop(this, Objects.requireNonNull(stop_code, "Stop code must not be null"));
     }
 
     @Override
@@ -344,7 +344,7 @@ final class OneMTAImpl extends OneMTA {
                 entity.getVehicle().hasVehicle() &&
                 train_id.equals(entity.getVehicle().getVehicle().getLabel())
             )
-                return OneMTASchema_MNR.asVehicle(this, entity.getVehicle(), entity.getTripUpdate());
+                return MTASchema_MNR.asVehicle(this, entity.getVehicle(), entity.getTripUpdate());
         }
 
         return null;

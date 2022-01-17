@@ -29,13 +29,13 @@ import java.util.*;
 import static dev.katsute.onemta.bus.Bus.*;
 
 @SuppressWarnings({"SpellCheckingInspection", "ConstantConditions"})
-abstract class OneMTASchema_Bus extends OneMTASchema {
+abstract class MTASchema_Bus extends MTASchema {
 
-    static Route asRoute(final OneMTA mta, final String route_id){
+    static Route asRoute(final MTA mta, final String route_id){
         return asRoute(mta, route_id, null);
     }
 
-    static Route asRoute(final OneMTA mta, final String route_id, final DataResourceType type){
+    static Route asRoute(final MTA mta, final String route_id, final DataResourceType type){
         final String id = route_id.toUpperCase();
         // populate bus resources
         final List<DataResource> resources = new ArrayList<>();
@@ -216,11 +216,11 @@ abstract class OneMTASchema_Bus extends OneMTASchema {
         };
     }
 
-    static Stop asStop(final OneMTA mta, final int stop_id){
+    static Stop asStop(final MTA mta, final int stop_id){
         return asStop(mta, stop_id, null);
     }
 
-    static Stop asStop(final OneMTA mta, final int stop_id, final DataResourceType type){
+    static Stop asStop(final MTA mta, final int stop_id, final DataResourceType type){
         // populate bus resources
         final List<DataResource> resources = new ArrayList<>();
 
@@ -340,7 +340,7 @@ abstract class OneMTASchema_Bus extends OneMTASchema {
 
     private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
 
-    static Vehicle asVehicle(final OneMTA mta, final JsonObject monitoredVehicleJourney, final Route optionalRoute, final Stop optionalStop){
+    static Vehicle asVehicle(final MTA mta, final JsonObject monitoredVehicleJourney, final Route optionalRoute, final Stop optionalStop){
         final JsonObject monitoredCall = monitoredVehicleJourney.getJsonObject("MonitoredCall");
         return new Vehicle() {
 
@@ -559,7 +559,7 @@ abstract class OneMTASchema_Bus extends OneMTASchema {
         };
     }
 
-    static Trip asTrip(final OneMTA mta, final JsonObject onwardCalls, final Vehicle referringVehicle){
+    static Trip asTrip(final MTA mta, final JsonObject onwardCalls, final Vehicle referringVehicle){
         if(onwardCalls == null) return null;
         return new Trip() {
 
@@ -595,7 +595,7 @@ abstract class OneMTASchema_Bus extends OneMTASchema {
         };
     }
 
-    static TripStop asTripStop(final OneMTA mta, final JsonObject onwardCall, final Trip referringTrip){
+    static TripStop asTripStop(final MTA mta, final JsonObject onwardCall, final Trip referringTrip){
         return new TripStop() {
 
             private final Trip trip = referringTrip;

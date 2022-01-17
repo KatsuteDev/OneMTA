@@ -25,16 +25,16 @@ import dev.katsute.onemta.subway.Subway;
 import dev.katsute.onemta.subway.SubwayDirection;
 
 @SuppressWarnings("SpellCheckingInspection")
-public abstract class OneMTA {
+public abstract class MTA {
 
-    OneMTA(){ }
+    MTA(){ }
 
-    public static OneMTA create(final String busToken, final String subwayToken){
-        return new OneMTAImpl(busToken, subwayToken);
+    public static MTA create(final String busToken, final String subwayToken){
+        return new MTAImpl(busToken, subwayToken);
     }
 
-    public static OneMTA create(final String busToken, final String subwayToken, final DataResource... resources){
-        return new OneMTAImpl(busToken, subwayToken, resources);
+    public static MTA create(final String busToken, final String subwayToken, final DataResource... resources){
+        return new MTAImpl(busToken, subwayToken, resources);
     }
 
     // bus methods

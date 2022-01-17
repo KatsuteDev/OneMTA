@@ -15,7 +15,7 @@ public class FeedExporter {
     @SuppressWarnings("SpellCheckingInspection")
     @Test
     public void exportFeeds() throws IOException{
-        final OneMTAImpl mta = (OneMTAImpl) TestProvider.getOneMTA();
+        final MTAImpl mta = (MTAImpl) TestProvider.getOneMTA();
 
         assert mta != null;
 
@@ -47,7 +47,7 @@ public class FeedExporter {
 
     @Test
     public void exportBusVehicle() throws IOException{
-         final OneMTAImpl mta = (OneMTAImpl) TestProvider.getOneMTA();
+         final MTAImpl mta = (MTAImpl) TestProvider.getOneMTA();
 
          assert mta != null;
 
