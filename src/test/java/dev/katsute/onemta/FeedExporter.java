@@ -70,22 +70,22 @@ final class FeedExporter {
     final void exportServiceAlerts() throws IOException{
         Files.write(
             new File("reference/bus-alerts-gtfs.json").toPath(),
-            gson.toJson(JsonParser.parseString(mta.service.alerts.getBus(mta.subwayToken).getRaw())).getBytes(StandardCharsets.UTF_8)
+            JsonFormat.printer().print(mta.service.alerts.getBus(mta.subwayToken)).getBytes(StandardCharsets.UTF_8)
         );
 
         Files.write(
             new File("reference/subway-alerts-gtfs.json").toPath(),
-            gson.toJson(JsonParser.parseString(mta.service.alerts.getSubway(mta.subwayToken).getRaw())).getBytes(StandardCharsets.UTF_8)
+            JsonFormat.printer().print(mta.service.alerts.getSubway(mta.subwayToken)).getBytes(StandardCharsets.UTF_8)
         );
 
         Files.write(
             new File("reference/lirr-alerts-gtfs.json").toPath(),
-            gson.toJson(JsonParser.parseString(mta.service.alerts.getLIRR(mta.subwayToken).getRaw())).getBytes(StandardCharsets.UTF_8)
+            JsonFormat.printer().print(mta.service.alerts.getLIRR(mta.subwayToken)).getBytes(StandardCharsets.UTF_8)
         );
 
         Files.write(
             new File("reference/mnr-alerts-gtfs.json").toPath(),
-            gson.toJson(JsonParser.parseString(mta.service.alerts.getMNR(mta.subwayToken).getRaw())).getBytes(StandardCharsets.UTF_8)
+            JsonFormat.printer().print(mta.service.alerts.getMNR(mta.subwayToken)).getBytes(StandardCharsets.UTF_8)
         );
     }
 

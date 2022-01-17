@@ -216,11 +216,11 @@ final class MTAService {
 
         private final String baseURL = "https://api-endpoint.mta.info/Dataservice/mtagtfsfeeds/";
 
-        final JsonObject getBus(
+        final FeedMessage getBus(
             final String token
         ){
-            return cache.getJSON(
-                baseURL + "camsys%2Fbus-alerts.json",
+            return cache.getProtobuf(
+                baseURL + "camsys%2Fbus-alerts",
                 new HashMap<>(),
                 new HashMap<String,String>(){{
                     put("x-api-key", token);
@@ -228,11 +228,11 @@ final class MTAService {
             );
         }
 
-        final JsonObject getSubway(
+        final FeedMessage getSubway(
             final String token
         ){
-            return cache.getJSON(
-                baseURL + "camsys%2Fsubway-alerts.json",
+            return cache.getProtobuf(
+                baseURL + "camsys%2Fsubway-alerts",
                 new HashMap<>(),
                 new HashMap<String,String>(){{
                     put("x-api-key", token);
@@ -240,11 +240,11 @@ final class MTAService {
             );
         }
 
-        final JsonObject getLIRR(
+        final FeedMessage getLIRR(
             final String token
         ){
-            return cache.getJSON(
-                baseURL + "camsys%2Flirr-alerts.json",
+            return cache.getProtobuf(
+                baseURL + "camsys%2Flirr-alerts",
                 new HashMap<>(),
                 new HashMap<String,String>(){{
                     put("x-api-key", token);
@@ -252,11 +252,11 @@ final class MTAService {
             );
         }
 
-        final JsonObject getMNR(
+        final FeedMessage getMNR(
             final String token
         ){
-            return cache.getJSON(
-                baseURL + "camsys%2Fmnr-alerts.json",
+            return cache.getProtobuf(
+                baseURL + "camsys%2Fmnr-alerts",
                 new HashMap<>(),
                 new HashMap<String,String>(){{
                     put("x-api-key", token);
