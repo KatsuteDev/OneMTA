@@ -50,7 +50,7 @@ abstract class MTASchema_MNR extends MTASchema {
             private final List<Vehicle> vehicles;
 
             {
-                final FeedMessage feed = cast(mta).service.mnrr.getMNRR(cast(mta).subwayToken);
+                final FeedMessage feed = cast(mta).service.mnr.getMNR(cast(mta).subwayToken);
                 final int len          = feed.getEntityCount();
 
                 final List<Vehicle> vehicles = new ArrayList<>();
@@ -151,7 +151,7 @@ abstract class MTASchema_MNR extends MTASchema {
             {
                 final String stop = String.valueOf(stop_id);
 
-                final FeedMessage feed = cast(mta).service.mnrr.getMNRR(cast(mta).subwayToken);
+                final FeedMessage feed = cast(mta).service.mnr.getMNR(cast(mta).subwayToken);
                 final int len          = feed.getEntityCount();
 
                 final List<Vehicle> vehicles = new ArrayList<>();

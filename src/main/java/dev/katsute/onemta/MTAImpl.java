@@ -314,7 +314,7 @@ final class MTAImpl extends MTA {
         return null;
     }
 
-    // mnrr methods
+    // mnr methods
 
     @Override
     public final MNR.Route getMNRRoute(final int route_id){
@@ -334,7 +334,7 @@ final class MTAImpl extends MTA {
     @Override
     public final MNR.Vehicle getMNRTrain(final String train_id){
         Objects.requireNonNull(train_id, "Train ID must not be null");
-        final FeedMessage feed = service.mnrr.getMNRR(subwayToken);
+        final FeedMessage feed = service.mnr.getMNR(subwayToken);
         final int len = feed.getEntityCount();
 
         for(int i = 0; i < len; i++){

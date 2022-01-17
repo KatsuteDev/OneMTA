@@ -41,7 +41,7 @@ public class FeedExporter {
         );
         Files.write(
             new File("reference/mnr-gtfs.json").toPath(),
-            JsonFormat.printer().print(mta.service.mnrr.getMNRR(mta.subwayToken)).getBytes(StandardCharsets.UTF_8)
+            JsonFormat.printer().print(mta.service.mnr.getMNR(mta.subwayToken)).getBytes(StandardCharsets.UTF_8)
         );
     }
 

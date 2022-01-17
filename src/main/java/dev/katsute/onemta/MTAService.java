@@ -33,7 +33,7 @@ final class MTAService {
     final BusService bus        = new BusService();
     final SubwayService subway  = new SubwayService();
     final LIRRService lirr    = new LIRRService();
-    final MNRRService mnrr    = new MNRRService();
+    final MNRRService mnr = new MNRRService();
 
     final class BusService {
 
@@ -196,7 +196,7 @@ final class MTAService {
 
         private final String baseURL = "https://api-endpoint.mta.info/Dataservice/mtagtfsfeeds/";
 
-        final FeedMessage getMNRR(final String token){
+        final FeedMessage getMNR(final String token){
             return cache.getProtobuf(
                 baseURL + "mnr%2Fgtfs-mnr",
                 new HashMap<>(),

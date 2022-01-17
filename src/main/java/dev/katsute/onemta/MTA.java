@@ -75,7 +75,7 @@ public abstract class MTA {
 
     public abstract LIRR.Vehicle getLIRRTrain(final String train_id);
 
-    // mnrr methods
+    // mnr methods
 
     public abstract MNR.Route getMNRRoute(final int route_id);
 
