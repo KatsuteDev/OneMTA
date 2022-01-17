@@ -51,9 +51,15 @@ public abstract class OneMTA {
 
     // subway methods
 
+    public abstract Subway.Route getSubwayRoute(final int route_id);
+
     public abstract Subway.Route getSubwayRoute(final String route_id);
 
+    public abstract Subway.Stop getSubwayStop(final int stop_id);
+
     public abstract Subway.Stop getSubwayStop(final String stop_id);
+
+    public abstract Subway.Stop getSubwayStop(final int stop_id, final SubwayDirection direction);
 
     public abstract Subway.Stop getSubwayStop(final String stop_id, final SubwayDirection direction);
 

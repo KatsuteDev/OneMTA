@@ -198,13 +198,28 @@ final class OneMTAImpl extends OneMTA {
     }
 
     @Override
+    public final Subway.Route getSubwayRoute(final int route_id){
+        return getSubwayRoute(String.valueOf(route_id));
+    }
+
+    @Override
     public final Subway.Route getSubwayRoute(final String route_id){
         return OneMTASchema_Subway.asRoute(this, Objects.requireNonNull(resolveSubwayLine(route_id), "Route ID must not be null"));
     }
 
     @Override
+    public final Subway.Stop getSubwayStop(final int stop_id){
+        return getSubwayStop(String.valueOf(stop_id));
+    }
+
+    @Override
     public final Subway.Stop getSubwayStop(final String stop_id){
         return OneMTASchema_Subway.asStop(this, Objects.requireNonNull(stop_id, "Stop ID must not be null"));
+    }
+
+    @Override
+    public final Subway.Stop getSubwayStop(final int stop_id, final SubwayDirection direction){
+        return getSubwayStop(String.valueOf(stop_id), direction);
     }
 
     @Override

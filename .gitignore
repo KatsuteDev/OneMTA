@@ -7,6 +7,7 @@ target
 # testing
 /src/test/java/resources/*.txt
 /src/test/java/resources/*.zip
+/src/test/java/resources/TEST_LOCK
 
 # protobuf
 /protobuf/**/*.java
