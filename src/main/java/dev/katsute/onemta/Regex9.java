@@ -28,7 +28,6 @@ import java.util.regex.Matcher;
  */
 abstract class Regex9 {
 
-
     /**
      * Replaces all using a function. Make sure that the function does not modify the matcher.
      *

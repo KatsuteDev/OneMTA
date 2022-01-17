@@ -495,10 +495,10 @@ abstract class MTASchema_Subway extends MTASchema {
 
             private final String ID = requireNonNull(feedEntity::getId);
 
-            private final String headerText      = alert.getHeaderText().getTranslation(0).getText();
-            private final String descriptionText = alert.getDescriptionText().getTranslation(0).getText();
+            private final String headerText      = requireNonNull(() -> alert.getHeaderText().getTranslation(0).getText());
+            private final String descriptionText = requireNonNull(() -> alert.getDescriptionText().getTranslation(0).getText());
 
-            private final String alertType = alert.getExtension(ServiceStatusProto.mercuryAlert).getAlertType();
+            private final String alertType = requireNonNull(() -> alert.getExtension(ServiceStatusProto.mercuryAlert).getAlertType());
 
             private final List<TransitAlertPeriod> alertPeriods;
             private final List<String> routeIDs;
