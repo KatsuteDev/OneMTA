@@ -47,7 +47,7 @@ abstract class OneMTASchema {
         return new TransitAgency() {
 
             private final String agencyID   = agency_id.toUpperCase();
-            private final String agencyName = resource.getData("agency.csv").getValue("agency_id", agencyID, "agency_name");
+            private final String agencyName = resource.getData("agency.txt").getValue("agency_id", agencyID, "agency_name");
 
             // static data
 

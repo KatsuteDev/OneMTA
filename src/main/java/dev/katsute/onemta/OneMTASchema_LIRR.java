@@ -32,7 +32,7 @@ abstract class OneMTASchema_LIRR extends OneMTASchema {
     static Route asRoute(final OneMTA mta, final int route_id){
         // find row
         final DataResource resource = getDataResource(mta, DataResourceType.LongIslandRailroad);
-        final CSV csv               = resource.getData("routes.csv");
+        final CSV csv               = resource.getData("routes.txt");
         final List<String> row      = csv.getRow("route_id", String.valueOf(route_id));
 
         // instantiate
@@ -134,7 +134,7 @@ abstract class OneMTASchema_LIRR extends OneMTASchema {
     static Stop asStop(final OneMTA mta, final String stop_code){
         // find row
         final DataResource resource = getDataResource(mta, DataResourceType.LongIslandRailroad);
-        final CSV csv               = resource.getData("stops.csv");
+        final CSV csv               = resource.getData("stops.txt");
         final List<String> row      = csv.getRow("stop_code", stop_code.toUpperCase());
 
         // instantiate
@@ -146,7 +146,7 @@ abstract class OneMTASchema_LIRR extends OneMTASchema {
     static Stop asStop(final OneMTA mta, final int stop_id){
         // find row
         final DataResource resource = getDataResource(mta, DataResourceType.LongIslandRailroad);
-        final CSV csv               = resource.getData("stops.csv");
+        final CSV csv               = resource.getData("stops.txt");
         final List<String> row      = csv.getRow("stop_id", String.valueOf(stop_id));
 
         // instantiate

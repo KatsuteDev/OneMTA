@@ -35,7 +35,7 @@ abstract class OneMTASchema_Subway extends OneMTASchema {
     static Route asRoute(final OneMTA mta, final String route_id){
         // find row
         final DataResource resource = getDataResource(mta, DataResourceType.Subway);
-        final CSV csv               = resource.getData("routes.csv");
+        final CSV csv               = resource.getData("routes.txt");
         final List<String> row      = csv.getRow("route_id", route_id);
 
         // instantiate
@@ -149,7 +149,7 @@ abstract class OneMTASchema_Subway extends OneMTASchema {
         final String stop = stop_id.toUpperCase();
         // find row
         final DataResource resource = getDataResource(mta, DataResourceType.Subway);
-        final CSV csv               = resource.getData("stops.csv");
+        final CSV csv               = resource.getData("stops.txt");
         final List<String> row      = csv.getRow("stop_id", stop);
 
         // instantiate

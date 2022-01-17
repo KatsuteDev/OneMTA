@@ -17,8 +17,10 @@ import static org.junit.jupiter.api.Assumptions.*;
 
 public abstract class TestProvider {
 
-    private static final File bus    = new File("src/test/java/resources/token_bus.txt");
-    private static final File subway = new File("src/test/java/resources/token_subway.txt");
+    private static final File test_resources = new File("src/test/java/resources");
+
+    private static final File bus    = new File(test_resources, "token_bus.txt");
+    private static final File subway = new File(test_resources, "token_subway.txt");
 
     private static final boolean hasBus    = bus.exists();
     private static final boolean hasSubway = subway.exists();
@@ -42,7 +44,7 @@ public abstract class TestProvider {
 
             for(final Map.Entry<DataResourceType,String> entry : resources.entrySet())
                 try(final BufferedInputStream IN = new BufferedInputStream(new URL(entry.getValue()).openStream())){
-                    final File file = new File("src/test/java/resources/resource_" + entry.getKey().name().toLowerCase() + ".zip");
+                    final File file = new File(test_resources, "resource_" + entry.getKey().name().toLowerCase() + ".zip");
                     if(!file.exists())
                         try(final FileOutputStream OUT = new FileOutputStream(file)){
                             byte[] buffer = new byte[1024];
@@ -52,7 +54,11 @@ public abstract class TestProvider {
                         }
                 }
 
-            return OneMTA.create(strip(readFile(bus)), strip(readFile(subway)));
+            final List<DataResource> resources = new ArrayList<>();
+            for(final DataResourceType type : TestProvider.resources.keySet())
+                resources.add(DataResource.create(type, new File(test_resources, "resource_" + type.name().toLowerCase() + ".zip")));
+
+            return OneMTA.create(strip(readFile(bus)), strip(readFile(subway)), resources.toArray(new DataResource[0]));
         }catch(final IOException e){
             final StringWriter sw = new StringWriter();
             final PrintWriter pw = new PrintWriter(sw);

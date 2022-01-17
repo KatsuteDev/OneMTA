@@ -88,7 +88,7 @@ abstract class OneMTASchema_Bus extends OneMTASchema {
             if(
                 (r =
                     (c =
-                        (d = dr).getData("routes.csv"))
+                        (d = dr).getData("routes.txt"))
                     .getRow("route_id", id)
                 ) != null
             )
@@ -253,7 +253,7 @@ abstract class OneMTASchema_Bus extends OneMTASchema {
             if(
                 (r =
                     (c =
-                        (d = dr).getData("stops.csv"))
+                        (d = dr).getData("stops.txt"))
                     .getRow("stop_id", String.valueOf(stop_id))
                 ) != null
             )
@@ -560,6 +560,7 @@ abstract class OneMTASchema_Bus extends OneMTASchema {
     }
 
     static Trip asTrip(final OneMTA mta, final JsonObject onwardCalls, final Vehicle referringVehicle){
+        if(onwardCalls == null) return null;
         return new Trip() {
 
             private final Vehicle vehicle = referringVehicle;
