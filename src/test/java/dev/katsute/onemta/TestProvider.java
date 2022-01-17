@@ -8,8 +8,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.function.Function;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
@@ -26,10 +25,34 @@ public abstract class TestProvider {
     private static final boolean hasBus    = bus.exists();
     private static final boolean hasSubway = subway.exists();
 
+    private static final Map<DataResourceType,String> resources = new HashMap<DataResourceType,String>(){{
+        put(DataResourceType.Subway             , "http://web.mta.info/developers/data/nyct/subway/google_transit.zip");
+        put(DataResourceType.Bus_Bronx          , "http://web.mta.info/developers/data/nyct/bus/google_transit_bronx.zip");
+        put(DataResourceType.Bus_Brooklyn       , "http://web.mta.info/developers/data/nyct/bus/google_transit_brooklyn.zip");
+        put(DataResourceType.Bus_Manhattan      , "http://web.mta.info/developers/data/nyct/bus/google_transit_manhattan.zip");
+        put(DataResourceType.Bus_Queens         , "http://web.mta.info/developers/data/nyct/bus/google_transit_queens.zip");
+        put(DataResourceType.Bus_StatenIsland   , "http://web.mta.info/developers/data/nyct/bus/google_transit_staten_island.zip");
+        put(DataResourceType.LongIslandRailroad , "http://web.mta.info/developers/data/lirr/google_transit.zip");
+        put(DataResourceType.MetroNorthRailroad , "http://web.mta.info/developers/data/mnr/google_transit.zip");
+        put(DataResourceType.Bus_Company        , "http://web.mta.info/developers/data/busco/google_transit.zip");
+    }};
+
     public static OneMTA getOneMTA(){
         try{
             if(!hasBus && !hasSubway)
                 annotateTest(() -> assumeTrue(false, "No token defined, skipping tests"));
+
+            // try (BufferedInputStream in = new BufferedInputStream(new URL(FILE_URL).openStream());
+            //  FileOutputStream fileOutputStream = new FileOutputStream(FILE_NAME)) {
+            //    byte dataBuffer[] = new byte[1024];
+            //    int bytesRead;
+            //    while ((bytesRead = in.read(dataBuffer, 0, 1024)) != -1) {
+            //        fileOutputStream.write(dataBuffer, 0, bytesRead);
+            //    }
+            //} catch (IOException e) {
+            //    // handle exception
+            //}
+
             return OneMTA.create(strip(readFile(bus)), strip(readFile(subway)));
         }catch(final IOException e){
             final StringWriter sw = new StringWriter();
