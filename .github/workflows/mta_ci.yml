@@ -28,11 +28,11 @@ jobs:
 
       - name: 🔐 Load Client ID
         run: |
-          echo ${{ secrets.BUS_TOKEN }} > src/test/java/resources/bus.txt
+          echo ${{ secrets.BUS_TOKEN }} > src/test/java/resources/token_bus.txt
 
       - name: 🔐 Load OAuth Token
         run: |
-          echo ${{ secrets.SUBWAY_TOKEN }} > src/test/java/resources/subway.txt
+          echo ${{ secrets.SUBWAY_TOKEN }} > src/test/java/resources/token_subway.txt
 
       - name: ✔ Test with Maven
         run: mvn test -fae --no-transfer-progress

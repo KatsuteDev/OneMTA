@@ -1,11 +1,9 @@
 package dev.katsute.onemta;
 
-import dev.katsute.jcore.Workflow;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Assumptions;
 import org.junit.jupiter.params.provider.Arguments;
 
 import java.io.*;
+import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.*;
@@ -19,8 +17,8 @@ import static org.junit.jupiter.api.Assumptions.*;
 
 public abstract class TestProvider {
 
-    private static final File bus    = new File("src/test/java/resources/bus.txt");
-    private static final File subway = new File("src/test/java/resources/subway.txt");
+    private static final File bus    = new File("src/test/java/resources/token_bus.txt");
+    private static final File subway = new File("src/test/java/resources/token_subway.txt");
 
     private static final boolean hasBus    = bus.exists();
     private static final boolean hasSubway = subway.exists();
@@ -42,16 +40,17 @@ public abstract class TestProvider {
             if(!hasBus && !hasSubway)
                 annotateTest(() -> assumeTrue(false, "No token defined, skipping tests"));
 
-            // try (BufferedInputStream in = new BufferedInputStream(new URL(FILE_URL).openStream());
-            //  FileOutputStream fileOutputStream = new FileOutputStream(FILE_NAME)) {
-            //    byte dataBuffer[] = new byte[1024];
-            //    int bytesRead;
-            //    while ((bytesRead = in.read(dataBuffer, 0, 1024)) != -1) {
-            //        fileOutputStream.write(dataBuffer, 0, bytesRead);
-            //    }
-            //} catch (IOException e) {
-            //    // handle exception
-            //}
+            for(final Map.Entry<DataResourceType,String> entry : resources.entrySet())
+                try(final BufferedInputStream IN = new BufferedInputStream(new URL(entry.getValue()).openStream())){
+                    final File file = new File("src/test/java/resources/resource_" + entry.getKey().name().toLowerCase() + ".zip");
+                    if(!file.exists())
+                        try(final FileOutputStream OUT = new FileOutputStream(file)){
+                            byte[] buffer = new byte[1024];
+                            int bytesReads;
+                            while((bytesReads = IN.read(buffer, 0, 1024)) != -1)
+                                OUT.write(buffer, 0, bytesReads);
+                        }
+                }
 
             return OneMTA.create(strip(readFile(bus)), strip(readFile(subway)));
         }catch(final IOException e){
