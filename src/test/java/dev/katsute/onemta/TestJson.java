@@ -23,7 +23,7 @@ final class TestJson {
     private static List<?> jsonArray;
 
     @BeforeAll
-    public static void beforeAll() throws IOException{
+    static void beforeAll() throws IOException{
         final String map = TestProvider.readFile(new File("src/test/java/resources/map.json")).replaceAll("\\r?\\n", "");
         jsonObject = (JsonObject) parse(map);
 
