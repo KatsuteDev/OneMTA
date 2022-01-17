@@ -18,10 +18,24 @@
 
 package dev.katsute.onemta.types;
 
-public abstract class GTFSTransitTrip<V extends TransitVehicle<?,?,?,?,?,?>, R extends TransitRoute<?,?,?>, S extends TransitTripStop<?,?,?>> extends TransitTrip<V,R,S> {
+public abstract class TransitAlert<RID, R extends TransitRoute<?,?,?>, SID, S extends TransitStop<?,?,?>> {
 
-    public abstract String getTripID();
+    public abstract String getID();
 
-    public abstract String getRouteID();
+    public abstract TransitAlertPeriod[] getActivePeriods();
+
+    public abstract RID[] getRouteIDs();
+
+    public abstract R[] getRoutes();
+
+    public abstract SID[] getStopIDs();
+
+    public abstract S[] getStops();
+
+    public abstract String getHeaderText();
+
+    public abstract String getDescriptionText();
+
+    public abstract String getAlertType();
 
 }

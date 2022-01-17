@@ -21,6 +21,7 @@ package dev.katsute.onemta;
 import dev.katsute.onemta.Json.JsonObject;
 import dev.katsute.onemta.bus.BusDirection;
 import dev.katsute.onemta.types.TransitAgency;
+import dev.katsute.onemta.types.TransitAlertPeriod;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -203,6 +204,24 @@ abstract class MTASchema_Bus extends MTASchema {
                 return vehicles.toArray(new Vehicle[0]);
             }
 
+            private List<Alert> alerts = null;
+
+            @Override
+            public final Alert[] getAlerts(){
+                if(alerts == null){
+                    final List<Alert> alerts = new ArrayList<>();
+                    final GTFSRealtimeProto.FeedMessage feed = cast(mta).service.alerts.getBus(cast(mta).subwayToken);
+                    final int len = feed.getEntityCount();
+                    for(int i = 0; i < len; i++){
+                        final Alert alert = MTASchema_Bus.asTransitAlert(mta, feed.getEntity(i));
+                        if(Arrays.asList(alert.getRouteIDs()).contains(route_id))
+                            alerts.add(alert);
+                    }
+                    this.alerts = alerts;
+                }
+                return alerts.toArray(new Alert[0]);
+            }
+
             // Java
 
             @Override
@@ -323,6 +342,24 @@ abstract class MTASchema_Bus extends MTASchema {
             @Override
             public final Vehicle[] getVehicles(){
                 return vehicles.toArray(new Vehicle[0]);
+            }
+
+            private List<Alert> alerts = null;
+
+            @Override
+            public final Alert[] getAlerts(){
+                if(alerts != null){
+                    final List<Alert> alerts = new ArrayList<>();
+                    final GTFSRealtimeProto.FeedMessage feed = cast(mta).service.alerts.getBus(cast(mta).subwayToken);
+                    final int len = feed.getEntityCount();
+                    for(int i = 0; i < len; i++){
+                        final Alert alert = MTASchema_Bus.asTransitAlert(mta, feed.getEntity(i));
+                        if(Arrays.asList(alert.getStopIDs()).contains(stop_id))
+                            alerts.add(alert);
+                    }
+                    this.alerts = alerts;
+                }
+                return alerts.toArray(new Alert[0]);
             }
 
             // Java
@@ -662,6 +699,105 @@ abstract class MTASchema_Bus extends MTASchema {
             @Override
             public final Trip getTrip(){
                 return trip;
+            }
+
+        };
+    }
+
+    static Alert asTransitAlert(final MTA mta, final GTFSRealtimeProto.FeedEntity feedEntity){
+        final GTFSRealtimeProto.Alert alert = feedEntity.getAlert();
+        return new Alert() {
+
+            private final String ID = requireNonNull(feedEntity::getId);
+
+            private final String headerText      = alert.getHeaderText().getTranslation(0).getText();
+            private final String descriptionText = alert.getDescriptionText().getTranslation(0).getText();
+
+            private final String alertType = alert.getExtension(ServiceStatusProto.mercuryAlert).getAlertType();
+
+            private final List<TransitAlertPeriod> alertPeriods;
+            private final List<String> routeIDs;
+            private final List<Integer> stopIDs;
+
+            {
+                final List<TransitAlertPeriod> alertPeriods = new ArrayList<>();
+                for(final GTFSRealtimeProto.TimeRange range : alert.getActivePeriodList())
+                    alertPeriods.add(asTransitAlertTimeframe(mta, range));
+                this.alertPeriods = Collections.unmodifiableList(alertPeriods);
+
+                final List<String> routeIDs = new ArrayList<>();
+                final List<Integer> stopIDs = new ArrayList<>();
+                final int len = alert.getInformedEntityCount();
+                for(int i = 0; i < len; i++){
+                    final GTFSRealtimeProto.EntitySelector entity = alert.getInformedEntity(i);
+                    if(entity.hasRouteId())
+                        routeIDs.add(entity.getRouteId());
+                    else if(entity.hasStopId())
+                        stopIDs.add(Integer.valueOf(entity.getRouteId()));
+                }
+                this.routeIDs = Collections.unmodifiableList(routeIDs);
+                this.stopIDs  = Collections.unmodifiableList(stopIDs);
+            }
+
+            @Override
+            public final String getID(){
+                return ID;
+            }
+
+            @Override
+            public final TransitAlertPeriod[] getActivePeriods(){
+                return alertPeriods.toArray(new TransitAlertPeriod[0]);
+            }
+
+            @Override
+            public final String[] getRouteIDs(){
+                return routeIDs.toArray(new String[0]);
+            }
+
+            private List<Route> routes = null;
+
+            @Override
+            public final Route[] getRoutes(){
+                if(routes == null){
+                    final List<Route> routes = new ArrayList<>();
+                    for(final String id : routeIDs)
+                        routes.add(mta.getBusRoute(id));
+                    this.routes = Collections.unmodifiableList(routes);
+                }
+                return routes.toArray(new Route[0]);
+            }
+
+            @Override
+            public final Integer[] getStopIDs(){
+                return stopIDs.toArray(new Integer[0]);
+            }
+
+            private List<Stop> stops = null;
+
+            @Override
+            public final Stop[] getStops(){
+                if(routes == null){
+                    final List<Stop> stops = new ArrayList<>();
+                    for(final Integer id : stopIDs)
+                        stops.add(mta.getBusStop(id));
+                    this.stops = Collections.unmodifiableList(stops);
+                }
+                return stops.toArray(new Stop[0]);
+            }
+
+            @Override
+            public final String getHeaderText(){
+                return headerText;
+            }
+
+            @Override
+            public final String getDescriptionText(){
+                return descriptionText;
+            }
+
+            @Override
+            public final String getAlertType(){
+                return alertType;
             }
 
         };

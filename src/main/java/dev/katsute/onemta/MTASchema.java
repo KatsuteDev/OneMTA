@@ -19,9 +19,13 @@
 package dev.katsute.onemta;
 
 import dev.katsute.onemta.types.TransitAgency;
+import dev.katsute.onemta.types.TransitAlertPeriod;
 
+import java.util.Date;
 import java.util.Objects;
 import java.util.function.Supplier;
+
+import static dev.katsute.onemta.GTFSRealtimeProto.*;
 
 abstract class MTASchema {
 
@@ -78,6 +82,35 @@ abstract class MTASchema {
                        "agencyID='" + agencyID + '\'' +
                        ", agencyName='" + agencyName + '\'' +
                        '}';
+            }
+
+        };
+    }
+
+    static TransitAlertPeriod asTransitAlertTimeframe(final MTA mta, final TimeRange timeRange){
+        return new TransitAlertPeriod() {
+
+            private final Long start = requireNonNull(timeRange::getStart);
+            private final Long end = requireNonNull(timeRange::getEnd);
+
+            @Override
+            public final Long getStartEpochMillis(){
+                return start;
+            }
+
+            @Override
+            public final Date getStart(){
+                return start != null ? new Date(start) : null;
+            }
+
+            @Override
+            public final Long getEndEpochMillis(){
+                return end;
+            }
+
+            @Override
+            public final Date getEnd(){
+                return end != null ? new Date(end) : null;
             }
 
         };

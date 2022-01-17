@@ -20,7 +20,7 @@ package dev.katsute.onemta.types;
 
 import java.util.Date;
 
-public abstract class GTFSTripStop<S extends TransitStop<?,?>, T extends TransitTrip<?,?,?>, SID> extends TransitTripStop<S,T, SID> {
+public abstract class GTFSTripStop<S extends TransitStop<?,?,?>, T extends TransitTrip<?,?,?>, SID> extends TransitTripStop<S,T,SID> {
 
     public abstract Long getArrivalTimeEpochMillis();
 

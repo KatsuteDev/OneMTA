@@ -26,8 +26,7 @@ import dev.katsute.onemta.railroad.MNR;
 import dev.katsute.onemta.subway.Subway;
 import dev.katsute.onemta.subway.SubwayDirection;
 
-import java.util.Arrays;
-import java.util.Objects;
+import java.util.*;
 
 import static dev.katsute.onemta.GTFSRealtimeProto.*;
 
@@ -98,6 +97,16 @@ final class MTAImpl extends MTA {
             .getJsonObject("MonitoredVehicleJourney");
 
         return MTASchema_Bus.asVehicle(this, monitoredVehicleJourney, null, null);
+    }
+
+    @Override
+    public final Bus.Alert[] getBusAlerts(){
+        final List<Bus.Alert> alerts = new ArrayList<>();
+        final GTFSRealtimeProto.FeedMessage feed = service.alerts.getBus(subwayToken);
+        final int len = feed.getEntityCount();
+        for(int i = 0; i < len; i++)
+            alerts.add(MTASchema_Bus.asTransitAlert(this, feed.getEntity(i)));
+        return alerts.toArray(new Bus.Alert[0]);
     }
 
     // subway methods
@@ -265,6 +274,16 @@ final class MTAImpl extends MTA {
         return null;
     }
 
+    @Override
+    public final Subway.Alert[] getSubwayAlerts(){
+        final List<Subway.Alert> alerts = new ArrayList<>();
+        final GTFSRealtimeProto.FeedMessage feed = service.alerts.getSubway(subwayToken);
+        final int len = feed.getEntityCount();
+        for(int i = 0; i < len; i++)
+            alerts.add(MTASchema_Subway.asTransitAlert(this, feed.getEntity(i)));
+        return alerts.toArray(new Subway.Alert[0]);
+    }
+
     // lirr methods
 
     @Override
@@ -314,6 +333,16 @@ final class MTAImpl extends MTA {
         return null;
     }
 
+    @Override
+    public final LIRR.Alert[] getLIRRAlerts(){
+        final List<LIRR.Alert> alerts = new ArrayList<>();
+        final GTFSRealtimeProto.FeedMessage feed = service.alerts.getLIRR(subwayToken);
+        final int len = feed.getEntityCount();
+        for(int i = 0; i < len; i++)
+            alerts.add(MTASchema_LIRR.asTransitAlert(this, feed.getEntity(i)));
+        return alerts.toArray(new LIRR.Alert[0]);
+    }
+
     // mnr methods
 
     @Override
@@ -348,6 +377,16 @@ final class MTAImpl extends MTA {
         }
 
         return null;
+    }
+
+    @Override
+    public final MNR.Alert[] getMNRAlerts(){
+        final List<MNR.Alert> alerts = new ArrayList<>();
+        final GTFSRealtimeProto.FeedMessage feed = service.alerts.getMNR(subwayToken);
+        final int len = feed.getEntityCount();
+        for(int i = 0; i < len; i++)
+            alerts.add(MTASchema_MNR.asTransitAlert(this, feed.getEntity(i)));
+        return alerts.toArray(new MNR.Alert[0]);
     }
 
 }

@@ -18,10 +18,9 @@
 
 package dev.katsute.onemta.railroad;
 
-import dev.katsute.onemta.types.TransitStop;
-import dev.katsute.onemta.types.TransitVehicle;
+import dev.katsute.onemta.types.*;
 
-public abstract class RailroadStop<V extends TransitVehicle<?,?,?,?,?,?>> extends TransitStop<Integer,V> {
+public abstract class RailroadStop<V extends TransitVehicle<?,?,?,?,?,?>, A extends TransitAlert<?,?,?,?>> extends TransitStop<Integer,V,A> {
 
     public abstract String getStopCode();
 

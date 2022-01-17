@@ -18,10 +18,16 @@
 
 package dev.katsute.onemta.types;
 
-public abstract class GTFSTransitTrip<V extends TransitVehicle<?,?,?,?,?,?>, R extends TransitRoute<?,?,?>, S extends TransitTripStop<?,?,?>> extends TransitTrip<V,R,S> {
+import java.util.Date;
 
-    public abstract String getTripID();
+public abstract class TransitAlertPeriod {
 
-    public abstract String getRouteID();
+    public abstract Long getStartEpochMillis();
+
+    public abstract Date getStart();
+
+    public abstract Long getEndEpochMillis();
+
+    public abstract Date getEnd();
 
 }

@@ -49,6 +49,8 @@ public abstract class MTA {
 
     public abstract Bus.Vehicle getBus(final int bus_id);
 
+    public abstract Bus.Alert[] getBusAlerts();
+
     // subway methods
 
     public abstract Subway.Route getSubwayRoute(final int route_id);
@@ -65,6 +67,8 @@ public abstract class MTA {
 
     public abstract Subway.Vehicle getSubwayTrain(final String train_id);
 
+    public abstract Subway.Alert[] getSubwayAlerts();
+
     // lirr methods
 
     public abstract LIRR.Route getLIRRRoute(final int route_id);
@@ -75,6 +79,8 @@ public abstract class MTA {
 
     public abstract LIRR.Vehicle getLIRRTrain(final String train_id);
 
+    public abstract LIRR.Alert[] getLIRRAlerts();
+
     // mnr methods
 
     public abstract MNR.Route getMNRRoute(final int route_id);
@@ -84,5 +90,7 @@ public abstract class MTA {
     public abstract MNR.Stop getMNRStop(final String stop_code);
 
     public abstract MNR.Vehicle getMNRTrain(final String train_id);
+
+    public abstract MNR.Alert[] getMNRAlerts();
 
 }

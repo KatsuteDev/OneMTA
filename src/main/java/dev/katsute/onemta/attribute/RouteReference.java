@@ -20,7 +20,7 @@ package dev.katsute.onemta.attribute;
 
 import dev.katsute.onemta.types.TransitRoute;
 
-public interface RouteReference<R extends TransitRoute<?,?>> {
+public interface RouteReference<R extends TransitRoute<?,?,?>> {
 
     R getRoute();
 
