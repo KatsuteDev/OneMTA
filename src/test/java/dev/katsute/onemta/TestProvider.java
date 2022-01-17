@@ -14,6 +14,10 @@ import java.util.function.Function;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
+import static dev.katsute.jcore.Workflow.*;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assumptions.*;
+
 public abstract class TestProvider {
 
     private static final File bus    = new File("src/test/java/resources/bus.txt");
@@ -25,13 +29,13 @@ public abstract class TestProvider {
     public static OneMTA getOneMTA(){
         try{
             if(!hasBus && !hasSubway)
-                Workflow.annotateTest(() -> Assumptions.assumeTrue(false, "No token defined, skipping tests"));
+                annotateTest(() -> assumeTrue(false, "No token defined, skipping tests"));
             return OneMTA.create(strip(readFile(bus)), strip(readFile(subway)));
         }catch(final IOException e){
             final StringWriter sw = new StringWriter();
             final PrintWriter pw = new PrintWriter(sw);
             e.printStackTrace(pw);
-            Workflow.annotateTest(() -> Assertions.fail(sw.toString()));
+            annotateTest(() -> fail(sw.toString()));
             return null;
         }
     }
