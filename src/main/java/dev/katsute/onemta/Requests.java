@@ -26,8 +26,7 @@ import dev.katsute.onemta.exception.HttpException;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URI;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Function;
 import java.util.regex.MatchResult;
 import java.util.regex.Pattern;
@@ -55,6 +54,36 @@ abstract class Requests {
                 while((buffer = IN.readLine()) != null)
                     OUT.append(buffer);
                 return (JsonObject) Json.parse(OUT.toString());
+            }
+        }catch(final IOException e){
+            throw new HttpException(url, e);
+        }finally{
+            if(conn != null)
+                conn.disconnect();
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    static List<JsonObject> getJsonArray(
+        final String url,
+        final Map<String,String> query,
+        final Map<String,String> headers
+    ){
+        HttpURLConnection conn = null;
+        try{
+            conn = getConnection(
+                url,
+                new HashMap<>(query),
+                new HashMap<String,String>(headers){{
+                    put("Accept", "application/json; charset=UTF-8");
+                }}
+            );
+            try(final BufferedReader IN = new BufferedReader(new InputStreamReader(conn.getInputStream()))){
+                String buffer;
+                final StringBuilder OUT = new StringBuilder();
+                while((buffer = IN.readLine()) != null)
+                    OUT.append(buffer);
+                return Collections.unmodifiableList((List<JsonObject>) Json.parse(OUT.toString()));
             }
         }catch(final IOException e){
             throw new HttpException(url, e);

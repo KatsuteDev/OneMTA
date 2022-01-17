@@ -225,11 +225,11 @@ final class MTAImpl extends MTA {
     @Override
     public final Subway.Stop getSubwayStop(final String stop_id, final SubwayDirection direction){
         return MTASchema_Subway.asStop(
-                this,
-                MTASchema_Subway.direction
-                .matcher(Objects.requireNonNull(stop_id, "Stop ID must not be null"))
-                .replaceAll("") +
-                (Objects.requireNonNull(direction, "Direction must not be null") == SubwayDirection.NORTH ? 'N' : 'S')
+            this,
+            MTASchema_Subway.direction
+            .matcher(Objects.requireNonNull(stop_id, "Stop ID must not be null"))
+            .replaceAll("") +
+            (Objects.requireNonNull(direction, "Direction must not be null") == SubwayDirection.NORTH ? 'N' : 'S')
         );
     }
 

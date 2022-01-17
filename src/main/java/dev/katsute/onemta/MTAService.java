@@ -32,8 +32,9 @@ final class MTAService {
 
     final BusService bus        = new BusService();
     final SubwayService subway  = new SubwayService();
-    final LIRRService lirr    = new LIRRService();
-    final MNRRService mnr = new MNRRService();
+    final LIRRService lirr      = new LIRRService();
+    final MNRRService mnr       = new MNRRService();
+    final ServiceAlerts alerts  = new ServiceAlerts();
 
     final class BusService {
 
@@ -199,6 +200,63 @@ final class MTAService {
         final FeedMessage getMNR(final String token){
             return cache.getProtobuf(
                 baseURL + "mnr%2Fgtfs-mnr",
+                new HashMap<>(),
+                new HashMap<String,String>(){{
+                    put("x-api-key", token);
+                }}
+            );
+        }
+
+    }
+
+    @SuppressWarnings("FieldCanBeLocal")
+    final class ServiceAlerts {
+
+        private ServiceAlerts(){ }
+
+        private final String baseURL = "https://api-endpoint.mta.info/Dataservice/mtagtfsfeeds/";
+
+        final JsonObject getBus(
+            final String token
+        ){
+            return cache.getJSON(
+                baseURL + "camsys%2Fbus-alerts.json",
+                new HashMap<>(),
+                new HashMap<String,String>(){{
+                    put("x-api-key", token);
+                }}
+            );
+        }
+
+        final JsonObject getSubway(
+            final String token
+        ){
+            return cache.getJSON(
+                baseURL + "camsys%2Fsubway-alerts.json",
+                new HashMap<>(),
+                new HashMap<String,String>(){{
+                    put("x-api-key", token);
+                }}
+            );
+        }
+
+        final JsonObject getLIRR(
+            final String token
+        ){
+            return cache.getJSON(
+                baseURL + "camsys%2Flirr-alerts.json",
+                new HashMap<>(),
+                new HashMap<String,String>(){{
+                    put("x-api-key", token);
+                }}
+            );
+        }
+
+        final JsonObject getMNR(
+            final String token
+        ){
+            return cache.getJSON(
+                baseURL + "camsys%2Fmnr-alerts.json",
                 new HashMap<>(),
                 new HashMap<String,String>(){{
                     put("x-api-key", token);
