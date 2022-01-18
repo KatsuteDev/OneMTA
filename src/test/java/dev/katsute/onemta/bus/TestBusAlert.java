@@ -2,7 +2,7 @@ package dev.katsute.onemta.bus;
 
 import dev.katsute.onemta.MTA;
 import dev.katsute.onemta.TestProvider;
-import dev.katsute.onemta.types.TestTransitAlert;
+import dev.katsute.onemta.types.AlertValidation;
 import org.junit.jupiter.api.*;
 
 final class TestBusAlert {
@@ -19,7 +19,7 @@ final class TestBusAlert {
 
         @Test
         final void testTransitAlert(){
-            TestTransitAlert.testAlerts(mta.getBusAlerts());
+            AlertValidation.testAlerts(mta.getBusAlerts());
         }
 
     }

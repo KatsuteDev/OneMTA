@@ -25,17 +25,13 @@ public abstract class Subway {
 
     public abstract static class Route extends TransitRoute<String,Vehicle,Alert> implements RouteShortName, RouteDescription { }
 
-    public abstract static class Stop extends TransitStop<String,Vehicle,Alert> implements Direction<SubwayDirection> {
-
-        public abstract Boolean isSameStop(final Stop stop);
-
-    }
+    public abstract static class Stop extends TransitStop<String,Vehicle,Alert> implements Direction<SubwayDirection> { }
 
     public abstract static class Vehicle extends GTFSVehicle<Route,Stop,Trip,String,String> { }
 
     public abstract static class Trip extends GTFSTransitTrip<Vehicle,Route,TripStop> implements Direction<SubwayDirection> { }
 
-    public abstract static class TripStop extends GTFSTripStop<Stop,Trip,String> {
+    public abstract static class TripStop extends GTFSTransitTripStop<Stop,Trip,String> {
 
         public abstract String getActualTrack();
 

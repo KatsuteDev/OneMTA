@@ -2,7 +2,7 @@ package dev.katsute.onemta.lirr;
 
 import dev.katsute.onemta.MTA;
 import dev.katsute.onemta.TestProvider;
-import dev.katsute.onemta.types.TestTransitAlert;
+import dev.katsute.onemta.types.AlertValidation;
 import org.junit.jupiter.api.*;
 
 final class TestLIRRAlert {
@@ -19,7 +19,7 @@ final class TestLIRRAlert {
 
         @Test
         final void testTransitAlert(){
-            TestTransitAlert.testAlerts(mta.getLIRRAlerts());
+            AlertValidation.testAlerts(mta.getLIRRAlerts());
         }
 
     }

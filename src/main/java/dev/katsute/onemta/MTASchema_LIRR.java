@@ -204,8 +204,7 @@ abstract class MTASchema_LIRR extends MTASchema {
                     if(entity.hasTripUpdate()){
                         if( // only include trips at this stop
                             entity.getTripUpdate().hasVehicle() &&
-                            entity.getTripUpdate().getStopTimeUpdateCount() > 0 &&
-                            entity.getTripUpdate().getStopTimeUpdate(0).getStopId().equalsIgnoreCase(stop)
+                            entity.getTripUpdate().getStopTimeUpdateCount() > 0
                         ){
                             final TripUpdate tu = entity.getTripUpdate();
                             final int len2 = tu.getStopTimeUpdateCount();

@@ -18,10 +18,10 @@
 
 package dev.katsute.onemta.railroad;
 
-import dev.katsute.onemta.types.GTFSTripStop;
+import dev.katsute.onemta.types.GTFSTransitTripStop;
 import dev.katsute.onemta.types.TransitTrip;
 
-public abstract class RailroadTripStop<S extends RailroadStop<?,?>, T extends TransitTrip<?,?,?>, I, TR> extends GTFSTripStop<S,T,I> {
+public abstract class RailroadTripStop<S extends RailroadStop<?,?>, T extends TransitTrip<?,?,?>, I> extends GTFSTransitTripStop<S,T,I> {
 
     public abstract Integer getDelay();
 

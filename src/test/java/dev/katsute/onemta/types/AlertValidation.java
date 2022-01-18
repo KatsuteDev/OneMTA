@@ -9,7 +9,11 @@ import static dev.katsute.jcore.Workflow.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assumptions.*;
 
-public final class TestTransitAlert {
+/**
+ * @see TransitAlert
+ * @see TransitAlertPeriod
+ */
+public abstract class AlertValidation {
 
     public static void testAlerts(final TransitAlert<?,?,?,?>[] alerts){
         annotateTest(() -> assumeTrue(alerts.length > 0, "No active alerts found, skipping alert tests"));
@@ -29,7 +33,7 @@ public final class TestTransitAlert {
         final boolean stop = reference instanceof TransitStop<?,?,?>;
         final Object id = stop ? ((TransitStop<?,?,?>) reference).getStopID() : ((TransitRoute<?,?,?>) reference).getRouteID();
         for(final TransitAlert<?,?,?,?> alert : reference.getAlerts())
-            annotateTest(() -> assertTrue(stop ? Arrays.asList(alert.getRouteIDs()).contains(id) : Arrays.asList(alert.getStopIDs()).contains(id)));
+            annotateTest(() -> assertTrue(stop ? Arrays.asList(alert.getStopIDs()).contains(id) : Arrays.asList(alert.getRouteIDs()).contains(id)));
     }
 
     private static void testAlert(final TransitAlert<?,?,?,?> alert){
@@ -46,6 +50,8 @@ public final class TestTransitAlert {
         for(final TransitAlertPeriod period : alert.getActivePeriods())
             testAlertPeriod(period);
     }
+
+    //
 
     private static void testAlertPeriod(final TransitAlertPeriod period){
         annotateTest(() -> assertNotNull(period.getStartEpochMillis()));

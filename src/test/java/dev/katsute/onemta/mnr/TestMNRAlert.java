@@ -2,7 +2,7 @@ package dev.katsute.onemta.mnr;
 
 import dev.katsute.onemta.MTA;
 import dev.katsute.onemta.TestProvider;
-import dev.katsute.onemta.types.TestTransitAlert;
+import dev.katsute.onemta.types.AlertValidation;
 import org.junit.jupiter.api.*;
 
 final class TestMNRAlert {
@@ -20,7 +20,7 @@ final class TestMNRAlert {
         @Test
         final void testTransitAlert(){
             // this test may sometimes fail due to the MTA reporting a route ID that doesn't exist (external issue)
-            TestTransitAlert.testAlerts(mta.getMNRAlerts());
+            AlertValidation.testAlerts(mta.getMNRAlerts());
         }
 
     }

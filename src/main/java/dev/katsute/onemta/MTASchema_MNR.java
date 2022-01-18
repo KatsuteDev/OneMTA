@@ -183,15 +183,17 @@ abstract class MTASchema_MNR extends MTASchema {
                         entity.hasVehicle() &&
                         entity.hasTripUpdate()
                     ){
-                        final TripUpdate tu = entity.getTripUpdate();
-                        final int len2 = tu.getStopTimeUpdateCount();
-                        // check all stops on train route
-                        for(int u = 0; u < len2; u++){
-                            final TripUpdate.StopTimeUpdate update = tu.getStopTimeUpdate(u);
-                            // check if this stop is en route
-                            if(update.getStopId().equalsIgnoreCase(stop)){
-                                vehicles.add(asVehicle(mta, entity.getVehicle(), entity.getTripUpdate()));
-                                continue OUTER;
+                        if(entity.getTripUpdate().getStopTimeUpdateCount() > 0){
+                            final TripUpdate tu = entity.getTripUpdate();
+                            final int len2 = tu.getStopTimeUpdateCount();
+                            // check all stops on train route
+                            for(int u = 0; u < len2; u++){
+                                final TripUpdate.StopTimeUpdate update = tu.getStopTimeUpdate(u);
+                                // check if this stop is en route
+                                if(update.getStopId().equalsIgnoreCase(stop)){
+                                    vehicles.add(asVehicle(mta, entity.getVehicle(), entity.getTripUpdate()));
+                                    continue OUTER;
+                                }
                             }
                         }
                     }
