@@ -492,7 +492,7 @@ abstract class MTASchema_MNR extends MTASchema {
                     if(entity.hasRouteId())
                         routeIDs.add(Integer.valueOf(entity.getRouteId()));
                     else if(entity.hasStopId())
-                        stopIDs.add(Integer.valueOf(entity.getRouteId()));
+                        stopIDs.add(Integer.valueOf(entity.getStopId()));
                 }
                 this.routeIDs = Collections.unmodifiableList(routeIDs);
                 this.stopIDs  = Collections.unmodifiableList(stopIDs);

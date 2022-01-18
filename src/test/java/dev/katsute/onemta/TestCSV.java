@@ -67,6 +67,16 @@ final class TestCSV {
             });
         }
 
+        @Test
+        final void testBlank(){
+            annotateTest(() -> {
+                final CSV csv = new CSV("key,value,blank\n1,one,\"\"\n2,two,\"\"");
+
+                assertEquals(Arrays.asList("1", "one", ""), csv.getRow("key", "1"));
+                assertEquals(Arrays.asList("2", "two", ""), csv.getRow("key", "2"));
+            });
+        }
+
     }
 
     @Nested
