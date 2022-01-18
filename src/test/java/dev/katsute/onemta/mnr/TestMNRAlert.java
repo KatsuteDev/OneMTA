@@ -2,7 +2,9 @@ package dev.katsute.onemta.mnr;
 
 import dev.katsute.onemta.MTA;
 import dev.katsute.onemta.TestProvider;
+import dev.katsute.onemta.types.TestAlerts;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 final class TestMNRAlert {
 
@@ -11,6 +13,11 @@ final class TestMNRAlert {
     @BeforeAll
     static void beforeAll(){
         mta = TestProvider.getOneMTA();
+    }
+
+    @Test
+    final void testAlerts(){
+        TestAlerts.testAlerts(mta.getMNRAlerts());
     }
 
 }

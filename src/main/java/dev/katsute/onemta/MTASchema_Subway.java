@@ -561,7 +561,7 @@ abstract class MTASchema_Subway extends MTASchema {
 
             @Override
             public final Stop[] getStops(){
-                if(routes == null){
+                if(stops == null){
                     final List<Stop> stops = new ArrayList<>();
                     for(final String id : stopIDs)
                         stops.add(mta.getSubwayStop(id));
