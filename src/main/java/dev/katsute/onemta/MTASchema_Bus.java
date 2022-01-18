@@ -41,14 +41,14 @@ abstract class MTASchema_Bus extends MTASchema {
         // populate bus resources
         final List<DataResource> resources = new ArrayList<>();
 
-        final List<DataResource> defaults = Arrays.asList(
-            /* 0 */ getDataResource(mta, DataResourceType.Bus_Brooklyn),
-            /* 1 */ getDataResource(mta, DataResourceType.Bus_Bronx),
-            /* 2 */ getDataResource(mta, DataResourceType.Bus_Manhattan),
-            /* 3 */ getDataResource(mta, DataResourceType.Bus_Queens),
-            /* 4 */ getDataResource(mta, DataResourceType.Bus_StatenIsland),
-            /* 5 */ getDataResource(mta, DataResourceType.Bus_Company)
-        );
+        final List<DataResource> defaults = new ArrayList<DataResource>(){{
+            /* 0 */ add(getDataResource(mta, DataResourceType.Bus_Brooklyn));
+            /* 1 */ add(getDataResource(mta, DataResourceType.Bus_Bronx));
+            /* 2 */ add(getDataResource(mta, DataResourceType.Bus_Manhattan));
+            /* 3 */ add(getDataResource(mta, DataResourceType.Bus_Queens));
+            /* 4 */ add(getDataResource(mta, DataResourceType.Bus_StatenIsland));
+            /* 5 */ add(getDataResource(mta, DataResourceType.Bus_Company));
+        }};
 
         // guess which resource route is from and prioritize that one first
         {
@@ -113,10 +113,16 @@ abstract class MTASchema_Bus extends MTASchema {
             private final String routeColor     = row.get(csv.getHeaderIndex("route_color"));
             private final String routeTextColor = row.get(csv.getHeaderIndex("route_text_color"));
 
-            private final Boolean SBS     = routeShortName.endsWith("+") || routeLongName.contains("Select Bus Service");
-            private final Boolean express = routeShortName.startsWith("X") || routeShortName.endsWith("X") || routeLongName.contains("Express");
+            private final Boolean SBS     = route_id.endsWith("+") ||
+                                            routeShortName.endsWith("-SBS") ||
+                                            routeLongName.contains("Select Bus Service");
+            private final Boolean express = route_id.startsWith("X") ||
+                                            route_id.endsWith("X") ||
+                                            routeShortName.startsWith("X") ||
+                                            routeShortName.endsWith("X") ||
+                                            routeLongName.contains("Express");
             private final Boolean shuttle = routeLongName.contains("Shuttle");
-            private final Boolean limited = routeLongName.contains("Limited");
+            private final Boolean limited = routeDesc.contains("Limited");
 
             private final TransitAgency agency = asAgency(row.get(csv.getHeaderIndex("agency_id")), resource);
 
@@ -125,11 +131,15 @@ abstract class MTASchema_Bus extends MTASchema {
             {
                 final JsonObject json = cast(mta).service.bus.getVehicle(cast(mta).busToken, null, routeID, null);
 
-                final JsonObject[] vehicleActivity = json
+                final JsonObject vehicleMonitoringDelivery = json
                     .getJsonObject("Siri")
                     .getJsonObject("ServiceDelivery")
-                    .getJsonArray("VehicleMonitoringDelivery")[0]
-                    .getJsonArray("VehicleActivity");
+                    .getJsonArray("VehicleMonitoringDelivery")[0];
+
+                final JsonObject[] vehicleActivity =
+                    vehicleMonitoringDelivery.containsKey("VehicleActivity")
+                    ? vehicleMonitoringDelivery.getJsonArray("VehicleActivity")
+                    : new JsonObject[0];
 
                 final List<Vehicle> vehicles = new ArrayList<>();
                 for(final JsonObject obj : vehicleActivity)
@@ -297,11 +307,15 @@ abstract class MTASchema_Bus extends MTASchema {
             {
                 final JsonObject json = cast(mta).service.bus.getStop(cast(mta).busToken, stop_id, null, null);
 
-                final JsonObject[] monitoredStopVisit = json
+                final JsonObject stopMonitoringDelivery = json
                     .getJsonObject("Siri")
                     .getJsonObject("ServiceDelivery")
-                    .getJsonArray("StopMonitoringDelivery")[0]
-                    .getJsonArray("MonitoredStopVisit");
+                    .getJsonArray("StopMonitoringDelivery")[0];
+
+                final JsonObject[] monitoredStopVisit =
+                    stopMonitoringDelivery.containsKey("MonitoredStopVisit")
+                    ? stopMonitoringDelivery.getJsonArray("MonitoredStopVisit")
+                    : new JsonObject[9];
 
                 final List<Vehicle> vehicles = new ArrayList<>();
                 for(final JsonObject obj : monitoredStopVisit)
@@ -606,8 +620,9 @@ abstract class MTASchema_Bus extends MTASchema {
             {
                 final List<TripStop> stops = new ArrayList<>();
 
-                for(final JsonObject obj : onwardCalls.getJsonArray("OnwardCall"))
-                    stops.add(asTripStop(mta, obj, this));
+                if(onwardCalls.containsKey("OnwardCall"))
+                    for(final JsonObject obj : onwardCalls.getJsonArray("OnwardCall"))
+                        stops.add(asTripStop(mta, obj, this));
                 tripStops = Collections.unmodifiableList(stops);
             }
 
@@ -775,7 +790,7 @@ abstract class MTASchema_Bus extends MTASchema {
 
             @Override
             public final Stop[] getStops(){
-                if(routes == null){
+                if(stops == null){
                     final List<Stop> stops = new ArrayList<>();
                     for(final Integer id : stopIDs)
                         stops.add(mta.getBusStop(id));
@@ -785,12 +800,12 @@ abstract class MTASchema_Bus extends MTASchema {
             }
 
             @Override
-            public final String getHeaderText(){
+            public final String getHeader(){
                 return headerText;
             }
 
             @Override
-            public final String getDescriptionText(){
+            public final String getDescription(){
                 return descriptionText;
             }
 

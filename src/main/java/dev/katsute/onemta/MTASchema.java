@@ -21,6 +21,9 @@ package dev.katsute.onemta;
 import dev.katsute.onemta.types.TransitAgency;
 import dev.katsute.onemta.types.TransitAlertPeriod;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.util.Objects;
 import java.util.function.Supplier;

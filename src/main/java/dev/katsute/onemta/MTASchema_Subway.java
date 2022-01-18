@@ -571,12 +571,12 @@ abstract class MTASchema_Subway extends MTASchema {
             }
 
             @Override
-            public final String getHeaderText(){
+            public final String getHeader(){
                 return headerText;
             }
 
             @Override
-            public final String getDescriptionText(){
+            public final String getDescription(){
                 return descriptionText;
             }
 

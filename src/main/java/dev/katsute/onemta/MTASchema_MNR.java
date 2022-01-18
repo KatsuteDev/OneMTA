@@ -545,12 +545,12 @@ abstract class MTASchema_MNR extends MTASchema {
             }
 
             @Override
-            public final String getHeaderText(){
+            public final String getHeader(){
                 return headerText;
             }
 
             @Override
-            public final String getDescriptionText(){
+            public final String getDescription(){
                 return descriptionText;
             }
 
