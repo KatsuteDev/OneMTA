@@ -62,7 +62,7 @@ abstract class MTASchema_LIRR extends MTASchema {
 
                 final List<Vehicle> vehicles = new ArrayList<>();
                 for(int i = 0; i < len; i++){
-                    final FeedEntity entity = feed.getEntity(0);
+                    final FeedEntity entity = feed.getEntity(i);
 
                     // get next trip
                     if(entity.hasTripUpdate()){
@@ -198,7 +198,7 @@ abstract class MTASchema_LIRR extends MTASchema {
                 final List<Vehicle> vehicles = new ArrayList<>();
                 OUTER:
                 for(int i = 0; i < len; i++){
-                    final FeedEntity entity = feed.getEntity(0);
+                    final FeedEntity entity = feed.getEntity(i);
 
                     // get next trip
                     if(entity.hasTripUpdate()){
@@ -540,7 +540,7 @@ abstract class MTASchema_LIRR extends MTASchema {
                     if(entity.hasRouteId())
                         routeIDs.add(Integer.valueOf(entity.getRouteId()));
                     else if(entity.hasStopId())
-                        stopIDs.add(Integer.valueOf(entity.getRouteId()));
+                        stopIDs.add(Integer.valueOf(entity.getStopId()));
                 }
                 this.routeIDs = Collections.unmodifiableList(routeIDs);
                 this.stopIDs  = Collections.unmodifiableList(stopIDs);

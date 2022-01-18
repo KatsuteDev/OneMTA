@@ -2,6 +2,7 @@ package dev.katsute.onemta.bus;
 
 import dev.katsute.onemta.MTA;
 import dev.katsute.onemta.TestProvider;
+import dev.katsute.onemta.types.TestTransitRoute;
 import dev.katsute.onemta.types.TransitRoute;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -104,6 +105,18 @@ final class TestBusRoute {
                 for(final Alert alert : route.getAlerts())
                     assertTrue(Arrays.asList(alert.getRouteIDs()).contains(TestProvider.BUS_ROUTE));
             });
+        }
+
+    }
+
+    //
+
+    @Nested
+    final class InheritedTests {
+
+        @Test
+        final void testTransitRoute(){
+            TestTransitRoute.testRoute(route);
         }
 
     }

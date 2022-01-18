@@ -57,7 +57,7 @@ abstract class MTASchema_MNR extends MTASchema {
 
                 final List<Vehicle> vehicles = new ArrayList<>();
                 for(int i = 0; i < len; i++){
-                    final FeedEntity entity = feed.getEntity(0);
+                    final FeedEntity entity = feed.getEntity(i);
                     // only include trips with vehicles
                     if(entity.hasVehicle() && entity.hasTripUpdate())
                         // only include vehicles on this route
@@ -177,7 +177,7 @@ abstract class MTASchema_MNR extends MTASchema {
                 final List<Vehicle> vehicles = new ArrayList<>();
                 OUTER:
                 for(int i = 0; i < len; i++){
-                    final FeedEntity entity = feed.getEntity(0);
+                    final FeedEntity entity = feed.getEntity(i);
                     // only include trips with vehicles
                     if(
                         entity.hasVehicle() &&

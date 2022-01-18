@@ -2,6 +2,7 @@ package dev.katsute.onemta.bus;
 
 import dev.katsute.onemta.MTA;
 import dev.katsute.onemta.TestProvider;
+import dev.katsute.onemta.types.TestTransitStop;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -70,6 +71,18 @@ final class TestBusStop {
                 for(final Alert alert : stop.getAlerts())
                     assertTrue(Arrays.asList(alert.getStopIDs()).contains(TestProvider.BUS_STOP));
             });
+        }
+
+    }
+
+    //
+
+    @Nested
+    final class InheritedTests {
+
+        @Test
+        final void testTransitStop(){
+            TestTransitStop.testStop(stop);
         }
 
     }

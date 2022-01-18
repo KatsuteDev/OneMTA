@@ -3,7 +3,8 @@ package dev.katsute.onemta.lirr;
 import dev.katsute.onemta.MTA;
 import dev.katsute.onemta.TestProvider;
 import dev.katsute.onemta.railroad.LIRR;
-import org.junit.jupiter.api.BeforeAll;
+import dev.katsute.onemta.types.TestTransitRoute;
+import org.junit.jupiter.api.*;
 
 import static dev.katsute.jcore.Workflow.*;
 
@@ -18,6 +19,16 @@ final class TestLIRRRoute {
         mta = TestProvider.getOneMTA();
 
         annotateTest(() -> route = mta.getLIRRRoute(TestProvider.LIRR_ROUTE));
+    }
+
+    @Nested
+    final class InheritedTests {
+
+        @Test
+        final void testTransitRoute(){
+            TestTransitRoute.testRoute(route);
+        }
+
     }
 
 }

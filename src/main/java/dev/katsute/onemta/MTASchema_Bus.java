@@ -746,7 +746,7 @@ abstract class MTASchema_Bus extends MTASchema {
                     if(entity.hasRouteId())
                         routeIDs.add(entity.getRouteId());
                     else if(entity.hasStopId())
-                        stopIDs.add(Integer.valueOf(entity.getRouteId()));
+                        stopIDs.add(Integer.valueOf(entity.getStopId()));
                 }
                 this.routeIDs = Collections.unmodifiableList(routeIDs);
                 this.stopIDs  = Collections.unmodifiableList(stopIDs);

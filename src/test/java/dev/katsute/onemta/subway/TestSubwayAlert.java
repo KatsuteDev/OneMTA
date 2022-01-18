@@ -2,9 +2,9 @@ package dev.katsute.onemta.subway;
 
 import dev.katsute.onemta.MTA;
 import dev.katsute.onemta.TestProvider;
-import dev.katsute.onemta.types.TestAlerts;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import dev.katsute.onemta.types.TestTransitAlert;
+import dev.katsute.onemta.types.TestTransitStop;
+import org.junit.jupiter.api.*;
 
 final class TestSubwayAlert {
 
@@ -15,9 +15,14 @@ final class TestSubwayAlert {
         mta = TestProvider.getOneMTA();
     }
 
-    @Test
-    final void testAlerts(){
-        TestAlerts.testAlerts(mta.getSubwayAlerts());
+    @Nested
+    final class InheritedTests {
+
+        @Test
+        final void testTransitAlert(){
+            TestTransitAlert.testAlerts(mta.getSubwayAlerts());
+        }
+
     }
 
 }

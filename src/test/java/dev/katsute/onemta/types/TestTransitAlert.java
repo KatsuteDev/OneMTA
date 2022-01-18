@@ -1,12 +1,15 @@
 package dev.katsute.onemta.types;
 
+import dev.katsute.onemta.attribute.Alerts;
+
+import java.util.Arrays;
 import java.util.Random;
 
 import static dev.katsute.jcore.Workflow.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assumptions.*;
 
-public final class TestAlerts {
+public final class TestTransitAlert {
 
     public static void testAlerts(final TransitAlert<?,?,?,?>[] alerts){
         annotateTest(() -> assumeTrue(alerts.length > 0, "No active alerts found, skipping alert tests"));
@@ -16,8 +19,17 @@ public final class TestAlerts {
         annotateTest(() -> assertNotNull(alerts[rand].getRoutes()));
         annotateTest(() -> assertNotNull(alerts[rand].getStops()));
 
-        for(final TransitAlert<?, ?, ?, ?> alert : alerts)
+        for(final TransitAlert<?,?,?,?> alert : alerts)
             testAlert(alert);
+    }
+
+    public static void testAlerts(final Alerts<?> reference){
+        testAlerts(reference.getAlerts());
+
+        final boolean stop = reference instanceof TransitStop<?,?,?>;
+        final Object id = stop ? ((TransitStop<?,?,?>) reference).getStopID() : ((TransitRoute<?,?,?>) reference).getRouteID();
+        for(final TransitAlert<?,?,?,?> alert : reference.getAlerts())
+            annotateTest(() -> assertTrue(stop ? Arrays.asList(alert.getRouteIDs()).contains(id) : Arrays.asList(alert.getStopIDs()).contains(id)));
     }
 
     private static void testAlert(final TransitAlert<?,?,?,?> alert){

@@ -2,9 +2,8 @@ package dev.katsute.onemta.lirr;
 
 import dev.katsute.onemta.MTA;
 import dev.katsute.onemta.TestProvider;
-import dev.katsute.onemta.types.TestAlerts;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import dev.katsute.onemta.types.TestTransitAlert;
+import org.junit.jupiter.api.*;
 
 final class TestLIRRAlert {
 
@@ -15,9 +14,14 @@ final class TestLIRRAlert {
         mta = TestProvider.getOneMTA();
     }
 
-    @Test
-    final void testAlerts(){
-        TestAlerts.testAlerts(mta.getLIRRAlerts());
+    @Nested
+    final class InheritedTests {
+
+        @Test
+        final void testTransitAlert(){
+            TestTransitAlert.testAlerts(mta.getLIRRAlerts());
+        }
+
     }
 
 }
