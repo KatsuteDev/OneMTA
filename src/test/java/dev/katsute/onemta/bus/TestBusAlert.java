@@ -22,6 +22,7 @@ final class TestBusAlert {
         Workflow.annotateTest(() -> {
             final Alert[] alerts = mta.getBusAlerts();
 
+            Assumptions.assumeTrue(alerts.length > 0, "No active alerts found, skipping all alerts tests");
             Assertions.assertNotNull(alerts[0].getRoutes());
             Assertions.assertNotNull(alerts[0].getStops());
 
@@ -42,6 +43,7 @@ final class TestBusAlert {
         Assertions.assertNotEquals(0, alert.getRouteIDs().length + alert.getStopIDs().length);
 
         Assertions.assertNotNull(alert.getActivePeriods());
+        Assertions.assertNotEquals(0, alert.getActivePeriods().length);
         for(final TransitAlertPeriod period : alert.getActivePeriods())
             testAlertPeriod(period);
     }

@@ -361,7 +361,7 @@ abstract class MTASchema_Bus extends MTASchema {
 
             @Override
             public final Alert[] getAlerts(){
-                if(alerts != null){
+                if(alerts == null){
                     final List<Alert> alerts = new ArrayList<>();
                     final GTFSRealtimeProto.FeedMessage feed = cast(mta).service.alerts.getBus(cast(mta).subwayToken);
                     final int len = feed.getEntityCount();
@@ -440,10 +440,10 @@ abstract class MTASchema_Bus extends MTASchema {
             });
 
             private final String arrivalProximityText = requireNonNull(() -> monitoredCall.getString("ArrivalProximityText"));
-            private final Integer distanceFromStop      = requireNonNull(() -> monitoredCall.getInt("DistanceFromCall"));
+            private final Integer distanceFromStop      = requireNonNull(() -> monitoredCall.getInt("DistanceFromStop"));
             private final Integer stopsAway = requireNonNull(() -> monitoredCall.getInt("NumberOfStopsAway"));
 
-            private final Trip trip = asTrip(mta, monitoredVehicleJourney.getJsonObject("OnwardCalls"), this);
+            private Trip trip = asTrip(mta, monitoredVehicleJourney.getJsonObject("OnwardCalls"), this);
 
             @Override
             public final Integer getVehicleID(){
@@ -603,14 +603,13 @@ abstract class MTASchema_Bus extends MTASchema {
 
             @Override
             public final Trip getTrip(){
-                return trip;
+                return optionalStop == null ? trip : (trip = mta.getBus(vehicleID).getTrip());
             }
 
         };
     }
 
     static Trip asTrip(final MTA mta, final JsonObject onwardCalls, final Vehicle referringVehicle){
-        if(onwardCalls == null) return null;
         return new Trip() {
 
             private final Vehicle vehicle = referringVehicle;
@@ -620,7 +619,7 @@ abstract class MTASchema_Bus extends MTASchema {
             {
                 final List<TripStop> stops = new ArrayList<>();
 
-                if(onwardCalls.containsKey("OnwardCall"))
+                if(onwardCalls != null && onwardCalls.containsKey("OnwardCall"))
                     for(final JsonObject obj : onwardCalls.getJsonArray("OnwardCall"))
                         stops.add(asTripStop(mta, obj, this));
                 tripStops = Collections.unmodifiableList(stops);
@@ -667,13 +666,13 @@ abstract class MTASchema_Bus extends MTASchema {
             private final Integer stopsAway           = requireNonNull(() -> onwardCall.getInt("NumberOfStopsAway"));
 
             @Override
-            public final Date getExpectedArrivalTime(){
-                return expectedArrivalTime != null ? new Date(expectedArrivalTime) : null;
+            public final Long getExpectedArrivalTimeEpochMillis(){
+                return expectedArrivalTime;
             }
 
             @Override
-            public final Long getExpectedArrivalTimeEpochMillis(){
-                return expectedArrivalTime;
+            public final Date getExpectedArrivalTime(){
+                return expectedArrivalTime != null ? new Date(expectedArrivalTime) : null;
             }
 
             @Override
