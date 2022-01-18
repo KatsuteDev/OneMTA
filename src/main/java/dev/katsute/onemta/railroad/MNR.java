@@ -23,14 +23,16 @@ import dev.katsute.onemta.types.*;
 
 public abstract class MNR {
 
-    public abstract static class Route extends TransitRoute<Integer,Vehicle> { }
+    public abstract static class Route extends TransitRoute<Integer,Vehicle,Alert> { }
 
-    public abstract static class Stop extends RailroadStop<Vehicle> { }
+    public abstract static class Stop extends RailroadStop<Vehicle,Alert> { }
 
     public abstract static class Vehicle extends GTFSVehicle<Route,Stop,Trip,Integer,Integer> implements Location { }
 
     public abstract static class Trip extends GTFSTransitTrip<Vehicle,Route,TripStop> { }
 
     public abstract static class TripStop extends RailroadTripStop<Stop,Trip,Integer,String> { }
+
+    public abstract static class Alert extends TransitAlert<Integer,Route,Integer,Stop> { }
 
 }

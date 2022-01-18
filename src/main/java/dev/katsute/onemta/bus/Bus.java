@@ -25,29 +25,11 @@ import java.util.Date;
 
 public abstract class Bus {
 
-    public abstract static class Route extends TransitRoute<String,Vehicle> implements RouteShortName, RouteDescription {
+    public abstract static class Route extends TransitRoute<String,Vehicle,Alert> implements RouteShortName, RouteDescription, BusRouteTypes { }
 
-        public abstract Boolean isSelectBusService();
+    public abstract static class Stop extends TransitStop<Integer,Vehicle,Alert> implements RouteDescription { }
 
-        public abstract Boolean isExpress();
-
-        public abstract Boolean isShuttle();
-
-        public abstract Boolean isLimited();
-
-    }
-
-    public abstract static class Stop extends TransitStop<Integer,Vehicle> implements RouteDescription { }
-
-    public abstract static class Vehicle extends TransitVehicle<Route,Stop,Trip,Integer,String,Integer> implements Bearing, Location, Direction<BusDirection> {
-
-        public abstract Boolean isSelectBusService();
-
-        public abstract Boolean isExpress();
-
-        public abstract Boolean isShuttle();
-
-        public abstract Boolean isLimited();
+    public abstract static class Vehicle extends TransitVehicle<Route,Stop,Trip,Integer,String,Integer> implements Bearing, Location, Direction<BusDirection>, BusRouteTypes {
 
         public abstract Integer getOriginStopCode();
 
@@ -98,5 +80,7 @@ public abstract class Bus {
         public abstract String getStopName();
 
     }
+
+    public abstract static class Alert extends TransitAlert<String,Route,Integer,Stop> { }
 
 }

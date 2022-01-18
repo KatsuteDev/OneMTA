@@ -18,7 +18,7 @@
 
 package dev.katsute.onemta.types;
 
-public abstract class GTFSVehicle<R extends TransitRoute<?,?>, S extends TransitStop<?,?>, T extends TransitTrip<?,?,?>, SID, RID> extends TransitVehicle<R,S,T,SID,RID,String> {
+public abstract class GTFSVehicle<R extends TransitRoute<?,?,?>, S extends TransitStop<?,?,?>, T extends TransitTrip<?,?,?>, SID, RID> extends TransitVehicle<R,S,T,SID,RID,String> {
 
     public abstract String getCurrentStatus();
 

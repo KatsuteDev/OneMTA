@@ -32,8 +32,9 @@ final class MTAService {
 
     final BusService bus        = new BusService();
     final SubwayService subway  = new SubwayService();
-    final LIRRService lirr    = new LIRRService();
-    final MNRRService mnrr    = new MNRRService();
+    final LIRRService lirr      = new LIRRService();
+    final MNRRService mnr       = new MNRRService();
+    final ServiceAlerts alerts  = new ServiceAlerts();
 
     final class BusService {
 
@@ -196,9 +197,66 @@ final class MTAService {
 
         private final String baseURL = "https://api-endpoint.mta.info/Dataservice/mtagtfsfeeds/";
 
-        final FeedMessage getMNRR(final String token){
+        final FeedMessage getMNR(final String token){
             return cache.getProtobuf(
                 baseURL + "mnr%2Fgtfs-mnr",
+                new HashMap<>(),
+                new HashMap<String,String>(){{
+                    put("x-api-key", token);
+                }}
+            );
+        }
+
+    }
+
+    @SuppressWarnings("FieldCanBeLocal")
+    final class ServiceAlerts {
+
+        private ServiceAlerts(){ }
+
+        private final String baseURL = "https://api-endpoint.mta.info/Dataservice/mtagtfsfeeds/";
+
+        final FeedMessage getBus(
+            final String token
+        ){
+            return cache.getProtobuf(
+                baseURL + "camsys%2Fbus-alerts",
+                new HashMap<>(),
+                new HashMap<String,String>(){{
+                    put("x-api-key", token);
+                }}
+            );
+        }
+
+        final FeedMessage getSubway(
+            final String token
+        ){
+            return cache.getProtobuf(
+                baseURL + "camsys%2Fsubway-alerts",
+                new HashMap<>(),
+                new HashMap<String,String>(){{
+                    put("x-api-key", token);
+                }}
+            );
+        }
+
+        final FeedMessage getLIRR(
+            final String token
+        ){
+            return cache.getProtobuf(
+                baseURL + "camsys%2Flirr-alerts",
+                new HashMap<>(),
+                new HashMap<String,String>(){{
+                    put("x-api-key", token);
+                }}
+            );
+        }
+
+        final FeedMessage getMNR(
+            final String token
+        ){
+            return cache.getProtobuf(
+                baseURL + "camsys%2Fmnr-alerts",
                 new HashMap<>(),
                 new HashMap<String,String>(){{
                     put("x-api-key", token);

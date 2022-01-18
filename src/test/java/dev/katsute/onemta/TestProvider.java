@@ -1,38 +1,109 @@
 package dev.katsute.onemta;
 
-import dev.katsute.jcore.Workflow;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Assumptions;
 import org.junit.jupiter.params.provider.Arguments;
 
 import java.io.*;
+import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.function.Function;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
+import static dev.katsute.jcore.Workflow.*;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assumptions.*;
+
+@SuppressWarnings("SpellCheckingInspection")
 public abstract class TestProvider {
 
-    private static final File bus    = new File("src/test/java/resources/bus.txt");
-    private static final File subway = new File("src/test/java/resources/subway.txt");
+    public static final String BUS_ROUTE = "M1";
+    public static final int BUS_STOP = 400561;
+
+    public static final int LIRR_ROUTE = 9;
+    public static final int LIRR_STOP = 56;
+    public static final String LIRR_STOP_CODE = "FLS";
+
+    public static final int MNR_ROUTE = 2;
+    public static final int MNR_STOP = 59;
+    public static final String MNR_STOP_CODE = "1WN";
+
+    public static final String SUBWAY_ROUTE = "7";
+    public static final String SUBWAY_STOP = "631";
+
+    //
+
+    private static final File test_resources = new File("src/test/java/resources");
+
+    private static final File bus    = new File(test_resources, "token_bus.txt");
+    private static final File subway = new File(test_resources, "token_subway.txt");
 
     private static final boolean hasBus    = bus.exists();
     private static final boolean hasSubway = subway.exists();
 
-    public static OneMTA getOneMTA(){
+    private static final int TEST_DELAY = 60;
+    private static final File TEST_LOCK = new File(test_resources, "TEST_LOCK");
+
+    private static final Map<DataResourceType,String> resources = new HashMap<DataResourceType,String>(){{
+        put(DataResourceType.Subway             , "http://web.mta.info/developers/data/nyct/subway/google_transit.zip");
+        put(DataResourceType.Bus_Bronx          , "http://web.mta.info/developers/data/nyct/bus/google_transit_bronx.zip");
+        put(DataResourceType.Bus_Brooklyn       , "http://web.mta.info/developers/data/nyct/bus/google_transit_brooklyn.zip");
+        put(DataResourceType.Bus_Manhattan      , "http://web.mta.info/developers/data/nyct/bus/google_transit_manhattan.zip");
+        put(DataResourceType.Bus_Queens         , "http://web.mta.info/developers/data/nyct/bus/google_transit_queens.zip");
+        put(DataResourceType.Bus_StatenIsland   , "http://web.mta.info/developers/data/nyct/bus/google_transit_staten_island.zip");
+        put(DataResourceType.LongIslandRailroad , "http://web.mta.info/developers/data/lirr/google_transit.zip");
+        put(DataResourceType.MetroNorthRailroad , "http://web.mta.info/developers/data/mnr/google_transit.zip");
+        put(DataResourceType.Bus_Company        , "http://web.mta.info/developers/data/busco/google_transit.zip");
+    }};
+
+    public static MTA getOneMTA(){
         try{
             if(!hasBus && !hasSubway)
-                Assumptions.assumeTrue(false, Workflow.warningSupplier("Skipping tests, no token defined"));
+                annotateTest(() -> assumeTrue(false, "No token defined, skipping tests"));
 
-            return OneMTA.create(strip(readFile(bus)), strip(readFile(subway)));
-        }catch(final IOException e){
+            {
+                System.out.println("[↻] Acquiring test lock...");
+                final long now          = System.currentTimeMillis();
+                final int delay         = TEST_DELAY * 1000;
+                final long lastTest     = TEST_LOCK.exists() ? Long.parseLong(readFile(TEST_LOCK)) : -1;
+                final long allowedPass  = lastTest + delay;
+
+                if(lastTest != - 1 && now < allowedPass){
+                    System.out.println("[⏸] Test lock is enabled, waiting " + ((allowedPass - now) / 1000) + " seconds");
+                    Thread.sleep(allowedPass - now);
+                }
+
+                Files.write(TEST_LOCK.toPath(), String.valueOf(System.currentTimeMillis()).getBytes(StandardCharsets.UTF_8));
+                System.out.println("[✔] Test lock acquired");
+            }
+
+            for(final Map.Entry<DataResourceType,String> entry : resources.entrySet())
+                try(final BufferedInputStream IN = new BufferedInputStream(new URL(entry.getValue()).openStream())){
+                    final File file = new File(test_resources, "resource_" + entry.getKey().name().toLowerCase() + ".zip");
+                    System.out.println("[↻] Checking for data resource " + file.getName());
+                    if(!file.exists()){
+                        System.out.println("[⚠]" + file.getName() + " not found, downloading from MTA...");
+                        try(final FileOutputStream OUT = new FileOutputStream(file)){
+                            byte[] buffer = new byte[1024];
+                            int bytesReads;
+                            while((bytesReads = IN.read(buffer, 0, 1024)) != -1)
+                                OUT.write(buffer, 0, bytesReads);
+                        }
+                    }
+                    System.out.println("[✔] Added " + file.getName() + " as " + entry.getKey().name());
+                }
+
+            final List<DataResource> resources = new ArrayList<>();
+            for(final DataResourceType type : TestProvider.resources.keySet())
+                resources.add(DataResource.create(type, new File(test_resources, "resource_" + type.name().toLowerCase() + ".zip")));
+
+            return MTA.create(strip(readFile(bus)), strip(readFile(subway)), resources.toArray(new DataResource[0]));
+        }catch(final IOException | InterruptedException e){
             final StringWriter sw = new StringWriter();
             final PrintWriter pw = new PrintWriter(sw);
             e.printStackTrace(pw);
-            Assertions.fail(Workflow.errorSupplier(sw.toString()));
+            annotateTest(() -> fail(sw.toString()));
             return null;
         }
     }

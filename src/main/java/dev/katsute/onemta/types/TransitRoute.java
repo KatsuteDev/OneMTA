@@ -18,9 +18,10 @@
 
 package dev.katsute.onemta.types;
 
+import dev.katsute.onemta.attribute.Alerts;
 import dev.katsute.onemta.attribute.VehiclesReference;
 
-public abstract class TransitRoute<RID,V extends TransitVehicle<?,?,?,?,?,?>> implements VehiclesReference<V> {
+public abstract class TransitRoute<RID, V extends TransitVehicle<?,?,?,?,?,?>, A extends TransitAlert<?,?,?,?>> implements VehiclesReference<V>, Alerts<A> {
 
     public abstract TransitAgency getAgency();
 

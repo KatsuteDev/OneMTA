@@ -28,7 +28,7 @@ import java.util.zip.ZipFile;
 
 public abstract class DataResource {
 
-    public static DataResource create(final File file, final DataResourceType type){
+    public static DataResource create(final DataResourceType type, final File file){
         return new DataResource(){
 
             private final DataResourceType datatype = type;
@@ -40,10 +40,16 @@ public abstract class DataResource {
 
                     while(entries.hasMoreElements()){
                         final ZipEntry entry = entries.nextElement();
-                        try(final BufferedReader IN = new BufferedReader(new InputStreamReader(zip.getInputStream(entry)))){
-                            data.put(entry.getName(), new CSV(IN.lines().collect(Collectors.joining("\n"))));
-                        }catch(final IOException e){
-                            throw new DataResourceException("Failed to read zip entry: " + entry.getName(), e);
+                        final String name = entry.getName();
+                        switch(name){
+                            case "agency.txt":
+                            case "routes.txt":
+                            case "stops.txt":
+                                try(final BufferedReader IN = new BufferedReader(new InputStreamReader(zip.getInputStream(entry)))){
+                                    data.put(entry.getName(), new CSV(IN.lines().collect(Collectors.joining("\n"))));
+                                }catch(final IOException e){
+                                    throw new DataResourceException("Failed to read zip entry: " + entry.getName(), e);
+                                }
                         }
                     }
                 }catch(final IOException e){

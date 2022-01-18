@@ -24,14 +24,16 @@ import dev.katsute.onemta.types.*;
 @SuppressWarnings("SpellCheckingInspection")
 public abstract class LIRR {
 
-    public abstract static class Route extends TransitRoute<Integer,Vehicle> { }
+    public abstract static class Route extends TransitRoute<Integer,Vehicle,Alert> { }
 
-    public abstract static class Stop extends RailroadStop<Vehicle> { }
+    public abstract static class Stop extends RailroadStop<Vehicle,Alert> { }
 
     public abstract static class Vehicle extends GTFSVehicle<Route,Stop,Trip,Integer,Integer>  implements Bearing, Location { }
 
     public abstract static class Trip extends GTFSTransitTrip<Vehicle,Route,TripStop> implements Direction<RailroadDirection> { }
 
     public abstract static class TripStop extends RailroadTripStop<Stop,Trip,Integer,String> { }
+
+    public abstract static class Alert extends TransitAlert<Integer,Route,Integer,Stop> { }
 
 }

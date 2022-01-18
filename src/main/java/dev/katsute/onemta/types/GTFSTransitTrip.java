@@ -18,7 +18,7 @@
 
 package dev.katsute.onemta.types;
 
-public abstract class GTFSTransitTrip<V extends TransitVehicle<?,?,?,?,?,?>, R extends TransitRoute<?,?>, S extends TransitTripStop<?,?,?>> extends TransitTrip<V,R,S> {
+public abstract class GTFSTransitTrip<V extends TransitVehicle<?,?,?,?,?,?>, R extends TransitRoute<?,?,?>, S extends TransitTripStop<?,?,?>> extends TransitTrip<V,R,S> {
 
     public abstract String getTripID();
 

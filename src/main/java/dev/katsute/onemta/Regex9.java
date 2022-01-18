@@ -21,12 +21,12 @@ package dev.katsute.onemta;
 import java.util.Objects;
 import java.util.function.Function;
 import java.util.regex.MatchResult;
+import java.util.regex.Matcher;
 
 /**
  * Brings Java 9 regex methods down to Java 8.
  */
 abstract class Regex9 {
-
 
     /**
      * Replaces all using a function. Make sure that the function does not modify the matcher.
@@ -36,7 +36,7 @@ abstract class Regex9 {
      * @param replacer replacement function
      * @return replaced string
      */
-    static String replaceAll(final String str, final java.util.regex.Matcher matcher, final Function<MatchResult, String> replacer) {
+    static String replaceAll(final String str, final Matcher matcher, final Function<MatchResult, String> replacer) {
         Objects.requireNonNull(str);
         Objects.requireNonNull(matcher);
         Objects.requireNonNull(replacer);
@@ -61,7 +61,7 @@ abstract class Regex9 {
      * @param matcher matcher
      * @return count
      */
-    static int count(final java.util.regex.Matcher matcher){
+    static int count(final Matcher matcher){
         Objects.requireNonNull(matcher);
         matcher.reset();
         int count = 0;

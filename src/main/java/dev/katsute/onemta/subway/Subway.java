@@ -23,9 +23,9 @@ import dev.katsute.onemta.types.*;
 
 public abstract class Subway {
 
-    public abstract static class Route extends TransitRoute<String,Vehicle> implements RouteShortName, RouteDescription { }
+    public abstract static class Route extends TransitRoute<String,Vehicle,Alert> implements RouteShortName, RouteDescription { }
 
-    public abstract static class Stop extends TransitStop<String,Vehicle> implements Direction<SubwayDirection> {
+    public abstract static class Stop extends TransitStop<String,Vehicle,Alert> implements Direction<SubwayDirection> {
 
         public abstract Boolean isSameStop(final Stop stop);
 
@@ -40,5 +40,7 @@ public abstract class Subway {
         public abstract String getActualTrack();
 
     }
+
+    public abstract static class Alert extends TransitAlert<String,Route,String,Stop> { }
 
 }

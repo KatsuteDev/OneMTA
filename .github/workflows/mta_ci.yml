@@ -1,0 +1,38 @@
+name: MTA CI
+on: [workflow_dispatch]
+
+permissions: read-all
+
+concurrency: mta-test
+
+jobs:
+  mta_ci:
+    name: MTA CI (Java ${{ matrix.java }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    strategy:
+      matrix:
+        java: [8, 11, 17]
+      fail-fast: false
+      max-parallel: 1
+    steps:
+      - name: 📤 Checkout Repository
+        uses: actions/checkout@v2.4.0
+
+      - name: ☕ Install Java
+        uses: actions/setup-java@v2.5.0
+        with:
+          architecture: x64
+          distribution: temurin
+          java-version: ${{ matrix.java }}
+
+      - name: 🔐 Load Client ID
+        run: |
+          echo ${{ secrets.BUS_TOKEN }} > src/test/java/resources/token_bus.txt
+
+      - name: 🔐 Load OAuth Token
+        run: |
+          echo ${{ secrets.SUBWAY_TOKEN }} > src/test/java/resources/token_subway.txt
+
+      - name: ✔ Test with Maven
+        run: mvn test -fae --no-transfer-progress
