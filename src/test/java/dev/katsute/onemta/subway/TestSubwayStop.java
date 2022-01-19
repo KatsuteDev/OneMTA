@@ -65,7 +65,7 @@ final class TestSubwayStop {
 
                 @Test
                 final void testTransitAlerts(){
-                    AlertValidation.testAlerts(stopN);
+                    AlertValidation.testAlertsReference(stopN);
                 }
 
             }
@@ -102,7 +102,7 @@ final class TestSubwayStop {
 
                 @Test
                 final void testTransitAlerts(){
-                    AlertValidation.testAlerts(stopS);
+                    AlertValidation.testAlertsReference(stopS);
                 }
 
             }
@@ -194,7 +194,16 @@ final class TestSubwayStop {
 
             @Test
             final void testTransitAlerts(){
-                AlertValidation.testAlerts(stop);
+                annotateTest(() -> Assumptions.assumeTrue(stop.getAlerts().length > 0, "No alerts found, skipping alert tests"));
+                for(final Alert alert : stop.getAlerts())
+                    AlertValidation.testAlert(alert);
+            }
+
+            @Test
+            final void testTransitAlertsReference(){
+                annotateTest(() -> Assumptions.assumeTrue(stop.getAlerts().length > 0, "No alerts found, skipping alert tests"));
+                for(final Alert alert : stop.getAlerts())
+                    AlertValidation.testAlertReference(stop, alert);
             }
 
         }

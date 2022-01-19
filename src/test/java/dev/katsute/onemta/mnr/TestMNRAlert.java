@@ -2,8 +2,13 @@ package dev.katsute.onemta.mnr;
 
 import dev.katsute.onemta.MTA;
 import dev.katsute.onemta.TestProvider;
+import dev.katsute.onemta.railroad.MNR;
 import dev.katsute.onemta.types.AlertValidation;
 import org.junit.jupiter.api.*;
+
+import static dev.katsute.jcore.Workflow.*;
+import static dev.katsute.onemta.railroad.MNR.*;
+import static org.junit.jupiter.api.Assumptions.*;
 
 final class TestMNRAlert {
 
@@ -19,8 +24,9 @@ final class TestMNRAlert {
 
         @Test
         final void testTransitAlert(){
-            // this test may sometimes fail due to the MTA reporting a route ID that doesn't exist (external issue)
-            AlertValidation.testAlerts(mta.getMNRAlerts());
+            annotateTest(() -> assumeTrue(mta.getMNRAlerts().length > 0, "No alerts found, skipping alert tests"));
+            for(final Alert alert : mta.getMNRAlerts())
+                AlertValidation.testAlert(alert);
         }
 
     }

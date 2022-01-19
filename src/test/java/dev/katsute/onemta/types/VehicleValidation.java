@@ -13,7 +13,6 @@ import static org.junit.jupiter.api.Assertions.*;
 public abstract class VehicleValidation {
 
     public static void testVehicles(final TransitVehicle<?,?,?,?,?,?>[] vehicles){
-        annotateTest(() -> Assertions.assertNotNull(vehicles));
         annotateTest(() -> Assumptions.assumeTrue(vehicles.length > 0, "Skipping vehicle reference tests, no vehicles found"));
 
         for(final TransitVehicle<?,?,?,?,?,?> vehicle : vehicles)
@@ -21,7 +20,6 @@ public abstract class VehicleValidation {
     }
 
     public static void testGTFSVehicles(final GTFSVehicle<?,?,?,?,?>[] vehicles){
-        annotateTest(() -> Assertions.assertNotNull(vehicles));
         annotateTest(() -> Assumptions.assumeTrue(vehicles.length > 0, "Skipping vehicle reference tests, no vehicles found"));
 
         for(final GTFSVehicle<?,?,?,?,?> vehicle : vehicles)

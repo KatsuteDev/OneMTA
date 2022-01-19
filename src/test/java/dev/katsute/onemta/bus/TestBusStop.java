@@ -10,9 +10,6 @@ import static dev.katsute.onemta.bus.Bus.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assumptions.*;
 
-/**
- * @see Bus.Stop
- */
 final class TestBusStop {
 
     private static MTA mta;
@@ -95,7 +92,16 @@ final class TestBusStop {
 
             @Test
             final void testTransitAlerts(){
-                AlertValidation.testAlerts(stop);
+                annotateTest(() -> Assumptions.assumeTrue(stop.getAlerts().length > 0, "No alerts found, skipping alert tests"));
+                for(final Alert alert : stop.getAlerts())
+                    AlertValidation.testAlert(alert);
+            }
+
+            @Test
+            final void testTransitAlertsReference(){
+                annotateTest(() -> Assumptions.assumeTrue(stop.getAlerts().length > 0, "No alerts found, skipping alert tests"));
+                for(final Alert alert : stop.getAlerts())
+                    AlertValidation.testAlertReference(stop, alert);
             }
 
         }

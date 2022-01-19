@@ -2,8 +2,13 @@ package dev.katsute.onemta.lirr;
 
 import dev.katsute.onemta.MTA;
 import dev.katsute.onemta.TestProvider;
+import dev.katsute.onemta.railroad.LIRR;
 import dev.katsute.onemta.types.AlertValidation;
 import org.junit.jupiter.api.*;
+
+import static dev.katsute.jcore.Workflow.*;
+import static dev.katsute.onemta.railroad.LIRR.*;
+import static org.junit.jupiter.api.Assumptions.*;
 
 final class TestLIRRAlert {
 
@@ -19,7 +24,9 @@ final class TestLIRRAlert {
 
         @Test
         final void testTransitAlert(){
-            AlertValidation.testAlerts(mta.getLIRRAlerts());
+            annotateTest(() -> assumeTrue(mta.getLIRRAlerts().length > 0, "No alerts found, skipping alert tests"));
+            for(final Alert alert : mta.getLIRRAlerts())
+                AlertValidation.testAlert(alert);
         }
 
     }

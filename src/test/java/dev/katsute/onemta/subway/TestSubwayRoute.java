@@ -112,7 +112,16 @@ final class TestSubwayRoute {
 
             @Test
             final void testTransitAlerts(){
-                AlertValidation.testAlerts(route);
+                annotateTest(() -> Assumptions.assumeTrue(route.getAlerts().length > 0, "No alerts found, skipping alert tests"));
+                for(final Alert alert : route.getAlerts())
+                    AlertValidation.testAlert(alert);
+            }
+
+            @Test
+            final void testTransitAlertsReference(){
+                annotateTest(() -> Assumptions.assumeTrue(route.getAlerts().length > 0, "No alerts found, skipping alert tests"));
+                for(final Alert alert : route.getAlerts())
+                    AlertValidation.testAlertReference(route, alert);
             }
 
         }
