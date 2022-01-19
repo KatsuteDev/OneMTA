@@ -108,7 +108,7 @@ abstract class MTASchema_LIRR extends MTASchema {
                             entity.hasVehicle() &&
                             entity.getVehicle().getVehicle().getLabel().equals(tripVehicle)
                         ){
-                            vehicles.add(asVehicle(mta, entity.getVehicle(), tripUpdate));
+                            vehicles.add(asVehicle(mta, entity.getVehicle(), tripUpdate, this));
                             tripUpdate  = null;
                             tripVehicle = null;
                         }
@@ -187,7 +187,7 @@ abstract class MTASchema_LIRR extends MTASchema {
 
             @Override
             public final Integer getStopID(){
-                return stop_id;
+                return stopID;
             }
 
             @Override
@@ -265,7 +265,7 @@ abstract class MTASchema_LIRR extends MTASchema {
                         ){
                             // only include vehicles at this stop
                             if(entity.getVehicle().getStopId().equals(stop)){
-                                vehicles.add(asVehicle(mta, entity.getVehicle(), tripUpdate));
+                                vehicles.add(asVehicle(mta, entity.getVehicle(), tripUpdate, null));
                                 tripUpdate  = null;
                                 tripVehicle = null;
                             }
@@ -308,7 +308,7 @@ abstract class MTASchema_LIRR extends MTASchema {
         };
     }
 
-    static Vehicle asVehicle(final MTA mta, final VehiclePosition vehicle, final TripUpdate tripUpdate){
+    static Vehicle asVehicle(final MTA mta, final VehiclePosition vehicle, final TripUpdate tripUpdate, final Route optionalRoute){
         return new Vehicle() {
 
             private final String vehicleID = requireNonNull(() -> vehicle.getVehicle().getLabel());
@@ -368,7 +368,7 @@ abstract class MTASchema_LIRR extends MTASchema {
                 return stop != null ? stop : (stop = mta.getLIRRStop(Objects.requireNonNull(stopID, "Stop ID must not be null")));
             }
 
-            private Route route = null;
+            private Route route = optionalRoute;
 
             @Override
             public final Route getRoute(){

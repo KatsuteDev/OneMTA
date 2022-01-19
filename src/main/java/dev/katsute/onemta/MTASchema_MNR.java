@@ -93,7 +93,7 @@ abstract class MTASchema_MNR extends MTASchema {
                         if(entity.hasVehicle() && entity.hasTripUpdate())
                             // only include vehicles on this route
                             if(Integer.parseInt(entity.getTripUpdate().getTrip().getRouteId()) == routeID)
-                                vehicles.add(asVehicle(mta, entity.getVehicle(), entity.getTripUpdate()));
+                                vehicles.add(asVehicle(mta, entity.getVehicle(), entity.getTripUpdate(), this));
                     }
 
                     this.vehicles = Collections.unmodifiableList(vehicles);
@@ -169,7 +169,7 @@ abstract class MTASchema_MNR extends MTASchema {
 
             @Override
             public final Integer getStopID(){
-                return stop_id;
+                return stopID;
             }
 
             @Override
@@ -231,7 +231,7 @@ abstract class MTASchema_MNR extends MTASchema {
                                     final TripUpdate.StopTimeUpdate update = tu.getStopTimeUpdate(u);
                                     // check if this stop is en route
                                     if(update.getStopId().equalsIgnoreCase(stop)){
-                                        vehicles.add(asVehicle(mta, entity.getVehicle(), entity.getTripUpdate()));
+                                        vehicles.add(asVehicle(mta, entity.getVehicle(), entity.getTripUpdate(), null));
                                         continue OUTER;
                                     }
                                 }
@@ -275,7 +275,7 @@ abstract class MTASchema_MNR extends MTASchema {
         };
     }
 
-    static Vehicle asVehicle(final MTA mta, final VehiclePosition vehicle, final TripUpdate tripUpdate){
+    static Vehicle asVehicle(final MTA mta, final VehiclePosition vehicle, final TripUpdate tripUpdate, final Route optionalRoute){
         return new Vehicle() {
 
             private final String vehicleID = requireNonNull(() -> vehicle.getVehicle().getLabel());
@@ -329,7 +329,7 @@ abstract class MTASchema_MNR extends MTASchema {
                 return stop != null ? stop : (stop = mta.getMNRStop(Objects.requireNonNull(stopID, "Stop ID must not be null")));
             }
 
-            private Route route = null;
+            private Route route = optionalRoute;
 
             @Override
             public final Route getRoute(){

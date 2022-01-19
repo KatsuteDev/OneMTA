@@ -328,7 +328,7 @@ final class MTAImpl extends MTA {
                 entity.hasVehicle() &&
                 entity.getVehicle().getVehicle().getLabel().equals(tripVehicle)
             )
-                return MTASchema_LIRR.asVehicle(this, entity.getVehicle(), tripUpdate);
+                return MTASchema_LIRR.asVehicle(this, entity.getVehicle(), tripUpdate, null);
         }
 
         return null;
@@ -374,7 +374,7 @@ final class MTAImpl extends MTA {
                 entity.getVehicle().hasVehicle() &&
                 train_id.equals(entity.getVehicle().getVehicle().getLabel())
             )
-                return MTASchema_MNR.asVehicle(this, entity.getVehicle(), entity.getTripUpdate());
+                return MTASchema_MNR.asVehicle(this, entity.getVehicle(), entity.getTripUpdate(), null);
         }
 
         return null;
