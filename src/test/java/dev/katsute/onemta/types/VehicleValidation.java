@@ -1,5 +1,7 @@
 package dev.katsute.onemta.types;
 
+import dev.katsute.onemta.attribute.RouteReference;
+
 import static dev.katsute.jcore.Workflow.*;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -17,6 +19,12 @@ public abstract class VehicleValidation {
 
     public static void testGTFSVehicle(final GTFSVehicle<?,?,?,?,?> vehicle){
         annotateTest(() -> assertNotNull(vehicle.getCurrentStatus()));
+    }
+
+    //
+
+    public static void testVehicleRouteReference(final TransitRoute<?,?,?> reference, final TransitVehicle<?,?,?,?,?,?> vehicle){
+        annotateTest(() -> assertSame(reference, vehicle.getRoute()));
     }
 
 }

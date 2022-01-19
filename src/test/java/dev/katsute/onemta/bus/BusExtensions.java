@@ -54,6 +54,10 @@ abstract class BusExtensions {
         annotateTest(() -> assertNotNull(vehicle.getStopName()));
     }
 
+    public static void testOriginStop(final Vehicle vehicle){
+        annotateTest(() -> assertEquals(vehicle.getOriginStopCode(), vehicle.getOriginStop().getStopID()));
+    }
+
     //
 
     public static void testTripStops(final TripStop[] trip){

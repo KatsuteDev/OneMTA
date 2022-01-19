@@ -24,6 +24,10 @@ public abstract class TripValidation {
         annotateTest(() -> assertSame(reference, reference.getTrip().getVehicle()));
     }
 
+    public static void testTripRouteReference(final TransitVehicle<?,?,?,?,?,?> reference){
+        annotateTest(() -> assertSame(reference.getRoute(), reference.getTrip().getRoute()));
+    }
+
     public static void testGTFSTrip(final GTFSTransitTrip<?,?,?> trip){
         annotateTest(() -> assertNotNull(trip.getTripID()));
         annotateTest(() -> assertNotNull(trip.getRouteID()));

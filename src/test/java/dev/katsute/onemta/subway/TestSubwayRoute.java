@@ -86,6 +86,13 @@ final class TestSubwayRoute {
                     VehicleValidation.testGTFSVehicle(vehicle);
             }
 
+            @Test
+            final void testVehicleRouteReference(){
+                annotateTest(() -> Assumptions.assumeTrue(route.getVehicles().length > 0, "No vehicles found, skipping vehicle tests"));
+                for(final Vehicle vehicle : route.getVehicles())
+                    VehicleValidation.testVehicleRouteReference(route, vehicle);
+            }
+
         }
 
         @Nested
@@ -114,6 +121,13 @@ final class TestSubwayRoute {
                     annotateTest(() -> assertNotNull(vehicle.getTrip()));
                     TripValidation.testGTFSTrip(vehicle.getTrip());
                 }
+            }
+
+            @Test
+            final void testVehicleTripRoute(){
+                annotateTest(() -> assumeTrue(route.getVehicles().length > 0, "No vehicles found, skipping tests"));
+                for(final Vehicle vehicle : route.getVehicles())
+                    TripValidation.testTripRouteReference(vehicle);
             }
 
         }
