@@ -213,7 +213,7 @@ final class MTAImpl extends MTA {
 
     @Override
     public final Subway.Route getSubwayRoute(final String route_id){
-        return MTASchema_Subway.asRoute(this, Objects.requireNonNull(resolveSubwayLine(route_id), "Route ID must not be null"));
+        return MTASchema_Subway.asRoute(this, Objects.requireNonNull(resolveSubwayLine(Objects.requireNonNull(route_id, "Route ID must not be null")), "Failed to find subway route with id '" + route_id + "'"));
     }
 
     @Override
@@ -246,7 +246,7 @@ final class MTAImpl extends MTA {
     public final Subway.Vehicle getSubwayTrain(final String train_id){
         Objects.requireNonNull(train_id, "Train ID must not be null");
 
-        final FeedMessage feed = resolveSubwayFeed(train_id.substring(1, 3));
+        final FeedMessage feed = resolveSubwayFeed(train_id.substring(0, 2));
         @SuppressWarnings("ConstantConditions") // resolve will handle NPE
         final int len          = feed.getEntityCount();
 
