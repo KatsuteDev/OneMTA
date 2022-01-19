@@ -47,6 +47,12 @@ final class TestBusRoute {
                 BusExtensions.testOriginStop(route.getVehicles()[0]);
             }
 
+            @Test
+            final void testID(){
+                annotateTest(() -> assumeTrue(route.getVehicles().length > 0, "No vehicles found, skipping vehicle tests"));
+                BusExtensions.testVehicleNumber(mta, route.getVehicles()[0]);
+            }
+
         }
 
         @Nested

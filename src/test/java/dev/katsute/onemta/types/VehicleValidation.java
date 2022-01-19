@@ -1,7 +1,5 @@
 package dev.katsute.onemta.types;
 
-import dev.katsute.onemta.attribute.RouteReference;
-
 import static dev.katsute.jcore.Workflow.*;
 import static org.junit.jupiter.api.Assertions.*;
 

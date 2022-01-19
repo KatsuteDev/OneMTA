@@ -32,6 +32,17 @@ final class TestSubwayRoute {
         }
 
         @Nested
+        final class VehicleTests {
+
+            @Test
+            final void testID(){
+                annotateTest(() -> assumeTrue(route.getVehicles().length > 0, "No vehicles found, skipping vehicle tests"));
+                SubwayExtensions.testVehicleNumber(mta, route.getVehicles()[0]);
+            }
+
+        }
+
+        @Nested
         final class TripTests {
 
             @Test

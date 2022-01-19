@@ -36,6 +36,12 @@ final class TestMNRRoute {
                     MNRExtensions.testVehicle(vehicle);
             }
 
+            @Test
+            final void testID(){
+                annotateTest(() -> assumeTrue(route.getVehicles().length > 0, "No vehicles found, skipping vehicle tests"));
+                MNRExtensions.testVehicleNumber(mta, route.getVehicles()[0]);
+            }
+
         }
 
     }

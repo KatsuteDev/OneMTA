@@ -36,6 +36,12 @@ final class TestLIRRRoute {
                     LIRRExtensions.testVehicle(vehicle);
             }
 
+            @Test
+            final void testID(){
+                annotateTest(() -> assumeTrue(route.getVehicles().length > 0, "No vehicles found, skipping vehicle tests"));
+                LIRRExtensions.testVehicleNumber(mta, route.getVehicles()[0]);
+            }
+
         }
 
         @Nested

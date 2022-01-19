@@ -36,6 +36,12 @@ final class TestLIRRStop {
                     LIRRExtensions.testVehicle(vehicle);
             }
 
+            @Test
+            final void testID(){
+                annotateTest(() -> assumeTrue(stop.getVehicles().length > 0, "No vehicles found, skipping vehicle tests"));
+                LIRRExtensions.testVehicleNumber(mta, stop.getVehicles()[0]);
+            }
+
         }
 
         @Nested

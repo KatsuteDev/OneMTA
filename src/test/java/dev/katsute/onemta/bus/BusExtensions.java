@@ -1,5 +1,7 @@
 package dev.katsute.onemta.bus;
 
+import dev.katsute.onemta.MTA;
+
 import static dev.katsute.jcore.Workflow.*;
 import static dev.katsute.onemta.bus.Bus.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -56,6 +58,10 @@ abstract class BusExtensions {
 
     public static void testOriginStop(final Vehicle vehicle){
         annotateTest(() -> assertEquals(vehicle.getOriginStopCode(), vehicle.getOriginStop().getStopID()));
+    }
+
+    public static void testVehicleNumber(final MTA mta, final Vehicle vehicle){
+        annotateTest(() -> assertEquals(vehicle.getVehicleID(), mta.getBus(vehicle.getVehicleID()).getVehicleID()));
     }
 
     //
