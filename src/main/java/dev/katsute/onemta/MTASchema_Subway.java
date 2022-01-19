@@ -38,14 +38,14 @@ abstract class MTASchema_Subway extends MTASchema {
         // find row
         final DataResource resource = getDataResource(mta, DataResourceType.Subway);
         final CSV csv               = resource.getData("routes.txt");
-        final List<String> row      = csv.getRow("route_id", route_id);
+        final List<String> row      = csv.getRow("route_id", cast(mta).resolveSubwayLine(route_id));
 
         // instantiate
         Objects.requireNonNull(row, "Failed to find subway route with id '" + route_id + "'");
 
         return new Route() {
 
-            private final String routeID        = route_id;
+            private final String routeID        = cast(mta).resolveSubwayLine(route_id);
             private final String routeShortName = row.get(csv.getHeaderIndex("route_short_name"));
             private final String routeLongName  = row.get(csv.getHeaderIndex("route_long_name"));
             private final String routeDesc      = row.get(csv.getHeaderIndex("route_desc"));
@@ -98,10 +98,8 @@ abstract class MTASchema_Subway extends MTASchema {
             @Override
             public final Vehicle[] getVehicles(){
                 if(vehicles == null){
-                    final String route = String.valueOf(route_id);
-
-                    final FeedMessage feed = cast(mta).resolveSubwayFeed(route);
-                    final int len          = Objects.requireNonNull(feed, "Could not find subway feed for route ID " + route).getEntityCount();
+                    final FeedMessage feed = cast(mta).resolveSubwayFeed(routeID);
+                    final int len          = Objects.requireNonNull(feed, "Could not find subway feed for route ID " + routeID).getEntityCount();
 
                     TripUpdate tripUpdate = null;
                     String tripVehicle    = null;
@@ -113,7 +111,7 @@ abstract class MTASchema_Subway extends MTASchema {
                         // get next trip
                         if(entity.hasTripUpdate()){
                             if( // only include trips on this route
-                                entity.getTripUpdate().getTrip().getRouteId().equals(route)
+                                entity.getTripUpdate().getTrip().getRouteId().equals(route_id)
                             ){
                                 tripUpdate  = entity.getTripUpdate();
                                 tripVehicle = tripUpdate.getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getTrainId();
@@ -143,7 +141,7 @@ abstract class MTASchema_Subway extends MTASchema {
                     final int len = feed.getEntityCount();
                     for(int i = 0; i < len; i++){
                         final Subway.Alert alert = MTASchema_Subway.asTransitAlert(mta, feed.getEntity(i));
-                        if(Arrays.asList(alert.getRouteIDs()).contains(route_id))
+                        if(Arrays.asList(alert.getRouteIDs()).contains(routeID))
                             alerts.add(alert);
                     }
                     this.alerts = alerts;

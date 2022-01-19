@@ -118,8 +118,6 @@ final class MTAImpl extends MTA {
             case "A":
             case "C":
             case "E":
-            case "SF":
-            case "SR":
 
             case "B":
             case "D":
@@ -146,10 +144,11 @@ final class MTAImpl extends MTA {
             case "6":
             case "7":
             case "GS":
-
-            case "SIR":
                 return route_id.toUpperCase();
-
+            case "FS":
+            case "SF":
+            case "SR":
+                return "FS";
             case "FX":
             case "5X":
             case "6X":
@@ -159,7 +158,8 @@ final class MTAImpl extends MTA {
                 return "GS";
             case "S":
             case "SI":
-                return "SIR";
+            case "SIR":
+                return "SI";
             default:
                 return null;
         }
@@ -170,6 +170,7 @@ final class MTAImpl extends MTA {
             case "A":
             case "C":
             case "E":
+            case "FS":
             case "SF":
             case "SR":
                 return service.subway.getACE(subwayToken);
@@ -199,7 +200,7 @@ final class MTAImpl extends MTA {
             case "7":
             case "GS":
                 return service.subway.get1234567(subwayToken);
-            case "SIR":
+            case "SI":
                 return service.subway.getSI(subwayToken);
             default:
                 return null;
