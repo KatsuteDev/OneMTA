@@ -22,12 +22,12 @@ import java.util.Date;
 
 public abstract class TransitAlertPeriod {
 
-    public abstract Long getStartEpochMillis();
-
     public abstract Date getStart();
 
-    public abstract Long getEndEpochMillis();
+    public abstract Long getStartEpochMillis();
 
     public abstract Date getEnd();
+
+    public abstract Long getEndEpochMillis();
 
 }

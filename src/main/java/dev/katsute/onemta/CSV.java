@@ -36,15 +36,21 @@ class CSV {
         this.rows = Collections.unmodifiableList(rows);
     }
 
-    // (?:^|,)\s*(?:(?=")"([^"].*?)"|(?!")(.*?))(?=,|$)
-    private static final Pattern split = Pattern.compile("(?:^|,)\\s*(?:(?=\")\"([^\"].*?)\"|(?!\")(.*?))(?=,|$)");
+    // (?:^|,)\s*(?:(?=")"([^"].*?)?"|(?!")(.*?))(?=,|$)
+    private static final Pattern split = Pattern.compile("(?:^|,)\\s*(?:(?=\")\"([^\"].*?)?\"|(?!\")(.*?))(?=,|$)");
 
     private List<String> parseLine(final String line){
         final Matcher matcher = split.matcher(line);
         final List<String> row = new ArrayList<>();
 
         while(matcher.find())
-            row.add(matcher.group(2) != null ? matcher.group(2) : matcher.group(1));
+            row.add(
+                matcher.group(2) != null
+                ? matcher.group(2)
+                : matcher.group(1) != null
+                    ? matcher.group(1)
+                    : ""
+        );
         return row;
     }
 

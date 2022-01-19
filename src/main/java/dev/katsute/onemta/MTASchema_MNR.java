@@ -57,7 +57,7 @@ abstract class MTASchema_MNR extends MTASchema {
 
                 final List<Vehicle> vehicles = new ArrayList<>();
                 for(int i = 0; i < len; i++){
-                    final FeedEntity entity = feed.getEntity(0);
+                    final FeedEntity entity = feed.getEntity(i);
                     // only include trips with vehicles
                     if(entity.hasVehicle() && entity.hasTripUpdate())
                         // only include vehicles on this route
@@ -177,21 +177,23 @@ abstract class MTASchema_MNR extends MTASchema {
                 final List<Vehicle> vehicles = new ArrayList<>();
                 OUTER:
                 for(int i = 0; i < len; i++){
-                    final FeedEntity entity = feed.getEntity(0);
+                    final FeedEntity entity = feed.getEntity(i);
                     // only include trips with vehicles
                     if(
                         entity.hasVehicle() &&
                         entity.hasTripUpdate()
                     ){
-                        final TripUpdate tu = entity.getTripUpdate();
-                        final int len2 = tu.getStopTimeUpdateCount();
-                        // check all stops on train route
-                        for(int u = 0; u < len2; u++){
-                            final TripUpdate.StopTimeUpdate update = tu.getStopTimeUpdate(u);
-                            // check if this stop is en route
-                            if(update.getStopId().equalsIgnoreCase(stop)){
-                                vehicles.add(asVehicle(mta, entity.getVehicle(), entity.getTripUpdate()));
-                                continue OUTER;
+                        if(entity.getTripUpdate().getStopTimeUpdateCount() > 0){
+                            final TripUpdate tu = entity.getTripUpdate();
+                            final int len2 = tu.getStopTimeUpdateCount();
+                            // check all stops on train route
+                            for(int u = 0; u < len2; u++){
+                                final TripUpdate.StopTimeUpdate update = tu.getStopTimeUpdate(u);
+                                // check if this stop is en route
+                                if(update.getStopId().equalsIgnoreCase(stop)){
+                                    vehicles.add(asVehicle(mta, entity.getVehicle(), entity.getTripUpdate()));
+                                    continue OUTER;
+                                }
                             }
                         }
                     }
@@ -412,23 +414,23 @@ abstract class MTASchema_MNR extends MTASchema {
             }
 
             @Override
-            public final Long getArrivalTimeEpochMillis(){
-                return arrival;
-            }
-
-            @Override
             public final Date getArrivalTime(){
                 return arrival != null ? new Date(arrival) : null;
             }
 
             @Override
-            public final Long getDepartureTimeEpochMillis(){
-                return departure;
+            public final Long getArrivalTimeEpochMillis(){
+                return arrival;
             }
 
             @Override
             public final Date getDepartureTime(){
                 return departure != null ? new Date(departure) : null;
+            }
+
+            @Override
+            public final Long getDepartureTimeEpochMillis(){
+                return departure;
             }
 
             @Override
@@ -492,7 +494,7 @@ abstract class MTASchema_MNR extends MTASchema {
                     if(entity.hasRouteId())
                         routeIDs.add(Integer.valueOf(entity.getRouteId()));
                     else if(entity.hasStopId())
-                        stopIDs.add(Integer.valueOf(entity.getRouteId()));
+                        stopIDs.add(Integer.valueOf(entity.getStopId()));
                 }
                 this.routeIDs = Collections.unmodifiableList(routeIDs);
                 this.stopIDs  = Collections.unmodifiableList(stopIDs);
@@ -535,7 +537,7 @@ abstract class MTASchema_MNR extends MTASchema {
 
             @Override
             public final Stop[] getStops(){
-                if(routes == null){
+                if(stops == null){
                     final List<Stop> stops = new ArrayList<>();
                     for(final Integer id : stopIDs)
                         stops.add(mta.getMNRStop(id));
@@ -545,12 +547,12 @@ abstract class MTASchema_MNR extends MTASchema {
             }
 
             @Override
-            public final String getHeaderText(){
+            public final String getHeader(){
                 return headerText;
             }
 
             @Override
-            public final String getDescriptionText(){
+            public final String getDescription(){
                 return descriptionText;
             }
 

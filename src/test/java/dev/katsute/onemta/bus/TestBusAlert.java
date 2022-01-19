@@ -2,7 +2,12 @@ package dev.katsute.onemta.bus;
 
 import dev.katsute.onemta.MTA;
 import dev.katsute.onemta.TestProvider;
-import org.junit.jupiter.api.BeforeAll;
+import dev.katsute.onemta.types.AlertValidation;
+import org.junit.jupiter.api.*;
+
+import static dev.katsute.jcore.Workflow.*;
+import static dev.katsute.onemta.bus.Bus.*;
+import static org.junit.jupiter.api.Assumptions.*;
 
 final class TestBusAlert {
 
@@ -11,6 +16,18 @@ final class TestBusAlert {
     @BeforeAll
     static void beforeAll(){
         mta = TestProvider.getOneMTA();
+    }
+
+    @Nested
+    final class InheritedTests {
+
+        @Test
+        final void testTransitAlert(){
+            annotateTest(() -> assumeTrue(mta.getBusAlerts().length > 0, "No alerts found, skipping alert tests"));
+            for(final Alert alert : mta.getBusAlerts())
+                AlertValidation.testAlert(alert);
+        }
+
     }
 
 }

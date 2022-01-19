@@ -63,14 +63,14 @@ public abstract class TestProvider {
                 annotateTest(() -> assumeTrue(false, "No token defined, skipping tests"));
 
             {
-                System.out.println("[↻] Acquiring test lock...");
-                final long now          = System.currentTimeMillis();
+                System.out.println("[↻] Checking rate limit...");
+                long now                = System.currentTimeMillis();
                 final int delay         = TEST_DELAY * 1000;
                 final long lastTest     = TEST_LOCK.exists() ? Long.parseLong(readFile(TEST_LOCK)) : -1;
                 final long allowedPass  = lastTest + delay;
 
                 if(lastTest != - 1 && now < allowedPass){
-                    System.out.println("[⏸] Test lock is enabled, waiting " + ((allowedPass - now) / 1000) + " seconds");
+                    System.out.println("[⏸] Rate limit in place, waiting " + ((allowedPass - now) / 1000) + " seconds");
                     Thread.sleep(allowedPass - now);
                 }
 

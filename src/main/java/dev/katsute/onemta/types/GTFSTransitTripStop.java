@@ -16,15 +16,20 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-package dev.katsute.onemta.railroad;
+package dev.katsute.onemta.types;
 
-import dev.katsute.onemta.types.GTFSTransitTripStop;
-import dev.katsute.onemta.types.TransitTrip;
+import java.util.Date;
 
-public abstract class RailroadTripStop<S extends RailroadStop<?,?>, T extends TransitTrip<?,?,?>, I> extends GTFSTransitTripStop<S,T,I> {
+public abstract class GTFSTransitTripStop<S extends TransitStop<?,?,?>, T extends TransitTrip<?,?,?>, SID> extends TransitTripStop<S,T,SID> {
 
-    public abstract Integer getDelay();
+    public abstract Date getArrivalTime();
 
-    public abstract String getTrainStatus();
+    public abstract Long getArrivalTimeEpochMillis();
+
+    public abstract Date getDepartureTime();
+
+    public abstract Long getDepartureTimeEpochMillis();
+
+    public abstract String getTrack();
 
 }

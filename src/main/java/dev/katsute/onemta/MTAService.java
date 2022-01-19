@@ -21,6 +21,9 @@ package dev.katsute.onemta;
 import dev.katsute.onemta.GTFSRealtimeProto.FeedMessage;
 import dev.katsute.onemta.Json.JsonObject;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 
 @SuppressWarnings("SpellCheckingInspection")
@@ -29,6 +32,14 @@ final class MTAService {
     private final RequestCache cache = new RequestCache();
 
     MTAService(){ }
+
+    private static String encodeUTF8(final String string){
+        try{
+            return URLEncoder.encode(string, StandardCharsets.UTF_8.name());
+        }catch(final UnsupportedEncodingException ignored){
+            return string;
+        }
+    }
 
     final BusService bus        = new BusService();
     final SubwayService subway  = new SubwayService();
@@ -55,7 +66,7 @@ final class MTAService {
                                             put("version", "2");
                                             put("VehicleMonitoringDetailLevel", "calls");
                     if(vehicle != null)     put("VehicleRef", String.valueOf(vehicle));
-                    if(line != null)        put("LineRef", "MTA%20NYCT_" + line);
+                    if(line != null)        put("LineRef", "MTA%20NYCT_" + encodeUTF8(line));
                     if(direction != null)   put("DirectionRef", String.valueOf(direction));
                 }},
                 new HashMap<>()

@@ -40,7 +40,7 @@ abstract class MTASchema {
     protected static <T> T requireNonNull(final Supplier<T> supplier){
         try{
             return supplier.get();
-        }catch(final NullPointerException ignored){
+        }catch(final Throwable ignored){
             return null;
         }
     }
@@ -94,23 +94,23 @@ abstract class MTASchema {
             private final Long end = requireNonNull(timeRange::getEnd);
 
             @Override
-            public final Long getStartEpochMillis(){
-                return start;
-            }
-
-            @Override
             public final Date getStart(){
                 return start != null ? new Date(start) : null;
             }
 
             @Override
-            public final Long getEndEpochMillis(){
-                return end;
+            public final Long getStartEpochMillis(){
+                return start;
             }
 
             @Override
             public final Date getEnd(){
                 return end != null ? new Date(end) : null;
+            }
+
+            @Override
+            public final Long getEndEpochMillis(){
+                return end;
             }
 
         };

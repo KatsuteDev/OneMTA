@@ -32,9 +32,9 @@ public abstract class TransitAlert<RID, R extends TransitRoute<?,?,?>, SID, S ex
 
     public abstract S[] getStops();
 
-    public abstract String getHeaderText();
+    public abstract String getHeader();
 
-    public abstract String getDescriptionText();
+    public abstract String getDescription();
 
     public abstract String getAlertType();
 

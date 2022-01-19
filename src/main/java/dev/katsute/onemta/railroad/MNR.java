@@ -31,7 +31,7 @@ public abstract class MNR {
 
     public abstract static class Trip extends GTFSTransitTrip<Vehicle,Route,TripStop> { }
 
-    public abstract static class TripStop extends RailroadTripStop<Stop,Trip,Integer,String> { }
+    public abstract static class TripStop extends RailroadTripStop<Stop,Trip,Integer> { }
 
     public abstract static class Alert extends TransitAlert<Integer,Route,Integer,Stop> { }
 

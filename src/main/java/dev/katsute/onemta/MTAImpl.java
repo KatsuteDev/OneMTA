@@ -254,7 +254,7 @@ final class MTAImpl extends MTA {
         String tripVehicle    = null;
 
         for(int i = 0; i < len; i++){
-            final FeedEntity entity = feed.getEntity(0);
+            final FeedEntity entity = feed.getEntity(i);
 
             // get next trip
             if(entity.hasTripUpdate()){
@@ -312,7 +312,7 @@ final class MTAImpl extends MTA {
         String tripVehicle    = null;
 
         for(int i = 0; i < len; i++){
-            final FeedEntity entity = feed.getEntity(0);
+            final FeedEntity entity = feed.getEntity(i);
 
             // get next trip
             if(entity.hasTripUpdate()){
@@ -367,7 +367,7 @@ final class MTAImpl extends MTA {
         final int len = feed.getEntityCount();
 
         for(int i = 0; i < len; i++){
-            final FeedEntity entity = feed.getEntity(0);
+            final FeedEntity entity = feed.getEntity(i);
             if(
                 entity.hasVehicle() &&
                 entity.getVehicle().hasVehicle() &&

@@ -67,7 +67,7 @@ abstract class MTASchema_Subway extends MTASchema {
 
                 final List<Vehicle> vehicles = new ArrayList<>();
                 for(int i = 0; i < len; i++){
-                    final FeedEntity entity = feed.getEntity(0);
+                    final FeedEntity entity = feed.getEntity(i);
 
                     // get next trip
                     if(entity.hasTripUpdate()){
@@ -193,7 +193,7 @@ abstract class MTASchema_Subway extends MTASchema {
             private final List<Vehicle> vehicles;
 
             {
-                final FeedMessage feed = cast(mta).resolveSubwayFeed(stop_id.substring(0, 2));
+                final FeedMessage feed = cast(mta).resolveSubwayFeed(stop_id.substring(0, 1));
                 final int len          = Objects.requireNonNull(feed, "Could not find subway feed for stop ID " + stop_id).getEntityCount();
 
                 TripUpdate tripUpdate = null;
@@ -202,13 +202,12 @@ abstract class MTASchema_Subway extends MTASchema {
                 final List<Vehicle> vehicles = new ArrayList<>();
                 OUTER:
                 for(int i = 0; i < len; i++){
-                    final FeedEntity entity = feed.getEntity(0);
+                    final FeedEntity entity = feed.getEntity(i);
 
                     // get next trip
                     if(entity.hasTripUpdate()){
                         if( // only include trips at this stop
-                            entity.getTripUpdate().getStopTimeUpdateCount() > 0 &&
-                            entity.getTripUpdate().getStopTimeUpdate(0).getStopId().equalsIgnoreCase(stop_id)
+                            entity.getTripUpdate().getStopTimeUpdateCount() > 0
                         ){
                             final TripUpdate tu = entity.getTripUpdate();
                             final int len2 = tu.getStopTimeUpdateCount();
@@ -216,7 +215,11 @@ abstract class MTASchema_Subway extends MTASchema {
                             for(int u = 0; u < len2; u++){
                                 final TripUpdate.StopTimeUpdate update = tu.getStopTimeUpdate(u);
                                 // check if this stop is en route
-                                if(update.getStopId().equalsIgnoreCase(stop_id)){
+                                if(
+                                    stopDirection == null
+                                    ? update.getStopId().equalsIgnoreCase(stop_id + "N") || update.getStopId().equalsIgnoreCase(stop_id + "S")
+                                    : update.getStopId().equalsIgnoreCase(stop_id)
+                                ){
                                     tripUpdate  = entity.getTripUpdate();
                                     tripVehicle = tripUpdate.getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getTrainId();
                                     continue OUTER;
@@ -261,13 +264,6 @@ abstract class MTASchema_Subway extends MTASchema {
             @Override
             public final SubwayDirection getDirection(){
                 return stopDirection;
-            }
-
-            @Override
-            public final Boolean isSameStop(final Stop stop){
-                return this == stop ||
-                   (stop != null &&
-                    direction.matcher(getStopID()).replaceAll("").equals(direction.matcher(stop.getStopID()).replaceAll("")));
             }
 
             // live feed
@@ -443,23 +439,23 @@ abstract class MTASchema_Subway extends MTASchema {
             }
 
             @Override
-            public final Long getArrivalTimeEpochMillis(){
-                return arrival;
-            }
-
-            @Override
             public final Date getArrivalTime(){
                 return arrival != null ? new Date(arrival) : null;
             }
 
             @Override
-            public final Long getDepartureTimeEpochMillis(){
-                return departure;
+            public final Long getArrivalTimeEpochMillis(){
+                return arrival;
             }
 
             @Override
             public final Date getDepartureTime(){
                 return departure != null ? new Date(departure) : null;
+            }
+
+            @Override
+            public final Long getDepartureTimeEpochMillis(){
+                return departure;
             }
 
             @Override
@@ -518,7 +514,7 @@ abstract class MTASchema_Subway extends MTASchema {
                     if(entity.hasRouteId())
                         routeIDs.add(entity.getRouteId());
                     else if(entity.hasStopId())
-                        stopIDs.add(entity.getRouteId());
+                        stopIDs.add(entity.getStopId());
                 }
                 this.routeIDs = Collections.unmodifiableList(routeIDs);
                 this.stopIDs  = Collections.unmodifiableList(stopIDs);
@@ -561,7 +557,7 @@ abstract class MTASchema_Subway extends MTASchema {
 
             @Override
             public final Stop[] getStops(){
-                if(routes == null){
+                if(stops == null){
                     final List<Stop> stops = new ArrayList<>();
                     for(final String id : stopIDs)
                         stops.add(mta.getSubwayStop(id));
@@ -571,12 +567,12 @@ abstract class MTASchema_Subway extends MTASchema {
             }
 
             @Override
-            public final String getHeaderText(){
+            public final String getHeader(){
                 return headerText;
             }
 
             @Override
-            public final String getDescriptionText(){
+            public final String getDescription(){
                 return descriptionText;
             }
 
