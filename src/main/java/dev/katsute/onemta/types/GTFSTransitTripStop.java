@@ -22,13 +22,13 @@ import java.util.Date;
 
 public abstract class GTFSTransitTripStop<S extends TransitStop<?,?,?>, T extends TransitTrip<?,?,?>, SID> extends TransitTripStop<S,T,SID> {
 
-    public abstract Long getArrivalTimeEpochMillis();
-
     public abstract Date getArrivalTime();
 
-    public abstract Long getDepartureTimeEpochMillis();
+    public abstract Long getArrivalTimeEpochMillis();
 
     public abstract Date getDepartureTime();
+
+    public abstract Long getDepartureTimeEpochMillis();
 
     public abstract String getTrack();
 

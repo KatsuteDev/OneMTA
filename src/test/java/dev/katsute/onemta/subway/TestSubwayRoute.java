@@ -23,10 +23,42 @@ final class TestSubwayRoute {
         annotateTest(() -> route = mta.getSubwayRoute(TestProvider.SUBWAY_ROUTE));
     }
 
-    @Test
-    final void testMethods(){
-        annotateTest(() -> assertNotNull(route.getRouteShortName()));
-        annotateTest(() -> assertNotNull(route.getRouteDescription()));
+    @Nested
+    final class ExtensionTests {
+
+        @Test
+        final void testStop(){
+            SubwayExtensions.testRoute(route);
+        }
+
+        @Nested
+        final class TripTests {
+
+            @Test
+            final void testVehicleTrips(){
+                annotateTest(() -> assumeTrue(route.getVehicles().length > 0, "No vehicles found, skipping tests"));
+                for(final Vehicle vehicle : route.getVehicles()){
+                    annotateTest(() -> assertNotNull(vehicle.getTrip()));
+                    SubwayExtensions.testTrip(vehicle.getTrip());
+                }
+            }
+
+        }
+
+        @Nested
+        final class TripStopTests {
+
+            @Test
+            final void testVehicleTripStops(){
+                annotateTest(() -> assumeTrue(route.getVehicles().length > 0, "No vehicles found, skipping tests"));
+                for(final Vehicle vehicle : route.getVehicles()){
+                    annotateTest(() -> assumeTrue(vehicle.getTrip().getTripStops().length > 0, "No vehicles found, skipping tests"));
+                    SubwayExtensions.testTripStops(vehicle.getTrip().getTripStops());
+                }
+            }
+
+        }
+
     }
 
     @Nested
@@ -42,14 +74,16 @@ final class TestSubwayRoute {
 
             @Test
             final void testTransitVehicles(){
-                annotateTest(() -> assertNotNull(route.getVehicles()));
-                VehicleValidation.testVehicles(route.getVehicles());
+                annotateTest(() -> Assumptions.assumeTrue(route.getVehicles().length > 0, "No vehicles found, skipping vehicle tests"));
+                for(final Vehicle vehicle : route.getVehicles())
+                    VehicleValidation.testVehicle(vehicle);
             }
 
             @Test
             final void testGTFSTransitVehicles(){
-                annotateTest(() -> assertNotNull(route.getVehicles()));
-                VehicleValidation.testGTFSVehicles(route.getVehicles());
+                annotateTest(() -> Assumptions.assumeTrue(route.getVehicles().length > 0, "No vehicles found, skipping vehicle tests"));
+                for(final Vehicle vehicle : route.getVehicles())
+                    VehicleValidation.testGTFSVehicle(vehicle);
             }
 
         }

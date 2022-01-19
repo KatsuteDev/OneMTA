@@ -2,7 +2,6 @@ package dev.katsute.onemta.mnr;
 
 import dev.katsute.onemta.MTA;
 import dev.katsute.onemta.TestProvider;
-import dev.katsute.onemta.railroad.MNR;
 import dev.katsute.onemta.types.AlertValidation;
 import org.junit.jupiter.api.*;
 

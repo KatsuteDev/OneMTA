@@ -30,8 +30,10 @@ final class TestMNRRoute {
         final class VehicleTests {
 
             @Test
-            final void testMethods(){
-
+            final void testVehicles(){
+                annotateTest(() -> Assumptions.assumeTrue(route.getVehicles().length > 0, "No vehicles found, skipping vehicle tests"));
+                for(final Vehicle vehicle : route.getVehicles())
+                    MNRExtensions.testVehicle(vehicle);
             }
 
         }
@@ -51,14 +53,16 @@ final class TestMNRRoute {
 
             @Test
             final void testTransitVehicles(){
-                annotateTest(() -> Assertions.assertNotNull(route.getVehicles()));
-                VehicleValidation.testVehicles(route.getVehicles());
+                annotateTest(() -> Assumptions.assumeTrue(route.getVehicles().length > 0, "No vehicles found, skipping vehicle tests"));
+                for(final Vehicle vehicle : route.getVehicles())
+                    VehicleValidation.testVehicle(vehicle);
             }
 
             @Test
             final void testGTFSTransitVehicles(){
-                annotateTest(() -> Assertions.assertNotNull(route.getVehicles()));
-                VehicleValidation.testGTFSVehicles(route.getVehicles());
+                annotateTest(() -> Assumptions.assumeTrue(route.getVehicles().length > 0, "No vehicles found, skipping vehicle tests"));
+                for(final Vehicle vehicle : route.getVehicles())
+                    VehicleValidation.testGTFSVehicle(vehicle);
             }
 
         }

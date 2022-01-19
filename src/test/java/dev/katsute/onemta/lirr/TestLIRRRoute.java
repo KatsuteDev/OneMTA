@@ -24,6 +24,37 @@ final class TestLIRRRoute {
     }
 
     @Nested
+    final class ExtensionTests {
+
+        @Nested
+        final class VehicleTests {
+
+            @Test
+            final void testVehicles(){
+                annotateTest(() -> Assumptions.assumeTrue(route.getVehicles().length > 0, "No vehicles found, skipping vehicle tests"));
+                for(final Vehicle vehicle : route.getVehicles())
+                    LIRRExtensions.testVehicle(vehicle);
+            }
+
+        }
+
+        @Nested
+        final class TripTests {
+
+            @Test
+            final void testVehicleTrips(){
+                annotateTest(() -> assumeTrue(route.getVehicles().length > 0, "No vehicles found, skipping tests"));
+                for(final Vehicle vehicle : route.getVehicles()){
+                    annotateTest(() -> assertNotNull(vehicle.getTrip()));
+                    LIRRExtensions.testTrip(vehicle.getTrip());
+                }
+            }
+
+        }
+
+    }
+
+    @Nested
     final class InheritedTests {
 
         @Test
@@ -36,14 +67,16 @@ final class TestLIRRRoute {
 
             @Test
             final void testTransitVehicles(){
-                annotateTest(() -> Assertions.assertNotNull(route.getVehicles()));
-                VehicleValidation.testVehicles(route.getVehicles());
+                annotateTest(() -> Assumptions.assumeTrue(route.getVehicles().length > 0, "No vehicles found, skipping vehicle tests"));
+                for(final Vehicle vehicle : route.getVehicles())
+                    VehicleValidation.testVehicle(vehicle);
             }
 
             @Test
             final void testGTFSTransitVehicles(){
-                annotateTest(() -> Assertions.assertNotNull(route.getVehicles()));
-                VehicleValidation.testGTFSVehicles(route.getVehicles());
+                annotateTest(() -> Assumptions.assumeTrue(route.getVehicles().length > 0, "No vehicles found, skipping vehicle tests"));
+                for(final Vehicle vehicle : route.getVehicles())
+                    VehicleValidation.testGTFSVehicle(vehicle);
             }
 
         }

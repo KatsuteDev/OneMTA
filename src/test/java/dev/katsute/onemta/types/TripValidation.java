@@ -2,10 +2,10 @@ package dev.katsute.onemta.types;
 
 import dev.katsute.onemta.attribute.TripReference;
 import dev.katsute.onemta.railroad.RailroadTripStop;
-import org.junit.jupiter.api.Assumptions;
 
 import static dev.katsute.jcore.Workflow.*;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assumptions.*;
 
 /**
  * @see TransitTrip
@@ -32,19 +32,19 @@ public abstract class TripValidation {
     //
 
     public static void testTripStops(final TransitTripStop<?,?,?>[] trip){
-        annotateTest(() -> Assumptions.assumeTrue(trip.length > 0, "No trip stops found, skipping trip stop tests"));
+        annotateTest(() -> assumeTrue(trip.length > 0, "No trip stops found, skipping tests"));
         for(final TransitTripStop<?, ?, ?> stop : trip)
             testTripStop(stop);
     }
 
     public static void testGTFSTripStops(final GTFSTransitTripStop<?,?,?>[] trip){
-        annotateTest(() -> Assumptions.assumeTrue(trip.length > 0, "No trip stops found, skipping trip stop tests"));
+        annotateTest(() -> assumeTrue(trip.length > 0, "No trip stops found, skipping tests"));
         for(final GTFSTransitTripStop<?, ?, ?> stop : trip)
             testGTFSTripStop(stop);
     }
 
     public static void testRailroadTripStops(final RailroadTripStop<?,?,?>[] trip){
-        annotateTest(() -> Assumptions.assumeTrue(trip.length > 0, "No trip stops found, skipping trip stop tests"));
+        annotateTest(() -> assumeTrue(trip.length > 0, "No trip stops found, skipping tests"));
         for(final RailroadTripStop<?, ?, ?> stop : trip)
             testRailroadTripStop(stop);
     }

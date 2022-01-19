@@ -64,7 +64,7 @@ public abstract class TestProvider {
 
             {
                 System.out.println("[↻] Checking rate limit...");
-                long now          = System.currentTimeMillis();
+                long now                = System.currentTimeMillis();
                 final int delay         = TEST_DELAY * 1000;
                 final long lastTest     = TEST_LOCK.exists() ? Long.parseLong(readFile(TEST_LOCK)) : -1;
                 final long allowedPass  = lastTest + delay;

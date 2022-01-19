@@ -27,8 +27,34 @@ final class TestBusStop {
     final class TestExtensions {
 
         @Test
-        final void testMethods(){
-            annotateTest(() -> assertNotNull(stop.getRouteDescription()));
+        final void testRoute(){
+            BusExtensions.testStop(stop);
+        }
+
+        @Nested
+        final class VehicleTests {
+
+            @Test
+            final void testVehicles(){
+                annotateTest(() -> assumeTrue(stop.getVehicles().length > 0, "No vehicles found, skipping vehicle tests"));
+                for(final Vehicle vehicle : stop.getVehicles())
+                    BusExtensions.testVehicle(vehicle);
+            }
+
+        }
+
+        @Nested
+        final class TripStopTests {
+
+            @Test
+            final void testVehicleTripStops(){
+                annotateTest(() -> assumeTrue(stop.getVehicles().length > 0, "No vehicles found, skipping tests"));
+                for(final Vehicle vehicle : stop.getVehicles()){
+                    annotateTest(() -> assumeTrue(vehicle.getTrip().getTripStops().length > 0, "No vehicles found, skipping tests"));
+                    BusExtensions.testTripStops(vehicle.getTrip().getTripStops());
+                }
+            }
+
         }
 
     }
@@ -46,8 +72,9 @@ final class TestBusStop {
 
             @Test
             final void testTransitVehicles(){
-                annotateTest(() -> Assertions.assertNotNull(stop.getVehicles()));
-                VehicleValidation.testVehicles(stop.getVehicles());
+                annotateTest(() -> Assumptions.assumeTrue(stop.getVehicles().length > 0, "No vehicles found, skipping vehicle tests"));
+                for(final Vehicle vehicle : stop.getVehicles())
+                    VehicleValidation.testVehicle(vehicle);
             }
 
         }

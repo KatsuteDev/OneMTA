@@ -24,6 +24,23 @@ final class TestMNRStop {
     }
 
     @Nested
+    final class ExtensionTests {
+
+        @Nested
+        final class VehicleTests {
+
+            @Test
+            final void testVehicles(){
+                annotateTest(() -> Assumptions.assumeTrue(stop.getVehicles().length > 0, "No vehicles found, skipping vehicle tests"));
+                for(final Vehicle vehicle : stop.getVehicles())
+                    MNRExtensions.testVehicle(vehicle);
+            }
+
+        }
+
+    }
+
+    @Nested
     final class InheritedTests {
 
         @Test
@@ -41,14 +58,16 @@ final class TestMNRStop {
 
             @Test
             final void testTransitVehicles(){
-                annotateTest(() -> Assertions.assertNotNull(stop.getVehicles()));
-                VehicleValidation.testVehicles(stop.getVehicles());
+                annotateTest(() -> Assumptions.assumeTrue(stop.getVehicles().length > 0, "No vehicles found, skipping vehicle tests"));
+                for(final Vehicle vehicle : stop.getVehicles())
+                    VehicleValidation.testVehicle(vehicle);
             }
 
             @Test
             final void testGTFSTransitVehicles(){
-                annotateTest(() -> Assertions.assertNotNull(stop.getVehicles()));
-                VehicleValidation.testGTFSVehicles(stop.getVehicles());
+                annotateTest(() -> Assumptions.assumeTrue(stop.getVehicles().length > 0, "No vehicles found, skipping vehicle tests"));
+                for(final Vehicle vehicle : stop.getVehicles())
+                    VehicleValidation.testGTFSVehicle(vehicle);
             }
 
         }

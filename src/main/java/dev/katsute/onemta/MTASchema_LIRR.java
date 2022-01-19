@@ -459,23 +459,23 @@ abstract class MTASchema_LIRR extends MTASchema {
             }
 
             @Override
-            public final Long getArrivalTimeEpochMillis(){
-                return arrival;
-            }
-
-            @Override
             public final Date getArrivalTime(){
                 return arrival != null ? new Date(arrival) : null;
             }
 
             @Override
-            public final Long getDepartureTimeEpochMillis(){
-                return departure;
+            public final Long getArrivalTimeEpochMillis(){
+                return arrival;
             }
 
             @Override
             public final Date getDepartureTime(){
                 return departure != null ? new Date(departure) : null;
+            }
+
+            @Override
+            public final Long getDepartureTimeEpochMillis(){
+                return departure;
             }
 
             @Override
