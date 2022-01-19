@@ -54,42 +54,6 @@ abstract class MTASchema_Subway extends MTASchema {
 
             private final TransitAgency agency = asAgency(row.get(csv.getHeaderIndex("agency_id")), resource);
 
-            private final List<Vehicle> vehicles;
-
-            {
-                final String route = String.valueOf(route_id);
-
-                final FeedMessage feed = cast(mta).resolveSubwayFeed(route);
-                final int len          = Objects.requireNonNull(feed, "Could not find subway feed for route ID " + route).getEntityCount();
-
-                TripUpdate tripUpdate = null;
-                String tripVehicle    = null;
-
-                final List<Vehicle> vehicles = new ArrayList<>();
-                for(int i = 0; i < len; i++){
-                    final FeedEntity entity = feed.getEntity(i);
-
-                    // get next trip
-                    if(entity.hasTripUpdate()){
-                        if( // only include trips on this route
-                            entity.getTripUpdate().getTrip().getRouteId().equals(route)
-                        ){
-                            tripUpdate  = entity.getTripUpdate();
-                            tripVehicle = tripUpdate.getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getTrainId();
-                        }
-                    }else if( // get matching vehicle for trip
-                        entity.hasVehicle() &&
-                        entity.getVehicle().getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getTrainId().equals(tripVehicle)
-                    ){
-                        vehicles.add(asVehicle(mta, entity.getVehicle(), tripUpdate));
-                        tripUpdate  = null;
-                        tripVehicle = null;
-                    }
-                }
-
-                this.vehicles = Collections.unmodifiableList(vehicles);
-            }
-
             // static data
 
             @Override
@@ -129,8 +93,43 @@ abstract class MTASchema_Subway extends MTASchema {
 
             // live feed
 
+            private List<Vehicle> vehicles = null;
+
             @Override
             public final Vehicle[] getVehicles(){
+                if(vehicles == null){
+                    final String route = String.valueOf(route_id);
+
+                    final FeedMessage feed = cast(mta).resolveSubwayFeed(route);
+                    final int len          = Objects.requireNonNull(feed, "Could not find subway feed for route ID " + route).getEntityCount();
+
+                    TripUpdate tripUpdate = null;
+                    String tripVehicle    = null;
+
+                    final List<Vehicle> vehicles = new ArrayList<>();
+                    for(int i = 0; i < len; i++){
+                        final FeedEntity entity = feed.getEntity(i);
+
+                        // get next trip
+                        if(entity.hasTripUpdate()){
+                            if( // only include trips on this route
+                                entity.getTripUpdate().getTrip().getRouteId().equals(route)
+                            ){
+                                tripUpdate  = entity.getTripUpdate();
+                                tripVehicle = tripUpdate.getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getTrainId();
+                            }
+                        }else if( // get matching vehicle for trip
+                            entity.hasVehicle() &&
+                            entity.getVehicle().getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getTrainId().equals(tripVehicle)
+                        ){
+                            vehicles.add(asVehicle(mta, entity.getVehicle(), tripUpdate));
+                            tripUpdate  = null;
+                            tripVehicle = null;
+                        }
+                    }
+
+                    this.vehicles = Collections.unmodifiableList(vehicles);
+                }
                 return vehicles.toArray(new Vehicle[0]);
             }
 
@@ -190,55 +189,6 @@ abstract class MTASchema_Subway extends MTASchema {
                     : SubwayDirection.SOUTH
                 : null;
 
-            private final List<Vehicle> vehicles;
-
-            {
-                final FeedMessage feed = cast(mta).resolveSubwayFeed(stop_id.substring(0, 1));
-                final int len          = Objects.requireNonNull(feed, "Could not find subway feed for stop ID " + stop_id).getEntityCount();
-
-                TripUpdate tripUpdate = null;
-                String tripVehicle    = null;
-
-                final List<Vehicle> vehicles = new ArrayList<>();
-                OUTER:
-                for(int i = 0; i < len; i++){
-                    final FeedEntity entity = feed.getEntity(i);
-
-                    // get next trip
-                    if(entity.hasTripUpdate()){
-                        if( // only include trips at this stop
-                            entity.getTripUpdate().getStopTimeUpdateCount() > 0
-                        ){
-                            final TripUpdate tu = entity.getTripUpdate();
-                            final int len2 = tu.getStopTimeUpdateCount();
-                            // check all stops on train route
-                            for(int u = 0; u < len2; u++){
-                                final TripUpdate.StopTimeUpdate update = tu.getStopTimeUpdate(u);
-                                // check if this stop is en route
-                                if(
-                                    stopDirection == null
-                                    ? update.getStopId().equalsIgnoreCase(stop_id + "N") || update.getStopId().equalsIgnoreCase(stop_id + "S")
-                                    : update.getStopId().equalsIgnoreCase(stop_id)
-                                ){
-                                    tripUpdate  = entity.getTripUpdate();
-                                    tripVehicle = tripUpdate.getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getTrainId();
-                                    continue OUTER;
-                                }
-                            }
-                        }
-                    }else if( // get matching vehicle for trip
-                        entity.hasVehicle() &&
-                        entity.getVehicle().getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getTrainId().equals(tripVehicle)
-                    ){
-                        vehicles.add(asVehicle(mta, entity.getVehicle(), tripUpdate));
-                        tripUpdate  = null;
-                        tripVehicle = null;
-                    }
-                }
-
-                this.vehicles = Collections.unmodifiableList(vehicles);
-            }
-
             // static data
 
             @Override
@@ -268,8 +218,56 @@ abstract class MTASchema_Subway extends MTASchema {
 
             // live feed
 
+            private List<Vehicle> vehicles = null;
+
             @Override
             public final Vehicle[] getVehicles(){
+                if(vehicles == null){
+                    final FeedMessage feed = cast(mta).resolveSubwayFeed(stop_id.substring(0, 1));
+                    final int len          = Objects.requireNonNull(feed, "Could not find subway feed for stop ID " + stop_id).getEntityCount();
+
+                    TripUpdate tripUpdate = null;
+                    String tripVehicle    = null;
+
+                    final List<Vehicle> vehicles = new ArrayList<>();
+                    OUTER:
+                    for(int i = 0; i < len; i++){
+                        final FeedEntity entity = feed.getEntity(i);
+
+                        // get next trip
+                        if(entity.hasTripUpdate()){
+                            if( // only include trips at this stop
+                                entity.getTripUpdate().getStopTimeUpdateCount() > 0
+                            ){
+                                final TripUpdate tu = entity.getTripUpdate();
+                                final int len2 = tu.getStopTimeUpdateCount();
+                                // check all stops on train route
+                                for(int u = 0; u < len2; u++){
+                                    final TripUpdate.StopTimeUpdate update = tu.getStopTimeUpdate(u);
+                                    // check if this stop is en route
+                                    if(
+                                        stopDirection == null
+                                        ? update.getStopId().equalsIgnoreCase(stop_id + "N") || update.getStopId().equalsIgnoreCase(stop_id + "S")
+                                        : update.getStopId().equalsIgnoreCase(stop_id)
+                                    ){
+                                        tripUpdate  = entity.getTripUpdate();
+                                        tripVehicle = tripUpdate.getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getTrainId();
+                                        continue OUTER;
+                                    }
+                                }
+                            }
+                        }else if( // get matching vehicle for trip
+                            entity.hasVehicle() &&
+                            entity.getVehicle().getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getTrainId().equals(tripVehicle)
+                        ){
+                            vehicles.add(asVehicle(mta, entity.getVehicle(), tripUpdate));
+                            tripUpdate  = null;
+                            tripVehicle = null;
+                        }
+                    }
+
+                    this.vehicles = Collections.unmodifiableList(vehicles);
+                }
                 return vehicles.toArray(new Vehicle[0]);
             }
 

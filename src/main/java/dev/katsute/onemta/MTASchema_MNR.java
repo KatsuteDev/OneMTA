@@ -49,25 +49,6 @@ abstract class MTASchema_MNR extends MTASchema {
 
             private final TransitAgency agency = asAgency(row.get(csv.getHeaderIndex("agency_id")), resource);
 
-            private final List<Vehicle> vehicles;
-
-            {
-                final FeedMessage feed = cast(mta).service.mnr.getMNR(cast(mta).subwayToken);
-                final int len          = feed.getEntityCount();
-
-                final List<Vehicle> vehicles = new ArrayList<>();
-                for(int i = 0; i < len; i++){
-                    final FeedEntity entity = feed.getEntity(i);
-                    // only include trips with vehicles
-                    if(entity.hasVehicle() && entity.hasTripUpdate())
-                        // only include vehicles on this route
-                        if(Integer.parseInt(entity.getTripUpdate().getTrip().getRouteId()) == routeID)
-                            vehicles.add(asVehicle(mta, entity.getVehicle(), entity.getTripUpdate()));
-                }
-
-                this.vehicles = Collections.unmodifiableList(vehicles);
-            }
-
             // static data
 
             @Override
@@ -97,8 +78,26 @@ abstract class MTASchema_MNR extends MTASchema {
 
             // live feed
 
+            private List<Vehicle> vehicles = null;
+
             @Override
             public final Vehicle[] getVehicles(){
+                if(vehicles == null){
+                    final FeedMessage feed = cast(mta).service.mnr.getMNR(cast(mta).subwayToken);
+                    final int len          = feed.getEntityCount();
+
+                    final List<Vehicle> vehicles = new ArrayList<>();
+                    for(int i = 0; i < len; i++){
+                        final FeedEntity entity = feed.getEntity(i);
+                        // only include trips with vehicles
+                        if(entity.hasVehicle() && entity.hasTripUpdate())
+                            // only include vehicles on this route
+                            if(Integer.parseInt(entity.getTripUpdate().getTrip().getRouteId()) == routeID)
+                                vehicles.add(asVehicle(mta, entity.getVehicle(), entity.getTripUpdate()));
+                    }
+
+                    this.vehicles = Collections.unmodifiableList(vehicles);
+                }
                 return vehicles.toArray(new Vehicle[0]);
             }
 
@@ -166,42 +165,6 @@ abstract class MTASchema_MNR extends MTASchema {
 
             private final Boolean wheelchairAccessible = !row.get(csv.getHeaderIndex("wheelchair_boarding")).equals("2");
 
-            private final List<Vehicle> vehicles;
-
-            {
-                final String stop = String.valueOf(stop_id);
-
-                final FeedMessage feed = cast(mta).service.mnr.getMNR(cast(mta).subwayToken);
-                final int len          = feed.getEntityCount();
-
-                final List<Vehicle> vehicles = new ArrayList<>();
-                OUTER:
-                for(int i = 0; i < len; i++){
-                    final FeedEntity entity = feed.getEntity(i);
-                    // only include trips with vehicles
-                    if(
-                        entity.hasVehicle() &&
-                        entity.hasTripUpdate()
-                    ){
-                        if(entity.getTripUpdate().getStopTimeUpdateCount() > 0){
-                            final TripUpdate tu = entity.getTripUpdate();
-                            final int len2 = tu.getStopTimeUpdateCount();
-                            // check all stops on train route
-                            for(int u = 0; u < len2; u++){
-                                final TripUpdate.StopTimeUpdate update = tu.getStopTimeUpdate(u);
-                                // check if this stop is en route
-                                if(update.getStopId().equalsIgnoreCase(stop)){
-                                    vehicles.add(asVehicle(mta, entity.getVehicle(), entity.getTripUpdate()));
-                                    continue OUTER;
-                                }
-                            }
-                        }
-                    }
-                }
-
-                this.vehicles = Collections.unmodifiableList(vehicles);
-            }
-
             // static data
 
             @Override
@@ -241,8 +204,43 @@ abstract class MTASchema_MNR extends MTASchema {
 
             // live feed
 
+            private List<Vehicle> vehicles = null;
+
             @Override
             public final Vehicle[] getVehicles(){
+                if(vehicles == null){
+                    final String stop = String.valueOf(stop_id);
+
+                    final FeedMessage feed = cast(mta).service.mnr.getMNR(cast(mta).subwayToken);
+                    final int len          = feed.getEntityCount();
+
+                    final List<Vehicle> vehicles = new ArrayList<>();
+                    OUTER:
+                    for(int i = 0; i < len; i++){
+                        final FeedEntity entity = feed.getEntity(i);
+                        // only include trips with vehicles
+                        if(
+                            entity.hasVehicle() &&
+                            entity.hasTripUpdate()
+                        ){
+                            if(entity.getTripUpdate().getStopTimeUpdateCount() > 0){
+                                final TripUpdate tu = entity.getTripUpdate();
+                                final int len2 = tu.getStopTimeUpdateCount();
+                                // check all stops on train route
+                                for(int u = 0; u < len2; u++){
+                                    final TripUpdate.StopTimeUpdate update = tu.getStopTimeUpdate(u);
+                                    // check if this stop is en route
+                                    if(update.getStopId().equalsIgnoreCase(stop)){
+                                        vehicles.add(asVehicle(mta, entity.getVehicle(), entity.getTripUpdate()));
+                                        continue OUTER;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    this.vehicles = Collections.unmodifiableList(vehicles);
+                }
                 return vehicles.toArray(new Vehicle[0]);
             }
 

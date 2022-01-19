@@ -126,27 +126,6 @@ abstract class MTASchema_Bus extends MTASchema {
 
             private final TransitAgency agency = asAgency(row.get(csv.getHeaderIndex("agency_id")), resource);
 
-            private final List<Vehicle> vehicles;
-
-            {
-                final JsonObject json = cast(mta).service.bus.getVehicle(cast(mta).busToken, null, routeID, null);
-
-                final JsonObject vehicleMonitoringDelivery = json
-                    .getJsonObject("Siri")
-                    .getJsonObject("ServiceDelivery")
-                    .getJsonArray("VehicleMonitoringDelivery")[0];
-
-                final JsonObject[] vehicleActivity =
-                    vehicleMonitoringDelivery.containsKey("VehicleActivity")
-                    ? vehicleMonitoringDelivery.getJsonArray("VehicleActivity")
-                    : new JsonObject[0];
-
-                final List<Vehicle> vehicles = new ArrayList<>();
-                for(final JsonObject obj : vehicleActivity)
-                    vehicles.add(asVehicle(mta, obj.getJsonObject("MonitoredVehicleJourney"), this, null));
-                this.vehicles = Collections.unmodifiableList(vehicles);
-            }
-
             // static data
 
             @Override
@@ -208,8 +187,28 @@ abstract class MTASchema_Bus extends MTASchema {
 
             // live feed
 
+            private List<Vehicle> vehicles = null;
+
             @Override
             public final Vehicle[] getVehicles(){
+                if(vehicles == null){
+                    final JsonObject json = cast(mta).service.bus.getVehicle(cast(mta).busToken, null, routeID, null);
+
+                    final JsonObject vehicleMonitoringDelivery = json
+                        .getJsonObject("Siri")
+                        .getJsonObject("ServiceDelivery")
+                        .getJsonArray("VehicleMonitoringDelivery")[0];
+
+                    final JsonObject[] vehicleActivity =
+                        vehicleMonitoringDelivery.containsKey("VehicleActivity")
+                        ? vehicleMonitoringDelivery.getJsonArray("VehicleActivity")
+                        : new JsonObject[0];
+
+                    final List<Vehicle> vehicles = new ArrayList<>();
+                    for(final JsonObject obj : vehicleActivity)
+                        vehicles.add(asVehicle(mta, obj.getJsonObject("MonitoredVehicleJourney"), this, null));
+                    this.vehicles = Collections.unmodifiableList(vehicles);
+                }
                 return vehicles.toArray(new Vehicle[0]);
             }
 
@@ -302,27 +301,6 @@ abstract class MTASchema_Bus extends MTASchema {
             private final Double stopLat  = Double.valueOf(row.get(csv.getHeaderIndex("stop_lat")));
             private final Double stopLon  = Double.valueOf(row.get(csv.getHeaderIndex("stop_lon")));
 
-            private final List<Vehicle> vehicles;
-
-            {
-                final JsonObject json = cast(mta).service.bus.getStop(cast(mta).busToken, stop_id, null, null);
-
-                final JsonObject stopMonitoringDelivery = json
-                    .getJsonObject("Siri")
-                    .getJsonObject("ServiceDelivery")
-                    .getJsonArray("StopMonitoringDelivery")[0];
-
-                final JsonObject[] monitoredStopVisit =
-                    stopMonitoringDelivery.containsKey("MonitoredStopVisit")
-                    ? stopMonitoringDelivery.getJsonArray("MonitoredStopVisit")
-                    : new JsonObject[9];
-
-                final List<Vehicle> vehicles = new ArrayList<>();
-                for(final JsonObject obj : monitoredStopVisit)
-                    vehicles.add(asVehicle(mta, obj.getJsonObject("MonitoredVehicleJourney"), null, this));
-                this.vehicles = Collections.unmodifiableList(vehicles);
-            }
-
             // static data
 
             @Override
@@ -352,8 +330,28 @@ abstract class MTASchema_Bus extends MTASchema {
 
             // live feed
 
+            private List<Vehicle> vehicles = null;
+
             @Override
             public final Vehicle[] getVehicles(){
+                if(vehicles == null){
+                    final JsonObject json = cast(mta).service.bus.getStop(cast(mta).busToken, stop_id, null, null);
+
+                    final JsonObject stopMonitoringDelivery = json
+                        .getJsonObject("Siri")
+                        .getJsonObject("ServiceDelivery")
+                        .getJsonArray("StopMonitoringDelivery")[0];
+
+                    final JsonObject[] monitoredStopVisit =
+                        stopMonitoringDelivery.containsKey("MonitoredStopVisit")
+                        ? stopMonitoringDelivery.getJsonArray("MonitoredStopVisit")
+                        : new JsonObject[9];
+
+                    final List<Vehicle> vehicles = new ArrayList<>();
+                    for(final JsonObject obj : monitoredStopVisit)
+                        vehicles.add(asVehicle(mta, obj.getJsonObject("MonitoredVehicleJourney"), null, this));
+                    this.vehicles = Collections.unmodifiableList(vehicles);
+                }
                 return vehicles.toArray(new Vehicle[0]);
             }
 
