@@ -135,7 +135,7 @@ final class TestSubwayRoute {
             }
 
             @Test
-            final void testVehicleTripRoute(){
+            final void testVehicleTripRouteReference(){
                 annotateTest(() -> assumeTrue(route.getVehicles().length > 0, "No vehicles found, skipping tests"));
                 for(final Vehicle vehicle : route.getVehicles())
                     TripValidation.testTripRouteReference(vehicle);

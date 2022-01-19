@@ -43,13 +43,10 @@ abstract class BusExtensions {
         annotateTest(() -> assertNotNull(vehicle.getOriginStopCode()));
         annotateTest(() -> assertNotNull(vehicle.getDestinationName()));
         annotateTest(() -> assertNotNull(vehicle.getProgressRate()));
-        annotateTest(() -> assertNotNull(vehicle.getProgressStatus()));
+
         annotateTest(() -> assertNotNull(vehicle.getAimedArrivalTime()));
         annotateTest(() -> assertNotNull(vehicle.getAimedArrivalTimeEpochMillis()));
-        annotateTest(() -> assertNotNull(vehicle.getExpectedArrivalTime()));
-        annotateTest(() -> assertNotNull(vehicle.getExpectedArrivalTimeEpochMillis()));
-        annotateTest(() -> assertNotNull(vehicle.getExpectedDepartureTime()));
-        annotateTest(() -> assertNotNull(vehicle.getExpectedDepartureTimeEpochMillis()));
+
         annotateTest(() -> assertNotNull(vehicle.getArrivalProximityText()));
         annotateTest(() -> assertNotNull(vehicle.getDistanceFromStop()));
         annotateTest(() -> assertNotNull(vehicle.getStopsAway()));
@@ -66,17 +63,31 @@ abstract class BusExtensions {
 
     //
 
+    @SuppressWarnings("GrazieInspection")
     public static void testTripStops(final TripStop[] trip){
         annotateTest(() -> assumeTrue(trip.length > 0, "No trip stops found, skipping tests"));
+
+        {
+            // fields may be missing if stop is skipped
+            boolean passes = false;
+            for(final TripStop stop : trip){
+                if(stop.getExpectedArrivalTime() != null &&
+                   stop.getExpectedArrivalTimeEpochMillis() != null &&
+                   stop.getArrivalProximityText() != null){
+                    passes = true;
+                    break;
+                }
+            }
+
+            final boolean finalPasses = passes;
+            annotateTest(() -> assertTrue(finalPasses, "Failed to pass expected arrival tests"));
+        }
+
         for(final TripStop stop : trip)
             testTripStop(stop);
     }
 
-
     private static void testTripStop(final TripStop stop){
-        annotateTest(() -> assertNotNull(stop.getExpectedArrivalTime()));
-        annotateTest(() -> assertNotNull(stop.getExpectedArrivalTimeEpochMillis()));
-        annotateTest(() -> assertNotNull(stop.getArrivalProximityText()));
         annotateTest(() -> assertNotNull(stop.getDistanceFromStop()));
         annotateTest(() -> assertNotNull(stop.getStopsAway()));
         annotateTest(() -> assertNotNull(stop.getStopName()));

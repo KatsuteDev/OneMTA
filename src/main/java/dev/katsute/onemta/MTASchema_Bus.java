@@ -410,8 +410,8 @@ abstract class MTASchema_Bus extends MTASchema {
 
             private final String destinationName = requireNonNull(() -> monitoredVehicleJourney.getStringArray("DestinationName")[0]);
 
-            private final String progressRate   = requireNonNull(() -> monitoredVehicleJourney.getString("ProgressRate"));
-            private final String progressStatus = requireNonNull(() -> monitoredVehicleJourney.getString("ProgressStatus"));
+            private final String progressRate     = requireNonNull(() -> monitoredVehicleJourney.getString("ProgressRate"));
+            private final String[] progressStatus = requireNonNull(() -> monitoredVehicleJourney.getStringArray("ProgressStatus"));
 
             private final Long aimedArrivalTime      = requireNonNull(() -> {
                 try{
@@ -495,7 +495,7 @@ abstract class MTASchema_Bus extends MTASchema {
             }
 
             @Override
-            public final String getProgressStatus(){
+            public final String[] getProgressStatus(){
                 return progressStatus;
             }
 
@@ -660,7 +660,7 @@ abstract class MTASchema_Bus extends MTASchema {
             });
 
             private final String arrivalProximityText = requireNonNull(() -> onwardCall.getString("ArrivalProximityText"));
-            private final Integer distanceFromStop    = requireNonNull(() -> onwardCall.getInt("DistanceFromCall"));
+            private final Integer distanceFromStop    = requireNonNull(() -> onwardCall.getInt("DistanceFromStop"));
             private final Integer stopsAway           = requireNonNull(() -> onwardCall.getInt("NumberOfStopsAway"));
 
             @Override

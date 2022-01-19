@@ -39,7 +39,7 @@ public abstract class Bus {
 
         public abstract String getProgressRate();
 
-        public abstract String getProgressStatus();
+        public abstract String[] getProgressStatus();
 
         public abstract Date getAimedArrivalTime();
 
