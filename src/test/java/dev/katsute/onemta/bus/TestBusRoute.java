@@ -62,46 +62,60 @@ final class TestBusRoute {
             RouteValidation.testRoute(route);
         }
 
-        //
+        @Nested
+        final class VehicleTests {
 
-        @Test
-        final void testTransitVehicles(){
-            annotateTest(() -> Assertions.assertNotNull(route.getVehicles()));
-            VehicleValidation.testVehicles(route.getVehicles());
-        }
-
-        //
-
-        @Test
-        final void testVehicleTrips(){
-            annotateTest(() -> assumeTrue(route.getVehicles().length > 0, "No vehicles found, skipping tests"));
-            for(final Vehicle vehicle : route.getVehicles()){
-                annotateTest(() -> assertNotNull(vehicle.getTrip()));
-                TripValidation.testTrip(vehicle.getTrip());
+            @Test
+            final void testTransitVehicles(){
+                annotateTest(() -> Assertions.assertNotNull(route.getVehicles()));
+                VehicleValidation.testVehicles(route.getVehicles());
             }
+
         }
 
-        @Test
-        final void testVehicleTripsReference(){
-            annotateTest(() -> assumeTrue(route.getVehicles().length > 0, "No vehicles found, skipping tests"));
-            for(final Vehicle vehicle : route.getVehicles())
-                TripValidation.testTripReference(vehicle);
-        }
+        @Nested
+        final class TripTests {
 
-        @Test
-        final void testVehicleTripStops(){
-            annotateTest(() -> assumeTrue(route.getVehicles().length > 0, "No vehicles found, skipping tests"));
-            for(final Vehicle vehicle : route.getVehicles()){
-                annotateTest(() -> assumeTrue(vehicle.getTrip().getTripStops().length > 0, "No vehicles found, skipping tests"));
-                TripValidation.testTripStops(vehicle.getTrip().getTripStops());
+            @Test
+            final void testVehicleTrips(){
+                annotateTest(() -> assumeTrue(route.getVehicles().length > 0, "No vehicles found, skipping tests"));
+                for(final Vehicle vehicle : route.getVehicles()){
+                    annotateTest(() -> assertNotNull(vehicle.getTrip()));
+                    TripValidation.testTrip(vehicle.getTrip());
+                }
             }
+
+            @Test
+            final void testVehicleTripsReference(){
+                annotateTest(() -> assumeTrue(route.getVehicles().length > 0, "No vehicles found, skipping tests"));
+                for(final Vehicle vehicle : route.getVehicles())
+                    TripValidation.testTripReference(vehicle);
+            }
+
         }
 
-        //
+        @Nested
+        final class TripStopTests {
 
-        @Test
-        final void testTransitAlerts(){
-            AlertValidation.testAlerts(route);
+            @Test
+            final void testVehicleTripStops(){
+                annotateTest(() -> assumeTrue(route.getVehicles().length > 0, "No vehicles found, skipping tests"));
+                for(final Vehicle vehicle : route.getVehicles()){
+                    annotateTest(() -> assumeTrue(vehicle.getTrip().getTripStops().length > 0, "No vehicles found, skipping tests"));
+                    TripValidation.testTripStops(vehicle.getTrip().getTripStops());
+                }
+            }
+
+        }
+
+        @Nested
+        final class AlertTests {
+
+            @Test
+            final void testTransitAlerts(){
+                AlertValidation.testAlerts(route);
+            }
+
         }
 
     }
