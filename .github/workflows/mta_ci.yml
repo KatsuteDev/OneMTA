@@ -7,7 +7,7 @@ concurrency: mta-test
 
 jobs:
   mta_ci:
-    name: MTA CI (Java ${{ matrix.java }})
+    name: MTA CI [${{ matrix.group }}] (Java ${{ matrix.java }})
     runs-on: ubuntu-latest
     timeout-minutes: 60
     strategy:
