@@ -47,9 +47,9 @@ public abstract class TripValidation {
             testGTFSTripStop(stop);
     }
 
-    public static void testRailroadTripStops(final RailroadTripStop<?,?,?>[] trip){
+    public static void testRailroadTripStops(final RailroadTripStop<?,?>[] trip){
         annotateTest(() -> assumeTrue(trip.length > 0, "No trip stops found, skipping tests"));
-        for(final RailroadTripStop<?, ?, ?> stop : trip)
+        for(final RailroadTripStop<?,?> stop : trip)
             testRailroadTripStop(stop);
     }
 
@@ -65,7 +65,7 @@ public abstract class TripValidation {
         annotateTest(() -> assertNotNull(stop.getTrack()));
     }
 
-    private static void testRailroadTripStop(final RailroadTripStop<?,?,?> stop){
+    private static void testRailroadTripStop(final RailroadTripStop<?,?> stop){
         annotateTest(() -> assertNotNull(stop.getDelay()));
         annotateTest(() -> assertNotNull(stop.getTrainStatus()));
     }

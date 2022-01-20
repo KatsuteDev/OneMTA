@@ -20,8 +20,24 @@ package dev.katsute.onemta.attribute;
 
 import dev.katsute.onemta.types.TransitVehicle;
 
+/**
+ * Indicates that there is a vehicle reference.
+ *
+ * @param <V> transit vehicle type
+ *
+ * @since 1.0.0
+ * @version 1.0.0
+ * @author Katsute
+ */
 public interface VehiclesReference<V extends TransitVehicle<?,?,?,?,?,?>> {
 
+    /**
+     * Returns vehicles.
+     *
+     * @return vehicles
+     *
+     * @since 1.0.0
+     */
     V[] getVehicles();
 
 }

@@ -18,10 +18,33 @@
 
 package dev.katsute.onemta.attribute;
 
+/**
+ * Indicates that a location can be retrieved.
+ *
+ * @since 1.0.0
+ * @version 1.0.0
+ * @author Katsute
+ */
 public interface Location {
 
+    /**
+     * Returns the latitude.
+     *
+     * @return latitude
+     *
+     * @see #getLongitude()
+     * @since 1.0.0
+     */
     Double getLatitude();
 
+    /**
+     * Returns the longitude.
+     *
+     * @return longitude
+     *
+     * @see #getLatitude()
+     * @since 1.0.0
+     */
     Double getLongitude();
 
 }

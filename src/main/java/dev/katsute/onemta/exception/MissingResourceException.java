@@ -20,10 +20,18 @@ package dev.katsute.onemta.exception;
 
 import dev.katsute.onemta.DataResourceType;
 
+/**
+ * Thrown if a required {@link DataResourceType} is missing.
+ *
+ * @see DataResourceType
+ * @since 1.0.0
+ * @version 1.0.0
+ * @author Katsute
+ */
 public final class MissingResourceException extends RuntimeException {
 
     public MissingResourceException(final DataResourceType type){
-        super("Missing required data resource: " + type.name());
+        super("Missing required data resource: " + type.name() + ", latest data can be retrieved from http://web.mta.info/developers/developer-data-terms.html#data");
     }
 
 }

@@ -20,8 +20,19 @@ package dev.katsute.onemta.types;
 
 import java.util.Date;
 
+/**
+ * Represents a GTFS transit trip stop.
+ *
+ * @param <S> transit stop type
+ * @param <T> transit trip type
+ * @param <SID> stop ID format
+ *
+ * @since 1.0.0
+ * @version 1.0.0
+ * @author Katsute
+ */
 public abstract class GTFSTransitTripStop<S extends TransitStop<?,?,?>, T extends TransitTrip<?,?,?>, SID> extends TransitTripStop<S,T,SID> {
-
+    
     public abstract Date getArrivalTime();
 
     public abstract Long getArrivalTimeEpochMillis();

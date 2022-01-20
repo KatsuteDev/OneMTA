@@ -18,8 +18,22 @@
 
 package dev.katsute.onemta.attribute;
 
+/**
+ * Indicates that a bearing can be retrieved.
+ *
+ * @since 1.0.0
+ * @version 1.0.0
+ * @author Katsute
+ */
 public interface Bearing {
 
+    /**
+     * Returns the vehicle bearing, 0 being North.
+     *
+     * @return bearing
+     *
+     * @since 1.0.0
+     */
     Double getBearing();
 
 }

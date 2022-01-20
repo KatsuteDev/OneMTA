@@ -21,18 +21,75 @@ package dev.katsute.onemta.railroad;
 import dev.katsute.onemta.attribute.Location;
 import dev.katsute.onemta.types.*;
 
+/**
+ * Represents Metro North Railroad (MNR) related objects.
+ *
+ * @see Route
+ * @see Stop
+ * @see Vehicle
+ * @see Trip
+ * @see TripStop
+ * @see Alert
+ * @since 1.0.0
+ * @version 1.0.0
+ * @author Katsute
+ */
 public abstract class MNR {
 
+    /**
+     * Represents a Metro North Railroad (MNR) route.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
+     * @author Katsute
+     */
     public abstract static class Route extends TransitRoute<Integer,Vehicle,Alert> { }
 
+    /**
+     * Represents a Metro North Railroad (MNR) stop.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
+     * @author Katsute
+     */
     public abstract static class Stop extends RailroadStop<Vehicle,Alert> { }
 
+    /**
+     * Represents a Metro North Railroad (MNR) vehicle.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
+     * @author Katsute
+     */
     public abstract static class Vehicle extends GTFSVehicle<Route,Stop,Trip,Integer,Integer> implements Location { }
 
+    /**
+     * Represents a Metro North Railroad (MNR) vehicle trip.
+     *
+     * @see TripStop
+     * @since 1.0.0
+     * @version 1.0.0
+     * @author Katsute
+     */
     public abstract static class Trip extends GTFSTransitTrip<Vehicle,Route,TripStop> { }
 
-    public abstract static class TripStop extends RailroadTripStop<Stop,Trip,Integer> { }
+    /**
+     * Represents a Metro North Railroad (MNR) vehicle trip stop.
+     *
+     * @see Trip
+     * @since 1.0.0
+     * @version 1.0.0
+     * @author Katsute
+     */
+    public abstract static class TripStop extends RailroadTripStop<Stop,Trip> { }
 
+    /**
+     * Represents a Metro North Railroad (MNR) alert.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
+     * @author Katsute
+     */
     public abstract static class Alert extends TransitAlert<Integer,Route,Integer,Stop> { }
 
 }

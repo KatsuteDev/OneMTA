@@ -18,14 +18,47 @@
 
 package dev.katsute.onemta.bus;
 
+/**
+ * Indicates that the bus route type can be retrieved.
+ *
+ * @since 1.0.0
+ */
 public interface BusRouteTypes {
 
+    /**
+     * Returns if the route is for a +SelectBusService.
+     *
+     * @return +SelectBusService
+     *
+     * @since 1.0.0
+     */
     Boolean isSelectBusService();
 
+    /**
+     * Returns if the route is for an express bus.
+     *
+     * @return express bus
+     *
+     * @since 1.0.0
+     */
     Boolean isExpress();
 
+    /**
+     * Returns if the route is for a shuttle bus.
+     *
+     * @return shuttle bus
+     *
+     * @since 1.0.0
+     */
     Boolean isShuttle();
 
+    /**
+     * Returns if the route is for a limited bus.
+     *
+     * @return limited bus
+     *
+     * @since 1.0.0
+     */
     Boolean isLimited();
 
 }

@@ -18,10 +18,37 @@
 
 package dev.katsute.onemta.types;
 
+/**
+ * Represents a GTFS transit trip.
+ *
+ * @param <V> transit vehicle type
+ * @param <R> transit route type
+ * @param <S> transit stop type
+ *
+ * @since 1.0.0
+ * @version 1.0.0
+ * @author Katsute
+ */
 public abstract class GTFSTransitTrip<V extends TransitVehicle<?,?,?,?,?,?>, R extends TransitRoute<?,?,?>, S extends TransitTripStop<?,?,?>> extends TransitTrip<V,R,S> {
 
+    /**
+     * Returns the trip ID.
+     *
+     * @return trip ID
+     *
+     * @see #getTripStops()
+     * @since 1.0.0
+     */
     public abstract String getTripID();
 
+    /**
+     * Returns the route ID.
+     *
+     * @return route ID
+     *
+     * @see #getRoute()
+     * @since 1.0.0
+     */
     public abstract String getRouteID();
 
 }

@@ -21,10 +21,34 @@ package dev.katsute.onemta.railroad;
 import dev.katsute.onemta.types.GTFSTransitTripStop;
 import dev.katsute.onemta.types.TransitTrip;
 
-public abstract class RailroadTripStop<S extends RailroadStop<?,?>, T extends TransitTrip<?,?,?>, I> extends GTFSTransitTripStop<S,T,I> {
+/**
+ * Represents a railroad trip stop.
+ *
+ * @param <S> railroad stop type
+ * @param <T> transit trip type
+ *
+ * @since 1.0.0
+ * @version 1.0.0
+ * @author Katsute
+ */
+public abstract class RailroadTripStop<S extends RailroadStop<?,?>, T extends TransitTrip<?,?,?>> extends GTFSTransitTripStop<S,T,Integer> {
 
+    /**
+     * Returns the delay in seconds.
+     *
+     * @return delay
+     *
+     * @since 1.0.0
+     */
     public abstract Integer getDelay();
 
+    /**
+     * Returns the train status.
+     *
+     * @return train status
+     *
+     * @since 1.0.0
+     */
     public abstract String getTrainStatus();
 
 }

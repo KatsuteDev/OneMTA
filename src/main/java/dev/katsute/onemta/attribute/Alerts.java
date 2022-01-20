@@ -20,8 +20,29 @@ package dev.katsute.onemta.attribute;
 
 import dev.katsute.onemta.types.TransitAlert;
 
+/**
+ * Indicates that transit alerts can be retrieved.
+ *
+ * @param <A> transit alert type
+ *
+ * @since 1.0.0
+ * @version 1.0.0
+ * @author Katsute
+ */
 public interface Alerts<A extends TransitAlert<?,?,?,?>> {
 
+    /**
+     * Returns all active alerts.
+     *
+     * @return alerts
+     *
+     * @see TransitAlert
+     * @see dev.katsute.onemta.bus.Bus.Alert
+     * @see dev.katsute.onemta.subway.Subway.Alert
+     * @see dev.katsute.onemta.railroad.LIRR.Alert
+     * @see dev.katsute.onemta.railroad.MNR.Alert
+     * @since 1.0.0
+     */
     A[] getAlerts();
 
 }

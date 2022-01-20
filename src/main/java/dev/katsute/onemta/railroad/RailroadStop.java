@@ -20,12 +20,42 @@ package dev.katsute.onemta.railroad;
 
 import dev.katsute.onemta.types.*;
 
+/**
+ * Represents a railroad stop.
+ *
+ * @param <V> transit vehicle type
+ * @param <A> transit alert type
+ * @since 1.0.0
+ * @version 1.0.0
+ * @author Katsute
+ */
 public abstract class RailroadStop<V extends TransitVehicle<?,?,?,?,?,?>, A extends TransitAlert<?,?,?,?>> extends TransitStop<Integer,V,A> {
 
+    /**
+     * Returns the stop code for the station.
+     *
+     * @return stop code
+     *
+     * @since 1.0.0
+     */
     public abstract String getStopCode();
 
+    /**
+     * Returns the stop description.
+     *
+     * @return route description
+     *
+     * @since 1.0.0
+     */
     public abstract String getStopDescription();
 
+    /**
+     * Returns if the stop is wheelchair accessible.
+     *
+     * @return wheelchair accessible
+     *
+     * @since 1.0.0
+     */
     public abstract Boolean hasWheelchairBoarding();
 
 }
