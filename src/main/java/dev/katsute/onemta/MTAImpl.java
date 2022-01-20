@@ -144,7 +144,7 @@ final class MTAImpl extends MTA {
             case "6":
             case "7":
             case "GS":
-                return route_id.toUpperCase();
+                return route.toUpperCase();
             case "FS":
             case "SF":
             case "SR":
@@ -153,7 +153,7 @@ final class MTAImpl extends MTA {
             case "5X":
             case "6X":
             case "7X":
-                return String.valueOf(route_id.toUpperCase().charAt(0));
+                return String.valueOf(route.toUpperCase().charAt(0));
             case "9":
                 return "GS";
             case "S":
@@ -166,7 +166,8 @@ final class MTAImpl extends MTA {
     }
 
     FeedMessage resolveSubwayFeed(final String route_id){
-        switch(Objects.requireNonNull(resolveSubwayLine(route_id), "Subway route with ID '" + route_id + "' not found")){
+        final String route = Objects.requireNonNull(resolveSubwayLine(route_id), "Subway route with ID '" + route_id + "' not found");
+        switch(route){
             case "A":
             case "C":
             case "E":
@@ -269,7 +270,7 @@ final class MTAImpl extends MTA {
                 entity.hasVehicle() &&
                 entity.getVehicle().getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getTrainId().equals(tripVehicle)
             )
-                return MTASchema_Subway.asVehicle(this, entity.getVehicle(), tripUpdate);
+                return MTASchema_Subway.asVehicle(this, entity.getVehicle(), tripUpdate, null);
         }
 
         return null;

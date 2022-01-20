@@ -120,7 +120,7 @@ abstract class MTASchema_Subway extends MTASchema {
                             entity.hasVehicle() &&
                             entity.getVehicle().getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getTrainId().equals(tripVehicle)
                         ){
-                            vehicles.add(asVehicle(mta, entity.getVehicle(), tripUpdate));
+                            vehicles.add(asVehicle(mta, entity.getVehicle(), tripUpdate, this));
                             tripUpdate  = null;
                             tripVehicle = null;
                         }
@@ -258,7 +258,7 @@ abstract class MTASchema_Subway extends MTASchema {
                             entity.hasVehicle() &&
                             entity.getVehicle().getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getTrainId().equals(tripVehicle)
                         ){
-                            vehicles.add(asVehicle(mta, entity.getVehicle(), tripUpdate));
+                            vehicles.add(asVehicle(mta, entity.getVehicle(), tripUpdate, null));
                             tripUpdate  = null;
                             tripVehicle = null;
                         }
@@ -300,7 +300,7 @@ abstract class MTASchema_Subway extends MTASchema {
         };
     }
 
-    static Vehicle asVehicle(final MTA mta, final VehiclePosition vehicle, final TripUpdate tripUpdate){
+    static Vehicle asVehicle(final MTA mta, final VehiclePosition vehicle, final TripUpdate tripUpdate, final Route optionalRoute){
         return new Vehicle() {
 
             private final String status   = requireNonNull(() -> vehicle.getCurrentStatus().name());
@@ -341,7 +341,7 @@ abstract class MTASchema_Subway extends MTASchema {
                 return stop != null ? stop : (stop = mta.getSubwayStop(stopID));
             }
 
-            private Route route = null;
+            private Route route = optionalRoute;
 
             @Override
             public final Route getRoute(){

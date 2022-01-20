@@ -17,13 +17,14 @@ abstract class SubwayExtensions {
     //
 
     public static void testStop(final Stop stop){
-        annotateTest(() -> assertNotNull(stop.getDirection()));
+        if(stop.getStopID().endsWith("N") || stop.getStopID().endsWith("S"))
+            annotateTest(() -> assertNotNull(stop.getDirection()));
     }
 
     //
 
     public static void testVehicleNumber(final MTA mta, final Vehicle vehicle){
-        annotateTest(() -> assertEquals(vehicle.getVehicleID(), mta.getLIRRTrain(vehicle.getVehicleID()).getVehicleID()));
+        annotateTest(() -> assertEquals(vehicle.getVehicleID(), mta.getSubwayTrain(vehicle.getVehicleID()).getVehicleID()));
     }
 
     //
