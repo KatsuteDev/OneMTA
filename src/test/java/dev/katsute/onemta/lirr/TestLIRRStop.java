@@ -10,6 +10,7 @@ import static dev.katsute.onemta.railroad.LIRR.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assumptions.*;
 
+@SuppressWarnings("SpellCheckingInspection")
 final class TestLIRRStop {
 
     private static MTA mta;
@@ -18,7 +19,7 @@ final class TestLIRRStop {
 
     @BeforeAll
     static void beforeAll(){
-        mta = TestProvider.getOneMTA();
+        mta = TestProvider.getOneMTA("lirr");
 
         annotateTest(() -> stop = mta.getLIRRStop(TestProvider.LIRR_STOP));
     }
@@ -31,14 +32,14 @@ final class TestLIRRStop {
 
             @Test
             final void testVehicles(){
-                annotateTest(() -> Assumptions.assumeTrue(stop.getVehicles().length > 0, "No vehicles found, skipping vehicle tests"));
+                annotateTest(() -> VehicleValidation.requireVehicles(stop));
                 for(final Vehicle vehicle : stop.getVehicles())
                     LIRRExtensions.testVehicle(vehicle);
             }
 
             @Test
             final void testID(){
-                annotateTest(() -> assumeTrue(stop.getVehicles().length > 0, "No vehicles found, skipping vehicle tests"));
+                annotateTest(() -> VehicleValidation.requireVehicles(stop));
                 LIRRExtensions.testVehicleNumber(mta, stop.getVehicles()[0]);
             }
 
@@ -49,7 +50,7 @@ final class TestLIRRStop {
 
             @Test
             final void testVehicleTrips(){
-                annotateTest(() -> assumeTrue(stop.getVehicles().length > 0, "No vehicles found, skipping tests"));
+                annotateTest(() -> VehicleValidation.requireVehicles(stop));
                 for(final Vehicle vehicle : stop.getVehicles()){
                     annotateTest(() -> assertNotNull(vehicle.getTrip()));
                     LIRRExtensions.testTrip(vehicle.getTrip());
@@ -78,14 +79,14 @@ final class TestLIRRStop {
 
             @Test
             final void testTransitVehicles(){
-                annotateTest(() -> Assumptions.assumeTrue(stop.getVehicles().length > 0, "No vehicles found, skipping vehicle tests"));
+                annotateTest(() -> VehicleValidation.requireVehicles(stop));
                 for(final Vehicle vehicle : stop.getVehicles())
                     VehicleValidation.testVehicle(vehicle);
             }
 
             @Test
             final void testGTFSTransitVehicles(){
-                annotateTest(() -> Assumptions.assumeTrue(stop.getVehicles().length > 0, "No vehicles found, skipping vehicle tests"));
+                annotateTest(() -> VehicleValidation.requireVehicles(stop));
                 for(final Vehicle vehicle : stop.getVehicles())
                     VehicleValidation.testGTFSVehicle(vehicle);
             }
@@ -97,7 +98,7 @@ final class TestLIRRStop {
 
             @Test
             final void testVehicleTrips(){
-                annotateTest(() -> assumeTrue(stop.getVehicles().length > 0, "No vehicles found, skipping tests"));
+                annotateTest(() -> VehicleValidation.requireVehicles(stop));
                 for(final Vehicle vehicle : stop.getVehicles()){
                     annotateTest(() -> assertNotNull(vehicle.getTrip()));
                     TripValidation.testTrip(vehicle.getTrip());
@@ -106,14 +107,14 @@ final class TestLIRRStop {
 
             @Test
             final void testVehicleTripsReference(){
-                annotateTest(() -> assumeTrue(stop.getVehicles().length > 0, "No vehicles found, skipping tests"));
+                annotateTest(() -> VehicleValidation.requireVehicles(stop));
                 for(final Vehicle vehicle : stop.getVehicles())
                     TripValidation.testTripReference(vehicle);
             }
 
             @Test
             final void testGTFSVehicleTrips(){
-                annotateTest(() -> assumeTrue(stop.getVehicles().length > 0, "No vehicles found, skipping tests"));
+                annotateTest(() -> VehicleValidation.requireVehicles(stop));
                 for(final Vehicle vehicle : stop.getVehicles()){
                     annotateTest(() -> assertNotNull(vehicle.getTrip()));
                     TripValidation.testGTFSTrip(vehicle.getTrip());
@@ -127,27 +128,27 @@ final class TestLIRRStop {
 
             @Test
             final void testVehicleTripStops(){
-                annotateTest(() -> assumeTrue(stop.getVehicles().length > 0, "No vehicles found, skipping tests"));
+                annotateTest(() -> VehicleValidation.requireVehicles(stop));
                 for(final Vehicle vehicle : stop.getVehicles()){
-                    annotateTest(() -> assumeTrue(vehicle.getTrip().getTripStops().length > 0, "No vehicles found, skipping tests"));
+                    annotateTest(() -> assumeTrue(vehicle.getTrip().getTripStops().length > 0, "No trip stops found, skipping tests"));
                     TripValidation.testTripStops(vehicle.getTrip().getTripStops());
                 }
             }
 
             @Test
             final void testGTFSTripStops(){
-                annotateTest(() -> assumeTrue(stop.getVehicles().length > 0, "No vehicles found, skipping tests"));
+                annotateTest(() -> VehicleValidation.requireVehicles(stop));
                 for(final Vehicle vehicle : stop.getVehicles()){
-                    annotateTest(() -> assumeTrue(vehicle.getTrip().getTripStops().length > 0, "No vehicles found, skipping tests"));
+                    annotateTest(() -> assumeTrue(vehicle.getTrip().getTripStops().length > 0, "No trip stops found, skipping tests"));
                     TripValidation.testGTFSTripStops(vehicle.getTrip().getTripStops());
                 }
             }
 
             @Test
             final void testRailroadTripStops(){
-                annotateTest(() -> assumeTrue(stop.getVehicles().length > 0, "No vehicles found, skipping tests"));
+                annotateTest(() -> VehicleValidation.requireVehicles(stop));
                 for(final Vehicle vehicle : stop.getVehicles()){
-                    annotateTest(() -> assumeTrue(vehicle.getTrip().getTripStops().length > 0, "No vehicles found, skipping tests"));
+                    annotateTest(() -> assumeTrue(vehicle.getTrip().getTripStops().length > 0, "No trip stops found, skipping tests"));
                     TripValidation.testRailroadTripStops(vehicle.getTrip().getTripStops());
                 }
             }
@@ -159,14 +160,14 @@ final class TestLIRRStop {
 
             @Test
             final void testTransitAlerts(){
-                annotateTest(() -> Assumptions.assumeTrue(stop.getAlerts().length > 0, "No alerts found, skipping alert tests"));
+                annotateTest(() -> assumeTrue(stop.getAlerts().length > 0, "No alerts found, skipping alert tests"));
                 for(final Alert alert : stop.getAlerts())
                     AlertValidation.testAlert(alert);
             }
 
             @Test
             final void testTransitAlertsReference(){
-                annotateTest(() -> Assumptions.assumeTrue(stop.getAlerts().length > 0, "No alerts found, skipping alert tests"));
+                annotateTest(() -> assumeTrue(stop.getAlerts().length > 0, "No alerts found, skipping alert tests"));
                 for(final Alert alert : stop.getAlerts())
                     AlertValidation.testAlertReference(stop, alert);
             }

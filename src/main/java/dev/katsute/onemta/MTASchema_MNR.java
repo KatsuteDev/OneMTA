@@ -209,7 +209,7 @@ abstract class MTASchema_MNR extends MTASchema {
             @Override
             public final Vehicle[] getVehicles(){
                 if(vehicles == null){
-                    final String stop = String.valueOf(stop_id);
+                    final String stop = String.valueOf(stopID);
 
                     final FeedMessage feed = cast(mta).service.mnr.getMNR(cast(mta).subwayToken);
                     final int len          = feed.getEntityCount();
@@ -254,7 +254,7 @@ abstract class MTASchema_MNR extends MTASchema {
                     final int len = feed.getEntityCount();
                     for(int i = 0; i < len; i++){
                         final MNR.Alert alert = MTASchema_MNR.asTransitAlert(mta, feed.getEntity(i));
-                        if(Arrays.asList(alert.getStopIDs()).contains(stop_id))
+                        if(Arrays.asList(alert.getStopIDs()).contains(stopID))
                             alerts.add(alert);
                     }
                     this.alerts = alerts;
@@ -280,8 +280,8 @@ abstract class MTASchema_MNR extends MTASchema {
 
             private final String vehicleID = requireNonNull(() -> vehicle.getVehicle().getLabel());
 
-            private final Double latitude  = requireNonNull( () -> (double) vehicle.getPosition().getLatitude());
-            private final Double longitude = requireNonNull( () -> (double) vehicle.getPosition().getLongitude());
+            private final Double latitude  = requireNonNull( () -> Double.valueOf(vehicle.getPosition().getLatitude()));
+            private final Double longitude = requireNonNull( () -> Double.valueOf(vehicle.getPosition().getLongitude()));
 
             private final String status   = requireNonNull(() -> vehicle.getCurrentStatus().name());
 

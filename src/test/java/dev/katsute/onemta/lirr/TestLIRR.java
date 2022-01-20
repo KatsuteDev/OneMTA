@@ -1,9 +1,9 @@
 package dev.katsute.onemta.lirr;
 
-import dev.katsute.jcore.Workflow;
 import dev.katsute.onemta.MTA;
 import dev.katsute.onemta.TestProvider;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import static dev.katsute.jcore.Workflow.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -14,7 +14,7 @@ final class TestLIRR {
 
     @BeforeAll
     static void beforeAll(){
-        mta = TestProvider.getOneMTA();
+        mta = TestProvider.getOneMTA("lirr");
     }
 
     @Test

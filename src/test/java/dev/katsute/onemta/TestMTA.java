@@ -5,13 +5,13 @@ import org.junit.jupiter.api.*;
 import static dev.katsute.jcore.Workflow.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-final class MTATests {
+final class TestMTA {
 
     private static MTA mta;
 
     @BeforeAll
     static void beforeAll(){
-        mta = TestProvider.getOneMTA();
+        mta = TestProvider.getOneMTA(null);
     }
 
     @Nested
@@ -50,7 +50,7 @@ final class MTATests {
         @Test
         final void testNullVehicle(){
             annotateTest(() -> assertThrows(NullPointerException.class, () -> mta.getSubwayTrain(null)));
-            annotateTest(() -> assertThrows(NullPointerException.class, () -> mta.getSubwayTrain("01 NULL")));
+            annotateTest(() -> assertNull(mta.getSubwayTrain("01 NULL")));
         }
 
     }

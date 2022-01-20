@@ -75,6 +75,13 @@ Sample response data available on the [`reference`](https://github.com/KatsuteDe
 - Run `protobuf.sh`
 - Change all classes to abstract package private and add `SuppressWarnings("all")`
 
+### Notice About Tests
+
+- Tests are most reliable around rush hour.
+- Tests may not work during overnight hours.
+- Tests may not work if the selected routes are out of service.
+- Tests may not work it the select stops are out of service.
+
 ### Running Tests Locally
 
 For local tests you can use Java 8+, however only methods in the Java 8 API may be used. The `src/main/java9` folder should not be marked as a source root.

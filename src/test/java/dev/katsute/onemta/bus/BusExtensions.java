@@ -69,17 +69,17 @@ abstract class BusExtensions {
 
         {
             // fields may be missing if stop is skipped
-            boolean passes = false;
+            boolean tested = false;
             for(final TripStop stop : trip){
                 if(stop.getExpectedArrivalTime() != null &&
                    stop.getExpectedArrivalTimeEpochMillis() != null &&
                    stop.getArrivalProximityText() != null){
-                    passes = true;
+                    tested = true;
                     break;
                 }
             }
 
-            final boolean finalPasses = passes;
+            final boolean finalPasses = tested;
             annotateTest(() -> assertTrue(finalPasses, "Failed to pass expected arrival tests"));
         }
 

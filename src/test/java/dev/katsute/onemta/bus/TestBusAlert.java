@@ -15,7 +15,7 @@ final class TestBusAlert {
 
     @BeforeAll
     static void beforeAll(){
-        mta = TestProvider.getOneMTA();
+        mta = TestProvider.getOneMTA("bus");
     }
 
     @Nested

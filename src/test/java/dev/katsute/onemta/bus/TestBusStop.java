@@ -18,7 +18,7 @@ final class TestBusStop {
 
     @BeforeAll
     static void beforeAll(){
-        mta = TestProvider.getOneMTA();
+        mta = TestProvider.getOneMTA("bus");
 
         annotateTest(() -> stop = mta.getBusStop(TestProvider.BUS_STOP));
     }
@@ -36,9 +36,9 @@ final class TestBusStop {
 
             @Test
             final void testVehicles(){
-                annotateTest(() -> assumeTrue(stop.getVehicles().length > 0, "No vehicles found, skipping vehicle tests"));
+                annotateTest(() -> VehicleValidation.requireVehicles(stop));
 
-                {
+                { // not all bus vehicles have this for some reason
                     boolean passes = false;
                     for(final Vehicle vehicle : stop.getVehicles()){
                         if(vehicle.getExpectedArrivalTime() != null &&
@@ -52,28 +52,34 @@ final class TestBusStop {
                     }
 
                     final boolean finalPasses = passes;
-                    annotateTest(() -> assumeTrue(finalPasses, "Failed to pass expected arrival tests"));
+                    annotateTest(() -> assertTrue(finalPasses, "Failed to pass expected arrival tests"));
                 }
 
-                boolean tested = false;
-                for(final Vehicle vehicle : stop.getVehicles()){
-                    if(!tested && vehicle.getProgressRate().equals("noProgress")){
-                        annotateTest(() -> assertNotNull(vehicle.getProgressStatus()));
-                        tested = true;
+                { // not all noProgress have a progress status for some reason
+                    boolean tested = false;
+                    for(final Vehicle vehicle : stop.getVehicles()){
+                        if(vehicle.getProgressRate().equals("noProgress") && vehicle.getProgressStatus() != null){
+                            tested = true;
+                            break;
+                        }
                     }
-                    BusExtensions.testVehicle(vehicle);
+                    final boolean finalPasses = tested;
+                    annotateTest(() -> assertTrue(finalPasses, "Failed to pass expected arrival tests"));
                 }
+
+                for(final Vehicle vehicle : stop.getVehicles())
+                    BusExtensions.testVehicle(vehicle);
             }
 
             @Test
             final void testOrigin(){
-                annotateTest(() -> assumeTrue(stop.getVehicles().length > 0, "No vehicles found, skipping vehicle tests"));
+                annotateTest(() -> VehicleValidation.requireVehicles(stop));
                 BusExtensions.testOriginStop(stop.getVehicles()[0]);
             }
 
             @Test
             final void testID(){
-                annotateTest(() -> assumeTrue(stop.getVehicles().length > 0, "No vehicles found, skipping vehicle tests"));
+                annotateTest(() -> VehicleValidation.requireVehicles(stop));
                 BusExtensions.testVehicleNumber(mta, stop.getVehicles()[0]);
             }
 
@@ -94,7 +100,7 @@ final class TestBusStop {
 
             @Test
             final void testTransitVehicles(){
-                annotateTest(() -> Assumptions.assumeTrue(stop.getVehicles().length > 0, "No vehicles found, skipping vehicle tests"));
+                annotateTest(() -> VehicleValidation.requireVehicles(stop));
                 for(final Vehicle vehicle : stop.getVehicles())
                     VehicleValidation.testVehicle(vehicle);
             }
@@ -106,7 +112,7 @@ final class TestBusStop {
 
             @Test
             final void testVehicleTrips(){
-                annotateTest(() -> assumeTrue(stop.getVehicles().length > 0, "No vehicles found, skipping tests"));
+                annotateTest(() -> VehicleValidation.requireVehicles(stop));
                 for(final Vehicle vehicle : stop.getVehicles()){
                     annotateTest(() -> assertNotNull(vehicle.getTrip()));
                     TripValidation.testTrip(vehicle.getTrip());
@@ -120,9 +126,9 @@ final class TestBusStop {
 
             @Test
             final void testVehicleTripStops(){
-                annotateTest(() -> assumeTrue(stop.getVehicles().length > 0, "No vehicles found, skipping tests"));
+                annotateTest(() -> VehicleValidation.requireVehicles(stop));
                 for(final Vehicle vehicle : stop.getVehicles()){
-                    annotateTest(() -> assumeTrue(vehicle.getTrip().getTripStops().length > 0, "No vehicles found, skipping tests"));
+                    annotateTest(() -> assumeTrue(vehicle.getTrip().getTripStops().length > 0, "No trip stops found, skipping tests"));
                     TripValidation.testTripStops(vehicle.getTrip().getTripStops());
                 }
             }
@@ -134,14 +140,14 @@ final class TestBusStop {
 
             @Test
             final void testTransitAlerts(){
-                annotateTest(() -> Assumptions.assumeTrue(stop.getAlerts().length > 0, "No alerts found, skipping alert tests"));
+                annotateTest(() -> assumeTrue(stop.getAlerts().length > 0, "No alerts found, skipping alert tests"));
                 for(final Alert alert : stop.getAlerts())
                     AlertValidation.testAlert(alert);
             }
 
             @Test
             final void testTransitAlertsReference(){
-                annotateTest(() -> Assumptions.assumeTrue(stop.getAlerts().length > 0, "No alerts found, skipping alert tests"));
+                annotateTest(() -> assumeTrue(stop.getAlerts().length > 0, "No alerts found, skipping alert tests"));
                 for(final Alert alert : stop.getAlerts())
                     AlertValidation.testAlertReference(stop, alert);
             }

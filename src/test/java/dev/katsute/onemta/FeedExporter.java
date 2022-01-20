@@ -19,7 +19,7 @@ final class FeedExporter {
 
     @BeforeAll
     static void beforeAll(){
-        mta = (MTAImpl) TestProvider.getOneMTA();
+        mta = (MTAImpl) TestProvider.getOneMTA(null);
     }
 
     @SuppressWarnings("SpellCheckingInspection")
@@ -53,7 +53,7 @@ final class FeedExporter {
 
     @Test
     final void exportBusVehicle() throws IOException{
-         final MTAImpl mta = (MTAImpl) TestProvider.getOneMTA();
+         final MTAImpl mta = (MTAImpl) TestProvider.getOneMTA(null);
 
          assert mta != null;
 

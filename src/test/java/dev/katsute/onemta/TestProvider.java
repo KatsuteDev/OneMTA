@@ -1,5 +1,6 @@
 package dev.katsute.onemta;
 
+import dev.katsute.jcore.Workflow;
 import org.junit.jupiter.params.provider.Arguments;
 
 import java.io.*;
@@ -45,6 +46,8 @@ public abstract class TestProvider {
     private static final int TEST_DELAY = 60;
     private static final File TEST_LOCK = new File(test_resources, "TEST_LOCK");
 
+    private static final File TEST_GROUP = new File(test_resources, "TEST_GROUP");
+
     private static final Map<DataResourceType,String> resources = new HashMap<DataResourceType,String>(){{
         put(DataResourceType.Subway             , "http://web.mta.info/developers/data/nyct/subway/google_transit.zip");
         put(DataResourceType.Bus_Bronx          , "http://web.mta.info/developers/data/nyct/bus/google_transit_bronx.zip");
@@ -57,8 +60,11 @@ public abstract class TestProvider {
         put(DataResourceType.Bus_Company        , "http://web.mta.info/developers/data/busco/google_transit.zip");
     }};
 
-    public static MTA getOneMTA(){
+    public static MTA getOneMTA(final String testGroup){
         try{
+            if(testGroup != null && TEST_GROUP.exists() && !readFile(TEST_GROUP).equals(testGroup))
+                assumeTrue(false, "Skipping test group");
+
             if(!hasBus && !hasSubway)
                 annotateTest(() -> assumeTrue(false, "No token defined, skipping tests"));
 

@@ -16,7 +16,7 @@ final class TestSubway {
 
     @BeforeAll
     static void beforeAll(){
-        mta = TestProvider.getOneMTA();
+        mta = TestProvider.getOneMTA("subway");
     }
 
     @ParameterizedTest

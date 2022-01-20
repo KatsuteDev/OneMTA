@@ -14,7 +14,7 @@ final class TestMNR {
 
     @BeforeAll
     static void beforeAll(){
-        mta = TestProvider.getOneMTA();
+        mta = TestProvider.getOneMTA("mnr");
     }
 
     @Test

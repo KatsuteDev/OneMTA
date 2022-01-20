@@ -9,13 +9,14 @@ import static dev.katsute.jcore.Workflow.*;
 import static dev.katsute.onemta.railroad.LIRR.*;
 import static org.junit.jupiter.api.Assumptions.*;
 
+@SuppressWarnings("SpellCheckingInspection")
 final class TestLIRRAlert {
 
     private static MTA mta;
 
     @BeforeAll
     static void beforeAll(){
-        mta = TestProvider.getOneMTA();
+        mta = TestProvider.getOneMTA("lirr");
     }
 
     @Nested
