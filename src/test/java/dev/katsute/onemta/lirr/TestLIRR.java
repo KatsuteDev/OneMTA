@@ -12,9 +12,11 @@ final class TestLIRR {
 
     private static MTA mta;
 
+    @SuppressWarnings("SpellCheckingInspection")
     @BeforeAll
     static void beforeAll(){
-        mta = TestProvider.getOneMTA("lirr");
+        TestProvider.testGroup("lirr");
+        mta = TestProvider.getOneMTA();
     }
 
     @Test

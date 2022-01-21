@@ -1,11 +1,11 @@
 package dev.katsute.onemta.bus;
 
 import dev.katsute.onemta.MTA;
+import dev.katsute.onemta.types.TripValidation;
 
 import static dev.katsute.jcore.Workflow.*;
 import static dev.katsute.onemta.bus.Bus.*;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assumptions.*;
 
 abstract class BusExtensions {
 
@@ -64,7 +64,7 @@ abstract class BusExtensions {
     //
 
     public static void testTripStops(final TripStop[] trip){
-        annotateTest(() -> assumeTrue(trip.length > 0, "No trip stops found, skipping tests"));
+        annotateTest(() -> TripValidation.requireTripStops(trip));
 
         {
             // fields may be missing if stop is skipped

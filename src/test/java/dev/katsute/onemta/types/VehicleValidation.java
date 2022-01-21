@@ -14,7 +14,6 @@ import static org.junit.jupiter.api.Assumptions.*;
 public abstract class VehicleValidation {
 
     public static void requireVehicles(final VehiclesReference<?> vehicles){
-        // annotate in outer
         assumeTrue(vehicles.getVehicles().length > 0, "No vehicles found, please rerun this test when vehicles are available");
     }
 

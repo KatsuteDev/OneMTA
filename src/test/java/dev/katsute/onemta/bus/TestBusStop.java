@@ -8,7 +8,6 @@ import org.junit.jupiter.api.*;
 import static dev.katsute.jcore.Workflow.*;
 import static dev.katsute.onemta.bus.Bus.*;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assumptions.*;
 
 final class TestBusStop {
 
@@ -18,7 +17,8 @@ final class TestBusStop {
 
     @BeforeAll
     static void beforeAll(){
-        mta = TestProvider.getOneMTA("bus");
+        TestProvider.testGroup("bus");
+        mta = TestProvider.getOneMTA();
 
         annotateTest(() -> stop = mta.getBusStop(TestProvider.BUS_STOP));
     }
@@ -34,10 +34,13 @@ final class TestBusStop {
         @Nested
         final class VehicleTests {
 
+            @BeforeEach
+            final void beforeEach(){
+                annotateTest(() -> VehicleValidation.requireVehicles(stop));
+            }
+
             @Test
             final void testVehicles(){
-                annotateTest(() -> VehicleValidation.requireVehicles(stop));
-
                 { // not all bus vehicles have this for some reason
                     boolean passes = false;
                     for(final Vehicle vehicle : stop.getVehicles()){
@@ -73,13 +76,11 @@ final class TestBusStop {
 
             @Test
             final void testOrigin(){
-                annotateTest(() -> VehicleValidation.requireVehicles(stop));
                 BusExtensions.testOriginStop(stop.getVehicles()[0]);
             }
 
             @Test
             final void testID(){
-                annotateTest(() -> VehicleValidation.requireVehicles(stop));
                 BusExtensions.testVehicleNumber(mta, stop.getVehicles()[0]);
             }
 
@@ -98,9 +99,13 @@ final class TestBusStop {
         @Nested
         final class VehicleTests {
 
+            @BeforeEach
+            final void beforeEach(){
+                annotateTest(() -> VehicleValidation.requireVehicles(stop));
+            }
+
             @Test
             final void testTransitVehicles(){
-                annotateTest(() -> VehicleValidation.requireVehicles(stop));
                 for(final Vehicle vehicle : stop.getVehicles())
                     VehicleValidation.testVehicle(vehicle);
             }
@@ -110,9 +115,13 @@ final class TestBusStop {
         @Nested
         final class TripTests {
 
+            @BeforeEach
+            final void beforeEach(){
+                annotateTest(() -> VehicleValidation.requireVehicles(stop));
+            }
+
             @Test
             final void testVehicleTrips(){
-                annotateTest(() -> VehicleValidation.requireVehicles(stop));
                 for(final Vehicle vehicle : stop.getVehicles()){
                     annotateTest(() -> assertNotNull(vehicle.getTrip()));
                     TripValidation.testTrip(vehicle.getTrip());
@@ -124,13 +133,15 @@ final class TestBusStop {
         @Nested
         final class TripStopTests {
 
+            @BeforeEach
+            final void beforeEach(){
+                annotateTest(() -> VehicleValidation.requireVehicles(stop));
+            }
+
             @Test
             final void testVehicleTripStops(){
-                annotateTest(() -> VehicleValidation.requireVehicles(stop));
-                for(final Vehicle vehicle : stop.getVehicles()){
-                    annotateTest(() -> assumeTrue(vehicle.getTrip().getTripStops().length > 0, "No trip stops found, skipping tests"));
+                for(final Vehicle vehicle : stop.getVehicles())
                     TripValidation.testTripStops(vehicle.getTrip().getTripStops());
-                }
             }
 
         }
@@ -138,16 +149,19 @@ final class TestBusStop {
         @Nested
         final class AlertTests {
 
+            @BeforeEach
+            final void beforeEach(){
+                annotateTest(() -> AlertValidation.requireAlerts(stop));
+            }
+
             @Test
             final void testTransitAlerts(){
-                annotateTest(() -> assumeTrue(stop.getAlerts().length > 0, "No alerts found, skipping alert tests"));
                 for(final Alert alert : stop.getAlerts())
                     AlertValidation.testAlert(alert);
             }
 
             @Test
             final void testTransitAlertsReference(){
-                annotateTest(() -> assumeTrue(stop.getAlerts().length > 0, "No alerts found, skipping alert tests"));
                 for(final Alert alert : stop.getAlerts())
                     AlertValidation.testAlertReference(stop, alert);
             }

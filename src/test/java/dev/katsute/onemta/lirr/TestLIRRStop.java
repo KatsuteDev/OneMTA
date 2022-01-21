@@ -8,18 +8,18 @@ import org.junit.jupiter.api.*;
 import static dev.katsute.jcore.Workflow.*;
 import static dev.katsute.onemta.railroad.LIRR.*;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assumptions.*;
 
-@SuppressWarnings("SpellCheckingInspection")
 final class TestLIRRStop {
 
     private static MTA mta;
 
     private static Stop stop;
 
+    @SuppressWarnings("SpellCheckingInspection")
     @BeforeAll
     static void beforeAll(){
-        mta = TestProvider.getOneMTA("lirr");
+        TestProvider.testGroup("lirr");
+        mta = TestProvider.getOneMTA();
 
         annotateTest(() -> stop = mta.getLIRRStop(TestProvider.LIRR_STOP));
     }
@@ -27,19 +27,22 @@ final class TestLIRRStop {
     @Nested
     final class ExtensionTests {
 
+        @BeforeEach
+        final void beforeEach(){
+            annotateTest(() -> VehicleValidation.requireVehicles(stop));
+        }
+
         @Nested
         final class VehicleTests {
 
             @Test
             final void testVehicles(){
-                annotateTest(() -> VehicleValidation.requireVehicles(stop));
                 for(final Vehicle vehicle : stop.getVehicles())
                     LIRRExtensions.testVehicle(vehicle);
             }
 
             @Test
             final void testID(){
-                annotateTest(() -> VehicleValidation.requireVehicles(stop));
                 LIRRExtensions.testVehicleNumber(mta, stop.getVehicles()[0]);
             }
 
@@ -50,7 +53,6 @@ final class TestLIRRStop {
 
             @Test
             final void testVehicleTrips(){
-                annotateTest(() -> VehicleValidation.requireVehicles(stop));
                 for(final Vehicle vehicle : stop.getVehicles()){
                     annotateTest(() -> assertNotNull(vehicle.getTrip()));
                     LIRRExtensions.testTrip(vehicle.getTrip());
@@ -77,16 +79,19 @@ final class TestLIRRStop {
         @Nested
         final class VehicleTests {
 
+            @BeforeEach
+            final void beforeEach(){
+                annotateTest(() -> VehicleValidation.requireVehicles(stop));
+            }
+
             @Test
             final void testTransitVehicles(){
-                annotateTest(() -> VehicleValidation.requireVehicles(stop));
                 for(final Vehicle vehicle : stop.getVehicles())
                     VehicleValidation.testVehicle(vehicle);
             }
 
             @Test
             final void testGTFSTransitVehicles(){
-                annotateTest(() -> VehicleValidation.requireVehicles(stop));
                 for(final Vehicle vehicle : stop.getVehicles())
                     VehicleValidation.testGTFSVehicle(vehicle);
             }
@@ -96,9 +101,13 @@ final class TestLIRRStop {
         @Nested
         final class TripTests {
 
+            @BeforeEach
+            final void beforeEach(){
+                annotateTest(() -> VehicleValidation.requireVehicles(stop));
+            }
+
             @Test
             final void testVehicleTrips(){
-                annotateTest(() -> VehicleValidation.requireVehicles(stop));
                 for(final Vehicle vehicle : stop.getVehicles()){
                     annotateTest(() -> assertNotNull(vehicle.getTrip()));
                     TripValidation.testTrip(vehicle.getTrip());
@@ -107,14 +116,12 @@ final class TestLIRRStop {
 
             @Test
             final void testVehicleTripsReference(){
-                annotateTest(() -> VehicleValidation.requireVehicles(stop));
                 for(final Vehicle vehicle : stop.getVehicles())
                     TripValidation.testTripReference(vehicle);
             }
 
             @Test
             final void testGTFSVehicleTrips(){
-                annotateTest(() -> VehicleValidation.requireVehicles(stop));
                 for(final Vehicle vehicle : stop.getVehicles()){
                     annotateTest(() -> assertNotNull(vehicle.getTrip()));
                     TripValidation.testGTFSTrip(vehicle.getTrip());
@@ -126,31 +133,27 @@ final class TestLIRRStop {
         @Nested
         final class TripStopTests {
 
+            @BeforeEach
+            final void beforeEach(){
+                annotateTest(() -> VehicleValidation.requireVehicles(stop));
+            }
+
             @Test
             final void testVehicleTripStops(){
-                annotateTest(() -> VehicleValidation.requireVehicles(stop));
-                for(final Vehicle vehicle : stop.getVehicles()){
-                    annotateTest(() -> assumeTrue(vehicle.getTrip().getTripStops().length > 0, "No trip stops found, skipping tests"));
+                for(final Vehicle vehicle : stop.getVehicles())
                     TripValidation.testTripStops(vehicle.getTrip().getTripStops());
-                }
             }
 
             @Test
             final void testGTFSTripStops(){
-                annotateTest(() -> VehicleValidation.requireVehicles(stop));
-                for(final Vehicle vehicle : stop.getVehicles()){
-                    annotateTest(() -> assumeTrue(vehicle.getTrip().getTripStops().length > 0, "No trip stops found, skipping tests"));
+                for(final Vehicle vehicle : stop.getVehicles())
                     TripValidation.testGTFSTripStops(vehicle.getTrip().getTripStops());
-                }
             }
 
             @Test
             final void testRailroadTripStops(){
-                annotateTest(() -> VehicleValidation.requireVehicles(stop));
-                for(final Vehicle vehicle : stop.getVehicles()){
-                    annotateTest(() -> assumeTrue(vehicle.getTrip().getTripStops().length > 0, "No trip stops found, skipping tests"));
+                for(final Vehicle vehicle : stop.getVehicles())
                     TripValidation.testRailroadTripStops(vehicle.getTrip().getTripStops());
-                }
             }
 
         }
@@ -158,16 +161,19 @@ final class TestLIRRStop {
         @Nested
         final class AlertTests {
 
+            @BeforeEach
+            final void beforeEach(){
+                annotateTest(() -> AlertValidation.requireAlerts(stop));
+            }
+
             @Test
             final void testTransitAlerts(){
-                annotateTest(() -> assumeTrue(stop.getAlerts().length > 0, "No alerts found, skipping alert tests"));
                 for(final Alert alert : stop.getAlerts())
                     AlertValidation.testAlert(alert);
             }
 
             @Test
             final void testTransitAlertsReference(){
-                annotateTest(() -> assumeTrue(stop.getAlerts().length > 0, "No alerts found, skipping alert tests"));
                 for(final Alert alert : stop.getAlerts())
                     AlertValidation.testAlertReference(stop, alert);
             }

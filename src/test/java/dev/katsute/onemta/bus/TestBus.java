@@ -12,7 +12,8 @@ final class TestBus {
 
     @BeforeAll
     static void beforeAll(){
-        mta = TestProvider.getOneMTA("bus");
+        TestProvider.testGroup("bus");
+        mta = TestProvider.getOneMTA();
     }
 
     @Nested

@@ -15,7 +15,8 @@ final class TestMNRAlert {
 
     @BeforeAll
     static void beforeAll(){
-        mta = TestProvider.getOneMTA("mnr");
+        TestProvider.testGroup("mnr");
+        mta = TestProvider.getOneMTA();
     }
 
     @Nested

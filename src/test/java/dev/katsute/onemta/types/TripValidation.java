@@ -16,6 +16,12 @@ import static org.junit.jupiter.api.Assumptions.*;
  */
 public abstract class TripValidation {
 
+    public static void requireTripStops(final TransitTripStop<?,?,?>[] trip){
+        assumeTrue(trip.length > 0, "No trip stops found, please rerun tests");
+    }
+
+    //
+
     public static void testTrip(final TransitTrip<?,?,?> trip){
         annotateTest(() -> assertNotNull(trip.getTripStops()));
     }
@@ -36,19 +42,19 @@ public abstract class TripValidation {
     //
 
     public static void testTripStops(final TransitTripStop<?,?,?>[] trip){
-        annotateTest(() -> assumeTrue(trip.length > 0, "No trip stops found, skipping tests"));
+        annotateTest(() -> requireTripStops(trip));
         for(final TransitTripStop<?, ?, ?> stop : trip)
             testTripStop(stop);
     }
 
     public static void testGTFSTripStops(final GTFSTransitTripStop<?,?,?>[] trip){
-        annotateTest(() -> assumeTrue(trip.length > 0, "No trip stops found, skipping tests"));
+        annotateTest(() -> requireTripStops(trip));
         for(final GTFSTransitTripStop<?, ?, ?> stop : trip)
             testGTFSTripStop(stop);
     }
 
     public static void testRailroadTripStops(final RailroadTripStop<?,?>[] trip){
-        annotateTest(() -> assumeTrue(trip.length > 0, "No trip stops found, skipping tests"));
+        annotateTest(() -> requireTripStops(trip));
         for(final RailroadTripStop<?,?> stop : trip)
             testRailroadTripStop(stop);
     }

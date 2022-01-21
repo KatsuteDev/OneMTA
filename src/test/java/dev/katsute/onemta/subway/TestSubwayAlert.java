@@ -15,7 +15,8 @@ final class TestSubwayAlert {
 
     @BeforeAll
     static void beforeAll(){
-        mta = TestProvider.getOneMTA("subway");
+        TestProvider.testGroup("subway");
+        mta = TestProvider.getOneMTA();
     }
 
     @Nested

@@ -11,7 +11,7 @@ final class TestMTA {
 
     @BeforeAll
     static void beforeAll(){
-        mta = TestProvider.getOneMTA(null);
+        mta = TestProvider.getOneMTA();
     }
 
     @Nested
