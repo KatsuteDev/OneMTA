@@ -20,10 +20,35 @@ package dev.katsute.onemta.types;
 
 import dev.katsute.onemta.attribute.*;
 
+/**
+ * Represents a transit stop.
+ *
+ * @param <SID> stop ID format
+ * @param <V> transit vehicle type
+ * @param <A> transit alert type
+ *
+ * @since 1.0.0
+ * @version 1.0.0
+ * @author Katsute
+ */
 public abstract class TransitStop<SID, V extends TransitVehicle<?,?,?,?,?,?>, A extends TransitAlert<?,?,?,?>> implements Location, VehiclesReference<V>, Alerts<A> {
 
+    /**
+     * Returns the stop ID.
+     *
+     * @return stop ID
+     *
+     * @since 1.0.0
+     */
     public abstract SID getStopID();
 
+    /**
+     * Returns the stop name.
+     *
+     * @return stop name
+     *
+     * @since 1.0.0
+     */
     public abstract String getStopName();
 
 }

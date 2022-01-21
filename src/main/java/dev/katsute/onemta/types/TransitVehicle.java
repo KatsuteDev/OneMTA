@@ -20,12 +20,43 @@ package dev.katsute.onemta.types;
 
 import dev.katsute.onemta.attribute.*;
 
+/**
+ * Represents a transit vehicle.
+ *
+ * @param <R> transit route type
+ * @param <S> transit stop type
+ * @param <T> transit trip type
+ * @param <SID> stop ID format
+ * @param <RID> route ID format
+ * @param <VID> vehicle ID format
+ */
 public abstract class TransitVehicle<R extends TransitRoute<?,?,?>, S extends TransitStop<?,?,?>, T extends TransitTrip<?,?,?>, SID, RID, VID> implements RouteReference<R>, StopReference<S>, TripReference<T> {
 
+    /**
+     * Returns the vehicle ID.
+     *
+     * @return vehicle ID
+     *
+     * @since 1.0.0
+     */
     public abstract VID getVehicleID();
 
+    /**
+     * Returns the stop ID.
+     *
+     * @return stop ID
+     *
+     * @since 1.0.0
+     */
     public abstract SID getStopID();
 
+    /**
+     * Returns the route ID.
+     *
+     * @return route ID
+     *
+     * @since 1.0.0
+     */
     public abstract RID getRouteID();
 
 }

@@ -32,15 +32,56 @@ import java.util.Date;
  * @author Katsute
  */
 public abstract class GTFSTransitTripStop<S extends TransitStop<?,?,?>, T extends TransitTrip<?,?,?>, SID> extends TransitTripStop<S,T,SID> {
-    
+
+    /**
+     * Returns the arrival time.
+     *
+     * @return arrival time
+     *
+     * @see Date
+     * @see #getArrivalTimeEpochMillis()
+     * @since 1.0.0
+     */
     public abstract Date getArrivalTime();
 
+    /**
+     * Returns the arrival time as milliseconds since epoch.
+     *
+     * @return arrival time
+     *
+     * @see #getArrivalTime()
+     * @since 1.0.0
+     */
     public abstract Long getArrivalTimeEpochMillis();
 
+    /**
+     * Returns the departure time.
+     *
+     * @return departure time
+     *
+     * @see Date
+     * @see #getDepartureTimeEpochMillis()
+     * @since 1.0.0
+     */
     public abstract Date getDepartureTime();
 
+    /**
+     * Returns the departure time as milliseconds since epoch.
+     *
+     * @return departure time
+     *
+     * @see #getDepartureTime()
+     * @since 1.0.0
+     */
     public abstract Long getDepartureTimeEpochMillis();
 
+    /**
+     * Returns the track.
+     *
+     * @return track
+     *
+     * @since 1.0.0
+     */
     public abstract String getTrack();
 
 }
