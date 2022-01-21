@@ -1,6 +1,6 @@
 <div id="top" align="center">
     <h3>OneMTA</h3>
-    <h3>Java wrapper for the MTA Bus and Subway API</h3>
+    <h5>Java wrapper for the MTA Bus and Subway API</h5>
     <div>
         <a href="https://github.com/KatsuteDev/OneMTA/issues">Issues</a>
         •
@@ -41,7 +41,11 @@ OneMTA requires at least Java 8. OneMTA also requires the [protobuf-java](https:
 
 Compiled jars can be found on Maven Central and the releases tab.
 
-OneMTA requires static data from the MTA for most route and stop information. Latest static data for the MTA is available at [http://web.mta.info/developers/developer-data-terms.html#data](http://web.mta.info/developers/developer-data-terms.html#data).
+Request a bus token at <http://bt.mta.info/wiki/Developers/Index>.
+
+Request a subway token at <https://api.mta.info/#/signup>.
+
+OneMTA requires static data from the MTA for most route and stop information. Latest static data for the MTA is available at <http://web.mta.info/developers/developer-data-terms.html#data>.
 
 Only include static data for the API endpoints you are using. For the bus API you must include all boroughs plus bus company.
 
