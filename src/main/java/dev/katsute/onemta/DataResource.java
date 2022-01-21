@@ -54,7 +54,6 @@ public abstract class DataResource {
      * @see DataResourceType
      * @since 1.0.0
      */
-    @SuppressWarnings("GrazieInspection")
     public static DataResource create(final DataResourceType type, final File file){
         return new DataResource(){
 

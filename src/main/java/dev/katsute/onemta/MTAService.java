@@ -220,7 +220,6 @@ final class MTAService {
 
     }
 
-    @SuppressWarnings("FieldCanBeLocal")
     final class ServiceAlerts {
 
         private ServiceAlerts(){ }

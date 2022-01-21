@@ -37,10 +37,6 @@ public interface Alerts<A extends TransitAlert<?,?,?,?>> {
      * @return alerts
      *
      * @see TransitAlert
-     * @see dev.katsute.onemta.bus.Bus.Alert
-     * @see dev.katsute.onemta.subway.Subway.Alert
-     * @see dev.katsute.onemta.railroad.LIRR.Alert
-     * @see dev.katsute.onemta.railroad.MNR.Alert
      * @since 1.0.0
      */
     A[] getAlerts();

@@ -63,7 +63,6 @@ abstract class BusExtensions {
 
     //
 
-    @SuppressWarnings("GrazieInspection")
     public static void testTripStops(final TripStop[] trip){
         annotateTest(() -> assumeTrue(trip.length > 0, "No trip stops found, skipping tests"));
 

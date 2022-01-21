@@ -31,7 +31,6 @@ package dev.katsute.onemta.types;
  * @version 1.0.0
  * @author Katsute
  */
-@SuppressWarnings("GrazieInspection")
 public abstract class TransitAlert<RID, R extends TransitRoute<?,?,?>, SID, S extends TransitStop<?,?,?>> {
 
     /**

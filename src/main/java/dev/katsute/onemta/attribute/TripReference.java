@@ -31,6 +31,13 @@ import dev.katsute.onemta.types.TransitTrip;
  */
 public interface TripReference<T extends TransitTrip<?,?,?>> {
 
+    /**
+     * Returns the trip.
+     *
+     * @return trip
+     *
+     * @since 1.0.0
+     */
     T getTrip();
 
 }
