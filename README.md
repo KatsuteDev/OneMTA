@@ -25,7 +25,7 @@
 # Overview
 
 |⚠ The MTA API [Terms and Conditions](https://api.mta.info/#/DataFeedAgreement) prohibits developers from giving users direct access to MTA servers.|
-|---|
+|:-:|
 |Any realtime data that is retrieved in this library must be served to users on your own servers.|
 
 - [Overview](#overview)
@@ -65,6 +65,8 @@ MTA mta = MTA.create(busToken, subwayToken, staticBusBx, staticBusBk, staticBusM
 
 ### 🗺 Routes
 
+Retrieve routes along with alerts and vehicles on the route.
+
 ```java
 Bus.Route M1    = mta.getBusRoute("M1", DataResourceType.Bus_Manhattan);
 Subway.Route SI = mta.getSubwayRoute("SI");
@@ -73,6 +75,8 @@ MNR.Route HM    = mta.getMNRRoute(2);
 ```
 
 ### 🚏 Stops
+
+Retrieve stops with alerts and vehicles en route.
 
 ```java
 Bus.Stop stop   = mta.getBusStop(400561);
@@ -83,6 +87,8 @@ MNR.Stop WLN    = mta.getMNRStop("1WN");
 
 ### 🚍 Vehicles
 
+Retrieve live vehicle information from stops and routes.
+
 ```java
 Bus.Vehicle[]     busses = stop.getVehicles();
 Subway.Vehicle[] subways = SI.getVehicles();
@@ -91,6 +97,8 @@ MNR.Vehicle[] mnr        = WLN.getVehicles();
 ```
 
 ### ⚠ Alerts
+
+Retrieve alerts for all stops and routes.
 
 ```java
 Bus.Alert[] busAlerts       = mta.getBusAlerts();
