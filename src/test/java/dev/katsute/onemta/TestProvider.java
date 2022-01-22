@@ -46,7 +46,7 @@ public abstract class TestProvider {
             if(Workflow.isCI() && testGroup != null && TEST_GROUP.exists()){
                 final String expected = readFile(TEST_GROUP);
                 if(!expected.equalsIgnoreCase(testGroup))
-                    annotateTest(() -> assumeTrue(false, "Skipped testing group " + testGroup + ", only testing " + expected));
+                    assumeTrue(false, "Skipped testing group " + testGroup + ", only testing " + expected);
             }
         }catch(final IOException e){
             annotateTest(() -> fail(e));
