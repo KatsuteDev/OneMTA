@@ -21,19 +21,76 @@ package dev.katsute.onemta.railroad;
 import dev.katsute.onemta.attribute.*;
 import dev.katsute.onemta.types.*;
 
+/**
+ * Represents Long Island Railroad (LIRR) related objects.
+ *
+ * @see Route
+ * @see Stop
+ * @see Vehicle
+ * @see Trip
+ * @see TripStop
+ * @see Alert
+ * @since 1.0.0
+ * @version 1.0.0
+ * @author Katsute
+ */
 @SuppressWarnings("SpellCheckingInspection")
 public abstract class LIRR {
 
+    /**
+     * Represents a Long Island Railroad (LIRR) route.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
+     * @author Katsute
+     */
     public abstract static class Route extends TransitRoute<Integer,Vehicle,Alert> { }
 
+    /**
+     * Represents a Long Island Railroad (LIRR) stop.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
+     * @author Katsute
+     */
     public abstract static class Stop extends RailroadStop<Vehicle,Alert> { }
 
+    /**
+     * Represents a Long Island Railroad (LIRR) vehicle.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
+     * @author Katsute
+     */
     public abstract static class Vehicle extends GTFSVehicle<Route,Stop,Trip,Integer,Integer>  implements Bearing, Location { }
 
+    /**
+     * Represents a Long Island Railroad (LIRR) vehicle trip.
+     *
+     * @see TripStop
+     * @since 1.0.0
+     * @version 1.0.0
+     * @author Katsute
+     */
     public abstract static class Trip extends GTFSTransitTrip<Vehicle,Route,TripStop> implements Direction<RailroadDirection> { }
 
-    public abstract static class TripStop extends RailroadTripStop<Stop,Trip,Integer> { }
+    /**
+     * Represents a Long Island Railroad (LIRR) vehicle trip stop.
+     *
+     * @see Trip
+     * @since 1.0.0
+     * @version 1.0.0
+     * @author Katsute
+     */
+    public abstract static class TripStop extends RailroadTripStop<Stop,Trip> { }
 
+    /**
+     * Represents a Long Island Railroad (LIRR) alert.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
+     * @author Katsute
+     */
     public abstract static class Alert extends TransitAlert<Integer,Route,Integer,Stop> { }
 
 }

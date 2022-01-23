@@ -18,10 +18,31 @@
 
 package dev.katsute.onemta.types;
 
+/**
+ * Represents a transit agency.
+ *
+ * @since 1.0.0
+ * @version 1.0.0
+ * @author Katsute
+ */
 public abstract class TransitAgency {
 
+    /**
+     * Returns the transit agency ID.
+     *
+     * @return agency ID
+     *
+     * @since 1.0.0
+     */
     public abstract String getAgencyID();
 
+    /**
+     * Returns the transit agency name.
+     *
+     * @return agency name
+     *
+     * @since 1.0.0
+     */
     public abstract String getAgencyName();
 
 }

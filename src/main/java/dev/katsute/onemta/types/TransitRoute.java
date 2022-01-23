@@ -21,16 +21,63 @@ package dev.katsute.onemta.types;
 import dev.katsute.onemta.attribute.Alerts;
 import dev.katsute.onemta.attribute.VehiclesReference;
 
+/**
+ * Represents a transit route.
+ *
+ * @param <RID> route ID format
+ * @param <V> transit vehicle type
+ * @param <A> transit alert type
+ *
+ * @since 1.0.0
+ * @version 1.0.0
+ * @author Katsute
+ */
 public abstract class TransitRoute<RID, V extends TransitVehicle<?,?,?,?,?,?>, A extends TransitAlert<?,?,?,?>> implements VehiclesReference<V>, Alerts<A> {
 
+    /**
+     * Returns the transit agency that is operating the route.
+     *
+     * @return transit agency
+     *
+     * @see TransitAgency
+     * @since 1.0.0
+     */
     public abstract TransitAgency getAgency();
 
+    /**
+     * Returns the route ID.
+     *
+     * @return route ID
+     *
+     * @since 1.0.0
+     */
     public abstract RID getRouteID();
 
+    /**
+     * Returns the route name.
+     *
+     * @return route name
+     *
+     * @since 1.0.0
+     */
     public abstract String getRouteName();
 
+    /**
+     * Returns the route background color.
+     *
+     * @return route color
+     *
+     * @since 1.0.0
+     */
     public abstract String getRouteColor();
 
+    /**
+     * Returns the route text color.
+     *
+     * @return route text color
+     *
+     * @since 1.0.0
+     */
     public abstract String getRouteTextColor();
 
 }

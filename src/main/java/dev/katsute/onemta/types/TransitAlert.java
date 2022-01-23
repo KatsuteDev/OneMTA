@@ -18,24 +18,102 @@
 
 package dev.katsute.onemta.types;
 
+/**
+ * Represents a transit alert.
+ *
+ * @param <RID> route ID format
+ * @param <R> transit route type
+ * @param <SID> stop ID format
+ * @param <S> transit stop type
+ *
+ * @see TransitAlertPeriod
+ * @since 1.0.0
+ * @version 1.0.0
+ * @author Katsute
+ */
 public abstract class TransitAlert<RID, R extends TransitRoute<?,?,?>, SID, S extends TransitStop<?,?,?>> {
 
+    /**
+     * Returns the alert ID.
+     *
+     * @return alert ID
+     *
+     * @since 1.0.0
+     */
     public abstract String getID();
 
+    /**
+     * Returns when the alert is active.
+     *
+     * @return alert period
+     *
+     * @see TransitAlertPeriod
+     * @since 1.0.0
+     */
     public abstract TransitAlertPeriod[] getActivePeriods();
 
+    /**
+     * Returns which route IDs are affected.
+     *
+     * @return affected route IDs
+     *
+     * @see #getRoutes()
+     * @since 1.0.0
+     */
     public abstract RID[] getRouteIDs();
 
+    /**
+     * Returns which routes are affected.
+     *
+     * @return affected routes
+     *
+     * @see #getRouteIDs()
+     * @since 1.0.0
+     */
     public abstract R[] getRoutes();
 
+    /**
+     * Returns which stop IDs are affected.
+     *
+     * @return affected stop IDs
+     *
+     * @see #getStops()
+     * @since 1.0.0
+     */
     public abstract SID[] getStopIDs();
 
+    /**
+     * Returns which stops are affected.
+     *
+     * @return affected stop IDs
+     */
     public abstract S[] getStops();
 
+    /**
+     * Returns the alert header.
+     *
+     * @return alert header
+     *
+     * @since 1.0.0
+     */
     public abstract String getHeader();
 
+    /**
+     * Returns the alert description.
+     *
+     * @return alert description
+     *
+     * @since 1.0.0
+     */
     public abstract String getDescription();
 
+    /**
+     * Returns the alert type.
+     *
+     * @return alert type
+     *
+     * @since 1.0.0
+     */
     public abstract String getAlertType();
 
 }

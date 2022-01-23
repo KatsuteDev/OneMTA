@@ -18,16 +18,51 @@
 
 package dev.katsute.onemta;
 
+/**
+ * Represents a static dataset.
+ *
+ * @see DataResource
+ * @since 1.0.0
+ * @version 1.0.0
+ * @author Katsute
+ */
 public enum DataResourceType {
 
+    /**
+     * New York City Transit Subway
+     */
     Subway,
+    /**
+     * New York City Transit Bus > Bronx
+     */
     Bus_Bronx,
+    /**
+     * New York City Transit Bus > Brooklyn
+     */
     Bus_Brooklyn,
+    /**
+     * New York City Transit Bus > Manhattan
+     */
     Bus_Manhattan,
+    /**
+     * New York City Transit Bus > Queens
+     */
     Bus_Queens,
+    /**
+     * New York City Transit Bus > Staten Island
+     */
     Bus_StatenIsland,
+    /**
+     * Bus Company
+     */
     Bus_Company,
+    /**
+     * Long Island Rail Road
+     */
     LongIslandRailroad,
+    /**
+     * Metro-North Railroad
+     */
     MetroNorthRailroad
 
 }

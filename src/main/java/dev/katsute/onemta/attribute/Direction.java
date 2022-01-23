@@ -18,8 +18,24 @@
 
 package dev.katsute.onemta.attribute;
 
+/**
+ * Indicates that a direction can be retrieved.
+ *
+ * @param <T> directional enum
+ *
+ * @since 1.0.0
+ * @version 1.0.0
+ * @author Katsute
+ */
 public interface Direction<T extends Enum<?>> {
 
+    /**
+     * Returns the direction.
+     *
+     * @return direction
+     *
+     * @since 1.0.0
+     */
     T getDirection();
 
 }

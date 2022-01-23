@@ -18,8 +18,28 @@
 
 package dev.katsute.onemta.types;
 
+/**
+ * Represents a GTFS vehicle.
+ *
+ * @param <R> transit route type
+ * @param <S> transit stop type
+ * @param <T> transit trip type
+ * @param <SID> stop ID format
+ * @param <RID> route ID format
+ *
+ * @since 1.0.0
+ * @version 1.0.0
+ * @author Katsute
+ */
 public abstract class GTFSVehicle<R extends TransitRoute<?,?,?>, S extends TransitStop<?,?,?>, T extends TransitTrip<?,?,?>, SID, RID> extends TransitVehicle<R,S,T,SID,RID,String> {
 
+    /**
+     * Returns the current vehicle status.
+     *
+     * @return vehicle status
+     *
+     * @since 1.0.0
+     */
     public abstract String getCurrentStatus();
 
 }

@@ -1,9 +1,11 @@
 package dev.katsute.onemta.bus;
 
+import dev.katsute.onemta.MTA;
+import dev.katsute.onemta.types.TripValidation;
+
 import static dev.katsute.jcore.Workflow.*;
 import static dev.katsute.onemta.bus.Bus.*;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assumptions.*;
 
 abstract class BusExtensions {
 
@@ -41,32 +43,50 @@ abstract class BusExtensions {
         annotateTest(() -> assertNotNull(vehicle.getOriginStopCode()));
         annotateTest(() -> assertNotNull(vehicle.getDestinationName()));
         annotateTest(() -> assertNotNull(vehicle.getProgressRate()));
-        annotateTest(() -> assertNotNull(vehicle.getProgressStatus()));
+
         annotateTest(() -> assertNotNull(vehicle.getAimedArrivalTime()));
         annotateTest(() -> assertNotNull(vehicle.getAimedArrivalTimeEpochMillis()));
-        annotateTest(() -> assertNotNull(vehicle.getExpectedArrivalTime()));
-        annotateTest(() -> assertNotNull(vehicle.getExpectedArrivalTimeEpochMillis()));
-        annotateTest(() -> assertNotNull(vehicle.getExpectedDepartureTime()));
-        annotateTest(() -> assertNotNull(vehicle.getExpectedDepartureTimeEpochMillis()));
+
         annotateTest(() -> assertNotNull(vehicle.getArrivalProximityText()));
         annotateTest(() -> assertNotNull(vehicle.getDistanceFromStop()));
         annotateTest(() -> assertNotNull(vehicle.getStopsAway()));
         annotateTest(() -> assertNotNull(vehicle.getStopName()));
     }
 
+    public static void testOriginStop(final Vehicle vehicle){
+        annotateTest(() -> assertEquals(vehicle.getOriginStopCode(), vehicle.getOriginStop().getStopID()));
+    }
+
+    public static void testVehicleNumber(final MTA mta, final Vehicle vehicle){
+        annotateTest(() -> assertEquals(vehicle.getVehicleID(), mta.getBus(vehicle.getVehicleID()).getVehicleID()));
+    }
+
     //
 
     public static void testTripStops(final TripStop[] trip){
-        annotateTest(() -> assumeTrue(trip.length > 0, "No trip stops found, skipping tests"));
+        annotateTest(() -> TripValidation.requireTripStops(trip));
+
+        {
+            // fields may be missing if stop is skipped
+            boolean tested = false;
+            for(final TripStop stop : trip){
+                if(stop.getExpectedArrivalTime() != null &&
+                   stop.getExpectedArrivalTimeEpochMillis() != null &&
+                   stop.getArrivalProximityText() != null){
+                    tested = true;
+                    break;
+                }
+            }
+
+            final boolean finalPasses = tested;
+            annotateTest(() -> assertTrue(finalPasses, "Failed to pass expected arrival tests"));
+        }
+
         for(final TripStop stop : trip)
             testTripStop(stop);
     }
 
-
     private static void testTripStop(final TripStop stop){
-        annotateTest(() -> assertNotNull(stop.getExpectedArrivalTime()));
-        annotateTest(() -> assertNotNull(stop.getExpectedArrivalTimeEpochMillis()));
-        annotateTest(() -> assertNotNull(stop.getArrivalProximityText()));
         annotateTest(() -> assertNotNull(stop.getDistanceFromStop()));
         annotateTest(() -> assertNotNull(stop.getStopsAway()));
         annotateTest(() -> assertNotNull(stop.getStopName()));

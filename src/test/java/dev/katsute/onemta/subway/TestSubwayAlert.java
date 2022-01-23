@@ -15,6 +15,7 @@ final class TestSubwayAlert {
 
     @BeforeAll
     static void beforeAll(){
+        TestProvider.testGroup("subway");
         mta = TestProvider.getOneMTA();
     }
 

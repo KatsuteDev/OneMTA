@@ -26,8 +26,34 @@ import java.util.stream.Collectors;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
+/**
+ * Represents a static data resource. Latest data can be retrieved from <a href="http://web.mta.info/developers/developer-data-terms.html#data">http://web.mta.info/developers/developer-data-terms.html#data</a>.
+ *
+ * @see #create(DataResourceType, File)
+ * @since 1.0.0
+ * @version 1.0.0
+ * @author Katsute
+ */
 public abstract class DataResource {
 
+    /**
+     * Creates a data resource from a zip file.
+     * <br>
+     * At the moment the zip file only needs to have:
+     * <ul>
+     *     <li><code>agency.txt</code></li>
+     *     <li><code>stops.txt</code></li>
+     *     <li><code>routes.txt</code></li>
+     * </ul>
+     * All other files are ignored.
+     *
+     * @param type resource type
+     * @param file google_transit zip file
+     * @return data resource
+     *
+     * @see DataResourceType
+     * @since 1.0.0
+     */
     public static DataResource create(final DataResourceType type, final File file){
         return new DataResource(){
 

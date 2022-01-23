@@ -20,8 +20,24 @@ package dev.katsute.onemta.attribute;
 
 import dev.katsute.onemta.types.TransitRoute;
 
+/**
+ * Indicates that there is a route reference.
+ *
+ * @param <R> transit route type
+ *
+ * @since 1.0.0
+ * @version 1.0.0
+ * @author Katsute
+ */
 public interface RouteReference<R extends TransitRoute<?,?,?>> {
 
+    /**
+     * Returns the route.
+     *
+     * @return route
+     *
+     * @since 1.0.0
+     */
     R getRoute();
 
 }

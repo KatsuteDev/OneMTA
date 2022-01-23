@@ -21,22 +21,86 @@ package dev.katsute.onemta.subway;
 import dev.katsute.onemta.attribute.*;
 import dev.katsute.onemta.types.*;
 
+/**
+ * Represents subway related objects.
+ *
+ * @see Route
+ * @see Stop
+ * @see Vehicle
+ * @see Trip
+ * @see TripStop
+ * @see Alert
+ * @since 1.0.0
+ * @version 1.0.0
+ * @author Katsute
+ */
 public abstract class Subway {
 
+    /**
+     * Represents a subway route.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
+     * @author Katsute
+     */
     public abstract static class Route extends TransitRoute<String,Vehicle,Alert> implements RouteShortName, RouteDescription { }
 
+    /**
+     * Represents a subway stop.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
+     * @author Katsute
+     */
     public abstract static class Stop extends TransitStop<String,Vehicle,Alert> implements Direction<SubwayDirection> { }
 
+    /**
+     * Represents a subway vehicle.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
+     * @author Katsute
+     */
     public abstract static class Vehicle extends GTFSVehicle<Route,Stop,Trip,String,String> { }
 
+    /**
+     * Represents a subway vehicle trip.
+     *
+     * @see TripStop
+     * @since 1.0.0
+     * @version 1.0.0
+     * @author Katsute
+     */
     public abstract static class Trip extends GTFSTransitTrip<Vehicle,Route,TripStop> implements Direction<SubwayDirection> { }
 
+    /**
+     * Represents a subway vehicle trip stop.
+     *
+     * @since Trip
+     * @since 1.0.0
+     * @version 1.0.0
+     * @author Katsute
+     */
     public abstract static class TripStop extends GTFSTransitTripStop<Stop,Trip,String> {
 
+        /**
+         * Returns the actual track that a subway train arrived at.
+         *
+         * @return actual track
+         *
+         * @since 1.0.0
+         */
         public abstract String getActualTrack();
 
     }
 
+    /**
+     * Represents a subway alert.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
+     * @author Katsute
+     */
     public abstract static class Alert extends TransitAlert<String,Route,String,Stop> { }
 
 }

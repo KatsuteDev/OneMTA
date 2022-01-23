@@ -20,14 +20,54 @@ package dev.katsute.onemta.types;
 
 import java.util.Date;
 
+/**
+ * Represents a {@link TransitAlert} period.
+ *
+ * @see TransitAlert
+ * @since 1.0.0
+ * @version 1.0.0
+ * @author Katsute
+ */
 public abstract class TransitAlertPeriod {
 
+    /**
+     * Returns when the alert starts.
+     *
+     * @return alert start
+     *
+     * @see #getStartEpochMillis()
+     * @since 1.0.0
+     */
     public abstract Date getStart();
 
+    /**
+     * Returns when the alert starts as milliseconds since epoch.
+     *
+     * @return alert start
+     *
+     * @see #getStart()
+     * @since 1.0.0
+     */
     public abstract Long getStartEpochMillis();
 
+    /**
+     * Returns when the alert ends.
+     *
+     * @return alert end
+     *
+     * @see #getEndEpochMillis()
+     * @since 1.0.0
+     */
     public abstract Date getEnd();
 
+    /**
+     * Returns when the alert ends as milliseconds since epoch.
+     *
+     * @return alert end
+     *
+     * @see #getEndEpochMillis()
+     * @since 1.0.0
+     */
     public abstract Long getEndEpochMillis();
 
 }

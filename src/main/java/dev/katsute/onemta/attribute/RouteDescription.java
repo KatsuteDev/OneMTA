@@ -18,8 +18,22 @@
 
 package dev.katsute.onemta.attribute;
 
+/**
+ * Indicates that the route has a description.
+ *
+ * @since 1.0.0
+ * @version 1.0.0
+ * @author Katsute
+ */
 public interface RouteDescription {
 
+    /**
+     * Returns the route description.
+     *
+     * @return route description
+     *
+     * @since 1.0.0
+     */
     String getRouteDescription();
 
 }

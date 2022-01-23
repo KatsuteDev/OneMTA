@@ -6,12 +6,19 @@ import java.util.Arrays;
 
 import static dev.katsute.jcore.Workflow.*;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assumptions.*;
 
 /**
  * @see TransitAlert
  * @see TransitAlertPeriod
  */
 public abstract class AlertValidation {
+
+    public static void requireAlerts(final Alerts<?> alerts){
+        assumeTrue(alerts.getAlerts().length > 0, "No alerts found, skipping alert tests");
+    }
+
+    //
 
     public static void testAlert(final TransitAlert<?,?,?,?> alert){
         annotateTest(() -> assertNotNull(alert.getID()));

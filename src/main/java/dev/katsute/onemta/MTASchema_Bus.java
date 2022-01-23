@@ -126,27 +126,6 @@ abstract class MTASchema_Bus extends MTASchema {
 
             private final TransitAgency agency = asAgency(row.get(csv.getHeaderIndex("agency_id")), resource);
 
-            private final List<Vehicle> vehicles;
-
-            {
-                final JsonObject json = cast(mta).service.bus.getVehicle(cast(mta).busToken, null, routeID, null);
-
-                final JsonObject vehicleMonitoringDelivery = json
-                    .getJsonObject("Siri")
-                    .getJsonObject("ServiceDelivery")
-                    .getJsonArray("VehicleMonitoringDelivery")[0];
-
-                final JsonObject[] vehicleActivity =
-                    vehicleMonitoringDelivery.containsKey("VehicleActivity")
-                    ? vehicleMonitoringDelivery.getJsonArray("VehicleActivity")
-                    : new JsonObject[0];
-
-                final List<Vehicle> vehicles = new ArrayList<>();
-                for(final JsonObject obj : vehicleActivity)
-                    vehicles.add(asVehicle(mta, obj.getJsonObject("MonitoredVehicleJourney"), this, null));
-                this.vehicles = Collections.unmodifiableList(vehicles);
-            }
-
             // static data
 
             @Override
@@ -208,8 +187,28 @@ abstract class MTASchema_Bus extends MTASchema {
 
             // live feed
 
+            private List<Vehicle> vehicles = null;
+
             @Override
             public final Vehicle[] getVehicles(){
+                if(vehicles == null){
+                    final JsonObject json = cast(mta).service.bus.getVehicle(cast(mta).busToken, null, routeID, null);
+
+                    final JsonObject vehicleMonitoringDelivery = json
+                        .getJsonObject("Siri")
+                        .getJsonObject("ServiceDelivery")
+                        .getJsonArray("VehicleMonitoringDelivery")[0];
+
+                    final JsonObject[] vehicleActivity =
+                        vehicleMonitoringDelivery.containsKey("VehicleActivity")
+                        ? vehicleMonitoringDelivery.getJsonArray("VehicleActivity")
+                        : new JsonObject[0];
+
+                    final List<Vehicle> vehicles = new ArrayList<>();
+                    for(final JsonObject obj : vehicleActivity)
+                        vehicles.add(asVehicle(mta, obj.getJsonObject("MonitoredVehicleJourney"), this, null));
+                    this.vehicles = Collections.unmodifiableList(vehicles);
+                }
                 return vehicles.toArray(new Vehicle[0]);
             }
 
@@ -302,27 +301,6 @@ abstract class MTASchema_Bus extends MTASchema {
             private final Double stopLat  = Double.valueOf(row.get(csv.getHeaderIndex("stop_lat")));
             private final Double stopLon  = Double.valueOf(row.get(csv.getHeaderIndex("stop_lon")));
 
-            private final List<Vehicle> vehicles;
-
-            {
-                final JsonObject json = cast(mta).service.bus.getStop(cast(mta).busToken, stop_id, null, null);
-
-                final JsonObject stopMonitoringDelivery = json
-                    .getJsonObject("Siri")
-                    .getJsonObject("ServiceDelivery")
-                    .getJsonArray("StopMonitoringDelivery")[0];
-
-                final JsonObject[] monitoredStopVisit =
-                    stopMonitoringDelivery.containsKey("MonitoredStopVisit")
-                    ? stopMonitoringDelivery.getJsonArray("MonitoredStopVisit")
-                    : new JsonObject[9];
-
-                final List<Vehicle> vehicles = new ArrayList<>();
-                for(final JsonObject obj : monitoredStopVisit)
-                    vehicles.add(asVehicle(mta, obj.getJsonObject("MonitoredVehicleJourney"), null, this));
-                this.vehicles = Collections.unmodifiableList(vehicles);
-            }
-
             // static data
 
             @Override
@@ -352,8 +330,28 @@ abstract class MTASchema_Bus extends MTASchema {
 
             // live feed
 
+            private List<Vehicle> vehicles = null;
+
             @Override
             public final Vehicle[] getVehicles(){
+                if(vehicles == null){
+                    final JsonObject json = cast(mta).service.bus.getStop(cast(mta).busToken, stop_id, null, null);
+
+                    final JsonObject stopMonitoringDelivery = json
+                        .getJsonObject("Siri")
+                        .getJsonObject("ServiceDelivery")
+                        .getJsonArray("StopMonitoringDelivery")[0];
+
+                    final JsonObject[] monitoredStopVisit =
+                        stopMonitoringDelivery.containsKey("MonitoredStopVisit")
+                        ? stopMonitoringDelivery.getJsonArray("MonitoredStopVisit")
+                        : new JsonObject[9];
+
+                    final List<Vehicle> vehicles = new ArrayList<>();
+                    for(final JsonObject obj : monitoredStopVisit)
+                        vehicles.add(asVehicle(mta, obj.getJsonObject("MonitoredVehicleJourney"), null, this));
+                    this.vehicles = Collections.unmodifiableList(vehicles);
+                }
                 return vehicles.toArray(new Vehicle[0]);
             }
 
@@ -399,7 +397,6 @@ abstract class MTASchema_Bus extends MTASchema {
             private final Double latitude  = requireNonNull(() -> monitoredVehicleJourney.getJsonObject("VehicleLocation").getDouble("Latitude"));
             private final Double longitude = requireNonNull(() -> monitoredVehicleJourney.getJsonObject("VehicleLocation").getDouble("Longitude"));
             // bearing is inverted
-            @SuppressWarnings("GrazieInspection")
             private final Double bearing   = requireNonNull(() -> 360 - monitoredVehicleJourney.getDouble("Bearing"));
 
             private final BusDirection direction = requireNonNull(() -> BusDirection.asDirection(monitoredVehicleJourney.getInt("DirectionRef")));
@@ -412,8 +409,8 @@ abstract class MTASchema_Bus extends MTASchema {
 
             private final String destinationName = requireNonNull(() -> monitoredVehicleJourney.getStringArray("DestinationName")[0]);
 
-            private final String progressRate   = requireNonNull(() -> monitoredVehicleJourney.getString("ProgressRate"));
-            private final String progressStatus = requireNonNull(() -> monitoredVehicleJourney.getString("ProgressStatus"));
+            private final String progressRate     = requireNonNull(() -> monitoredVehicleJourney.getString("ProgressRate"));
+            private final String[] progressStatus = requireNonNull(() -> monitoredVehicleJourney.getStringArray("ProgressStatus"));
 
             private final Long aimedArrivalTime      = requireNonNull(() -> {
                 try{
@@ -497,7 +494,7 @@ abstract class MTASchema_Bus extends MTASchema {
             }
 
             @Override
-            public final String getProgressStatus(){
+            public final String[] getProgressStatus(){
                 return progressStatus;
             }
 
@@ -662,7 +659,7 @@ abstract class MTASchema_Bus extends MTASchema {
             });
 
             private final String arrivalProximityText = requireNonNull(() -> onwardCall.getString("ArrivalProximityText"));
-            private final Integer distanceFromStop    = requireNonNull(() -> onwardCall.getInt("DistanceFromCall"));
+            private final Integer distanceFromStop    = requireNonNull(() -> onwardCall.getInt("DistanceFromStop"));
             private final Integer stopsAway           = requireNonNull(() -> onwardCall.getInt("NumberOfStopsAway"));
 
             @Override

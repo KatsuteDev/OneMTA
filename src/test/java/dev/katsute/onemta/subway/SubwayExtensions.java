@@ -1,9 +1,11 @@
 package dev.katsute.onemta.subway;
 
+import dev.katsute.onemta.MTA;
+import dev.katsute.onemta.types.TripValidation;
+
 import static dev.katsute.jcore.Workflow.*;
 import static dev.katsute.onemta.subway.Subway.*;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assumptions.*;
 
 abstract class SubwayExtensions {
 
@@ -15,7 +17,14 @@ abstract class SubwayExtensions {
     //
 
     public static void testStop(final Stop stop){
-        annotateTest(() -> assertNotNull(stop.getDirection()));
+        if(stop.getStopID().endsWith("N") || stop.getStopID().endsWith("S"))
+            annotateTest(() -> assertNotNull(stop.getDirection()));
+    }
+
+    //
+
+    public static void testVehicleNumber(final MTA mta, final Vehicle vehicle){
+        annotateTest(() -> assertEquals(vehicle.getVehicleID(), mta.getSubwayTrain(vehicle.getVehicleID()).getVehicleID()));
     }
 
     //
@@ -27,7 +36,7 @@ abstract class SubwayExtensions {
     //
 
     public static void testTripStops(final TripStop[] trip){
-        annotateTest(() -> assumeTrue(trip.length > 0, "No trip stops found, skipping tests"));
+        annotateTest(() -> TripValidation.requireTripStops(trip));
         for(final TripStop stop : trip)
             testTripStop(stop);
     }

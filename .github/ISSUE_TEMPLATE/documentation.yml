@@ -1,0 +1,36 @@
+name: Documentation Issue
+description: Report a documentation issue
+labels: [bug, documentation]
+assignees: []
+body:
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Prerequisites
+      description: |
+        *If **all** checks are not passed then the issue will be closed.*
+      options:
+        - label: I have checked that no other similar issue already exists.
+          required: true
+        - label: I have checked that this issue is actually a bug and not a feature.
+          required: true
+
+  - type: input
+    id: location
+    attributes:
+      label: Location
+      description: |
+        Provide a link to the version or the name of the class that has the documentation issue.
+      placeholder: |
+        ex: Bus.Vehicle, https://docs.katsute.dev/OneMTA/dev.katsute.onemta/MTA.html
+    validations:
+      required: true
+
+  - type: textarea
+    id: issue
+    attributes:
+      label: Issue
+      description: |
+        Explain your issue.
+    validations:
+      required: true

@@ -15,6 +15,7 @@ final class TestBusAlert {
 
     @BeforeAll
     static void beforeAll(){
+        TestProvider.testGroup("bus");
         mta = TestProvider.getOneMTA();
     }
 

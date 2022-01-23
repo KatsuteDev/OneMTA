@@ -20,10 +20,35 @@ package dev.katsute.onemta.types;
 
 import dev.katsute.onemta.attribute.RouteReference;
 
+/**
+ * Represents a transit trip.
+ *
+ * @param <V> transit vehicle type
+ * @param <R> transit route type
+ * @param <S> transit stop type
+ *
+ * @since 1.0.0
+ * @version 1.0.0
+ * @author Katsute
+ */
 public abstract class TransitTrip<V extends TransitVehicle<?,?,?,?,?,?>, R extends TransitRoute<?,?,?>, S extends TransitTripStop<?,?,?>> implements RouteReference<R> {
 
+    /**
+     * Returns the planned stops for the trip.
+     *
+     * @return trip stops
+     *
+     * @since 1.0.0
+     */
     public abstract S[] getTripStops();
 
+    /**
+     * Returns the vehicle the trip is for.
+     *
+     * @return vehicle trip
+     *
+     * @since 1.0.0
+     */
     public abstract V getVehicle();
 
 }

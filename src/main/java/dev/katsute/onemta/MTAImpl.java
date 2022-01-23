@@ -90,7 +90,7 @@ final class MTAImpl extends MTA {
             .getJsonObject("ServiceDelivery")
             .getJsonArray("VehicleMonitoringDelivery");
 
-        if(!vehicleMonitoringDelivery[0].containsKey("MonitoredVehicleJourney")) return null;
+        if(!vehicleMonitoringDelivery[0].containsKey("VehicleActivity")) return null;
 
         final JsonObject monitoredVehicleJourney = vehicleMonitoringDelivery[0]
             .getJsonArray("VehicleActivity")[0]
@@ -118,8 +118,6 @@ final class MTAImpl extends MTA {
             case "A":
             case "C":
             case "E":
-            case "SF":
-            case "SR":
 
             case "B":
             case "D":
@@ -146,30 +144,34 @@ final class MTAImpl extends MTA {
             case "6":
             case "7":
             case "GS":
-
-            case "SIR":
-                return route_id.toUpperCase();
-
+                return route.toUpperCase();
+            case "FS":
+            case "SF":
+            case "SR":
+                return "FS";
             case "FX":
             case "5X":
             case "6X":
             case "7X":
-                return String.valueOf(route_id.toUpperCase().charAt(0));
+                return String.valueOf(route.toUpperCase().charAt(0));
             case "9":
                 return "GS";
             case "S":
             case "SI":
-                return "SIR";
+            case "SIR":
+                return "SI";
             default:
                 return null;
         }
     }
 
     FeedMessage resolveSubwayFeed(final String route_id){
-        switch(Objects.requireNonNull(resolveSubwayLine(route_id), "Subway route with ID '" + route_id + "' not found")){
+        final String route = Objects.requireNonNull(resolveSubwayLine(route_id), "Subway route with ID '" + route_id + "' not found");
+        switch(route){
             case "A":
             case "C":
             case "E":
+            case "FS":
             case "SF":
             case "SR":
                 return service.subway.getACE(subwayToken);
@@ -199,7 +201,7 @@ final class MTAImpl extends MTA {
             case "7":
             case "GS":
                 return service.subway.get1234567(subwayToken);
-            case "SIR":
+            case "SI":
                 return service.subway.getSI(subwayToken);
             default:
                 return null;
@@ -213,7 +215,7 @@ final class MTAImpl extends MTA {
 
     @Override
     public final Subway.Route getSubwayRoute(final String route_id){
-        return MTASchema_Subway.asRoute(this, Objects.requireNonNull(resolveSubwayLine(route_id), "Route ID must not be null"));
+        return MTASchema_Subway.asRoute(this, Objects.requireNonNull(resolveSubwayLine(Objects.requireNonNull(route_id, "Route ID must not be null")), "Failed to find subway route with id '" + route_id + "'"));
     }
 
     @Override
@@ -246,7 +248,7 @@ final class MTAImpl extends MTA {
     public final Subway.Vehicle getSubwayTrain(final String train_id){
         Objects.requireNonNull(train_id, "Train ID must not be null");
 
-        final FeedMessage feed = resolveSubwayFeed(train_id.substring(1, 3));
+        final FeedMessage feed = resolveSubwayFeed(train_id.substring(0, 2));
         @SuppressWarnings("ConstantConditions") // resolve will handle NPE
         final int len          = feed.getEntityCount();
 
@@ -268,7 +270,7 @@ final class MTAImpl extends MTA {
                 entity.hasVehicle() &&
                 entity.getVehicle().getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getTrainId().equals(tripVehicle)
             )
-                return MTASchema_Subway.asVehicle(this, entity.getVehicle(), tripUpdate);
+                return MTASchema_Subway.asVehicle(this, entity.getVehicle(), tripUpdate, null);
         }
 
         return null;
@@ -327,7 +329,7 @@ final class MTAImpl extends MTA {
                 entity.hasVehicle() &&
                 entity.getVehicle().getVehicle().getLabel().equals(tripVehicle)
             )
-                return MTASchema_LIRR.asVehicle(this, entity.getVehicle(), tripUpdate);
+                return MTASchema_LIRR.asVehicle(this, entity.getVehicle(), tripUpdate, null);
         }
 
         return null;
@@ -373,7 +375,7 @@ final class MTAImpl extends MTA {
                 entity.getVehicle().hasVehicle() &&
                 train_id.equals(entity.getVehicle().getVehicle().getLabel())
             )
-                return MTASchema_MNR.asVehicle(this, entity.getVehicle(), entity.getTripUpdate());
+                return MTASchema_MNR.asVehicle(this, entity.getVehicle(), entity.getTripUpdate(), null);
         }
 
         return null;

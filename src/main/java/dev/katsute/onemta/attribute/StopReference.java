@@ -20,8 +20,26 @@ package dev.katsute.onemta.attribute;
 
 import dev.katsute.onemta.types.TransitStop;
 
+/**
+ * Indicates that there is a stop reference.
+ *
+ * @param <S> transit stop type
+ *
+ * @since 1.0.0
+ * @version 1.0.0
+ * @author Katsute
+ */
 public interface StopReference<S extends TransitStop<?,?,?>> {
 
+    /**
+     * For bus vehicles retrieved from a stop it will return the stop. <br>
+     * For all other vehicles it will return the next stop on the route. <br>
+     * For trip stops it will return the trip stop.
+     *
+     * @return stop
+     *
+     * @since 1.0.0
+     */
     S getStop();
 
 }
