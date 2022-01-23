@@ -122,11 +122,14 @@ abstract class MTASchema_MNR extends MTASchema {
             // Java
 
             @Override
-            public final boolean equals(final Object o){
-                return this == o ||
-                   (o != null &&
-                    getClass() == o.getClass() &&
-                    route_id == ((Route) o).getRouteID());
+            public final String toString(){
+                return "MNR.Route{" +
+                       "routeID=" + routeID +
+                       ", routeLongName='" + routeLongName + '\'' +
+                       ", routeColor='" + routeColor + '\'' +
+                       ", routeTextColor='" + routeTextColor + '\'' +
+                       ", agency=" + agency +
+                       '}';
             }
 
         };
@@ -265,11 +268,16 @@ abstract class MTASchema_MNR extends MTASchema {
             // Java
 
             @Override
-            public final boolean equals(final Object o){
-                return this == o ||
-                   (o != null &&
-                    getClass() == o.getClass() &&
-                    stopID.equals(((Stop) o).getStopID()));
+            public final String toString(){
+                return "MNR.Stop{" +
+                       "stopID=" + stopID +
+                       ", stopCode='" + stopCode + '\'' +
+                       ", stopName='" + stopName + '\'' +
+                       ", stopDesc='" + stopDesc + '\'' +
+                       ", stopLat=" + stopLat +
+                       ", stopLon=" + stopLon +
+                       ", wheelchairAccessible=" + wheelchairAccessible +
+                       '}';
             }
 
         };
@@ -341,6 +349,20 @@ abstract class MTASchema_MNR extends MTASchema {
                 return trip;
             }
 
+            // Java
+
+            @Override
+            public final String toString(){
+                return "MNR.Vehicle{" +
+                       "vehicleID='" + vehicleID + '\'' +
+                       ", latitude=" + latitude +
+                       ", longitude=" + longitude +
+                       ", status='" + status + '\'' +
+                       ", stopID=" + stopID +
+                       ", routeID=" + routeID +
+                       '}';
+            }
+
         };
     }
 
@@ -386,6 +408,16 @@ abstract class MTASchema_MNR extends MTASchema {
             @Override
             public final TripStop[] getTripStops(){
                 return tripStops.toArray(new TripStop[0]);
+            }
+
+            // Java
+
+            @Override
+            public final String toString(){
+                return "MNR.Trip{" +
+                       "tripID='" + tripID + '\'' +
+                       ", routeID='" + routeID + '\'' +
+                       '}';
             }
 
         };
@@ -460,6 +492,20 @@ abstract class MTASchema_MNR extends MTASchema {
                 return trip;
             }
 
+            // Java
+
+            @Override
+            public final String toString(){
+                return "MNR.TripStop{" +
+                       "stopID=" + stopID +
+                       ", arrival=" + arrival +
+                       ", departure=" + departure +
+                       ", delay=" + delay +
+                       ", track='" + track + '\'' +
+                       ", status='" + status + '\'' +
+                       '}';
+            }
+
         };
     }
 
@@ -467,7 +513,7 @@ abstract class MTASchema_MNR extends MTASchema {
         final GTFSRealtimeProto.Alert alert = feedEntity.getAlert();
         return new MNR.Alert() {
 
-            private final String ID = requireNonNull(feedEntity::getId);
+            private final String alertID = requireNonNull(feedEntity::getId);
 
             private final String headerText      = requireNonNull(() -> alert.getHeaderText().getTranslation(0).getText());
             private final String descriptionText = requireNonNull(() -> alert.getDescriptionText().getTranslation(0).getText());
@@ -481,7 +527,7 @@ abstract class MTASchema_MNR extends MTASchema {
             {
                 final List<TransitAlertPeriod> alertPeriods = new ArrayList<>();
                 for(final GTFSRealtimeProto.TimeRange range : alert.getActivePeriodList())
-                    alertPeriods.add(asTransitAlertTimeframe(mta, range));
+                    alertPeriods.add(asTransitAlertTimeframe(range));
                 this.alertPeriods = Collections.unmodifiableList(alertPeriods);
 
                 final List<Integer> routeIDs = new ArrayList<>();
@@ -499,8 +545,8 @@ abstract class MTASchema_MNR extends MTASchema {
             }
 
             @Override
-            public final String getID(){
-                return ID;
+            public final String getAlertID(){
+                return alertID;
             }
 
             @Override
@@ -557,6 +603,21 @@ abstract class MTASchema_MNR extends MTASchema {
             @Override
             public final String getAlertType(){
                 return alertType;
+            }
+
+            // Java
+
+            @Override
+            public final String toString(){
+                return "MNR.Alert{" +
+                       "alertID='" + alertID + '\'' +
+                       ", headerText='" + headerText + '\'' +
+                       ", descriptionText='" + descriptionText + '\'' +
+                       ", alertType='" + alertType + '\'' +
+                       ", alertPeriods=" + alertPeriods +
+                       ", routeIDs=" + routeIDs +
+                       ", stopIDs=" + stopIDs +
+                       '}';
             }
 
         };

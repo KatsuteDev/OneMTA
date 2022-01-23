@@ -22,15 +22,11 @@ final class TestLIRRRoute {
         mta = TestProvider.getOneMTA();
 
         annotateTest(() -> route = mta.getLIRRRoute(TestProvider.LIRR_ROUTE));
+        annotateTest(() -> VehicleValidation.requireVehicles(route));
     }
 
     @Nested
     final class ExtensionTests {
-
-        @BeforeEach
-        final void beforeEach(){
-            annotateTest(() -> VehicleValidation.requireVehicles(route));
-        }
 
         @Nested
         final class VehicleTests {
@@ -74,11 +70,6 @@ final class TestLIRRRoute {
         @Nested
         final class VehicleTests {
 
-            @BeforeEach
-            final void beforeEach(){
-                annotateTest(() -> VehicleValidation.requireVehicles(route));
-            }
-
             @Test
             final void testTransitVehicles(){
                 for(final Vehicle vehicle : route.getVehicles())
@@ -101,11 +92,6 @@ final class TestLIRRRoute {
 
         @Nested
         final class TripTests {
-
-            @BeforeEach
-            final void beforeEach(){
-                annotateTest(() -> VehicleValidation.requireVehicles(route));
-            }
 
             @Test
             final void testVehicleTrips(){
@@ -140,11 +126,6 @@ final class TestLIRRRoute {
         @Nested
         final class TripStopTests {
 
-            @BeforeEach
-            final void beforeEach(){
-                annotateTest(() -> VehicleValidation.requireVehicles(route));
-            }
-
             @Test
             final void testVehicleTripStops(){
                 for(final Vehicle vehicle : route.getVehicles())
@@ -165,11 +146,12 @@ final class TestLIRRRoute {
 
         }
 
+        @TestInstance(TestInstance.Lifecycle.PER_CLASS)
         @Nested
         final class AlertTests {
 
-            @BeforeEach
-            final void beforeEach(){
+            @BeforeAll
+            final void beforeAll(){
                 annotateTest(() -> AlertValidation.requireAlerts(route));
             }
 

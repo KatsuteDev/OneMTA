@@ -40,7 +40,7 @@ public abstract class TransitAlert<RID, R extends TransitRoute<?,?,?>, SID, S ex
      *
      * @since 1.0.0
      */
-    public abstract String getID();
+    public abstract String getAlertID();
 
     /**
      * Returns when the alert is active.

@@ -21,6 +21,8 @@ final class TestMNRRoute {
         mta = TestProvider.getOneMTA();
 
         annotateTest(() -> route = mta.getMNRRoute(TestProvider.MNR_ROUTE));
+        annotateTest(() -> VehicleValidation.requireVehicles(route));
+
     }
 
     @Nested
@@ -28,11 +30,6 @@ final class TestMNRRoute {
 
         @Nested
         final class VehicleTests {
-
-            @BeforeEach
-            final void beforeEach(){
-                annotateTest(() -> VehicleValidation.requireVehicles(route));
-            }
 
             @Test
             final void testVehicles(){
@@ -72,11 +69,6 @@ final class TestMNRRoute {
         @Nested
         final class VehicleTests {
 
-            @BeforeEach
-            final void beforeEach(){
-                annotateTest(() -> VehicleValidation.requireVehicles(route));
-            }
-
             @Test
             final void testTransitVehicles(){
                 for(final Vehicle vehicle : route.getVehicles())
@@ -99,11 +91,6 @@ final class TestMNRRoute {
 
         @Nested
         final class TripTests {
-
-            @BeforeEach
-            final void beforeEach(){
-                annotateTest(() -> VehicleValidation.requireVehicles(route));
-            }
 
             @Test
             final void testVehicleTrips(){
@@ -138,11 +125,6 @@ final class TestMNRRoute {
         @Nested
         final class TripStopTests {
 
-            @BeforeEach
-            final void beforeEach(){
-                annotateTest(() -> VehicleValidation.requireVehicles(route));
-            }
-
             @Test
             final void testVehicleTripStops(){
                 for(final Vehicle vehicle : route.getVehicles())
@@ -163,11 +145,12 @@ final class TestMNRRoute {
 
         }
 
+        @TestInstance(TestInstance.Lifecycle.PER_CLASS)
         @Nested
         final class AlertTests {
 
-            @BeforeEach
-            final void beforeEach(){
+            @BeforeAll
+            final void beforeAll(){
                 annotateTest(() -> AlertValidation.requireAlerts(route));
             }
 

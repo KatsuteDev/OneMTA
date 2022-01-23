@@ -21,6 +21,7 @@ final class TestMNRStop {
         mta = TestProvider.getOneMTA();
 
         annotateTest(() -> stop = mta.getMNRStop(TestProvider.MNR_STOP));
+        annotateTest(() -> VehicleValidation.requireVehicles(stop));
     }
 
     @Nested
@@ -28,11 +29,6 @@ final class TestMNRStop {
 
         @Nested
         final class VehicleTests {
-
-            @BeforeEach
-            final void beforeEach(){
-                annotateTest(() -> VehicleValidation.requireVehicles(stop));
-            }
 
             @Test
             final void testVehicles(){
@@ -77,11 +73,6 @@ final class TestMNRStop {
         @Nested
         final class VehicleTests {
 
-            @BeforeEach
-            final void beforeEach(){
-                annotateTest(() -> VehicleValidation.requireVehicles(stop));
-            }
-
             @Test
             final void testTransitVehicles(){
                 for(final Vehicle vehicle : stop.getVehicles())
@@ -96,14 +87,8 @@ final class TestMNRStop {
 
         }
 
-
         @Nested
         final class TripTests {
-
-            @BeforeEach
-            final void beforeEach(){
-                annotateTest(() -> VehicleValidation.requireVehicles(stop));
-            }
 
             @Test
             final void testVehicleTrips(){
@@ -132,11 +117,6 @@ final class TestMNRStop {
         @Nested
         final class TripStopTests {
 
-            @BeforeEach
-            final void beforeEach(){
-                annotateTest(() -> VehicleValidation.requireVehicles(stop));
-            }
-
             @Test
             final void testVehicleTripStops(){
                 for(final Vehicle vehicle : stop.getVehicles())
@@ -157,11 +137,12 @@ final class TestMNRStop {
 
         }
 
+        @TestInstance(TestInstance.Lifecycle.PER_CLASS)
         @Nested
         final class AlertTests {
 
-            @BeforeEach
-            final void beforeEach(){
+            @BeforeAll
+            final void beforeAll(){
                 annotateTest(() -> AlertValidation.requireAlerts(stop));
             }
 

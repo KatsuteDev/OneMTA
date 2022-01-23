@@ -21,7 +21,7 @@ public abstract class AlertValidation {
     //
 
     public static void testAlert(final TransitAlert<?,?,?,?> alert){
-        annotateTest(() -> assertNotNull(alert.getID()));
+        annotateTest(() -> assertNotNull(alert.getAlertID()));
         annotateTest(() -> assertNotNull(alert.getHeader()));
         annotateTest(() -> assertNotNull(alert.getDescription()));
         annotateTest(() -> assertNotNull(alert.getAlertType()));

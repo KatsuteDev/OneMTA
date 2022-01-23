@@ -25,6 +25,10 @@ final class TestSubwayStop {
         annotateTest(() -> stop = mta.getSubwayStop(TestProvider.SUBWAY_STOP));
         annotateTest(() -> stopN = mta.getSubwayStop(TestProvider.SUBWAY_STOP + "N"));
         annotateTest(() -> stopS = mta.getSubwayStop(TestProvider.SUBWAY_STOP + "S"));
+
+        annotateTest(() -> VehicleValidation.requireVehicles(stop));
+        annotateTest(() -> VehicleValidation.requireVehicles(stopN));
+        annotateTest(() -> VehicleValidation.requireVehicles(stopS));
     }
 
     @Nested
@@ -49,11 +53,6 @@ final class TestSubwayStop {
                 @Nested
                 final class TripTests {
 
-                    @BeforeEach
-                    final void beforeEach(){
-                        annotateTest(() -> VehicleValidation.requireVehicles(stopN));
-                    }
-
                     @Test
                     final void testVehicleTrips(){
                         for(final Vehicle vehicle : stopN.getVehicles()){
@@ -66,11 +65,6 @@ final class TestSubwayStop {
 
                 @Nested
                 final class TripStopTests {
-
-                    @BeforeEach
-                    final void beforeEach(){
-                        annotateTest(() -> VehicleValidation.requireVehicles(stopN));
-                    }
 
                     @Test
                     final void testVehicleTripStops(){
@@ -93,11 +87,6 @@ final class TestSubwayStop {
                 @Nested
                 final class VehicleTests {
 
-                    @BeforeEach
-                    final void beforeEach(){
-                        annotateTest(() -> VehicleValidation.requireVehicles(stopN));
-                    }
-
                     @Test
                     final void testTransitVehicles(){
                         for(final Vehicle vehicle : stopN.getVehicles())
@@ -114,11 +103,6 @@ final class TestSubwayStop {
 
                 @Nested
                 final class TripTests {
-
-                    @BeforeEach
-                    final void beforeEach(){
-                        annotateTest(() -> VehicleValidation.requireVehicles(stopN));
-                    }
 
                     @Test
                     final void testVehicleTrips(){
@@ -147,11 +131,6 @@ final class TestSubwayStop {
                 @Nested
                 final class TripStopTests {
 
-                    @BeforeEach
-                    final void beforeEach(){
-                        annotateTest(() -> VehicleValidation.requireVehicles(stopN));
-                    }
-
                     @Test
                     final void testVehicleTripStops(){
                         for(final Vehicle vehicle : stopN.getVehicles())
@@ -166,11 +145,12 @@ final class TestSubwayStop {
 
                 }
 
+                @TestInstance(TestInstance.Lifecycle.PER_CLASS)
                 @Nested
                 final class AlertTests {
 
-                    @BeforeEach
-                    final void beforeEach(){
+                    @BeforeAll
+                    final void beforeAll(){
                         annotateTest(() -> AlertValidation.requireAlerts(stop));
                     }
 
@@ -211,11 +191,6 @@ final class TestSubwayStop {
                 @Nested
                 final class TripTests {
 
-                    @BeforeEach
-                    final void beforeEach(){
-                        annotateTest(() -> VehicleValidation.requireVehicles(stopS));
-                    }
-
                     @Test
                     final void testVehicleTrips(){
                         for(final Vehicle vehicle : stopS.getVehicles()){
@@ -250,11 +225,6 @@ final class TestSubwayStop {
                 @Nested
                 final class VehicleTests {
 
-                    @BeforeEach
-                    final void beforeEach(){
-                        annotateTest(() -> VehicleValidation.requireVehicles(stopS));
-                    }
-
                     @Test
                     final void testTransitVehicles(){
                         for(final Vehicle vehicle : stopS.getVehicles())
@@ -271,11 +241,6 @@ final class TestSubwayStop {
 
                 @Nested
                 final class TripTests {
-
-                    @BeforeEach
-                    final void beforeEach(){
-                        annotateTest(() -> VehicleValidation.requireVehicles(stopS));
-                    }
 
                     @Test
                     final void testVehicleTrips(){
@@ -304,11 +269,6 @@ final class TestSubwayStop {
                 @Nested
                 final class TripStopTests {
 
-                    @BeforeEach
-                    final void beforeEach(){
-                        annotateTest(() -> VehicleValidation.requireVehicles(stopS));
-                    }
-
                     @Test
                     final void testVehicleTripStops(){
                         for(final Vehicle vehicle : stopS.getVehicles())
@@ -323,12 +283,13 @@ final class TestSubwayStop {
 
                 }
 
+                @TestInstance(TestInstance.Lifecycle.PER_CLASS)
                 @Nested
                 final class AlertTests {
 
-                    @BeforeEach
-                    final void beforeEach(){
-                        annotateTest(() -> AlertValidation.requireAlerts(stopS));
+                    @BeforeAll
+                    final void beforeAll(){
+                        annotateTest(() -> AlertValidation.requireAlerts(stop));
                     }
 
                     @Test
@@ -362,11 +323,6 @@ final class TestSubwayStop {
         @Nested
         final class VehicleTests {
 
-            @BeforeEach
-            final void beforeEach(){
-                annotateTest(() -> VehicleValidation.requireVehicles(stop));
-            }
-
             @Test
             final void testID(){
                 SubwayExtensions.testVehicleNumber(mta, stop.getVehicles()[0]);
@@ -376,11 +332,6 @@ final class TestSubwayStop {
 
         @Nested
         final class TripTests {
-
-            @BeforeEach
-            final void beforeEach(){
-                annotateTest(() -> VehicleValidation.requireVehicles(stop));
-            }
 
             @Test
             final void testVehicleTrips(){
@@ -394,11 +345,6 @@ final class TestSubwayStop {
 
         @Nested
         final class TripStopTests {
-
-            @BeforeEach
-            final void beforeEach(){
-                annotateTest(() -> VehicleValidation.requireVehicles(stop));
-            }
 
             @Test
             final void testVehicleTripStops(){
@@ -421,11 +367,6 @@ final class TestSubwayStop {
         @Nested
         final class VehicleTests {
 
-            @BeforeEach
-            final void beforeEach(){
-                annotateTest(() -> VehicleValidation.requireVehicles(stop));
-            }
-
             @Test
             final void testTransitVehicles(){
                 for(final Vehicle vehicle : stop.getVehicles())
@@ -442,11 +383,6 @@ final class TestSubwayStop {
 
         @Nested
         final class TripTests {
-
-            @BeforeEach
-            final void beforeEach(){
-                annotateTest(() -> VehicleValidation.requireVehicles(stop));
-            }
 
             @Test
             final void testVehicleTrips(){
@@ -475,11 +411,6 @@ final class TestSubwayStop {
         @Nested
         final class TripStopTests {
 
-            @BeforeEach
-            final void beforeEach(){
-                annotateTest(() -> VehicleValidation.requireVehicles(stop));
-            }
-
             @Test
             final void testVehicleTripStops(){
                 for(final Vehicle vehicle : stop.getVehicles())
@@ -494,11 +425,12 @@ final class TestSubwayStop {
 
         }
 
+        @TestInstance(TestInstance.Lifecycle.PER_CLASS)
         @Nested
         final class AlertTests {
 
-            @BeforeEach
-            final void beforeEach(){
+            @BeforeAll
+            final void beforeAll(){
                 annotateTest(() -> AlertValidation.requireAlerts(stop));
             }
 

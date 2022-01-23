@@ -68,15 +68,6 @@ abstract class MTASchema {
             // Java
 
             @Override
-            public final boolean equals(final Object o){
-                return this == o ||
-                   (o != null &&
-                    getClass() == o.getClass() &&
-                    Objects.equals(agencyID, ((TransitAgency) o).getAgencyID()) &&
-                    Objects.equals(agencyName, ((TransitAgency) o).getAgencyName()));
-            }
-
-            @Override
             public final String toString(){
                 return "TransitAgency{" +
                        "agencyID='" + agencyID + '\'' +
@@ -87,11 +78,11 @@ abstract class MTASchema {
         };
     }
 
-    static TransitAlertPeriod asTransitAlertTimeframe(final MTA mta, final TimeRange timeRange){
+    static TransitAlertPeriod asTransitAlertTimeframe(final TimeRange timeRange){
         return new TransitAlertPeriod() {
 
             private final Long start = requireNonNull(timeRange::getStart);
-            private final Long end = requireNonNull(timeRange::getEnd);
+            private final Long end   = requireNonNull(timeRange::getEnd);
 
             @Override
             public final Date getStart(){
@@ -111,6 +102,16 @@ abstract class MTASchema {
             @Override
             public final Long getEndEpochMillis(){
                 return end;
+            }
+
+            // Java
+
+            @Override
+            public final String toString(){
+                return "TransitAlertPeriod{" +
+                       "start=" + start +
+                       ", end=" + end +
+                       '}';
             }
 
         };

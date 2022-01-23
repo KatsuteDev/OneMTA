@@ -21,6 +21,7 @@ final class TestBusStop {
         mta = TestProvider.getOneMTA();
 
         annotateTest(() -> stop = mta.getBusStop(TestProvider.BUS_STOP));
+        annotateTest(() -> VehicleValidation.requireVehicles(stop));
     }
 
     @Nested
@@ -33,11 +34,6 @@ final class TestBusStop {
 
         @Nested
         final class VehicleTests {
-
-            @BeforeEach
-            final void beforeEach(){
-                annotateTest(() -> VehicleValidation.requireVehicles(stop));
-            }
 
             @Test
             final void testVehicles(){
@@ -99,11 +95,6 @@ final class TestBusStop {
         @Nested
         final class VehicleTests {
 
-            @BeforeEach
-            final void beforeEach(){
-                annotateTest(() -> VehicleValidation.requireVehicles(stop));
-            }
-
             @Test
             final void testTransitVehicles(){
                 for(final Vehicle vehicle : stop.getVehicles())
@@ -114,11 +105,6 @@ final class TestBusStop {
 
         @Nested
         final class TripTests {
-
-            @BeforeEach
-            final void beforeEach(){
-                annotateTest(() -> VehicleValidation.requireVehicles(stop));
-            }
 
             @Test
             final void testVehicleTrips(){
@@ -133,11 +119,6 @@ final class TestBusStop {
         @Nested
         final class TripStopTests {
 
-            @BeforeEach
-            final void beforeEach(){
-                annotateTest(() -> VehicleValidation.requireVehicles(stop));
-            }
-
             @Test
             final void testVehicleTripStops(){
                 for(final Vehicle vehicle : stop.getVehicles())
@@ -146,11 +127,12 @@ final class TestBusStop {
 
         }
 
+        @TestInstance(TestInstance.Lifecycle.PER_CLASS)
         @Nested
         final class AlertTests {
 
-            @BeforeEach
-            final void beforeEach(){
+            @BeforeAll
+            final void beforeAll(){
                 annotateTest(() -> AlertValidation.requireAlerts(stop));
             }
 

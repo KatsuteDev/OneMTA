@@ -58,7 +58,8 @@ public abstract class DataResource {
         return new DataResource(){
 
             private final DataResourceType datatype = type;
-            private final Map<String,CSV> data = new HashMap<>();
+            private final Map<String,CSV> data      = new HashMap<>();
+            private final File source               = file;
 
             {
                 try(final ZipFile zip = new ZipFile(file)){
@@ -91,6 +92,16 @@ public abstract class DataResource {
             @Override
             final DataResourceType getType(){
                 return datatype;
+            }
+
+            // Java
+
+            @Override
+            public final String toString(){
+                return "DataResource{" +
+                       "type=" + datatype +
+                       ", source=" + source +
+                       '}';
             }
 
         };

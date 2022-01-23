@@ -233,11 +233,20 @@ abstract class MTASchema_Bus extends MTASchema {
             // Java
 
             @Override
-            public final boolean equals(final Object o){
-                return this == o ||
-                   (o != null &&
-                    getClass() == o.getClass() &&
-                    Objects.equals(id, ((Route) o).getRouteID()));
+            public String toString(){
+                return "$classname{" +
+                       "routeID='" + routeID + '\'' +
+                       ", routeShortName='" + routeShortName + '\'' +
+                       ", routeLongName='" + routeLongName + '\'' +
+                       ", routeDesc='" + routeDesc + '\'' +
+                       ", routeColor='" + routeColor + '\'' +
+                       ", routeTextColor='" + routeTextColor + '\'' +
+                       ", SBS=" + SBS +
+                       ", express=" + express +
+                       ", shuttle=" + shuttle +
+                       ", limited=" + limited +
+                       ", agency=" + agency +
+                       '}';
             }
 
         };
@@ -376,11 +385,14 @@ abstract class MTASchema_Bus extends MTASchema {
             // Java
 
             @Override
-            public final boolean equals(final Object o){
-                return this == o ||
-                   (o != null &&
-                    getClass() == o.getClass() &&
-                    Objects.equals(stopID, ((Stop) o).getStopID()));
+            public final String toString(){
+                return "Bus.Stop{" +
+                       "stopID=" + stopID +
+                       ", stopName='" + stopName + '\'' +
+                       ", stopDesc='" + stopDesc + '\'' +
+                       ", stopLat=" + stopLat +
+                       ", stopLon=" + stopLon +
+                       '}';
             }
 
         };
@@ -603,6 +615,32 @@ abstract class MTASchema_Bus extends MTASchema {
                 return optionalStop == null ? trip : (trip = mta.getBus(vehicleID).getTrip());
             }
 
+            // Java
+
+            @Override
+            public String toString(){
+                return "Bus.Vehicle{" +
+                       "vehicleID=" + vehicleID +
+                       ", latitude=" + latitude +
+                       ", longitude=" + longitude +
+                       ", bearing=" + bearing +
+                       ", direction=" + direction +
+                       ", routeID='" + routeID + '\'' +
+                       ", stopID=" + stopID +
+                       ", stopName='" + stopName + '\'' +
+                       ", originStopCode=" + originStopCode +
+                       ", destinationName='" + destinationName + '\'' +
+                       ", progressRate='" + progressRate + '\'' +
+                       ", progressStatus=" + Arrays.toString(progressStatus) +
+                       ", aimedArrivalTime=" + aimedArrivalTime +
+                       ", expectedArrivalTime=" + expectedArrivalTime +
+                       ", expectedDepartureTime=" + expectedDepartureTime +
+                       ", arrivalProximityText='" + arrivalProximityText + '\'' +
+                       ", distanceFromStop=" + distanceFromStop +
+                       ", stopsAway=" + stopsAway +
+                       '}';
+            }
+
         };
     }
 
@@ -637,6 +675,14 @@ abstract class MTASchema_Bus extends MTASchema {
             @Override
             public final TripStop[] getTripStops(){
                 return tripStops.toArray(new TripStop[0]);
+            }
+
+            // Java
+
+            @Override
+            public final String toString(){
+                return "Bus.Trip{" +
+                       '}';
             }
 
         };
@@ -711,6 +757,20 @@ abstract class MTASchema_Bus extends MTASchema {
                 return trip;
             }
 
+            // Java
+
+            @Override
+            public final String toString(){
+                return "Bus.TripStop{" +
+                       "stopID=" + stopID +
+                       ", stopName='" + stopName + '\'' +
+                       ", expectedArrivalTime=" + expectedArrivalTime +
+                       ", arrivalProximityText='" + arrivalProximityText + '\'' +
+                       ", distanceFromStop=" + distanceFromStop +
+                       ", stopsAway=" + stopsAway +
+                       '}';
+            }
+
         };
     }
 
@@ -718,7 +778,7 @@ abstract class MTASchema_Bus extends MTASchema {
         final GTFSRealtimeProto.Alert alert = feedEntity.getAlert();
         return new Alert() {
 
-            private final String ID = requireNonNull(feedEntity::getId);
+            private final String alertID = requireNonNull(feedEntity::getId);
 
             private final String headerText      = requireNonNull(() -> alert.getHeaderText().getTranslation(0).getText());
             private final String descriptionText = requireNonNull(() -> alert.getDescriptionText().getTranslation(0).getText());
@@ -732,7 +792,7 @@ abstract class MTASchema_Bus extends MTASchema {
             {
                 final List<TransitAlertPeriod> alertPeriods = new ArrayList<>();
                 for(final GTFSRealtimeProto.TimeRange range : alert.getActivePeriodList())
-                    alertPeriods.add(asTransitAlertTimeframe(mta, range));
+                    alertPeriods.add(asTransitAlertTimeframe(range));
                 this.alertPeriods = Collections.unmodifiableList(alertPeriods);
 
                 final List<String> routeIDs = new ArrayList<>();
@@ -750,8 +810,8 @@ abstract class MTASchema_Bus extends MTASchema {
             }
 
             @Override
-            public final String getID(){
-                return ID;
+            public final String getAlertID(){
+                return alertID;
             }
 
             @Override
@@ -808,6 +868,21 @@ abstract class MTASchema_Bus extends MTASchema {
             @Override
             public final String getAlertType(){
                 return alertType;
+            }
+
+            // Java
+
+            @Override
+            public final String toString(){
+                return "Bus.Alert{" +
+                       "alertID='" + alertID + '\'' +
+                       ", headerText='" + headerText + '\'' +
+                       ", descriptionText='" + descriptionText + '\'' +
+                       ", alertType='" + alertType + '\'' +
+                       ", alertPeriods=" + alertPeriods +
+                       ", routeIDs=" + routeIDs +
+                       ", stopIDs=" + stopIDs +
+                       '}';
             }
 
         };
