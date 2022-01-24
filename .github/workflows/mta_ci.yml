@@ -13,7 +13,7 @@ jobs:
     strategy:
       matrix:
         java: [8, 11, 17]
-        group: [Bus, Subway, LIRR, MNR]
+        group: [MTA, Bus, Subway, LIRR, MNR]
       fail-fast: false
       max-parallel: 1
     steps:
@@ -35,7 +35,7 @@ jobs:
         run: |
           echo ${{ secrets.SUBWAY_TOKEN }} > src/test/java/resources/token_subway.txt
 
-      - name: 🔐 Load OAuth Token
+      - name: 📄 Load Test Group
         run: |
           echo ${{ matrix.group }} > src/test/java/resources/TEST_GROUP
 

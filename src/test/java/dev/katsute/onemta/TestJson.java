@@ -24,6 +24,8 @@ final class TestJson {
 
     @BeforeAll
     static void beforeAll() throws IOException{
+        TestProvider.testGroup("MTA");
+
         final String map = TestProvider.readFile(new File("src/test/java/resources/map.json")).replaceAll("\\r?\\n", "");
         jsonObject = (JsonObject) parse(map);
 

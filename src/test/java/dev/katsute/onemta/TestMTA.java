@@ -11,6 +11,7 @@ final class TestMTA {
 
     @BeforeAll
     static void beforeAll(){
+        TestProvider.testGroup("MTA");
         mta = TestProvider.getOneMTA();
     }
 

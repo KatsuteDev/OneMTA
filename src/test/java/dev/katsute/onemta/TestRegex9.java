@@ -1,7 +1,6 @@
 package dev.katsute.onemta;
 
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -10,6 +9,10 @@ import static dev.katsute.jcore.Workflow.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 final class TestRegex9 {
+
+    @BeforeAll
+    static void beforeAll(){
+        TestProvider.testGroup("MTA");}
 
     @Nested
     final class TestMatcher {

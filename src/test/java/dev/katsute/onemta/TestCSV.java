@@ -1,7 +1,6 @@
 package dev.katsute.onemta;
 
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.util.Arrays;
 
@@ -9,6 +8,11 @@ import static dev.katsute.jcore.Workflow.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 final class TestCSV {
+
+    @BeforeAll
+    static void beforeAll(){
+        TestProvider.testGroup("MTA");
+    }
 
     @Nested
     final class TestHeader {
