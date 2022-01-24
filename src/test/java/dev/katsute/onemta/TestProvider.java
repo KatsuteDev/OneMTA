@@ -110,7 +110,7 @@ public abstract class TestProvider {
                     final File file = new File(test_resources, "resource_" + entry.getKey().name().toLowerCase() + ".zip");
                     System.out.println("[↻] Checking for data resource " + file.getName());
                     if(!file.exists()){
-                        System.out.println("[⚠]" + file.getName() + " not found, downloading from MTA...");
+                        System.out.println("[⚠] " + file.getName() + " not found, downloading from MTA...");
                         try(final FileOutputStream OUT = new FileOutputStream(file)){
                             byte[] buffer = new byte[1024];
                             int bytesReads;
