@@ -266,12 +266,9 @@ abstract class MTASchema_LIRR extends MTASchema {
                             entity.hasVehicle() &&
                             entity.getVehicle().getVehicle().getLabel().equals(tripVehicle)
                         ){
-                            // only include vehicles at this stop
-                            if(entity.getVehicle().getStopId().equals(stop)){
-                                vehicles.add(asVehicle(mta, entity.getVehicle(), tripUpdate, null));
-                                tripUpdate  = null;
-                                tripVehicle = null;
-                            }
+                            vehicles.add(asVehicle(mta, entity.getVehicle(), tripUpdate, null));
+                            tripUpdate  = null;
+                            tripVehicle = null;
                         }
                     }
 

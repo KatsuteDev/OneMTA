@@ -112,7 +112,7 @@ final class MTAImpl extends MTA {
     // subway methods
 
     String resolveSubwayLine(final String route_id){
-        final String route = (route_id.startsWith("0") ? route_id.substring(1) : route_id).toUpperCase();
+        final String route = route_id.toUpperCase();
 
         switch(route){
             case "A":
@@ -248,7 +248,7 @@ final class MTAImpl extends MTA {
     public final Subway.Vehicle getSubwayTrain(final String train_id){
         Objects.requireNonNull(train_id, "Train ID must not be null");
 
-        final FeedMessage feed = resolveSubwayFeed(train_id.substring(0, 2));
+        final FeedMessage feed = resolveSubwayFeed(train_id.substring(1, train_id.indexOf(' ')));
         @SuppressWarnings("ConstantConditions") // resolve will handle NPE
         final int len          = feed.getEntityCount();
 

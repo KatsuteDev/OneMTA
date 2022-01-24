@@ -2,8 +2,8 @@ package dev.katsute.onemta;
 
 import com.google.gson.*;
 import com.google.protobuf.util.JsonFormat;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import dev.katsute.jcore.Workflow;
+import org.junit.jupiter.api.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,6 +19,8 @@ final class FeedExporter {
 
     @BeforeAll
     static void beforeAll(){
+        Assumptions.assumeFalse(Workflow.isCI());
+
         mta = (MTAImpl) TestProvider.getOneMTA();
     }
 
@@ -62,6 +64,38 @@ final class FeedExporter {
          Files.write(
             new File("reference/bus-vehicle-specific-siri.json").toPath(),
             gson.toJson(JsonParser.parseString(mta.service.bus.getVehicle(mta.busToken, 6786, null, null).getRaw())).getBytes(StandardCharsets.UTF_8)
+        );
+    }
+
+    @Test
+    final void exportAltFeeds() throws IOException{
+        Files.write(
+            new File("reference/subway-ace-gtfs.json").toPath(),
+            JsonFormat.printer().print(mta.service.subway.getACE(mta.subwayToken)).getBytes(StandardCharsets.UTF_8)
+        );
+        Files.write(
+            new File("reference/subway-bdfm-gtfs.json").toPath(),
+            JsonFormat.printer().print(mta.service.subway.getBDFM(mta.subwayToken)).getBytes(StandardCharsets.UTF_8)
+        );
+        Files.write(
+            new File("reference/subway-g-gtfs.json").toPath(),
+            JsonFormat.printer().print(mta.service.subway.getG(mta.subwayToken)).getBytes(StandardCharsets.UTF_8)
+        );
+        Files.write(
+            new File("reference/subway-jz-gtfs.json").toPath(),
+            JsonFormat.printer().print(mta.service.subway.getJZ(mta.subwayToken)).getBytes(StandardCharsets.UTF_8)
+        );
+        Files.write(
+            new File("reference/subway-l-gtfs.json").toPath(),
+            JsonFormat.printer().print(mta.service.subway.getL(mta.subwayToken)).getBytes(StandardCharsets.UTF_8)
+        );
+        Files.write(
+            new File("reference/subway-nqrw-gtfs.json").toPath(),
+            JsonFormat.printer().print(mta.service.subway.getNQRW(mta.subwayToken)).getBytes(StandardCharsets.UTF_8)
+        );
+        Files.write(
+            new File("reference/subway-si-gtfs.json").toPath(),
+            JsonFormat.printer().print(mta.service.subway.getSI(mta.subwayToken)).getBytes(StandardCharsets.UTF_8)
         );
     }
 

@@ -5,7 +5,6 @@ import dev.katsute.onemta.railroad.MNR;
 
 import static dev.katsute.jcore.Workflow.*;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assumptions.*;
 
 /**
  * @see TransitVehicle
