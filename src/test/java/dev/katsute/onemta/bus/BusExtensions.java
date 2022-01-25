@@ -79,7 +79,7 @@ abstract class BusExtensions {
             }
 
             final boolean finalPasses = tested;
-            annotateTest(() -> assertTrue(finalPasses, "Failed to pass expected arrival tests"));
+            annotateTest(() -> assertTrue(finalPasses, "Failed to pass expected arrival tests, there probably wasn't enough stops to conclude test (tested " + trip.length + " stops)"));
         }
 
         for(final TripStop stop : trip)

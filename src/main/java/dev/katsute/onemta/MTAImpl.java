@@ -238,9 +238,9 @@ final class MTAImpl extends MTA {
         return MTASchema_Subway.asStop(
             this,
             MTASchema_Subway.direction
-            .matcher(Objects.requireNonNull(stop_id, "Stop ID must not be null"))
-            .replaceAll("") +
-            (Objects.requireNonNull(direction, "Direction must not be null") == SubwayDirection.NORTH ? 'N' : 'S')
+                .matcher(Objects.requireNonNull(stop_id, "Stop ID must not be null"))
+                .replaceAll("") +
+                (Objects.requireNonNull(direction, "Direction must not be null") == SubwayDirection.NORTH ? 'N' : 'S')
         );
     }
 

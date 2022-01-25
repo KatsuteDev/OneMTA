@@ -2,13 +2,14 @@ package dev.katsute.onemta.subway;
 
 import dev.katsute.onemta.MTA;
 import dev.katsute.onemta.TestProvider;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import dev.katsute.onemta.types.AlertValidation;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static dev.katsute.jcore.Workflow.*;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assumptions.*;
 
 final class TestSubway {
 
@@ -34,6 +35,18 @@ final class TestSubway {
     @Test
     final void testStop(){
         annotateTest(() -> assertEquals(TestProvider.SUBWAY_STOP, mta.getSubwayStop(Integer.parseInt(TestProvider.SUBWAY_STOP)).getStopID()));
+    }
+
+    @Nested
+    final class InheritedTests {
+
+        @Test
+        final void testTransitAlert(){
+            annotateTest(() -> assumeTrue(mta.getSubwayAlerts().length > 0, "No alerts found, skipping alert tests"));
+            for(final Subway.Alert alert : mta.getSubwayAlerts())
+                AlertValidation.testAlert(alert);
+        }
+
     }
 
 }

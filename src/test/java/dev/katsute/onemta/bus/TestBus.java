@@ -1,10 +1,12 @@
 package dev.katsute.onemta.bus;
 
 import dev.katsute.onemta.*;
+import dev.katsute.onemta.types.AlertValidation;
 import org.junit.jupiter.api.*;
 
 import static dev.katsute.jcore.Workflow.*;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assumptions.*;
 
 final class TestBus {
 
@@ -31,8 +33,6 @@ final class TestBus {
 
     }
 
-    //
-
     @Nested
     final class TestBusType {
 
@@ -54,6 +54,18 @@ final class TestBus {
         @Test
         final void testLimitedBus(){
             annotateTest(() -> assertTrue(mta.getBusRoute("Q44+").isLimited()));
+        }
+
+    }
+
+    @Nested
+    final class InheritedTests {
+
+        @Test
+        final void testTransitAlert(){
+            annotateTest(() -> assumeTrue(mta.getBusAlerts().length > 0, "No alerts found, skipping alert tests"));
+            for(final Bus.Alert alert : mta.getBusAlerts())
+                AlertValidation.testAlert(alert);
         }
 
     }

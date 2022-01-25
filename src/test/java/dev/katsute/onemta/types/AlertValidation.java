@@ -1,6 +1,7 @@
 package dev.katsute.onemta.types;
 
 import dev.katsute.onemta.attribute.Alerts;
+import dev.katsute.onemta.subway.Subway;
 
 import java.util.Arrays;
 
@@ -38,7 +39,14 @@ public abstract class AlertValidation {
     public static void testAlertReference(final Alerts<?> reference, final TransitAlert<?,?,?,?> alert){
         final boolean stop = reference instanceof TransitStop<?,?,?>;
         final Object id = stop ? ((TransitStop<?,?,?>) reference).getStopID() : ((TransitRoute<?,?,?>) reference).getRouteID();
-        annotateTest(() -> assertTrue(stop ? Arrays.asList(alert.getStopIDs()).contains(id) : Arrays.asList(alert.getRouteIDs()).contains(id)));
+        annotateTest(() -> assertTrue(
+            stop
+            ? reference instanceof Subway.Stop
+                                                                 // remove directional N/S from stop ID
+                ? Arrays.asList(alert.getStopIDs()).contains(id) || Arrays.asList(alert.getStopIDs()).contains(id.toString().substring(0, id.toString().length() - 1))
+                : Arrays.asList(alert.getStopIDs()).contains(id)
+            : Arrays.asList(alert.getRouteIDs()).contains(id))
+        );
     }
 
     //
