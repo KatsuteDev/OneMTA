@@ -43,6 +43,8 @@ OneMTA requires at least Java 8. OneMTA also requires the [protobuf-java](https:
 
 Compiled jars can be found on Maven Central and the releases tab.
 
+### Authentication
+
 Request a bus token at <https://bt.mta.info/wiki/Developers/Index>.
 
 Request a subway token at <https://api.mta.info/#/signup>.
