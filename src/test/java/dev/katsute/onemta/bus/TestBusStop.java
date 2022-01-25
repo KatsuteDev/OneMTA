@@ -51,7 +51,7 @@ final class TestBusStop {
                     }
 
                     final boolean finalPasses = passes;
-                    annotateTest(() -> assertTrue(finalPasses, "Failed to pass expected arrival tests"));
+                    annotateTest(() -> assertTrue(finalPasses, "Failed to pass expected arrival tests, there probably wasn't enough vehicles to conclude test (tested " + stop.getVehicles().length + " vehicles)"));
                 }
 
                 { // not all noProgress have a progress status for some reason
@@ -63,7 +63,7 @@ final class TestBusStop {
                         }
                     }
                     final boolean finalPasses = tested;
-                    annotateTest(() -> assertTrue(finalPasses, "Failed to pass expected arrival tests"));
+                    annotateTest(() -> assertTrue(finalPasses, "Failed to pass expected arrival tests, there probably wasn't enough vehicles to conclude test (tested " + stop.getVehicles().length + " vehicles)"));
                 }
 
                 for(final Vehicle vehicle : stop.getVehicles())
