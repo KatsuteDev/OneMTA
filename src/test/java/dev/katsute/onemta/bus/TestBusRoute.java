@@ -63,7 +63,7 @@ final class TestBusRoute {
                         }
                     }
                     final boolean finalPasses = tested;
-                    annotateTest(() -> assertTrue(finalPasses, "Failed to pass expected arrival tests, there probably wasn't enough vehicles to conclude test (tested " + route.getVehicles().length + " vehicles)"));
+                    annotateTest(() -> assertTrue(finalPasses, "Failed to pass progress tests, there probably wasn't enough vehicles to conclude test (tested " + route.getVehicles().length + " vehicles)"));
                 }
 
                 for(final Vehicle vehicle : route.getVehicles())

@@ -38,19 +38,19 @@ final class TestBusStop {
             @Test
             final void testVehicles(){
                 { // not all bus vehicles have this for some reason
-                    boolean passes = false;
+                    boolean tested = false;
                     for(final Vehicle vehicle : stop.getVehicles()){
                         if(vehicle.getExpectedArrivalTime() != null &&
                            vehicle.getExpectedArrivalTimeEpochMillis() != null &&
                            vehicle.getExpectedDepartureTime() != null &&
                            vehicle.getExpectedDepartureTimeEpochMillis() != null
                         ){
-                            passes = true;
+                            tested = true;
                             break;
                         }
                     }
 
-                    final boolean finalPasses = passes;
+                    final boolean finalPasses = tested;
                     annotateTest(() -> assertTrue(finalPasses, "Failed to pass expected arrival tests, there probably wasn't enough vehicles to conclude test (tested " + stop.getVehicles().length + " vehicles)"));
                 }
 
@@ -63,7 +63,7 @@ final class TestBusStop {
                         }
                     }
                     final boolean finalPasses = tested;
-                    annotateTest(() -> assertTrue(finalPasses, "Failed to pass expected arrival tests, there probably wasn't enough vehicles to conclude test (tested " + stop.getVehicles().length + " vehicles)"));
+                    annotateTest(() -> assertTrue(finalPasses, "Failed to pass progress tests, there probably wasn't enough vehicles to conclude test (tested " + stop.getVehicles().length + " vehicles)"));
                 }
 
                 for(final Vehicle vehicle : stop.getVehicles())

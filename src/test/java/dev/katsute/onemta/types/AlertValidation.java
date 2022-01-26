@@ -4,6 +4,7 @@ import dev.katsute.onemta.attribute.Alerts;
 import dev.katsute.onemta.subway.Subway;
 
 import java.util.Arrays;
+import java.util.regex.Pattern;
 
 import static dev.katsute.jcore.Workflow.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -36,17 +37,27 @@ public abstract class AlertValidation {
             testAlertPeriod(period);
     }
 
+    private static final Pattern direction = Pattern.compile("N|S$", Pattern.CASE_INSENSITIVE);
+
+    private static String stripDirection(final String stop){
+        return direction.matcher(stop).replaceAll("");
+    }
+
+
     public static void testAlertReference(final Alerts<?> reference, final TransitAlert<?,?,?,?> alert){
         final boolean stop = reference instanceof TransitStop<?,?,?>;
         final Object id = stop ? ((TransitStop<?,?,?>) reference).getStopID() : ((TransitRoute<?,?,?>) reference).getRouteID();
-        annotateTest(() -> assertTrue(
-            stop
-            ? reference instanceof Subway.Stop
-                                                                 // remove directional N/S from stop ID
-                ? Arrays.asList(alert.getStopIDs()).contains(id) || Arrays.asList(alert.getStopIDs()).contains(id.toString().substring(0, id.toString().length() - 1))
-                : Arrays.asList(alert.getStopIDs()).contains(id)
-            : Arrays.asList(alert.getRouteIDs()).contains(id))
-        );
+
+        if(!stop)
+            annotateTest(() -> assertTrue(Arrays.asList(alert.getRouteIDs()).contains(id), "Failed to find route " + id + " in " + Arrays.toString(alert.getRouteIDs())));
+        else if(!(reference instanceof Subway.Stop))
+            annotateTest(() -> assertTrue(Arrays.asList(alert.getStopIDs()).contains(id), "Failed to find stop " + id + " in " + Arrays.toString(alert.getStopIDs())));
+        else{
+            for(final Object stopID : alert.getStopIDs())
+                if(stripDirection(stopID.toString()).equalsIgnoreCase(stripDirection(id.toString())))
+                    return;
+            annotateTest(() -> fail("Failed to find stop " + id + " in " + Arrays.toString(alert.getStopIDs())));
+        }
     }
 
     //

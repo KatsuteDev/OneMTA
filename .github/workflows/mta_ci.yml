@@ -3,7 +3,9 @@ on: [workflow_dispatch]
 
 permissions: read-all
 
-concurrency: mta-test
+concurrency:
+  group: mta-test
+  cancel-in-progress: true
 
 jobs:
   mta_ci:

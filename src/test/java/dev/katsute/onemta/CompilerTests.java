@@ -17,27 +17,27 @@ abstract class CompilerTests {
 
         // setup
 
-        DataResource staticBusBx  = DataResource.create(
+        DataResource staticBusBx = DataResource.create(
             DataResourceType.Bus_Bronx,
             new File("bronx_google_transit.zip")
         );
-        DataResource staticBusBk  = DataResource.create(
+        DataResource staticBusBk = DataResource.create(
             DataResourceType.Bus_Brooklyn,
             new File("brooklyn_google_transit.zip")
         );
-        DataResource staticBusMt  = DataResource.create(
+        DataResource staticBusMt = DataResource.create(
             DataResourceType.Bus_Manhattan,
             new File("manhattan_google_transit.zip")
         );
-        DataResource staticBusQn  = DataResource.create(
+        DataResource staticBusQn = DataResource.create(
             DataResourceType.Bus_Queens,
             new File("queens_google_transit.zip")
         );
-        DataResource staticBusSI  = DataResource.create(
+        DataResource staticBusSI = DataResource.create(
             DataResourceType.Bus_StatenIsland,
             new File("staten_island_google_transit.zip")
         );
-        DataResource staticBusBC  = DataResource.create(
+        DataResource staticBusBC = DataResource.create(
             DataResourceType.Bus_Company,
             new File("bus_company_google_transit.zip")
         );
@@ -45,11 +45,11 @@ abstract class CompilerTests {
             DataResourceType.Subway,
             new File("subway_google_transit.zip")
         );
-        DataResource staticLIRR   = DataResource.create(
+        DataResource staticLIRR = DataResource.create(
             DataResourceType.LongIslandRailroad,
             new File("lirr_google_transit.zip")
         );
-        DataResource staticMNR    = DataResource.create(
+        DataResource staticMNR = DataResource.create(
             DataResourceType.MetroNorthRailroad,
             new File("mnr_google_transit.zip")
         );

@@ -5,6 +5,8 @@ import dev.katsute.onemta.TestProvider;
 import dev.katsute.onemta.types.*;
 import org.junit.jupiter.api.*;
 
+import java.util.regex.Pattern;
+
 import static dev.katsute.jcore.Workflow.*;
 import static dev.katsute.onemta.subway.Subway.*;
 import static org.junit.jupiter.api.Assertions.*;

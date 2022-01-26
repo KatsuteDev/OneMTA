@@ -32,7 +32,20 @@ import static dev.katsute.onemta.subway.Subway.*;
 @SuppressWarnings("SpellCheckingInspection")
 abstract class MTASchema_Subway extends MTASchema {
 
-    static final Pattern direction = Pattern.compile("N|S$");
+    private static final Pattern direction = Pattern.compile("N|S$", Pattern.CASE_INSENSITIVE);
+
+    static String stripDirection(final String stop){
+        return direction.matcher(stop).replaceAll("");
+    }
+
+    private static SubwayDirection getDirection(final String stop){
+        final String stopOnly = stripDirection(stop);
+        return stop.length() == stopOnly.length() || (!stop.toUpperCase().endsWith("N") && !stop.toUpperCase().endsWith("S"))
+               ? null
+               : stop.toUpperCase().endsWith("N")
+                    ? SubwayDirection.NORTH
+                    : SubwayDirection.SOUTH;
+    }
 
     static Route asRoute(final MTA mta, final String route_id){
         // find row
@@ -185,12 +198,7 @@ abstract class MTASchema_Subway extends MTASchema {
             private final Double stopLat = Double.valueOf(row.get(csv.getHeaderIndex("stop_lat")));
             private final Double stopLon = Double.valueOf(row.get(csv.getHeaderIndex("stop_lon")));
 
-            private final SubwayDirection stopDirection =
-                stopID.endsWith("N") || stopID.endsWith("S")
-                ? stopID.endsWith("N")
-                    ? SubwayDirection.NORTH
-                    : SubwayDirection.SOUTH
-                : null;
+            private final SubwayDirection stopDirection = MTASchema_Subway.getDirection(stopID);
 
             // static data
 
@@ -283,9 +291,14 @@ abstract class MTASchema_Subway extends MTASchema {
                     final GTFSRealtimeProto.FeedMessage feed = cast(mta).service.alerts.getSubway(cast(mta).subwayToken);
                     final int len = feed.getEntityCount();
                     for(int i = 0; i < len; i++){
-                        final Subway.Alert alert = MTASchema_Subway.asTransitAlert(mta, feed.getEntity(i));
-                        if(Arrays.asList(alert.getStopIDs()).contains(stop))
-                            alerts.add(alert);
+                        final Subway.Alert alert   = MTASchema_Subway.asTransitAlert(mta, feed.getEntity(i));
+                        for(final String id : alert.getStopIDs())
+                            if(id.equalsIgnoreCase(stop) || // if stop ID matches exactly
+                               // if stop direction is unknown, include alerts for any direction
+                               (stopDirection == null && stripDirection(id).equalsIgnoreCase(stop)) ||
+                               // if alert direction if unknown, include stops for any direction
+                               (MTASchema_Subway.getDirection(id) == null && stripDirection(stop).equalsIgnoreCase(id)))
+                                alerts.add(alert);
                     }
                     this.alerts = alerts;
                 }
