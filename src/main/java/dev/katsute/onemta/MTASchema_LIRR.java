@@ -580,9 +580,13 @@ abstract class MTASchema_LIRR extends MTASchema {
                 for(int i = 0; i < len; i++){
                     final GTFSRealtimeProto.EntitySelector entity = alert.getInformedEntity(i);
                     if(entity.hasRouteId())
-                        routeIDs.add(Integer.valueOf(entity.getRouteId()));
+                        try{
+                            routeIDs.add(Integer.valueOf(entity.getRouteId()));
+                        }catch(final NumberFormatException ignored){ }
                     else if(entity.hasStopId())
-                        stopIDs.add(Integer.valueOf(entity.getStopId()));
+                        try{
+                            stopIDs.add(Integer.valueOf(entity.getStopId()));
+                        }catch(final NumberFormatException ignored){ }
                 }
                 this.routeIDs = Collections.unmodifiableList(routeIDs);
                 this.stopIDs  = Collections.unmodifiableList(stopIDs);
