@@ -90,7 +90,10 @@ final class MTAImpl extends MTA {
             .getJsonObject("ServiceDelivery")
             .getJsonArray("VehicleMonitoringDelivery");
 
-        if(!vehicleMonitoringDelivery[0].containsKey("VehicleActivity")) return null;
+        if(
+            !vehicleMonitoringDelivery[0].containsKey("VehicleActivity") || // null
+            vehicleMonitoringDelivery[0].getJsonArray("VehicleActivity").length == 0) // no vehicles
+            return null;
 
         final JsonObject monitoredVehicleJourney = vehicleMonitoringDelivery[0]
             .getJsonArray("VehicleActivity")[0]
