@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public abstract class VehicleValidation {
 
     public static void requireVehicles(final VehiclesReference<?> vehicles){
-        assertTrue(vehicles.getVehicles().length > 0, "No vehicles found, please rerun this test when vehicles are available");
+        assertNotEquals(0, vehicles.getVehicles().length, "No vehicles found, please rerun this test when vehicles are available");
     }
 
     //

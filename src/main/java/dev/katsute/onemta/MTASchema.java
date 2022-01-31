@@ -22,7 +22,6 @@ import dev.katsute.onemta.types.TransitAgency;
 import dev.katsute.onemta.types.TransitAlertPeriod;
 
 import java.util.Date;
-import java.util.Objects;
 import java.util.function.Supplier;
 
 import static dev.katsute.onemta.GTFSRealtimeProto.*;

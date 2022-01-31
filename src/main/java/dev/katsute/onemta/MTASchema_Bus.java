@@ -452,7 +452,7 @@ abstract class MTASchema_Bus extends MTASchema {
             private final Integer distanceFromStop      = requireNonNull(() -> monitoredCall.getInt("DistanceFromStop"));
             private final Integer stopsAway = requireNonNull(() -> monitoredCall.getInt("NumberOfStopsAway"));
 
-            private Trip trip = asTrip(mta, monitoredVehicleJourney.getJsonObject("OnwardCalls"), this);
+            private Trip trip = monitoredVehicleJourney.containsKey("OnwardCalls") ? asTrip(mta, monitoredVehicleJourney.getJsonObject("OnwardCalls"), this) : null;
 
             @Override
             public final Integer getVehicleID(){

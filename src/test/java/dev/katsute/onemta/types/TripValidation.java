@@ -5,7 +5,6 @@ import dev.katsute.onemta.railroad.RailroadTripStop;
 
 import static dev.katsute.jcore.Workflow.*;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assumptions.*;
 
 /**
  * @see TransitTrip
@@ -17,7 +16,7 @@ import static org.junit.jupiter.api.Assumptions.*;
 public abstract class TripValidation {
 
     public static void requireTripStops(final TransitTripStop<?,?,?>[] trip){
-        assumeTrue(trip.length > 0, "No trip stops found, please rerun tests");
+        assertNotEquals(0, trip.length, "No trip stops found, please rerun tests");
     }
 
     //
