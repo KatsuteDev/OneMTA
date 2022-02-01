@@ -57,7 +57,6 @@
  */
 module OneMTA {
 
-    requires jdk.httpserver;
 
     requires com.google.protobuf;
 
