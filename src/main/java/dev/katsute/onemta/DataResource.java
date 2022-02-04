@@ -55,6 +55,13 @@ public abstract class DataResource {
      * @since 1.0.0
      */
     public static DataResource create(final DataResourceType type, final File file){
+        Objects.requireNonNull(type, "DataResourceType must not be null");
+        Objects.requireNonNull(file, "File must not be null");
+        if(!file.exists())
+            throw new NullPointerException("Failed to find file " + file.getPath());
+        else if(!file.getName().endsWith(".zip"))
+            throw new UnsupportedOperationException("DataResource must be a zip (.zip) file");
+
         return new DataResource(){
 
             private final DataResourceType datatype = type;
