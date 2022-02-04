@@ -121,8 +121,14 @@ final class TestBusStop {
 
             @Test
             final void testVehicleTripStops(){
+                boolean tested = false;
                 for(final Vehicle vehicle : stop.getVehicles())
-                    TripValidation.testTripStops(vehicle.getTrip().getTripStops());
+                    if(vehicle.getTrip() != null && vehicle.getTrip().getTripStops().length > 0){
+                        TripValidation.testTripStops(vehicle.getTrip().getTripStops());
+                        tested = true;
+                    }
+                final boolean finalTested = tested;
+                annotateTest(() -> assertTrue(finalTested, "Failed to pass trip stop tests, there probably wasn't enough vehicles to conclude test (tested " + stop.getVehicles().length + " vehicles)"));
             }
 
         }
