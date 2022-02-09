@@ -172,7 +172,7 @@ Sample response data available on the [`reference`](https://github.com/KatsuteDe
 - Tests are most reliable around rush hour.
 - Tests may not work during overnight hours.
 - Tests may not work if the selected routes are out of service.
-- Tests may not work it the select stops are out of service.
+- Tests may not work it the selected stops are out of service.
 
 ### Running Tests Locally
 
