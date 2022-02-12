@@ -1,6 +1,12 @@
 package dev.katsute.onemta;
 
+import dev.katsute.onemta.bus.Bus;
+import dev.katsute.onemta.railroad.LIRR;
+import dev.katsute.onemta.railroad.MNR;
+import dev.katsute.onemta.subway.Subway;
 import org.junit.jupiter.api.*;
+
+import java.util.Arrays;
 
 import static dev.katsute.jcore.Workflow.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -96,6 +102,42 @@ final class TestMTA {
             annotateTest(() -> assertNull(mta.getMNRTrain("NULL")));
         }
 
+    }
+
+    @Test @Disabled
+    final void testToString(){
+        final Bus.Route br = mta.getBusRoute(TestProvider.BUS_ROUTE);
+        System.out.println(br);
+        System.out.println(Arrays.toString(br.getVehicles()));
+        System.out.println(Arrays.toString(br.getAlerts()));
+        final Bus.Stop bs = mta.getBusStop(TestProvider.BUS_STOP);
+        System.out.println(bs);
+        System.out.println(Arrays.toString(bs.getVehicles()));
+        System.out.println(Arrays.toString(bs.getAlerts()));
+        final Subway.Route sr = mta.getSubwayRoute(TestProvider.SUBWAY_ROUTE);
+        System.out.println(sr);
+        System.out.println(Arrays.toString(sr.getVehicles()));
+        System.out.println(Arrays.toString(sr.getAlerts()));
+        final Subway.Stop st = mta.getSubwayStop(TestProvider.SUBWAY_STOP);
+        System.out.println(st);
+        System.out.println(Arrays.toString(st.getVehicles()));
+        System.out.println(Arrays.toString(st.getAlerts()));
+        final LIRR.Route lr = mta.getLIRRRoute(TestProvider.LIRR_ROUTE);
+        System.out.println(lr);
+        System.out.println(Arrays.toString(lr.getVehicles()));
+        System.out.println(Arrays.toString(lr.getAlerts()));
+        final LIRR.Stop ls = mta.getLIRRStop(TestProvider.LIRR_STOP_CODE);
+        System.out.println(ls);
+        System.out.println(Arrays.toString(ls.getVehicles()));
+        System.out.println(Arrays.toString(ls.getAlerts()));
+        final MNR.Route mr = mta.getMNRRoute(TestProvider.MNR_ROUTE);
+        System.out.println(mr);
+        System.out.println(Arrays.toString(mr.getVehicles()));
+        System.out.println(Arrays.toString(mr.getAlerts()));
+        final MNR.Stop ms = mta.getMNRStop(TestProvider.MNR_STOP_CODE);
+        System.out.println(ms);
+        System.out.println(Arrays.toString(ms.getVehicles()));
+        System.out.println(Arrays.toString(ms.getAlerts()));
     }
 
 }

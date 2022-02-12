@@ -233,8 +233,8 @@ abstract class MTASchema_Bus extends MTASchema {
             // Java
 
             @Override
-            public String toString(){
-                return "$classname{" +
+            public final String toString(){
+                return "Bus.Route{" +
                        "routeID='" + routeID + '\'' +
                        ", routeShortName='" + routeShortName + '\'' +
                        ", routeLongName='" + routeLongName + '\'' +

@@ -293,7 +293,7 @@ abstract class MTASchema_MNR extends MTASchema {
 
             private final String status   = requireNonNull(() -> vehicle.getCurrentStatus().name());
 
-            private final Integer stopID  = requireNonNull(() -> Integer.valueOf(vehicle.getStopId()));
+            private final Integer stopID  = requireNonNull(() -> Integer.valueOf(vehicle.hasStopId() ? vehicle.getStopId() : tripUpdate.getStopTimeUpdate(0).getStopId())); // fallback to next trip stop if stop id is not working
             private final Integer routeID = requireNonNull(() -> Integer.valueOf(tripUpdate.getTrip().getRouteId()));
 
             private final Trip trip = asTrip(mta, tripUpdate, this);
