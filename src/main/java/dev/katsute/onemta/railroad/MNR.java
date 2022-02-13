@@ -36,6 +36,8 @@ import dev.katsute.onemta.types.*;
  */
 public abstract class MNR {
 
+    private MNR(){ }
+
     /**
      * Represents a Metro North Railroad (MNR) route.
      *

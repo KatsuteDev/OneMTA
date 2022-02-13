@@ -38,6 +38,8 @@ import java.util.Date;
  */
 public abstract class Bus {
 
+    private Bus(){ }
+
     /**
      * Represents a bus route.
      *

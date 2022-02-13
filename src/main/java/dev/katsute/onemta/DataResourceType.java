@@ -33,23 +33,23 @@ public enum DataResourceType {
      */
     Subway,
     /**
-     * New York City Transit Bus > Bronx
+     * New York City Transit Bus / Bronx
      */
     Bus_Bronx,
     /**
-     * New York City Transit Bus > Brooklyn
+     * New York City Transit Bus / Brooklyn
      */
     Bus_Brooklyn,
     /**
-     * New York City Transit Bus > Manhattan
+     * New York City Transit Bus / Manhattan
      */
     Bus_Manhattan,
     /**
-     * New York City Transit Bus > Queens
+     * New York City Transit Bus / Queens
      */
     Bus_Queens,
     /**
-     * New York City Transit Bus > Staten Island
+     * New York City Transit Bus / Staten Island
      */
     Bus_StatenIsland,
     /**

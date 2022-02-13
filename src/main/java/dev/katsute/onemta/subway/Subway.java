@@ -36,6 +36,8 @@ import dev.katsute.onemta.types.*;
  */
 public abstract class Subway {
 
+    private Subway(){ }
+
     /**
      * Represents a subway route.
      *

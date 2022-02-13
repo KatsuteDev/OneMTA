@@ -37,6 +37,8 @@ import dev.katsute.onemta.types.*;
 @SuppressWarnings("SpellCheckingInspection")
 public abstract class LIRR {
 
+    private LIRR(){ }
+
     /**
      * Represents a Long Island Railroad (LIRR) route.
      *
