@@ -150,26 +150,6 @@ public abstract class TestProvider {
 
     //
 
-    public static final class MethodStream<T> {
-
-        private final List<Arguments> args = new ArrayList<>();
-
-        public final MethodStream<T> add(final Function<T,Object> function){
-            args.add(Arguments.of(function));
-            return this;
-        }
-
-        public final MethodStream<T> add(final String method, final Function<T,Object> function){
-            args.add(Arguments.of(method, function));
-            return this;
-        }
-
-        public final Stream<Arguments> stream(){
-            return args.stream();
-        }
-
-    }
-
     public static final class ObjectStream {
 
         private final List<Arguments> args = new ArrayList<>();

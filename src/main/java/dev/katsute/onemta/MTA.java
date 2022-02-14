@@ -46,10 +46,27 @@ public abstract class MTA {
      * @param resources <b>(required)</b> static data resource, see {@link DataResource}
      * @return MTA
      *
+     * @see #create(String, String, int, DataResource...)
      * @since 1.0.0
      */
     public static MTA create(final String busToken, final String subwayToken, final DataResource... resources){
-        return new MTAImpl(busToken, subwayToken, resources);
+        return create(busToken, subwayToken, -1, resources);
+    }
+
+    /**
+     * Creates an MTA API interface. Note that bus alerts require a subway token.
+     *
+     * @param busToken bus token
+     * @param subwayToken subway token
+     * @param cacheSeconds how long to cache responses for
+     * @param resources <b>(required)</b> static data resource, see {@link DataResource}
+     * @return MTA
+     *
+     * @see #create(String, String, DataResource...)
+     * @since 1.0.0
+     */
+    public static MTA create(final String busToken, final String subwayToken, final int cacheSeconds, final DataResource... resources){
+        return new MTAImpl(busToken, subwayToken, cacheSeconds, resources);
     }
 
 // bus methods

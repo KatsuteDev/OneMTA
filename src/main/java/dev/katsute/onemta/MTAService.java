@@ -29,9 +29,11 @@ import java.util.HashMap;
 @SuppressWarnings("SpellCheckingInspection")
 final class MTAService {
 
-    private final RequestCache cache = new RequestCache();
+    private final RequestCache cache;
 
-    MTAService(){ }
+    MTAService(final int cacheSeconds){
+        this.cache = new RequestCache(cacheSeconds);
+    }
 
     private static String encodeUTF8(final String string){
         try{

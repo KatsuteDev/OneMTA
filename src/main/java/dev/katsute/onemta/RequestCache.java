@@ -32,10 +32,6 @@ final class RequestCache {
     // cache, concurrency safe due to synchronized methods
     private final List<CachedData> cache = new ArrayList<>();
 
-    RequestCache(){
-        this(-1);
-    }
-
     @SuppressWarnings("SameParameterValue")
     RequestCache(final int retainCacheSeconds){
         this.retainCacheSeconds = Math.min(retainCacheSeconds, MINIMUM_CACHE);
@@ -49,7 +45,7 @@ final class RequestCache {
         // return cached result
         cache.removeIf(CachedData::isExpired);
         for(final CachedData cd : cache)
-            if(cd.equals(url, query,headers))
+            if(cd.equals(url, query, headers))
                 return cd.getJson();
 
         // return and cache new result
@@ -66,7 +62,7 @@ final class RequestCache {
         // return cached result
         cache.removeIf(CachedData::isExpired);
         for(final CachedData cd : cache)
-            if(cd.equals(url, query,headers))
+            if(cd.equals(url, query, headers))
                 return cd.getProtobuf();
 
         // return and cache new result
@@ -91,24 +87,24 @@ final class RequestCache {
             final Map<String,String> headers,
             final Object object
         ){
-            this.url = url;
-            this.query = new HashMap<>(query);
+            this.url     = url;
+            this.query   = new HashMap<>(query);
             this.headers = new HashMap<>(headers);
 
-            this.object = object;
+            this.object  = object;
 
             this.expires = (System.currentTimeMillis() / 1000L) + retainCacheSeconds;
         }
 
-        final boolean isExpired(){
+        private boolean isExpired(){
             return (System.currentTimeMillis() / 1000L) > expires;
         }
 
-        final JsonObject getJson(){
+        private JsonObject getJson(){
             return (JsonObject) object;
         }
 
-        final FeedMessage getProtobuf(){
+        private FeedMessage getProtobuf(){
             return (FeedMessage) object;
         }
 
