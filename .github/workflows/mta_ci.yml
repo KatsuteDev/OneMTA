@@ -11,7 +11,7 @@ jobs:
   mta_ci:
     name: MTA CI [${{ matrix.group }}] (Java ${{ matrix.java }})
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 120
     strategy:
       matrix:
         java: [8, 11, 17]
@@ -42,4 +42,10 @@ jobs:
           echo ${{ matrix.group }} > src/test/java/resources/TEST_GROUP
 
       - name: ✔ Test with Maven
-        run: mvn test -fae --no-transfer-progress
+        uses: nick-invision/retry@v2.6.0
+        with:
+          timeout_minutes: 20
+          max_attempts: 3
+          retry_wait_seconds: 120
+          retry_on: error
+          command: mvn test -fae --no-transfer-progress
