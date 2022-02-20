@@ -1,5 +1,5 @@
 /**
- * <h1>Mal4J Documentation</h1>
+ * <h1>OneMTA Documentation</h1>
  *
  * <h2>Key Classes:</h2>
  * <ul>
