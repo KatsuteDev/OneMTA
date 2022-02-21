@@ -306,7 +306,6 @@ abstract class MTASchema_Bus extends MTASchema {
 
             private final Integer stopID  = stop_id;
             private final String stopName = row.get(csv.getHeaderIndex("stop_name"));
-            private final String stopDesc = row.get(csv.getHeaderIndex("stop_desc"));
             private final Double stopLat  = Double.valueOf(row.get(csv.getHeaderIndex("stop_lat")));
             private final Double stopLon  = Double.valueOf(row.get(csv.getHeaderIndex("stop_lon")));
 
@@ -320,11 +319,6 @@ abstract class MTASchema_Bus extends MTASchema {
             @Override
             public final String getStopName(){
                 return stopName;
-            }
-
-            @Override
-            public final String getRouteDescription(){
-                return stopDesc;
             }
 
             @Override
@@ -389,7 +383,6 @@ abstract class MTASchema_Bus extends MTASchema {
                 return "Bus.Stop{" +
                        "stopID=" + stopID +
                        ", stopName='" + stopName + '\'' +
-                       ", stopDesc='" + stopDesc + '\'' +
                        ", stopLat=" + stopLat +
                        ", stopLon=" + stopLon +
                        '}';
