@@ -21,12 +21,6 @@ abstract class BusExtensions {
 
     //
 
-    public static void testStop(final Stop stop){
-        annotateTest(() -> assertNotNull(stop.getRouteDescription()));
-    }
-
-    //
-
     public static void testVehicle(final Vehicle vehicle){
         annotateTest(() -> assertNotNull(vehicle.getLatitude()));
         annotateTest(() -> assertNotNull(vehicle.getLongitude()));

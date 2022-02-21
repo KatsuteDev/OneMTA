@@ -33,7 +33,7 @@ import java.util.Date;
  * @see TripStop
  * @see Alert
  * @since 1.0.0
- * @version 1.0.0
+ * @version 1.0.1
  * @author Katsute
  */
 public abstract class Bus {
@@ -53,10 +53,10 @@ public abstract class Bus {
      * Represents a bus stop.
      *
      * @since 1.0.0
-     * @version 1.0.0
+     * @version 1.0.1
      * @author Katsute
      */
-    public abstract static class Stop extends TransitStop<Integer,Vehicle,Alert> implements RouteDescription { }
+    public abstract static class Stop extends TransitStop<Integer,Vehicle,Alert> { }
 
     /**
      * Represents a bus vehicle.

@@ -27,11 +27,6 @@ final class TestBusStop {
     @Nested
     final class TestExtensions {
 
-        @Test
-        final void testRoute(){
-            BusExtensions.testStop(stop);
-        }
-
         @Nested
         final class VehicleTests {
 
