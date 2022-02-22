@@ -54,44 +54,19 @@ OneMTA requires static data from the MTA for most route and stop information. La
 Only include static data for the API endpoints you are using. For the bus API you must include all boroughs plus bus company.
 
 ```java
-DataResource staticBusBx = DataResource.create(
-    DataResourceType.Bus_Bronx,
-    new File("bronx_google_transit.zip")
+MTA mta = mta = MTA.create(
+    busToken,
+    subwayToken,
+    DataResource.create(DataResourceType.Bus_Bronx, new File("google_transit_bronx.zip")),
+    DataResource.create(DataResourceType.Bus_Brooklyn, new File("google_transit_brooklyn.zip")),
+    DataResource.create(DataResourceType.Bus_Manhattan, new File("google_transit_manhattan.zip")),
+    DataResource.create(DataResourceType.Bus_Queens, new File("google_transit_queens.zip")),
+    DataResource.create(DataResourceType.Bus_StatenIsland, new File("google_transit_staten_island.zip")),
+    DataResource.create(DataResourceType.Bus_Company, new File("google_transit_bus_company.zip")),
+    DataResource.create(DataResourceType.Subway, new File("google_transit_subway.zip")),
+    DataResource.create(DataResourceType.LongIslandRailroad, new File("google_transit_lirr.zip")),
+    DataResource.create(DataResourceType.MetroNorthRailroad, new File("google_transit_mnr.zip"))
 );
-DataResource staticBusBk = DataResource.create(
-    DataResourceType.Bus_Brooklyn,
-    new File("brooklyn_google_transit.zip")
-);
-DataResource staticBusMt = DataResource.create(
-    DataResourceType.Bus_Manhattan,
-    new File("manhattan_google_transit.zip")
-);
-DataResource staticBusQn = DataResource.create(
-    DataResourceType.Bus_Queens,
-    new File("queens_google_transit.zip")
-);
-DataResource staticBusSI = DataResource.create(
-    DataResourceType.Bus_StatenIsland,
-    new File("staten_island_google_transit.zip")
-);
-DataResource staticBusBC = DataResource.create(
-    DataResourceType.Bus_Company,
-    new File("bus_company_google_transit.zip")
-);
-DataResource staticSubway = DataResource.create(
-    DataResourceType.Subway,
-    new File("subway_google_transit.zip")
-);
-DataResource staticLIRR = DataResource.create(
-    DataResourceType.LongIslandRailroad,
-    new File("lirr_google_transit.zip")
-);
-DataResource staticMNR = DataResource.create(
-    DataResourceType.MetroNorthRailroad,
-    new File("mnr_google_transit.zip")
-);
-
-MTA mta = MTA.create(busToken, subwayToken, staticBusBx, staticBusBk, staticBusMt, staticBusQn, staticBusSI, staticBusBC, staticSubway, staticLIRR, staticMNR);
 ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
