@@ -467,8 +467,8 @@ abstract class MTASchema_Subway extends MTASchema {
 
             private final String stopID = requireNonNull(stopTimeUpdate::getStopId);
 
-            private final Long arrival   = requireNonNull(() -> stopTimeUpdate.getArrival().getTime());
-            private final Long departure = requireNonNull(() -> stopTimeUpdate.getDeparture().getTime());
+            private final Long arrival   = requireNonNull(() -> stopTimeUpdate.getArrival().getTime() * 1000);
+            private final Long departure = requireNonNull(() -> stopTimeUpdate.getDeparture().getTime() * 1000);
 
             private final String track       = requireNonNull(nyctStopTimeUpdate::getScheduledTrack);
             private final String actualTrack = requireNonNull(nyctStopTimeUpdate::getActualTrack);

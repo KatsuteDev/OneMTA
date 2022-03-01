@@ -475,8 +475,8 @@ abstract class MTASchema_LIRR extends MTASchema {
 
             private final Integer stopID = requireNonNull(() -> Integer.valueOf(stopTimeUpdate.getStopId()));
 
-            private final Long arrival   = requireNonNull(() -> stopTimeUpdate.getArrival().getTime());
-            private final Long departure = requireNonNull(() -> stopTimeUpdate.getDeparture().getTime());
+            private final Long arrival   = requireNonNull(() -> stopTimeUpdate.getArrival().getTime() * 1000);
+            private final Long departure = requireNonNull(() -> stopTimeUpdate.getDeparture().getTime() * 1000);
             private final Integer delay  = requireNonNull(() -> stopTimeUpdate.getDeparture().getDelay());
 
             private final String track   = requireNonNull(mnrStopTimeUpdate::getTrack);
