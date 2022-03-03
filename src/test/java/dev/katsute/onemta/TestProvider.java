@@ -140,14 +140,6 @@ public abstract class TestProvider {
         return passes;
     }
 
-    public static <T> boolean atleastOneTrue(final List<T> list, @SuppressWarnings("unused") final Class<T> T, final Predicate<T> predicate){
-        boolean passes = false;
-        for(final T t : list)
-            if(predicate.test(t))
-                passes = true;
-        return passes;
-    }
-
     // java 9
 
     public static String readFile(final File file) throws IOException{
