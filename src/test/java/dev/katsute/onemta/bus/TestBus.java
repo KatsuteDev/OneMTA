@@ -64,6 +64,14 @@ final class TestBus {
         @Test
         final void testTransitAlert(){
             annotateTest(() -> assumeTrue(mta.getBusAlerts().length > 0, "No alerts found, skipping alert tests"));
+
+            { // missing description caused by MTA missing data
+                annotateTest(() -> assertTrue(TestProvider.atleastOneTrue(
+                    mta.getBusAlerts(), Bus.Alert.class,
+                    a -> a.getDescription() != null
+                )));
+            }
+
             for(final Bus.Alert alert : mta.getBusAlerts())
                 AlertValidation.testAlert(alert);
         }

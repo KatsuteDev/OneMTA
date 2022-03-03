@@ -132,7 +132,7 @@ public abstract class TestProvider {
         }
     }
 
-    public static <T> boolean atleastOneTrue(final T[] array, final Predicate<T> predicate, @SuppressWarnings("unused") final Class<T> T){
+    public static <T> boolean atleastOneTrue(final T[] array, @SuppressWarnings("unused") final Class<T> T, final Predicate<T> predicate){
         boolean passes = false;
         for(final T t : array)
             if(predicate.test(t))
@@ -140,7 +140,7 @@ public abstract class TestProvider {
         return passes;
     }
 
-    public static <T> boolean atleastOneTrue(final List<T> list, final Predicate<T> predicate, @SuppressWarnings("unused") final Class<T> T){
+    public static <T> boolean atleastOneTrue(final List<T> list, @SuppressWarnings("unused") final Class<T> T, final Predicate<T> predicate){
         boolean passes = false;
         for(final T t : list)
             if(predicate.test(t))

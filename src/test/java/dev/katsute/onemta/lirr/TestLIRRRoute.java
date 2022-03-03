@@ -2,6 +2,7 @@ package dev.katsute.onemta.lirr;
 
 import dev.katsute.onemta.MTA;
 import dev.katsute.onemta.TestProvider;
+import dev.katsute.onemta.railroad.LIRR;
 import dev.katsute.onemta.types.*;
 import org.junit.jupiter.api.*;
 
@@ -157,6 +158,13 @@ final class TestLIRRRoute {
 
             @Test
             final void testTransitAlerts(){
+                { // missing description caused by MTA missing data
+                    annotateTest(() -> assertTrue(TestProvider.atleastOneTrue(
+                        route.getAlerts(), LIRR.Alert.class,
+                        a -> a.getDescription() != null
+                    )));
+                }
+
                 for(final Alert alert : route.getAlerts())
                     AlertValidation.testAlert(alert);
             }

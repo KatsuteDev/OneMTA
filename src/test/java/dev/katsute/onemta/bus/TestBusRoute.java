@@ -38,32 +38,21 @@ final class TestBusRoute {
             @Test
             final void testVehicles(){
                 { // not all bus vehicles have this for some reason
-                    boolean tested = false;
-                    for(final Vehicle vehicle : route.getVehicles()){
-                        if(vehicle.getExpectedArrivalTime() != null &&
-                           vehicle.getExpectedArrivalTimeEpochMillis() != null &&
-                           vehicle.getExpectedDepartureTime() != null &&
-                           vehicle.getExpectedDepartureTimeEpochMillis() != null
-                        ){
-                            tested = true;
-                            break;
-                        }
-                    }
-
-                    final boolean finalPasses = tested;
-                    annotateTest(() -> assertTrue(finalPasses, "Failed to pass expected arrival tests, there probably wasn't enough vehicles to conclude test (tested " + route.getVehicles().length + " vehicles)"));
+                    annotateTest(() -> assertTrue(TestProvider.atleastOneTrue(
+                        route.getVehicles(), Bus.Vehicle.class,
+                        v -> v.getExpectedArrivalTime() != null &&
+                            v.getExpectedArrivalTimeEpochMillis() != null &&
+                            v.getExpectedDepartureTime() != null &&
+                            v.getExpectedDepartureTimeEpochMillis() != null
+                    )));
                 }
 
                 { // not all noProgress have a progress status for some reason
-                    boolean tested = false;
-                    for(final Vehicle vehicle : route.getVehicles()){
-                        if(vehicle.getProgressRate().equals("noProgress") && vehicle.getProgressStatus() != null){
-                            tested = true;
-                            break;
-                        }
-                    }
-                    final boolean finalPasses = tested;
-                    annotateTest(() -> assertTrue(finalPasses, "Failed to pass progress tests, there probably wasn't enough vehicles to conclude test (tested " + route.getVehicles().length + " vehicles)"));
+                    annotateTest(() -> assertTrue(TestProvider.atleastOneTrue(
+                        route.getVehicles(), Bus.Vehicle.class,
+                        v -> v.getProgressRate().equals("noProgress") &&
+                            v.getProgressStatus() != null
+                    )));
                 }
 
                 for(final Vehicle vehicle : route.getVehicles())
@@ -87,14 +76,16 @@ final class TestBusRoute {
 
             @Test
             final void testVehicleTripStops(){
-                boolean tested = false;
-                for(final Vehicle vehicle : route.getVehicles())
-                    if(vehicle.getTrip() != null && vehicle.getTrip().getTripStops().length > 0){
-                        BusExtensions.testTripStops(vehicle.getTrip().getTripStops());
-                        tested = true;
+                annotateTest(() -> assertTrue(TestProvider.atleastOneTrue(
+                    route.getVehicles(), Bus.Vehicle.class,
+                    v -> {
+                        if(v.getTrip() != null && v.getTrip().getTripStops().length > 0){
+                            BusExtensions.testTripStops(v.getTrip().getTripStops());
+                            return true;
+                        }
+                        return false;
                     }
-                final boolean finalTested = tested;
-                annotateTest(() -> assertTrue(finalTested, "Failed to pass trip stop tests, there probably wasn't enough vehicles to conclude test (tested " + route.getVehicles().length + " vehicles)"));
+                )));
             }
 
         }
@@ -156,14 +147,16 @@ final class TestBusRoute {
 
             @Test
             final void testVehicleTripStops(){
-                boolean tested = false;
-                for(final Vehicle vehicle : route.getVehicles())
-                    if(vehicle.getTrip() != null && vehicle.getTrip().getTripStops().length > 0){
-                        TripValidation.testTripStops(vehicle.getTrip().getTripStops());
-                        tested = true;
+                annotateTest(() -> assertTrue(TestProvider.atleastOneTrue(
+                    route.getVehicles(), Bus.Vehicle.class,
+                    v -> {
+                        if(v.getTrip() != null && v.getTrip().getTripStops().length > 0){
+                            TripValidation.testTripStops(v.getTrip().getTripStops());
+                            return true;
+                        }
+                        return false;
                     }
-                final boolean finalTested = tested;
-                annotateTest(() -> assertTrue(finalTested, "Failed to pass trip stop tests, there probably wasn't enough vehicles to conclude test (tested " + route.getVehicles().length + " vehicles)"));
+                )));
             }
 
         }
@@ -179,6 +172,13 @@ final class TestBusRoute {
 
             @Test
             final void testTransitAlerts(){
+                { // missing description caused by MTA missing data
+                    annotateTest(() -> assertTrue(TestProvider.atleastOneTrue(
+                        route.getAlerts(), Bus.Alert.class,
+                        a -> a.getDescription() != null
+                    )));
+                }
+
                 for(final Alert alert : route.getAlerts())
                     AlertValidation.testAlert(alert);
             }

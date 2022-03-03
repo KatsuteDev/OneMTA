@@ -156,6 +156,13 @@ final class TestSubwayStop {
 
                     @Test
                     final void testTransitAlerts(){
+                        { // missing description caused by MTA missing data
+                            annotateTest(() -> assertTrue(TestProvider.atleastOneTrue(
+                                stopN.getAlerts(), Subway.Alert.class,
+                                a -> a.getDescription() != null
+                            )));
+                        }
+
                         for(final Alert alert : stopN.getAlerts())
                             AlertValidation.testAlert(alert);
                     }
@@ -294,6 +301,13 @@ final class TestSubwayStop {
 
                     @Test
                     final void testTransitAlerts(){
+                        { // missing description caused by MTA missing data
+                            annotateTest(() -> assertTrue(TestProvider.atleastOneTrue(
+                                stopS.getAlerts(), Subway.Alert.class,
+                                a -> a.getDescription() != null
+                            )));
+                        }
+
                         for(final Alert alert : stopS.getAlerts())
                             AlertValidation.testAlert(alert);
                     }
@@ -436,6 +450,13 @@ final class TestSubwayStop {
 
             @Test
             final void testTransitAlerts(){
+                { // missing description caused by MTA missing data
+                    annotateTest(() -> assertTrue(TestProvider.atleastOneTrue(
+                        stop.getAlerts(), Subway.Alert.class,
+                        a -> a.getDescription() != null
+                    )));
+                }
+
                 for(final Alert alert : stop.getAlerts())
                     AlertValidation.testAlert(alert);
             }
