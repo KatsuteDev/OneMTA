@@ -1,0 +1,1372 @@
+{
+  "Siri": {
+    "ServiceDelivery": {
+      "ResponseTimestamp": "2022-01-17T15:57:32.331-05:00",
+      "VehicleMonitoringDelivery": [
+        {
+          "VehicleActivity": [
+            {
+              "MonitoredVehicleJourney": {
+                "LineRef": "MTA NYCT_M1",
+                "DirectionRef": "0",
+                "FramedVehicleJourneyRef": {
+                  "DataFrameRef": "2022-01-17",
+                  "DatedVehicleJourneyRef": "MTA NYCT_OF_H2-Weekday-090900_M1_114"
+                },
+                "JourneyPatternRef": "MTA_M010007",
+                "PublishedLineName": [
+                  "M1"
+                ],
+                "OperatorRef": "MTA NYCT",
+                "OriginRef": "MTA_903130",
+                "DestinationRef": "MTA_803003",
+                "DestinationName": [
+                  "HARLEM 147 ST via MADISON AV"
+                ],
+                "SituationRef": [
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:alert:121951"
+                  },
+                  {
+                    "SituationSimpleRef": "MTABC_lmm:planned_work:2684"
+                  },
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:2672"
+                  }
+                ],
+                "Monitored": true,
+                "VehicleLocation": {
+                  "Longitude": -73.971927,
+                  "Latitude": 40.762872
+                },
+                "Bearing": 53.79931,
+                "ProgressRate": "normalProgress",
+                "BlockRef": "MTA NYCT_OF_H2-Weekday_H_OF_23040_M1-108",
+                "VehicleRef": "MTA NYCT_6786",
+                "MonitoredCall": {
+                  "AimedArrivalTime": "2022-01-17T15:52:00.338-05:00",
+                  "ExpectedArrivalTime": "2022-01-17T15:57:33.331-05:00",
+                  "ArrivalProximityText": "at stop",
+                  "ExpectedDepartureTime": "2022-01-17T15:57:33.331-05:00",
+                  "DistanceFromStop": 2,
+                  "NumberOfStopsAway": 0,
+                  "StopPointRef": "MTA_400363",
+                  "VisitNumber": 1,
+                  "StopPointName": [
+                    "MADISON AV/E 57 ST"
+                  ]
+                },
+                "OnwardCalls": {
+                  "OnwardCall": [
+                    {
+                      "ExpectedArrivalTime": "2022-01-17T15:57:32.331-05:00",
+                      "ArrivalProximityText": "at stop",
+                      "DistanceFromStop": 2,
+                      "NumberOfStopsAway": 0,
+                      "StopPointRef": "MTA_400363",
+                      "StopPointName": [
+                        "MADISON AV/E 57 ST"
+                      ]
+                    },
+                    {
+                      "ExpectedArrivalTime": "2022-01-17T15:58:49.333-05:00",
+                      "ArrivalProximityText": "1 stop away",
+                      "DistanceFromStop": 234,
+                      "NumberOfStopsAway": 1,
+                      "StopPointRef": "MTA_400364",
+                      "StopPointName": [
+                        "MADISON AV/E 60  ST"
+                      ]
+                    },
+                    {
+                      "ExpectedArrivalTime": "2022-01-17T16:00:09.133-05:00",
+                      "ArrivalProximityText": "2 stops away",
+                      "DistanceFromStop": 457,
+                      "NumberOfStopsAway": 2,
+                      "StopPointRef": "MTA_405490",
+                      "StopPointName": [
+                        "MADISON AV/E 63 ST"
+                      ]
+                    },
+                    {
+                      "ExpectedArrivalTime": "2022-01-17T16:01:25.633-05:00",
+                      "ArrivalProximityText": "3 stops away",
+                      "DistanceFromStop": 635,
+                      "NumberOfStopsAway": 3,
+                      "StopPointRef": "MTA_404994",
+                      "StopPointName": [
+                        "MADISON AV/E 66 ST"
+                      ]
+                    },
+                    {
+                      "ExpectedArrivalTime": "2022-01-17T16:02:10.871-05:00",
+                      "ArrivalProximityText": "4 stops away",
+                      "DistanceFromStop": 759,
+                      "NumberOfStopsAway": 4,
+                      "StopPointRef": "MTA_400028",
+                      "StopPointName": [
+                        "MADISON AV/E 67 ST"
+                      ]
+                    },
+                    {
+                      "ExpectedArrivalTime": "2022-01-17T16:03:25.083-05:00",
+                      "ArrivalProximityText": "0.6 miles away",
+                      "DistanceFromStop": 919,
+                      "NumberOfStopsAway": 5,
+                      "StopPointRef": "MTA_400029",
+                      "StopPointName": [
+                        "MADISON AV/E 69 ST"
+                      ]
+                    },
+                    {
+                      "ExpectedArrivalTime": "2022-01-17T16:05:02.871-05:00",
+                      "ArrivalProximityText": "0.7 miles away",
+                      "DistanceFromStop": 1138,
+                      "NumberOfStopsAway": 6,
+                      "StopPointRef": "MTA_400030",
+                      "StopPointName": [
+                        "MADISON AV/E 72 ST"
+                      ]
+                    },
+                    {
+                      "ExpectedArrivalTime": "2022-01-17T16:06:16.514-05:00",
+                      "ArrivalProximityText": "0.8 miles away",
+                      "DistanceFromStop": 1261,
+                      "NumberOfStopsAway": 7,
+                      "StopPointRef": "MTA_400031",
+                      "StopPointName": [
+                        "MADISON AV/E 74 ST"
+                      ]
+                    },
+                    {
+                      "ExpectedArrivalTime": "2022-01-17T16:08:03.964-05:00",
+                      "ArrivalProximityText": "1.0 miles away",
+                      "DistanceFromStop": 1585,
+                      "NumberOfStopsAway": 8,
+                      "StopPointRef": "MTA_400032",
+                      "StopPointName": [
+                        "MADISON AV/E 77 ST"
+                      ]
+                    },
+                    {
+                      "ExpectedArrivalTime": "2022-01-17T16:09:45.164-05:00",
+                      "ArrivalProximityText": "1.2 miles away",
+                      "DistanceFromStop": 1856,
+                      "NumberOfStopsAway": 9,
+                      "StopPointRef": "MTA_400033",
+                      "StopPointName": [
+                        "MADISON AV/E 81 ST"
+                      ]
+                    },
+                    {
+                      "ExpectedArrivalTime": "2022-01-17T16:11:22.764-05:00",
+                      "ArrivalProximityText": "1.3 miles away",
+                      "DistanceFromStop": 2026,
+                      "NumberOfStopsAway": 10,
+                      "StopPointRef": "MTA_400034",
+                      "StopPointName": [
+                        "MADISON AV/E 83 ST"
+                      ]
+                    },
+                    {
+                      "ExpectedArrivalTime": "2022-01-17T16:13:36.164-05:00",
+                      "ArrivalProximityText": "1.4 miles away",
+                      "DistanceFromStop": 2326,
+                      "NumberOfStopsAway": 11,
+                      "StopPointRef": "MTA_400036",
+                      "StopPointName": [
+                        "MADISON AV/E 86 ST"
+                      ]
+                    },
+                    {
+                      "ExpectedArrivalTime": "2022-01-17T16:15:06.964-05:00",
+                      "ArrivalProximityText": "1.6 miles away",
+                      "DistanceFromStop": 2520,
+                      "NumberOfStopsAway": 12,
+                      "StopPointRef": "MTA_400037",
+                      "StopPointName": [
+                        "MADISON AV/E 89 ST"
+                      ]
+                    },
+                    {
+                      "ExpectedArrivalTime": "2022-01-17T16:16:40.164-05:00",
+                      "ArrivalProximityText": "1.7 miles away",
+                      "DistanceFromStop": 2734,
+                      "NumberOfStopsAway": 13,
+                      "StopPointRef": "MTA_400038",
+                      "StopPointName": [
+                        "MADISON AV/E 91 ST"
+                      ]
+                    },
+                    {
+                      "ExpectedArrivalTime": "2022-01-17T16:17:37.260-05:00",
+                      "ArrivalProximityText": "1.8 miles away",
+                      "DistanceFromStop": 2896,
+                      "NumberOfStopsAway": 14,
+                      "StopPointRef": "MTA_400039",
+                      "StopPointName": [
+                        "MADISON AV/E 93 ST"
+                      ]
+                    },
+                    {
+                      "ExpectedArrivalTime": "2022-01-17T16:18:40.860-05:00",
+                      "ArrivalProximityText": "1.9 miles away",
+                      "DistanceFromStop": 3081,
+                      "NumberOfStopsAway": 15,
+                      "StopPointRef": "MTA_404191",
+                      "StopPointName": [
+                        "MADISON AV/E 95 ST"
+                      ]
+                    },
+                    {
+                      "ExpectedArrivalTime": "2022-01-17T16:20:09.260-05:00",
+                      "ArrivalProximityText": "2.0 miles away",
+                      "DistanceFromStop": 3249,
+                      "NumberOfStopsAway": 16,
+                      "StopPointRef": "MTA_400041",
+                      "StopPointName": [
+                        "MADISON AV/E 98 ST"
+                      ]
+                    },
+                    {
+                      "ExpectedArrivalTime": "2022-01-17T16:21:28.060-05:00",
+                      "ArrivalProximityText": "2.2 miles away",
+                      "DistanceFromStop": 3489,
+                      "NumberOfStopsAway": 17,
+                      "StopPointRef": "MTA_400042",
+                      "StopPointName": [
+                        "MADISON AV/E 101 ST"
+                      ]
+                    },
+                    {
+                      "ExpectedArrivalTime": "2022-01-17T16:22:43.934-05:00",
+                      "ArrivalProximityText": "2.3 miles away",
+                      "DistanceFromStop": 3625,
+                      "NumberOfStopsAway": 18,
+                      "StopPointRef": "MTA_400043",
+                      "StopPointName": [
+                        "MADISON AV/E 102 ST"
+                      ]
+                    },
+                    {
+                      "ExpectedArrivalTime": "2022-01-17T16:23:20.375-05:00",
+                      "ArrivalProximityText": "2.3 miles away",
+                      "DistanceFromStop": 3725,
+                      "NumberOfStopsAway": 19,
+                      "StopPointRef": "MTA_400044",
+                      "StopPointName": [
+                        "MADISON AV/E 104 ST"
+                      ]
+                    },
+                    {
+                      "ExpectedArrivalTime": "2022-01-17T16:24:11.254-05:00",
+                      "ArrivalProximityText": "2.4 miles away",
+                      "DistanceFromStop": 3887,
+                      "NumberOfStopsAway": 20,
+                      "StopPointRef": "MTA_400045",
+                      "StopPointName": [
+                        "MADISON AV/E 106 ST"
+                      ]
+                    },
+                    {
+                      "ExpectedArrivalTime": "2022-01-17T16:25:23.254-05:00",
+                      "ArrivalProximityText": "2.5 miles away",
+                      "DistanceFromStop": 4029,
+                      "NumberOfStopsAway": 21,
+                      "StopPointRef": "MTA_400046",
+                      "StopPointName": [
+                        "MADISON AV/E 107 ST"
+                      ]
+                    },
+                    {
+                      "ExpectedArrivalTime": "2022-01-17T16:26:11.369-05:00",
+                      "ArrivalProximityText": "2.6 miles away",
+                      "DistanceFromStop": 4189,
+                      "NumberOfStopsAway": 22,
+                      "StopPointRef": "MTA_400047",
+                      "StopPointName": [
+                        "MADISON AV/E 109 ST"
+                      ]
+                    },
+                    {
+                      "ExpectedArrivalTime": "2022-01-17T16:27:10.796-05:00",
+                      "ArrivalProximityText": "2.7 miles away",
+                      "DistanceFromStop": 4403,
+                      "NumberOfStopsAway": 23,
+                      "StopPointRef": "MTA_400048",
+                      "StopPointName": [
+                        "MADISON AV/E 112 ST"
+                      ]
+                    },
+                    {
+                      "ExpectedArrivalTime": "2022-01-17T16:27:44.418-05:00",
+                      "ArrivalProximityText": "2.8 miles away",
+                      "DistanceFromStop": 4529,
+                      "NumberOfStopsAway": 24,
+                      "StopPointRef": "MTA_404103",
+                      "StopPointName": [
+                        "MADISON AV/E 114 ST"
+                      ]
+                    },
+                    {
+                      "ExpectedArrivalTime": "2022-01-17T16:28:53.080-05:00",
+                      "ArrivalProximityText": "3.0 miles away",
+                      "DistanceFromStop": 4770,
+                      "NumberOfStopsAway": 25,
+                      "StopPointRef": "MTA_400050",
+                      "StopPointName": [
+                        "MADISON AV/E 116 ST"
+                      ]
+                    },
+                    {
+                      "ExpectedArrivalTime": "2022-01-17T16:30:11.072-05:00",
+                      "ArrivalProximityText": "3.1 miles away",
+                      "DistanceFromStop": 4913,
+                      "NumberOfStopsAway": 26,
+                      "StopPointRef": "MTA_400051",
+                      "StopPointName": [
+                        "MADISON AV/E 118 ST"
+                      ]
+                    },
+                    {
+                      "ExpectedArrivalTime": "2022-01-17T16:31:12.933-05:00",
+                      "ArrivalProximityText": "3.2 miles away",
+                      "DistanceFromStop": 5161,
+                      "NumberOfStopsAway": 27,
+                      "StopPointRef": "MTA_403980",
+                      "StopPointName": [
+                        "MADISON AV/E 121 ST"
+                      ]
+                    },
+                    {
+                      "ExpectedArrivalTime": "2022-01-17T16:31:55.273-05:00",
+                      "ArrivalProximityText": "3.3 miles away",
+                      "DistanceFromStop": 5324,
+                      "NumberOfStopsAway": 28,
+                      "StopPointRef": "MTA_400053",
+                      "StopPointName": [
+                        "MADISON AV/E 123 ST"
+                      ]
+                    },
+                    {
+                      "ExpectedArrivalTime": "2022-01-17T16:32:52.440-05:00",
+                      "ArrivalProximityText": "3.4 miles away",
+                      "DistanceFromStop": 5485,
+                      "NumberOfStopsAway": 29,
+                      "StopPointRef": "MTA_400054",
+                      "StopPointName": [
+                        "MADISON AV/E 125 ST"
+                      ]
+                    },
+                    {
+                      "ExpectedArrivalTime": "2022-01-17T16:34:09.636-05:00",
+                      "ArrivalProximityText": "3.5 miles away",
+                      "DistanceFromStop": 5641,
+                      "NumberOfStopsAway": 30,
+                      "StopPointRef": "MTA_400055",
+                      "StopPointName": [
+                        "MADISON AV/E 127 ST"
+                      ]
+                    },
+                    {
+                      "ExpectedArrivalTime": "2022-01-17T16:34:48.836-05:00",
+                      "ArrivalProximityText": "3.6 miles away",
+                      "DistanceFromStop": 5802,
+                      "NumberOfStopsAway": 31,
+                      "StopPointRef": "MTA_400056",
+                      "StopPointName": [
+                        "MADISON AV/E 129 ST"
+                      ]
+                    },
+                    {
+                      "ExpectedArrivalTime": "2022-01-17T16:36:00.436-05:00",
+                      "ArrivalProximityText": "3.8 miles away",
+                      "DistanceFromStop": 6046,
+                      "NumberOfStopsAway": 32,
+                      "StopPointRef": "MTA_400057",
+                      "StopPointName": [
+                        "MADISON AV/E 132 ST"
+                      ]
+                    },
+                    {
+                      "ExpectedArrivalTime": "2022-01-17T16:37:42.557-05:00",
+                      "ArrivalProximityText": "3.9 miles away",
+                      "DistanceFromStop": 6286,
+                      "NumberOfStopsAway": 33,
+                      "StopPointRef": "MTA_403711",
+                      "StopPointName": [
+                        "E 135 ST/MADISON AV"
+                      ]
+                    },
+                    {
+                      "ExpectedArrivalTime": "2022-01-17T16:38:51.082-05:00",
+                      "ArrivalProximityText": "4.0 miles away",
+                      "DistanceFromStop": 6446,
+                      "NumberOfStopsAway": 34,
+                      "StopPointRef": "MTA_400059",
+                      "StopPointName": [
+                        "5 AV/E 135 ST"
+                      ]
+                    },
+                    {
+                      "ExpectedArrivalTime": "2022-01-17T16:39:36.060-05:00",
+                      "ArrivalProximityText": "4.1 miles away",
+                      "DistanceFromStop": 6616,
+                      "NumberOfStopsAway": 35,
+                      "StopPointRef": "MTA_400060",
+                      "StopPointName": [
+                        "5 AV/E 138 ST"
+                      ]
+                    },
+                    {
+                      "ExpectedArrivalTime": "2022-01-17T16:40:52.106-05:00",
+                      "ArrivalProximityText": "4.2 miles away",
+                      "DistanceFromStop": 6775,
+                      "NumberOfStopsAway": 36,
+                      "StopPointRef": "MTA_400061",
+                      "StopPointName": [
+                        "W 139 ST/5 AV"
+                      ]
+                    },
+                    {
+                      "ExpectedArrivalTime": "2022-01-17T16:42:14.512-05:00",
+                      "ArrivalProximityText": "4.4 miles away",
+                      "DistanceFromStop": 7064,
+                      "NumberOfStopsAway": 37,
+                      "StopPointRef": "MTA_400062",
+                      "StopPointName": [
+                        "MALCOLM X BL/W 139 ST"
+                      ]
+                    },
+                    {
+                      "ExpectedArrivalTime": "2022-01-17T16:43:36.112-05:00",
+                      "ArrivalProximityText": "4.5 miles away",
+                      "DistanceFromStop": 7299,
+                      "NumberOfStopsAway": 38,
+                      "StopPointRef": "MTA_404335",
+                      "StopPointName": [
+                        "MALCOLM X BL/W 142 ST"
+                      ]
+                    },
+                    {
+                      "ExpectedArrivalTime": "2022-01-17T16:45:11.586-05:00",
+                      "ArrivalProximityText": "4.7 miles away",
+                      "DistanceFromStop": 7539,
+                      "NumberOfStopsAway": 39,
+                      "StopPointRef": "MTA_400065",
+                      "StopPointName": [
+                        "MALCOLM X BL/W 145 ST"
+                      ]
+                    },
+                    {
+                      "ExpectedArrivalTime": "2022-01-17T16:46:15.222-05:00",
+                      "ArrivalProximityText": "4.8 miles away",
+                      "DistanceFromStop": 7719,
+                      "NumberOfStopsAway": 40,
+                      "StopPointRef": "MTA_400066",
+                      "StopPointName": [
+                        "W 147 ST/MALCOLM X BL"
+                      ]
+                    },
+                    {
+                      "ExpectedArrivalTime": "2022-01-17T16:47:10.524-05:00",
+                      "ArrivalProximityText": "4.9 miles away",
+                      "DistanceFromStop": 7924,
+                      "NumberOfStopsAway": 41,
+                      "StopPointRef": "MTA_400067",
+                      "StopPointName": [
+                        "W 147 ST/ADAM C POWELL BL"
+                      ]
+                    },
+                    {
+                      "ExpectedArrivalTime": "2022-01-17T16:49:34.924-05:00",
+                      "ArrivalProximityText": "5.1 miles away",
+                      "DistanceFromStop": 8286,
+                      "NumberOfStopsAway": 42,
+                      "StopPointRef": "MTA_803003",
+                      "StopPointName": [
+                        "146 ST/LENOX AV"
+                      ]
+                    }
+                  ]
+                }
+              },
+              "RecordedAtTime": "2022-01-17T15:57:12.000-05:00"
+            }
+          ],
+          "ResponseTimestamp": "2022-01-17T15:57:32.331-05:00",
+          "ValidUntil": "2022-01-17T15:58:32.331-05:00"
+        }
+      ],
+      "SituationExchangeDelivery": [
+        {
+          "Situations": {
+            "PtSituationElement": [
+              {
+                "PublicationWindow": {
+                  "StartTime": "2022-01-17T00:00:00.000-05:00",
+                  "EndTime": "2022-01-17T23:59:00.000-05:00"
+                },
+                "Severity": "undefined",
+                "Summary": [
+                  "Some bus routes will be operating a modified schedule on Martin Luther King, Jr Day"
+                ],
+                "Description": [
+                  "Some bus routes will be operating a modified schedule on Martin Luther King, Jr Day"
+                ],
+                "Affects": {
+                  "VehicleJourneys": {
+                    "AffectedVehicleJourney": [
+                      {
+                        "LineRef": "MTABC_Q40"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q4"
+                      },
+                      {
+                        "LineRef": "MTABC_Q39"
+                      },
+                      {
+                        "LineRef": "MTABC_Q38"
+                      },
+                      {
+                        "LineRef": "MTABC_Q37"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q36"
+                      },
+                      {
+                        "LineRef": "MTABC_Q35"
+                      },
+                      {
+                        "LineRef": "MTABC_Q34"
+                      },
+                      {
+                        "LineRef": "MTABC_Q33"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q32"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q31"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q30"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q3"
+                      },
+                      {
+                        "LineRef": "MTABC_Q29"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q28"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q27"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q26"
+                      },
+                      {
+                        "LineRef": "MTABC_Q25"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q24"
+                      },
+                      {
+                        "LineRef": "MTABC_Q23"
+                      },
+                      {
+                        "LineRef": "MTABC_Q22"
+                      },
+                      {
+                        "LineRef": "MTABC_Q21"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q20B"
+                      },
+                      {
+                        "LineRef": "MTABC_Q19"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_B1"
+                      },
+                      {
+                        "LineRef": "MTABC_B100"
+                      },
+                      {
+                        "LineRef": "MTABC_B103"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_B11"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_B12"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_B13"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_B14"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_B15"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_B16"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_B17"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_B2"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_B20"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_B24"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_B25"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_B26"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_B3"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_B31"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_B32"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_B35"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_B36"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_B37"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_B38"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_B39"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_B4"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_B41"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_B42"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_B43"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_B44"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_B44+"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_B45"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_B46"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_B46+"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_B47"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_B48"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_B49"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_B52"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_B54"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_B57"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_B6"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_B60"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_B61"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_B62"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_B63"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_B64"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_B65"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_B67"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_B68"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_B69"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_B7"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_B70"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_B74"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_B8"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_B82"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_B82+"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_B83"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_B84"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_B9"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_BX1"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_BX10"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_BX11"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_BX12"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_BX12+"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_BX13"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_BX15"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_BX16"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_BX17"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_BX18"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_BX19"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_BX2"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_BX20"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_BX21"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_BX22"
+                      },
+                      {
+                        "LineRef": "MTABC_BX23"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_BX24"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_BX26"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_BX27"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_BX28"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_BX29"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_BX3"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_BX30"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_BX31"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_BX32"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_BX33"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_BX34"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_BX35"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_BX36"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_BX38"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_BX39"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_BX4"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_BX40"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_BX41"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_BX41+"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_BX42"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_BX46"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_BX4A"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_BX5"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_BX6"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_BX6+"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_BX7"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_BX8"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_BX9"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M1"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M10"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M100"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M101"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M102"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M103"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M104"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M106"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M11"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M116"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M12"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M14A+"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M14D+"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M15"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M15+"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M2"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M20"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M21"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M22"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M23+"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M3"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M31"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M34A+"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M34+"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M35"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M4"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M42"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M5"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M50"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M55"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M57"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M60+"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M66"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M7"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M72"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M79+"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M8"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M86+"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M9"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M96"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M98"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q1"
+                      },
+                      {
+                        "LineRef": "MTABC_Q10"
+                      },
+                      {
+                        "LineRef": "MTABC_Q100"
+                      },
+                      {
+                        "LineRef": "MTABC_Q101"
+                      },
+                      {
+                        "LineRef": "MTABC_Q102"
+                      },
+                      {
+                        "LineRef": "MTABC_Q103"
+                      },
+                      {
+                        "LineRef": "MTABC_Q104"
+                      },
+                      {
+                        "LineRef": "MTABC_Q11"
+                      },
+                      {
+                        "LineRef": "MTABC_Q110"
+                      },
+                      {
+                        "LineRef": "MTABC_Q111"
+                      },
+                      {
+                        "LineRef": "MTABC_Q112"
+                      },
+                      {
+                        "LineRef": "MTABC_Q113"
+                      },
+                      {
+                        "LineRef": "MTABC_Q114"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q12"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_X38"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_X68"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_X64"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_X63"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_X37"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_X28"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_X27"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_S98"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_S96"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_S94"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_S93"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_S92"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_S91"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_S90"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_S89"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_S86"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_S84"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_S81"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_S79+"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_S78"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_S76"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_S74"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_S66"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_S62"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_S61"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_S59"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_S57"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_S56"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_S55"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_S54"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_S53"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_S52"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_S51"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_S48"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_S46"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_S44"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_S42"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_S40"
+                      },
+                      {
+                        "LineRef": "MTABC_Q09"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q88"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q85"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q84"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q83"
+                      },
+                      {
+                        "LineRef": "MTABC_Q08"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q77"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q76"
+                      },
+                      {
+                        "LineRef": "MTABC_Q72"
+                      },
+                      {
+                        "LineRef": "MTABC_Q70+"
+                      },
+                      {
+                        "LineRef": "MTABC_Q07"
+                      },
+                      {
+                        "LineRef": "MTABC_Q69"
+                      },
+                      {
+                        "LineRef": "MTABC_Q67"
+                      },
+                      {
+                        "LineRef": "MTABC_Q66"
+                      },
+                      {
+                        "LineRef": "MTABC_Q65"
+                      },
+                      {
+                        "LineRef": "MTABC_Q64"
+                      },
+                      {
+                        "LineRef": "MTABC_Q60"
+                      },
+                      {
+                        "LineRef": "MTABC_Q06"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q59"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q58"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q56"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q55"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q54"
+                      },
+                      {
+                        "LineRef": "MTABC_Q53+"
+                      },
+                      {
+                        "LineRef": "MTABC_Q52+"
+                      },
+                      {
+                        "LineRef": "MTABC_Q50"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q5"
+                      },
+                      {
+                        "LineRef": "MTABC_Q49"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q48"
+                      },
+                      {
+                        "LineRef": "MTABC_Q47"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q46"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q44+"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q43"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q42"
+                      },
+                      {
+                        "LineRef": "MTABC_Q41"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q20A"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q2"
+                      },
+                      {
+                        "LineRef": "MTABC_Q18"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q17"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q16"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q15A"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q15"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q13"
+                      }
+                    ]
+                  }
+                },
+                "CreationTime": "2022-01-07T16:08:55.000-05:00",
+                "SituationNumber": "MTABC_lmm:planned_work:2684"
+              },
+              {
+                "PublicationWindow": {
+                  "StartTime": "2022-01-17T00:00:00.000-05:00",
+                  "EndTime": "2022-01-17T23:59:00.000-05:00"
+                },
+                "Severity": "undefined",
+                "Summary": [
+                  "M1 and M4 Limited bus service will not operate on Martin Luther King, Jr Day, please use local service"
+                ],
+                "Description": [
+                  "M1 and M4 Limited bus service will not operate on Martin Luther King, Jr Day, please use local service"
+                ],
+                "Affects": {
+                  "VehicleJourneys": {
+                    "AffectedVehicleJourney": [
+                      {
+                        "LineRef": "MTA NYCT_M1"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M4"
+                      }
+                    ]
+                  }
+                },
+                "CreationTime": "2022-01-07T12:51:11.000-05:00",
+                "SituationNumber": "MTA NYCT_lmm:planned_work:2672"
+              },
+              {
+                "PublicationWindow": {
+                  "StartTime": "2022-01-17T08:12:19.000-05:00",
+                  "EndTime": "2022-01-17T23:30:00.000-05:00"
+                },
+                "Severity": "undefined",
+                "Summary": [
+                  "You may wait longer for this bus route. We\u0027re running as much service as we can with the bus operators we have available."
+                ],
+                "Description": [
+                  "You may wait longer for this bus route. We\u0027re running as much service as we can with the bus operators we have available."
+                ],
+                "Affects": {
+                  "VehicleJourneys": {
+                    "AffectedVehicleJourney": [
+                      {
+                        "LineRef": "MTA NYCT_M7"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M15+"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M1"
+                      }
+                    ]
+                  }
+                },
+                "CreationTime": "2022-01-17T07:16:59.000-05:00",
+                "SituationNumber": "MTA NYCT_lmm:alert:121951"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,858 @@
+{
+  "header": {
+    "gtfsRealtimeVersion": "2.0",
+    "incrementality": "FULL_DATASET",
+    "timestamp": "1642453234",
+    "mercuryFeedHeader": {
+      "mercuryVersion": "1.0"
+    }
+  },
+  "entity": [{
+    "id": "lmm:planned_work:2748",
+    "alert": {
+      "activePeriod": [{
+        "start": "1643450400",
+        "end": "1643518740"
+      }],
+      "informedEntity": [{
+        "agencyId": "MNR",
+        "routeId": "50",
+        "mercuryEntitySelector": {
+          "sortOrder": "MNR:50:13"
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Buses replace trains between Secaucus Junction and Spring Valley",
+          "language": "en"
+        }, {
+          "text": "Buses replace trains between Secaucus Junction and Spring Valley",
+          "language": "en-html"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "All Pascack Valley Line trains are cancelled while NJ TRANSIT performs track work.\nExpress buses run between Spring Valley and Secaucus Junction, making intermediate stops at Nanuet and Pearl River. View the special timetable for bus departure times and stop locations.\nIf you are traveling to intermediate stops in New Jersey, local buses are also available.\nBetween Secaucus and Hoboken, use regular Main/Bergen County Line trains.\nIf possible, consider using the Hudson Line at Tarrytown station, which accepts Pascack Valley Line monthly and weekly tickets for travel to and from Manhattan.\n\nService resumes with the 12:45 AM from Hoboken to Spring Valley.",
+          "language": "en"
+        }, {
+          "text": "\u003cp\u003eAll Pascack Valley Line trains are cancelled while NJ TRANSIT performs track work.\u003c/p\u003e\u003cul\u003e\u003cli\u003e\u003cp\u003eExpress buses run between Spring Valley and Secaucus Junction, making intermediate stops at Nanuet and Pearl River. \u003ca title\u003d\"\" target\u003d\"_blank\" href\u003d\"https://d2g63oyneaimm8.cloudfront.net/sites/default/files/Bus%20schedule%20-%20PVL%20Busing%20-%20Saturday%201-29-22.pdf\" rel\u003d\"noopener noreferrer nofollow\"\u003eView the special timetable\u003c/a\u003e for bus departure times and stop locations.\u003c/p\u003e\u003c/li\u003e\u003cli\u003e\u003cp\u003eIf you are traveling to intermediate stops in New Jersey, local buses are also available.\u003c/p\u003e\u003c/li\u003e\u003cli\u003e\u003cp\u003eBetween Secaucus and Hoboken, use regular Main/Bergen County Line trains.\u003c/p\u003e\u003c/li\u003e\u003c/ul\u003e\u003cp\u003eIf possible, consider using the Hudson Line at \u003cstrong\u003eTarrytown \u003c/strong\u003estation, which accepts Pascack Valley Line monthly and weekly tickets for travel to and from Manhattan.\u003c/p\u003e\u003cp style\u003d\"min-height:10px\"\u003e\u003c/p\u003e\u003cp\u003eService resumes with the \u003cstrong\u003e12:45 AM\u003c/strong\u003e from Hoboken to Spring Valley.\u003c/p\u003e",
+          "language": "en-html"
+        }]
+      },
+      "mercuryAlert": {
+        "createdAt": "1642441332",
+        "updatedAt": "1642441449",
+        "alertType": "Planned Work",
+        "displayBeforeActive": "3600",
+        "humanReadableActivePeriod": {
+          "translation": [{
+            "text": "Jan 29, Saturday, 5:00 AM to 11:59 PM",
+            "language": "en"
+          }]
+        }
+      }
+    }
+  }, {
+    "id": "lmm:planned_work:2722",
+    "alert": {
+      "activePeriod": [{
+        "start": "1642935600",
+        "end": "1642975200"
+      }],
+      "informedEntity": [{
+        "agencyId": "MNR",
+        "routeId": "51",
+        "mercuryEntitySelector": {
+          "sortOrder": "MNR:51:13"
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Expect delays of up to 15 minutes",
+          "language": "en"
+        }, {
+          "text": "Expect delays of up to 15 minutes",
+          "language": "en-html"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "NJ TRANSIT is performing track work between Clifton and Waldwick.",
+          "language": "en"
+        }, {
+          "text": "\u003cp\u003eNJ TRANSIT is performing track work between Clifton and Waldwick.\u003c/p\u003e",
+          "language": "en-html"
+        }]
+      },
+      "mercuryAlert": {
+        "createdAt": "1641960906",
+        "updatedAt": "1642012142",
+        "alertType": "Planned Work",
+        "displayBeforeActive": "3600",
+        "humanReadableActivePeriod": {
+          "translation": [{
+            "text": "Jan 23, Sunday, 6:00 AM to 5:00 PM",
+            "language": "en"
+          }]
+        }
+      }
+    }
+  }, {
+    "id": "lmm:planned_work:2719",
+    "alert": {
+      "activePeriod": [{
+        "start": "1642406400",
+        "end": "1642489200"
+      }],
+      "informedEntity": [{
+        "agencyId": "MNR",
+        "routeId": "50",
+        "mercuryEntitySelector": {
+          "sortOrder": "MNR:50:5"
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Trains run on a weekend schedule on Martin Luther King Jr. Day",
+          "language": "en"
+        }, {
+          "text": "Trains run on a weekend schedule on Martin Luther King Jr. Day",
+          "language": "en-html"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "",
+          "language": "en"
+        }, {
+          "text": "\u003cp style\u003d\"min-height:10px\"\u003e\u003c/p\u003e",
+          "language": "en-html"
+        }]
+      },
+      "mercuryAlert": {
+        "createdAt": "1641927373",
+        "updatedAt": "1641927373",
+        "alertType": "Weekend Service",
+        "displayBeforeActive": "0",
+        "humanReadableActivePeriod": {
+          "translation": [{
+            "text": "Monday, January 17, 2022",
+            "language": "en"
+          }]
+        },
+        "cloneId": "lmm:planned_work:2718"
+      }
+    }
+  }, {
+    "id": "lmm:planned_work:2718",
+    "alert": {
+      "activePeriod": [{
+        "start": "1642406400",
+        "end": "1642489200"
+      }],
+      "informedEntity": [{
+        "agencyId": "MNR",
+        "routeId": "51",
+        "mercuryEntitySelector": {
+          "sortOrder": "MNR:51:9"
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Trains run on an enhanced weekend schedule on Martin Luther King Jr. Day",
+          "language": "en"
+        }, {
+          "text": "Trains run on an enhanced weekend schedule on Martin Luther King Jr. Day",
+          "language": "en-html"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "3 extra trains will run:\n#94 - 6:18 AM from Port Jervis, making all stops to Suffern, then non-stop to Secaucus (8:18) and Hoboken (8:30)\n#88 – 4:05 PM from Port Jervis, making all stops to Suffern, then non-stop to Secaucus (6:12) and Hoboken (7:26)\n#93 – 5:19 PM from Hoboken, stopping at Secaucus (5:29), then operating non-stop to Suffern and making all stops to Port Jervis.",
+          "language": "en"
+        }, {
+          "text": "\u003cp\u003e3 extra trains will run:\u003c/p\u003e\u003cul\u003e\u003cli\u003e\u003cp\u003e#94 - \u003cstrong\u003e6:18 AM\u003c/strong\u003e from Port Jervis, making all stops to Suffern, then non-stop to Secaucus (8:18) and Hoboken (8:30)\u003c/p\u003e\u003c/li\u003e\u003cli\u003e\u003cp\u003e#88 – \u003cstrong\u003e4:05 PM\u003c/strong\u003e from Port Jervis, making all stops to Suffern, then non-stop to Secaucus (6:12) and Hoboken (7:26)\u003c/p\u003e\u003c/li\u003e\u003cli\u003e\u003cp\u003e#93 – \u003cstrong\u003e5:19 PM\u003c/strong\u003e from Hoboken, stopping at Secaucus (5:29), then operating non-stop to Suffern and making all stops to Port Jervis.\u003c/p\u003e\u003c/li\u003e\u003c/ul\u003e",
+          "language": "en-html"
+        }]
+      },
+      "mercuryAlert": {
+        "createdAt": "1641927354",
+        "updatedAt": "1641927475",
+        "alertType": "Holiday Service",
+        "displayBeforeActive": "0",
+        "humanReadableActivePeriod": {
+          "translation": [{
+            "text": "Monday, January 17, 2022",
+            "language": "en"
+          }]
+        },
+        "cloneId": "lmm:planned_work:2705"
+      }
+    }
+  }, {
+    "id": "lmm:planned_work:2717",
+    "alert": {
+      "activePeriod": [{
+        "start": "1642406400",
+        "end": "1642489200"
+      }],
+      "informedEntity": [{
+        "agencyId": "MNR",
+        "routeId": "1",
+        "mercuryEntitySelector": {
+          "sortOrder": "MNR:1:9"
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Trains run on an enhanced Saturday schedule on Martin Luther King Jr. Day",
+          "language": "en"
+        }, {
+          "text": "Trains run on an enhanced Saturday schedule on Martin Luther King Jr. Day",
+          "language": "en-html"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "There will be additional service during the morning and evening rush hours. Use the Metro-North TrainTime app to plan your trip.\n\nThe Hudson Rail Link, Haverstraw-Ossining Ferry, and Newburgh-Beacon Ferry will operate on adjusted schedules to connect with the revised train schedule:\nHudson Rail Link - Spuyten Duyvil station\nHudson Rail Link - Riverdale station\nHaverstraw-Ossining Ferry\nNewburgh-Beacon Ferry",
+          "language": "en"
+        }, {
+          "text": "\u003cp\u003eThere will be additional service during the morning and evening rush hours. Use the Metro-North TrainTime app to plan your trip.\u003c/p\u003e\u003cp style\u003d\"min-height:10px\"\u003e\u003c/p\u003e\u003cp\u003eThe Hudson Rail Link, Haverstraw-Ossining Ferry, and Newburgh-Beacon Ferry will operate on adjusted schedules to connect with the revised train schedule:\u003c/p\u003e\u003cul\u003e\u003cli\u003e\u003cp\u003e\u003ca title\u003d\"\" target\u003d\"_blank\" href\u003d\"https://new.mta.info/document/71016\" rel\u003d\"noopener noreferrer nofollow\"\u003eHudson Rail Link - Spuyten Duyvil station\u003c/a\u003e\u003c/p\u003e\u003c/li\u003e\u003cli\u003e\u003cp\u003e\u003ca title\u003d\"\" target\u003d\"_blank\" href\u003d\"https://new.mta.info/document/71011\" rel\u003d\"noopener noreferrer nofollow\"\u003eHudson Rail Link - Riverdale station\u003c/a\u003e\u003c/p\u003e\u003c/li\u003e\u003cli\u003e\u003cp\u003e\u003ca title\u003d\"\" target\u003d\"_blank\" href\u003d\"https://new.mta.info/document/70986\" rel\u003d\"noopener noreferrer nofollow\"\u003eHaverstraw-Ossining Ferry\u003c/a\u003e\u003c/p\u003e\u003c/li\u003e\u003cli\u003e\u003cp\u003e\u003ca title\u003d\"\" target\u003d\"_blank\" href\u003d\"https://new.mta.info/document/71006\" rel\u003d\"noopener noreferrer nofollow\"\u003eNewburgh-Beacon Ferry\u003c/a\u003e\u003c/p\u003e\u003c/li\u003e\u003c/ul\u003e",
+          "language": "en-html"
+        }]
+      },
+      "mercuryAlert": {
+        "createdAt": "1641927272",
+        "updatedAt": "1641927289",
+        "alertType": "Holiday Service",
+        "displayBeforeActive": "0",
+        "humanReadableActivePeriod": {
+          "translation": [{
+            "text": "Monday, January 17, 2022",
+            "language": "en"
+          }]
+        },
+        "cloneId": "lmm:planned_work:2649"
+      }
+    }
+  }, {
+    "id": "lmm:planned_work:2705",
+    "alert": {
+      "activePeriod": [{
+        "start": "1642406400",
+        "end": "1642489200"
+      }],
+      "informedEntity": [{
+        "agencyId": "MNR",
+        "routeId": "3",
+        "mercuryEntitySelector": {
+          "sortOrder": "MNR:3:9"
+        }
+      }, {
+        "agencyId": "MNR",
+        "routeId": "6",
+        "mercuryEntitySelector": {
+          "sortOrder": "MNR:6:9"
+        }
+      }, {
+        "agencyId": "MNR",
+        "routeId": "wassaic",
+        "mercuryEntitySelector": {
+          "sortOrder": "MNR:wassaic:9"
+        }
+      }, {
+        "agencyId": "MNR",
+        "routeId": "2",
+        "mercuryEntitySelector": {
+          "sortOrder": "MNR:2:9"
+        }
+      }, {
+        "agencyId": "MNR",
+        "routeId": "5",
+        "mercuryEntitySelector": {
+          "sortOrder": "MNR:5:9"
+        }
+      }, {
+        "agencyId": "MNR",
+        "routeId": "4",
+        "mercuryEntitySelector": {
+          "sortOrder": "MNR:4:9"
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Trains run on an enhanced Saturday schedule on Martin Luther King Jr. Day",
+          "language": "en"
+        }, {
+          "text": "Trains run on an enhanced Saturday schedule on Martin Luther King Jr. Day",
+          "language": "en-html"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "There will be additional service during the morning and evening rush hours. Use the Metro-North TrainTime app to plan your trip.",
+          "language": "en"
+        }, {
+          "text": "\u003cp\u003eThere will be additional service during the morning and evening rush hours. Use the Metro-North TrainTime app to plan your trip.\u003c/p\u003e",
+          "language": "en-html"
+        }]
+      },
+      "mercuryAlert": {
+        "createdAt": "1641865191",
+        "updatedAt": "1641927312",
+        "alertType": "Holiday Service",
+        "displayBeforeActive": "0",
+        "humanReadableActivePeriod": {
+          "translation": [{
+            "text": "Monday, January 17, 2022",
+            "language": "en"
+          }]
+        }
+      }
+    }
+  }, {
+    "id": "lmm:planned_work:2202",
+    "alert": {
+      "activePeriod": [{
+        "start": "1637643600",
+        "end": "1657929600"
+      }],
+      "informedEntity": [{
+        "agencyId": "MNR",
+        "routeId": "3",
+        "mercuryEntitySelector": {
+          "sortOrder": "MNR:3:12"
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Station repairs at Stamford require tunnel/underpass closures",
+          "language": "en"
+        }, {
+          "text": "Station repairs at \u003cb\u003eStamford\u003c/b\u003e require tunnel/underpass closures",
+          "language": "en-html"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "To reach the center island track platforms, please use the east and west end overpasses.\n\nSee more details at: https://new.mta.info/article/stamford-station-pedestrian-tunnel-and-stairs-closed",
+          "language": "en"
+        }, {
+          "text": "\u003cp style\u003d\"line-height: 1.4375;\"\u003eTo reach the center island track platforms, please use the east and west end overpasses.\u003c/p\u003e\u003cp style\u003d\"line-height: 1.4375;\"\u003e\u003c/p\u003e\u003cp style\u003d\"line-height: 1.4375;\"\u003eSee more details at: \u003ca target\u003d\"_blank\" href\u003d\"https://new.mta.info/article/stamford-station-pedestrian-tunnel-and-stairs-closed\" rel\u003d\"noopener noreferrer nofollow\"\u003ehttps://new.mta.info/article/stamford-station-pedestrian-tunnel-and-stairs-closed\u003c/a\u003e\u003c/p\u003e",
+          "language": "en-html"
+        }]
+      },
+      "mercuryAlert": {
+        "createdAt": "1637701722",
+        "updatedAt": "1637701722",
+        "alertType": "Station Notice",
+        "humanReadableActivePeriod": {
+          "translation": [{
+            "text": "Through mid-January 2022",
+            "language": "en"
+          }]
+        }
+      }
+    }
+  }, {
+    "id": "MNR_rVVC10vHcwUoXGpUkXdVgA\u003d\u003d",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MNR",
+        "stopId": "57"
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Elevator from the station building to the White Plains/Southeast-bound platform (Track 3). Out of service.",
+          "language": "en"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Elevator from the station building to the White Plains/Southeast-bound platform (Track 3). Out of service.",
+          "language": "en"
+        }]
+      }
+    }
+  }, {
+    "id": "MNR_VbDxnutltifzbczrtZfmGw\u003d\u003d",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MNR",
+        "stopId": "57"
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Elevator from the station building to the New York-bound platform (Track 4). Out of service.",
+          "language": "en"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Elevator from the station building to the New York-bound platform (Track 4). Out of service.",
+          "language": "en"
+        }]
+      }
+    }
+  }, {
+    "id": "MNR_v2I/j18WuDbYvPsTZl7SgA\u003d\u003d",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MNR",
+        "stopId": "140"
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Elevator from the Water Street parking lot to the Ticket Office. Out of service.",
+          "language": "en"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Elevator from the Water Street parking lot to the Ticket Office. Out of service.",
+          "language": "en"
+        }]
+      }
+    }
+  }, {
+    "id": "MNR_gUnhJ2wfgqFIZ+7zcYGk7Q\u003d\u003d",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MNR",
+        "stopId": "83"
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Elevator from the overpass to the island platform (Tracks 2 \u0026 1). Out of service.",
+          "language": "en"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Elevator from the overpass to the island platform (Tracks 2 \u0026 1). Out of service.",
+          "language": "en"
+        }]
+      }
+    }
+  }, {
+    "id": "MNR_IdRNvmwcj9B9vHRlC6ByFw\u003d\u003d",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MNR",
+        "stopId": "68"
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Elevator from the overpass to the New York-bound platform (Tracks 4 \u0026 2). Out of service.",
+          "language": "en"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Elevator from the overpass to the New York-bound platform (Tracks 4 \u0026 2). Out of service.",
+          "language": "en"
+        }]
+      }
+    }
+  }, {
+    "id": "MNR_mMelhc89UeVc8nFokoBqIg\u003d\u003d",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MNR",
+        "stopId": "33"
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Elevator from the main station overpass to the Tracks 3 \u0026 1 platform. Out of service.",
+          "language": "en"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Elevator from the main station overpass to the Tracks 3 \u0026 1 platform. Out of service.",
+          "language": "en"
+        }]
+      }
+    }
+  }, {
+    "id": "MNR_6iri+Gpb1Vydy7vCuNYuig\u003d\u003d",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MNR",
+        "stopId": "128"
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Elevator from the street to the New Haven-bound platform (Track 4). Out of service.",
+          "language": "en"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Elevator from the street to the New Haven-bound platform (Track 4). Out of service.",
+          "language": "en"
+        }]
+      }
+    }
+  }, {
+    "id": "MNR_ytNKbSKX0OztcMtEZzdbZw\u003d\u003d",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MNR",
+        "stopId": "128"
+      }],
+      "headerText": {
+        "translation": [{
+          "text": " Elevator from the street to the New York-bound platform (Track 3). Out of service.",
+          "language": "en"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": " Elevator from the street to the New York-bound platform (Track 3). Out of service.",
+          "language": "en"
+        }]
+      }
+    }
+  }, {
+    "id": "MNR_+t5vYXObmWzu+4+isk9usA\u003d\u003d",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MNR",
+        "stopId": "23"
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Elevator from the Northbound platform (Tk 3) to the overpass and street. Out of service.",
+          "language": "en"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Elevator from the Northbound platform (Tk 3) to the overpass and street. Out of service.",
+          "language": "en"
+        }]
+      }
+    }
+  }, {
+    "id": "MNR_RNuBu4JmqQtibwf1wZ6dlA\u003d\u003d",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MNR",
+        "stopId": "1"
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "At 47th Street \u0026 Madison Avenue in the 47th street Cross Passage. Elevator NE-1 Out of service.",
+          "language": "en"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "At 47th Street \u0026 Madison Avenue in the 47th street Cross Passage. Elevator NE-1 Out of service.",
+          "language": "en"
+        }]
+      }
+    }
+  }, {
+    "id": "MNR_SSGTtJJHs/btC71fbTc/qg\u003d\u003d",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MNR",
+        "stopId": "1"
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "At the 47th street Cross Passage in the Northeast Passage. Escalator 8 Out of service.",
+          "language": "en"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "At the 47th street Cross Passage in the Northeast Passage. Escalator 8 Out of service.",
+          "language": "en"
+        }]
+      }
+    }
+  }, {
+    "id": "MNR_ZVbrZTa4vCTfjS79086myg\u003d\u003d",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MNR",
+        "stopId": "105"
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Elevator from the street to the Stamford/New Haven-bound platform (Track 4) and the overpass. Out of service.",
+          "language": "en"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Elevator from the street to the Stamford/New Haven-bound platform (Track 4) and the overpass. Out of service.",
+          "language": "en"
+        }]
+      }
+    }
+  }, {
+    "id": "MNR_UXZABDTM8+tp1SJTYCBSMQ\u003d\u003d",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MNR",
+        "stopId": "105"
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Elevator from the street  to the New York-bound platform (Track 3) and the overpass. Out of service.",
+          "language": "en"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Elevator from the street  to the New York-bound platform (Track 3) and the overpass. Out of service.",
+          "language": "en"
+        }]
+      }
+    }
+  }, {
+    "id": "MNR_nVhmXWUlXJdAqkOi9vqGUw\u003d\u003d",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MNR",
+        "stopId": "149"
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Escalator from the Station Waiting Room to the Underpass Out of service.",
+          "language": "en"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Escalator from the Station Waiting Room to the Underpass Out of service.",
+          "language": "en"
+        }]
+      }
+    }
+  }, {
+    "id": "MNR_hN6rJxihmj/hYoy+8pMYmQ\u003d\u003d",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MNR",
+        "stopId": "108"
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Elevator from the street to the Stamford/New Haven-bound platform (Track 4). Out of service.",
+          "language": "en"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Elevator from the street to the Stamford/New Haven-bound platform (Track 4). Out of service.",
+          "language": "en"
+        }]
+      }
+    }
+  }, {
+    "id": "MNR_M/lctXC3l+/Hrujrlukevg\u003d\u003d",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MNR",
+        "stopId": "31"
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Elevator from overpass to track # 2/4. Out of service.",
+          "language": "en"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Elevator from overpass to track # 2/4. Out of service.",
+          "language": "en"
+        }]
+      }
+    }
+  }, {
+    "id": "MNR_333bgjPuyeTOrCrEhkyPlw\u003d\u003d",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MNR",
+        "stopId": "124"
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Elevator 6 - Garage (Red Section) To Street (Station Place) Out of service.",
+          "language": "en"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Elevator 6 - Garage (Red Section) To Street (Station Place) Out of service.",
+          "language": "en"
+        }]
+      }
+    }
+  }, {
+    "id": "MNR_NBB1ad9MYVlyA2lsAk94qA\u003d\u003d",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MNR",
+        "stopId": "124"
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Down escalator from the landing to the track #5 platform Out of service.",
+          "language": "en"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Down escalator from the landing to the track #5 platform Out of service.",
+          "language": "en"
+        }]
+      }
+    }
+  }, {
+    "id": "MNR_Ip0Q7rqPLmzi4Q5yE9Ro6A\u003d\u003d",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MNR",
+        "stopId": "124"
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Down Escalator from concourse (java Joes) to the landing Out of service.",
+          "language": "en"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Down Escalator from concourse (java Joes) to the landing Out of service.",
+          "language": "en"
+        }]
+      }
+    }
+  }, {
+    "id": "MNR_j9Y6F+IOqR4eoEWn1lf7Kw\u003d\u003d",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MNR",
+        "stopId": "124"
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Track #2 \u0026 #4 to East Pedestrian Bridge  Out of service.",
+          "language": "en"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Track #2 \u0026 #4 to East Pedestrian Bridge  Out of service.",
+          "language": "en"
+        }]
+      }
+    }
+  }, {
+    "id": "MNR_50bAylSMY5Q6tbxMzDWZLg\u003d\u003d",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MNR",
+        "stopId": "124"
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Track #4 to East Pedestrian Bridge Out of service.",
+          "language": "en"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Track #4 to East Pedestrian Bridge Out of service.",
+          "language": "en"
+        }]
+      }
+    }
+  }, {
+    "id": "MNR_Lh3ErO7MJkfgLCIvLU3Eew\u003d\u003d",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MNR",
+        "stopId": "124"
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Track #5 to East Pedestrian Bridge Out of service.",
+          "language": "en"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Track #5 to East Pedestrian Bridge Out of service.",
+          "language": "en"
+        }]
+      }
+    }
+  }, {
+    "id": "MNR_dbc2ZS2pr474pLShtwKhMg\u003d\u003d",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MNR",
+        "stopId": "124"
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Up escalator from Track # 3 \u0026 #5 to Concourse Out of service.",
+          "language": "en"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Up escalator from Track # 3 \u0026 #5 to Concourse Out of service.",
+          "language": "en"
+        }]
+      }
+    }
+  }, {
+    "id": "MNR_77JwiQcGM75fAhn9uskDcQ\u003d\u003d",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MNR",
+        "stopId": "10"
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Elevator from street to the island platform Out of service.",
+          "language": "en"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Elevator from street to the island platform Out of service.",
+          "language": "en"
+        }]
+      }
+    }
+  }, {
+    "id": "MNR_MegD/iUGw/lKN4Qi53DLNw\u003d\u003d",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MNR",
+        "stopId": "74"
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Elevator from the street entrance to the island platform (Tracks 1 \u0026 2). Out of service.",
+          "language": "en"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Elevator from the street entrance to the island platform (Tracks 1 \u0026 2). Out of service.",
+          "language": "en"
+        }]
+      }
+    }
+  }]
+}

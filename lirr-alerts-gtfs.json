@@ -1,0 +1,1248 @@
+{
+  "header": {
+    "gtfsRealtimeVersion": "2.0",
+    "incrementality": "FULL_DATASET",
+    "timestamp": "1642453176",
+    "mercuryFeedHeader": {
+      "mercuryVersion": "1.0"
+    }
+  },
+  "entity": [{
+    "id": "lmm:alert:122044",
+    "alert": {
+      "activePeriod": [{
+        "start": "1642451894",
+        "end": "1642455898"
+      }],
+      "informedEntity": [{
+        "agencyId": "LI",
+        "routeId": "10",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:10:18"
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "The 3:24pm train from Huntington due Penn Station at 4:31pm departed 13 minutes late due to a late-arriving connection.",
+          "language": "en"
+        }, {
+          "text": "\u003cp\u003eThe \u003cb\u003e3:24pm train from Huntington due Penn Station at 4:31pm\u003c/b\u003edeparted 13 minutes late due to a late-arriving connection.\u003c/p\u003e",
+          "language": "en-html"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "",
+          "language": "en"
+        }, {
+          "text": "\u003cp\u003e \u003c/p\u003e",
+          "language": "en-html"
+        }]
+      },
+      "mercuryAlert": {
+        "createdAt": "1642451894",
+        "updatedAt": "1642451894",
+        "alertType": "Some Delays",
+        "displayBeforeActive": "0"
+      }
+    }
+  }, {
+    "id": "lmm:planned_work:2721",
+    "alert": {
+      "activePeriod": [{
+        "start": "1643432400",
+        "end": "1643619600"
+      }, {
+        "start": "1644037200",
+        "end": "1644224400"
+      }],
+      "informedEntity": [{
+        "agencyId": "LI",
+        "routeId": "4",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:4:13"
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Trains run every 2 hours, bypass Hicksville and Bethpage, and take up to an hour longer than normal",
+          "language": "en"
+        }, {
+          "text": "Trains run every 2 hours, bypass Hicksville and Bethpage, and take up to an hour longer than normal",
+          "language": "en-html"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Bi-level diesel trains will run every two hours between Penn Station and Ronkonkoma while we test signals near Carle Place as part of the LIRR Expansion Project. Between Jamaica and Farmingdale, they will travel via Babylon and will change directions twice, but not make any station stops. This means that your trip will take up to an hour longer than normal.\n \nIf you typically use Bethpage, or travel between Hicksville and points east of Farmingdale, a bus will run between Mineola, Hicksville, Bethpage, and Farmingdale.\n \nIf possible, consider using the Babylon or Montauk Branches. Detailed schedule information will be available as the work approaches.",
+          "language": "en"
+        }, {
+          "text": "\u003cp\u003eBi-level diesel trains will run every two hours between Penn Station and Ronkonkoma while we test signals near Carle Place as part of the LIRR Expansion Project. Between Jamaica and Farmingdale, they will travel via Babylon and will change directions twice, but not make any station stops. This means that your trip will take up to an hour longer than normal.\u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003eIf you typically use Bethpage, or travel between Hicksville and points east of Farmingdale, a bus will run between Mineola, Hicksville, Bethpage, and Farmingdale.\u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003eIf possible, consider using the Babylon or Montauk Branches. Detailed schedule information will be available as the work approaches.\u003c/p\u003e",
+          "language": "en-html"
+        }]
+      },
+      "mercuryAlert": {
+        "createdAt": "1641934595",
+        "updatedAt": "1641934595",
+        "alertType": "Planned Work",
+        "displayBeforeActive": "7200",
+        "humanReadableActivePeriod": {
+          "translation": [{
+            "text": "Jan 29 - 31 and Feb 5 - 7, Sat 12:00 AM to Mon 4:00 AM",
+            "language": "en"
+          }]
+        }
+      }
+    }
+  }, {
+    "id": "lmm:planned_work:2720",
+    "alert": {
+      "activePeriod": [{
+        "start": "1643432400",
+        "end": "1643619600"
+      }, {
+        "start": "1644037200",
+        "end": "1644224400"
+      }],
+      "informedEntity": [{
+        "agencyId": "LI",
+        "routeId": "10",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:10:13"
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Buses replace trains between Mineola and Huntington",
+          "language": "en"
+        }, {
+          "text": "Buses replace trains between Mineola and Huntington",
+          "language": "en-html"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Trains operate in two sections while we test signals near Carle Place as part of the LIRR Expansion Project:\nBetween Penn Station and Mineola every hour\nBetween Huntington and Port Jefferson every two hours\nBuses will run between Mineola and Huntington, stopping at Hicksville, Syosset, Cold Spring Harbor, and Huntington. If possible, consider using the Hempstead, Babylon, or Montauk Branches, as buses will take up to an hour longer than normal train schedules. NICE Bus is also accepting LIRR tickets on the n22 and n24 bus routes between Hicksville and Mineola, with stops near Carle Place and Westbury stations.\n\nDetailed schedule information will be available as the work approaches.",
+          "language": "en"
+        }, {
+          "text": "\u003cp\u003eTrains operate in two sections while we test signals near Carle Place as part of the LIRR Expansion Project:\u003c/p\u003e\u003cul\u003e\u003cli\u003e\u003cp\u003eBetween Penn Station and Mineola every hour\u003c/p\u003e\u003c/li\u003e\u003cli\u003e\u003cp\u003eBetween Huntington and Port Jefferson every two hours\u003c/p\u003e\u003c/li\u003e\u003c/ul\u003e\u003cp\u003eBuses will run between Mineola and Huntington, stopping at Hicksville, Syosset, Cold Spring Harbor, and Huntington. If possible, consider using the Hempstead, Babylon, or Montauk Branches, as buses will take up to an hour longer than normal train schedules. NICE Bus is also accepting LIRR tickets on the n22 and n24 bus routes between Hicksville and Mineola, with stops near Carle Place and Westbury stations.\u003c/p\u003e\u003cp style\u003d\"min-height:10px\"\u003e\u003c/p\u003e\u003cp\u003eDetailed schedule information will be available as the work approaches.\u003c/p\u003e",
+          "language": "en-html"
+        }]
+      },
+      "mercuryAlert": {
+        "createdAt": "1641934477",
+        "updatedAt": "1642007276",
+        "alertType": "Planned Work",
+        "displayBeforeActive": "7200",
+        "humanReadableActivePeriod": {
+          "translation": [{
+            "text": "Jan 29 - 31 and Feb 5 - 7, Sat 12:00 AM to Mon 4:00 AM",
+            "language": "en"
+          }]
+        }
+      }
+    }
+  }, {
+    "id": "lmm:planned_work:2586",
+    "alert": {
+      "activePeriod": [{
+        "start": "1641796200",
+        "end": "1641804300"
+      }, {
+        "start": "1642401000",
+        "end": "1642409100"
+      }, {
+        "start": "1643005800",
+        "end": "1643013900"
+      }, {
+        "start": "1641882600",
+        "end": "1641890700"
+      }, {
+        "start": "1642487400",
+        "end": "1642495500"
+      }, {
+        "start": "1643092200",
+        "end": "1643100300"
+      }, {
+        "start": "1641969000",
+        "end": "1641977100"
+      }, {
+        "start": "1642573800",
+        "end": "1642581900"
+      }, {
+        "start": "1643178600",
+        "end": "1643186700"
+      }, {
+        "start": "1642055400",
+        "end": "1642063500"
+      }, {
+        "start": "1642660200",
+        "end": "1642668300"
+      }, {
+        "start": "1643265000",
+        "end": "1643273100"
+      }, {
+        "start": "1642141800",
+        "end": "1642149900"
+      }, {
+        "start": "1642746600",
+        "end": "1642754700"
+      }, {
+        "start": "1643351400",
+        "end": "1643359500"
+      }],
+      "informedEntity": [{
+        "agencyId": "LI",
+        "routeId": "7",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:7:11"
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Adjusted connections for two overnight trains",
+          "language": "en"
+        }, {
+          "text": "Adjusted connections for two overnight trains",
+          "language": "en-html"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "If you currently take the 1:47 AM from Far Rockaway, your connecting train to Woodside and Penn Station will leave at 2:32 instead of 2:24. If you are going to Kew Gardens or Forest Hills, your connection will leave at 2:41.\nIf you currently take the 3:15 AM from Penn and change at Jamaica for Far Rockaway, you will need to leave 5 minutes earlier on the 3:10 Babylon train. From Woodside, you will need to take the Long Beach train at 3:11.\nThe LIRR Expansion Project is testing signals near Carle Place.",
+          "language": "en"
+        }, {
+          "text": "\u003cul\u003e\u003cli\u003e\u003cp\u003eIf you currently take the \u003cstrong\u003e1:47 AM from Far Rockaway\u003c/strong\u003e, your connecting train to Woodside and Penn Station will leave at 2:32 instead of 2:24. If you are going to Kew Gardens or Forest Hills, your connection will leave at 2:41.\u003c/p\u003e\u003c/li\u003e\u003cli\u003e\u003cp\u003eIf you currently take the \u003cstrong\u003e3:15 AM from Penn\u003c/strong\u003e and change at Jamaica for Far Rockaway, you will need to leave 5 minutes earlier on the 3:10 Babylon train. From Woodside, you will need to take the Long Beach train at 3:11.\u003c/p\u003e\u003c/li\u003e\u003c/ul\u003e\u003cp\u003eThe LIRR Expansion Project is testing signals near Carle Place.\u003c/p\u003e",
+          "language": "en-html"
+        }]
+      },
+      "mercuryAlert": {
+        "createdAt": "1641048002",
+        "updatedAt": "1641057068",
+        "alertType": "Special Schedule",
+        "humanReadableActivePeriod": {
+          "translation": [{
+            "text": "Jan 10 - 14, Jan 17 - 21, and Jan 24 - 28, Mon to Fri",
+            "language": "en"
+          }]
+        },
+        "cloneId": "lmm:planned_work:2585"
+      }
+    }
+  }, {
+    "id": "lmm:planned_work:2585",
+    "alert": {
+      "activePeriod": [{
+        "start": "1641796200",
+        "end": "1641800700"
+      }, {
+        "start": "1642401000",
+        "end": "1642405500"
+      }, {
+        "start": "1643005800",
+        "end": "1643010300"
+      }, {
+        "start": "1641882600",
+        "end": "1641887100"
+      }, {
+        "start": "1642487400",
+        "end": "1642491900"
+      }, {
+        "start": "1643092200",
+        "end": "1643096700"
+      }, {
+        "start": "1641969000",
+        "end": "1641973500"
+      }, {
+        "start": "1642573800",
+        "end": "1642578300"
+      }, {
+        "start": "1643178600",
+        "end": "1643183100"
+      }, {
+        "start": "1642055400",
+        "end": "1642059900"
+      }, {
+        "start": "1642660200",
+        "end": "1642664700"
+      }, {
+        "start": "1643265000",
+        "end": "1643269500"
+      }, {
+        "start": "1642141800",
+        "end": "1642146300"
+      }, {
+        "start": "1642746600",
+        "end": "1642751100"
+      }, {
+        "start": "1643351400",
+        "end": "1643355900"
+      }],
+      "informedEntity": [{
+        "agencyId": "LI",
+        "routeId": "10",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:10:11"
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "The 1:39 AM train from Huntington to Penn will depart at 1:54",
+          "language": "en"
+        }, {
+          "text": "The 1:39 AM train from Huntington to Penn will depart at 1:54",
+          "language": "en-html"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "The LIRR Expansion Project is testing signals near Carle Place.",
+          "language": "en"
+        }, {
+          "text": "\u003cp\u003eThe LIRR Expansion Project is testing signals near Carle Place.\u003c/p\u003e",
+          "language": "en-html"
+        }]
+      },
+      "mercuryAlert": {
+        "createdAt": "1641047931",
+        "updatedAt": "1641047931",
+        "alertType": "Special Schedule",
+        "humanReadableActivePeriod": {
+          "translation": [{
+            "text": "Jan 10 - 14, Jan 17 - 21, and Jan 24 - 28, Mon to Fri",
+            "language": "en"
+          }]
+        },
+        "cloneId": "lmm:planned_work:2584"
+      }
+    }
+  }, {
+    "id": "lmm:planned_work:2584",
+    "alert": {
+      "activePeriod": [{
+        "start": "1641802500",
+        "end": "1641807000"
+      }, {
+        "start": "1642407300",
+        "end": "1642411800"
+      }, {
+        "start": "1643012100",
+        "end": "1643016600"
+      }, {
+        "start": "1641888900",
+        "end": "1641893400"
+      }, {
+        "start": "1642493700",
+        "end": "1642498200"
+      }, {
+        "start": "1643098500",
+        "end": "1643103000"
+      }, {
+        "start": "1641975300",
+        "end": "1641979800"
+      }, {
+        "start": "1642580100",
+        "end": "1642584600"
+      }, {
+        "start": "1643184900",
+        "end": "1643189400"
+      }, {
+        "start": "1642061700",
+        "end": "1642066200"
+      }, {
+        "start": "1642666500",
+        "end": "1642671000"
+      }, {
+        "start": "1643271300",
+        "end": "1643275800"
+      }, {
+        "start": "1642148100",
+        "end": "1642152600"
+      }, {
+        "start": "1642752900",
+        "end": "1642757400"
+      }, {
+        "start": "1643357700",
+        "end": "1643362200"
+      }],
+      "informedEntity": [{
+        "agencyId": "LI",
+        "routeId": "4",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:4:11"
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "The 3:15 AM train from Penn to Ronkonkoma will depart at 3:33",
+          "language": "en"
+        }, {
+          "text": "The 3:15 AM train from Penn to Ronkonkoma will depart at 3:33",
+          "language": "en-html"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "The LIRR Expansion Project is testing signals near Carle Place.",
+          "language": "en"
+        }, {
+          "text": "\u003cp\u003eThe LIRR Expansion Project is testing signals near Carle Place.\u003c/p\u003e",
+          "language": "en-html"
+        }]
+      },
+      "mercuryAlert": {
+        "createdAt": "1641047889",
+        "updatedAt": "1641047889",
+        "alertType": "Special Schedule",
+        "humanReadableActivePeriod": {
+          "translation": [{
+            "text": "Jan 10 - 14, Jan 17 - 21, and Jan 24 - 28, Mon to Fri",
+            "language": "en"
+          }]
+        }
+      }
+    }
+  }, {
+    "id": "lmm:planned_work:2500",
+    "alert": {
+      "activePeriod": [{
+        "start": "1642851000",
+        "end": "1642913940"
+      }, {
+        "start": "1642937400",
+        "end": "1643000340"
+      }],
+      "informedEntity": [{
+        "agencyId": "LI",
+        "routeId": "2",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:2:10"
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Service increased to half-hourly",
+          "language": "en"
+        }, {
+          "text": "Service increased to half-hourly",
+          "language": "en-html"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "We are operating Hempstead Branch service every half hour to provide an alternative to the Port Jefferson Branch while we install switches near Queens Village. Every other train operates to/from Penn Station.\n\nTo plan your trip, use the LIRR TrainTime app or the special PDF timetable.",
+          "language": "en"
+        }, {
+          "text": "\u003cp\u003eWe are operating Hempstead Branch service every half hour to provide an alternative to the Port Jefferson Branch while we install switches near Queens Village. Every other train operates to/from Penn Station.\u003c/p\u003e\u003cp style\u003d\"min-height:10px\"\u003e\u003c/p\u003e\u003cp\u003eTo plan your trip, use the \u003ca title\u003d\"\" target\u003d\"_blank\" href\u003d\"https://app.mylirr.org\" rel\u003d\"noopener noreferrer nofollow\"\u003eLIRR TrainTime app\u003c/a\u003e or the \u003ca title\u003d\"\" target\u003d\"_blank\" href\u003d\"http://web.mta.info/lirr/Timetable/SpecialTT/Jan-HP-MLXW-GO703.pdf\" rel\u003d\"noopener noreferrer nofollow\"\u003especial PDF timetable\u003c/a\u003e.\u003c/p\u003e",
+          "language": "en-html"
+        }]
+      },
+      "mercuryAlert": {
+        "createdAt": "1640232044",
+        "updatedAt": "1642440487",
+        "alertType": "Extra Service",
+        "displayBeforeActive": "3600",
+        "humanReadableActivePeriod": {
+          "translation": [{
+            "text": "Jan 22 - 23, Sat and Sun, 6:30 AM to 11:59 PM",
+            "language": "en"
+          }]
+        }
+      }
+    }
+  }, {
+    "id": "lmm:planned_work:2499",
+    "alert": {
+      "activePeriod": [{
+        "start": "1642827600",
+        "end": "1642851000"
+      }, {
+        "start": "1642914000",
+        "end": "1642937400"
+      }],
+      "informedEntity": [{
+        "agencyId": "LI",
+        "routeId": "2",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:2:11"
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Minor schedule and connection adjustments",
+          "language": "en"
+        }, {
+          "text": "Minor schedule and connection adjustments",
+          "language": "en-html"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Special timetables are in effect systemwide while we install switches near Queens Village. While there are no major changes to service on this branch, there are minor changes in departure and connecting train times that may affect your trip.\n\nTo plan your trip, use the LIRR TrainTime app or the special PDF timetable.",
+          "language": "en"
+        }, {
+          "text": "\u003cp\u003eSpecial timetables are in effect systemwide while we install switches near Queens Village. While there are no major changes to service on this branch, there are minor changes in departure and connecting train times that may affect your trip.\u003c/p\u003e\u003cp style\u003d\"min-height:10px\"\u003e\u003c/p\u003e\u003cp\u003eTo plan your trip, use the \u003ca title\u003d\"\" target\u003d\"_blank\" href\u003d\"https://app.mylirr.org\" rel\u003d\"noopener noreferrer nofollow\"\u003eLIRR TrainTime app\u003c/a\u003e or the \u003ca title\u003d\"\" target\u003d\"_blank\" href\u003d\"http://web.mta.info/lirr/Timetable/SpecialTT/Jan-HP-MLXW-GO703.pdf\" rel\u003d\"noopener noreferrer nofollow\"\u003especial PDF timetable\u003c/a\u003e.\u003c/p\u003e",
+          "language": "en-html"
+        }]
+      },
+      "mercuryAlert": {
+        "createdAt": "1640231887",
+        "updatedAt": "1642440483",
+        "alertType": "Special Schedule",
+        "displayBeforeActive": "0",
+        "humanReadableActivePeriod": {
+          "translation": [{
+            "text": "Weekend of January 22-23",
+            "language": "en"
+          }]
+        }
+      }
+    }
+  }, {
+    "id": "lmm:planned_work:2498",
+    "alert": {
+      "activePeriod": [{
+        "start": "1642827600",
+        "end": "1643000400"
+      }],
+      "informedEntity": [{
+        "agencyId": "LI",
+        "routeId": "7",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:7:11"
+        }
+      }, {
+        "agencyId": "LI",
+        "routeId": "1",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:1:11"
+        }
+      }, {
+        "agencyId": "LI",
+        "routeId": "12",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:12:11"
+        }
+      }, {
+        "agencyId": "LI",
+        "routeId": "9",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:9:11"
+        }
+      }, {
+        "agencyId": "LI",
+        "routeId": "8",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:8:11"
+        }
+      }, {
+        "agencyId": "LI",
+        "routeId": "5",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:5:11"
+        }
+      }, {
+        "agencyId": "LI",
+        "routeId": "6",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:6:11"
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Minor schedule and connection adjustments",
+          "language": "en"
+        }, {
+          "text": "Minor schedule and connection adjustments",
+          "language": "en-html"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Special timetables are in effect systemwide while we install switches near Queens Village. While there are no major changes to service on this branch, there are minor changes in departure and connecting train times that may affect your trip.\n\nTo plan your trip, use the LIRR TrainTime app or the special PDF timetables.",
+          "language": "en"
+        }, {
+          "text": "\u003cp\u003eSpecial timetables are in effect systemwide while we install switches near Queens Village. While there are no major changes to service on this branch, there are minor changes in departure and connecting train times that may affect your trip.\u003c/p\u003e\u003cp style\u003d\"min-height:10px\"\u003e\u003c/p\u003e\u003cp\u003eTo plan your trip, use the \u003ca title\u003d\"\" target\u003d\"_blank\" href\u003d\"https://app.mylirr.org\" rel\u003d\"noopener noreferrer nofollow\"\u003eLIRR TrainTime app\u003c/a\u003e or the \u003ca title\u003d\"\" target\u003d\"_blank\" href\u003d\"http://web.mta.info/lirr/Timetable/\" rel\u003d\"noopener noreferrer nofollow\"\u003especial PDF timetables\u003c/a\u003e.\u003c/p\u003e",
+          "language": "en-html"
+        }]
+      },
+      "mercuryAlert": {
+        "createdAt": "1640231788",
+        "updatedAt": "1642440504",
+        "alertType": "Special Schedule",
+        "displayBeforeActive": "3600",
+        "humanReadableActivePeriod": {
+          "translation": [{
+            "text": "Weekend of January 22-23",
+            "language": "en"
+          }]
+        }
+      }
+    }
+  }, {
+    "id": "lmm:planned_work:2497",
+    "alert": {
+      "activePeriod": [{
+        "start": "1642831200",
+        "end": "1643002200"
+      }],
+      "informedEntity": [{
+        "agencyId": "LI",
+        "routeId": "3",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:3:13"
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "No trains between Jamaica and East Williston",
+          "language": "en"
+        }, {
+          "text": "No trains between Jamaica and East Williston",
+          "language": "en-html"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Trains run every two hours between Oyster Bay and East Williston while we install switches near Queens Village. Shuttle buses connect East Williston, Mineola, and Hempstead, where train service is available to Jamaica, Penn Station, and Atlantic Terminal. Click here to see a map of this service change.\n\nPlease allow up to 60 minutes of additional travel time or consider using the Port Washington or Hempstead Branches instead.\n\nThe last through trains to operate on Friday night are the 11:26 PM from Oyster Bay and the 12:30 AM from Jamaica. Service resumes with the 1:42 AM from Jamaica on Monday morning.\n\nDetailed schedule information will be available as the work approaches.\n\nTo plan your trip, use the LIRR TrainTime app or the special PDF timetable.",
+          "language": "en"
+        }, {
+          "text": "\u003cp\u003eTrains run every two hours between Oyster Bay and East Williston while we install switches near Queens Village. Shuttle buses connect East Williston, Mineola, and Hempstead, where train service is available to Jamaica, Penn Station, and Atlantic Terminal. \u003ca target\u003d\"_blank\" href\u003d\"https://new.mta.info/sites/default/files/styles/lightbox/public/2021-06/South12thStreetMap.jpg\" rel\u003d\"noopener noreferrer nofollow\"\u003eClick here to see a map of this service change\u003c/a\u003e.\u003c/p\u003e\u003cp style\u003d\"min-height:10px\"\u003e\u003c/p\u003e\u003cp\u003ePlease allow up to 60 minutes of additional travel time or consider using the Port Washington or Hempstead Branches instead.\u003c/p\u003e\u003cp style\u003d\"min-height:10px\"\u003e\u003c/p\u003e\u003cp\u003eThe last through trains to operate on Friday night are the 11:26 PM from Oyster Bay and the 12:30 AM from Jamaica. Service resumes with the 1:42 AM from Jamaica on Monday morning.\u003c/p\u003e\u003cp style\u003d\"min-height:10px\"\u003e\u003c/p\u003e\u003cp\u003eDetailed schedule information will be available as the work approaches.\u003c/p\u003e\u003cp style\u003d\"min-height:10px\"\u003e\u003c/p\u003e\u003cp\u003eTo plan your trip, use the \u003ca title\u003d\"\" target\u003d\"_blank\" href\u003d\"https://app.mylirr.org\" rel\u003d\"noopener noreferrer nofollow\"\u003eLIRR TrainTime app\u003c/a\u003e or the \u003ca title\u003d\"\" target\u003d\"_blank\" href\u003d\"http://web.mta.info/lirr/Timetable/SpecialTT/Jan-OB-MLXW-GO703.pdf\" rel\u003d\"noopener noreferrer nofollow\"\u003especial PDF timetable\u003c/a\u003e.\u003c/p\u003e",
+          "language": "en-html"
+        }]
+      },
+      "mercuryAlert": {
+        "createdAt": "1640231656",
+        "updatedAt": "1642440426",
+        "alertType": "Planned Work",
+        "displayBeforeActive": "3600",
+        "humanReadableActivePeriod": {
+          "translation": [{
+            "text": "Jan 22 - 24, Sat 1:00 AM to Mon 12:30 AM",
+            "language": "en"
+          }]
+        }
+      }
+    }
+  }, {
+    "id": "lmm:planned_work:2496",
+    "alert": {
+      "activePeriod": [{
+        "start": "1642828500",
+        "end": "1643002200"
+      }],
+      "informedEntity": [{
+        "agencyId": "LI",
+        "routeId": "4",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:4:13"
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "No trains between Jamaica and Hicksville",
+          "language": "en"
+        }, {
+          "text": "No trains between Jamaica and Hicksville",
+          "language": "en-html"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Trains run in four sections while we install switches near Queens Village:\nBetween Greenport and Ronkonkoma\nBetween Ronkonkoma and Hicksville (bypassing Bethpage)\nBetween Hicksville and Babylon (stopping at Bethpage)\nBetween Babylon and Jamaica/Penn Station\nTransfer at Hicksville and Babylon for continuing service. Please allow up to 60 minutes of additional travel time or consider using the Babylon or Montauk Branches instead. Click here to see a map of this service change.\n\nBethpage riders: To travel towards Jamaica, wait on Platform B for a bi-level train to Babylon. To travel towards Ronkonkoma, wait on Platform A for a bi-level train to Hicksville. Use caution when crossing the tracks at Stewart Ave.\n\nThe last through trains to operate on Friday night are the 11:14 PM from Penn Station and the 11:16 PM from Ronkonkoma. Service resumes with the 12:14 AM from Penn Station and 12:45 AM from Ronkonkoma on Monday morning.\n\nTo plan your trip, use the LIRR TrainTime app or the special PDF timetable.",
+          "language": "en"
+        }, {
+          "text": "\u003cp\u003eTrains run in four sections while we install switches near Queens Village:\u003c/p\u003e\u003cul\u003e\u003cli\u003e\u003cp\u003eBetween Greenport and Ronkonkoma\u003c/p\u003e\u003c/li\u003e\u003cli\u003e\u003cp\u003eBetween Ronkonkoma and Hicksville (bypassing Bethpage)\u003c/p\u003e\u003c/li\u003e\u003cli\u003e\u003cp\u003eBetween Hicksville and Babylon (stopping at Bethpage)\u003c/p\u003e\u003c/li\u003e\u003cli\u003e\u003cp\u003eBetween Babylon and Jamaica/Penn Station\u003c/p\u003e\u003c/li\u003e\u003c/ul\u003e\u003cp\u003eTransfer at Hicksville and Babylon for continuing service. Please allow up to 60 minutes of additional travel time or consider using the Babylon or Montauk Branches instead. \u003ca target\u003d\"_blank\" href\u003d\"https://new.mta.info/sites/default/files/styles/lightbox/public/2021-06/South12thStreetMap.jpg\" rel\u003d\"noopener noreferrer nofollow\"\u003eClick here to see a map of this service change\u003c/a\u003e.\u003c/p\u003e\u003cp style\u003d\"min-height:10px\"\u003e\u003c/p\u003e\u003cp\u003e\u003cstrong\u003eBethpage riders:\u003c/strong\u003e To travel towards Jamaica, wait on Platform B for a bi-level train to Babylon. To travel towards Ronkonkoma, wait on Platform A for a bi-level train to Hicksville. Use caution when crossing the tracks at Stewart Ave.\u003c/p\u003e\u003cp style\u003d\"min-height:10px\"\u003e\u003c/p\u003e\u003cp\u003eThe last through trains to operate on Friday night are the 11:14 PM from Penn Station and the 11:16 PM from Ronkonkoma. Service resumes with the 12:14 AM from Penn Station and 12:45 AM from Ronkonkoma on Monday morning.\u003c/p\u003e\u003cp style\u003d\"min-height:10px\"\u003e\u003c/p\u003e\u003cp\u003eTo plan your trip, use the \u003ca title\u003d\"\" target\u003d\"_blank\" href\u003d\"https://app.mylirr.org\" rel\u003d\"noopener noreferrer nofollow\"\u003eLIRR TrainTime app\u003c/a\u003e or the \u003ca title\u003d\"\" target\u003d\"_blank\" href\u003d\"http://web.mta.info/lirr/Timetable/SpecialTT/Jan-KO-MLXW-GO703.pdf\" rel\u003d\"noopener noreferrer nofollow\"\u003especial PDF timetable\u003c/a\u003e.\u003c/p\u003e",
+          "language": "en-html"
+        }]
+      },
+      "mercuryAlert": {
+        "createdAt": "1640231530",
+        "updatedAt": "1642440410",
+        "alertType": "Planned Work",
+        "displayBeforeActive": "7200",
+        "humanReadableActivePeriod": {
+          "translation": [{
+            "text": "Jan 22 - 24, Sat 12:15 AM to Mon 12:30 AM",
+            "language": "en"
+          }]
+        }
+      }
+    }
+  }, {
+    "id": "lmm:planned_work:2495",
+    "alert": {
+      "activePeriod": [{
+        "start": "1642828500",
+        "end": "1643002200"
+      }],
+      "informedEntity": [{
+        "agencyId": "LI",
+        "routeId": "10",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:10:13"
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "No trains between Jamaica and Hicksville",
+          "language": "en"
+        }, {
+          "text": "No trains between Jamaica and Hicksville",
+          "language": "en-html"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Hicksville through Port Jefferson\nTrains run in three sections while we install switches near Queens Village:\nBetween Huntington or Port Jefferson and Hicksville\nBetween Hicksville and Babylon\nBetween Babylon and Jamaica/Penn Station\nTransfer at Hicksville and Babylon for continuing service. Please allow up to 60 minutes of additional travel time or consider using the Babylon or Montauk Branches instead. Click here to see a map of this service change.\nNew Hyde Park through Westbury\nThere is no service at these stations. Consider using the Babylon or Hempstead Branches instead, which will have increased service all weekend. NICE Bus is accepting LIRR tickets on the n22 and n24 bus routes between Hicksville and Mineola, and on the n40/41 bus route between Mineola and Hempstead. See nicebus.com for schedules. Between midnight and 5 AM, when NICE Bus does not run, special shuttle buses will be provided between Hicksville and Mineola. See an LIRR employee to board the bus.\n\nThe last through trains to operate on Friday night are the 10:52 PM from Port Jefferson, the 11:22 PM from Huntington, and the 11:39 PM from Penn Station. Service resumes with the 12:19 AM from Huntington and 1:11 AM from Penn Station on Monday morning.\n\nTo plan your trip, use the LIRR TrainTime app or the special PDF timetable.",
+          "language": "en"
+        }, {
+          "text": "\u003ch3\u003eHicksville through Port Jefferson\u003c/h3\u003e\u003cp\u003eTrains run in three sections while we install switches near Queens Village:\u003c/p\u003e\u003cul\u003e\u003cli\u003e\u003cp\u003eBetween Huntington or Port Jefferson and Hicksville\u003c/p\u003e\u003c/li\u003e\u003cli\u003e\u003cp\u003eBetween Hicksville and Babylon\u003c/p\u003e\u003c/li\u003e\u003cli\u003e\u003cp\u003eBetween Babylon and Jamaica/Penn Station\u003c/p\u003e\u003c/li\u003e\u003c/ul\u003e\u003cp\u003eTransfer at Hicksville and Babylon for continuing service. Please allow up to 60 minutes of additional travel time or consider using the Babylon or Montauk Branches instead. \u003ca target\u003d\"_blank\" href\u003d\"https://new.mta.info/sites/default/files/styles/lightbox/public/2021-06/South12thStreetMap.jpg\" rel\u003d\"noopener noreferrer nofollow\"\u003eClick here to see a map of this service change\u003c/a\u003e.\u003c/p\u003e\u003ch3\u003eNew Hyde Park through Westbury\u003c/h3\u003e\u003cp\u003eThere is no service at these stations. Consider using the Babylon or Hempstead Branches instead, which will have increased service all weekend. NICE Bus is accepting LIRR tickets on the n22 and n24 bus routes between Hicksville and Mineola, and on the n40/41 bus route between Mineola and Hempstead. See \u003ca target\u003d\"_blank\" href\u003d\"//nicebus.com\" rel\u003d\"noopener noreferrer nofollow\"\u003enicebus.com\u003c/a\u003e for schedules. Between midnight and 5 AM, when NICE Bus does not run, special shuttle buses will be provided between Hicksville and Mineola. See an LIRR employee to board the bus.\u003c/p\u003e\u003cp style\u003d\"min-height:10px\"\u003e\u003c/p\u003e\u003cp\u003eThe last through trains to operate on Friday night are the 10:52 PM from Port Jefferson, the 11:22 PM from Huntington, and the 11:39 PM from Penn Station. Service resumes with the 12:19 AM from Huntington and 1:11 AM from Penn Station on Monday morning.\u003c/p\u003e\u003cp style\u003d\"min-height:10px\"\u003e\u003c/p\u003e\u003cp\u003eTo plan your trip, use the \u003ca title\u003d\"\" target\u003d\"_blank\" href\u003d\"https://app.mylirr.org\" rel\u003d\"noopener noreferrer nofollow\"\u003eLIRR TrainTime app\u003c/a\u003e or the \u003ca title\u003d\"\" target\u003d\"_blank\" href\u003d\"http://web.mta.info/lirr/Timetable/SpecialTT/Jan-PJ-MLXW-GO703.pdf\" rel\u003d\"noopener noreferrer nofollow\"\u003especial PDF timetable\u003c/a\u003e.\u003c/p\u003e",
+          "language": "en-html"
+        }]
+      },
+      "mercuryAlert": {
+        "createdAt": "1640231435",
+        "updatedAt": "1642440442",
+        "alertType": "Planned Work",
+        "displayBeforeActive": "7200",
+        "humanReadableActivePeriod": {
+          "translation": [{
+            "text": "Jan 22 - 24, Sat 12:15 AM to Mon 12:30 AM",
+            "language": "en"
+          }]
+        }
+      }
+    }
+  }, {
+    "id": "lmm:planned_work:2494",
+    "alert": {
+      "activePeriod": [{
+        "start": "1642395600",
+        "end": "1642481940"
+      }],
+      "informedEntity": [{
+        "agencyId": "LI",
+        "routeId": "9",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:9:6"
+        }
+      }, {
+        "agencyId": "LI",
+        "routeId": "5",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:5:6"
+        }
+      }, {
+        "agencyId": "LI",
+        "routeId": "3",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:3:6"
+        }
+      }, {
+        "agencyId": "LI",
+        "routeId": "10",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:10:6"
+        }
+      }, {
+        "agencyId": "LI",
+        "routeId": "6",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:6:6"
+        }
+      }, {
+        "agencyId": "LI",
+        "routeId": "2",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:2:6"
+        }
+      }, {
+        "agencyId": "LI",
+        "routeId": "4",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:4:6"
+        }
+      }, {
+        "agencyId": "LI",
+        "routeId": "8",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:8:6"
+        }
+      }, {
+        "agencyId": "LI",
+        "routeId": "7",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:7:6"
+        }
+      }, {
+        "agencyId": "LI",
+        "routeId": "12",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:12:6"
+        }
+      }, {
+        "agencyId": "LI",
+        "routeId": "1",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:1:6"
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Trains run on a weekday schedule on Martin Luther King Jr. Day",
+          "language": "en"
+        }, {
+          "text": "Trains run on a weekday schedule on Martin Luther King Jr. Day",
+          "language": "en-html"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Reminder: off peak fares are accepted on all trains through the end of February.",
+          "language": "en"
+        }, {
+          "text": "\u003cp\u003e\u003cstrong\u003eReminder:\u003c/strong\u003e off peak fares are accepted on all trains through the end of February.\u003c/p\u003e",
+          "language": "en-html"
+        }]
+      },
+      "mercuryAlert": {
+        "createdAt": "1640231316",
+        "updatedAt": "1641959706",
+        "alertType": "Weekday Service",
+        "displayBeforeActive": "0",
+        "humanReadableActivePeriod": {
+          "translation": [{
+            "text": "Monday, January 17",
+            "language": "en"
+          }]
+        }
+      }
+    }
+  }, {
+    "id": "lmm:planned_work:2038",
+    "alert": {
+      "activePeriod": [{
+        "start": "1621828800",
+        "end": "1657929600"
+      }],
+      "informedEntity": [{
+        "agencyId": "LI",
+        "routeId": "10",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:10:12"
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Parking restrictions at New Hyde Park",
+          "language": "en"
+        }, {
+          "text": "Parking restrictions at New Hyde Park",
+          "language": "en-html"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "There is no parking along 3rd Avenue between Covert Avenue and South 12th Street. These closures facilitate the construction of a new pedestrian underpass and sound walls.\n\nWe expect that the parking spots will reopen by winter 2022. As an alternative, use the new metered parking lot on the north side of the tracks between New Hyde Park Road and Herkomer Street.\n\nClick here to see a map of the station.",
+          "language": "en"
+        }, {
+          "text": "\u003cp\u003eThere is no parking along 3rd Avenue between Covert Avenue and South 12th Street. These closures facilitate the construction of a new pedestrian underpass and sound walls.\u003c/p\u003e\u003cp style\u003d\"min-height:10px\"\u003e\u003c/p\u003e\u003cp\u003eWe expect that the parking spots will reopen by winter 2022. As an alternative, use the new metered parking lot on the north side of the tracks between New Hyde Park Road and Herkomer Street.\u003c/p\u003e\u003cp style\u003d\"min-height:10px\"\u003e\u003c/p\u003e\u003cp\u003e\u003ca title\u003d\"\" target\u003d\"_blank\" href\u003d\"https://new.mta.info/sites/default/files/styles/lightbox/public/2021-05/New%20Hyde%20Park%20Station%20%E2%80%93%20Parking%20Notice%20%E2%80%93%20May%202021%20%E2%80%93%20Poster.jpg\" rel\u003d\"noopener noreferrer nofollow\"\u003eClick here to see a map of the station.\u003c/a\u003e\u003c/p\u003e",
+          "language": "en-html"
+        }]
+      },
+      "mercuryAlert": {
+        "createdAt": "1636992517",
+        "updatedAt": "1641419432",
+        "alertType": "Station Notice",
+        "humanReadableActivePeriod": {
+          "translation": [{
+            "text": "Until Winter 2022",
+            "language": "en"
+          }]
+        }
+      }
+    }
+  }, {
+    "id": "lmm:planned_work:2037",
+    "alert": {
+      "activePeriod": [{
+        "start": "1630987200",
+        "end": "1657929600"
+      }],
+      "informedEntity": [{
+        "agencyId": "LI",
+        "routeId": "10",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:10:12"
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "You must be in the last eight cars to exit at Huntington",
+          "language": "en"
+        }, {
+          "text": "You must be in the last eight cars to exit at Huntington",
+          "language": "en-html"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "The east end of both station platforms is closed while the Town of Huntington replaces the eastern pedestrian overpass. When complete, the new enclosed overpass will feature glass panel walls, brighter LED lighting, and CCTV security cameras.\n \nIn addition, the south parking lot is closed for renovation work by the Town of Huntington. The parking lot project will include 29 new parking spaces, a new accessible sidewalk on the east side of Fairground Avenue, drainage improvements, lighting improvements, resurfacing with new asphalt paving, and reconstruction of the southern retaining wall. We expect the lot to reopen during the 4th quarter of 2021. To accommodate this work, two staircases leading from the lot to the platform will also temporarily close. The remaining staircases, accessibility ramp, and access to the parking garage will remain open. During construction, vehicles must access the south parking garage by the southern entrance from Second Street, and the eastern entrance from Lenox Road. There will be no access to the garage from Fairground Avenue.\n \nClick here to see a map of the station.",
+          "language": "en"
+        }, {
+          "text": "\u003cp\u003eThe east end of both station platforms is closed while the Town of Huntington replaces the eastern pedestrian overpass. When complete, the new enclosed overpass will feature glass panel walls, brighter LED lighting, and CCTV security cameras.\u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003eIn addition, the south parking lot is closed for renovation work by the Town of Huntington. The parking lot project will include 29 new parking spaces, a new accessible sidewalk on the east side of Fairground Avenue, drainage improvements, lighting improvements, resurfacing with new asphalt paving, and reconstruction of the southern retaining wall. We expect the lot to reopen during the 4th quarter of 2021. To accommodate this work, two staircases leading from the lot to the platform will also temporarily close. The remaining staircases, accessibility ramp, and access to the parking garage will remain open. During construction, vehicles must access the south parking garage by the southern entrance from Second Street, and the eastern entrance from Lenox Road. There will be no access to the garage from Fairground Avenue.\u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e\u003ca title\u003d\"\" target\u003d\"_blank\" href\u003d\"https://new.mta.info/sites/default/files/styles/lightbox/public/2021-08/August%2030%20Huntington.jpg\" rel\u003d\"noopener noreferrer nofollow\"\u003eClick here to see a map of the station.\u003c/a\u003e\u003c/p\u003e",
+          "language": "en-html"
+        }]
+      },
+      "mercuryAlert": {
+        "createdAt": "1636992395",
+        "updatedAt": "1636992395",
+        "alertType": "Station Notice",
+        "humanReadableActivePeriod": {
+          "translation": [{
+            "text": "Until late 2022",
+            "language": "en"
+          }]
+        }
+      }
+    }
+  }, {
+    "id": "lmm:planned_work:2036",
+    "alert": {
+      "activePeriod": [{
+        "start": "1629777600",
+        "end": "1646024400"
+      }],
+      "informedEntity": [{
+        "agencyId": "LI",
+        "routeId": "12",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:12:12"
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Elevator to Tracks 20/21 at Penn Station closed",
+          "language": "en"
+        }, {
+          "text": "Elevator to Tracks 20/21 at Penn Station closed\u003cbr/\u003e",
+          "language": "en-html"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "We are replacing the elevator as part of the Penn Station LIRR Concourse project. Customers with disabilities may use a chair lift that has been installed on the staircase closest to the ticket office. When you arrive at the lift, please push the attendant call button for assistance.\n \nClick here to see a map of the concourse.",
+          "language": "en"
+        }, {
+          "text": "\u003cp\u003eWe are replacing the elevator as part of the Penn Station LIRR Concourse project. Customers with disabilities may use a chair lift that has been installed on the staircase closest to the ticket office. When you arrive at the lift, please push the attendant call button for assistance.\u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e\u003ca title\u003d\"\" target\u003d\"_blank\" href\u003d\"https://new.mta.info/sites/default/files/styles/lightbox/public/2021-08/LIRR%20Concourse_ExistingBasemap-01_0.png\" rel\u003d\"noopener noreferrer nofollow\"\u003eClick here to see a map of the concourse.\u003c/a\u003e\u003c/p\u003e",
+          "language": "en-html"
+        }]
+      },
+      "mercuryAlert": {
+        "createdAt": "1636992124",
+        "updatedAt": "1636992124",
+        "alertType": "Station Notice",
+        "humanReadableActivePeriod": {
+          "translation": [{
+            "text": "Until early 2022",
+            "language": "en"
+          }]
+        }
+      }
+    }
+  }, {
+    "id": "lmm:planned_work:2035",
+    "alert": {
+      "activePeriod": [{
+        "start": "1626062400",
+        "end": "1657929600"
+      }],
+      "informedEntity": [{
+        "agencyId": "LI",
+        "routeId": "10",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:10:12"
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "You must be in the first six cars to exit at Westbury",
+          "language": "en"
+        }, {
+          "text": "You must be in the first six cars to exit at Westbury",
+          "language": "en-html"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "The existing platforms are closed while the station is renovated as part of the LIRR Expansion Project. Six-car temporary platforms are in place at the east end of the station. Ticket machines are located at the west end of the temporary platforms.\n\nThe pedestrian underpass is closed until the construction is complete. To cross the tracks, you must use the underpass at Post Avenue. Allow additional time to reach the platform and check the LIRR TrainTime App for track assignments before walking to the platforms. Track 3 is the north platform (generally westbound) and Track 1 is the south platform (generally eastbound).\n\nClick here to see a map of the station.",
+          "language": "en"
+        }, {
+          "text": "\u003cp\u003eThe existing platforms are closed while the station is renovated as part of the LIRR Expansion Project. Six-car temporary platforms are in place at the east end of the station. Ticket machines are located at the west end of the temporary platforms.\u003c/p\u003e\u003cp style\u003d\"min-height:10px\"\u003e\u003c/p\u003e\u003cp\u003eThe pedestrian underpass is closed until the construction is complete. To cross the tracks, you must use the underpass at Post Avenue. Allow additional time to reach the platform and check the \u003ca target\u003d\"_blank\" href\u003d\"https://app.mylirr.org/\" rel\u003d\"noopener noreferrer nofollow\"\u003eLIRR TrainTime App\u003c/a\u003e for track assignments before walking to the platforms. Track 3 is the north platform (generally westbound) and Track 1 is the south platform (generally eastbound).\u003c/p\u003e\u003cp style\u003d\"min-height:10px\"\u003e\u003c/p\u003e\u003cp\u003e\u003ca title\u003d\"\" target\u003d\"_blank\" href\u003d\"https://new.mta.info/sites/default/files/styles/lightbox/public/2021-07/westburymap.png\" rel\u003d\"noopener noreferrer nofollow\"\u003eClick here to see a map of the station.\u003c/a\u003e\u003c/p\u003e",
+          "language": "en-html"
+        }]
+      },
+      "mercuryAlert": {
+        "createdAt": "1636991818",
+        "updatedAt": "1636992187",
+        "alertType": "Station Notice",
+        "humanReadableActivePeriod": {
+          "translation": [{
+            "text": "Until further notice",
+            "language": "en"
+          }]
+        }
+      }
+    }
+  }, {
+    "id": "lmm:planned_work:2033",
+    "alert": {
+      "activePeriod": [{
+        "start": "1621828800",
+        "end": "1657929600"
+      }],
+      "informedEntity": [{
+        "agencyId": "LI",
+        "routeId": "4",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:4:12"
+        }
+      }, {
+        "agencyId": "LI",
+        "routeId": "10",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:10:12"
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "You must be in the first 10 cars to exit westbound trains at Mineola",
+          "language": "en"
+        }, {
+          "text": "You must be in the first 10 cars to exit westbound trains at Mineola",
+          "language": "en-html"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "The easternmost portion of Platform A (westbound/north side) is closed while the station is renovated as part of the LIRR Expansion Project. In addition, the station building/ticket office is closed and replaced with a temporary ticket office.\n\nParts of the station plaza and parking lots on both sides of the station are closed for construction. To cross the tracks, you must use the Mineola Intermodal Center overpass located west of the open platforms. Please allow additional time to reach the platform.\n\nNote: If you are riding the 5:33 PM weekday train from Penn Station to Hicksville, you will also need to be in the first 10 cars to exit at Mineola as this train arrives on the north side platform.\n\nClick here to see a map of the station.",
+          "language": "en"
+        }, {
+          "text": "\u003cp\u003eThe easternmost portion of Platform A (westbound/north side) is closed while the station is renovated as part of the LIRR Expansion Project. In addition, the station building/ticket office is closed and replaced with a temporary ticket office.\u003c/p\u003e\u003cp style\u003d\"min-height:10px\"\u003e\u003c/p\u003e\u003cp\u003eParts of the station plaza and parking lots on both sides of the station are closed for construction. To cross the tracks, you must use the Mineola Intermodal Center overpass located west of the open platforms. Please allow additional time to reach the platform.\u003c/p\u003e\u003cp style\u003d\"min-height:10px\"\u003e\u003c/p\u003e\u003cp\u003e\u003cstrong\u003eNote\u003c/strong\u003e: If you are riding the 5:33 PM weekday train from Penn Station to Hicksville, you will also need to be in the first 10 cars to exit at Mineola as this train arrives on the north side platform.\u003c/p\u003e\u003cp style\u003d\"min-height:10px\"\u003e\u003c/p\u003e\u003cp\u003e\u003ca title\u003d\"\" target\u003d\"_blank\" href\u003d\"https://new.mta.info/sites/default/files/styles/lightbox/public/2021-05/Screenshot%202021-05-19%20150526.png\" rel\u003d\"noopener noreferrer nofollow\"\u003eClick here to see a map of the station.\u003c/a\u003e\u003c/p\u003e\u003cp style\u003d\"min-height:10px\"\u003e\u003c/p\u003e",
+          "language": "en-html"
+        }]
+      },
+      "mercuryAlert": {
+        "createdAt": "1636991575",
+        "updatedAt": "1636993882",
+        "alertType": "Station Notice",
+        "humanReadableActivePeriod": {
+          "translation": [{
+            "text": "Until further notice",
+            "language": "en"
+          }]
+        }
+      }
+    }
+  }, {
+    "id": "lmm:planned_work:1998",
+    "alert": {
+      "activePeriod": [{
+        "start": "1642291200",
+        "end": "1642456800"
+      }, {
+        "start": "1642480200",
+        "end": "1642802400"
+      }, {
+        "start": "1642825800",
+        "end": "1642888800"
+      }, {
+        "start": "1642912200",
+        "end": "1643148000"
+      }, {
+        "start": "1643171400",
+        "end": "1643320800"
+      }],
+      "informedEntity": [{
+        "agencyId": "LI",
+        "routeId": "11",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:11:1"
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Event service only",
+          "language": "en"
+        }, {
+          "text": "Event service only",
+          "language": "en-html"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Trains only run to Belmont Park station when there are events at UBS Arena or Belmont Park.",
+          "language": "en"
+        }, {
+          "text": "\u003cp\u003eTrains only run to Belmont Park station when there are events at \u003ca target\u003d\"_blank\" href\u003d\"https://new.mta.info/agency/long-island-rail-road/take-the-train-to-the-game/lirr-service-to-ubs-arena\" rel\u003d\"noopener noreferrer nofollow\"\u003eUBS Arena\u003c/a\u003e or Belmont Park.\u003c/p\u003e",
+          "language": "en-html"
+        }]
+      },
+      "mercuryAlert": {
+        "createdAt": "1636557960",
+        "updatedAt": "1642332455",
+        "alertType": "No Scheduled Service",
+        "displayBeforeActive": "0",
+        "humanReadableActivePeriod": {
+          "translation": [{
+            "text": "Every day",
+            "language": "en"
+          }]
+        }
+      }
+    }
+  }, {
+    "id": "lmm:planned_work:1132",
+    "alert": {
+      "activePeriod": [{
+        "start": "1632110400",
+        "end": "1657929600"
+      }],
+      "informedEntity": [{
+        "agencyId": "LI",
+        "routeId": "9",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:9:19"
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "All trains stop at Mets-Willets Point",
+          "language": "en"
+        }, {
+          "text": "All trains stop at Mets-Willets Point",
+          "language": "en-html"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "We are making it easier to reach NYC\u0027s COVID-19 vaccination site at Citi Field.",
+          "language": "en"
+        }, {
+          "text": "\u003cp\u003eWe are making it easier to reach NYC\u0027s COVID-19 vaccination site at Citi Field.\u003c/p\u003e",
+          "language": "en-html"
+        }]
+      },
+      "mercuryAlert": {
+        "createdAt": "1632235391",
+        "updatedAt": "1636110618",
+        "alertType": "Special Event",
+        "humanReadableActivePeriod": {
+          "translation": [{
+            "text": "Until further notice",
+            "language": "en"
+          }]
+        }
+      }
+    }
+  }, {
+    "id": "lmm:planned_work:1058",
+    "alert": {
+      "activePeriod": [{
+        "start": "1636470000",
+        "end": "1636480800"
+      }, {
+        "start": "1637074800",
+        "end": "1637085600"
+      }, {
+        "start": "1637679600",
+        "end": "1637690400"
+      }, {
+        "start": "1638284400",
+        "end": "1638295200"
+      }, {
+        "start": "1638889200",
+        "end": "1638900000"
+      }, {
+        "start": "1639494000",
+        "end": "1639504800"
+      }, {
+        "start": "1640098800",
+        "end": "1640109600"
+      }, {
+        "start": "1640703600",
+        "end": "1640714400"
+      }, {
+        "start": "1641308400",
+        "end": "1641319200"
+      }, {
+        "start": "1641913200",
+        "end": "1641924000"
+      }, {
+        "start": "1642518000",
+        "end": "1642528800"
+      }, {
+        "start": "1643122800",
+        "end": "1643133600"
+      }, {
+        "start": "1643727600",
+        "end": "1643738400"
+      }, {
+        "start": "1644332400",
+        "end": "1644343200"
+      }, {
+        "start": "1644937200",
+        "end": "1644948000"
+      }, {
+        "start": "1645542000",
+        "end": "1645552800"
+      }, {
+        "start": "1646146800",
+        "end": "1646157600"
+      }, {
+        "start": "1646751600",
+        "end": "1646762400"
+      }, {
+        "start": "1647352800",
+        "end": "1647363600"
+      }],
+      "informedEntity": [{
+        "agencyId": "LI",
+        "routeId": "12",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:12:13"
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Westbound Brooklyn trains depart Jamaica 15 minutes later",
+          "language": "en"
+        }, {
+          "text": "Westbound Brooklyn trains depart Jamaica 15 minutes later",
+          "language": "en-html"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Westbound trains will wait in Jamaica for 15 minutes before continuing to Brooklyn while we conduct routine track inspections. If you are traveling from the Far Rockaway or Hempstead Branches, please remain on the train at Jamaica as there is no need to transfer. Eastbound service is unaffected.",
+          "language": "en"
+        }, {
+          "text": "\u003cp\u003eWestbound trains will wait in Jamaica for 15 minutes before continuing to Brooklyn while we conduct routine track inspections. If you are traveling from the Far Rockaway or Hempstead Branches, please remain on the train at Jamaica as there is no need to transfer. Eastbound service is unaffected.\u003c/p\u003e",
+          "language": "en-html"
+        }]
+      },
+      "mercuryAlert": {
+        "createdAt": "1631808059",
+        "updatedAt": "1636110668",
+        "alertType": "Planned Work",
+        "humanReadableActivePeriod": {
+          "translation": [{
+            "text": "Tuesdays, 10:00 AM to 1:00 PM, through March 2022",
+            "language": "en"
+          }]
+        }
+      }
+    }
+  }]
+}
