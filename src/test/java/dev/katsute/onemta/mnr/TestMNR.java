@@ -31,6 +31,14 @@ final class TestMNR {
         @Test
         final void testTransitAlert(){
             annotateTest(() -> assumeTrue(mta.getMNRAlerts().length > 0, "No alerts found, skipping alert tests"));
+
+            { // missing description caused by MTA missing data
+                annotateTest(() -> assertTrue(TestProvider.atleastOneTrue(
+                    mta.getMNRAlerts(), MNR.Alert.class,
+                    a -> a.getDescription() != null
+                )));
+            }
+
             for(final MNR.Alert alert : mta.getMNRAlerts())
                 AlertValidation.testAlert(alert);
         }

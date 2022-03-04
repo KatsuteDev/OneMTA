@@ -2,6 +2,7 @@ package dev.katsute.onemta.mnr;
 
 import dev.katsute.onemta.MTA;
 import dev.katsute.onemta.TestProvider;
+import dev.katsute.onemta.railroad.MNR;
 import dev.katsute.onemta.types.*;
 import org.junit.jupiter.api.*;
 
@@ -34,15 +35,10 @@ final class TestMNRRoute {
             @Test
             final void testVehicles(){
                 { // not all MNR vehicles have stops for some reason
-                    boolean tested = false;
-                    for(final Vehicle vehicle : route.getVehicles()){
-                        if(vehicle.getStopID() != null){
-                            tested = true;
-                            break;
-                        }
-                    }
-                    final boolean finalTested = tested;
-                    annotateTest(() -> assertTrue(finalTested, "Failed to pass stop id tests"));
+                    annotateTest(() -> assertTrue(TestProvider.atleastOneTrue(
+                        route.getVehicles(), MNR.Vehicle.class,
+                        v -> v.getStopID() != null
+                    )));
                 }
 
                 for(final Vehicle vehicle : route.getVehicles())
@@ -156,6 +152,13 @@ final class TestMNRRoute {
 
             @Test
             final void testTransitAlerts(){
+                { // missing description caused by MTA missing data
+                    annotateTest(() -> assertTrue(TestProvider.atleastOneTrue(
+                        route.getAlerts(), MNR.Alert.class,
+                        a -> a.getDescription() != null
+                    )));
+                }
+
                 for(final Alert alert : route.getAlerts())
                     AlertValidation.testAlert(alert);
             }

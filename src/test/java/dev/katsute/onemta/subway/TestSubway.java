@@ -43,6 +43,14 @@ final class TestSubway {
         @Test
         final void testTransitAlert(){
             annotateTest(() -> assumeTrue(mta.getSubwayAlerts().length > 0, "No alerts found, skipping alert tests"));
+
+            { // missing description caused by MTA missing data
+                annotateTest(() -> assertTrue(TestProvider.atleastOneTrue(
+                    mta.getSubwayAlerts(), Subway.Alert.class,
+                    a -> a.getDescription() != null
+                )));
+            }
+
             for(final Subway.Alert alert : mta.getSubwayAlerts())
                 AlertValidation.testAlert(alert);
         }

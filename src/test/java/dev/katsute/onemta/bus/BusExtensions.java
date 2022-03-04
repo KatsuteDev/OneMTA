@@ -1,6 +1,7 @@
 package dev.katsute.onemta.bus;
 
 import dev.katsute.onemta.MTA;
+import dev.katsute.onemta.TestProvider;
 import dev.katsute.onemta.types.TripValidation;
 
 import static dev.katsute.jcore.Workflow.*;
@@ -62,18 +63,12 @@ abstract class BusExtensions {
 
         {
             // fields may be missing if stop is skipped
-            boolean tested = false;
-            for(final TripStop stop : trip){
-                if(stop.getExpectedArrivalTime() != null &&
-                   stop.getExpectedArrivalTimeEpochMillis() != null &&
-                   stop.getArrivalProximityText() != null){
-                    tested = true;
-                    break;
-                }
-            }
-
-            final boolean finalPasses = tested;
-            annotateTest(() -> assertTrue(finalPasses, "Failed to pass expected arrival tests, there probably wasn't enough stops to conclude test (tested " + trip.length + " stops)"));
+            annotateTest(() -> assertTrue(TestProvider.atleastOneTrue(
+                trip, Bus.TripStop.class,
+                s -> s.getExpectedArrivalTime() != null &&
+                    s.getExpectedArrivalTimeEpochMillis() != null &&
+                    s.getArrivalProximityText() != null
+            )));
         }
 
         for(final TripStop stop : trip)

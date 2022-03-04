@@ -160,6 +160,13 @@ final class TestSubwayRoute {
 
             @Test
             final void testTransitAlerts(){
+                { // missing description caused by MTA missing data
+                    annotateTest(() -> assertTrue(TestProvider.atleastOneTrue(
+                        route.getAlerts(), Subway.Alert.class,
+                        a -> a.getDescription() != null
+                    )));
+                }
+
                 for(final Alert alert : route.getAlerts())
                     AlertValidation.testAlert(alert);
             }

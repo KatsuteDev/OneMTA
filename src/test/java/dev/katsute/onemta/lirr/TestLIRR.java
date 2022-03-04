@@ -32,6 +32,14 @@ final class TestLIRR {
         @Test
         final void testTransitAlert(){
             annotateTest(() -> assumeTrue(mta.getLIRRAlerts().length > 0, "No alerts found, skipping alert tests"));
+
+            { // missing description caused by MTA missing data
+                annotateTest(() -> assertTrue(TestProvider.atleastOneTrue(
+                    mta.getLIRRAlerts(), LIRR.Alert.class,
+                    a -> a.getDescription() != null
+                )));
+            }
+
             for(final LIRR.Alert alert : mta.getLIRRAlerts())
                 AlertValidation.testAlert(alert);
         }
