@@ -331,6 +331,8 @@ abstract class MTASchema_Subway extends MTASchema {
 
             private final String routeID = tripUpdate.getTrip().getRouteId();
 
+            private final boolean express = routeID.toUpperCase().endsWith("X");
+
             private final Trip trip = asTrip(mta, tripUpdate, this);
 
             @Override
@@ -354,6 +356,11 @@ abstract class MTASchema_Subway extends MTASchema {
             }
 
             // onemta methods
+
+            @Override
+            public final Boolean isExpress(){
+                return express;
+            }
 
             private Stop stop = null;
 
@@ -380,6 +387,7 @@ abstract class MTASchema_Subway extends MTASchema {
             public final String toString(){
                 return "Subway.Vehicle{" +
                        "status='" + status + '\'' +
+                       "express='" + express + '\'' +
                        ", vehicleID='" + vehicleID + '\'' +
                        ", stopID='" + stopID + '\'' +
                        ", routeID='" + routeID + '\'' +

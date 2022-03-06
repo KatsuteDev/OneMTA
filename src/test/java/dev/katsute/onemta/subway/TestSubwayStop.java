@@ -51,6 +51,17 @@ final class TestSubwayStop {
                 }
 
                 @Nested
+                final class VehicleTests {
+
+                    @Test
+                    final void testVehicles(){
+                        for(final Vehicle vehicle : stopN.getVehicles())
+                            SubwayExtensions.testVehicle(vehicle);
+                    }
+
+                }
+
+                @Nested
                 final class TripTests {
 
                     @Test
@@ -196,6 +207,17 @@ final class TestSubwayStop {
                 }
 
                 @Nested
+                final class VehicleTests {
+
+                    @Test
+                    final void testVehicles(){
+                        for(final Vehicle vehicle : stopS.getVehicles())
+                            SubwayExtensions.testVehicle(vehicle);
+                    }
+
+                }
+
+                @Nested
                 final class TripTests {
 
                     @Test
@@ -336,6 +358,12 @@ final class TestSubwayStop {
 
         @Nested
         final class VehicleTests {
+
+            @Test
+            final void testVehicles(){
+                for(final Vehicle vehicle : stop.getVehicles())
+                    SubwayExtensions.testVehicle(vehicle);
+            }
 
             @Test
             final void testID(){
