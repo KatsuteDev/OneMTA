@@ -80,8 +80,8 @@ abstract class MTASchema {
     static TransitAlertPeriod asTransitAlertTimeframe(final TimeRange timeRange){
         return new TransitAlertPeriod() {
 
-            private final Long start = requireNonNull(timeRange::getStart);
-            private final Long end   = requireNonNull(timeRange::getEnd);
+            private final Long start = requireNonNull(() -> timeRange.getStart() * 1000);
+            private final Long end   = requireNonNull(() -> timeRange.getEnd() != 0 ? timeRange.getEnd() * 1000 : null);
 
             @Override
             public final Date getStart(){
