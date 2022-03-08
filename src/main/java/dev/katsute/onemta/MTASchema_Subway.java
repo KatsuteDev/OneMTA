@@ -124,7 +124,7 @@ abstract class MTASchema_Subway extends MTASchema {
                         // get next trip
                         if(entity.hasTripUpdate()){
                             if( // only include trips on this route
-                                entity.getTripUpdate().getTrip().getRouteId().equals(route_id)
+                                entity.getTripUpdate().getTrip().getRouteId().replace("X", "").equals(route_id)
                             ){
                                 tripUpdate  = entity.getTripUpdate();
                                 tripVehicle = tripUpdate.getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getTrainId();
