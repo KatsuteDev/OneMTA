@@ -36,6 +36,12 @@ final class TestSubwayRoute {
         final class VehicleTests {
 
             @Test
+            final void testVehicles(){
+                for(final Vehicle vehicle : route.getVehicles())
+                    SubwayExtensions.testVehicle(vehicle);
+            }
+
+            @Test
             final void testID(){
                 SubwayExtensions.testVehicleNumber(mta, route.getVehicles()[0]);
             }

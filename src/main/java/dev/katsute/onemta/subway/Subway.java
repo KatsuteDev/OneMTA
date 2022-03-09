@@ -31,7 +31,7 @@ import dev.katsute.onemta.types.*;
  * @see TripStop
  * @see Alert
  * @since 1.0.0
- * @version 1.0.0
+ * @version 1.0.3
  * @author Katsute
  */
 public abstract class Subway {
@@ -63,7 +63,18 @@ public abstract class Subway {
      * @version 1.0.0
      * @author Katsute
      */
-    public abstract static class Vehicle extends GTFSVehicle<Route,Stop,Trip,String,String> { }
+    public abstract static class Vehicle extends GTFSVehicle<Route,Stop,Trip,String,String> {
+
+        /**
+         * Returns if the train is running express.
+         *
+         * @return express train
+         *
+         * @since 1.0.3
+         */
+        public abstract Boolean isExpress();
+
+    }
 
     /**
      * Represents a subway vehicle trip.
