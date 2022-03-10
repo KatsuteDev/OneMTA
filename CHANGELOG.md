@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.0.3
+
+### ⭐ New Features
+
+* Add method to check if subway train is running express https://github.com/KatsuteDev/OneMTA/pull/32 (@Katsute)
+
+### 🐞 Bug Fixes
+
+* Fix incorrect time for alert periods https://github.com/KatsuteDev/OneMTA/pull/31 (@Katsute)
+
+**Full Changelog**: https://github.com/KatsuteDev/OneMTA/compare/1.0.2...1.0.3
+
 ## 1.0.2
 
 ### 🐞 Bug Fixes
