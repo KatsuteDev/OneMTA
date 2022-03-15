@@ -110,7 +110,12 @@ abstract class MTASchema_Subway extends MTASchema {
 
             @Override
             public final Vehicle[] getVehicles(){
-                if(vehicles == null){
+                return getVehicles(false);
+            }
+
+            @Override
+            public final Vehicle[] getVehicles(final boolean update){
+                if(vehicles == null || update){
                     final FeedMessage feed = cast(mta).resolveSubwayFeed(routeID);
                     final int len          = Objects.requireNonNull(feed, "Could not find subway feed for route ID " + routeID).getEntityCount();
 
@@ -148,7 +153,12 @@ abstract class MTASchema_Subway extends MTASchema {
 
             @Override
             public final Subway.Alert[] getAlerts(){
-                if(alerts == null){
+                return getAlerts(false);
+            }
+
+            @Override
+            public final Subway.Alert[] getAlerts(final boolean update){
+                if(alerts == null || update){
                     final List<Subway.Alert> alerts = new ArrayList<>();
                     final GTFSRealtimeProto.FeedMessage feed = cast(mta).service.alerts.getSubway(cast(mta).subwayToken);
                     final int len = feed.getEntityCount();
@@ -233,7 +243,12 @@ abstract class MTASchema_Subway extends MTASchema {
 
             @Override
             public final Vehicle[] getVehicles(){
-                if(vehicles == null){
+                return getVehicles(false);
+            }
+
+            @Override
+            public final Vehicle[] getVehicles(final boolean update){
+                if(vehicles == null || update){
                     final FeedMessage feed = cast(mta).resolveSubwayFeed(stop_id.substring(0, 1));
                     final int len          = Objects.requireNonNull(feed, "Could not find subway feed for stop ID " + stop_id).getEntityCount();
 
@@ -254,12 +269,12 @@ abstract class MTASchema_Subway extends MTASchema {
                                 final int len2 = tu.getStopTimeUpdateCount();
                                 // check all stops on train route
                                 for(int u = 0; u < len2; u++){
-                                    final TripUpdate.StopTimeUpdate update = tu.getStopTimeUpdate(u);
+                                    final TripUpdate.StopTimeUpdate stu = tu.getStopTimeUpdate(u);
                                     // check if this stop is en route
                                     if(
                                         stopDirection == null
-                                        ? update.getStopId().equalsIgnoreCase(stop_id + "N") || update.getStopId().equalsIgnoreCase(stop_id + "S")
-                                        : update.getStopId().equalsIgnoreCase(stop_id)
+                                        ? stu.getStopId().equalsIgnoreCase(stop_id + "N") || stu.getStopId().equalsIgnoreCase(stop_id + "S")
+                                        : stu.getStopId().equalsIgnoreCase(stop_id)
                                     ){
                                         tripUpdate  = entity.getTripUpdate();
                                         tripVehicle = tripUpdate.getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getTrainId();
@@ -286,7 +301,12 @@ abstract class MTASchema_Subway extends MTASchema {
 
             @Override
             public final Subway.Alert[] getAlerts(){
-                if(alerts == null){
+                return getAlerts(false);
+            }
+
+            @Override
+            public final Subway.Alert[] getAlerts(final boolean update){
+                if(alerts == null || update){
                     final List<Subway.Alert> alerts = new ArrayList<>();
                     final GTFSRealtimeProto.FeedMessage feed = cast(mta).service.alerts.getSubway(cast(mta).subwayToken);
                     final int len = feed.getEntityCount();

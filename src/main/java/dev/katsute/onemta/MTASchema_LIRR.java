@@ -82,7 +82,12 @@ abstract class MTASchema_LIRR extends MTASchema {
 
             @Override
             public final Vehicle[] getVehicles(){
-                if(vehicles == null){
+                return getVehicles(false);
+            }
+
+            @Override
+            public final Vehicle[] getVehicles(final boolean update){
+                if(vehicles == null || update){
                     final String route = String.valueOf(route_id);
 
                     final FeedMessage feed = cast(mta).service.lirr.getLIRR(cast(mta).subwayToken);
@@ -123,7 +128,12 @@ abstract class MTASchema_LIRR extends MTASchema {
 
             @Override
             public final LIRR.Alert[] getAlerts(){
-                if(alerts == null){
+                return getAlerts(false);
+            }
+
+            @Override
+            public final LIRR.Alert[] getAlerts(final boolean update){
+                if(alerts == null || update){
                     final List<LIRR.Alert> alerts = new ArrayList<>();
                     final GTFSRealtimeProto.FeedMessage feed = cast(mta).service.alerts.getLIRR(cast(mta).subwayToken);
                     final int len = feed.getEntityCount();
@@ -229,7 +239,12 @@ abstract class MTASchema_LIRR extends MTASchema {
 
             @Override
             public final Vehicle[] getVehicles(){
-                if(vehicles == null){
+                return getVehicles(false);
+            }
+
+            @Override
+            public final Vehicle[] getVehicles(final boolean update){
+                if(vehicles == null || update){
                     final String stop = String.valueOf(stopID);
 
                     final FeedMessage feed = cast(mta).service.lirr.getLIRR(cast(mta).subwayToken);
@@ -253,9 +268,9 @@ abstract class MTASchema_LIRR extends MTASchema {
                                 final int len2 = tu.getStopTimeUpdateCount();
                                 // check all stops on train route
                                 for(int u = 0; u < len2; u++){
-                                    final TripUpdate.StopTimeUpdate update = tu.getStopTimeUpdate(u);
+                                    final TripUpdate.StopTimeUpdate stu = tu.getStopTimeUpdate(u);
                                     // check if this stop is en route
-                                    if(update.getStopId().equalsIgnoreCase(stop)){
+                                    if(stu.getStopId().equalsIgnoreCase(stop)){
                                         tripUpdate  = entity.getTripUpdate();
                                         tripVehicle = tripUpdate.getVehicle().getLabel();
                                         continue OUTER;
@@ -281,7 +296,12 @@ abstract class MTASchema_LIRR extends MTASchema {
 
             @Override
             public final LIRR.Alert[] getAlerts(){
-                if(alerts == null){
+                return getAlerts(false);
+            }
+
+            @Override
+            public final LIRR.Alert[] getAlerts(final boolean update){
+                if(alerts == null || update){
                     final List<LIRR.Alert> alerts = new ArrayList<>();
                     final GTFSRealtimeProto.FeedMessage feed = cast(mta).service.alerts.getLIRR(cast(mta).subwayToken);
                     final int len = feed.getEntityCount();

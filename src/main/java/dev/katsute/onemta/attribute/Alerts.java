@@ -26,19 +26,30 @@ import dev.katsute.onemta.types.TransitAlert;
  * @param <A> transit alert type
  *
  * @since 1.0.0
- * @version 1.0.0
+ * @version 1.1.0
  * @author Katsute
  */
 public interface Alerts<A extends TransitAlert<?,?,?,?>> {
 
     /**
-     * Returns all active alerts.
+     * Returns all active alerts. Only fetches alerts for the first method call, subsequent calls will return the same set of alerts. Use {@link #getAlerts(boolean)} to re-fetch latest alerts.
      *
      * @return alerts
      *
-     * @see TransitAlert
+     * @see #getAlerts(boolean)
      * @since 1.0.0
      */
     A[] getAlerts();
+
+    /**
+     * Returns all active alerts.
+     *
+     * @param update if false, will use alerts from previous calls; if true, will re-fetch alerts
+     * @return alerts
+     *
+     * @see #getAlerts()
+     * @since 1.1.0
+     */
+    A[] getAlerts(final boolean update);
 
 }

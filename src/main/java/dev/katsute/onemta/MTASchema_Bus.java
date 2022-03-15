@@ -191,7 +191,12 @@ abstract class MTASchema_Bus extends MTASchema {
 
             @Override
             public final Vehicle[] getVehicles(){
-                if(vehicles == null){
+                return getVehicles(false);
+            }
+
+            @Override
+            public final Vehicle[] getVehicles(final boolean update){
+                if(vehicles == null || update){
                     final JsonObject json = cast(mta).service.bus.getVehicle(cast(mta).busToken, null, routeID, null);
 
                     final JsonObject vehicleMonitoringDelivery = json
@@ -216,7 +221,12 @@ abstract class MTASchema_Bus extends MTASchema {
 
             @Override
             public final Alert[] getAlerts(){
-                if(alerts == null){
+                return getAlerts(false);
+            }
+
+            @Override
+            public final Alert[] getAlerts(final boolean update){
+                if(alerts == null || update){
                     final List<Alert> alerts = new ArrayList<>();
                     final GTFSRealtimeProto.FeedMessage feed = cast(mta).service.alerts.getBus(cast(mta).subwayToken);
                     final int len = feed.getEntityCount();
@@ -337,7 +347,12 @@ abstract class MTASchema_Bus extends MTASchema {
 
             @Override
             public final Vehicle[] getVehicles(){
-                if(vehicles == null){
+                return getVehicles(false);
+            }
+
+            @Override
+            public final Vehicle[] getVehicles(final boolean update){
+                if(vehicles == null || update){
                     final JsonObject json = cast(mta).service.bus.getStop(cast(mta).busToken, stop_id, null, null);
 
                     final JsonObject stopMonitoringDelivery = json
@@ -362,7 +377,12 @@ abstract class MTASchema_Bus extends MTASchema {
 
             @Override
             public final Alert[] getAlerts(){
-                if(alerts == null){
+                return getAlerts(false);
+            }
+
+            @Override
+            public final Alert[] getAlerts(final boolean update){
+                if(alerts == null || update){
                     final List<Alert> alerts = new ArrayList<>();
                     final GTFSRealtimeProto.FeedMessage feed = cast(mta).service.alerts.getBus(cast(mta).subwayToken);
                     final int len = feed.getEntityCount();
