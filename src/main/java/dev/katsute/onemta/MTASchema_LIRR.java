@@ -347,7 +347,7 @@ abstract class MTASchema_LIRR extends MTASchema {
             private final Integer stopID  = requireNonNull(() -> Integer.valueOf(vehicle.getStopId()));
             private final Integer routeID = requireNonNull(() -> Integer.valueOf(tripUpdate.getTrip().getRouteId()));
 
-            private final Trip trip = asTrip(mta, tripUpdate, this);
+            private Trip trip = asTrip(mta, tripUpdate, this);
 
             @Override
             public final String getVehicleID(){
@@ -402,7 +402,12 @@ abstract class MTASchema_LIRR extends MTASchema {
 
             @Override
             public final Trip getTrip(){
-                return trip;
+                return getTrip(false);
+            }
+
+            @Override
+            public final Trip getTrip(final boolean update){
+                return !update ? trip : (trip = mta.getLIRRTrain(vehicleID).getTrip());
             }
 
             // Java

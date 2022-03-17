@@ -30,7 +30,7 @@ import dev.katsute.onemta.attribute.*;
  * @param <RID> route ID format
  * @param <VID> vehicle ID format
  */
-public abstract class TransitVehicle<R extends TransitRoute<?,?,?>, S extends TransitStop<?,?,?>, T extends TransitTrip<?,?,?>, SID, RID, VID> implements RouteReference<R>, StopReference<S>, TripReference<T> {
+public abstract class TransitVehicle<R extends TransitRoute<?,?,?>, S extends TransitStop<?,?,?>, T extends TransitTrip<?,?,?>, SID, RID, VID> implements RouteReference<R>, StopReference<S>, Trip<T> {
 
     /**
      * Returns the vehicle ID.

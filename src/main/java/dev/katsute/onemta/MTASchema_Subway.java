@@ -353,7 +353,7 @@ abstract class MTASchema_Subway extends MTASchema {
 
             private final boolean express = routeID.toUpperCase().endsWith("X");
 
-            private final Trip trip = asTrip(mta, tripUpdate, this);
+            private Trip trip = asTrip(mta, tripUpdate, this);
 
             @Override
             public final String getVehicleID(){
@@ -398,7 +398,12 @@ abstract class MTASchema_Subway extends MTASchema {
 
             @Override
             public final Trip getTrip(){
-                return trip;
+                return getTrip(false);
+            }
+
+            @Override
+            public final Trip getTrip(final boolean update){
+                return !update ? trip : (trip = mta.getSubwayTrain(vehicleID).getTrip());
             }
 
             // Java

@@ -316,7 +316,7 @@ abstract class MTASchema_MNR extends MTASchema {
             private final Integer stopID  = requireNonNull(() -> Integer.valueOf(vehicle.hasStopId() ? vehicle.getStopId() : tripUpdate.getStopTimeUpdate(0).getStopId())); // fallback to next trip stop if stop id is not working
             private final Integer routeID = requireNonNull(() -> Integer.valueOf(tripUpdate.getTrip().getRouteId()));
 
-            private final Trip trip = asTrip(mta, tripUpdate, this);
+            private Trip trip = asTrip(mta, tripUpdate, this);
 
             @Override
             public final String getVehicleID(){
@@ -366,7 +366,12 @@ abstract class MTASchema_MNR extends MTASchema {
 
             @Override
             public final Trip getTrip(){
-                return trip;
+                return getTrip(false);
+            }
+
+            @Override
+            public final Trip getTrip(final boolean update){
+                return !update ? trip : (trip = mta.getMNRTrain(vehicleID).getTrip());
             }
 
             // Java

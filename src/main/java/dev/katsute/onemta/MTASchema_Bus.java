@@ -625,7 +625,12 @@ abstract class MTASchema_Bus extends MTASchema {
 
             @Override
             public final Trip getTrip(){
-                if(trip != null)
+                return getTrip(false);
+            }
+
+            @Override
+            public final Trip getTrip(final boolean update){
+                if(trip != null && !update)
                     return trip;
                 else{
                     final Vehicle bus = mta.getBus(vehicleID);
