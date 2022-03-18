@@ -45,29 +45,30 @@ Compiled jars can be found on Maven Central and the releases tab.
 
 ### Authentication
 
-Request a bus token at <https://bt.mta.info/wiki/Developers/Index>.
+1. Request a bus token at <https://bt.mta.info/wiki/Developers/Index>.
+2. Request a subway token at <https://api.mta.info/#/signup>.
+3. OneMTA requires static data from the MTA for most route and stop information.
+   Latest static data for the MTA is available at <http://web.mta.info/developers/developer-data-terms.html#data>.
 
-Request a subway token at <https://api.mta.info/#/signup>.
+   Static data is only required for the endpoints you are using. For busses all boroughs are required, along with bus company.
 
-OneMTA requires static data from the MTA for most route and stop information. Latest static data for the MTA is available at <http://web.mta.info/developers/developer-data-terms.html#data>.
-
-Only include static data for the API endpoints you are using. For the bus API you must include all boroughs plus bus company.
-
-```java
-MTA mta = mta = MTA.create(
-    busToken,
-    subwayToken,
-    DataResource.create(DataResourceType.Bus_Bronx, new File("google_transit_bronx.zip")),
-    DataResource.create(DataResourceType.Bus_Brooklyn, new File("google_transit_brooklyn.zip")),
-    DataResource.create(DataResourceType.Bus_Manhattan, new File("google_transit_manhattan.zip")),
-    DataResource.create(DataResourceType.Bus_Queens, new File("google_transit_queens.zip")),
-    DataResource.create(DataResourceType.Bus_StatenIsland, new File("google_transit_staten_island.zip")),
-    DataResource.create(DataResourceType.Bus_Company, new File("google_transit_bus_company.zip")),
-    DataResource.create(DataResourceType.Subway, new File("google_transit_subway.zip")),
-    DataResource.create(DataResourceType.LongIslandRailroad, new File("google_transit_lirr.zip")),
-    DataResource.create(DataResourceType.MetroNorthRailroad, new File("google_transit_mnr.zip"))
-);
-```
+   [![static datafeeds](https://raw.githubusercontent.com/KatsuteDev/OneMTA/main/assets/static-datafeeds.png)](http://web.mta.info/developers/developer-data-terms.html#data)
+4. Initialize OneMTA
+    ```java
+    MTA mta = mta = MTA.create(
+        busToken,
+        subwayToken,
+        DataResource.create(DataResourceType.Bus_Bronx, new File("google_transit_bronx.zip")),
+        DataResource.create(DataResourceType.Bus_Brooklyn, new File("google_transit_brooklyn.zip")),
+        DataResource.create(DataResourceType.Bus_Manhattan, new File("google_transit_manhattan.zip")),
+        DataResource.create(DataResourceType.Bus_Queens, new File("google_transit_queens.zip")),
+        DataResource.create(DataResourceType.Bus_StatenIsland, new File("google_transit_staten_island.zip")),
+        DataResource.create(DataResourceType.Bus_Company, new File("google_transit_bus_company.zip")),
+        DataResource.create(DataResourceType.Subway, new File("google_transit_subway.zip")),
+        DataResource.create(DataResourceType.LongIslandRailroad, new File("google_transit_lirr.zip")),
+        DataResource.create(DataResourceType.MetroNorthRailroad, new File("google_transit_mnr.zip"))
+    );
+    ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
