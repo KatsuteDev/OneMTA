@@ -352,14 +352,14 @@ abstract class MTASchema_Subway extends MTASchema {
     static Vehicle asVehicle(final MTA mta, final VehiclePosition vehicle, final TripUpdate tripUpdate, final Route optionalRoute){
         return new Vehicle() {
 
-            private final String status   = requireNonNull(() -> vehicle.getCurrentStatus().name());
-
             private final String vehicleID = tripUpdate.getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getTrainId();
-            private final String stopID = vehicle.getStopId();
 
-            private final String routeID = tripUpdate.getTrip().getRouteId();
+            private String status   = requireNonNull(() -> vehicle.getCurrentStatus().name());
 
-            private final boolean express = routeID.toUpperCase().endsWith("X");
+            private String stopID   = vehicle.getStopId();
+            private String routeID  = tripUpdate.getTrip().getRouteId();
+
+            private boolean express = routeID.toUpperCase().endsWith("X");
 
             private Trip trip = asTrip(mta, tripUpdate, this);
 
@@ -417,7 +417,11 @@ abstract class MTASchema_Subway extends MTASchema {
             public final void refresh(){
                 getTrip(true);
 
-                // todo: update data
+                final Vehicle vehicle = mta.getSubwayTrain(vehicleID);
+                status  = vehicle.getCurrentStatus();
+                stopID  = vehicle.getStopID();
+                routeID = vehicle.getRouteID();
+                express = vehicle.isExpress();
             }
 
             // Java

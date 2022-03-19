@@ -316,13 +316,13 @@ abstract class MTASchema_MNR extends MTASchema {
 
             private final String vehicleID = requireNonNull(() -> vehicle.getVehicle().getLabel());
 
-            private final Double latitude  = requireNonNull( () -> Double.valueOf(vehicle.getPosition().getLatitude()));
-            private final Double longitude = requireNonNull( () -> Double.valueOf(vehicle.getPosition().getLongitude()));
+            private Double latitude  = requireNonNull( () -> Double.valueOf(vehicle.getPosition().getLatitude()));
+            private Double longitude = requireNonNull( () -> Double.valueOf(vehicle.getPosition().getLongitude()));
 
-            private final String status   = requireNonNull(() -> vehicle.getCurrentStatus().name());
+            private String status   = requireNonNull(() -> vehicle.getCurrentStatus().name());
 
-            private final Integer stopID  = requireNonNull(() -> Integer.valueOf(vehicle.hasStopId() ? vehicle.getStopId() : tripUpdate.getStopTimeUpdate(0).getStopId())); // fallback to next trip stop if stop id is not working
-            private final Integer routeID = requireNonNull(() -> Integer.valueOf(tripUpdate.getTrip().getRouteId()));
+            private Integer stopID  = requireNonNull(() -> Integer.valueOf(vehicle.hasStopId() ? vehicle.getStopId() : tripUpdate.getStopTimeUpdate(0).getStopId())); // fallback to next trip stop if stop id is not working
+            private Integer routeID = requireNonNull(() -> Integer.valueOf(tripUpdate.getTrip().getRouteId()));
 
             private Trip trip = asTrip(mta, tripUpdate, this);
 
@@ -385,7 +385,12 @@ abstract class MTASchema_MNR extends MTASchema {
             public final void refresh(){
                 getTrip(true);
 
-                // todo: update data
+                final Vehicle vehicle = mta.getMNRTrain(vehicleID);
+                latitude  = vehicle.getLatitude();
+                longitude = vehicle.getLongitude();
+                status    = vehicle.getCurrentStatus();
+                stopID    = vehicle.getStopID();
+                routeID   = vehicle.getRouteID();
             }
 
             // Java
