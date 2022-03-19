@@ -85,8 +85,7 @@ abstract class MTASchema_LIRR extends MTASchema {
                 return getVehicles(false);
             }
 
-            @Override
-            public final Vehicle[] getVehicles(final boolean update){
+            private Vehicle[] getVehicles(final boolean update){
                 if(vehicles == null || update){
                     final String route = String.valueOf(route_id);
 
@@ -131,8 +130,7 @@ abstract class MTASchema_LIRR extends MTASchema {
                 return getAlerts(false);
             }
 
-            @Override
-            public final LIRR.Alert[] getAlerts(final boolean update){
+            private LIRR.Alert[] getAlerts(final boolean update){
                 if(alerts == null || update){
                     final List<LIRR.Alert> alerts = new ArrayList<>();
                     final GTFSRealtimeProto.FeedMessage feed = cast(mta).service.alerts.getLIRR(cast(mta).subwayToken);
@@ -242,8 +240,7 @@ abstract class MTASchema_LIRR extends MTASchema {
                 return getVehicles(false);
             }
 
-            @Override
-            public final Vehicle[] getVehicles(final boolean update){
+            private Vehicle[] getVehicles(final boolean update){
                 if(vehicles == null || update){
                     final String stop = String.valueOf(stopID);
 
@@ -299,8 +296,7 @@ abstract class MTASchema_LIRR extends MTASchema {
                 return getAlerts(false);
             }
 
-            @Override
-            public final LIRR.Alert[] getAlerts(final boolean update){
+            private LIRR.Alert[] getAlerts(final boolean update){
                 if(alerts == null || update){
                     final List<LIRR.Alert> alerts = new ArrayList<>();
                     final GTFSRealtimeProto.FeedMessage feed = cast(mta).service.alerts.getLIRR(cast(mta).subwayToken);
@@ -405,8 +401,7 @@ abstract class MTASchema_LIRR extends MTASchema {
                 return getTrip(false);
             }
 
-            @Override
-            public final Trip getTrip(final boolean update){
+            private Trip getTrip(final boolean update){
                 return !update ? trip : (trip = mta.getLIRRTrain(vehicleID).getTrip());
             }
 

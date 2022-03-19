@@ -113,8 +113,7 @@ abstract class MTASchema_Subway extends MTASchema {
                 return getVehicles(false);
             }
 
-            @Override
-            public final Vehicle[] getVehicles(final boolean update){
+            private Vehicle[] getVehicles(final boolean update){
                 if(vehicles == null || update){
                     final FeedMessage feed = cast(mta).resolveSubwayFeed(routeID);
                     final int len          = Objects.requireNonNull(feed, "Could not find subway feed for route ID " + routeID).getEntityCount();
@@ -156,8 +155,7 @@ abstract class MTASchema_Subway extends MTASchema {
                 return getAlerts(false);
             }
 
-            @Override
-            public final Subway.Alert[] getAlerts(final boolean update){
+            private Subway.Alert[] getAlerts(final boolean update){
                 if(alerts == null || update){
                     final List<Subway.Alert> alerts = new ArrayList<>();
                     final GTFSRealtimeProto.FeedMessage feed = cast(mta).service.alerts.getSubway(cast(mta).subwayToken);
@@ -246,8 +244,7 @@ abstract class MTASchema_Subway extends MTASchema {
                 return getVehicles(false);
             }
 
-            @Override
-            public final Vehicle[] getVehicles(final boolean update){
+            private Vehicle[] getVehicles(final boolean update){
                 if(vehicles == null || update){
                     final FeedMessage feed = cast(mta).resolveSubwayFeed(stop_id.substring(0, 1));
                     final int len          = Objects.requireNonNull(feed, "Could not find subway feed for stop ID " + stop_id).getEntityCount();
@@ -304,8 +301,7 @@ abstract class MTASchema_Subway extends MTASchema {
                 return getAlerts(false);
             }
 
-            @Override
-            public final Subway.Alert[] getAlerts(final boolean update){
+            private Subway.Alert[] getAlerts(final boolean update){
                 if(alerts == null || update){
                     final List<Subway.Alert> alerts = new ArrayList<>();
                     final GTFSRealtimeProto.FeedMessage feed = cast(mta).service.alerts.getSubway(cast(mta).subwayToken);
@@ -401,8 +397,7 @@ abstract class MTASchema_Subway extends MTASchema {
                 return getTrip(false);
             }
 
-            @Override
-            public final Trip getTrip(final boolean update){
+            private Trip getTrip(final boolean update){
                 return !update ? trip : (trip = mta.getSubwayTrain(vehicleID).getTrip());
             }
 

@@ -26,30 +26,18 @@ import dev.katsute.onemta.types.TransitVehicle;
  * @param <V> transit vehicle type
  *
  * @since 1.0.0
- * @version 1.1.0
+ * @version 1.0.0
  * @author Katsute
  */
 public interface VehiclesReference<V extends TransitVehicle<?,?,?,?,?,?>> {
 
     /**
-     * Returns vehicles. Only fetches vehicles for the first method call, subsequent calls will return the same set of vehicles. Use {@link #getVehicles(boolean)} to re-fetch latest vehicles.
+     * Returns vehicles.
      *
      * @return vehicles
      *
-     * @see #getVehicles(boolean)
      * @since 1.0.0
      */
     V[] getVehicles();
-
-    /**
-     * Return vehicles.
-     *
-     * @param update if false, will use vehicles from previous calls; if true, will re-fetch vehicles
-     * @return vehicles
-     *
-     * @see #getVehicles()
-     * @since 1.1.0
-     */
-    V[] getVehicles(final boolean update);
 
 }

@@ -1,6 +1,6 @@
 package dev.katsute.onemta.types;
 
-import dev.katsute.onemta.attribute.Trip;
+import dev.katsute.onemta.attribute.TripReference;
 import dev.katsute.onemta.railroad.RailroadTripStop;
 
 import static dev.katsute.jcore.Workflow.*;
@@ -25,7 +25,7 @@ public abstract class TripValidation {
         annotateTest(() -> assertNotNull(trip.getTripStops()));
     }
 
-    public static void testTripReference(final Trip<?> reference){
+    public static void testTripReference(final TripReference<?> reference){
         annotateTest(() -> assertSame(reference, reference.getTrip().getVehicle()));
     }
 

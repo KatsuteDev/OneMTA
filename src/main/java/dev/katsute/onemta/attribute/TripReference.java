@@ -26,30 +26,18 @@ import dev.katsute.onemta.types.TransitTrip;
  * @param <T> transit trip type
  *
  * @since 1.0.0
- * @version 1.1.0
+ * @version 1.0.0
  * @author Katsute
  */
-public interface Trip<T extends TransitTrip<?,?,?>> {
-
-    /**
-     * Returns the trip. Only fetches the trip for the first method call, subsequent calls will return the same trip. Use {@link #getTrip(boolean)} to re-fetch latest trip.
-     *
-     * @return trip
-     *
-     * @see #getTrip(boolean)
-     * @since 1.0.0
-     */
-    T getTrip();
+public interface TripReference<T extends TransitTrip<?,?,?>> {
 
     /**
      * Returns the trip.
      *
-     * @param update if false, will use trip from previous calls; if true, will re-fetch trip
      * @return trip
      *
-     * @see #getTrip()
-     * @since 1.1.0
+     * @since 1.0.0
      */
-    T getTrip(final boolean update);
+    T getTrip();
 
 }

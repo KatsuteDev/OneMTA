@@ -85,8 +85,7 @@ abstract class MTASchema_MNR extends MTASchema {
                 return getVehicles(false);
             }
 
-            @Override
-            public final Vehicle[] getVehicles(final boolean update){
+            private Vehicle[] getVehicles(final boolean update){
                 if(vehicles == null || update){
                     final FeedMessage feed = cast(mta).service.mnr.getMNR(cast(mta).subwayToken);
                     final int len          = feed.getEntityCount();
@@ -113,8 +112,7 @@ abstract class MTASchema_MNR extends MTASchema {
                 return getAlerts(false);
             }
 
-            @Override
-            public final MNR.Alert[] getAlerts(final boolean update){
+            private MNR.Alert[] getAlerts(final boolean update){
                 if(alerts == null || update){
                     final List<MNR.Alert> alerts = new ArrayList<>();
                     final GTFSRealtimeProto.FeedMessage feed = cast(mta).service.alerts.getMNR(cast(mta).subwayToken);
@@ -224,8 +222,7 @@ abstract class MTASchema_MNR extends MTASchema {
                 return getVehicles(false);
             }
 
-            @Override
-            public final Vehicle[] getVehicles(final boolean update){
+            private Vehicle[] getVehicles(final boolean update){
                 if(vehicles == null || update){
                     final String stop = String.valueOf(stopID);
 
@@ -269,8 +266,7 @@ abstract class MTASchema_MNR extends MTASchema {
                 return getAlerts(false);
             }
 
-            @Override
-            public final MNR.Alert[] getAlerts(final boolean update){
+            private MNR.Alert[] getAlerts(final boolean update){
                 if(alerts == null || update){
                     final List<MNR.Alert> alerts = new ArrayList<>();
                     final GTFSRealtimeProto.FeedMessage feed = cast(mta).service.alerts.getMNR(cast(mta).subwayToken);
@@ -369,8 +365,7 @@ abstract class MTASchema_MNR extends MTASchema {
                 return getTrip(false);
             }
 
-            @Override
-            public final Trip getTrip(final boolean update){
+            private Trip getTrip(final boolean update){
                 return !update ? trip : (trip = mta.getMNRTrain(vehicleID).getTrip());
             }
 

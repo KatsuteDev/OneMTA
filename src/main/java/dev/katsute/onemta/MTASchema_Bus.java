@@ -194,8 +194,7 @@ abstract class MTASchema_Bus extends MTASchema {
                 return getVehicles(false);
             }
 
-            @Override
-            public final Vehicle[] getVehicles(final boolean update){
+            private Vehicle[] getVehicles(final boolean update){
                 if(vehicles == null || update){
                     final JsonObject json = cast(mta).service.bus.getVehicle(cast(mta).busToken, null, routeID, null);
 
@@ -224,8 +223,7 @@ abstract class MTASchema_Bus extends MTASchema {
                 return getAlerts(false);
             }
 
-            @Override
-            public final Alert[] getAlerts(final boolean update){
+            private Alert[] getAlerts(final boolean update){
                 if(alerts == null || update){
                     final List<Alert> alerts = new ArrayList<>();
                     final GTFSRealtimeProto.FeedMessage feed = cast(mta).service.alerts.getBus(cast(mta).subwayToken);
@@ -350,8 +348,7 @@ abstract class MTASchema_Bus extends MTASchema {
                 return getVehicles(false);
             }
 
-            @Override
-            public final Vehicle[] getVehicles(final boolean update){
+            private Vehicle[] getVehicles(final boolean update){
                 if(vehicles == null || update){
                     final JsonObject json = cast(mta).service.bus.getStop(cast(mta).busToken, stop_id, null, null);
 
@@ -380,8 +377,7 @@ abstract class MTASchema_Bus extends MTASchema {
                 return getAlerts(false);
             }
 
-            @Override
-            public final Alert[] getAlerts(final boolean update){
+            private Alert[] getAlerts(final boolean update){
                 if(alerts == null || update){
                     final List<Alert> alerts = new ArrayList<>();
                     final GTFSRealtimeProto.FeedMessage feed = cast(mta).service.alerts.getBus(cast(mta).subwayToken);
@@ -628,8 +624,7 @@ abstract class MTASchema_Bus extends MTASchema {
                 return getTrip(false);
             }
 
-            @Override
-            public final Trip getTrip(final boolean update){
+            private Trip getTrip(final boolean update){
                 if(trip != null && !update)
                     return trip;
                 else{
