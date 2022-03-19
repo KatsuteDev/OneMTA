@@ -19,6 +19,7 @@
 package dev.katsute.onemta.types;
 
 import dev.katsute.onemta.attribute.StopReference;
+import dev.katsute.onemta.attribute.TripReference;
 
 /**
  * Represents a transit trip stop.
@@ -28,10 +29,10 @@ import dev.katsute.onemta.attribute.StopReference;
  * @param <SID> stop ID format
  *
  * @since 1.0.0
- * @version 1.1.0
+ * @version 1.0.0
  * @author Katsute
  */
-public abstract class TransitTripStop<S extends TransitStop<?,?,?>, T extends TransitTrip<?,?,?>, SID> implements StopReference<S> {
+public abstract class TransitTripStop<S extends TransitStop<?,?,?>, T extends TransitTrip<?,?,?>, SID> implements StopReference<S>, TripReference<T> {
 
     /**
      * Returns the stop ID.
@@ -41,14 +42,5 @@ public abstract class TransitTripStop<S extends TransitStop<?,?,?>, T extends Tr
      * @since 1.0.0
      */
     public abstract SID getStopID();
-
-    /**
-     * Returns the trip.
-     *
-     * @return trip
-     *
-     * @since 1.1.0
-     */
-    public abstract T getTrip();
 
 }
