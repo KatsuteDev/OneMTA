@@ -12,6 +12,8 @@ public interface Updatable {
     /**
      * Refreshes realtime data such as location, vehicles, trips, and alerts.
      *
+     * @throws NullPointerException if vehicle no longer exists
+     *
      * @since 1.1.0
      */
     void refresh();
