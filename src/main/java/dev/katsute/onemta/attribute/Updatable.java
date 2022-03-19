@@ -3,10 +3,8 @@ package dev.katsute.onemta.attribute;
 /**
  * Indicates that the object can refresh its' realtime data.
  *
- * @param <T> type
- *
  * @since 1.1.0
- * @version 1.0.0
+ * @version 1.1.0
  * @author Katsute
  */
 public interface Updatable {

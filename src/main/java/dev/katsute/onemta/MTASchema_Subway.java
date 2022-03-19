@@ -416,7 +416,7 @@ abstract class MTASchema_Subway extends MTASchema {
             @Override
             public final void refresh(){
                 getTrip(true);
-                
+
                 // todo: update data
             }
 
