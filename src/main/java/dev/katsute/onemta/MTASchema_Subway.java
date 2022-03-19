@@ -430,7 +430,7 @@ abstract class MTASchema_Subway extends MTASchema {
             public final String toString(){
                 return "Subway.Vehicle{" +
                        "status='" + status + '\'' +
-                       "express='" + express + '\'' +
+                       ", express='" + express + '\'' +
                        ", vehicleID='" + vehicleID + '\'' +
                        ", stopID='" + stopID + '\'' +
                        ", routeID='" + routeID + '\'' +

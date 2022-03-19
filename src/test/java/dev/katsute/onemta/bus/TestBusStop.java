@@ -50,6 +50,17 @@ final class TestBusStop {
                     )));
                 }
 
+                { // test trip refresh
+                    annotateTest(() -> assertTrue(TestProvider.atleastOneTrue(
+                        stop.getVehicles(), Bus.Vehicle.class,
+                        v -> {
+                            final TransitTrip<?,?,?> trip = v.getTrip();
+                            v.refresh();
+                            return trip != v.getTrip();
+                        }
+                    )));
+                }
+
                 for(final Vehicle vehicle : stop.getVehicles())
                     BusExtensions.testVehicle(vehicle);
             }
