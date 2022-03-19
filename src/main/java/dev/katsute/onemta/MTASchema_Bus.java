@@ -238,6 +238,12 @@ abstract class MTASchema_Bus extends MTASchema {
                 return alerts.toArray(new Alert[0]);
             }
 
+            @Override
+            public final void refresh(){
+                getAlerts(true);
+                getVehicles(true);
+            }
+
             // Java
 
             @Override
@@ -390,6 +396,12 @@ abstract class MTASchema_Bus extends MTASchema {
                     this.alerts = alerts;
                 }
                 return alerts.toArray(new Alert[0]);
+            }
+
+            @Override
+            public final void refresh(){
+                getAlerts(true);
+                getVehicles(true);
             }
 
             // Java
@@ -633,6 +645,13 @@ abstract class MTASchema_Bus extends MTASchema {
                         return (trip = bus.getTrip());
                 }
                 return null;
+            }
+
+            @Override
+            public final void refresh(){
+                getTrip(true);
+
+                // todo: update data
             }
 
             // Java

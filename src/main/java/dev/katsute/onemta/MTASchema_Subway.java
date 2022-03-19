@@ -170,6 +170,12 @@ abstract class MTASchema_Subway extends MTASchema {
                 return alerts.toArray(new Subway.Alert[0]);
             }
 
+            @Override
+            public final void refresh(){
+                getAlerts(true);
+                getVehicles(true);
+            }
+
             // Java
 
             @Override
@@ -321,6 +327,12 @@ abstract class MTASchema_Subway extends MTASchema {
                 return alerts.toArray(new Subway.Alert[0]);
             }
 
+            @Override
+            public final void refresh(){
+                getAlerts(true);
+                getVehicles(true);
+            }
+
             // Java
 
             @Override
@@ -399,6 +411,13 @@ abstract class MTASchema_Subway extends MTASchema {
 
             private Trip getTrip(final boolean update){
                 return !update ? trip : (trip = mta.getSubwayTrain(vehicleID).getTrip());
+            }
+
+            @Override
+            public final void refresh(){
+                getTrip(true);
+                
+                // todo: update data
             }
 
             // Java

@@ -127,6 +127,12 @@ abstract class MTASchema_MNR extends MTASchema {
                 return alerts.toArray(new MNR.Alert[0]);
             }
 
+            @Override
+            public final void refresh(){
+                getAlerts(true);
+                getVehicles(true);
+            }
+
             // Java
 
             @Override
@@ -281,6 +287,12 @@ abstract class MTASchema_MNR extends MTASchema {
                 return alerts.toArray(new MNR.Alert[0]);
             }
 
+            @Override
+            public final void refresh(){
+                getAlerts(true);
+                getVehicles(true);
+            }
+
             // Java
 
             @Override
@@ -367,6 +379,13 @@ abstract class MTASchema_MNR extends MTASchema {
 
             private Trip getTrip(final boolean update){
                 return !update ? trip : (trip = mta.getMNRTrain(vehicleID).getTrip());
+            }
+
+            @Override
+            public final void refresh(){
+                getTrip(true);
+
+                // todo: update data
             }
 
             // Java

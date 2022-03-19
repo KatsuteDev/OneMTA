@@ -145,6 +145,12 @@ abstract class MTASchema_LIRR extends MTASchema {
                 return alerts.toArray(new LIRR.Alert[0]);
             }
 
+            @Override
+            public final void refresh(){
+                getAlerts(true);
+                getVehicles(true);
+            }
+
             // Java
 
             @Override
@@ -311,6 +317,12 @@ abstract class MTASchema_LIRR extends MTASchema {
                 return alerts.toArray(new LIRR.Alert[0]);
             }
 
+            @Override
+            public final void refresh(){
+                getAlerts(true);
+                getVehicles(true);
+            }
+
             // Java
 
             @Override
@@ -403,6 +415,13 @@ abstract class MTASchema_LIRR extends MTASchema {
 
             private Trip getTrip(final boolean update){
                 return !update ? trip : (trip = mta.getLIRRTrain(vehicleID).getTrip());
+            }
+
+            @Override
+            public final void refresh(){
+                getTrip(true);
+
+                // todo: update data
             }
 
             // Java
