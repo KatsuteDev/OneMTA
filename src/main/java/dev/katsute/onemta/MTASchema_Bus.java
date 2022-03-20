@@ -191,7 +191,11 @@ abstract class MTASchema_Bus extends MTASchema {
 
             @Override
             public final Vehicle[] getVehicles(){
-                if(vehicles == null){
+                return getVehicles(false);
+            }
+
+            private Vehicle[] getVehicles(final boolean update){
+                if(vehicles == null || update){
                     final JsonObject json = cast(mta).service.bus.getVehicle(cast(mta).busToken, null, routeID, null);
 
                     final JsonObject vehicleMonitoringDelivery = json
@@ -216,7 +220,11 @@ abstract class MTASchema_Bus extends MTASchema {
 
             @Override
             public final Alert[] getAlerts(){
-                if(alerts == null){
+                return getAlerts(false);
+            }
+
+            private Alert[] getAlerts(final boolean update){
+                if(alerts == null || update){
                     final List<Alert> alerts = new ArrayList<>();
                     final GTFSRealtimeProto.FeedMessage feed = cast(mta).service.alerts.getBus(cast(mta).subwayToken);
                     final int len = feed.getEntityCount();
@@ -228,6 +236,12 @@ abstract class MTASchema_Bus extends MTASchema {
                     this.alerts = alerts;
                 }
                 return alerts.toArray(new Alert[0]);
+            }
+
+            @Override
+            public final void refresh(){
+                getAlerts(true);
+                getVehicles(true);
             }
 
             // Java
@@ -337,7 +351,11 @@ abstract class MTASchema_Bus extends MTASchema {
 
             @Override
             public final Vehicle[] getVehicles(){
-                if(vehicles == null){
+                return getVehicles(false);
+            }
+
+            private Vehicle[] getVehicles(final boolean update){
+                if(vehicles == null || update){
                     final JsonObject json = cast(mta).service.bus.getStop(cast(mta).busToken, stop_id, null, null);
 
                     final JsonObject stopMonitoringDelivery = json
@@ -362,7 +380,11 @@ abstract class MTASchema_Bus extends MTASchema {
 
             @Override
             public final Alert[] getAlerts(){
-                if(alerts == null){
+                return getAlerts(false);
+            }
+
+            private Alert[] getAlerts(final boolean update){
+                if(alerts == null || update){
                     final List<Alert> alerts = new ArrayList<>();
                     final GTFSRealtimeProto.FeedMessage feed = cast(mta).service.alerts.getBus(cast(mta).subwayToken);
                     final int len = feed.getEntityCount();
@@ -374,6 +396,12 @@ abstract class MTASchema_Bus extends MTASchema {
                     this.alerts = alerts;
                 }
                 return alerts.toArray(new Alert[0]);
+            }
+
+            @Override
+            public final void refresh(){
+                getAlerts(true);
+                getVehicles(true);
             }
 
             // Java
@@ -399,25 +427,25 @@ abstract class MTASchema_Bus extends MTASchema {
 
             private final Integer vehicleID = requireNonNull(() -> Integer.valueOf(monitoredVehicleJourney.getString("VehicleRef").substring(9)));
 
-            private final Double latitude  = requireNonNull(() -> monitoredVehicleJourney.getJsonObject("VehicleLocation").getDouble("Latitude"));
-            private final Double longitude = requireNonNull(() -> monitoredVehicleJourney.getJsonObject("VehicleLocation").getDouble("Longitude"));
+            private Double latitude  = requireNonNull(() -> monitoredVehicleJourney.getJsonObject("VehicleLocation").getDouble("Latitude"));
+            private Double longitude = requireNonNull(() -> monitoredVehicleJourney.getJsonObject("VehicleLocation").getDouble("Longitude"));
             // bearing is inverted
-            private final Double bearing   = requireNonNull(() -> 360 - monitoredVehicleJourney.getDouble("Bearing"));
+            private Double bearing   = requireNonNull(() -> 360 - monitoredVehicleJourney.getDouble("Bearing"));
 
-            private final BusDirection direction = requireNonNull(() -> BusDirection.asDirection(monitoredVehicleJourney.getInt("DirectionRef")));
+            private BusDirection direction = requireNonNull(() -> BusDirection.asDirection(monitoredVehicleJourney.getInt("DirectionRef")));
 
-            private final String routeID  = requireNonNull(() -> monitoredVehicleJourney.getString("LineRef").substring(9));
-            private final Integer stopID  = requireNonNull(() -> Integer.valueOf(monitoredCall.getString("StopPointRef").substring(4)));
-            private final String stopName = requireNonNull(() -> monitoredCall.getStringArray("StopPointName")[0]);
+            private String routeID  = requireNonNull(() -> monitoredVehicleJourney.getString("LineRef").substring(9));
+            private Integer stopID  = requireNonNull(() -> Integer.valueOf(monitoredCall.getString("StopPointRef").substring(4)));
+            private String stopName = requireNonNull(() -> monitoredCall.getStringArray("StopPointName")[0]);
 
-            private final Integer originStopCode = requireNonNull(() -> Integer.valueOf(monitoredVehicleJourney.getString("OriginRef").substring(4)));
+            private Integer originStopCode = requireNonNull(() -> Integer.valueOf(monitoredVehicleJourney.getString("OriginRef").substring(4)));
 
-            private final String destinationName = requireNonNull(() -> monitoredVehicleJourney.getStringArray("DestinationName")[0]);
+            private String destinationName = requireNonNull(() -> monitoredVehicleJourney.getStringArray("DestinationName")[0]);
 
-            private final String progressRate     = requireNonNull(() -> monitoredVehicleJourney.getString("ProgressRate"));
-            private final String[] progressStatus = requireNonNull(() -> monitoredVehicleJourney.getStringArray("ProgressStatus"));
+            private String progressRate     = requireNonNull(() -> monitoredVehicleJourney.getString("ProgressRate"));
+            private String[] progressStatus = requireNonNull(() -> monitoredVehicleJourney.getStringArray("ProgressStatus"));
 
-            private final Long aimedArrivalTime      = requireNonNull(() -> {
+            private Long aimedArrivalTime      = requireNonNull(() -> {
                 try{
                     return sdf.parse(monitoredCall.getString("AimedArrivalTime")).getTime();
                 }catch(final ParseException e){
@@ -425,7 +453,7 @@ abstract class MTASchema_Bus extends MTASchema {
                 }
             });
 
-            private final Long expectedArrivalTime   = requireNonNull(() -> {
+            private Long expectedArrivalTime   = requireNonNull(() -> {
                 try{
                     return sdf.parse(monitoredCall.getString("ExpectedArrivalTime")).getTime();
                 }catch(final ParseException e){
@@ -433,7 +461,7 @@ abstract class MTASchema_Bus extends MTASchema {
                 }
             });
 
-            private final Long expectedDepartureTime = requireNonNull(() -> {
+            private Long expectedDepartureTime = requireNonNull(() -> {
                 try{
                     return sdf.parse(monitoredCall.getString("ExpectedDepartureTime")).getTime();
                 }catch(final ParseException e){
@@ -441,9 +469,9 @@ abstract class MTASchema_Bus extends MTASchema {
                 }
             });
 
-            private final String arrivalProximityText = requireNonNull(() -> monitoredCall.getString("ArrivalProximityText"));
-            private final Integer distanceFromStop      = requireNonNull(() -> monitoredCall.getInt("DistanceFromStop"));
-            private final Integer stopsAway = requireNonNull(() -> monitoredCall.getInt("NumberOfStopsAway"));
+            private String arrivalProximityText = requireNonNull(() -> monitoredCall.getString("ArrivalProximityText"));
+            private Integer distanceFromStop      = requireNonNull(() -> monitoredCall.getInt("DistanceFromStop"));
+            private Integer stopsAway = requireNonNull(() -> monitoredCall.getInt("NumberOfStopsAway"));
 
             private Trip trip = monitoredVehicleJourney.containsKey("OnwardCalls") ? asTrip(mta, monitoredVehicleJourney.getJsonObject("OnwardCalls"), this) : null;
 
@@ -605,7 +633,11 @@ abstract class MTASchema_Bus extends MTASchema {
 
             @Override
             public final Trip getTrip(){
-                if(trip != null)
+                return getTrip(false);
+            }
+
+            private Trip getTrip(final boolean update){
+                if(trip != null && !update)
                     return trip;
                 else{
                     final Vehicle bus = mta.getBus(vehicleID);
@@ -613,6 +645,45 @@ abstract class MTASchema_Bus extends MTASchema {
                         return (trip = bus.getTrip());
                 }
                 return null;
+            }
+
+            @Override
+            public final void refresh(){
+                getTrip(true);
+
+                Vehicle vehicle = null;
+
+                // if stop was provided, must use vehicle from stop
+                // so arrival times are based on this stop only, rather than next stop
+                if(optionalStop != null){
+                    for(final Vehicle veh : mta.getBusStop(optionalStop.getStopID()).getVehicles()){
+                        if(Objects.equals(vehicleID, veh.getVehicleID())){
+                            vehicle = veh;
+                            break;
+                        }
+                    }
+                }
+
+                if(vehicle == null)
+                    vehicle = mta.getBus(vehicleID);
+
+                latitude   = vehicle.getLatitude();
+                longitude  = vehicle.getLongitude();
+                bearing    = vehicle.getBearing();
+                direction  = vehicle.getDirection();
+                routeID    = vehicle.getRouteID();
+                stopID     = vehicle.getStopID();
+                stopName   = vehicle.getStopName();
+                originStopCode  = vehicle.getOriginStopCode();
+                destinationName = vehicle.getDestinationName();
+                progressRate    = vehicle.getProgressRate();
+                progressStatus  = vehicle.getProgressStatus();
+                aimedArrivalTime      = vehicle.getAimedArrivalTimeEpochMillis();
+                expectedArrivalTime   = vehicle.getExpectedArrivalTimeEpochMillis();
+                expectedDepartureTime = vehicle.getExpectedDepartureTimeEpochMillis();
+                arrivalProximityText  = vehicle.getArrivalProximityText();
+                distanceFromStop      = vehicle.getDistanceFromStop();
+                stopsAway             = vehicle.getStopsAway();
             }
 
             // Java
