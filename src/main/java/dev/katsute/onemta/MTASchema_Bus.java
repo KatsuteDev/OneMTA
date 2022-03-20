@@ -158,7 +158,7 @@ abstract class MTASchema_Bus extends MTASchema {
                 return routeTextColor;
             }
 
-            // onemta
+            // onemta methods
 
             @Override
             public final Boolean isSelectBusService(){
@@ -183,6 +183,23 @@ abstract class MTASchema_Bus extends MTASchema {
             @Override
             public final TransitAgency getAgency(){
                 return agency;
+            }
+
+            @Override
+            public final boolean isExactRoute(final Object object){
+                if(object instanceof Route)
+                    return getRouteID().equals(((Route) object).getRouteID());
+                else if(object instanceof String)
+                    return getRouteID().equalsIgnoreCase(object.toString());
+                else
+                    return false;
+            }
+
+            @Override
+            public final boolean isSameRoute(final Object object){
+                // todo: strip express and SBS+ denotation then compare
+
+                return false;
             }
 
             // live feed
@@ -375,6 +392,26 @@ abstract class MTASchema_Bus extends MTASchema {
                 }
                 return alerts.toArray(new Alert[0]);
             }
+
+            // onemta methods
+
+            @Override
+            public final boolean isExactStop(final Object object){
+                if(object instanceof Stop)
+                    return getStopID().equals(((Stop) object).getStopID());
+                else if(object instanceof String)
+                    return getStopID().toString().equalsIgnoreCase(((String) object));
+                else if(object instanceof Number)
+                    return getStopID().equals(object);
+                else
+                    return false;
+            }
+
+            @Override
+            public final boolean isSameStop(final Object object){
+                return isExactStop(object);
+            }
+
 
             // Java
 

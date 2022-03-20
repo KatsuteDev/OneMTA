@@ -137,6 +137,25 @@ abstract class MTASchema_LIRR extends MTASchema {
                 return alerts.toArray(new LIRR.Alert[0]);
             }
 
+            // onemta methods
+
+            @Override
+            public final boolean isExactRoute(final Object object){
+                if(object instanceof Route)
+                    return getRouteID().equals(((Route) object).getRouteID());
+                else if(object instanceof String)
+                    return getRouteID().toString().equalsIgnoreCase(((String) object));
+                else if(object instanceof Number)
+                    return getRouteID().equals(object);
+                else
+                    return false;
+            }
+
+            @Override
+            public final boolean isSameRoute(final Object object){
+                return isExactRoute(object);
+            }
+
             // Java
 
             @Override
@@ -293,6 +312,25 @@ abstract class MTASchema_LIRR extends MTASchema {
                     this.alerts = alerts;
                 }
                 return alerts.toArray(new LIRR.Alert[0]);
+            }
+
+            // onemta methods
+
+            @Override
+            public final boolean isExactStop(final Object object){
+                if(object instanceof Stop)
+                    return getStopID().equals(((Stop) object).getStopID());
+                else if(object instanceof String)
+                    return getStopID().toString().equalsIgnoreCase(((String) object)) || getStopCode().equalsIgnoreCase(((String) object));
+                else if(object instanceof Number)
+                    return getStopID().equals(object) || getStopCode().equals(object.toString());
+                else
+                    return false;
+            }
+
+            @Override
+            public final boolean isSameStop(final Object object){
+                return isExactStop(object);
             }
 
             // Java

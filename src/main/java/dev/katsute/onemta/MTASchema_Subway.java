@@ -47,18 +47,76 @@ abstract class MTASchema_Subway extends MTASchema {
                     : SubwayDirection.SOUTH;
     }
 
+    static String resolveSubwayLine(final String route_id){
+        if(route_id == null) return null;
+
+        final String route = route_id.toUpperCase();
+
+        switch(route){
+            case "A":
+            case "C":
+            case "E":
+
+            case "B":
+            case "D":
+            case "F":
+            case "M":
+
+            case "G":
+
+            case "J":
+            case "Z":
+
+            case "N":
+            case "Q":
+            case "R":
+            case "W":
+
+            case "L":
+
+            case "1":
+            case "2":
+            case "3":
+            case "4":
+            case "5":
+            case "6":
+            case "7":
+            case "GS":
+                return route;
+            case "FS":
+            case "SF":
+            case "SR":
+                return "FS";
+            case "FX":
+            case "5X":
+            case "6X":
+            case "7X":
+                return String.valueOf(route.charAt(0));
+            case "9":
+                return "GS";
+            case "S":
+            case "SI":
+            case "SIR":
+                return "SI";
+            default:
+                return null;
+        }
+    }
+
+    //
+
     static Route asRoute(final MTA mta, final String route_id){
         // find row
         final DataResource resource = getDataResource(mta, DataResourceType.Subway);
         final CSV csv               = resource.getData("routes.txt");
-        final List<String> row      = csv.getRow("route_id", cast(mta).resolveSubwayLine(route_id));
+        final List<String> row      = csv.getRow("route_id", resolveSubwayLine(route_id));
 
         // instantiate
         Objects.requireNonNull(row, "Failed to find subway route with id '" + route_id + "'");
 
         return new Route() {
 
-            private final String routeID        = cast(mta).resolveSubwayLine(route_id);
+            private final String routeID        = resolveSubwayLine(route_id);
             private final String routeShortName = row.get(csv.getHeaderIndex("route_short_name"));
             private final String routeLongName  = row.get(csv.getHeaderIndex("route_long_name"));
             private final String routeDesc      = row.get(csv.getHeaderIndex("route_desc"));
@@ -161,6 +219,33 @@ abstract class MTASchema_Subway extends MTASchema {
                 }
                 return alerts.toArray(new Subway.Alert[0]);
             }
+
+            // onemta methods
+
+            @Override
+            public final boolean isExactRoute(final Object object){
+                if(object instanceof Route)
+                    return getRouteID() != null && getRouteID().equals(((Route) object).getRouteID());
+                else if(object instanceof String)
+                    return getRouteID() != null && getRouteID().equalsIgnoreCase(((String) object));
+                else if(object instanceof Number)
+                    return getRouteID() != null && getRouteID().equals(object.toString());
+                else
+                    return false;
+            }
+
+            @Override
+            public final boolean isSameRoute(final Object object){
+                if(object instanceof Route)
+                    return Objects.equals(resolveSubwayLine(getRouteID()), resolveSubwayLine(((Route) object).getRouteID()));
+                else if(object instanceof String)
+                    return Objects.equals(resolveSubwayLine(getRouteID()), resolveSubwayLine(((String) object)));
+                else if(object instanceof Number)
+                    return Objects.equals(resolveSubwayLine(getRouteID()), resolveSubwayLine(object.toString()));
+                else
+                    return false;
+            }
+
 
             // Java
 
@@ -304,6 +389,33 @@ abstract class MTASchema_Subway extends MTASchema {
                 }
                 return alerts.toArray(new Subway.Alert[0]);
             }
+
+            // onemta methods
+
+            @Override
+            public final boolean isExactStop(final Object object){
+                if(object instanceof Stop)
+                    return getStopID().equals(((Stop) object).getStopID());
+                else if(object instanceof String)
+                    return getStopID().equalsIgnoreCase(((String) object));
+                else if(object instanceof Number)
+                    return getStopID().equals(object.toString());
+                else
+                    return false;
+            }
+
+            @Override
+            public final boolean isSameStop(final Object object){
+                if(object instanceof Stop)
+                    return stripDirection(getStopID()).equals(stripDirection(((Stop) object).getStopID()));
+                else if(object instanceof String)
+                    return stripDirection(getStopID()).equals(stripDirection(((String) object)));
+                else if(object instanceof Number)
+                    return stripDirection(getStopID()).equals(object.toString());
+                else
+                    return false;
+            }
+
 
             // Java
 
