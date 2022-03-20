@@ -1,6 +1,7 @@
 package dev.katsute.onemta.types;
 
 import dev.katsute.onemta.attribute.VehiclesReference;
+import dev.katsute.onemta.bus.Bus;
 import dev.katsute.onemta.railroad.MNR;
 
 import static dev.katsute.jcore.Workflow.*;
@@ -23,6 +24,15 @@ public abstract class VehicleValidation {
         if(!(vehicle instanceof MNR.Vehicle))
             annotateTest(() -> assertNotNull(vehicle.getStopID()));
         annotateTest(() -> assertNotNull(vehicle.getRouteID()));
+
+        // test refresh
+        if(!(vehicle instanceof Bus.Vehicle)){
+            final TransitTrip<?,?,?> trip = vehicle.getTrip();
+
+            vehicle.refresh();
+
+            annotateTest(() -> assertNotSame(trip, vehicle.getTrip()));
+        }
     }
 
     public static void testGTFSVehicle(final GTFSVehicle<?,?,?,?,?> vehicle){

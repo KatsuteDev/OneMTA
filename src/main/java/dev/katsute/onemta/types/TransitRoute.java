@@ -18,8 +18,7 @@
 
 package dev.katsute.onemta.types;
 
-import dev.katsute.onemta.attribute.Alerts;
-import dev.katsute.onemta.attribute.VehiclesReference;
+import dev.katsute.onemta.attribute.*;
 
 /**
  * Represents a transit route.
@@ -32,7 +31,7 @@ import dev.katsute.onemta.attribute.VehiclesReference;
  * @version 1.1.0
  * @author Katsute
  */
-public abstract class TransitRoute<RID, V extends TransitVehicle<?,?,?,?,?,?>, A extends TransitAlert<?,?,?,?>> implements VehiclesReference<V>, Alerts<A> {
+public abstract class TransitRoute<RID, V extends TransitVehicle<?,?,?,?,?,?>, A extends TransitAlert<?,?,?,?>> implements Alerts<A>, VehiclesReference<V>, Updatable {
 
     /**
      * Returns the transit agency that is operating the route.

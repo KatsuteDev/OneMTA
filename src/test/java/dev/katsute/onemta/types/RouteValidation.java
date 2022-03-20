@@ -16,6 +16,16 @@ public abstract class RouteValidation {
         annotateTest(() -> assertNotNull(route.getRouteName()));
         annotateTest(() -> assertNotNull(route.getRouteColor()));
         annotateTest(() -> assertNotNull(route.getRouteTextColor()));
+
+        /* test refresh */ {
+            final TransitVehicle<?, ?, ?, ?, ?, ?>[] vehicles = route.getVehicles();
+            final TransitAlert<?, ?, ?, ?>[] alerts = route.getAlerts();
+
+            route.refresh();
+
+            annotateTest(() -> assertNotSame(vehicles, route.getVehicles()));
+            annotateTest(() -> assertNotSame(alerts, route.getAlerts()));
+        }
     }
 
     //

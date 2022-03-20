@@ -17,6 +17,16 @@ public abstract class StopValidation {
 
         annotateTest(() -> assertNotNull(stop.getLatitude()));
         annotateTest(() -> assertNotNull(stop.getLongitude()));
+
+        /* test refresh */ {
+            final TransitVehicle<?, ?, ?, ?, ?, ?>[] vehicles = stop.getVehicles();
+            final TransitAlert<?, ?, ?, ?>[] alerts = stop.getAlerts();
+
+            stop.refresh();
+
+            annotateTest(() -> assertNotSame(vehicles, stop.getVehicles()));
+            annotateTest(() -> assertNotSame(alerts, stop.getAlerts()));
+        }
     }
 
     public static void testRailroadStop(final RailroadStop<?,?> stop){
