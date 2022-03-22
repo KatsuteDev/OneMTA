@@ -315,7 +315,7 @@ abstract class MTASchema_MNR extends MTASchema {
                 else if(object instanceof String)
                     return getStopID().toString().equalsIgnoreCase(((String) object)) || getStopCode().equalsIgnoreCase(((String) object));
                 else if(object instanceof Number)
-                    return getStopID().equals(object) || getStopCode().equals(object.toString());
+                    return getStopID().equals(object) || getStopCode().equalsIgnoreCase(object.toString());
                 else
                     return false;
             }
