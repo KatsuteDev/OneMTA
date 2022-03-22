@@ -26,6 +26,32 @@ final class TestMNRStop {
     }
 
     @Nested
+    final class ComparatorTests {
+
+        @Test
+        final void testNotExact(){
+            annotateTest(() -> assertFalse(stop.isExactStop(null)));
+            annotateTest(() -> assertFalse(stop.isExactStop(999)));
+            annotateTest(() -> assertFalse(stop.isExactStop("999")));
+        }
+
+        @Test
+        final void testExact(){
+            annotateTest(() -> assertTrue(stop.isExactStop(stop)));
+            annotateTest(() -> assertTrue(stop.isExactStop(mta.getMNRStop(TestProvider.MNR_STOP))));
+            annotateTest(() -> assertTrue(stop.isExactStop(TestProvider.MNR_STOP)));
+            annotateTest(() -> assertTrue(stop.isExactStop(String.valueOf(TestProvider.MNR_STOP))));
+        }
+
+        @Test
+        final void testStopCode(){
+            annotateTest(() -> assertTrue(stop.isExactStop(TestProvider.MNR_STOP_CODE)));
+            annotateTest(() -> assertTrue(stop.isExactStop(TestProvider.MNR_STOP_CODE.toLowerCase())));
+        }
+
+    }
+
+    @Nested
     final class ExtensionTests {
 
         @Nested

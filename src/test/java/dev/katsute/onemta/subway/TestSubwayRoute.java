@@ -25,6 +25,47 @@ final class TestSubwayRoute {
     }
 
     @Nested
+    final class ComparatorTests {
+
+        @Test
+        final void testNotExact(){
+            annotateTest(() -> assertFalse(route.isExactRoute(null)));
+            annotateTest(() -> assertFalse(route.isExactRoute(999)));
+            annotateTest(() -> assertFalse(route.isExactRoute("999")));
+
+            annotateTest(() -> assertFalse(route.isExactRoute(TestProvider.SUBWAY_ROUTE + 'x')));
+            annotateTest(() -> assertFalse(route.isExactRoute(TestProvider.SUBWAY_ROUTE + 'X')));
+        }
+
+        @Test
+        final void testExact(){
+            annotateTest(() -> assertTrue(route.isExactRoute(route)));
+            annotateTest(() -> assertTrue(route.isExactRoute(mta.getSubwayRoute(TestProvider.SUBWAY_ROUTE))));
+            annotateTest(() -> assertTrue(route.isExactRoute(Integer.valueOf(TestProvider.SUBWAY_ROUTE))));
+            annotateTest(() -> assertTrue(route.isExactRoute(TestProvider.SUBWAY_ROUTE)));
+        }
+
+        @Test
+        final void testNotSame(){
+            annotateTest(() -> assertFalse(route.isSameRoute(null)));
+            annotateTest(() -> assertFalse(route.isSameRoute(999)));
+            annotateTest(() -> assertFalse(route.isSameRoute("999")));
+        }
+
+        @Test
+        final void testSame(){
+            annotateTest(() -> assertTrue(route.isSameRoute(route)));
+            annotateTest(() -> assertTrue(route.isSameRoute(mta.getSubwayRoute(TestProvider.SUBWAY_ROUTE))));
+            annotateTest(() -> assertTrue(route.isSameRoute(Integer.valueOf(TestProvider.SUBWAY_ROUTE))));
+            annotateTest(() -> assertTrue(route.isSameRoute(TestProvider.SUBWAY_ROUTE)));
+
+            annotateTest(() -> assertTrue(route.isSameRoute(TestProvider.SUBWAY_ROUTE + 'x')));
+            annotateTest(() -> assertTrue(route.isSameRoute(TestProvider.SUBWAY_ROUTE + 'X')));
+        }
+
+    }
+
+    @Nested
     final class ExtensionTests {
 
         @Test

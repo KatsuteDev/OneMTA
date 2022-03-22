@@ -27,6 +27,26 @@ final class TestLIRRRoute {
     }
 
     @Nested
+    final class ComparatorTests {
+
+        @Test
+        final void testNotExact(){
+            annotateTest(() -> assertFalse(route.isExactRoute(null)));
+            annotateTest(() -> assertFalse(route.isExactRoute(999)));
+            annotateTest(() -> assertFalse(route.isExactRoute("999")));
+        }
+
+        @Test
+        final void testExact(){
+            annotateTest(() -> assertTrue(route.isExactRoute(route)));
+            annotateTest(() -> assertTrue(route.isExactRoute(mta.getLIRRRoute(TestProvider.LIRR_ROUTE))));
+            annotateTest(() -> assertTrue(route.isExactRoute(TestProvider.LIRR_ROUTE)));
+            annotateTest(() -> assertTrue(route.isExactRoute(String.valueOf(TestProvider.LIRR_ROUTE))));
+        }
+
+    }
+
+    @Nested
     final class ExtensionTests {
 
         @Nested

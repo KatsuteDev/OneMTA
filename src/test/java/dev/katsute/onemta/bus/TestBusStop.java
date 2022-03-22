@@ -25,6 +25,26 @@ final class TestBusStop {
     }
 
     @Nested
+    final class ComparatorTests {
+
+        @Test
+        final void testNotExact(){
+            annotateTest(() -> assertFalse(stop.isExactStop(null)));
+            annotateTest(() -> assertFalse(stop.isExactStop(999)));
+            annotateTest(() -> assertFalse(stop.isExactStop("999")));
+        }
+
+        @Test
+        final void testExact(){
+            annotateTest(() -> assertTrue(stop.isExactStop(stop)));
+            annotateTest(() -> assertTrue(stop.isExactStop(mta.getBusStop(TestProvider.BUS_STOP))));
+            annotateTest(() -> assertTrue(stop.isExactStop(TestProvider.BUS_STOP)));
+            annotateTest(() -> assertTrue(stop.isExactStop(String.valueOf(TestProvider.BUS_STOP))));
+        }
+
+    }
+
+    @Nested
     final class TestExtensions {
 
         @Nested

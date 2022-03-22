@@ -32,6 +32,57 @@ final class TestSubwayStop {
     }
 
     @Nested
+    final class ComparatorTests {
+
+        @Test
+        final void testNotExact(){
+            annotateTest(() -> assertFalse(stop.isExactStop(null)));
+            annotateTest(() -> assertFalse(stop.isExactStop(999)));
+            annotateTest(() -> assertFalse(stop.isExactStop("999")));
+
+            annotateTest(() -> assertFalse(stop.isExactStop(TestProvider.SUBWAY_STOP + 'n')));
+            annotateTest(() -> assertFalse(stop.isExactStop(TestProvider.SUBWAY_STOP + 'N')));
+            annotateTest(() -> assertFalse(stop.isExactStop(TestProvider.SUBWAY_STOP + 's')));
+            annotateTest(() -> assertFalse(stop.isExactStop(TestProvider.SUBWAY_STOP + 'S')));
+
+            annotateTest(() -> assertFalse(stop.isExactStop(stopN)));
+            annotateTest(() -> assertFalse(stop.isExactStop(stopS)));
+        }
+
+        @Test
+        final void testExact(){
+            annotateTest(() -> assertTrue(stop.isExactStop(stop)));
+            annotateTest(() -> assertTrue(stop.isExactStop(mta.getSubwayStop(TestProvider.SUBWAY_STOP))));
+            annotateTest(() -> assertTrue(stop.isExactStop(Integer.valueOf(TestProvider.SUBWAY_STOP))));
+            annotateTest(() -> assertTrue(stop.isExactStop(TestProvider.SUBWAY_STOP)));
+        }
+
+        @Test
+        final void testNotSame(){
+            annotateTest(() -> assertFalse(stop.isSameStop(null)));
+            annotateTest(() -> assertFalse(stop.isSameStop(999)));
+            annotateTest(() -> assertFalse(stop.isSameStop("999")));
+        }
+
+        @Test
+        final void testSame(){
+            annotateTest(() -> assertTrue(stop.isSameStop(stop)));
+            annotateTest(() -> assertTrue(stop.isSameStop(mta.getSubwayStop(TestProvider.SUBWAY_STOP))));
+            annotateTest(() -> assertTrue(stop.isSameStop(Integer.valueOf(TestProvider.SUBWAY_STOP))));
+            annotateTest(() -> assertTrue(stop.isSameStop(TestProvider.SUBWAY_STOP)));
+
+            annotateTest(() -> assertTrue(stop.isSameStop(TestProvider.SUBWAY_STOP + 'n')));
+            annotateTest(() -> assertTrue(stop.isSameStop(TestProvider.SUBWAY_STOP + 'N')));
+            annotateTest(() -> assertTrue(stop.isSameStop(TestProvider.SUBWAY_STOP + 's')));
+            annotateTest(() -> assertTrue(stop.isSameStop(TestProvider.SUBWAY_STOP + 'S')));
+
+            annotateTest(() -> assertTrue(stop.isSameStop(stopN)));
+            annotateTest(() -> assertTrue(stop.isSameStop(stopS)));
+        }
+
+    }
+
+    @Nested
     final class DirectionTests {
 
         @Nested

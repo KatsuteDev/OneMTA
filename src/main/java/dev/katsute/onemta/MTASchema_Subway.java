@@ -47,6 +47,12 @@ abstract class MTASchema_Subway extends MTASchema {
                     : SubwayDirection.SOUTH;
     }
 
+    private static final Pattern express = Pattern.compile("[X]$", Pattern.CASE_INSENSITIVE);
+
+    private static String stripExpress(final String route){
+        return express.matcher(route).replaceAll("");
+    }
+
     static String resolveSubwayLine(final String route_id){
         if(route_id == null) return null;
 
@@ -82,16 +88,16 @@ abstract class MTASchema_Subway extends MTASchema {
             case "6":
             case "7":
             case "GS":
+
+            case "FX":
+            case "5X":
+            case "6X":
+            case "7X":
                 return route;
             case "FS":
             case "SF":
             case "SR":
                 return "FS";
-            case "FX":
-            case "5X":
-            case "6X":
-            case "7X":
-                return String.valueOf(route.charAt(0));
             case "9":
                 return "GS";
             case "S":
@@ -186,7 +192,7 @@ abstract class MTASchema_Subway extends MTASchema {
                         // get next trip
                         if(entity.hasTripUpdate()){
                             if( // only include trips on this route
-                                entity.getTripUpdate().getTrip().getRouteId().replace("X", "").equals(route_id.replace("X", ""))
+                                stripExpress(entity.getTripUpdate().getTrip().getRouteId()).equalsIgnoreCase(stripExpress(route_id))
                             ){
                                 tripUpdate  = entity.getTripUpdate();
                                 tripVehicle = tripUpdate.getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getTrainId();
@@ -245,11 +251,17 @@ abstract class MTASchema_Subway extends MTASchema {
             @Override
             public final boolean isSameRoute(final Object object){
                 if(object instanceof Route)
-                    return Objects.equals(resolveSubwayLine(getRouteID()), resolveSubwayLine(((Route) object).getRouteID()));
+                    return resolveSubwayLine(getRouteID()) != null &&
+                           resolveSubwayLine(((Route) object).getRouteID()) != null &&
+                           stripExpress(resolveSubwayLine(getRouteID())).equalsIgnoreCase(stripExpress(resolveSubwayLine(((Route) object).getRouteID())));
                 else if(object instanceof String)
-                    return Objects.equals(resolveSubwayLine(getRouteID()), resolveSubwayLine(((String) object)));
+                    return resolveSubwayLine(getRouteID()) != null &&
+                           resolveSubwayLine((String) object) != null &&
+                           stripExpress(resolveSubwayLine(getRouteID())).equalsIgnoreCase(stripExpress(resolveSubwayLine((String) object)));
                 else if(object instanceof Number)
-                    return Objects.equals(resolveSubwayLine(getRouteID()), resolveSubwayLine(object.toString()));
+                    return resolveSubwayLine(getRouteID()) != null &&
+                           resolveSubwayLine(object.toString()) != null &&
+                           stripExpress(resolveSubwayLine(getRouteID())).equalsIgnoreCase(stripExpress(resolveSubwayLine(object.toString())));
                 else
                     return false;
             }
