@@ -32,7 +32,7 @@ import static dev.katsute.onemta.subway.Subway.*;
 @SuppressWarnings("SpellCheckingInspection")
 abstract class MTASchema_Subway extends MTASchema {
 
-    private static final Pattern direction = Pattern.compile("N|S$", Pattern.CASE_INSENSITIVE);
+    private static final Pattern direction = Pattern.compile("[NS]$", Pattern.CASE_INSENSITIVE);
 
     static String stripDirection(final String stop){
         return direction.matcher(stop).replaceAll("");
@@ -233,11 +233,11 @@ abstract class MTASchema_Subway extends MTASchema {
             @Override
             public final boolean isExactRoute(final Object object){
                 if(object instanceof Route)
-                    return getRouteID() != null && getRouteID().equals(((Route) object).getRouteID());
+                    return getRouteID() != null && getRouteID().equalsIgnoreCase(((Route) object).getRouteID());
                 else if(object instanceof String)
                     return getRouteID() != null && getRouteID().equalsIgnoreCase(((String) object));
                 else if(object instanceof Number)
-                    return getRouteID() != null && getRouteID().equals(object.toString());
+                    return getRouteID() != null && getRouteID().equalsIgnoreCase(object.toString());
                 else
                     return false;
             }
@@ -360,7 +360,7 @@ abstract class MTASchema_Subway extends MTASchema {
                                     // check if this stop is en route
                                     if(
                                         stopDirection == null
-                                        ? stu.getStopId().equalsIgnoreCase(stop_id + "N") || stu.getStopId().equalsIgnoreCase(stop_id + "S")
+                                        ? stripDirection(stu.getStopId()).equalsIgnoreCase(stripDirection(stop_id))
                                         : stu.getStopId().equalsIgnoreCase(stop_id)
                                     ){
                                         tripUpdate  = entity.getTripUpdate();
@@ -416,11 +416,11 @@ abstract class MTASchema_Subway extends MTASchema {
             @Override
             public final boolean isExactStop(final Object object){
                 if(object instanceof Stop)
-                    return getStopID().equals(((Stop) object).getStopID());
+                    return getStopID().equalsIgnoreCase(((Stop) object).getStopID());
                 else if(object instanceof String)
                     return getStopID().equalsIgnoreCase(((String) object));
                 else if(object instanceof Number)
-                    return getStopID().equals(object.toString());
+                    return getStopID().equalsIgnoreCase(object.toString());
                 else
                     return false;
             }
@@ -428,11 +428,11 @@ abstract class MTASchema_Subway extends MTASchema {
             @Override
             public final boolean isSameStop(final Object object){
                 if(object instanceof Stop)
-                    return stripDirection(getStopID()).equals(stripDirection(((Stop) object).getStopID()));
+                    return stripDirection(getStopID()).equalsIgnoreCase(stripDirection(((Stop) object).getStopID()));
                 else if(object instanceof String)
-                    return stripDirection(getStopID()).equals(stripDirection(((String) object)));
+                    return stripDirection(getStopID()).equalsIgnoreCase(stripDirection(((String) object)));
                 else if(object instanceof Number)
-                    return stripDirection(getStopID()).equals(object.toString());
+                    return stripDirection(getStopID()).equalsIgnoreCase(object.toString());
                 else
                     return false;
             }

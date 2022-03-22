@@ -132,7 +132,7 @@ abstract class MTASchema_MNR extends MTASchema {
             @Override
             public final boolean isExactRoute(final Object object){
                 if(object instanceof Route)
-                    return getRouteID().equals(((Route) object).getRouteID());
+                    return getRouteID().toString().equalsIgnoreCase(((Route) object).getRouteID().toString());
                 else if(object instanceof String)
                     return getRouteID().toString().equalsIgnoreCase(((String) object));
                 else if(object instanceof Number)
@@ -311,7 +311,7 @@ abstract class MTASchema_MNR extends MTASchema {
             @Override
             public final boolean isExactStop(final Object object){
                 if(object instanceof Stop)
-                    return getStopID().equals(((Stop) object).getStopID());
+                    return getStopID().toString().equalsIgnoreCase(((Stop) object).getStopID().toString());
                 else if(object instanceof String)
                     return getStopID().toString().equalsIgnoreCase(((String) object)) || getStopCode().equalsIgnoreCase(((String) object));
                 else if(object instanceof Number)
