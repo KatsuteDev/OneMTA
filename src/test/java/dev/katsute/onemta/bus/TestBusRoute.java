@@ -39,6 +39,7 @@ final class TestBusRoute {
             annotateTest(() -> assertFalse(route.isExactRoute(TestProvider.BUS_ROUTE + 'X')));
             annotateTest(() -> assertFalse(route.isExactRoute(TestProvider.BUS_ROUTE + 'c')));
             annotateTest(() -> assertFalse(route.isExactRoute(TestProvider.BUS_ROUTE + 'C')));
+            annotateTest(() -> assertFalse(route.isExactRoute(TestProvider.BUS_ROUTE + '+')));
         }
 
         @Test
@@ -67,6 +68,7 @@ final class TestBusRoute {
             annotateTest(() -> assertTrue(route.isSameRoute(TestProvider.BUS_ROUTE + 'X')));
             annotateTest(() -> assertTrue(route.isSameRoute(TestProvider.BUS_ROUTE + 'c')));
             annotateTest(() -> assertTrue(route.isSameRoute(TestProvider.BUS_ROUTE + 'C')));
+            annotateTest(() -> assertTrue(route.isSameRoute(TestProvider.BUS_ROUTE + '+')));
         }
 
     }
