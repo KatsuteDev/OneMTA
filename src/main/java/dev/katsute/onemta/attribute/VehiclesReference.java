@@ -18,6 +18,7 @@
 
 package dev.katsute.onemta.attribute;
 
+import dev.katsute.onemta.subway.Subway;
 import dev.katsute.onemta.types.TransitVehicle;
 
 /**
@@ -32,7 +33,7 @@ import dev.katsute.onemta.types.TransitVehicle;
 public interface VehiclesReference<V extends TransitVehicle<?,?,?,?,?,?>> {
 
     /**
-     * Returns vehicles.
+     * Returns vehicles. For subway routes this will return both local and express trains; use {@link Subway.Vehicle#isExpress()} to check which trains are express.
      *
      * @return vehicles
      *

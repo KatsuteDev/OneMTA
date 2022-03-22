@@ -127,6 +127,25 @@ abstract class MTASchema_MNR extends MTASchema {
                 return alerts.toArray(new MNR.Alert[0]);
             }
 
+            // onemta methods
+
+            @Override
+            public final boolean isExactRoute(final Object object){
+                if(object instanceof Route)
+                    return getRouteID().toString().equalsIgnoreCase(((Route) object).getRouteID().toString());
+                else if(object instanceof String)
+                    return getRouteID().toString().equalsIgnoreCase(((String) object));
+                else if(object instanceof Number)
+                    return getRouteID().equals(object);
+                else
+                    return false;
+            }
+
+            @Override
+            public final boolean isSameRoute(final Object object){
+                return isExactRoute(object);
+            }
+
             @Override
             public final void refresh(){
                 getAlerts(true);
@@ -285,6 +304,25 @@ abstract class MTASchema_MNR extends MTASchema {
                     this.alerts = alerts;
                 }
                 return alerts.toArray(new MNR.Alert[0]);
+            }
+
+            // onemta methods
+
+            @Override
+            public final boolean isExactStop(final Object object){
+                if(object instanceof Stop)
+                    return getStopID().toString().equalsIgnoreCase(((Stop) object).getStopID().toString());
+                else if(object instanceof String)
+                    return getStopID().toString().equalsIgnoreCase(((String) object)) || getStopCode().equalsIgnoreCase(((String) object));
+                else if(object instanceof Number)
+                    return getStopID().equals(object) || getStopCode().equalsIgnoreCase(object.toString());
+                else
+                    return false;
+            }
+
+            @Override
+            public final boolean isSameStop(final Object object){
+                return isExactStop(object);
             }
 
             @Override

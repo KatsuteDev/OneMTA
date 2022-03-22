@@ -112,62 +112,8 @@ final class MTAImpl extends MTA {
 
     // subway methods
 
-    String resolveSubwayLine(final String route_id){
-        final String route = route_id.toUpperCase();
-
-        switch(route){
-            case "A":
-            case "C":
-            case "E":
-
-            case "B":
-            case "D":
-            case "F":
-            case "M":
-
-            case "G":
-
-            case "J":
-            case "Z":
-
-            case "N":
-            case "Q":
-            case "R":
-            case "W":
-
-            case "L":
-
-            case "1":
-            case "2":
-            case "3":
-            case "4":
-            case "5":
-            case "6":
-            case "7":
-            case "GS":
-                return route.toUpperCase();
-            case "FS":
-            case "SF":
-            case "SR":
-                return "FS";
-            case "FX":
-            case "5X":
-            case "6X":
-            case "7X":
-                return String.valueOf(route.toUpperCase().charAt(0));
-            case "9":
-                return "GS";
-            case "S":
-            case "SI":
-            case "SIR":
-                return "SI";
-            default:
-                return null;
-        }
-    }
-
     FeedMessage resolveSubwayFeed(final String route_id){
-        final String route = Objects.requireNonNull(resolveSubwayLine(route_id), "Subway route with ID '" + route_id + "' not found");
+        final String route = Objects.requireNonNull(MTASchema_Subway.resolveSubwayLine(route_id), "Subway route with ID '" + route_id + "' not found");
         switch(route){
             case "A":
             case "C":
@@ -216,7 +162,7 @@ final class MTAImpl extends MTA {
 
     @Override
     public final Subway.Route getSubwayRoute(final String route_id){
-        return MTASchema_Subway.asRoute(this, Objects.requireNonNull(resolveSubwayLine(Objects.requireNonNull(route_id, "Route ID must not be null")), "Failed to find subway route with id '" + route_id + "'"));
+        return MTASchema_Subway.asRoute(this, Objects.requireNonNull(MTASchema_Subway.resolveSubwayLine(Objects.requireNonNull(route_id, "Route ID must not be null")), "Failed to find subway route with id '" + route_id + "'"));
     }
 
     @Override

@@ -26,11 +26,18 @@ import dev.katsute.onemta.types.TransitAlertPeriod;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.regex.Pattern;
 
 import static dev.katsute.onemta.bus.Bus.*;
 
 @SuppressWarnings({"SpellCheckingInspection", "ConstantConditions"})
 abstract class MTASchema_Bus extends MTASchema {
+
+    private static final Pattern type = Pattern.compile("^[X]|[XC+]$", Pattern.CASE_INSENSITIVE);
+
+    static String stripType(final String route){
+        return type.matcher(route).replaceAll("");
+    }
 
     static Route asRoute(final MTA mta, final String route_id){
         return asRoute(mta, route_id, null);
@@ -118,6 +125,7 @@ abstract class MTASchema_Bus extends MTASchema {
                                             routeLongName.contains("Select Bus Service");
             private final Boolean express = route_id.startsWith("X") ||
                                             route_id.endsWith("X") ||
+                                            route_id.endsWith("C") ||
                                             routeShortName.startsWith("X") ||
                                             routeShortName.endsWith("X") ||
                                             routeLongName.contains("Express");
@@ -158,7 +166,7 @@ abstract class MTASchema_Bus extends MTASchema {
                 return routeTextColor;
             }
 
-            // onemta
+            // onemta methods
 
             @Override
             public final Boolean isSelectBusService(){
@@ -183,6 +191,26 @@ abstract class MTASchema_Bus extends MTASchema {
             @Override
             public final TransitAgency getAgency(){
                 return agency;
+            }
+
+            @Override
+            public final boolean isExactRoute(final Object object){
+                if(object instanceof Route)
+                    return getRouteID().equalsIgnoreCase(((Route) object).getRouteID());
+                else if(object instanceof String)
+                    return getRouteID().equalsIgnoreCase(object.toString());
+                else
+                    return false;
+            }
+
+            @Override
+            public final boolean isSameRoute(final Object object){
+                if(object instanceof Route)
+                    return stripType(getRouteID()).equalsIgnoreCase(stripType(((Route) object).getRouteID()));
+                else if(object instanceof String)
+                    return stripType(getRouteID()).equalsIgnoreCase(stripType(object.toString()));
+                else
+                    return false;
             }
 
             // live feed
@@ -396,6 +424,25 @@ abstract class MTASchema_Bus extends MTASchema {
                     this.alerts = alerts;
                 }
                 return alerts.toArray(new Alert[0]);
+            }
+
+            // onemta methods
+
+            @Override
+            public final boolean isExactStop(final Object object){
+                if(object instanceof Stop)
+                    return getStopID().toString().equalsIgnoreCase(((Stop) object).getStopID().toString());
+                else if(object instanceof String)
+                    return getStopID().toString().equalsIgnoreCase(((String) object));
+                else if(object instanceof Number)
+                    return getStopID().equals(object);
+                else
+                    return false;
+            }
+
+            @Override
+            public final boolean isSameStop(final Object object){
+                return isExactStop(object);
             }
 
             @Override

@@ -32,7 +32,7 @@ import static dev.katsute.onemta.subway.Subway.*;
 @SuppressWarnings("SpellCheckingInspection")
 abstract class MTASchema_Subway extends MTASchema {
 
-    private static final Pattern direction = Pattern.compile("N|S$", Pattern.CASE_INSENSITIVE);
+    private static final Pattern direction = Pattern.compile("[NS]$", Pattern.CASE_INSENSITIVE);
 
     static String stripDirection(final String stop){
         return direction.matcher(stop).replaceAll("");
@@ -47,18 +47,82 @@ abstract class MTASchema_Subway extends MTASchema {
                     : SubwayDirection.SOUTH;
     }
 
+    private static final Pattern express = Pattern.compile("[X]$", Pattern.CASE_INSENSITIVE);
+
+    private static String stripExpress(final String route){
+        return express.matcher(route).replaceAll("");
+    }
+
+    static String resolveSubwayLine(final String route_id){
+        if(route_id == null) return null;
+
+        final String route = route_id.toUpperCase();
+
+        switch(route){
+            case "A":
+            case "C":
+            case "E":
+
+            case "B":
+            case "D":
+            case "F":
+            case "M":
+
+            case "G":
+
+            case "J":
+            case "Z":
+
+            case "N":
+            case "Q":
+            case "R":
+            case "W":
+
+            case "L":
+
+            case "1":
+            case "2":
+            case "3":
+            case "4":
+            case "5":
+            case "6":
+            case "7":
+            case "GS":
+
+            case "FX":
+            case "5X":
+            case "6X":
+            case "7X":
+                return route;
+            case "FS":
+            case "SF":
+            case "SR":
+                return "FS";
+            case "9":
+                return "GS";
+            case "S":
+            case "SI":
+            case "SIR":
+                return "SI";
+            default:
+                return null;
+        }
+    }
+
+    //
+
     static Route asRoute(final MTA mta, final String route_id){
         // find row
         final DataResource resource = getDataResource(mta, DataResourceType.Subway);
         final CSV csv               = resource.getData("routes.txt");
-        final List<String> row      = csv.getRow("route_id", cast(mta).resolveSubwayLine(route_id));
+        final List<String> row      = csv.getRow("route_id", resolveSubwayLine(route_id));
 
         // instantiate
         Objects.requireNonNull(row, "Failed to find subway route with id '" + route_id + "'");
 
         return new Route() {
 
-            private final String routeID        = cast(mta).resolveSubwayLine(route_id);
+            private final String routeID        = resolveSubwayLine(route_id);
             private final String routeShortName = row.get(csv.getHeaderIndex("route_short_name"));
             private final String routeLongName  = row.get(csv.getHeaderIndex("route_long_name"));
             private final String routeDesc      = row.get(csv.getHeaderIndex("route_desc"));
@@ -128,7 +192,7 @@ abstract class MTASchema_Subway extends MTASchema {
                         // get next trip
                         if(entity.hasTripUpdate()){
                             if( // only include trips on this route
-                                entity.getTripUpdate().getTrip().getRouteId().replace("X", "").equals(route_id.replace("X", ""))
+                                stripExpress(entity.getTripUpdate().getTrip().getRouteId()).equalsIgnoreCase(stripExpress(route_id))
                             ){
                                 tripUpdate  = entity.getTripUpdate();
                                 tripVehicle = tripUpdate.getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getTrainId();
@@ -168,6 +232,38 @@ abstract class MTASchema_Subway extends MTASchema {
                     this.alerts = alerts;
                 }
                 return alerts.toArray(new Subway.Alert[0]);
+            }
+
+            // onemta methods
+
+            @Override
+            public final boolean isExactRoute(final Object object){
+                if(object instanceof Route)
+                    return getRouteID() != null && getRouteID().equalsIgnoreCase(((Route) object).getRouteID());
+                else if(object instanceof String)
+                    return getRouteID() != null && getRouteID().equalsIgnoreCase(((String) object));
+                else if(object instanceof Number)
+                    return getRouteID() != null && getRouteID().equalsIgnoreCase(object.toString());
+                else
+                    return false;
+            }
+
+            @Override
+            public final boolean isSameRoute(final Object object){
+                if(object instanceof Route)
+                    return resolveSubwayLine(getRouteID()) != null &&
+                           resolveSubwayLine(((Route) object).getRouteID()) != null &&
+                           stripExpress(resolveSubwayLine(getRouteID())).equalsIgnoreCase(stripExpress(resolveSubwayLine(((Route) object).getRouteID())));
+                else if(object instanceof String)
+                    return resolveSubwayLine(getRouteID()) != null &&
+                           resolveSubwayLine((String) object) != null &&
+                           stripExpress(resolveSubwayLine(getRouteID())).equalsIgnoreCase(stripExpress(resolveSubwayLine((String) object)));
+                else if(object instanceof Number)
+                    return resolveSubwayLine(getRouteID()) != null &&
+                           resolveSubwayLine(object.toString()) != null &&
+                           stripExpress(resolveSubwayLine(getRouteID())).equalsIgnoreCase(stripExpress(resolveSubwayLine(object.toString())));
+                else
+                    return false;
             }
 
             @Override
@@ -276,7 +372,7 @@ abstract class MTASchema_Subway extends MTASchema {
                                     // check if this stop is en route
                                     if(
                                         stopDirection == null
-                                        ? stu.getStopId().equalsIgnoreCase(stop_id + "N") || stu.getStopId().equalsIgnoreCase(stop_id + "S")
+                                        ? stripDirection(stu.getStopId()).equalsIgnoreCase(stripDirection(stop_id))
                                         : stu.getStopId().equalsIgnoreCase(stop_id)
                                     ){
                                         tripUpdate  = entity.getTripUpdate();
@@ -325,6 +421,32 @@ abstract class MTASchema_Subway extends MTASchema {
                     this.alerts = alerts;
                 }
                 return alerts.toArray(new Subway.Alert[0]);
+            }
+
+            // onemta methods
+
+            @Override
+            public final boolean isExactStop(final Object object){
+                if(object instanceof Stop)
+                    return getStopID().equalsIgnoreCase(((Stop) object).getStopID());
+                else if(object instanceof String)
+                    return getStopID().equalsIgnoreCase(((String) object));
+                else if(object instanceof Number)
+                    return getStopID().equalsIgnoreCase(object.toString());
+                else
+                    return false;
+            }
+
+            @Override
+            public final boolean isSameStop(final Object object){
+                if(object instanceof Stop)
+                    return stripDirection(getStopID()).equalsIgnoreCase(stripDirection(((Stop) object).getStopID()));
+                else if(object instanceof String)
+                    return stripDirection(getStopID()).equalsIgnoreCase(stripDirection(((String) object)));
+                else if(object instanceof Number)
+                    return stripDirection(getStopID()).equalsIgnoreCase(object.toString());
+                else
+                    return false;
             }
 
             @Override

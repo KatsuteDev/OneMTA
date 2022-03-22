@@ -28,7 +28,7 @@ import dev.katsute.onemta.attribute.*;
  * @param <A> transit alert type
  *
  * @since 1.0.0
- * @version 1.0.0
+ * @version 1.1.0
  * @author Katsute
  */
 public abstract class TransitStop<SID, V extends TransitVehicle<?,?,?,?,?,?>, A extends TransitAlert<?,?,?,?>> implements Alerts<A>, Location, VehiclesReference<V>, Updatable {
@@ -50,5 +50,27 @@ public abstract class TransitStop<SID, V extends TransitVehicle<?,?,?,?,?,?>, A 
      * @since 1.0.0
      */
     public abstract String getStopName();
+
+    /**
+     * Returns if the stop has the exact same stop ID. Includes stop direction.
+     *
+     * @param object stop, stop ID, or stop code
+     * @return if stop ID matches
+     *
+     * @since 1.1.0
+     * @see #isSameStop(Object)
+     */
+    public abstract boolean isExactStop(final Object object);
+
+    /**
+     * Returns if the stop is the same stop. Ignores stop direction.
+     *
+     * @param object stop, stop ID, or stop code
+     * @return if stop is referring to the same stop
+     *
+     * @since 1.1.0
+     * @see #isExactStop(Object)
+     */
+    public abstract boolean isSameStop(final Object object);
 
 }

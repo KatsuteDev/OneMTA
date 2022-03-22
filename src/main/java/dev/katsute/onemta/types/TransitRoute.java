@@ -28,7 +28,7 @@ import dev.katsute.onemta.attribute.*;
  * @param <A> transit alert type
  *
  * @since 1.0.0
- * @version 1.0.0
+ * @version 1.1.0
  * @author Katsute
  */
 public abstract class TransitRoute<RID, V extends TransitVehicle<?,?,?,?,?,?>, A extends TransitAlert<?,?,?,?>> implements Alerts<A>, VehiclesReference<V>, Updatable {
@@ -78,5 +78,27 @@ public abstract class TransitRoute<RID, V extends TransitVehicle<?,?,?,?,?,?>, A
      * @since 1.0.0
      */
     public abstract String getRouteTextColor();
+
+    /**
+     * Returns if the route has the exact same route ID. Includes express and select bus service denotations.
+     *
+     * @param object route, route ID, or route code
+     * @return if route ID matches
+     *
+     * @since 1.1.0
+     * @see #isSameRoute(Object)
+     */
+    public abstract boolean isExactRoute(final Object object);
+
+    /**
+     * Returns if the route is the same route. Ignores express and select bus service denotations.
+     *
+     * @param object route, route ID, or route code
+     * @return if route is referring to the same route
+     *
+     * @since 1.1.0
+     * @see #isExactRoute(Object)
+     */
+    public abstract boolean isSameRoute(final Object object);
 
 }

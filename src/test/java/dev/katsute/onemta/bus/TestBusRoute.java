@@ -25,6 +25,55 @@ final class TestBusRoute {
     }
 
     @Nested
+    final class ComparatorTests {
+
+        @Test
+        final void testNotExact(){
+            annotateTest(() -> assertFalse(route.isExactRoute(null)));
+            annotateTest(() -> assertFalse(route.isExactRoute(999)));
+            annotateTest(() -> assertFalse(route.isExactRoute("999")));
+
+            annotateTest(() -> assertFalse(route.isExactRoute('x' + TestProvider.BUS_ROUTE)));
+            annotateTest(() -> assertFalse(route.isExactRoute('X' + TestProvider.BUS_ROUTE)));
+            annotateTest(() -> assertFalse(route.isExactRoute(TestProvider.BUS_ROUTE + 'x')));
+            annotateTest(() -> assertFalse(route.isExactRoute(TestProvider.BUS_ROUTE + 'X')));
+            annotateTest(() -> assertFalse(route.isExactRoute(TestProvider.BUS_ROUTE + 'c')));
+            annotateTest(() -> assertFalse(route.isExactRoute(TestProvider.BUS_ROUTE + 'C')));
+            annotateTest(() -> assertFalse(route.isExactRoute(TestProvider.BUS_ROUTE + '+')));
+        }
+
+        @Test
+        final void testExact(){
+            annotateTest(() -> assertTrue(route.isExactRoute(route)));
+            annotateTest(() -> assertTrue(route.isExactRoute(mta.getBusRoute(TestProvider.BUS_ROUTE))));
+            annotateTest(() -> assertTrue(route.isExactRoute(TestProvider.BUS_ROUTE)));
+        }
+
+        @Test
+        final void testNotSame(){
+            annotateTest(() -> assertFalse(route.isSameRoute(null)));
+            annotateTest(() -> assertFalse(route.isSameRoute(999)));
+            annotateTest(() -> assertFalse(route.isSameRoute("999")));
+        }
+
+        @Test
+        final void testSame(){
+            annotateTest(() -> assertTrue(route.isSameRoute(route)));
+            annotateTest(() -> assertTrue(route.isSameRoute(mta.getBusRoute(TestProvider.BUS_ROUTE))));
+            annotateTest(() -> assertTrue(route.isSameRoute(TestProvider.BUS_ROUTE)));
+
+            annotateTest(() -> assertTrue(route.isSameRoute('x' + TestProvider.BUS_ROUTE)));
+            annotateTest(() -> assertTrue(route.isSameRoute('X' + TestProvider.BUS_ROUTE)));
+            annotateTest(() -> assertTrue(route.isSameRoute(TestProvider.BUS_ROUTE + 'x')));
+            annotateTest(() -> assertTrue(route.isSameRoute(TestProvider.BUS_ROUTE + 'X')));
+            annotateTest(() -> assertTrue(route.isSameRoute(TestProvider.BUS_ROUTE + 'c')));
+            annotateTest(() -> assertTrue(route.isSameRoute(TestProvider.BUS_ROUTE + 'C')));
+            annotateTest(() -> assertTrue(route.isSameRoute(TestProvider.BUS_ROUTE + '+')));
+        }
+
+    }
+
+    @Nested
     final class ExtensionTests {
 
         @Test

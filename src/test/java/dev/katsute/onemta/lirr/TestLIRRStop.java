@@ -27,6 +27,32 @@ final class TestLIRRStop {
     }
 
     @Nested
+    final class ComparatorTests {
+
+        @Test
+        final void testNotExact(){
+            annotateTest(() -> assertFalse(stop.isExactStop(null)));
+            annotateTest(() -> assertFalse(stop.isExactStop(999)));
+            annotateTest(() -> assertFalse(stop.isExactStop("999")));
+        }
+
+        @Test
+        final void testExact(){
+            annotateTest(() -> assertTrue(stop.isExactStop(stop)));
+            annotateTest(() -> assertTrue(stop.isExactStop(mta.getLIRRStop(TestProvider.LIRR_STOP))));
+            annotateTest(() -> assertTrue(stop.isExactStop(TestProvider.LIRR_STOP)));
+            annotateTest(() -> assertTrue(stop.isExactStop(String.valueOf(TestProvider.LIRR_STOP))));
+        }
+
+        @Test
+        final void testStopCode(){
+            annotateTest(() -> assertTrue(stop.isExactStop(TestProvider.LIRR_STOP_CODE)));
+            annotateTest(() -> assertTrue(stop.isExactStop(TestProvider.LIRR_STOP_CODE.toLowerCase())));
+        }
+
+    }
+
+    @Nested
     final class ExtensionTests {
 
         @Nested
