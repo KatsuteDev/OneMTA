@@ -81,7 +81,7 @@ final class MTAImpl extends MTA {
 
     @Override
     public final Bus.Vehicle getBus(final int bus_id){
-        final JsonObject json = service.bus.getVehicle(busToken, bus_id, null, null);
+        final JsonObject json = service.bus.getVehicle(busToken, bus_id, null, null, null);
 
         final JsonObject[] vehicleMonitoringDelivery = json
             .getJsonObject("Siri")
