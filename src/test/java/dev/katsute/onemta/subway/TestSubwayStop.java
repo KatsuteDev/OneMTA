@@ -5,6 +5,8 @@ import dev.katsute.onemta.TestProvider;
 import dev.katsute.onemta.types.*;
 import org.junit.jupiter.api.*;
 
+import java.util.Arrays;
+
 import static dev.katsute.jcore.Workflow.*;
 import static dev.katsute.onemta.subway.Subway.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -29,6 +31,13 @@ final class TestSubwayStop {
         annotateTest(() -> VehicleValidation.requireVehicles(stop));
         annotateTest(() -> VehicleValidation.requireVehicles(stopN));
         annotateTest(() -> VehicleValidation.requireVehicles(stopS));
+    }
+
+    @Test
+    final void testTransfers(){
+        annotateTest(() -> assertNotEquals(0, stop.getTransfers().length));
+        for(final Stop transfer : stop.getTransfers())
+            annotateTest(() -> assertNotEquals(stop.getStopID(), transfer.getStopID()));
     }
 
     @Nested

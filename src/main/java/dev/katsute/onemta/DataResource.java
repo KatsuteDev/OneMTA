@@ -31,7 +31,7 @@ import java.util.zip.ZipFile;
  *
  * @see #create(DataResourceType, File)
  * @since 1.0.0
- * @version 1.0.0
+ * @version 1.1.0
  * @author Katsute
  */
 public abstract class DataResource {
@@ -79,6 +79,7 @@ public abstract class DataResource {
                             case "agency.txt":
                             case "routes.txt":
                             case "stops.txt":
+                            case "transfers.txt":
                                 try(final BufferedReader IN = new BufferedReader(new InputStreamReader(zip.getInputStream(entry)))){
                                     data.put(entry.getName(), new CSV(IN.lines().collect(Collectors.joining("\n"))));
                                 }catch(final IOException e){
