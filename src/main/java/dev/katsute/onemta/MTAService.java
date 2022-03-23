@@ -59,7 +59,8 @@ final class MTAService {
             final String token,
             final Integer vehicle,
             final String line,
-            final Integer direction
+            final Integer direction,
+            final Boolean bus_company
         ){
             return cache.getJSON(
                 baseURL + "vehicle-monitoring.json",
@@ -68,7 +69,7 @@ final class MTAService {
                                             put("version", "2");
                                             put("VehicleMonitoringDetailLevel", "calls");
                     if(vehicle != null)     put("VehicleRef", String.valueOf(vehicle));
-                    if(line != null)        put("LineRef", "MTA%20NYCT_" + encodeUTF8(line));
+                    if(line != null)        put("LineRef", (bus_company == null || !bus_company ? "MTA%20NYCT_" : "MTABC_") + encodeUTF8(line));
                     if(direction != null)   put("DirectionRef", String.valueOf(direction));
                 }},
                 new HashMap<>()

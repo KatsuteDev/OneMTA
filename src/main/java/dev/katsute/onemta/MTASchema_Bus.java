@@ -102,6 +102,8 @@ abstract class MTASchema_Bus extends MTASchema {
             )
                 break;
 
+        final boolean bc = d == resources.get(5); // Bus Company is always index 5
+
         // instantiate
         Objects.requireNonNull(r, "Failed to find bus route with id '" + id + "'");
 
@@ -224,7 +226,7 @@ abstract class MTASchema_Bus extends MTASchema {
 
             private Vehicle[] getVehicles(final boolean update){
                 if(vehicles == null || update){
-                    final JsonObject json = cast(mta).service.bus.getVehicle(cast(mta).busToken, null, routeID, null);
+                    final JsonObject json = cast(mta).service.bus.getVehicle(cast(mta).busToken, null, routeID, null, bc);
 
                     final JsonObject vehicleMonitoringDelivery = json
                         .getJsonObject("Siri")
@@ -481,7 +483,7 @@ abstract class MTASchema_Bus extends MTASchema {
 
             private BusDirection direction = requireNonNull(() -> BusDirection.asDirection(monitoredVehicleJourney.getInt("DirectionRef")));
 
-            private String routeID  = requireNonNull(() -> monitoredVehicleJourney.getString("LineRef").substring(9));
+            private String routeID  = requireNonNull(() -> monitoredVehicleJourney.getString("LineRef").substring(monitoredVehicleJourney.getString("LineRef").indexOf('_') + 1));
             private Integer stopID  = requireNonNull(() -> Integer.valueOf(monitoredCall.getString("StopPointRef").substring(4)));
             private String stopName = requireNonNull(() -> monitoredCall.getStringArray("StopPointName")[0]);
 
