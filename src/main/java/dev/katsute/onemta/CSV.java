@@ -66,23 +66,45 @@ class CSV {
         return new ArrayList<>(rows);
     }
 
-    public final List<String> getRow(final String keyHeader, final String key){
-        final int index = getHeaderIndex(keyHeader);
-        if(index == -1) return null;
+    public final List<String> getRow(final String keyHeader, final String keyValue){
+        final int keyIndex = getHeaderIndex(keyHeader);
+        if(keyIndex == -1) return null;
         for(final List<String> row : rows)
-            if(row.get(index).equals(key))
+            if(row.get(keyIndex).equals(keyValue))
                 return new ArrayList<>(row);
         return null;
     }
 
-    public final String getValue(final String keyHeader, final String key, final String valueHeader){
-         final int index = getHeaderIndex(valueHeader);
-        if(index == -1) return null;
-        final List<String> row = getRow(keyHeader, key);
+    public final List<List<String>> getRows(final String keyHeader, final String keyValue){
+        final int keyIndex = getHeaderIndex(keyHeader);
+        if(keyIndex == -1) return null;
+        final List<List<String>> match = new ArrayList<>();
+        for(final List<String> row : rows)
+            if(row.get(keyIndex).equals(keyValue))
+                match.add(new ArrayList<>(row));
+        return !match.isEmpty() ? match : null;
+    }
+
+    public final String getValue(final String keyHeader, final String keyValue, final String valueHeader){
+        final int valIndex = getHeaderIndex(valueHeader);
+        if(valIndex == -1) return null;
+        final List<String> row = getRow(keyHeader, keyValue);
         return
-            row != null && index < row.size()
-            ? row.get(index)
+            row != null && valIndex < row.size()
+            ? row.get(valIndex)
             : null;
+    }
+
+    public final String[] getValues(final String keyHeader, final String keyValue, final String valueHeader){
+        final int keyIndex = getHeaderIndex(keyHeader);
+        final int valIndex = getHeaderIndex(valueHeader);
+        if(keyIndex == -1 || valIndex == -1) return new String[0];
+        final List<List<String>> matches = getRows(keyHeader, keyValue);
+        final List<String> values = new ArrayList<>();
+        if(matches != null)
+            for(final List<String> match : matches)
+                values.add(match.get(valIndex));
+        return values.toArray(new String[0]);
     }
 
 }

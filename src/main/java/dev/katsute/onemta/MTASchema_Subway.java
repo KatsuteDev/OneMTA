@@ -337,6 +337,21 @@ abstract class MTASchema_Subway extends MTASchema {
                 return stopDirection;
             }
 
+            private List<Stop> transfers = null;
+
+            @Override
+            public final Stop[] getTransfers(){
+                if(transfers == null){
+                    final List<Stop> transfers = new ArrayList<>();
+                    final String raw = stripDirection(stopID);
+                    for(final String value : resource.getData("transfers.txt").getValues("from_stop_id", raw, "to_stop_id"))
+                        if(!value.equalsIgnoreCase(raw))
+                            transfers.add(mta.getSubwayStop(value));
+                    this.transfers = transfers;
+                }
+                return transfers.toArray(new Stop[0]);
+            }
+
             // live feed
 
             private List<Vehicle> vehicles = null;

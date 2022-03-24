@@ -94,7 +94,16 @@ final class TestCSV {
                 assertEquals("one", csv.getValue("key", "1", "value"));
                 assertEquals("two", csv.getValue("key", "2", "value"));
             });
+        }
 
+        @Test
+        final void testValueMultiple(){
+            annotateTest(() -> {
+                final CSV csv = new CSV("key,value\n1,one\n1,1\n2,two");
+
+                assertArrayEquals(new String[]{"one", "1"}, csv.getValues("key", "1", "value"));
+                assertArrayEquals(new String[]{"two"}, csv.getValues("key", "2", "value"));
+            });
         }
 
         @Test

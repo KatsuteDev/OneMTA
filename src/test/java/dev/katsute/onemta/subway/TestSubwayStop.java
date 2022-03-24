@@ -31,6 +31,13 @@ final class TestSubwayStop {
         annotateTest(() -> VehicleValidation.requireVehicles(stopS));
     }
 
+    @Test
+    final void testTransfers(){
+        annotateTest(() -> assertNotEquals(0, stop.getTransfers().length));
+        for(final Stop transfer : stop.getTransfers())
+            annotateTest(() -> assertNotEquals(stop.getStopID(), transfer.getStopID()));
+    }
+
     @Nested
     final class ComparatorTests {
 

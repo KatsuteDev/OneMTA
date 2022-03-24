@@ -31,7 +31,7 @@ import dev.katsute.onemta.types.*;
  * @see TripStop
  * @see Alert
  * @since 1.0.0
- * @version 1.0.3
+ * @version 1.1.0
  * @author Katsute
  */
 public abstract class Subway {
@@ -51,10 +51,21 @@ public abstract class Subway {
      * Represents a subway stop.
      *
      * @since 1.0.0
-     * @version 1.0.0
+     * @version 1.1.0
      * @author Katsute
      */
-    public abstract static class Stop extends TransitStop<String,Vehicle,Alert> implements Direction<SubwayDirection> { }
+    public abstract static class Stop extends TransitStop<String,Vehicle,Alert> implements Direction<SubwayDirection> {
+
+        /**
+         * Returns a list of transfers.
+         *
+         * @return transfers
+         *
+         * @since 1.1.0
+         */
+        public abstract Stop[] getTransfers();
+
+    }
 
     /**
      * Represents a subway vehicle.
