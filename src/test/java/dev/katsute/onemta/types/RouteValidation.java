@@ -1,5 +1,11 @@
 package dev.katsute.onemta.types;
 
+import dev.katsute.onemta.TestProvider;
+import dev.katsute.onemta.bus.Bus;
+import dev.katsute.onemta.railroad.LIRR;
+import dev.katsute.onemta.railroad.MNR;
+import dev.katsute.onemta.subway.Subway;
+
 import static dev.katsute.jcore.Workflow.*;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -18,13 +24,26 @@ public abstract class RouteValidation {
         annotateTest(() -> assertNotNull(route.getRouteTextColor()));
 
         /* test refresh */ {
-            final TransitVehicle<?, ?, ?, ?, ?, ?>[] vehicles = route.getVehicles();
-            final TransitAlert<?, ?, ?, ?>[] alerts = route.getAlerts();
+            TransitRoute<?,?,?> temp;
 
-            route.refresh();
+            if(route instanceof Bus.Route)
+                temp = TestProvider.mta.getBusRoute(((Bus.Route) route).getRouteID());
+            else if(route instanceof Subway.Route)
+                temp = TestProvider.mta.getSubwayRoute(((Subway.Route) route).getRouteID());
+            else if(route instanceof LIRR.Route)
+                temp = TestProvider.mta.getLIRRRoute(((LIRR.Route) route).getRouteID());
+            else if(route instanceof MNR.Route)
+                temp = TestProvider.mta.getMNRRoute(((MNR.Route) route).getRouteID());
+            else
+                return;
 
-            annotateTest(() -> assertNotSame(vehicles, route.getVehicles()));
-            annotateTest(() -> assertNotSame(alerts, route.getAlerts()));
+            final TransitVehicle<?,?,?,?,?,?>[] vehicles = temp.getVehicles();
+            final TransitAlert<?,?,?,?>[] alerts = temp.getAlerts();
+
+            temp.refresh();
+
+            annotateTest(() -> assertNotSame(vehicles, temp.getVehicles()));
+            annotateTest(() -> assertNotSame(alerts, temp.getAlerts()));
         }
     }
 
