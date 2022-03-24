@@ -98,10 +98,12 @@ public abstract class TestProvider {
         put(DataResourceType.Bus_Company        , "http://web.mta.info/developers/data/busco/google_transit.zip");
     }};
 
+    public static MTA mta;
+
     public static MTA getOneMTA(){
         try{
             if(!hasBus && !hasSubway)
-                annotateTest(() -> assumeTrue(false, "No token defined, skipping tests"));
+                /* annotateTest(() -> */ assumeTrue(false, "No token defined, skipping tests"); // );
 
             acquireTestLock();
 
@@ -125,7 +127,7 @@ public abstract class TestProvider {
             for(final DataResourceType type : TestProvider.resources.keySet())
                 resources.add(DataResource.create(type, new File(test_resources, "resource_" + type.name().toLowerCase() + ".zip")));
 
-            return MTA.create(strip(readFile(bus)), strip(readFile(subway)), resources.toArray(new DataResource[0]));
+            return mta = MTA.create(strip(readFile(bus)), strip(readFile(subway)), resources.toArray(new DataResource[0]));
         }catch(final IOException e){
             annotateTest(() -> fail(e));
             return null;

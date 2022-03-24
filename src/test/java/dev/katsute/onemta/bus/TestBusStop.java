@@ -74,9 +74,10 @@ final class TestBusStop {
                     annotateTest(() -> assertTrue(TestProvider.atleastOneTrue(
                         stop.getVehicles(), Bus.Vehicle.class,
                         v -> {
-                            final TransitTrip<?,?,?> trip = v.getTrip();
-                            v.refresh();
-                            return trip != v.getTrip();
+                            final Bus.Vehicle temp = mta.getBus(v.getVehicleID());
+                            final Bus.Trip trip = temp.getTrip();
+                            temp.refresh();
+                            return trip != temp.getTrip();
                         }
                     )));
                 }

@@ -28,7 +28,7 @@
 
 |⚠ The MTA API [Terms and Conditions](https://api.mta.info/#/DataFeedAgreement) prohibits developers from giving users direct access to MTA servers.|
 |:-:|
-|Any realtime data that is retrieved in this library must be served to users on your own servers.|
+|Do **not** use this library directly in any Android application, any realtime data that is retrieved in this library **must be served to users on your own servers.**|
 
 - [Overview](#overview)
 - [Installation](#installation)

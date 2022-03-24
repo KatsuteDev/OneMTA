@@ -1,8 +1,11 @@
 package dev.katsute.onemta.types;
 
+import dev.katsute.onemta.TestProvider;
 import dev.katsute.onemta.attribute.VehiclesReference;
 import dev.katsute.onemta.bus.Bus;
+import dev.katsute.onemta.railroad.LIRR;
 import dev.katsute.onemta.railroad.MNR;
+import dev.katsute.onemta.subway.Subway;
 
 import static dev.katsute.jcore.Workflow.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -27,11 +30,21 @@ public abstract class VehicleValidation {
 
         // test refresh
         if(!(vehicle instanceof Bus.Vehicle)){
-            final TransitTrip<?,?,?> trip = vehicle.getTrip();
+            final TransitVehicle<?,?,?,?,?,?> temp;
+            if(vehicle instanceof Subway.Vehicle)
+                temp = TestProvider.mta.getSubwayTrain(((Subway.Vehicle) vehicle).getVehicleID());
+            else if(vehicle instanceof LIRR.Vehicle)
+                temp = TestProvider.mta.getLIRRTrain(((LIRR.Vehicle) vehicle).getVehicleID());
+            else if(vehicle instanceof MNR.Vehicle)
+                temp = TestProvider.mta.getMNRTrain(((MNR.Vehicle) vehicle).getVehicleID());
+            else
+                return;
 
-            vehicle.refresh();
+            final TransitTrip<?,?,?> trip = temp.getTrip();
 
-            annotateTest(() -> assertNotSame(trip, vehicle.getTrip()));
+            temp.refresh();
+
+            annotateTest(() -> assertNotSame(trip, temp.getTrip()));
         }
     }
 

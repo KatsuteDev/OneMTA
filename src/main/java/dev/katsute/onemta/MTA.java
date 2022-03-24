@@ -125,7 +125,7 @@ public abstract class MTA {
     public abstract Bus.Stop getBusStop(final int stop_id, final DataResourceType type);
 
     /**
-     * Returns a bus.
+     * Returns a bus. Does not work for Bus Company.
      *
      * @param bus_id bus number as it is seen on the front and side of the bus
      *
