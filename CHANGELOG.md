@@ -1,5 +1,23 @@
 # Changelog
 
+## 1.1.0
+
+### ⭐ New Features
+
+* Add methods to refresh realtime data https://github.com/KatsuteDev/OneMTA/pull/34 (@Katsute)
+* Add comparator methods to stops and routes https://github.com/KatsuteDev/OneMTA/pull/36 (@Katsute)
+* Retrieve transfer stations for subways https://github.com/KatsuteDev/OneMTA/pull/39 (@Katsute)
+
+### 🐞 Bug Fixes
+
+* Fix vehicles for Bus Company https://github.com/KatsuteDev/OneMTA/pull/38 (@Katsute)
+
+### 📘 Dependencies
+
+* Bump maven-compiler-plugin from 3.10.0 to 3.10.1 https://github.com/KatsuteDev/OneMTA/pull/33 (@dependabot)
+
+**Full Changelog**: https://github.com/KatsuteDev/OneMTA/compare/1.0.3...1.1.0
+
 ## 1.0.3
 
 ### ⭐ New Features
