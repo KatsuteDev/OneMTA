@@ -41,7 +41,7 @@
 
 OneMTA requires at least Java 8. OneMTA also requires the [protobuf-java](https://mvnrepository.com/artifact/com.google.protobuf/protobuf-java) library to be installed.
 
-Compiled jars can be found on Maven Central and the releases tab.
+Compiled jars can be found on [Maven Central](https://mvnrepository.com/artifact/dev.katsute/onemta), [GitHub Packages](https://github.com/KatsuteDev/OneMTA/packages/1221214) and the [releases](https://github.com/KatsuteDev/OneMTA/releases) tab.
 
 ### Authentication
 
