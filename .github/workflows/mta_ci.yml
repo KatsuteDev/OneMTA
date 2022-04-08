@@ -14,7 +14,7 @@ jobs:
     timeout-minutes: 90
     strategy:
       matrix:
-        java: [8, 11, 17]
+        java: [8, 11, 17, 18]
         group: [MTA, Bus, Subway, LIRR, MNR]
       fail-fast: false
       max-parallel: 1
