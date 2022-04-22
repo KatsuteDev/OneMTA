@@ -7,7 +7,7 @@ on:
 jobs:
   deploy:
     name: Deploy
-    uses: Katsute/Workflows/.github/workflows/java.deploy.yml@dev
+    uses: Katsute/Workflows/.github/workflows/java.deploy.yml@main
     with:
       environment: Maven Central
     secrets:
