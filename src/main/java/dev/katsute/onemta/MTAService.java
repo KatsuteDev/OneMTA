@@ -51,7 +51,7 @@ final class MTAService {
 
     final class BusService {
 
-        private final String baseURL = "https://bustime.mta.info/api/siri/";
+        private final String baseURL = "https://bustime.mta.info/api/2/siri/";
 
         private BusService(){ }
 
