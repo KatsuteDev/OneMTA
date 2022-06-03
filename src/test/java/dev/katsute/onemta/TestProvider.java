@@ -101,7 +101,7 @@ public abstract class TestProvider {
     public static MTA getOneMTA(){
         try{
             if(!hasBus && !hasSubway)
-                /* */ assumeTrue(false, "No token defined, skipping tests"); // ;
+                assumeTrue(false, "No token defined, skipping tests");
 
             acquireTestLock();
 
