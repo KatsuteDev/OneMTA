@@ -10,7 +10,6 @@ jobs:
     uses: Katsute/Workflows/.github/workflows/java.ci.yml@main
     with:
       package: true
-      timeout: 90
       report: true
     secrets:
       token: ${{ secrets.SINON }}
