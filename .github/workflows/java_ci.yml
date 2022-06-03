@@ -11,3 +11,6 @@ jobs:
     with:
       package: true
       timeout: 90
+      report: true
+    secrets:
+      token: ${{ secrets.SINON }}

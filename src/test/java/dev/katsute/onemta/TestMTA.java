@@ -8,7 +8,6 @@ import org.junit.jupiter.api.*;
 
 import java.util.Arrays;
 
-import static dev.katsute.jcore.Workflow.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 final class TestMTA {
@@ -26,14 +25,14 @@ final class TestMTA {
 
         @Test
         final void testRoute(){
-            annotateTest(() -> assertThrows(NullPointerException.class, () -> mta.getBusRoute("NULL")));
-            annotateTest(() -> assertThrows(NullPointerException.class, () -> mta.getBusRoute(null)));
-            annotateTest(() -> assertThrows(NullPointerException.class, () -> mta.getBusRoute(null, null)));
+            assertThrows(NullPointerException.class, () -> mta.getBusRoute("NULL"));
+            assertThrows(NullPointerException.class, () -> mta.getBusRoute(null));
+            assertThrows(NullPointerException.class, () -> mta.getBusRoute(null, null));
         }
 
         @Test
         final void testNullVehicle(){
-            annotateTest(() -> assertNull(mta.getBus(0)));
+            assertNull(mta.getBus(0));
         }
 
     }
@@ -43,21 +42,21 @@ final class TestMTA {
 
         @Test
         final void testRoute(){
-            annotateTest(() -> assertThrows(NullPointerException.class, () -> mta.getSubwayRoute("NULL")));
-            annotateTest(() -> assertThrows(NullPointerException.class, () -> mta.getSubwayRoute(null)));
+            assertThrows(NullPointerException.class, () -> mta.getSubwayRoute("NULL"));
+            assertThrows(NullPointerException.class, () -> mta.getSubwayRoute(null));
         }
 
         @Test
         final void testStop(){
-            annotateTest(() -> assertThrows(NullPointerException.class, () -> mta.getSubwayStop(null)));
-            annotateTest(() -> assertThrows(NullPointerException.class, () -> mta.getSubwayStop(Integer.parseInt(TestProvider.SUBWAY_STOP), null)));
-            annotateTest(() -> assertThrows(NullPointerException.class, () -> mta.getSubwayStop(null, null)));
+            assertThrows(NullPointerException.class, () -> mta.getSubwayStop(null));
+            assertThrows(NullPointerException.class, () -> mta.getSubwayStop(Integer.parseInt(TestProvider.SUBWAY_STOP), null));
+            assertThrows(NullPointerException.class, () -> mta.getSubwayStop(null, null));
         }
 
         @Test
         final void testNullVehicle(){
-            annotateTest(() -> assertThrows(NullPointerException.class, () -> mta.getSubwayTrain(null)));
-            annotateTest(() -> assertNull(mta.getSubwayTrain("01 NULL")));
+            assertThrows(NullPointerException.class, () -> mta.getSubwayTrain(null));
+            assertNull(mta.getSubwayTrain("01 NULL"));
         }
 
     }
@@ -67,18 +66,18 @@ final class TestMTA {
 
         @Test
         final void testRoute(){
-            annotateTest(() -> assertThrows(NullPointerException.class, () -> mta.getLIRRRoute(-1)));
+            assertThrows(NullPointerException.class, () -> mta.getLIRRRoute(-1));
         }
 
         @Test
         final void testStop(){
-            annotateTest(() -> assertThrows(NullPointerException.class, () -> mta.getLIRRStop(null)));
+            assertThrows(NullPointerException.class, () -> mta.getLIRRStop(null));
         }
 
         @Test
         final void testNullVehicle(){
-            annotateTest(() -> assertThrows(NullPointerException.class, () -> mta.getLIRRTrain(null)));
-            annotateTest(() -> assertNull(mta.getLIRRTrain("NULL")));
+            assertThrows(NullPointerException.class, () -> mta.getLIRRTrain(null));
+            assertNull(mta.getLIRRTrain("NULL"));
         }
 
     }
@@ -88,18 +87,18 @@ final class TestMTA {
 
         @Test
         final void testRoute(){
-            annotateTest(() -> assertThrows(NullPointerException.class, () -> mta.getMNRRoute(-1)));
+            assertThrows(NullPointerException.class, () -> mta.getMNRRoute(-1));
         }
 
         @Test
         final void testStop(){
-            annotateTest(() -> assertThrows(NullPointerException.class, () -> mta.getMNRStop(null)));
+            assertThrows(NullPointerException.class, () -> mta.getMNRStop(null));
         }
 
         @Test
         final void testNullVehicle(){
-            annotateTest(() -> assertThrows(NullPointerException.class, () -> mta.getMNRStop(null)));
-            annotateTest(() -> assertNull(mta.getMNRTrain("NULL")));
+            assertThrows(NullPointerException.class, () -> mta.getMNRStop(null));
+            assertNull(mta.getMNRTrain("NULL"));
         }
 
     }

@@ -5,7 +5,6 @@ import dev.katsute.onemta.bus.Bus;
 import dev.katsute.onemta.railroad.*;
 import dev.katsute.onemta.subway.Subway;
 
-import static dev.katsute.jcore.Workflow.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -15,11 +14,11 @@ import static org.junit.jupiter.api.Assertions.*;
 public abstract class StopValidation {
 
     public static void testStop(final TransitStop<?,?,?> stop){
-        annotateTest(() -> assertNotNull(stop.getStopID()));
-        annotateTest(() -> assertNotNull(stop.getStopName()));
+        assertNotNull(stop.getStopID());
+        assertNotNull(stop.getStopName());
 
-        annotateTest(() -> assertNotNull(stop.getLatitude()));
-        annotateTest(() -> assertNotNull(stop.getLongitude()));
+        assertNotNull(stop.getLatitude());
+        assertNotNull(stop.getLongitude());
 
         /* test refresh */ {
             TransitStop<?,?,?> temp;
@@ -40,15 +39,15 @@ public abstract class StopValidation {
 
             temp.refresh();
 
-            annotateTest(() -> assertNotSame(vehicles, temp.getVehicles()));
-            annotateTest(() -> assertNotSame(alerts, temp.getAlerts()));
+            assertNotSame(vehicles, temp.getVehicles());
+            assertNotSame(alerts, temp.getAlerts());
         }
     }
 
     public static void testRailroadStop(final RailroadStop<?,?> stop){
-        annotateTest(() -> assertNotNull(stop.getStopCode()));
-        annotateTest(() -> assertNotNull(stop.getStopDescription()));
-        annotateTest(() -> assertNotNull(stop.hasWheelchairBoarding()));
+        assertNotNull(stop.getStopCode());
+        assertNotNull(stop.getStopDescription());
+        assertNotNull(stop.hasWheelchairBoarding());
     }
 
 }

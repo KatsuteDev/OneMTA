@@ -6,7 +6,6 @@ import dev.katsute.onemta.railroad.LIRR;
 import dev.katsute.onemta.types.AlertValidation;
 import org.junit.jupiter.api.*;
 
-import static dev.katsute.jcore.Workflow.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assumptions.*;
 
@@ -23,7 +22,7 @@ final class TestLIRR {
 
     @Test
     final void testStopCode(){
-        annotateTest(() -> assertEquals(TestProvider.LIRR_STOP, mta.getLIRRStop(TestProvider.LIRR_STOP_CODE).getStopID()));
+        assertEquals(TestProvider.LIRR_STOP, mta.getLIRRStop(TestProvider.LIRR_STOP_CODE).getStopID());
     }
 
     @Nested
@@ -31,13 +30,13 @@ final class TestLIRR {
 
         @Test
         final void testTransitAlert(){
-            annotateTest(() -> assumeTrue(mta.getLIRRAlerts().length > 0, "No alerts found, skipping alert tests"));
+            assumeTrue(mta.getLIRRAlerts().length > 0, "No alerts found, skipping alert tests");
 
             { // missing description caused by MTA missing data
-                annotateTest(() -> assertTrue(TestProvider.atleastOneTrue(
+                assertTrue(TestProvider.atleastOneTrue(
                     mta.getLIRRAlerts(), LIRR.Alert.class,
                     a -> a.getDescription() != null
-                )));
+                ));
             }
 
             for(final LIRR.Alert alert : mta.getLIRRAlerts())

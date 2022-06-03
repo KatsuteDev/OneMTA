@@ -42,4 +42,11 @@ jobs:
           echo ${{ matrix.group }} > src/test/java/resources/TEST_GROUP
 
       - name: ✔ Test with Maven
+        continue-on-error: true
         run: mvn test -fae --no-transfer-progress
+
+      - name: ✔ Generate Report
+        uses: Katsute/Workflows/Actions/java/report@main
+        with:
+          token: ${{ secrets.SINON }}
+          path: .

@@ -6,7 +6,7 @@
 
     <groupId>dev.katsute</groupId>
     <artifactId>onemta</artifactId>
-    <version>1.1.1</version>
+    <version>1.1.2-SNAPSHOT</version>
 
     <profiles>
         <profile>
@@ -242,7 +242,10 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M6</version>
                 <configuration>
-                    <useFile>false</useFile>
+                    <useFile>true</useFile>
+                    <excludes>
+                        <exclude/>
+                    </excludes>
                     <trimStackTrace>false</trimStackTrace>
                     <reuseForks>false</reuseForks>
                 </configuration>
@@ -273,12 +276,6 @@
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-params</artifactId>
             <version>5.8.2</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>dev.katsute</groupId>
-            <artifactId>jcore</artifactId>
-            <version>2.0.1</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

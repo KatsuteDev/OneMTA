@@ -6,7 +6,6 @@ import dev.katsute.onemta.railroad.LIRR;
 import dev.katsute.onemta.types.*;
 import org.junit.jupiter.api.*;
 
-import static dev.katsute.jcore.Workflow.*;
 import static dev.katsute.onemta.railroad.LIRR.*;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -22,8 +21,8 @@ final class TestLIRRStop {
         TestProvider.testGroup("lirr");
         mta = TestProvider.getOneMTA();
 
-        annotateTest(() -> stop = mta.getLIRRStop(TestProvider.LIRR_STOP));
-        annotateTest(() -> VehicleValidation.requireVehicles(stop));
+        stop = mta.getLIRRStop(TestProvider.LIRR_STOP);
+        VehicleValidation.requireVehicles(stop);
     }
 
     @Nested
@@ -31,23 +30,23 @@ final class TestLIRRStop {
 
         @Test
         final void testNotExact(){
-            annotateTest(() -> assertFalse(stop.isExactStop(null)));
-            annotateTest(() -> assertFalse(stop.isExactStop(999)));
-            annotateTest(() -> assertFalse(stop.isExactStop("999")));
+            assertFalse(stop.isExactStop(null));
+            assertFalse(stop.isExactStop(999));
+            assertFalse(stop.isExactStop("999"));
         }
 
         @Test
         final void testExact(){
-            annotateTest(() -> assertTrue(stop.isExactStop(stop)));
-            annotateTest(() -> assertTrue(stop.isExactStop(mta.getLIRRStop(TestProvider.LIRR_STOP))));
-            annotateTest(() -> assertTrue(stop.isExactStop(TestProvider.LIRR_STOP)));
-            annotateTest(() -> assertTrue(stop.isExactStop(String.valueOf(TestProvider.LIRR_STOP))));
+            assertTrue(stop.isExactStop(stop));
+            assertTrue(stop.isExactStop(mta.getLIRRStop(TestProvider.LIRR_STOP)));
+            assertTrue(stop.isExactStop(TestProvider.LIRR_STOP));
+            assertTrue(stop.isExactStop(String.valueOf(TestProvider.LIRR_STOP)));
         }
 
         @Test
         final void testStopCode(){
-            annotateTest(() -> assertTrue(stop.isExactStop(TestProvider.LIRR_STOP_CODE)));
-            annotateTest(() -> assertTrue(stop.isExactStop(TestProvider.LIRR_STOP_CODE.toLowerCase())));
+            assertTrue(stop.isExactStop(TestProvider.LIRR_STOP_CODE));
+            assertTrue(stop.isExactStop(TestProvider.LIRR_STOP_CODE.toLowerCase()));
         }
 
     }
@@ -77,7 +76,7 @@ final class TestLIRRStop {
             @Test
             final void testVehicleTrips(){
                 for(final Vehicle vehicle : stop.getVehicles()){
-                    annotateTest(() -> assertNotNull(vehicle.getTrip()));
+                    assertNotNull(vehicle.getTrip());
                     LIRRExtensions.testTrip(vehicle.getTrip());
                 }
             }
@@ -122,7 +121,7 @@ final class TestLIRRStop {
             @Test
             final void testVehicleTrips(){
                 for(final Vehicle vehicle : stop.getVehicles()){
-                    annotateTest(() -> assertNotNull(vehicle.getTrip()));
+                    assertNotNull(vehicle.getTrip());
                     TripValidation.testTrip(vehicle.getTrip());
                 }
             }
@@ -136,7 +135,7 @@ final class TestLIRRStop {
             @Test
             final void testGTFSVehicleTrips(){
                 for(final Vehicle vehicle : stop.getVehicles()){
-                    annotateTest(() -> assertNotNull(vehicle.getTrip()));
+                    assertNotNull(vehicle.getTrip());
                     TripValidation.testGTFSTrip(vehicle.getTrip());
                 }
             }
@@ -172,16 +171,16 @@ final class TestLIRRStop {
 
             @BeforeAll
             final void beforeAll(){
-                annotateTest(() -> AlertValidation.requireAlerts(stop));
+                AlertValidation.requireAlerts(stop);
             }
 
             @Test
             final void testTransitAlerts(){
                 { // missing description caused by MTA missing data
-                    annotateTest(() -> assertTrue(TestProvider.atleastOneTrue(
+                    assertTrue(TestProvider.atleastOneTrue(
                         stop.getAlerts(), LIRR.Alert.class,
                         a -> a.getDescription() != null
-                    )));
+                    ));
                 }
 
                 for(final Alert alert : stop.getAlerts())

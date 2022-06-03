@@ -7,7 +7,6 @@ import dev.katsute.onemta.railroad.LIRR;
 import dev.katsute.onemta.railroad.MNR;
 import dev.katsute.onemta.subway.Subway;
 
-import static dev.katsute.jcore.Workflow.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -23,10 +22,10 @@ public abstract class VehicleValidation {
     //
 
     public static void testVehicle(final TransitVehicle<?,?,?,?,?,?> vehicle){
-        annotateTest(() -> assertNotNull(vehicle.getVehicleID()));
+        assertNotNull(vehicle.getVehicleID());
         if(!(vehicle instanceof MNR.Vehicle))
-            annotateTest(() -> assertNotNull(vehicle.getStopID()));
-        annotateTest(() -> assertNotNull(vehicle.getRouteID()));
+            assertNotNull(vehicle.getStopID());
+        assertNotNull(vehicle.getRouteID());
 
         // test refresh
         if(!(vehicle instanceof Bus.Vehicle)){
@@ -44,18 +43,18 @@ public abstract class VehicleValidation {
 
             temp.refresh();
 
-            annotateTest(() -> assertNotSame(trip, temp.getTrip()));
+            assertNotSame(trip, temp.getTrip());
         }
     }
 
     public static void testGTFSVehicle(final GTFSVehicle<?,?,?,?,?> vehicle){
-        annotateTest(() -> assertNotNull(vehicle.getCurrentStatus()));
+        assertNotNull(vehicle.getCurrentStatus());
     }
 
     //
 
     public static void testVehicleRouteReference(final TransitRoute<?,?,?> reference, final TransitVehicle<?,?,?,?,?,?> vehicle){
-        annotateTest(() -> assertSame(reference, vehicle.getRoute()));
+        assertSame(reference, vehicle.getRoute());
     }
 
 }

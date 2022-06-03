@@ -6,7 +6,6 @@ import dev.katsute.onemta.railroad.LIRR;
 import dev.katsute.onemta.railroad.MNR;
 import dev.katsute.onemta.subway.Subway;
 
-import static dev.katsute.jcore.Workflow.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -18,10 +17,10 @@ public abstract class RouteValidation {
     public static void testRoute(final TransitRoute<?,?,?> route){
         testAgency(route.getAgency());
 
-        annotateTest(() -> assertNotNull(route.getRouteID()));
-        annotateTest(() -> assertNotNull(route.getRouteName()));
-        annotateTest(() -> assertNotNull(route.getRouteColor()));
-        annotateTest(() -> assertNotNull(route.getRouteTextColor()));
+        assertNotNull(route.getRouteID());
+        assertNotNull(route.getRouteName());
+        assertNotNull(route.getRouteColor());
+        assertNotNull(route.getRouteTextColor());
 
         /* test refresh */ {
             TransitRoute<?,?,?> temp;
@@ -42,16 +41,16 @@ public abstract class RouteValidation {
 
             temp.refresh();
 
-            annotateTest(() -> assertNotSame(vehicles, temp.getVehicles()));
-            annotateTest(() -> assertNotSame(alerts, temp.getAlerts()));
+            assertNotSame(vehicles, temp.getVehicles());
+            assertNotSame(alerts, temp.getAlerts());
         }
     }
 
     //
 
     private static void testAgency(final TransitAgency agency){
-        annotateTest(() -> assertNotNull(agency.getAgencyID()));
-        annotateTest(() -> assertNotNull(agency.getAgencyName()));
+        assertNotNull(agency.getAgencyID());
+        assertNotNull(agency.getAgencyName());
     }
 
 }
