@@ -4,7 +4,6 @@ import org.junit.jupiter.api.*;
 
 import java.util.Arrays;
 
-import static dev.katsute.jcore.Workflow.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 final class TestCSV {
@@ -19,21 +18,16 @@ final class TestCSV {
 
         @Test
         final void testHeader(){
-            annotateTest(() -> {
-                final CSV csv = new CSV("header,header2");
+            final CSV csv = new CSV("header,header2");
 
-                assertEquals(Arrays.asList("header", "header2"), csv.getHeaders());
-            });
-
+            assertEquals(Arrays.asList("header", "header2"), csv.getHeaders());
         }
 
         @Test
         final void testHeaderQuote(){
-            annotateTest(() -> {
-                final CSV csv = new CSV("header,\"header,2\"");
+            final CSV csv = new CSV("header,\"header,2\"");
 
-                assertEquals(Arrays.asList("header", "header,2"), csv.getHeaders());
-            });
+            assertEquals(Arrays.asList("header", "header,2"), csv.getHeaders());
         }
 
     }
@@ -43,42 +37,33 @@ final class TestCSV {
 
         @Test
         final void testRow(){
-            annotateTest(() -> {
-                final CSV csv = new CSV("key,value\n1,one\n2,two");
+            final CSV csv = new CSV("key,value\n1,one\n2,two");
 
-                assertEquals(Arrays.asList("1", "one"), csv.getRow("key", "1"));
-                assertEquals(Arrays.asList("2", "two"), csv.getRow("key", "2"));
-            });
+            assertEquals(Arrays.asList("1", "one"), csv.getRow("key", "1"));
+            assertEquals(Arrays.asList("2", "two"), csv.getRow("key", "2"));
         }
 
         @Test
         final void testRowQuote(){
-            annotateTest(() -> {
-                final CSV csv = new CSV("key,value\n\"1,\",\"one,\"\n\",2\",\",two\"");
+            final CSV csv = new CSV("key,value\n\"1,\",\"one,\"\n\",2\",\",two\"");
 
-                assertEquals(Arrays.asList("1,", "one,"), csv.getRow("key", "1,"));
-                assertEquals(Arrays.asList(",2", ",two"), csv.getRow("key", ",2"));
-            });
-
+            assertEquals(Arrays.asList("1,", "one,"), csv.getRow("key", "1,"));
+            assertEquals(Arrays.asList(",2", ",two"), csv.getRow("key", ",2"));
         }
 
         @Test
         final void testNull(){
-            annotateTest(() -> {
-                final CSV csv = new CSV("key,value");
+            final CSV csv = new CSV("key,value");
 
-                assertNull(csv.getRow("key", "1"));
-            });
+            assertNull(csv.getRow("key", "1"));
         }
 
         @Test
         final void testBlank(){
-            annotateTest(() -> {
-                final CSV csv = new CSV("key,value,blank\n1,one,\"\"\n2,two,\"\"");
+            final CSV csv = new CSV("key,value,blank\n1,one,\"\"\n2,two,\"\"");
 
-                assertEquals(Arrays.asList("1", "one", ""), csv.getRow("key", "1"));
-                assertEquals(Arrays.asList("2", "two", ""), csv.getRow("key", "2"));
-            });
+            assertEquals(Arrays.asList("1", "one", ""), csv.getRow("key", "1"));
+            assertEquals(Arrays.asList("2", "two", ""), csv.getRow("key", "2"));
         }
 
     }
@@ -88,42 +73,34 @@ final class TestCSV {
 
         @Test
         final void testValue(){
-            annotateTest(() -> {
-                final CSV csv = new CSV("key,value\n1,one\n2,two");
+            final CSV csv = new CSV("key,value\n1,one\n2,two");
 
-                assertEquals("one", csv.getValue("key", "1", "value"));
-                assertEquals("two", csv.getValue("key", "2", "value"));
-            });
+            assertEquals("one", csv.getValue("key", "1", "value"));
+            assertEquals("two", csv.getValue("key", "2", "value"));
         }
 
         @Test
         final void testValueMultiple(){
-            annotateTest(() -> {
-                final CSV csv = new CSV("key,value\n1,one\n1,1\n2,two");
+            final CSV csv = new CSV("key,value\n1,one\n1,1\n2,two");
 
-                assertArrayEquals(new String[]{"one", "1"}, csv.getValues("key", "1", "value"));
-                assertArrayEquals(new String[]{"two"}, csv.getValues("key", "2", "value"));
-            });
+            assertArrayEquals(new String[]{"one", "1"}, csv.getValues("key", "1", "value"));
+            assertArrayEquals(new String[]{"two"}, csv.getValues("key", "2", "value"));
         }
 
         @Test
         final void testValueQuote(){
-            annotateTest(() -> {
-                final CSV csv = new CSV("key,value\n\"1,\",\"one,\"\n\",2\",\",two\"");
+            final CSV csv = new CSV("key,value\n\"1,\",\"one,\"\n\",2\",\",two\"");
 
-                assertEquals("one,", csv.getValue("key", "1,", "value"));
-                assertEquals(",two", csv.getValue("key", ",2", "value"));
-            });
+            assertEquals("one,", csv.getValue("key", "1,", "value"));
+            assertEquals(",two", csv.getValue("key", ",2", "value"));
         }
 
         @Test
         final void testNull(){
-            annotateTest(() -> {
-                final CSV csv = new CSV("key,value\n1,one");
+            final CSV csv = new CSV("key,value\n1,one");
 
-                assertNull(csv.getValue("key", "1", "null"));
-                assertNull(csv.getValue("key", "2", "null"));
-            });
+            assertNull(csv.getValue("key", "1", "null"));
+            assertNull(csv.getValue("key", "2", "null"));
         }
 
     }

@@ -3,7 +3,6 @@ package dev.katsute.onemta.types;
 import dev.katsute.onemta.attribute.TripReference;
 import dev.katsute.onemta.railroad.RailroadTripStop;
 
-import static dev.katsute.jcore.Workflow.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -22,57 +21,57 @@ public abstract class TripValidation {
     //
 
     public static void testTrip(final TransitTrip<?,?,?> trip){
-        annotateTest(() -> assertNotNull(trip.getTripStops()));
+        assertNotNull(trip.getTripStops());
     }
 
     public static void testTripReference(final TripReference<?> reference){
-        annotateTest(() -> assertSame(reference, reference.getTrip().getVehicle()));
+        assertSame(reference, reference.getTrip().getVehicle());
     }
 
     public static void testTripRouteReference(final TransitVehicle<?,?,?,?,?,?> reference){
-        annotateTest(() -> assertSame(reference.getRoute(), reference.getTrip().getRoute()));
+        assertSame(reference.getRoute(), reference.getTrip().getRoute());
     }
 
     public static void testGTFSTrip(final GTFSTransitTrip<?,?,?> trip){
-        annotateTest(() -> assertNotNull(trip.getTripID()));
-        annotateTest(() -> assertNotNull(trip.getRouteID()));
+        assertNotNull(trip.getTripID());
+        assertNotNull(trip.getRouteID());
     }
 
     //
 
     public static void testTripStops(final TransitTripStop<?,?,?>[] trip){
-        annotateTest(() -> requireTripStops(trip));
+        requireTripStops(trip);
         for(final TransitTripStop<?, ?, ?> stop : trip)
             testTripStop(stop);
     }
 
     public static void testGTFSTripStops(final GTFSTransitTripStop<?,?,?>[] trip){
-        annotateTest(() -> requireTripStops(trip));
+        requireTripStops(trip);
         for(final GTFSTransitTripStop<?, ?, ?> stop : trip)
             testGTFSTripStop(stop);
     }
 
     public static void testRailroadTripStops(final RailroadTripStop<?,?>[] trip){
-        annotateTest(() -> requireTripStops(trip));
+        requireTripStops(trip);
         for(final RailroadTripStop<?,?> stop : trip)
             testRailroadTripStop(stop);
     }
 
     private static void testTripStop(final TransitTripStop<?,?,?> stop){
-        annotateTest(() -> assertNotNull(stop.getStopID()));
+        assertNotNull(stop.getStopID());
     }
 
     private static void testGTFSTripStop(final GTFSTransitTripStop<?,?,?> stop){
-        annotateTest(() -> assertNotNull(stop.getArrivalTimeEpochMillis()));
-        annotateTest(() -> assertNotNull(stop.getArrivalTime()));
-        annotateTest(() -> assertNotNull(stop.getDepartureTimeEpochMillis()));
-        annotateTest(() -> assertNotNull(stop.getDepartureTime()));
-        annotateTest(() -> assertNotNull(stop.getTrack()));
+        assertNotNull(stop.getArrivalTimeEpochMillis());
+        assertNotNull(stop.getArrivalTime());
+        assertNotNull(stop.getDepartureTimeEpochMillis());
+        assertNotNull(stop.getDepartureTime());
+        assertNotNull(stop.getTrack());
     }
 
     private static void testRailroadTripStop(final RailroadTripStop<?,?> stop){
-        annotateTest(() -> assertNotNull(stop.getDelay()));
-        annotateTest(() -> assertNotNull(stop.getTrainStatus()));
+        assertNotNull(stop.getDelay());
+        assertNotNull(stop.getTrainStatus());
     }
 
 }

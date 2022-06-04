@@ -1,6 +1,5 @@
 package dev.katsute.onemta;
 
-import dev.katsute.jcore.Workflow;
 import org.junit.jupiter.params.provider.Arguments;
 
 import java.io.*;
@@ -12,7 +11,6 @@ import java.util.function.Predicate;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
-import static dev.katsute.jcore.Workflow.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assumptions.*;
 
@@ -43,13 +41,13 @@ public abstract class TestProvider {
 
     public static void testGroup(final String testGroup){
         try{
-            if(Workflow.isCI() && testGroup != null && TEST_GROUP.exists()){
+            if("true".equalsIgnoreCase(System.getenv("CI")) && testGroup != null && TEST_GROUP.exists()){
                 final String expected = readFile(TEST_GROUP);
                 if(!expected.equalsIgnoreCase(testGroup))
                     assumeTrue(false, "Skipped testing group " + testGroup + ", only testing " + expected);
             }
         }catch(final IOException e){
-            annotateTest(() -> fail(e));
+            fail(e);
         }
     }
 
@@ -74,7 +72,7 @@ public abstract class TestProvider {
             Files.write(TEST_LOCK.toPath(), String.valueOf(System.currentTimeMillis()).getBytes(StandardCharsets.UTF_8));
             System.out.println("[✔] Test lock acquired");
         }catch(IOException | InterruptedException e){
-            annotateTest(() -> fail(e));
+            fail(e);
         }
     }
 
@@ -103,7 +101,7 @@ public abstract class TestProvider {
     public static MTA getOneMTA(){
         try{
             if(!hasBus && !hasSubway)
-                /* annotateTest(() -> */ assumeTrue(false, "No token defined, skipping tests"); // );
+                assumeTrue(false, "No token defined, skipping tests");
 
             acquireTestLock();
 
@@ -129,7 +127,7 @@ public abstract class TestProvider {
 
             return mta = MTA.create(strip(readFile(bus)), strip(readFile(subway)), resources.toArray(new DataResource[0]));
         }catch(final IOException e){
-            annotateTest(() -> fail(e));
+            fail(e);
             return null;
         }
     }

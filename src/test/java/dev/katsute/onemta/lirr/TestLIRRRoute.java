@@ -6,7 +6,6 @@ import dev.katsute.onemta.railroad.LIRR;
 import dev.katsute.onemta.types.*;
 import org.junit.jupiter.api.*;
 
-import static dev.katsute.jcore.Workflow.*;
 import static dev.katsute.onemta.railroad.LIRR.*;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -22,8 +21,8 @@ final class TestLIRRRoute {
         TestProvider.testGroup("lirr");
         mta = TestProvider.getOneMTA();
 
-        annotateTest(() -> route = mta.getLIRRRoute(TestProvider.LIRR_ROUTE));
-        annotateTest(() -> VehicleValidation.requireVehicles(route));
+        route = mta.getLIRRRoute(TestProvider.LIRR_ROUTE);
+        VehicleValidation.requireVehicles(route);
     }
 
     @Nested
@@ -31,17 +30,17 @@ final class TestLIRRRoute {
 
         @Test
         final void testNotExact(){
-            annotateTest(() -> assertFalse(route.isExactRoute(null)));
-            annotateTest(() -> assertFalse(route.isExactRoute(999)));
-            annotateTest(() -> assertFalse(route.isExactRoute("999")));
+            assertFalse(route.isExactRoute(null));
+            assertFalse(route.isExactRoute(999));
+            assertFalse(route.isExactRoute("999"));
         }
 
         @Test
         final void testExact(){
-            annotateTest(() -> assertTrue(route.isExactRoute(route)));
-            annotateTest(() -> assertTrue(route.isExactRoute(mta.getLIRRRoute(TestProvider.LIRR_ROUTE))));
-            annotateTest(() -> assertTrue(route.isExactRoute(TestProvider.LIRR_ROUTE)));
-            annotateTest(() -> assertTrue(route.isExactRoute(String.valueOf(TestProvider.LIRR_ROUTE))));
+            assertTrue(route.isExactRoute(route));
+            assertTrue(route.isExactRoute(mta.getLIRRRoute(TestProvider.LIRR_ROUTE)));
+            assertTrue(route.isExactRoute(TestProvider.LIRR_ROUTE));
+            assertTrue(route.isExactRoute(String.valueOf(TestProvider.LIRR_ROUTE)));
         }
 
     }
@@ -71,7 +70,7 @@ final class TestLIRRRoute {
             @Test
             final void testVehicleTrips(){
                 for(final Vehicle vehicle : route.getVehicles()){
-                    annotateTest(() -> assertNotNull(vehicle.getTrip()));
+                    assertNotNull(vehicle.getTrip());
                     LIRRExtensions.testTrip(vehicle.getTrip());
                 }
             }
@@ -117,7 +116,7 @@ final class TestLIRRRoute {
             @Test
             final void testVehicleTrips(){
                 for(final Vehicle vehicle : route.getVehicles()){
-                    annotateTest(() -> assertNotNull(vehicle.getTrip()));
+                    assertNotNull(vehicle.getTrip());
                     TripValidation.testTrip(vehicle.getTrip());
                 }
             }
@@ -131,7 +130,7 @@ final class TestLIRRRoute {
             @Test
             final void testGTFSVehicleTrips(){
                 for(final Vehicle vehicle : route.getVehicles()){
-                    annotateTest(() -> assertNotNull(vehicle.getTrip()));
+                    assertNotNull(vehicle.getTrip());
                     TripValidation.testGTFSTrip(vehicle.getTrip());
                 }
             }
@@ -173,16 +172,16 @@ final class TestLIRRRoute {
 
             @BeforeAll
             final void beforeAll(){
-                annotateTest(() -> AlertValidation.requireAlerts(route));
+                AlertValidation.requireAlerts(route);
             }
 
             @Test
             final void testTransitAlerts(){
                 { // missing description caused by MTA missing data
-                    annotateTest(() -> assertTrue(TestProvider.atleastOneTrue(
+                    assertTrue(TestProvider.atleastOneTrue(
                         route.getAlerts(), LIRR.Alert.class,
                         a -> a.getDescription() != null
-                    )));
+                    ));
                 }
 
                 for(final Alert alert : route.getAlerts())

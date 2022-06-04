@@ -2,7 +2,6 @@ package dev.katsute.onemta;
 
 import com.google.gson.*;
 import com.google.protobuf.util.JsonFormat;
-import dev.katsute.jcore.Workflow;
 import org.junit.jupiter.api.*;
 
 import java.io.File;
@@ -19,7 +18,7 @@ final class FeedExporter {
 
     @BeforeAll
     static void beforeAll(){
-        Assumptions.assumeFalse(Workflow.isCI());
+        Assumptions.assumeFalse("true".equalsIgnoreCase(System.getenv("CI")));
 
         mta = (MTAImpl) TestProvider.getOneMTA();
     }
