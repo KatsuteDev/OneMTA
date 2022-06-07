@@ -6,7 +6,6 @@ import dev.katsute.onemta.subway.Subway;
 import java.util.Arrays;
 import java.util.regex.Pattern;
 
-import static dev.katsute.jcore.Workflow.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assumptions.*;
 
@@ -23,16 +22,16 @@ public abstract class AlertValidation {
     //
 
     public static void testAlert(final TransitAlert<?,?,?,?> alert){
-        annotateTest(() -> assertNotNull(alert.getAlertID()));
-        annotateTest(() -> assertNotNull(alert.getHeader()));
-        //annotateTest(() -> assertNotNull(alert.getDescription()));
-        annotateTest(() -> assertNotNull(alert.getAlertType()));
+        assertNotNull(alert.getAlertID());
+        assertNotNull(alert.getHeader());
+        //assertNotNull(alert.getDescription());
+        assertNotNull(alert.getAlertType());
 
-        annotateTest(() -> assertNotNull(alert.getRouteIDs()));
-        annotateTest(() -> assertNotNull(alert.getStopIDs()));
-        annotateTest(() -> assertNotEquals(0, alert.getRouteIDs().length + alert.getStopIDs().length));
+        assertNotNull(alert.getRouteIDs());
+        assertNotNull(alert.getStopIDs());
+        assertNotEquals(0, alert.getRouteIDs().length + alert.getStopIDs().length);
 
-        annotateTest(() -> assertNotNull(alert.getActivePeriods()));
+        assertNotNull(alert.getActivePeriods());
         for(final TransitAlertPeriod period : alert.getActivePeriods())
             testAlertPeriod(period);
     }
@@ -49,25 +48,25 @@ public abstract class AlertValidation {
         final Object id = stop ? ((TransitStop<?,?,?>) reference).getStopID() : ((TransitRoute<?,?,?>) reference).getRouteID();
 
         if(!stop)
-            annotateTest(() -> assertTrue(Arrays.asList(alert.getRouteIDs()).contains(id), "Failed to find route " + id + " in " + Arrays.toString(alert.getRouteIDs())));
+            assertTrue(Arrays.asList(alert.getRouteIDs()).contains(id), "Failed to find route " + id + " in " + Arrays.toString(alert.getRouteIDs()));
         else if(!(reference instanceof Subway.Stop))
-            annotateTest(() -> assertTrue(Arrays.asList(alert.getStopIDs()).contains(id), "Failed to find stop " + id + " in " + Arrays.toString(alert.getStopIDs())));
+            assertTrue(Arrays.asList(alert.getStopIDs()).contains(id), "Failed to find stop " + id + " in " + Arrays.toString(alert.getStopIDs()));
         else{
             for(final Object stopID : alert.getStopIDs())
                 if(stripDirection(stopID.toString()).equalsIgnoreCase(stripDirection(id.toString())))
                     return;
-            annotateTest(() -> fail("Failed to find stop " + id + " in " + Arrays.toString(alert.getStopIDs())));
+            fail("Failed to find stop " + id + " in " + Arrays.toString(alert.getStopIDs()));
         }
     }
 
     //
 
     private static void testAlertPeriod(final TransitAlertPeriod period){
-        annotateTest(() -> assertNotNull(period.getStartEpochMillis()));
-        annotateTest(() -> assertNotNull(period.getStart()));
+        assertNotNull(period.getStartEpochMillis());
+        assertNotNull(period.getStart());
 
         if(period.getEndEpochMillis() != null)
-            annotateTest(() -> assertNotNull(period.getEndEpochMillis()));
+            assertNotNull(period.getEndEpochMillis());
     }
 
 }

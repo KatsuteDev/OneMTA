@@ -6,7 +6,6 @@ import dev.katsute.onemta.railroad.MNR;
 import dev.katsute.onemta.types.*;
 import org.junit.jupiter.api.*;
 
-import static dev.katsute.jcore.Workflow.*;
 import static dev.katsute.onemta.railroad.MNR.*;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -21,8 +20,8 @@ final class TestMNRStop {
         TestProvider.testGroup("mnr");
         mta = TestProvider.getOneMTA();
 
-        annotateTest(() -> stop = mta.getMNRStop(TestProvider.MNR_STOP));
-        annotateTest(() -> VehicleValidation.requireVehicles(stop));
+        stop = mta.getMNRStop(TestProvider.MNR_STOP);
+        VehicleValidation.requireVehicles(stop);
     }
 
     @Nested
@@ -30,23 +29,23 @@ final class TestMNRStop {
 
         @Test
         final void testNotExact(){
-            annotateTest(() -> assertFalse(stop.isExactStop(null)));
-            annotateTest(() -> assertFalse(stop.isExactStop(999)));
-            annotateTest(() -> assertFalse(stop.isExactStop("999")));
+            assertFalse(stop.isExactStop(null));
+            assertFalse(stop.isExactStop(999));
+            assertFalse(stop.isExactStop("999"));
         }
 
         @Test
         final void testExact(){
-            annotateTest(() -> assertTrue(stop.isExactStop(stop)));
-            annotateTest(() -> assertTrue(stop.isExactStop(mta.getMNRStop(TestProvider.MNR_STOP))));
-            annotateTest(() -> assertTrue(stop.isExactStop(TestProvider.MNR_STOP)));
-            annotateTest(() -> assertTrue(stop.isExactStop(String.valueOf(TestProvider.MNR_STOP))));
+            assertTrue(stop.isExactStop(stop));
+            assertTrue(stop.isExactStop(mta.getMNRStop(TestProvider.MNR_STOP)));
+            assertTrue(stop.isExactStop(TestProvider.MNR_STOP));
+            assertTrue(stop.isExactStop(String.valueOf(TestProvider.MNR_STOP)));
         }
 
         @Test
         final void testStopCode(){
-            annotateTest(() -> assertTrue(stop.isExactStop(TestProvider.MNR_STOP_CODE)));
-            annotateTest(() -> assertTrue(stop.isExactStop(TestProvider.MNR_STOP_CODE.toLowerCase())));
+            assertTrue(stop.isExactStop(TestProvider.MNR_STOP_CODE));
+            assertTrue(stop.isExactStop(TestProvider.MNR_STOP_CODE.toLowerCase()));
         }
 
     }
@@ -60,10 +59,10 @@ final class TestMNRStop {
             @Test
             final void testVehicles(){
                 { // not all MNR vehicles have stops for some reason
-                    annotateTest(() -> assertTrue(TestProvider.atleastOneTrue(
+                    assertTrue(TestProvider.atleastOneTrue(
                         stop.getVehicles(), MNR.Vehicle.class,
                         v -> v.getStopID() != null
-                    )));
+                    ));
                 }
 
                 for(final Vehicle vehicle : stop.getVehicles())
@@ -115,7 +114,7 @@ final class TestMNRStop {
             @Test
             final void testVehicleTrips(){
                 for(final Vehicle vehicle : stop.getVehicles()){
-                    annotateTest(() -> assertNotNull(vehicle.getTrip()));
+                    assertNotNull(vehicle.getTrip());
                     TripValidation.testTrip(vehicle.getTrip());
                 }
             }
@@ -129,7 +128,7 @@ final class TestMNRStop {
             @Test
             final void testGTFSVehicleTrips(){
                 for(final Vehicle vehicle : stop.getVehicles()){
-                    annotateTest(() -> assertNotNull(vehicle.getTrip()));
+                    assertNotNull(vehicle.getTrip());
                     TripValidation.testGTFSTrip(vehicle.getTrip());
                 }
             }
@@ -165,16 +164,16 @@ final class TestMNRStop {
 
             @BeforeAll
             final void beforeAll(){
-                annotateTest(() -> AlertValidation.requireAlerts(stop));
+                AlertValidation.requireAlerts(stop);
             }
 
             @Test
             final void testTransitAlerts(){
                 { // missing description caused by MTA missing data
-                    annotateTest(() -> assertTrue(TestProvider.atleastOneTrue(
+                    assertTrue(TestProvider.atleastOneTrue(
                         stop.getAlerts(), MNR.Alert.class,
                         a -> a.getDescription() != null
-                    )));
+                    ));
                 }
 
                 for(final Alert alert : stop.getAlerts())

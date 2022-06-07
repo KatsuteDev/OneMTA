@@ -5,7 +5,6 @@ import dev.katsute.onemta.TestProvider;
 import dev.katsute.onemta.types.*;
 import org.junit.jupiter.api.*;
 
-import static dev.katsute.jcore.Workflow.*;
 import static dev.katsute.onemta.subway.Subway.*;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -20,8 +19,8 @@ final class TestSubwayRoute {
         TestProvider.testGroup("subway");
         mta = TestProvider.getOneMTA();
 
-        annotateTest(() -> route = mta.getSubwayRoute(TestProvider.SUBWAY_ROUTE));
-        annotateTest(() -> VehicleValidation.requireVehicles(route));
+        route = mta.getSubwayRoute(TestProvider.SUBWAY_ROUTE);
+        VehicleValidation.requireVehicles(route);
     }
 
     @Nested
@@ -29,38 +28,38 @@ final class TestSubwayRoute {
 
         @Test
         final void testNotExact(){
-            annotateTest(() -> assertFalse(route.isExactRoute(null)));
-            annotateTest(() -> assertFalse(route.isExactRoute(999)));
-            annotateTest(() -> assertFalse(route.isExactRoute("999")));
+            assertFalse(route.isExactRoute(null));
+            assertFalse(route.isExactRoute(999));
+            assertFalse(route.isExactRoute("999"));
 
-            annotateTest(() -> assertFalse(route.isExactRoute(TestProvider.SUBWAY_ROUTE + 'x')));
-            annotateTest(() -> assertFalse(route.isExactRoute(TestProvider.SUBWAY_ROUTE + 'X')));
+            assertFalse(route.isExactRoute(TestProvider.SUBWAY_ROUTE + 'x'));
+            assertFalse(route.isExactRoute(TestProvider.SUBWAY_ROUTE + 'X'));
         }
 
         @Test
         final void testExact(){
-            annotateTest(() -> assertTrue(route.isExactRoute(route)));
-            annotateTest(() -> assertTrue(route.isExactRoute(mta.getSubwayRoute(TestProvider.SUBWAY_ROUTE))));
-            annotateTest(() -> assertTrue(route.isExactRoute(Integer.valueOf(TestProvider.SUBWAY_ROUTE))));
-            annotateTest(() -> assertTrue(route.isExactRoute(TestProvider.SUBWAY_ROUTE)));
+            assertTrue(route.isExactRoute(route));
+            assertTrue(route.isExactRoute(mta.getSubwayRoute(TestProvider.SUBWAY_ROUTE)));
+            assertTrue(route.isExactRoute(Integer.valueOf(TestProvider.SUBWAY_ROUTE)));
+            assertTrue(route.isExactRoute(TestProvider.SUBWAY_ROUTE));
         }
 
         @Test
         final void testNotSame(){
-            annotateTest(() -> assertFalse(route.isSameRoute(null)));
-            annotateTest(() -> assertFalse(route.isSameRoute(999)));
-            annotateTest(() -> assertFalse(route.isSameRoute("999")));
+            assertFalse(route.isSameRoute(null));
+            assertFalse(route.isSameRoute(999));
+            assertFalse(route.isSameRoute("999"));
         }
 
         @Test
         final void testSame(){
-            annotateTest(() -> assertTrue(route.isSameRoute(route)));
-            annotateTest(() -> assertTrue(route.isSameRoute(mta.getSubwayRoute(TestProvider.SUBWAY_ROUTE))));
-            annotateTest(() -> assertTrue(route.isSameRoute(Integer.valueOf(TestProvider.SUBWAY_ROUTE))));
-            annotateTest(() -> assertTrue(route.isSameRoute(TestProvider.SUBWAY_ROUTE)));
+            assertTrue(route.isSameRoute(route));
+            assertTrue(route.isSameRoute(mta.getSubwayRoute(TestProvider.SUBWAY_ROUTE)));
+            assertTrue(route.isSameRoute(Integer.valueOf(TestProvider.SUBWAY_ROUTE)));
+            assertTrue(route.isSameRoute(TestProvider.SUBWAY_ROUTE));
 
-            annotateTest(() -> assertTrue(route.isSameRoute(TestProvider.SUBWAY_ROUTE + 'x')));
-            annotateTest(() -> assertTrue(route.isSameRoute(TestProvider.SUBWAY_ROUTE + 'X')));
+            assertTrue(route.isSameRoute(TestProvider.SUBWAY_ROUTE + 'x'));
+            assertTrue(route.isSameRoute(TestProvider.SUBWAY_ROUTE + 'X'));
         }
 
     }
@@ -95,7 +94,7 @@ final class TestSubwayRoute {
             @Test
             final void testVehicleTrips(){
                 for(final Vehicle vehicle : route.getVehicles()){
-                    annotateTest(() -> assertNotNull(vehicle.getTrip()));
+                    assertNotNull(vehicle.getTrip());
                     SubwayExtensions.testTrip(vehicle.getTrip());
                 }
             }
@@ -152,7 +151,7 @@ final class TestSubwayRoute {
             @Test
             final void testVehicleTrips(){
                 for(final Vehicle vehicle : route.getVehicles()){
-                    annotateTest(() -> assertNotNull(vehicle.getTrip()));
+                    assertNotNull(vehicle.getTrip());
                     TripValidation.testTrip(vehicle.getTrip());
                 }
             }
@@ -166,7 +165,7 @@ final class TestSubwayRoute {
             @Test
             final void testGTFSVehicleTrips(){
                 for(final Vehicle vehicle : route.getVehicles()){
-                    annotateTest(() -> assertNotNull(vehicle.getTrip()));
+                    assertNotNull(vehicle.getTrip());
                     TripValidation.testGTFSTrip(vehicle.getTrip());
                 }
             }
@@ -202,16 +201,16 @@ final class TestSubwayRoute {
 
             @BeforeAll
             final void beforeAll(){
-                annotateTest(() -> AlertValidation.requireAlerts(route));
+                AlertValidation.requireAlerts(route);
             }
 
             @Test
             final void testTransitAlerts(){
                 { // missing description caused by MTA missing data
-                    annotateTest(() -> assertTrue(TestProvider.atleastOneTrue(
+                    assertTrue(TestProvider.atleastOneTrue(
                         route.getAlerts(), Subway.Alert.class,
                         a -> a.getDescription() != null
-                    )));
+                    ));
                 }
 
                 for(final Alert alert : route.getAlerts())

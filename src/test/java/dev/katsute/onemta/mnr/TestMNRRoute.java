@@ -6,7 +6,6 @@ import dev.katsute.onemta.railroad.MNR;
 import dev.katsute.onemta.types.*;
 import org.junit.jupiter.api.*;
 
-import static dev.katsute.jcore.Workflow.*;
 import static dev.katsute.onemta.railroad.MNR.*;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -21,8 +20,8 @@ final class TestMNRRoute {
         TestProvider.testGroup("mnr");
         mta = TestProvider.getOneMTA();
 
-        annotateTest(() -> route = mta.getMNRRoute(TestProvider.MNR_ROUTE));
-        annotateTest(() -> VehicleValidation.requireVehicles(route));
+        route = mta.getMNRRoute(TestProvider.MNR_ROUTE);
+        VehicleValidation.requireVehicles(route);
 
     }
 
@@ -31,17 +30,17 @@ final class TestMNRRoute {
 
         @Test
         final void testNotExact(){
-            annotateTest(() -> assertFalse(route.isExactRoute(null)));
-            annotateTest(() -> assertFalse(route.isExactRoute(999)));
-            annotateTest(() -> assertFalse(route.isExactRoute("999")));
+            assertFalse(route.isExactRoute(null));
+            assertFalse(route.isExactRoute(999));
+            assertFalse(route.isExactRoute("999"));
         }
 
         @Test
         final void testExact(){
-            annotateTest(() -> assertTrue(route.isExactRoute(route)));
-            annotateTest(() -> assertTrue(route.isExactRoute(mta.getMNRRoute(TestProvider.MNR_ROUTE))));
-            annotateTest(() -> assertTrue(route.isExactRoute(TestProvider.MNR_ROUTE)));
-            annotateTest(() -> assertTrue(route.isExactRoute(String.valueOf(TestProvider.MNR_ROUTE))));
+            assertTrue(route.isExactRoute(route));
+            assertTrue(route.isExactRoute(mta.getMNRRoute(TestProvider.MNR_ROUTE)));
+            assertTrue(route.isExactRoute(TestProvider.MNR_ROUTE));
+            assertTrue(route.isExactRoute(String.valueOf(TestProvider.MNR_ROUTE)));
         }
 
     }
@@ -55,10 +54,10 @@ final class TestMNRRoute {
             @Test
             final void testVehicles(){
                 { // not all MNR vehicles have stops for some reason
-                    annotateTest(() -> assertTrue(TestProvider.atleastOneTrue(
+                    assertTrue(TestProvider.atleastOneTrue(
                         route.getVehicles(), MNR.Vehicle.class,
                         v -> v.getStopID() != null
-                    )));
+                    ));
                 }
 
                 for(final Vehicle vehicle : route.getVehicles())
@@ -111,7 +110,7 @@ final class TestMNRRoute {
             @Test
             final void testVehicleTrips(){
                 for(final Vehicle vehicle : route.getVehicles()){
-                    annotateTest(() -> assertNotNull(vehicle.getTrip()));
+                    assertNotNull(vehicle.getTrip());
                     TripValidation.testTrip(vehicle.getTrip());
                 }
             }
@@ -125,7 +124,7 @@ final class TestMNRRoute {
             @Test
             final void testGTFSVehicleTrips(){
                 for(final Vehicle vehicle : route.getVehicles()){
-                    annotateTest(() -> assertNotNull(vehicle.getTrip()));
+                    assertNotNull(vehicle.getTrip());
                     TripValidation.testGTFSTrip(vehicle.getTrip());
                 }
             }
@@ -167,16 +166,16 @@ final class TestMNRRoute {
 
             @BeforeAll
             final void beforeAll(){
-                annotateTest(() -> AlertValidation.requireAlerts(route));
+                AlertValidation.requireAlerts(route);
             }
 
             @Test
             final void testTransitAlerts(){
                 { // missing description caused by MTA missing data
-                    annotateTest(() -> assertTrue(TestProvider.atleastOneTrue(
+                    assertTrue(TestProvider.atleastOneTrue(
                         route.getAlerts(), MNR.Alert.class,
                         a -> a.getDescription() != null
-                    )));
+                    ));
                 }
 
                 for(final Alert alert : route.getAlerts())

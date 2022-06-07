@@ -4,7 +4,6 @@ import dev.katsute.onemta.*;
 import dev.katsute.onemta.types.AlertValidation;
 import org.junit.jupiter.api.*;
 
-import static dev.katsute.jcore.Workflow.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assumptions.*;
 
@@ -23,12 +22,12 @@ final class TestBus {
 
         @Test
         final void testRouteDRT(){
-            annotateTest(() -> assertDoesNotThrow(() -> mta.getBusRoute(TestProvider.BUS_ROUTE, DataResourceType.Bus_Manhattan)));
+            assertDoesNotThrow(() -> mta.getBusRoute(TestProvider.BUS_ROUTE, DataResourceType.Bus_Manhattan));
         }
 
         @Test
         final void testStopDRT(){
-            annotateTest(() -> assertDoesNotThrow(() -> mta.getBusStop(TestProvider.BUS_STOP, DataResourceType.Bus_Manhattan)));
+            assertDoesNotThrow(() -> mta.getBusStop(TestProvider.BUS_STOP, DataResourceType.Bus_Manhattan));
         }
 
     }
@@ -38,22 +37,22 @@ final class TestBus {
 
         @Test
         final void testSelectBus(){
-            annotateTest(() -> assertTrue(mta.getBusRoute("B44+").isSelectBusService()));
+            assertTrue(mta.getBusRoute("B44+").isSelectBusService());
         }
 
         @Test
         final void testExpressBus(){
-            annotateTest(() -> assertTrue(mta.getBusRoute("SIM1").isExpress()));
+            assertTrue(mta.getBusRoute("SIM1").isExpress());
         }
 
         @Test
         final void testShuttleBus(){
-            annotateTest(() -> assertTrue(mta.getBusRoute("F1").isShuttle()));
+            assertTrue(mta.getBusRoute("F1").isShuttle());
         }
 
         @Test
         final void testLimitedBus(){
-            annotateTest(() -> assertTrue(mta.getBusRoute("Q44+").isLimited()));
+            assertTrue(mta.getBusRoute("Q44+").isLimited());
         }
 
     }
@@ -63,13 +62,13 @@ final class TestBus {
 
         @Test
         final void testTransitAlert(){
-            annotateTest(() -> assumeTrue(mta.getBusAlerts().length > 0, "No alerts found, skipping alert tests"));
+            assumeTrue(mta.getBusAlerts().length > 0, "No alerts found, skipping alert tests");
 
             { // missing description caused by MTA missing data
-                annotateTest(() -> assertTrue(TestProvider.atleastOneTrue(
+                assertTrue(TestProvider.atleastOneTrue(
                     mta.getBusAlerts(), Bus.Alert.class,
                     a -> a.getDescription() != null
-                )));
+                ));
             }
 
             for(final Bus.Alert alert : mta.getBusAlerts())
