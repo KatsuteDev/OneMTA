@@ -1,5 +1,22 @@
 # Changelog
 
+## 1.2.0
+
+### ⭐ New Features
+
+* Add canceled trip https://github.com/KatsuteDev/OneMTA/pull/58 (@Katsute)
+
+### 📘 Dependencies
+
+* Bump jcore from 2.0.0 to 2.0.1 https://github.com/KatsuteDev/OneMTA/pull/50 (@dependabot)
+* Bump protobuf-java-util from 3.20.1 to 3.21.0 https://github.com/KatsuteDev/OneMTA/pull/53 (@dependabot)
+* Bump protobuf-java from 3.20.1 to 3.21.0 https://github.com/KatsuteDev/OneMTA/pull/52 (@dependabot)
+* Bump protobuf-java-util from 3.21.0 to 3.21.1 https://github.com/KatsuteDev/OneMTA/pull/55 (@dependabot)
+* Bump protobuf-java from 3.21.0 to 3.21.1 https://github.com/KatsuteDev/OneMTA/pull/54 (@dependabot)
+* Bump maven-surefire-plugin from 3.0.0-M6 to 3.0.0-M7 https://github.com/KatsuteDev/OneMTA/pull/57 (@dependabot)
+
+**Full Changelog**: https://github.com/KatsuteDev/OneMTA/compare/1.1.1...1.2.0
+
 ## 1.1.1
 
 ### 📘 Dependencies
