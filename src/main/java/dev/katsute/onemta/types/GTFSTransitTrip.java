@@ -26,7 +26,7 @@ package dev.katsute.onemta.types;
  * @param <S> transit stop type
  *
  * @since 1.0.0
- * @version 1.0.0
+ * @version 1.2.0
  * @author Katsute
  */
 public abstract class GTFSTransitTrip<V extends TransitVehicle<?,?,?,?,?,?>, R extends TransitRoute<?,?,?>, S extends TransitTripStop<?,?,?>> extends TransitTrip<V,R,S> {

@@ -28,7 +28,7 @@ package dev.katsute.onemta.types;
  *
  * @see TransitAlertPeriod
  * @since 1.0.0
- * @version 1.0.0
+ * @version 1.2.0
  * @author Katsute
  */
 public abstract class TransitAlert<RID, R extends TransitRoute<?,?,?>, SID, S extends TransitStop<?,?,?>> {
