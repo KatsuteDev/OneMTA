@@ -905,6 +905,8 @@ abstract class MTASchema_Bus extends MTASchema {
 
             private final String alertType = requireNonNull(() -> alert.getExtension(ServiceStatusProto.mercuryAlert).getAlertType());
 
+            private final String effect = requireNonNull(() -> alert.getEffect().name());
+
             private final List<TransitAlertPeriod> alertPeriods;
             private final List<String> routeIDs;
             private final List<Integer> stopIDs;
@@ -990,6 +992,11 @@ abstract class MTASchema_Bus extends MTASchema {
                 return alertType;
             }
 
+            @Override
+            public final String getEffect(){
+                return effect;
+            }
+
             // Java
 
             @Override
@@ -999,6 +1006,7 @@ abstract class MTASchema_Bus extends MTASchema {
                        ", headerText='" + headerText + '\'' +
                        ", descriptionText='" + descriptionText + '\'' +
                        ", alertType='" + alertType + '\'' +
+                       ", effect='" + effect + '\'' +
                        ", alertPeriods=" + alertPeriods +
                        ", routeIDs=" + routeIDs +
                        ", stopIDs=" + stopIDs +

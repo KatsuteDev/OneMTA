@@ -28,7 +28,7 @@ package dev.katsute.onemta.types;
  *
  * @see TransitAlertPeriod
  * @since 1.0.0
- * @version 1.0.0
+ * @version 1.2.0
  * @author Katsute
  */
 public abstract class TransitAlert<RID, R extends TransitRoute<?,?,?>, SID, S extends TransitStop<?,?,?>> {
@@ -115,5 +115,14 @@ public abstract class TransitAlert<RID, R extends TransitRoute<?,?,?>, SID, S ex
      * @since 1.0.0
      */
     public abstract String getAlertType();
+
+    /**
+     * Returns the effect of the current alert.
+     *
+     * @return alert effect
+     *
+     * @since 1.2.0
+     */
+    public abstract String getEffect();
 
 }
