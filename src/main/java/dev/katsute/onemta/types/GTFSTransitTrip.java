@@ -51,4 +51,13 @@ public abstract class GTFSTransitTrip<V extends TransitVehicle<?,?,?,?,?,?>, R e
      */
     public abstract String getRouteID();
 
+    /**
+     * Returns the schedule relationship.
+     *
+     * @return schedule relationship
+     *
+     * @since 1.2.0
+     */
+    public abstract String getScheduleRelationship();
+
 }

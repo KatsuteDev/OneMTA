@@ -35,6 +35,7 @@ public abstract class TripValidation {
     public static void testGTFSTrip(final GTFSTransitTrip<?,?,?> trip){
         assertNotNull(trip.getTripID());
         assertNotNull(trip.getRouteID());
+        assertNotNull(trip.getScheduleRelationship());
     }
 
     //

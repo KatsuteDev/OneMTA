@@ -116,4 +116,13 @@ public abstract class TransitAlert<RID, R extends TransitRoute<?,?,?>, SID, S ex
      */
     public abstract String getAlertType();
 
+    /**
+     * Returns the effect of the current alert.
+     *
+     * @return alert effect
+     *
+     * @since 1.2.0
+     */
+    public abstract String getEffect();
+
 }

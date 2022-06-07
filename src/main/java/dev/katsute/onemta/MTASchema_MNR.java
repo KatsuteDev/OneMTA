@@ -456,6 +456,8 @@ abstract class MTASchema_MNR extends MTASchema {
             private final String tripID  = requireNonNull(() -> tripUpdate.getTrip().getTripId());
             private final String routeID = requireNonNull(() -> tripUpdate.getTrip().getRouteId());
 
+            private final String scheRel = requireNonNull(() -> tripUpdate.getTrip().getScheduleRelationship().name());
+
             private final List<TripStop> tripStops;
 
             {
@@ -488,6 +490,11 @@ abstract class MTASchema_MNR extends MTASchema {
             }
 
             @Override
+            public final String getScheduleRelationship(){
+                return scheRel;
+            }
+
+            @Override
             public final TripStop[] getTripStops(){
                 return tripStops.toArray(new TripStop[0]);
             }
@@ -499,6 +506,7 @@ abstract class MTASchema_MNR extends MTASchema {
                 return "MNR.Trip{" +
                        "tripID='" + tripID + '\'' +
                        ", routeID='" + routeID + '\'' +
+                       ", scheduleRelationship='" + scheRel + '\'' +
                        '}';
             }
 
@@ -602,6 +610,8 @@ abstract class MTASchema_MNR extends MTASchema {
 
             private final String alertType = requireNonNull(() -> alert.getExtension(ServiceStatusProto.mercuryAlert).getAlertType());
 
+            private final String effect = requireNonNull(() -> alert.getEffect().name());
+
             private final List<TransitAlertPeriod> alertPeriods;
             private final List<Integer> routeIDs;
             private final List<Integer> stopIDs;
@@ -691,6 +701,11 @@ abstract class MTASchema_MNR extends MTASchema {
                 return alertType;
             }
 
+            @Override
+            public final String getEffect(){
+                return effect;
+            }
+
             // Java
 
             @Override
@@ -700,6 +715,7 @@ abstract class MTASchema_MNR extends MTASchema {
                        ", headerText='" + headerText + '\'' +
                        ", descriptionText='" + descriptionText + '\'' +
                        ", alertType='" + alertType + '\'' +
+                       ", effect='" + effect + '\'' +
                        ", alertPeriods=" + alertPeriods +
                        ", routeIDs=" + routeIDs +
                        ", stopIDs=" + stopIDs +

@@ -26,6 +26,7 @@ public abstract class AlertValidation {
         assertNotNull(alert.getHeader());
         //assertNotNull(alert.getDescription());
         assertNotNull(alert.getAlertType());
+        assertNotNull(alert.getEffect());
 
         assertNotNull(alert.getRouteIDs());
         assertNotNull(alert.getStopIDs());

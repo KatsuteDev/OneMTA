@@ -586,6 +586,8 @@ abstract class MTASchema_Subway extends MTASchema {
             private final String tripID  = requireNonNull(() -> tripUpdate.getTrip().getTripId());
             private final String routeID = requireNonNull(() -> tripUpdate.getTrip().getRouteId());
 
+            private final String scheRel = requireNonNull(() -> tripUpdate.getTrip().getScheduleRelationship().name());
+
             private final SubwayDirection direction = requireNonNull(
                 () -> nyctTripDescriptor.hasDirection()
                 ? SubwayDirection.asDirection(nyctTripDescriptor.getDirection().getNumber())
@@ -609,6 +611,11 @@ abstract class MTASchema_Subway extends MTASchema {
             @Override
             public final String getRouteID(){
                 return routeID;
+            }
+
+            @Override
+            public final String getScheduleRelationship(){
+                return scheRel;
             }
 
             @Override
@@ -641,6 +648,7 @@ abstract class MTASchema_Subway extends MTASchema {
                        "tripID='" + tripID + '\'' +
                        ", routeID='" + routeID + '\'' +
                        ", direction=" + direction +
+                       ", scheduleRelationship='" + scheRel + '\'' +
                        '}';
             }
 
@@ -737,6 +745,8 @@ abstract class MTASchema_Subway extends MTASchema {
 
             private final String alertType = requireNonNull(() -> alert.getExtension(ServiceStatusProto.mercuryAlert).getAlertType());
 
+            private final String effect = requireNonNull(() -> alert.getEffect().name());
+
             private final List<TransitAlertPeriod> alertPeriods;
             private final List<String> routeIDs;
             private final List<String> stopIDs;
@@ -822,6 +832,11 @@ abstract class MTASchema_Subway extends MTASchema {
                 return alertType;
             }
 
+            @Override
+            public final String getEffect(){
+                return effect;
+            }
+
             // Java
 
             @Override
@@ -831,6 +846,7 @@ abstract class MTASchema_Subway extends MTASchema {
                        ", headerText='" + headerText + '\'' +
                        ", descriptionText='" + descriptionText + '\'' +
                        ", alertType='" + alertType + '\'' +
+                       ", effect='" + effect + '\'' +
                        ", alertPeriods=" + alertPeriods +
                        ", routeIDs=" + routeIDs +
                        ", stopIDs=" + stopIDs +
