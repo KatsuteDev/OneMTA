@@ -149,7 +149,10 @@ class Json {
         // parse line by line
         final String lines = lastMatch == 0 ? json : OUT.toString();
 
-        try(final BufferedReader IN = new BufferedReader(new StringReader(lines))){
+        try(
+            final StringReader SR = new StringReader(lines);
+            final BufferedReader IN = new BufferedReader(SR)
+        ){
             final String line = IN.readLine();
             if(line != null){
                 final String ln = line.trim();
