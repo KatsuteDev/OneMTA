@@ -8,11 +8,7 @@
         •
         <a href="https://groups.google.com/g/mtadeveloperresources">MTA Google Group</a>
     </div>
-</div>
-
-<br>
-
-<div align="center">
+    <br>
     <a href="https://mvnrepository.com/artifact/dev.katsute/onemta">Maven Central</a>
     •
     <a href="https://github.com/KatsuteDev/OneMTA/packages/1221214">GitHub Packages</a>
@@ -25,9 +21,6 @@
 > **Warning**:
 > The MTA API [Terms and Conditions](https://api.mta.info/#/DataFeedAgreement) prohibits developers from giving users direct access to MTA servers. 
 > Any realtime data that is retrieved in this library **must be served to users on your own servers.**
-
-> **Warning**:
-> There is currently an issue with static data for busses, please see [#61](https://github.com/KatsuteDev/OneMTA/issues/61).
 
 OneMTA is a Java wrapper for the [MTA SIRI REST API](https://bustime.mta.info/wiki/Developers/SIRIIntro) and [MTA Realtime GTFS API](https://api.mta.info/#/landing).
 

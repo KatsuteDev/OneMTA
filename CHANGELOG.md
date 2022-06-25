@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.2.1
+
+### 🐞 Bug Fixes
+
+* Fix updated MTA bus resource https://github.com/KatsuteDev/OneMTA/pull/63 (@Katsute)
+
+**Full Changelog**: https://github.com/KatsuteDev/OneMTA/compare/1.2.0...1.2.1
+
 ## 1.2.0
 
 ### ⭐ New Features
