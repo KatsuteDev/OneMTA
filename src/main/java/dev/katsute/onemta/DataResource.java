@@ -31,7 +31,7 @@ import java.util.zip.ZipFile;
  *
  * @see #create(DataResourceType, File)
  * @since 1.0.0
- * @version 1.1.0
+ * @version 1.2.1
  * @author Katsute
  */
 public abstract class DataResource {
