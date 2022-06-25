@@ -48,7 +48,11 @@ abstract class Requests {
                     put("Accept", "application/json; charset=UTF-8");
                 }}
             );
-            try(final BufferedReader IN = new BufferedReader(new InputStreamReader(conn.getInputStream()))){
+            try(
+                final InputStream IS = conn.getInputStream();
+                final InputStreamReader ISR = new InputStreamReader(IS);
+                final BufferedReader IN = new BufferedReader(ISR)
+            ){
                 String buffer;
                 final StringBuilder OUT = new StringBuilder();
                 while((buffer = IN.readLine()) != null)
@@ -78,7 +82,11 @@ abstract class Requests {
                     put("Accept", "application/json; charset=UTF-8");
                 }}
             );
-            try(final BufferedReader IN = new BufferedReader(new InputStreamReader(conn.getInputStream()))){
+            try(
+                final InputStream IS = conn.getInputStream();
+                final InputStreamReader ISR = new InputStreamReader(IS);
+                final BufferedReader IN = new BufferedReader(ISR)
+            ){
                 String buffer;
                 final StringBuilder OUT = new StringBuilder();
                 while((buffer = IN.readLine()) != null)

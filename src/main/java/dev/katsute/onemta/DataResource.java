@@ -31,7 +31,7 @@ import java.util.zip.ZipFile;
  *
  * @see #create(DataResourceType, File)
  * @since 1.0.0
- * @version 1.1.0
+ * @version 1.2.1
  * @author Katsute
  */
 public abstract class DataResource {
@@ -74,16 +74,22 @@ public abstract class DataResource {
 
                     while(entries.hasMoreElements()){
                         final ZipEntry entry = entries.nextElement();
-                        final String name = entry.getName();
-                        switch(name){
+                        final String path = entry.getName();
+                        final String[] chunk = path.split("/");
+                        final String filename = chunk[chunk.length - 1];
+                        switch(filename){
                             case "agency.txt":
                             case "routes.txt":
                             case "stops.txt":
                             case "transfers.txt":
-                                try(final BufferedReader IN = new BufferedReader(new InputStreamReader(zip.getInputStream(entry)))){
-                                    data.put(entry.getName(), new CSV(IN.lines().collect(Collectors.joining("\n"))));
+                                try(
+                                    final InputStream IS = zip.getInputStream(entry);
+                                    final InputStreamReader ISR = new InputStreamReader(IS);
+                                    final BufferedReader IN = new BufferedReader(ISR)
+                                ){
+                                    data.put(filename, new CSV(IN.lines().collect(Collectors.joining("\n"))));
                                 }catch(final IOException e){
-                                    throw new DataResourceException("Failed to read zip entry: " + entry.getName(), e);
+                                    throw new DataResourceException("Failed to read zip entry: " + path, e);
                                 }
                         }
                     }
@@ -109,6 +115,7 @@ public abstract class DataResource {
                 return "DataResource{" +
                        "type=" + datatype +
                        ", source=" + source +
+                       ", data=" + data.keySet() +
                        '}';
             }
 
