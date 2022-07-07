@@ -1,4 +1,7 @@
 <div id="top" align="center">
+    <a href="https://github.com/KatsuteDev/OneMTA">
+        <img src="https://raw.githubusercontent.com/KatsuteDev/OneMTA/main/assets/icon.png" alt="icon" width="100" height="100">
+    </a>
     <h3>OneMTA</h3>
     <h5>Java wrapper for the MTA Bus and Subway API</h5>
     <div>
@@ -18,17 +21,16 @@
 
 <br>
 
-> **Warning**:
-> The MTA API [Terms and Conditions](https://api.mta.info/#/DataFeedAgreement) prohibits developers from giving users direct access to MTA servers. 
+> ⚠️ The MTA API [Terms and Conditions](https://api.mta.info/#/DataFeedAgreement) prohibits developers from giving users direct access to MTA servers.
 > Any realtime data that is retrieved in this library **must be served to users on your own servers.**
 
 OneMTA is a Java wrapper for the [MTA SIRI REST API](https://bustime.mta.info/wiki/Developers/SIRIIntro) and [MTA Realtime GTFS API](https://api.mta.info/#/landing).
 
-- [📃 Installation](#-installation)
-- [✨ Features](#-features)
-- [👨‍💻 Contributing](#-contributing)
-- [💼 License](#-license)
-- [⚠ Disclaimer](#-disclaimer)
+ - [📃 Installation](#-installation)
+ - [✨ Features](#-features)
+ - [👨‍💻 Contributing](#-contributing)
+ - [💼 License](#-license)
+ - [⚠ Disclaimer](#-disclaimer)
 
 ## 📃 Installation
 
@@ -41,6 +43,7 @@ OneMTA requires at least Java 8.
 OneMTA also requires the [protobuf-java](https://mvnrepository.com/artifact/com.google.protobuf/protobuf-java) library to be installed. Make sure you are using the same version as specified in the [pom.xml](https://github.com/KatsuteDev/OneMTA/blob/main/pom.xml) file.
 
 Compiled binaries can be installed from:
+
  - [Maven Central](https://mvnrepository.com/artifact/dev.katsute/onemta)
  - [GitHub Packages](https://github.com/KatsuteDev/OneMTA/packages/1221214)
  - [Releases](https://github.com/KatsuteDev/OneMTA/releases)
@@ -109,7 +112,7 @@ LIRR.Vehicle[] lirr      = PW.getVehicles();
 MNR.Vehicle[] mnr        = WLN.getVehicles();
 ```
 
-#### ⚠ Alerts
+#### ⚠️ Alerts
 
 Retrieve alerts for all stops and routes.
 
@@ -139,13 +142,13 @@ Sample response data available on the [`reference`](https://github.com/KatsuteDe
 
 #### 🗺 Updating Protobuf Files
 
- - Download latest protobuf from [OneBusAway/onebusaway-gtfs-realtime-api](https://github.com/OneBusAway/onebusaway-gtfs-realtime-api/tree/master/src/main/proto/com/google/transit/realtime)
- - Save proto files in `/protobuf`
- - Change options and imports as defined in the `protobuf.sh` comments
- - Run `protobuf.sh`
- - Change all classes to abstract package private and add `SuppressWarnings("all")`
+ - Download latest protobuf from [OneBusAway/onebusaway-gtfs-realtime-api](https://github.com/OneBusAway/onebusaway-gtfs-realtime-api/tree/master/src/main/proto/com/google/transit/realtime).
+ - Save proto files in `/protobuf`.
+ - Change options and imports as defined in the `protobuf.sh` comments.
+ - Run `protobuf.sh`.
+ - Change all classes to abstract package private and add `SuppressWarnings("all")`.
 
-#### ⚠ Notice About Tests
+#### ⚠️ Notice About Tests
 
  - Tests are most reliable around rush hour.
  - Tests may not work during overnight hours.
