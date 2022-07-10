@@ -12,11 +12,13 @@
         <a href="https://groups.google.com/g/mtadeveloperresources">MTA Google Group</a>
     </div>
     <br>
-    <a href="https://mvnrepository.com/artifact/dev.katsute/onemta">Maven Central</a>
-    •
-    <a href="https://github.com/KatsuteDev/OneMTA/packages/1221214">GitHub Packages</a>
-    •
-    <a href="https://github.com/KatsuteDev/OneMTA/releases">Releases</a>
+    <div>
+        <a href="https://mvnrepository.com/artifact/dev.katsute/onemta">Maven Central</a>
+        •
+        <a href="https://github.com/KatsuteDev/OneMTA/packages/1221214">GitHub Packages</a>
+        •
+        <a href="https://github.com/KatsuteDev/OneMTA/releases">Releases</a>
+    </div>
 </div>
 
 <br>
@@ -30,13 +32,13 @@ OneMTA is a Java wrapper for the [MTA SIRI REST API](https://bustime.mta.info/wi
  - [✨ Features](#-features)
  - [👨‍💻 Contributing](#-contributing)
  - [💼 License](#-license)
- - [⚠ Disclaimer](#-disclaimer)
+ - [⚠️ Disclaimer](#%EF%B8%8F-disclaimer)
 
 ## 📃 Installation
 
 | Version | Support | Java |
 |:-:|---|:-:|
-|`v1^`|✔ Fully supported|Java 8+|
+|`v1^`|✔️ Fully supported|Java 8+|
 
 OneMTA requires at least Java 8.
 
@@ -175,7 +177,7 @@ Devs running remote tests through GitHub Actions may do so by running the `MTA C
 
 This library is released under the [GNU General Public License (GPL) v2.0](https://github.com/KatsuteDev/OneMTA/blob/main/LICENSE).
 
-### ⚠ Disclaimer
+### ⚠️ Disclaimer
 
  - [@Katsute](https://github.com/Katsute) and [@KatsuteDev](https://github.com/KatsuteDev) are not affiliated with the MTA.
  - By using the MTA API you are subject to their [Terms and Conditions](https://api.mta.info/#/DataFeedAgreement).
