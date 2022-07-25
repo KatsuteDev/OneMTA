@@ -256,13 +256,13 @@
         <dependency>
             <groupId>com.google.protobuf</groupId>
             <artifactId>protobuf-java</artifactId>
-            <version>3.21.1</version>
+            <version>3.21.3</version>
         </dependency>
         <!-- tests -->
         <dependency>
             <groupId>com.google.protobuf</groupId>
             <artifactId>protobuf-java-util</artifactId>
-            <version>3.21.1</version>
+            <version>3.21.3</version>
             <scope>test</scope>
         </dependency>
         <dependency>

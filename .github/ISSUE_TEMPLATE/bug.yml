@@ -3,70 +3,50 @@ description: Report a bug
 labels: [bug]
 assignees: []
 body:
-  - type: checkboxes
-    id: checks
+  - type: markdown
     attributes:
-      label: Prerequisites
-      description: |
-        *If **all** checks are not passed then the issue will be closed.*
-      options:
-        - label: I have checked that no other similar issue already exists.
-          required: true
-        - label: I have checked that this issue is actually a bug and not a feature.
-          required: true
-        - label: I have checked [discussions](https://github.com/KatsuteDev/OneMTA/discussions).
-          required: true
-        - label: I have checked the [documentation](https://docs.katsute.dev/onemta).
-          required: true
+      value: |
+        Before opening a bug report please check that your issue was not already discussed in the following:
+
+        * [Issues](https://github.com/KatsuteDev/OneMTA/issues?q=is%3Aissue+is%3Aopen+label%3Abug%2C%22critical+bug%22)
+        * [Documentation](https://docs.katsute.dev/onemta)
+        * [Discussions](https://github.com/KatsuteDev/OneMTA/discussions)
+
+        Please also check that:
+
+        * This is actually a bug and not a feature.
+        * You are running the latest version.
 
   - type: input
-    id: os
     attributes:
       label: Operating System
-      description: |
-        Operating system name and version.
-      placeholder: |
-        ex: Windows 10
     validations:
       required: true
 
   - type: input
-    id: java-version
     attributes:
       label: Java Version
-      description: |
-        Java version.
-      placeholder: |
-        ex: Java 11
     validations:
       required: true
 
   - type: input
-    id: version
     attributes:
       label: Release Version
       description: |
-        Release version or branch commit where the issue occured. Do not write 'latest'.
-      placeholder: |
-        ex: 1.0.0, b594412
+        Do not write 'latest'.
     validations:
       required: true
 
   - type: textarea
-    id: issue
     attributes:
       label: Issue
-      description: |
-        Explain your issue, add any relevant stacktraces here.
     validations:
       required: true
 
   - type: textarea
-    id: code
     attributes:
-      label: Code
+      label: How to replicate
       description: |
-        (optional) Add any relevant code so we can try and replicate the issue. Make sure to remove your token.
-      render: Java
+        Include steps to reproduce this issue.
     validations:
-      required: false
+      required: true
