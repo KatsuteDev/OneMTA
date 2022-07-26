@@ -10,9 +10,7 @@
         <a href="https://new.mta.info/developers">MTA Developer Resources</a>
         •
         <a href="https://groups.google.com/g/mtadeveloperresources">MTA Google Group</a>
-    </div>
     <br>
-    <div>
         <a href="https://mvnrepository.com/artifact/dev.katsute/onemta">Maven Central</a>
         •
         <a href="https://github.com/KatsuteDev/OneMTA/packages/1221214">GitHub Packages</a>
@@ -35,10 +33,6 @@ OneMTA is a Java wrapper for the [MTA SIRI REST API](https://bustime.mta.info/wi
  - [⚠️ Disclaimer](#%EF%B8%8F-disclaimer)
 
 ## 📃 Installation
-
-| Version | Support | Java |
-|:-:|---|:-:|
-|`v1^`|✔️ Fully supported|Java 8+|
 
 OneMTA requires at least Java 8.
 
