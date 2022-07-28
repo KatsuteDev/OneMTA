@@ -386,7 +386,7 @@ Station ID,Complex ID,GTFS Stop ID,Division,Line,Stop Name,Borough,Daytime Route
 384,384,409,IRT,Jerome Av,Burnside Av,Bx,4,Elevated,40.853453,-73.907684,Woodlawn,Manhattan,0,
 385,385,410,IRT,Jerome Av,176 St,Bx,4,Elevated,40.84848,-73.911794,Woodlawn,Manhattan,0,
 386,386,411,IRT,Jerome Av,Mt Eden Av,Bx,4,Elevated,40.844434,-73.914685,Woodlawn,Manhattan,0,
-387,387,412,IRT,Jerome Av,170 St,Bx,4,Elevated,40.840075,-73.917791,Woodlawn,Manhattan,0,
+387,387,412,IRT,Jerome Av,170 St,Bx,4,Elevated,40.840075,-73.917791,Woodlawn,Manhattan,1,
 388,388,413,IRT,Jerome Av,167 St,Bx,4,Elevated,40.835537,-73.9214,Woodlawn,Manhattan,0,
 389,604,414,IRT,Jerome Av,161 St-Yankee Stadium,Bx,4,Elevated,40.827994,-73.925831,Woodlawn,Manhattan,1,
 390,603,415,IRT,Jerome Av,149 St-Grand Concourse,Bx,4,Subway,40.818375,-73.927351,Woodlawn,Manhattan,0,

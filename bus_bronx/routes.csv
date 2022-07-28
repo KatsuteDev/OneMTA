@@ -61,7 +61,7 @@ B98V,MTA NYCT,B98V, Pink Houses - Medgar Evers College,via Eastern Pkwy / Rockaw
 B99,MTA NYCT,B99, Flatbush - Midtown,via New York Av / Flatbush Av,3,006CB7,FFFFFF
 BX3,MTA NYCT,Bx3,Riverdale - George Washington Bridge,via Sedgwick Av / University Av / W 181st St,3,EE352E,FFFFFF
 BX4,MTA NYCT,Bx4,Westchester Sq - The Hub,via Westchester Av,3,FAA61A,FFFFFF
-BX4A,MTA NYCT,Bx4A,Westchester Sq - The Hub,via Metropolitan Av / Westchester Av,3,FAA61A,FFFFFF
+BX4A,MTA NYCT,Bx4A,Westchester Sq - Gladstone Sq,via Metropolitan Av / Westchester Av,3,FAA61A,FFFFFF
 BX5,MTA NYCT,Bx5,Pelham Bay - Gladstone Sq,via Bruckner Blvd  / Story Av,3,EE352E,FFFFFF
 BX6,MTA NYCT,Bx6,Hunts Point - Riverside Dr,via E 161st St / E 163rd St / W 155 St,3,EE352E,FFFFFF
 BX6+,MTA NYCT,Bx6-SBS,Hunts Point - Riverside Dr,Select Bus Service via E 161st St / E 163rd St / W 155 St,3,EE352E,FFFFFF
@@ -70,14 +70,14 @@ BX8,MTA NYCT,Bx8,Williamsbridge - Locust Point,via Bronxwood Av / Williamsbridge
 BX9,MTA NYCT,Bx9,Riverdale - West Farms Sq,via Broadway / Kingsbridge Rd / Southern Blvd,3,FAA61A,FFFFFF
 BX1,MTA NYCT,Bx1,Riverdale - Mott Haven,via Grand Concourse / E 138th St,3,00AEEF,FFFFFF
 BX10,MTA NYCT,Bx10,Riverdale - Norwood,via H. Hudson Pkwy / W 231st St / Jerome Av,3,006CB7,FFFFFF
-BX11,MTA NYCT,Bx11,George Washington Bridge - Gladstone Sq,via Claremont Pkwy / E 170th St,3,FAA61A,FFFFFF
+BX11,MTA NYCT,Bx11,George Washington Bridge - Parkchester,via E 170th St /  E 174th St,3,FAA61A,FFFFFF
 BX12,MTA NYCT,Bx12,Pelham Bay - Inwood,via Pelham Pkwy / Fordham Rd,3,006CB7,FFFFFF
 BX12+,MTA NYCT,Bx12-SBS,Bay Plaza - Inwood,Select Bus Service via Pelham Pkwy / Fordham Rd,3,006CB7,FFFFFF
 BX13,MTA NYCT,Bx13,George Washington Bridge - Bronx Terminal Market,via W 181st St / Ogden Av / River Av,3,006CB7,FFFFFF
-BX15,MTA NYCT,Bx15,Fordham Plaza - The Hub - West Harlem,via 3rd Av / 125th St,3,FAA61A,FFFFFF
+BX15,MTA NYCT,Bx15,Fordham Plaza - The Hub,via 3rd Av,3,FAA61A,FFFFFF
 BX16,MTA NYCT,Bx16,Pelham - Norwood,via E 233rd St / Nereid Av,3,00AEEF,FFFFFF
 BX17,MTA NYCT,Bx17,Fordham Plaza - Port Morris,via Crotona Av / Prospect Av,3,006CB7,FFFFFF
-BX18,MTA NYCT,Bx18,Morris Heights/High Bridge Circulator,via Macombs Rd / Undercliff Av / Sedgwick Av,3,6CBE45,FFFFFF
+BX18,MTA NYCT,Bx18,Morris Heights/High Bridge Circulator,via 168th St / Undercliff Av / Sedgwick Av,3,6CBE45,FFFFFF
 BX19,MTA NYCT,Bx19,NY Botanical Garden - Riverbank Park,via Southern Bl / E 149th St,3,B933AD,FFFFFF
 BX2,MTA NYCT,Bx2,Kingsbridge Heights - Mott Haven,via Grand Concourse / E 149th St,3,FAA61A,FFFFFF
 BX20,MTA NYCT,Bx20,Riverdale - Inwood,via Broadway / Henry Hudson Pkwy,3,00AEEF,FFFFFF
@@ -88,20 +88,20 @@ BX25,MTA NYCT,Bx25,Co-op City Bay Plaza - Bedford Park,via Allerton Av,3,FAA61A,
 BX26,MTA NYCT,Bx26,Co-op City Section 5 - Bedford Park,via Allerton Av / Co-op City Blvd,3,FAA61A,FFFFFF
 BX27,MTA NYCT,Bx27,Clasons Pt - Gladstone Sq,via Westchester Av / Soundview Av,3,00AEEF,FFFFFF
 BX28,MTA NYCT,Bx28,Co-op City Section 5 - Fordham Center,via E Gun Hill Rd / Bartow Av,3,00AEEF,FFFFFF
-BX29,MTA NYCT,Bx29,City Island - Pelham Bay - Bay Plaza,via City Island Rd / City Island Av,3,00AEEF,FFFFFF
-BX30,MTA NYCT,Bx30,Co-op City Section 5 - Norwood,via Boston Rd / Gun Hill Rd,3,EE352E,FFFFFF
+BX29,MTA NYCT,Bx29,City Island - Pelham Bay,via City Island Rd / City Island Av,3,00AEEF,FFFFFF
+BX30,MTA NYCT,Bx30,Co-op City Section 5 - Pelham Parkway,via Boston Rd,3,EE352E,FFFFFF
 BX31,MTA NYCT,Bx31,Woodlawn - Westchester Sq,via E 233 St / Eastchester Rd,3,EE352E,FFFFFF
 BX32,MTA NYCT,Bx32,Kingsbridge VA Hospital - Mott Haven,via Morris Av / Jerome Av,3,6CBE45,FFFFFF
 BX33,MTA NYCT,Bx33,Port Morris - Harlem,via E 138th St / W 135th St,3,6CBE45,FFFFFF
 BX34,MTA NYCT,Bx34,Woodlawn - Fordham Center,via Katonah Av / Bainbridge Av / Valentine Av,3,B933AD,FFFFFF
-BX35,MTA NYCT,Bx35,Gladstone Sq - George Washington Bridge,via E 167th / W 181st St,3,00AEEF,FFFFFF
-BX36,MTA NYCT,Bx36,Soundview - George Washington Bridge,via E Tremont Av / E 180 St / White Plains Rd,3,B933AD,FFFFFF
+BX35,MTA NYCT,Bx35,George Washington Bridge-West Farms Road,via E 167th / W 181st St,3,00AEEF,FFFFFF
+BX36,MTA NYCT,Bx36,Soundview - George Washington Bridge,via E Tremont Av / White Plains Rd,3,B933AD,FFFFFF
 BX38,MTA NYCT,Bx38,Co-op City Bay Plaza - Norwood,via E Gun Hill Rd / Co-op City Blvd,3,FAA61A,FFFFFF
 BX39,MTA NYCT,Bx39,Wakefield - Clasons Pt,via White Plains Rd,3,FAA61A,FFFFFF
-BX40,MTA NYCT,Bx40,Throgs Neck - River Park Towers,via E Tremont Av / Burnside Av,3,006CB7,FFFFFF
+BX40,MTA NYCT,Bx40,Throgs Neck - River Park Towers,via E Tremont Av / E 180th St / Burnside Av,3,006CB7,FFFFFF
 BX41,MTA NYCT,Bx41,Williamsbridge - The Hub,via Webster Av,3,EE352E,FFFFFF
 BX41+,MTA NYCT,Bx41-SBS,Williamsbridge - The Hub,Select Bus Service via Webster Av,3,EE352E,FFFFFF
-BX42,MTA NYCT,Bx42,Throgs Neck - River Park Towers,via E Tremont Av / Burnside Av,3,EE352E,FFFFFF
+BX42,MTA NYCT,Bx42,Throgs Neck - River Park Towers,via E Tremont Av / E 180th St / Burnside Av,3,EE352E,FFFFFF
 BX46,MTA NYCT,Bx46,Prospect Av - Westchester Av / Hunts Point Market,via Barretto PK,3,EE352E,FFFFFF
 BX99,MTA NYCT,Bx99,Woodlawn - West Village,via 8 av / Grand Concourse,3,EE352E,FFFFFF
 D99,MTA NYCT,D99,Stillwell Terminal - Bay 50 St,via Stillwell Av,3,EE352E,FFFFFF
@@ -125,10 +125,10 @@ KBAS,MTA NYCT,KBAS,Bronx As Assigned,Kingbridge Bronx As Assigned,3,EE352E,FFFFF
 WFAS,MTA NYCT,WFAS,Bronx As Assigned,West Farms Bronx As Assigned,3,EE352E,FFFFFF
 JBLAF,MTA NYCT,JBLAF,J/M Shuttle Bus-Broadway/Lafayette and Hewes St,via Williamsburg Bridge,3,EE352E,FFFFFF
 L1227,MTA NYCT,BJ-MW,L Shuttle Bus-Broadway Junction and Myrtle-Wyckoff,via Fulton/Van Sinderen Ave and Mrtyle/Wyckoff Ave,3,EE352E,FFFFFF
-L0719,MTA NYCT,BEDLOOP,L Shuttle Bus-Marcy Avenue and Lorimer Street,via Broadway, 3,EE352E,FFFFFF
+L0719,MTA NYCT,BEDLOOP,L Shuttle Bus-Marcy Avenue and Lorimer Street,via Broadway,3,EE352E,FFFFFF
 L0202,MTA NYCT,MW-ML,L Shuttle Bus-Myrtle-Wyckoff Avenue and Lorimer Street,via Wyckoff/Gates and Metropolitan/Union Ave,3,EE352E,FFFFFF
 F1,MTA NYCT,F1, CULVER LINK F Shuttle Bus-Church Avenue and McDonald Avenue,via McDonald Avenue and Surf Avenue and Stillwell Avenue,3,EE352E,FFFFFF
-M191,MTA NYCT,M191,191 ST Shuttle Loop, via St Nicholas Av and Broadway, 3,EE352E,FFFFFF
+M191,MTA NYCT,M191,191 ST Shuttle Loop, via St Nicholas Av and Broadway,3,EE352E,FFFFFF
 M1,MTA NYCT,M1,Harlem - East Village,via 5th Av / Madison Av,3,EE352E,FFFFFF
 M2,MTA NYCT,M2,Washington Heights - East Village,via 5th Av / Madison Av / AC Powell Blvd,3,B933AD,FFFFFF
 M3,MTA NYCT,M3,Fort George - East Village,via 5th Av / Madison Av / St Nicholas Av,3,B933AD,FFFFFF
@@ -138,7 +138,7 @@ M7,MTA NYCT,M7,Harlem - 14th Street,via Columbus / Amsterdam / 6 & 7 Av / Bway,3
 M8,MTA NYCT,M8,West Village - East Village,via 8 & 9 St Crosstown,3,00AEEF,FFFFFF
 M9,MTA NYCT,M9,Battery Park City - Kips Bay,via Avenue C / E Broadway,3,B933AD,FFFFFF
 M10,MTA NYCT,M10,Harlem - Columbus Circle,via Central Park West / Frederick Douglass Blvd,3,006CB7,FFFFFF
-M100,MTA NYCT,M100,Inwood - East Harlem,via Broadway / Amsterdam Av / 125 St,3,00AEEF,FFFFFF
+M100,MTA NYCT,M100,Inwood - Harlem,via Broadway / Amsterdam Av,3,00AEEF,FFFFFF
 M101,MTA NYCT,M101,East Village - Fort George,via Third Av / Lexington Av / Amsterdam Av,3,FAA61A,FFFFFF
 M102,MTA NYCT,M102,Harlem - East Village,via 3rd Av / Lexington Av / Lenox Av,3,FAA61A,FFFFFF
 M103,MTA NYCT,M103,East Harlem - City Hall,via 3rd Av / Lexington Av,3,B933AD,FFFFFF
@@ -147,7 +147,7 @@ M106,MTA NYCT,M106,East Harlem - West Side,via 96th St / E 106th St Crosstown,3,
 M11,MTA NYCT,M11,Riverbank Park & Harlem - West Village,via 9th - Columbus Av / 10th - Amsterdam Av,3,FAA61A,FFFFFF
 M116,MTA NYCT,M116,West Side - East Harlem,via 116th St Crosstown,3,6CBE45,FFFFFF
 M12,MTA NYCT,M12,Midtown West - West Village,via 11 Av / 12 Av,3,006CB7,FFFFFF
-M125,MTA NYCT,M125,The Hub - Manhattanville,via 125 St,3,B933AD,FFFFFF
+M125,MTA NYCT,M125,Manhattanville - The Hub,via 125th St / Willis Av,3,B933AD,FFFFFF
 M141A,MTA NYCT,M141A,9th Avenue - Avenue A,via 14th St Crosstown,3,6CBE45,FFFFFF
 M14A+,MTA NYCT,M14A-SBS,Lower East Side - Abingdon Sq,Select Bus Service via 14th St / Av A,3,6CBE45,FFFFFF
 M14D+,MTA NYCT,M14D-SBS,Lower East Side - Chelsea Piers,Select Bus Service via 14th St / Av D,3,6CBE45,FFFFFF
@@ -206,6 +206,8 @@ Q58,MTA NYCT,Q58,Ridgewood - Flushing,via Fresh Pond Rd / Corona Av / College Pt
 Q59,MTA NYCT,Q59,Williamsburg - Rego Park,via Grand St / Grand Av / Queens Blvd,3,FAA61A,FFFFFF
 Q76,MTA NYCT,Q76,College Point - Jamaica,via Francis Lewis Blvd / Hillside Av,3,6CBE45,FFFFFF
 Q77,MTA NYCT,Q77,Laurelton - Jamaica,via Springfield / Francis Lewis / Hillside Av,3,FAA61A,FFFFFF
+Q78,MTA NYCT,Q78,Bay Terrace - Springfield Gardens,via Springfield Bl,3,EE352E,FFFFFF
+Q82,MTA NYCT,Q82,Jamaica - Belmont Pk,via Hillside Av,3,FAA61A,FFFFFF
 Q83,MTA NYCT,Q83,Cambria Heights - Jamaica,via Murdock Av / Liberty Av (Local and Limited-stop Service) Av,3,6CBE45,FFFFFF
 Q84,MTA NYCT,Q84,Laurelton - Jamaica,via Merrick Blvd / 120th Av,3,B933AD,FFFFFF
 Q85,MTA NYCT,Q85,Rosedale or Green Acres Shopping Mall - Jamaica,via Merrick Blvd / Conduit Av,3,EE352E,FFFFFF
