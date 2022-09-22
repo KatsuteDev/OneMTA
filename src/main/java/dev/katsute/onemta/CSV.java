@@ -82,7 +82,7 @@ class CSV {
 
         final int index = Collections.binarySearch(rows, compare, comparator); // binary search
 
-        return index != -1 ? new ArrayList<>(rows.get(index)) : null;
+        return index > -1 ? new ArrayList<>(rows.get(index)) : null;
     }
 
     public final List<List<String>> getRows(final String keyHeader, final String keyValue){
@@ -96,7 +96,7 @@ class CSV {
         int first = index;
         int last = index;
 
-        if(index != -1){
+        if(index > -1){
             final List<List<String>> match = new ArrayList<>();
             match.add(rows.get(index));
             while(first > 0 && rows.get(first-1).get(keyIndex).equals(keyValue)){ // check all values before
