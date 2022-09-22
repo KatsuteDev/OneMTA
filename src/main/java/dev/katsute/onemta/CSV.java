@@ -80,7 +80,7 @@ class CSV {
         final List<String> compare = new ArrayList<>(keyIndex);
         compare.add(keyValue);
 
-        final int index = Collections.binarySearch(rows, compare,comparator); // binary search
+        final int index = Collections.binarySearch(rows, compare, comparator); // binary search
 
         return index != -1 ? new ArrayList<>(rows.get(index)) : null;
     }
@@ -92,7 +92,7 @@ class CSV {
         final List<String> compare = new ArrayList<>(keyIndex);
         compare.add(keyValue);
 
-        final int index = Collections.binarySearch(rows, compare,comparator); // binary search
+        final int index = Collections.binarySearch(rows, compare, comparator); // binary search
         int first = index;
         int last = index;
 
