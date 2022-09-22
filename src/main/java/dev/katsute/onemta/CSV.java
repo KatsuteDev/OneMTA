@@ -27,19 +27,26 @@ class CSV {
     private final List<String> headers;
     private final List<List<String>> rows;
 
+    private final int lenm1;
+
     CSV(final String csv){
         final String[] lns = csv.trim().split("\n");
         headers = Collections.unmodifiableList(parseLine(lns[0]));
         final List<List<String>> rows = new ArrayList<>();
         for(int i = 1; i < lns.length; i++)
             rows.add(parseLine(lns[i]));
+        rows.sort(comparator); // sort for binary search
         this.rows = Collections.unmodifiableList(rows);
+
+        lenm1 = rows.size() - 1;
     }
+
+    private static final Comparator<List<String>> comparator = Comparator.comparing(o -> o.get(0)); // compare key
 
     // (?:^|,)\s*(?:(?=")"([^"].*?)?"|(?!")(.*?))(?=,|$)
     private static final Pattern split = Pattern.compile("(?:^|,)\\s*(?:(?=\")\"([^\"].*?)?\"|(?!\")(.*?))(?=,|$)");
 
-    private List<String> parseLine(final String line){
+    private static List<String> parseLine(final String line){
         final Matcher matcher = split.matcher(line);
         final List<String> row = new ArrayList<>();
 
@@ -69,20 +76,40 @@ class CSV {
     public final List<String> getRow(final String keyHeader, final String keyValue){
         final int keyIndex = getHeaderIndex(keyHeader);
         if(keyIndex == -1) return null;
-        for(final List<String> row : rows)
-            if(row.get(keyIndex).equals(keyValue))
-                return new ArrayList<>(row);
-        return null;
+
+        final List<String> compare = new ArrayList<>(keyIndex);
+        compare.add(keyValue);
+
+        final int index = Collections.binarySearch(rows, compare,comparator); // binary search
+
+        return index != -1 ? new ArrayList<>(rows.get(index)) : null;
     }
 
     public final List<List<String>> getRows(final String keyHeader, final String keyValue){
         final int keyIndex = getHeaderIndex(keyHeader);
         if(keyIndex == -1) return null;
-        final List<List<String>> match = new ArrayList<>();
-        for(final List<String> row : rows)
-            if(row.get(keyIndex).equals(keyValue))
-                match.add(new ArrayList<>(row));
-        return !match.isEmpty() ? match : null;
+
+        final List<String> compare = new ArrayList<>(keyIndex);
+        compare.add(keyValue);
+
+        final int index = Collections.binarySearch(rows, compare,comparator); // binary search
+        int first = index;
+        int last = index;
+
+        if(index != -1){
+            final List<List<String>> match = new ArrayList<>();
+            match.add(rows.get(index));
+            while(first > 0 && rows.get(first-1).get(keyIndex).equals(keyValue)){ // check all values before
+                match.add(0, rows.get(first - 1)); // add to head of list
+                first--;
+            }
+            while(last < lenm1 && rows.get(last + 1).get(keyIndex).equals(keyValue)){ // check all values after
+                match.add(rows.get(last-1)); // add to tail of list
+                last++;
+            }
+            return match;
+        }else
+            return null;
     }
 
     public final String getValue(final String keyHeader, final String keyValue, final String valueHeader){
