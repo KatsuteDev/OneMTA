@@ -77,39 +77,54 @@ class CSV {
         final int keyIndex = getHeaderIndex(keyHeader);
         if(keyIndex == -1) return null;
 
-        final List<String> compare = new ArrayList<>(keyIndex);
-        compare.add(keyValue);
+        if(keyIndex == 0){
+            final List<String> compare = new ArrayList<>(keyIndex);
+            compare.add(keyValue);
 
-        final int index = Collections.binarySearch(rows, compare, comparator); // binary search
+            final int index = Collections.binarySearch(rows, compare, comparator); // binary search
 
-        return index > -1 ? new ArrayList<>(rows.get(index)) : null;
+            return index > -1 ? new ArrayList<>(rows.get(index)) : null;
+        }else{
+            for(List<String> row : rows)
+                if(row.get(keyIndex).equals(keyValue))
+                    return new ArrayList<>(row);
+            return null;
+        }
     }
 
     public final List<List<String>> getRows(final String keyHeader, final String keyValue){
         final int keyIndex = getHeaderIndex(keyHeader);
         if(keyIndex == -1) return null;
 
-        final List<String> compare = new ArrayList<>(keyIndex);
-        compare.add(keyValue);
+        if(keyIndex == 0){
+            final List<String> compare = new ArrayList<>(keyIndex);
+            compare.add(keyValue);
 
-        final int index = Collections.binarySearch(rows, compare, comparator); // binary search
-        int first = index;
-        int last = index;
+            final int index = Collections.binarySearch(rows, compare, comparator); // binary search
+            int first = index;
+            int last = index;
 
-        if(index > -1){
+            if(index > -1){
+                final List<List<String>> match = new ArrayList<>();
+                match.add(rows.get(index));
+                while(first > 0 && rows.get(first - 1).get(keyIndex).equals(keyValue)){ // check all values before
+                    match.add(0, rows.get(first - 1)); // add to head of list
+                    first--;
+                }
+                while(last < lenm1 && rows.get(last + 1).get(keyIndex).equals(keyValue)){ // check all values after
+                    match.add(rows.get(last - 1)); // add to tail of list
+                    last++;
+                }
+                return match;
+            }
+        }else{
             final List<List<String>> match = new ArrayList<>();
-            match.add(rows.get(index));
-            while(first > 0 && rows.get(first-1).get(keyIndex).equals(keyValue)){ // check all values before
-                match.add(0, rows.get(first - 1)); // add to head of list
-                first--;
-            }
-            while(last < lenm1 && rows.get(last + 1).get(keyIndex).equals(keyValue)){ // check all values after
-                match.add(rows.get(last-1)); // add to tail of list
-                last++;
-            }
-            return match;
-        }else
-            return null;
+            for(final List<String> row : rows)
+                if(row.get(keyIndex).equals(keyValue))
+                    match.add(new ArrayList<>(row));
+            return !match.isEmpty() ? match : null;
+        }
+        return null;
     }
 
     public final String getValue(final String keyHeader, final String keyValue, final String valueHeader){
