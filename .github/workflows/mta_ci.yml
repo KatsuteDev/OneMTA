@@ -31,11 +31,11 @@ jobs:
 
       - name: 🔐 Load Client ID
         run: |
-          echo ${{ secrets.BUS_TOKEN }} > src/test/java/resources/token_bus.txt
+          echo ${{ secrets.BUS_TOKEN }} > src/test/java/resources/bus.txt
 
       - name: 🔐 Load OAuth Token
         run: |
-          echo ${{ secrets.SUBWAY_TOKEN }} > src/test/java/resources/token_subway.txt
+          echo ${{ secrets.SUBWAY_TOKEN }} > src/test/java/resources/subway.txt
 
       - name: 📄 Load Test Group
         run: |
