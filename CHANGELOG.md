@@ -1,5 +1,25 @@
 # Changelog
 
+## 1.2.2
+
+### 🔧 Optimizations
+
+* Optimize static data [#90](https://github.com/KatsuteDev/OneMTA/pull/90) ([@Katsute](https://github.com/Katsute))
+
+### 📘 Dependencies
+
+* Bump protobuf-java from 3.21.3 to 3.21.4 [#70](https://github.com/KatsuteDev/OneMTA/pull/70) ([@dependabot](https://github.com/dependabot))
+* Bump protobuf-java-util from 3.21.3 to 3.21.4 [#72](https://github.com/KatsuteDev/OneMTA/pull/72) ([@dependabot](https://github.com/dependabot))
+* Bump junit-jupiter-params and junit-jupiter-api from 5.8.2 to 5.9.0 [#75](https://github.com/KatsuteDev/OneMTA/pull/75) ([@mashiro-san](https://github.com/mashiro-san))
+* Bump protobuf-java from 3.21.4 to 3.21.5 [#76](https://github.com/KatsuteDev/OneMTA/pull/76) ([@dependabot](https://github.com/dependabot))
+* Bump protobuf-java-util from 3.21.4 to 3.21.5 [#77](https://github.com/KatsuteDev/OneMTA/pull/77) ([@dependabot](https://github.com/dependabot))
+* Bump maven-javadoc-plugin from 3.4.0 to 3.4.1 [#78](https://github.com/KatsuteDev/OneMTA/pull/78) ([@dependabot](https://github.com/dependabot))
+* Bump protobuf-java from 3.21.5 to 3.21.6 [#80](https://github.com/KatsuteDev/OneMTA/pull/80) ([@dependabot](https://github.com/dependabot))
+* Bump protobuf-java-util from 3.21.5 to 3.21.6 [#81](https://github.com/KatsuteDev/OneMTA/pull/81) ([@dependabot](https://github.com/dependabot))
+* Bump maven-jar-plugin from 3.2.2 to 3.3.0 [#83](https://github.com/KatsuteDev/OneMTA/pull/83) ([@dependabot](https://github.com/dependabot))
+
+**Full Changelog**: [`1.2.1...1.2.2`](https://github.com/KatsuteDev/OneMTA/compare/1.2.1...1.2.2)
+
 ## 1.2.1
 
 ### 🐞 Bug Fixes
