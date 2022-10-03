@@ -3,7 +3,7 @@
 # https://github.com/OneBusAway/onebusaway-gtfs-realtime-api/tree/master/src/main/proto/com/google/transit/realtime
 
 echo ""
-echo "⚠ Make sure to include required options in proto file"
+echo "⚠️ Make sure to include required options in proto file"
 echo ""
 
 # import "gtfs-realtime.proto";
@@ -58,7 +58,7 @@ protobuf/bin/protoc -I=protobuf --java_out=protobuf  protobuf/gtfs-realtime-serv
 cp protobuf/dev/katsute/onemta/*.java src/main/java/dev/katsute/onemta
 
 echo ""
-echo "⚠ Make sure to make classes package private abstract and suppress all inspections"
+echo "⚠️ Make sure to make classes package private abstract and suppress all inspections"
 echo ""
 
 read -p "Press any key to exit" -t 10 x

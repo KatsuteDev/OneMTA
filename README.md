@@ -132,7 +132,6 @@ MNR.Alert[] mnrAlerts       = mta.getMNRAlerts();
 <!-- GitHub Copilot Disclaimer -->
 
  - Found a bug? Post it in [issues](https://github.com/KatsuteDev/OneMTA/issues).
- - Have a suggestion or looking for inspiration? Check out our [discussions](https://github.com/KatsuteDev/OneMTA/discussions).
  - Want to further expand our project? [Fork](https://github.com/KatsuteDev/OneMTA/fork) this repository and submit a [pull request](https://github.com/KatsuteDev/OneMTA/pulls).
 
 Sample response data available on the [`reference`](https://github.com/KatsuteDev/OneMTA/tree/reference) branch.
