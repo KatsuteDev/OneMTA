@@ -18,7 +18,7 @@
 
 package dev.katsute.onemta;
 
-import dev.katsute.onemta.Json.JsonObject;
+import dev.katsute.onemta.Json2.JsonObject;
 import dev.katsute.onemta.bus.Bus;
 import dev.katsute.onemta.exception.MissingResourceException;
 import dev.katsute.onemta.railroad.LIRR;

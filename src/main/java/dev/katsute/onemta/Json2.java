@@ -29,7 +29,7 @@ import java.util.regex.*;
  * <a href="https://github.com/KatsuteDev/Mal4J/blob/main/src/main/java/com/kttdevelopment/mal4j/Json.java">https://github.com/KatsuteDev/Mal4J/blob/main/src/main/java/com/kttdevelopment/mal4j/Json.java</a>
  */
 @SuppressWarnings("SpellCheckingInspection")
-class Json {
+class Json2 {
 
     /*
      * Notable issues:
@@ -99,11 +99,11 @@ class Json {
     private final Matcher unicodeMatcher = escUnicode.matcher("");
     private final Matcher escapedMatcher = escapedCharacters.matcher("");
 
-    private Json(){ }
+    private Json2(){ }
 
     // required for lambda
     static Object parse(final String json){
-        return new Json().parseJson(json);
+        return new Json2().parseJson(json);
     }
 
     /**

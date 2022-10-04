@@ -19,7 +19,7 @@
 package dev.katsute.onemta;
 
 import dev.katsute.onemta.GTFSRealtimeProto.FeedMessage;
-import dev.katsute.onemta.Json.JsonObject;
+import dev.katsute.onemta.Json2.JsonObject;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
