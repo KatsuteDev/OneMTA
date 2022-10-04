@@ -29,6 +29,11 @@ public final class JsonSyntaxException extends RuntimeException {
 
     private final String raw;
 
+    public JsonSyntaxException(final String message){
+        super(message);
+        this.raw = null;
+    }
+
     public JsonSyntaxException(final String message, final String raw){
         super(message);
         this.raw = raw;
