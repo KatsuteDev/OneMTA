@@ -20,6 +20,7 @@ package dev.katsute.onemta;
 
 import dev.katsute.onemta.exception.JsonSyntaxException;
 
+import javax.sql.rowset.spi.SyncProvider;
 import java.util.*;
 import java.util.function.Supplier;
 
@@ -183,15 +184,16 @@ final class Json {
                                         list.add(Double.parseDouble(V));
                                         break;
                                     case STRING:
-                                        list.add(V);
+                                        if(V != null)
+                                            list.add(V);
                                         break;
                                     default:
                                         break;
                                 }
+                                V = null;
                                 if(ch == ']') // end of array
                                     return list;
                         }
-                        V = null;
                         continue;
                     case LITERAL: // expecting literal value
                         switch(T){
@@ -405,10 +407,12 @@ final class Json {
                                 continue;
                             case '[': // array
                                 obj.set(K, parseArray(json, i, (i = findEndToken(json, i, '[', ']')) + 1));
+                                K = null;
                                 E = END_OF_VALUE;
                                 continue;
                             case '{': // object
                                 obj.set(K, parseObject(json, i, (i = findEndToken(json, i, '{', '}')) + 1));
+                                K = null;
                                 E = END_OF_VALUE;
                                 continue;
                             case '"': // string
@@ -645,16 +649,18 @@ final class Json {
 
         @SuppressWarnings("unchecked")
         public final List<Object> getList(final String key){
-            for(int i = 0; i < ((List<Object>) get(key)).size(); i++){
-                final Object obj = ((List<?>) get(key)).get(i);
+            if(map.get(key) instanceof Supplier)
+                map.put(key, ((Supplier<?>) map.get(key)).get());
+            for(int i = 0; i < ((List<Object>) map.get(key)).size(); i++){
+                final Object obj = ((List<?>) map.get(key)).get(i);
                 if(obj instanceof Supplier)
-                    ((List<Object>) get(key)).set(i, ((Supplier<?>) obj).get());
+                    ((List<Object>) map.get(key)).set(i, ((Supplier<?>) obj).get());
             }
-            return (List<Object>) get(key);
+            return (List<Object>) map.get(key);
         }
 
         public final String getString(final String key){
-            final Object value = get(key);
+            final Object value = map.get(key);
             return
                 value == null
                 ? null
@@ -664,27 +670,27 @@ final class Json {
         }
 
         public final int getInt(final String key){
-            final Object value = get(key);
+            final Object value = map.get(key);
             return value instanceof String ? Integer.parseInt((String) value) : ((Number) value).intValue();
         }
 
         public final double getDouble(final String key){
-            final Object value = get(key);
+            final Object value = map.get(key);
             return value instanceof String ? Double.parseDouble((String) value) : ((Number) value).doubleValue();
         }
 
         public final float getFloat(final String key){
-            final Object value = get(key);
+            final Object value = map.get(key);
             return value instanceof String ? Float.parseFloat((String) value) : ((Number) value).floatValue();
         }
 
         public final long getLong(final String key){
-            final Object value = get(key);
+            final Object value = map.get(key);
             return value instanceof String ? Long.parseLong((String) value) : ((Number) value).longValue();
         }
 
         public final boolean getBoolean(final String key){
-            final Object value = get(key);
+            final Object value = map.get(key);
             return value instanceof String ? Boolean.parseBoolean((String) value) : (boolean) value;
         }
 

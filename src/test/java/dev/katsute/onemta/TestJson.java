@@ -92,12 +92,12 @@ public class TestJson {
 
     @Test
     final void testArrayMap(){
-        assertEquals("v", ((JsonObject) jsonArray.get(14)).getString("k"));
+        assertEquals("v", ((JsonObject) jsonArray.get(15)).getString("k"));
     }
 
     @Test
     final void testArrayEmptyMap(){
-        assertEquals(0, ((JsonObject) jsonArray.get(15)).size());
+        assertEquals(0, ((JsonObject) jsonArray.get(16)).size());
     }
 
     @SuppressWarnings("unused")
