@@ -10,9 +10,10 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Supplier;
 import java.util.stream.Stream;
 
-import static dev.katsute.onemta.Json2.*;
+import static dev.katsute.onemta.Json.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SuppressWarnings("SpellCheckingInspection")
@@ -128,13 +129,7 @@ public class TestJson {
     @ParameterizedTest(name="[{index}] {0}")
     @ValueSource(strings={"", "?", "{", "}", "[", "]", "{{", "}}", "[[", "]]", "{[", "[{", "}]", "]}", "{[}]", "[{]}"})
     final void testMalformed(final String string){
-        try{
-            parse(string);
-        }catch(final JsonSyntaxException e){
-            assertEquals(string, e.getRaw());
-            return;
-        }
-        fail("Expected JsonSyntaxException for: \"" + string + '"');
+        assertThrows(JsonSyntaxException.class, () -> parse(string));
     }
 
     // newline

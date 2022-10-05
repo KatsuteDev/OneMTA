@@ -18,7 +18,7 @@
 
 package dev.katsute.onemta;
 
-import dev.katsute.onemta.Json2.JsonObject;
+import dev.katsute.onemta.Json.JsonObject;
 import dev.katsute.onemta.bus.BusDirection;
 import dev.katsute.onemta.types.TransitAgency;
 import dev.katsute.onemta.types.TransitAlertPeriod;

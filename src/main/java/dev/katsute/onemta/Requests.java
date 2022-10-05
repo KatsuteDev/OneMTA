@@ -20,7 +20,7 @@ package dev.katsute.onemta;
 
 import com.google.protobuf.ExtensionRegistry;
 import dev.katsute.onemta.GTFSRealtimeProto.FeedMessage;
-import dev.katsute.onemta.Json2.JsonObject;
+import dev.katsute.onemta.Json.JsonObject;
 import dev.katsute.onemta.exception.HttpException;
 
 import java.io.*;
@@ -57,7 +57,7 @@ abstract class Requests {
                 final StringBuilder OUT = new StringBuilder();
                 while((buffer = IN.readLine()) != null)
                     OUT.append(buffer);
-                return (JsonObject) Json2.parse(OUT.toString());
+                return (JsonObject) Json.parse(OUT.toString());
             }
         }catch(final IOException e){
             throw new HttpException(url, e);
@@ -91,7 +91,7 @@ abstract class Requests {
                 final StringBuilder OUT = new StringBuilder();
                 while((buffer = IN.readLine()) != null)
                     OUT.append(buffer);
-                return Collections.unmodifiableList((List<JsonObject>) Json2.parse(OUT.toString()));
+                return Collections.unmodifiableList((List<JsonObject>) Json.parse(OUT.toString()));
             }
         }catch(final IOException e){
             throw new HttpException(url, e);

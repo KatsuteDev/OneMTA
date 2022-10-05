@@ -36,8 +36,8 @@ final class Json {
         this.len  = json.length();
     }
 
-    static Supplier<?> parse(final String json){
-        return new Json(json).parse();
+    static Object parse(final String json){
+        return new Json(json).parse().get();
     }
 
     private Supplier<?> parse(){
@@ -64,15 +64,19 @@ final class Json {
 
     enum Expect {
 
+        START_OF_KEY,
+        KEY,
+        END_OF_KEY,
         START_OF_VALUE,
+        END_OF_VALUE,
         LITERAL,
         NUMBER,
-        END_OF_VALUE
 
     }
 
     enum Type {
 
+        UNKNOWN,
         NULL,
         BOOLEAN,
         INTEGER,
@@ -81,18 +85,19 @@ final class Json {
 
     }
 
+    // start should include starting token
     private Supplier<List<?>> parseArray(final String json, final int start, final int end){
         return () -> {
             final List<Object> list = new ArrayList<>();
 
             Expect E = START_OF_VALUE;
-            Type T   = null; // expected type
+            Type T   = UNKNOWN; // expected type
 
             boolean isEscaped = false;
 
             String V = null; // current value
 
-            for(int i = start; i < end; i++){
+            for(int i = start + 1; i < end; i++){
                 final char ch = json.charAt(i);
                 switch(E){
                     case START_OF_VALUE: // expecting beginning of value
@@ -126,10 +131,15 @@ final class Json {
                                 E = LITERAL;
                                 V = String.valueOf(ch);
                                 continue;
+                            case '-': // negative
+                                T = INTEGER;
+                                E = NUMBER;
+                                V = String.valueOf(ch);
+                                continue;
                             default:
                                 if(Character.isDigit(ch)){ // number
                                     T = INTEGER;
-                                    E = NUMBER;
+                                    E = LITERAL;
                                     V = String.valueOf(ch);
                                     continue;
                                 }else // unknown
@@ -160,6 +170,8 @@ final class Json {
                                         break;
                                     case STRING:
                                         list.add(V);
+                                        break;
+                                    default:
                                         break;
                                 }
                                 if(ch == ']') // end of array
@@ -238,13 +250,16 @@ final class Json {
                                     case '"': // quote
                                         if(!isEscaped) // end of value
                                             E = END_OF_VALUE;
-                                        else // escaped quote
+                                        else{ // escaped quote
                                             V += ch;
+                                            isEscaped = false;
+                                        }
                                         continue;
                                     default:
                                         if(!isEscaped) // literal
                                             V += ch;
-                                        else // escaped
+                                        else{ // escaped
+                                            isEscaped = false;
                                             switch(ch){
                                                 case 't': // tab
                                                     V += '\t';
@@ -252,10 +267,18 @@ final class Json {
                                                 case 'n': // new line
                                                     V += '\n';
                                                     continue;
+                                                case 'u': // unicode
+                                                    V += "\\u";
+                                                    continue;
+                                                case '/': // slash
+                                                    V += '/';
+                                                    continue;
                                                 default: // unknown
                                                     throw new JsonSyntaxException("Unknown escape character '\\" + ch + "'");
                                             }
+                                        }
                                 }
+                            continue;
                         }
                     case NUMBER:
                         if(Character.isDigit(ch)){
@@ -269,120 +292,268 @@ final class Json {
         };
     }
 
+    // start should include starting token
     private Supplier<JsonObject> parseObject(final String json, final int start, final int end){
         return () -> {
             final JsonObject obj = new JsonObject();
 
-            Expect E = START_OF_VALUE;
-            Type T   = null;
+            Expect E = START_OF_KEY;
+            Type T   = UNKNOWN;
 
             boolean isEscaped = false;
-            boolean isKey = false;
 
-            String K = null;
-            String V = null;
+            String K = null; // current key
+            String V = null; // current value
 
-            for(int i = start; i < end; i++){
+            for(int i = start + 1; i < end; i++){
                 final char ch = json.charAt(i);
                 switch(E){
-                    case START_OF_VALUE: // expecting beginning of value
-                        if(K == null){ // expecting key start of value
-
-                            K = "";
-                            isKey = true;
-                        }else{ // expecting value start of value
-                            switch(ch){
-                                case ' ': // whitespace
-                                case '\t':
-                                case '\r':
-                                case '\n':
-                                    continue;
-                                case '[': // array
-                                    obj.set(K, parseArray(json, i, i = findEndToken(json, i, '[', ']')));
-                                    E = END_OF_VALUE;
-                                    continue;
-                                case '{': // object
-                                    obj.set(K, parseObject(json, i, i = findEndToken(json, i, '{', '}')));
-                                    E = END_OF_VALUE;
-                                    continue;
-                                case '"': // string
-                                    T = STRING;
-                                    E = LITERAL;
-                                    V = "";
-                                    continue;
-                                case 'f': // boolean
-                                case 't':
-                                    T = BOOLEAN;
-                                    E = LITERAL;
-                                    V = String.valueOf(ch);
-                                    continue;
-                                case 'n': // null
-                                    T = NULL;
-                                    E = LITERAL;
-                                    V = String.valueOf(ch);
-                                    continue;
-                                default:
-                                    if(Character.isDigit(ch)){ // number
-                                        T = INTEGER;
-                                        E = NUMBER;
-                                        V = String.valueOf(ch);
-                                        continue;
-                                    }else // unknown
-                                        throw new JsonSyntaxException("Unexpected literal '" + ch + "'");
-                            }
+                    case START_OF_KEY: // expecting beginning of key
+                        switch(ch){
+                            case ' ': // whitespace
+                            case '\t':
+                            case '\r':
+                            case '\n':
+                                continue;
+                            case '"': // string
+                                E = KEY;
+                                K = "";
+                                continue;
+                            default:
+                                throw new JsonSyntaxException("Unexpected literal '" + ch + "', expected '\"'");
+                        }
+                    case KEY: // expecting key value
+                        switch(ch){
+                            case '\r': // illegal whitespace
+                            case '\n':
+                                throw new JsonSyntaxException("Unexpected token '" + ch + "'");
+                            case '\\':
+                                isEscaped = !isEscaped;
+                                continue;
+                            case '"': // quote
+                                if(!isEscaped) // end of key
+                                    E = END_OF_KEY;
+                                else{ // escaped quote
+                                    K += ch;
+                                    isEscaped = false;
+                                }
+                                continue;
+                            default:
+                                if(!isEscaped) // literal
+                                    K += ch;
+                                else{ // escaped
+                                    isEscaped = false;
+                                    switch(ch){
+                                        case 't': // tab
+                                            K += '\t';
+                                            continue;
+                                        case 'n': // new line
+                                            K += '\n';
+                                            continue;
+                                        case '/': // slash
+                                            K += '/';
+                                            continue;
+                                        case 'u': // unicode
+                                            K += "\\u";
+                                            continue;
+                                        default: // unknown
+                                            throw new JsonSyntaxException("Unknown escape character '\\" + ch + "'");
+                                    }
+                                }
                         }
                         continue;
+                    case END_OF_KEY: // expecting end of key
+                        switch(ch){
+                            case ' ': // whitespace
+                            case '\t':
+                            case '\r':
+                            case '\n':
+                                continue;
+                            case ':':
+                                E = START_OF_VALUE;
+                                continue;
+                            default:
+                                throw new JsonSyntaxException("Unexpected character \"" + ch + "\", expected ':'");
+                        }
+                    case START_OF_VALUE: // expecting beginning of value
+                        switch(ch){
+                            case ' ': // whitespace
+                            case '\t':
+                            case '\r':
+                            case '\n':
+                                continue;
+                            case '[': // array
+                                obj.set(K, parseArray(json, i, i = findEndToken(json, i, '[', ']')));
+                                E = END_OF_VALUE;
+                                continue;
+                            case '{': // object
+                                obj.set(K, parseObject(json, i, i = findEndToken(json, i, '{', '}')));
+                                E = END_OF_VALUE;
+                                continue;
+                            case '"': // string
+                                T = STRING;
+                                E = LITERAL;
+                                V = "";
+                                continue;
+                            case 'f': // boolean
+                            case 't':
+                                T = BOOLEAN;
+                                E = LITERAL;
+                                V = String.valueOf(ch);
+                                continue;
+                            case 'n': // null
+                                T = NULL;
+                                E = LITERAL;
+                                V = String.valueOf(ch);
+                                continue;
+                            case '-': // negative
+                                T = INTEGER;
+                                E = NUMBER;
+                                V = String.valueOf(ch);
+                                continue;
+                            default:
+                                if(Character.isDigit(ch)){ // number
+                                    T = INTEGER;
+                                    E = LITERAL;
+                                    V = String.valueOf(ch);
+                                    continue;
+                                }else // unknown
+                                    throw new JsonSyntaxException("Unexpected literal '" + ch + "'");
+                        }
                     case END_OF_VALUE: // expecting end of value
-                        if(isKey){ // expecting :
-                            switch(ch){
-                                case ' ': // whitespace
-                                case '\t':
-                                case '\r':
-                                case '\n':
-                                    continue;
-                                case ':': // colon
-                                    E = START_OF_VALUE;
-                                    isKey = false;
-                            }
-                        }else{
-                            switch(ch){
-                                case ' ': // whitespace
-                                case '\t':
-                                case '\r':
-                                case '\n':
-                                    continue;
-                                case ',': // next in array
-                                case '}': // end of object
-                                    E = START_OF_VALUE; // prepare for next
-                                    switch(T){ // push value
-                                        case NULL:
-                                            obj.set(K, null);
-                                            break;
-                                        case BOOLEAN:
-                                            obj.set(K, Boolean.parseBoolean(V));
-                                            break;
-                                        case INTEGER:
-                                            obj.set(K, Long.parseLong(V));
-                                            break;
-                                        case DOUBLE:
-                                            obj.set(K, Double.parseDouble(V));
-                                            break;
-                                        case STRING:
-                                            obj.set(K, V);
-                                            break;
-                                    }
-                                    K = null;
-                                    if(ch == '}') // end of array
-                                        return obj;
-                            }
+                        switch(ch){
+                            case ' ': // whitespace
+                            case '\t':
+                            case '\r':
+                            case '\n':
+                                continue;
+                            case ',': // next in object
+                            case '}': // end of object
+                                E = START_OF_KEY; // prepare for next
+                                switch(T){ // push value
+                                    case NULL:
+                                        obj.set(K, null);
+                                        break;
+                                    case BOOLEAN:
+                                        obj.set(K, Boolean.parseBoolean(V));
+                                        break;
+                                    case INTEGER:
+                                        obj.set(K, Long.parseLong(V));
+                                        break;
+                                    case DOUBLE:
+                                        obj.set(K, Double.parseDouble(V));
+                                        break;
+                                    case STRING:
+                                        obj.set(K, V);
+                                        break;
+                                }
+                                K = null;
+                                if(ch == '}') // end of array
+                                    return obj;
                         }
                         continue;
                     case LITERAL: // expecting literal value
-                        if(isKey){ // expecting string value
-
-                        }else{ // expecting literal value
-
+                        switch(T){
+                            case NULL: // parse null
+                                V += ch;
+                                if(!"null".startsWith(V)) // looks like null
+                                    throw new JsonSyntaxException("Unexpected value \"" + V + "\", expected null");
+                                else if("null".equals(V)) // is null
+                                    E = END_OF_VALUE;
+                                continue;
+                            case BOOLEAN: // parse boolean
+                                V += ch;
+                                if(!"false".startsWith(V) && !"true".startsWith(V)) // looks like a boolean
+                                    throw new JsonSyntaxException("Unexpected value \"" + V + "\", expected a boolean");
+                                else if("false".equals(V) || "true".equals(V)) // is a boolean
+                                    E = END_OF_VALUE;
+                                continue;
+                            case INTEGER:
+                                switch(ch){ // parse integer
+                                    case ' ': // whitespace
+                                    case '\t':
+                                    case '\r':
+                                    case '\n':
+                                        E = END_OF_VALUE;
+                                        continue;
+                                    case '.': // convert to decimal
+                                        T = DOUBLE;
+                                        E = NUMBER;
+                                        V += ch;
+                                        continue;
+                                    case ',': // end of value
+                                        E = END_OF_VALUE;
+                                        i--;
+                                        continue;
+                                    default:
+                                        if(Character.isDigit(ch)) // number
+                                            V += ch;
+                                        else // unknown
+                                            throw new JsonSyntaxException("Unexpected token '" + ch + "', expected a number or ','");
+                                }
+                                continue;
+                            case DOUBLE:
+                                switch(ch){ // parse double
+                                    case ' ': // whitespace
+                                    case '\t':
+                                    case '\r':
+                                    case '\n':
+                                        E = END_OF_VALUE;
+                                        continue;
+                                    case '.': // extra decimal
+                                        throw new JsonSyntaxException("Unexpected token '.'");
+                                    case ',': // end of value
+                                        E = END_OF_VALUE;
+                                        i--;
+                                        continue;
+                                    default:
+                                        if(Character.isDigit(ch)) // number
+                                            V += ch;
+                                        else // unknown
+                                            throw new JsonSyntaxException("Unexpected token '" + ch + "', expected a number");
+                                }
+                                continue;
+                            case STRING:
+                                switch(ch){
+                                    case '\r': // illegal whitespace
+                                    case '\n':
+                                       throw new JsonSyntaxException("Unexpected token '" + ch + "'");
+                                    case '\\': // escaped
+                                        isEscaped = !isEscaped;
+                                        continue;
+                                    case '"': // quote
+                                        if(!isEscaped) // end of value
+                                            E = END_OF_VALUE;
+                                        else{ // escaped quote
+                                            V += ch;
+                                            isEscaped = false;
+                                        }
+                                        continue;
+                                    default:
+                                        if(!isEscaped) // literal
+                                            V += ch;
+                                        else{ // escaped
+                                            isEscaped = false;
+                                            switch(ch){
+                                                case 't': // tab
+                                                    V += '\t';
+                                                    continue;
+                                                case 'n': // new line
+                                                    V += '\n';
+                                                    continue;
+                                                case 'u': // unicode
+                                                    V += "\\u";
+                                                    continue;
+                                                case '/': // slash
+                                                    V += '/';
+                                                    continue;
+                                                default: // unknown
+                                                    throw new JsonSyntaxException("Unknown escape character '\\" + ch + "'");
+                                            }
+                                        }
+                                }
                         }
+                        continue;
                     case NUMBER: // expecting number value
                         if(Character.isDigit(ch)){
                             E = LITERAL;
@@ -396,13 +567,13 @@ final class Json {
         };
     }
 
-    // start index should not include opening token
+    // start index should include opening token
     private int findEndToken(final String json, final int start, final char openToken, final char closeToken){
         boolean isString = false;
         boolean isEscaped = false;
 
         int depth = 0;
-        for(int i = start; i < len; i++){
+        for(int i = start + 1; i < len; i++){
             final char ch = json.charAt(i);
             if(ch == '\\')
                 isEscaped = !isEscaped;
@@ -437,7 +608,19 @@ final class Json {
         JsonObject(){}
 
         public final Object get(final String key){
+            final Object obj = map.get(key);
+            if(obj instanceof Supplier)
+                map.put(key, ((Supplier<?>) obj).get());
             return map.get(key);
+        }
+
+        public final List<Object> getList(final String key){
+            for(int i = 0; i < ((List<Object>) map.get(key)).size(); i++){
+                final Object obj = ((List<?>) map.get(key)).get(i);
+                if(obj instanceof Supplier)
+                    ((List<Object>) map.get(key)).set(i, ((Supplier<?>) obj).get());
+            }
+            return (List<Object>) map.get(key);
         }
 
         public final String getString(final String key){
@@ -473,6 +656,26 @@ final class Json {
         public final boolean getBoolean(final String key){
             final Object value = map.get(key);
             return value instanceof String ? Boolean.parseBoolean((String) value) : (boolean) value;
+        }
+
+        public final JsonObject getJsonObject(final String key){
+            return (JsonObject) get(key);
+        }
+
+        public final String[] getStringArray(final String key){
+            final List<?> list = (List<?>) get(key);
+            final List<String> arr = new ArrayList<>();
+            for(final Object o : list)
+                arr.add(o == null ? null : o instanceof String ? (String) o : o.toString());
+            return arr.toArray(new String[0]);
+        }
+
+        public final JsonObject[] getJsonArray(final String key){
+            final List<?> list = (List<?>) get(key);
+            final List<JsonObject> arr = new ArrayList<>();
+            for(final Object o : list)
+                arr.add((JsonObject) o);
+            return arr.toArray(new JsonObject[0]);
         }
 
         public final boolean containsKey(final String key){
