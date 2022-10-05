@@ -36,8 +36,16 @@ final class Json {
         this.len  = json.length();
     }
 
+    @SuppressWarnings("unchecked")
     static Object parse(final String json){
-        return new Json(json).parse().get();
+        final Object obj = new Json(json).parse().get();
+        if(obj instanceof List){
+            final List<Object> li = ((List<Object>) obj);
+            for(int i = 0, len = li.size(); i < len; i++)
+                if(li.get(i) instanceof Supplier)
+                    li.set(i, ((Supplier<?>) li.get(i)).get());
+        }
+        return obj;
     }
 
     private Supplier<?> parse(){
@@ -53,9 +61,9 @@ final class Json {
                 else
                     throw new JsonSyntaxException("Missing closing bracket '}'");
             case '[':
-                if(json.charAt(json.length() - 1) == ']')
-                    return parseArray(json, 0 , len);
-                else
+                if(json.charAt(json.length() - 1) == ']'){
+                    return parseArray(json, 0, len);
+                }else
                     throw new JsonSyntaxException("Missing closing bracket ']'");
             default:
                 throw new JsonSyntaxException("Unexpected starting character: '" + json.charAt(0) + "' expected '{' or '['");
@@ -86,7 +94,7 @@ final class Json {
     }
 
     // start should include starting token
-    private Supplier<List<?>> parseArray(final String json, final int start, final int end){
+    private Supplier<List<Object>> parseArray(final String json, final int start, final int end){
         return () -> {
             final List<Object> list = new ArrayList<>();
 
@@ -108,11 +116,11 @@ final class Json {
                             case '\n':
                                 continue;
                             case '[': // array
-                                list.add(parseArray(json, i, i = findEndToken(json, i, '[', ']')));
+                                list.add(parseArray(json, i, (i = findEndToken(json, i, '[', ']')) + 1));
                                 E = END_OF_VALUE;
                                 continue;
                             case '{': // object
-                                list.add(parseObject(json, i, i = findEndToken(json, i, '{', '}')));
+                                list.add(parseObject(json, i, (i = findEndToken(json, i, '{', '}')) + 1));
                                 E = END_OF_VALUE;
                                 continue;
                             case '"': // string
@@ -136,6 +144,8 @@ final class Json {
                                 E = NUMBER;
                                 V = String.valueOf(ch);
                                 continue;
+                            case ']':
+                                return list;
                             default:
                                 if(Character.isDigit(ch)){ // number
                                     T = INTEGER;
@@ -163,7 +173,11 @@ final class Json {
                                         list.add(Boolean.parseBoolean(V));
                                         break;
                                     case INTEGER:
-                                        list.add(Long.parseLong(V));
+                                        try{
+                                            list.add(Integer.parseInt(V));
+                                        }catch(final NumberFormatException ignored){
+                                            list.add(Long.parseLong(V));
+                                        }
                                         break;
                                     case DOUBLE:
                                         list.add(Double.parseDouble(V));
@@ -177,6 +191,7 @@ final class Json {
                                 if(ch == ']') // end of array
                                     return list;
                         }
+                        V = null;
                         continue;
                     case LITERAL: // expecting literal value
                         switch(T){
@@ -245,6 +260,8 @@ final class Json {
                                     case '\n':
                                        throw new JsonSyntaxException("Unexpected token '" + ch + "'");
                                     case '\\': // escaped
+                                        if(isEscaped)
+                                            V += ch;
                                         isEscaped = !isEscaped;
                                         continue;
                                     case '"': // quote
@@ -319,6 +336,8 @@ final class Json {
                                 E = KEY;
                                 K = "";
                                 continue;
+                            case '}':
+                                return obj;
                             default:
                                 throw new JsonSyntaxException("Unexpected literal '" + ch + "', expected '\"'");
                         }
@@ -328,6 +347,8 @@ final class Json {
                             case '\n':
                                 throw new JsonSyntaxException("Unexpected token '" + ch + "'");
                             case '\\':
+                                if(isEscaped)
+                                    K += ch;
                                 isEscaped = !isEscaped;
                                 continue;
                             case '"': // quote
@@ -383,11 +404,11 @@ final class Json {
                             case '\n':
                                 continue;
                             case '[': // array
-                                obj.set(K, parseArray(json, i, i = findEndToken(json, i, '[', ']')));
+                                obj.set(K, parseArray(json, i, (i = findEndToken(json, i, '[', ']')) + 1));
                                 E = END_OF_VALUE;
                                 continue;
                             case '{': // object
-                                obj.set(K, parseObject(json, i, i = findEndToken(json, i, '{', '}')));
+                                obj.set(K, parseObject(json, i, (i = findEndToken(json, i, '{', '}')) + 1));
                                 E = END_OF_VALUE;
                                 continue;
                             case '"': // string
@@ -438,7 +459,11 @@ final class Json {
                                         obj.set(K, Boolean.parseBoolean(V));
                                         break;
                                     case INTEGER:
-                                        obj.set(K, Long.parseLong(V));
+                                        try{
+                                            obj.set(K, Integer.parseInt(V));
+                                        }catch(final NumberFormatException ignored){
+                                            obj.set(K, Long.parseLong(V));
+                                        }
                                         break;
                                     case DOUBLE:
                                         obj.set(K, Double.parseDouble(V));
@@ -448,6 +473,7 @@ final class Json {
                                         break;
                                 }
                                 K = null;
+                                V = null;
                                 if(ch == '}') // end of array
                                     return obj;
                         }
@@ -519,6 +545,8 @@ final class Json {
                                     case '\n':
                                        throw new JsonSyntaxException("Unexpected token '" + ch + "'");
                                     case '\\': // escaped
+                                        if(isEscaped)
+                                            V += ch;
                                         isEscaped = !isEscaped;
                                         continue;
                                     case '"': // quote
@@ -562,7 +590,6 @@ final class Json {
                             throw new JsonSyntaxException("Unexpected token '" + ch + "', expected a number");
                 }
             }
-
             throw new JsonSyntaxException("Missing closing bracket '}'");
         };
     }
@@ -609,22 +636,25 @@ final class Json {
 
         public final Object get(final String key){
             final Object obj = map.get(key);
-            if(obj instanceof Supplier)
+            if(obj instanceof List)
+                return getList(key);
+            else if(obj instanceof Supplier)
                 map.put(key, ((Supplier<?>) obj).get());
             return map.get(key);
         }
 
+        @SuppressWarnings("unchecked")
         public final List<Object> getList(final String key){
-            for(int i = 0; i < ((List<Object>) map.get(key)).size(); i++){
-                final Object obj = ((List<?>) map.get(key)).get(i);
+            for(int i = 0; i < ((List<Object>) get(key)).size(); i++){
+                final Object obj = ((List<?>) get(key)).get(i);
                 if(obj instanceof Supplier)
-                    ((List<Object>) map.get(key)).set(i, ((Supplier<?>) obj).get());
+                    ((List<Object>) get(key)).set(i, ((Supplier<?>) obj).get());
             }
-            return (List<Object>) map.get(key);
+            return (List<Object>) get(key);
         }
 
         public final String getString(final String key){
-            final Object value = map.get(key);
+            final Object value = get(key);
             return
                 value == null
                 ? null
@@ -634,27 +664,27 @@ final class Json {
         }
 
         public final int getInt(final String key){
-            final Object value = map.get(key);
+            final Object value = get(key);
             return value instanceof String ? Integer.parseInt((String) value) : ((Number) value).intValue();
         }
 
         public final double getDouble(final String key){
-            final Object value = map.get(key);
+            final Object value = get(key);
             return value instanceof String ? Double.parseDouble((String) value) : ((Number) value).doubleValue();
         }
 
         public final float getFloat(final String key){
-            final Object value = map.get(key);
+            final Object value = get(key);
             return value instanceof String ? Float.parseFloat((String) value) : ((Number) value).floatValue();
         }
 
         public final long getLong(final String key){
-            final Object value = map.get(key);
+            final Object value = get(key);
             return value instanceof String ? Long.parseLong((String) value) : ((Number) value).longValue();
         }
 
         public final boolean getBoolean(final String key){
-            final Object value = map.get(key);
+            final Object value = get(key);
             return value instanceof String ? Boolean.parseBoolean((String) value) : (boolean) value;
         }
 
@@ -663,17 +693,15 @@ final class Json {
         }
 
         public final String[] getStringArray(final String key){
-            final List<?> list = (List<?>) get(key);
             final List<String> arr = new ArrayList<>();
-            for(final Object o : list)
+            for(final Object o : getList(key))
                 arr.add(o == null ? null : o instanceof String ? (String) o : o.toString());
             return arr.toArray(new String[0]);
         }
 
         public final JsonObject[] getJsonArray(final String key){
-            final List<?> list = (List<?>) get(key);
             final List<JsonObject> arr = new ArrayList<>();
-            for(final Object o : list)
+            for(final Object o : getList(key))
                 arr.add((JsonObject) o);
             return arr.toArray(new JsonObject[0]);
         }

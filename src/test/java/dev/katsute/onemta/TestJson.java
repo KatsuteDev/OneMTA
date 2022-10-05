@@ -10,7 +10,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Supplier;
 import java.util.stream.Stream;
 
 import static dev.katsute.onemta.Json.*;
@@ -104,7 +103,6 @@ public class TestJson {
     @SuppressWarnings("unused")
     private static Stream<Arguments> arrayProvider(){
         return new TestProvider.ObjectStream()
-            .add(1.0)
             .add(1.0)
             .add(-1.0)
             .add(2.0)
