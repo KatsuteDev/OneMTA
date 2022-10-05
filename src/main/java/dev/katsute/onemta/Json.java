@@ -20,7 +20,6 @@ package dev.katsute.onemta;
 
 import dev.katsute.onemta.exception.JsonSyntaxException;
 
-import javax.sql.rowset.spi.SyncProvider;
 import java.util.*;
 import java.util.function.Supplier;
 
