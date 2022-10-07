@@ -21,7 +21,9 @@ package dev.katsute.onemta;
 import dev.katsute.onemta.exception.JsonSyntaxException;
 
 import java.util.*;
+import java.util.function.Function;
 import java.util.function.Supplier;
+import java.util.regex.*;
 
 import static dev.katsute.onemta.Json.Expect.*;
 import static dev.katsute.onemta.Json.Type.*;
@@ -35,6 +37,8 @@ final class Json {
         this.json = json;
         this.len  = json.length();
     }
+
+    //
 
     @SuppressWarnings("unchecked")
     static Object parse(final String json){
@@ -70,7 +74,9 @@ final class Json {
         }
     }
 
-    enum Expect {
+    //
+
+    enum Expect { // which token to expect next
 
         START_OF_KEY,
         KEY,
@@ -82,7 +88,7 @@ final class Json {
 
     }
 
-    enum Type {
+    enum Type { // expected key or value type
 
         UNKNOWN,
         NULL,
@@ -92,6 +98,21 @@ final class Json {
         STRING
 
     }
+
+    //
+
+    // (?<!\\)\\u([\da-f]{4})
+    private static final Pattern escUnicode = Pattern.compile("(?<!\\\\)\\\\u([\\da-f]{4})");
+
+    private static final Function<MatchResult,String> unicodeReplacer = matchResult -> String.valueOf((char) Integer.parseInt(matchResult.group(1), 16));
+
+    private final Matcher unicodeMatcher = escUnicode.matcher("");
+
+    private String parseString(final String raw){ // replace unicode with unicode and escaped unicode with raw
+        return Regex9.replaceAll(raw, unicodeMatcher.reset(raw), unicodeReplacer).replace("\\\\u", "\\u");
+    }
+
+    //
 
     // start should include starting token
     private Supplier<List<Object>> parseArray(final String json, final int start, final int end){
@@ -184,7 +205,7 @@ final class Json {
                                         break;
                                     case STRING:
                                         if(V != null)
-                                            list.add(V);
+                                            list.add(parseString(V));
                                         break;
                                     default:
                                         break;
@@ -274,9 +295,11 @@ final class Json {
                                         }
                                         continue;
                                     default:
-                                        if(!isEscaped) // literal
+                                        if(!isEscaped){ // literal
+                                            if(ch == 'u' && i > 0 && json.charAt(i - 1) == '\\') // unicode escape
+                                                V += '\\'; // add escape slash
                                             V += ch;
-                                        else{ // escaped
+                                        }else{ // escaped
                                             isEscaped = false;
                                             switch(ch){
                                                 case 't': // tab
@@ -316,7 +339,7 @@ final class Json {
             final JsonObject obj = new JsonObject();
 
             Expect E = START_OF_KEY;
-            Type T   = UNKNOWN;
+            Type T   = UNKNOWN; // expected token type
 
             boolean isEscaped = false;
 
@@ -361,9 +384,11 @@ final class Json {
                                 }
                                 continue;
                             default:
-                                if(!isEscaped) // literal
+                                if(!isEscaped){ // literal
+                                    if(ch == 'u' && i > 0 && json.charAt(i - 1) == '\\') // unicode escape
+                                        K += '\\'; // add escape slash
                                     K += ch;
-                                else{ // escaped
+                                }else{ // escaped
                                     isEscaped = false;
                                     switch(ch){
                                         case 't': // tab
@@ -472,7 +497,8 @@ final class Json {
                                         obj.set(K, Double.parseDouble(V));
                                         break;
                                     case STRING:
-                                        obj.set(K, V);
+                                        if(K != null && V != null)
+                                            obj.set(parseString(K), parseString(V));
                                         break;
                                 }
                                 K = null;
@@ -561,9 +587,11 @@ final class Json {
                                         }
                                         continue;
                                     default:
-                                        if(!isEscaped) // literal
+                                        if(!isEscaped){ // literal
+                                            if(ch == 'u' && i > 0 && json.charAt(i - 1) == '\\') // unicode escape
+                                                V += '\\'; // add escape slash
                                             V += ch;
-                                        else{ // escaped
+                                        }else{ // escaped
                                             isEscaped = false;
                                             switch(ch){
                                                 case 't': // tab
