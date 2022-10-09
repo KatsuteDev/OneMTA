@@ -201,7 +201,11 @@ final class Json {
                                         }
                                         break;
                                     case DOUBLE:
-                                        list.add(Double.parseDouble(V));
+                                        try{
+                                            list.add(Double.parseDouble(V));
+                                        }catch(final NumberFormatException ignored){
+                                            list.add(Long.parseLong(V));
+                                        }
                                         break;
                                     case STRING:
                                         if(V != null)
@@ -497,7 +501,11 @@ final class Json {
                                         }
                                         break;
                                     case DOUBLE:
-                                        obj.set(K, Double.parseDouble(V));
+                                        try{
+                                            obj.set(K, Double.parseDouble(V));
+                                        }catch(final NumberFormatException ignored){
+                                            obj.set(K, Long.parseLong(V));
+                                        }
                                         break;
                                     case STRING:
                                         if(K != null && V != null)
