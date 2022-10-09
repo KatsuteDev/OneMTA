@@ -211,6 +211,7 @@ final class Json {
                                         break;
                                 }
                                 V = null;
+                                T = UNKNOWN;
                                 if(ch == ']') // end of array
                                     return list;
                         }
@@ -503,7 +504,8 @@ final class Json {
                                 }
                                 K = null;
                                 V = null;
-                                if(ch == '}') // end of array
+                                T = UNKNOWN;
+                                if(ch == '}') // end of object
                                     return obj;
                         }
                         continue;
