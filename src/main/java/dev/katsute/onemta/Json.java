@@ -246,6 +246,7 @@ final class Json {
                                         V += ch;
                                         continue;
                                     case ',': // end of value
+                                    case ']':
                                         E = END_OF_VALUE;
                                         i--;
                                         continue;
@@ -267,6 +268,7 @@ final class Json {
                                     case '.': // extra decimal
                                         throw new JsonSyntaxException("Unexpected token '.'");
                                     case ',': // end of value
+                                    case ']':
                                         E = END_OF_VALUE;
                                         i--;
                                         continue;
@@ -539,6 +541,7 @@ final class Json {
                                         V += ch;
                                         continue;
                                     case ',': // end of value
+                                    case '}':
                                         E = END_OF_VALUE;
                                         i--;
                                         continue;
@@ -560,6 +563,7 @@ final class Json {
                                     case '.': // extra decimal
                                         throw new JsonSyntaxException("Unexpected token '.'");
                                     case ',': // end of value
+                                    case '}':
                                         E = END_OF_VALUE;
                                         i--;
                                         continue;
