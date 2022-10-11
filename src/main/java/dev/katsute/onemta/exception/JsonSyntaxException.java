@@ -27,8 +27,22 @@ package dev.katsute.onemta.exception;
  */
 public final class JsonSyntaxException extends RuntimeException {
 
-    public JsonSyntaxException(final String message){
+    private final String raw;
+
+    public JsonSyntaxException(final String message, final String raw){
         super(message);
+        this.raw = raw;
+    }
+
+    /**
+     * Returns the raw string.
+     *
+     * @return raw string
+     *
+     * @since 1.0.0
+     */
+    public final String getRaw(){
+        return raw;
     }
 
 }

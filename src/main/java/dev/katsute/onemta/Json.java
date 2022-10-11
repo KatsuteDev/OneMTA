@@ -56,21 +56,21 @@ final class Json {
         Objects.requireNonNull(json);
 
         if(len < 1)
-            throw new JsonSyntaxException("Json string was empty");
+            throw new JsonSyntaxException("Json string was empty", json);
 
         switch(json.charAt(0)){
             case '{':
                 if(json.charAt(json.length() - 1) == '}')
                     return parseObject(json, 0 , len);
                 else
-                    throw new JsonSyntaxException("Missing closing bracket '}'");
+                    throw new JsonSyntaxException("Missing closing bracket '}'", json);
             case '[':
                 if(json.charAt(json.length() - 1) == ']'){
                     return parseArray(json, 0, len);
                 }else
-                    throw new JsonSyntaxException("Missing closing bracket ']'");
+                    throw new JsonSyntaxException("Missing closing bracket ']'", json);
             default:
-                throw new JsonSyntaxException("Unexpected starting character: '" + json.charAt(0) + "' expected '{' or '['");
+                throw new JsonSyntaxException("Unexpected starting character: '" + json.charAt(0) + "' expected '{' or '['", json);
         }
     }
 
@@ -174,7 +174,7 @@ final class Json {
                                     V = String.valueOf(ch);
                                     continue;
                                 }else // unknown
-                                    throw new JsonSyntaxException("Unexpected literal '" + ch + "'");
+                                    throw new JsonSyntaxException("Unexpected literal '" + ch + "'", json);
                         }
                     case END_OF_VALUE: // expecting end of value
                         switch(ch){
@@ -225,14 +225,14 @@ final class Json {
                             case NULL: // parse null
                                 V += ch;
                                 if(!"null".startsWith(V)) // looks like null
-                                    throw new JsonSyntaxException("Unexpected value \"" + V + "\", expected null");
+                                    throw new JsonSyntaxException("Unexpected value \"" + V + "\", expected null", json);
                                 else if("null".equals(V)) // is null
                                     E = END_OF_VALUE;
                                 continue;
                             case BOOLEAN: // parse boolean
                                 V += ch;
                                 if(!"false".startsWith(V) && !"true".startsWith(V)) // looks like a boolean
-                                    throw new JsonSyntaxException("Unexpected value \"" + V + "\", expected a boolean");
+                                    throw new JsonSyntaxException("Unexpected value \"" + V + "\", expected a boolean", json);
                                 else if("false".equals(V) || "true".equals(V)) // is a boolean
                                     E = END_OF_VALUE;
                                 continue;
@@ -258,7 +258,7 @@ final class Json {
                                         if(Character.isDigit(ch)) // number
                                             V += ch;
                                         else // unknown
-                                            throw new JsonSyntaxException("Unexpected token '" + ch + "', expected a number or ','");
+                                            throw new JsonSyntaxException("Unexpected token '" + ch + "', expected a number or ','", json);
                                 }
                                 continue;
                             case DOUBLE:
@@ -270,7 +270,7 @@ final class Json {
                                         E = END_OF_VALUE;
                                         continue;
                                     case '.': // extra decimal
-                                        throw new JsonSyntaxException("Unexpected token '.'");
+                                        throw new JsonSyntaxException("Unexpected token '.'", json);
                                     case ',': // end of value
                                     case ']':
                                         E = END_OF_VALUE;
@@ -280,14 +280,14 @@ final class Json {
                                         if(Character.isDigit(ch)) // number
                                             V += ch;
                                         else // unknown
-                                            throw new JsonSyntaxException("Unexpected token '" + ch + "', expected a number");
+                                            throw new JsonSyntaxException("Unexpected token '" + ch + "', expected a number", json);
                                 }
                                 continue;
                             case STRING:
                                 switch(ch){
                                     case '\r': // illegal whitespace
                                     case '\n':
-                                       throw new JsonSyntaxException("Unexpected token '" + ch + "'");
+                                       throw new JsonSyntaxException("Unexpected token '" + ch + "'", json);
                                     case '\\': // escaped
                                         if(isEscaped)
                                             V += ch;
@@ -322,7 +322,7 @@ final class Json {
                                                     V += '/';
                                                     continue;
                                                 default: // unknown
-                                                    throw new JsonSyntaxException("Unknown escape character '\\" + ch + "'");
+                                                    throw new JsonSyntaxException("Unknown escape character '\\" + ch + "'", json);
                                             }
                                         }
                                 }
@@ -333,17 +333,17 @@ final class Json {
                             E = LITERAL;
                             V += ch;
                         }else
-                            throw new JsonSyntaxException("Unexpected token '" + ch + "', expected a number");
+                            throw new JsonSyntaxException("Unexpected token '" + ch + "', expected a number", json);
                 }
             }
-            throw new JsonSyntaxException("Missing closing bracket ']'");
+            throw new JsonSyntaxException("Missing closing bracket ']'", json);
         };
     }
 
     // start should include starting token
     private Supplier<JsonObject> parseObject(final String json, final int start, final int end){
         return () -> {
-            final JsonObject obj = new JsonObject();
+            final JsonObject obj = new JsonObject(start == 0 ? json : null);
 
             Expect E = START_OF_KEY;
             Type T   = UNKNOWN; // expected token type
@@ -370,13 +370,13 @@ final class Json {
                             case '}':
                                 return obj;
                             default:
-                                throw new JsonSyntaxException("Unexpected literal '" + ch + "', expected '\"'");
+                                throw new JsonSyntaxException("Unexpected literal '" + ch + "', expected '\"'", json);
                         }
                     case KEY: // expecting key value
                         switch(ch){
                             case '\r': // illegal whitespace
                             case '\n':
-                                throw new JsonSyntaxException("Unexpected token '" + ch + "'");
+                                throw new JsonSyntaxException("Unexpected token '" + ch + "'", json);
                             case '\\':
                                 if(isEscaped)
                                     K += ch;
@@ -411,7 +411,7 @@ final class Json {
                                             K += "\\u";
                                             continue;
                                         default: // unknown
-                                            throw new JsonSyntaxException("Unknown escape character '\\" + ch + "'");
+                                            throw new JsonSyntaxException("Unknown escape character '\\" + ch + "'", json);
                                     }
                                 }
                         }
@@ -427,7 +427,7 @@ final class Json {
                                 E = START_OF_VALUE;
                                 continue;
                             default:
-                                throw new JsonSyntaxException("Unexpected character \"" + ch + "\", expected ':'");
+                                throw new JsonSyntaxException("Unexpected character \"" + ch + "\", expected ':'", json);
                         }
                     case START_OF_VALUE: // expecting beginning of value
                         switch(ch){
@@ -474,7 +474,7 @@ final class Json {
                                     V = String.valueOf(ch);
                                     continue;
                                 }else // unknown
-                                    throw new JsonSyntaxException("Unexpected literal '" + ch + "'");
+                                    throw new JsonSyntaxException("Unexpected literal '" + ch + "'", json);
                         }
                     case END_OF_VALUE: // expecting end of value
                         switch(ch){
@@ -524,14 +524,14 @@ final class Json {
                             case NULL: // parse null
                                 V += ch;
                                 if(!"null".startsWith(V)) // looks like null
-                                    throw new JsonSyntaxException("Unexpected value \"" + V + "\", expected null");
+                                    throw new JsonSyntaxException("Unexpected value \"" + V + "\", expected null", json);
                                 else if("null".equals(V)) // is null
                                     E = END_OF_VALUE;
                                 continue;
                             case BOOLEAN: // parse boolean
                                 V += ch;
                                 if(!"false".startsWith(V) && !"true".startsWith(V)) // looks like a boolean
-                                    throw new JsonSyntaxException("Unexpected value \"" + V + "\", expected a boolean");
+                                    throw new JsonSyntaxException("Unexpected value \"" + V + "\", expected a boolean", json);
                                 else if("false".equals(V) || "true".equals(V)) // is a boolean
                                     E = END_OF_VALUE;
                                 continue;
@@ -557,7 +557,7 @@ final class Json {
                                         if(Character.isDigit(ch)) // number
                                             V += ch;
                                         else // unknown
-                                            throw new JsonSyntaxException("Unexpected token '" + ch + "', expected a number or ','");
+                                            throw new JsonSyntaxException("Unexpected token '" + ch + "', expected a number or ','", json);
                                 }
                                 continue;
                             case DOUBLE:
@@ -569,7 +569,7 @@ final class Json {
                                         E = END_OF_VALUE;
                                         continue;
                                     case '.': // extra decimal
-                                        throw new JsonSyntaxException("Unexpected token '.'");
+                                        throw new JsonSyntaxException("Unexpected token '.'", json);
                                     case ',': // end of value
                                     case '}':
                                         E = END_OF_VALUE;
@@ -579,14 +579,14 @@ final class Json {
                                         if(Character.isDigit(ch)) // number
                                             V += ch;
                                         else // unknown
-                                            throw new JsonSyntaxException("Unexpected token '" + ch + "', expected a number");
+                                            throw new JsonSyntaxException("Unexpected token '" + ch + "', expected a number", json);
                                 }
                                 continue;
                             case STRING:
                                 switch(ch){
                                     case '\r': // illegal whitespace
                                     case '\n':
-                                       throw new JsonSyntaxException("Unexpected token '" + ch + "'");
+                                       throw new JsonSyntaxException("Unexpected token '" + ch + "'", json);
                                     case '\\': // escaped
                                         if(isEscaped)
                                             V += ch;
@@ -621,7 +621,7 @@ final class Json {
                                                     V += '/';
                                                     continue;
                                                 default: // unknown
-                                                    throw new JsonSyntaxException("Unknown escape character '\\" + ch + "'");
+                                                    throw new JsonSyntaxException("Unknown escape character '\\" + ch + "'", json);
                                             }
                                         }
                                 }
@@ -632,10 +632,10 @@ final class Json {
                             E = LITERAL;
                             V += ch;
                         }else
-                            throw new JsonSyntaxException("Unexpected token '" + ch + "', expected a number");
+                            throw new JsonSyntaxException("Unexpected token '" + ch + "', expected a number", json);
                 }
             }
-            throw new JsonSyntaxException("Missing closing bracket '}'");
+            throw new JsonSyntaxException("Missing closing bracket '}'", json);
         };
     }
 
@@ -668,7 +668,7 @@ final class Json {
                     else
                         depth--;
         }
-        throw new JsonSyntaxException("Missing closing bracket '" + closeToken + "'");
+        throw new JsonSyntaxException("Missing closing bracket '" + closeToken + "'", json);
     }
 
     //
@@ -677,7 +677,15 @@ final class Json {
 
         private final Map<String,Object> map = new HashMap<>();
 
-        JsonObject(){}
+        private final String raw;
+
+        JsonObject(){
+            this(null);
+        }
+
+        JsonObject(final String raw){
+            this.raw = raw;
+        }
 
         public final Object get(final String key){
             final Object obj = map.get(key);
@@ -763,6 +771,10 @@ final class Json {
 
         private void set(final String key, final Object value){
             map.put(key, value);
+        }
+
+        public final String getRaw(){
+            return raw;
         }
 
     }
