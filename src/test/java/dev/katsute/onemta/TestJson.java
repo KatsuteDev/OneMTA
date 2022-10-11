@@ -104,7 +104,6 @@ public class TestJson {
     private static Stream<Arguments> arrayProvider(){
         return new TestProvider.ObjectStream()
             .add(1.0)
-            .add(1.0)
             .add(-1.0)
             .add(2.0)
             .add(1)
@@ -128,13 +127,7 @@ public class TestJson {
     @ParameterizedTest(name="[{index}] {0}")
     @ValueSource(strings={"", "?", "{", "}", "[", "]", "{{", "}}", "[[", "]]", "{[", "[{", "}]", "]}", "{[}]", "[{]}"})
     final void testMalformed(final String string){
-        try{
-            parse(string);
-        }catch(final JsonSyntaxException e){
-            assertEquals(string, e.getRaw());
-            return;
-        }
-        fail("Expected JsonSyntaxException for: \"" + string + '"');
+        assertThrows(JsonSyntaxException.class, () -> parse(string));
     }
 
     // newline
