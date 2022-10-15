@@ -21,7 +21,7 @@ package dev.katsute.onemta;
 import dev.katsute.onemta.GTFSRealtimeProto.FeedMessage;
 import dev.katsute.onemta.Json.JsonObject;
 
-import java.util.*;
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 final class RequestCache {
@@ -35,7 +35,7 @@ final class RequestCache {
 
     @SuppressWarnings("SameParameterValue")
     RequestCache(final int retainCacheSeconds){
-        this.retainCacheMillis = Math.min(retainCacheSeconds, MINIMUM_CACHE) * 1000;
+        this.retainCacheMillis = Math.max(retainCacheSeconds, MINIMUM_CACHE) * 1000;
     }
 
     final JsonObject getJSON(
@@ -43,14 +43,15 @@ final class RequestCache {
         final Map<String,String> query,
         final Map<String,String> headers
     ){
-        final CachedData cd = cache.get(url);
+        final String key = url + query.hashCode() + headers.hashCode();
+        final CachedData cd = cache.get(key);
 
         if(cd == null || cd.isExpired()){ // check if expired
             synchronized(this){ // lock write
-                final CachedData temp = cache.get(url);
+                final CachedData temp = cache.get(key);
                 if(temp == null || temp.isExpired()){ // re-check if expired
                     final JsonObject json = Requests.getJSON(url, query, headers);
-                    cache.put(url, new CachedData(json)); // write
+                    cache.put(key, new CachedData(json)); // write
                     return json;
                 }
                 return temp.getJson();
@@ -65,14 +66,15 @@ final class RequestCache {
         final Map<String,String> query,
         final Map<String,String> headers
     ){
-        final CachedData cd = cache.get(url);
+        final String key = url + query.hashCode() + headers.hashCode();
+        final CachedData cd = cache.get(key);
 
         if(cd == null || cd.isExpired()){ // check if expired
             synchronized(this){ // lock write
-                final CachedData temp = cache.get(url);
+                final CachedData temp = cache.get(key);
                 if(temp == null || temp.isExpired()){ // re-check if expired
                     final FeedMessage proto = Requests.getProtobuf(url, query, headers);
-                    cache.put(url, new CachedData(proto)); // write
+                    cache.put(key, new CachedData(proto)); // write
                     return proto;
                 }
                 return temp.getProtobuf();
@@ -82,7 +84,7 @@ final class RequestCache {
         return cd.getProtobuf();
     }
 
-    class CachedData {
+    final class CachedData {
 
         private final Object object;
 

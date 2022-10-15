@@ -23,7 +23,7 @@ final class TestSubway {
     @ParameterizedTest
     @ValueSource(strings={"A","C","E","SF","SR","B","D","F","FX","M","G","J","Z","N","Q","R","W","L","1","2","3","4","5","6","6X","7","7X","9","GS","S", "SI","SIR"})
     final void testFeed(final String route){
-        assertDoesNotThrow(() -> mta.getSubwayRoute(route));
+        assertDoesNotThrow(() -> mta.getSubwayRoute(route).getVehicles());
     }
 
     @Test
