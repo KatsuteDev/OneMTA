@@ -1,5 +1,28 @@
 # Changelog
 
+## 1.2.3
+
+### 🐞 Bug Fixes
+
+* Fix express routes using unknown feed [#97](https://github.com/KatsuteDev/OneMTA/pull/97) ([@Katsute](https://github.com/Katsute))
+
+### 🔧 Optimizations
+
+* Optimize json [#94](https://github.com/KatsuteDev/OneMTA/pull/94) ([@Katsute](https://github.com/Katsute))
+  * Increase parsing speed
+  * Parse partials rather than full json
+* Optimize cache [#95](https://github.com/KatsuteDev/OneMTA/pull/95) ([@Katsute](https://github.com/Katsute))
+  * Optimize cache GET
+  * Optimize cache WRITE for multiple threads
+  * Fix cache expiry not working properly
+
+### 📘 Dependencies
+
+* Bump protobuf-java from 3.21.6 to 3.21.7 [#93](https://github.com/KatsuteDev/OneMTA/pull/93) ([@dependabot](https://github.com/dependabot))
+* Bump protobuf-java-util from 3.21.6 to 3.21.7 [#92](https://github.com/KatsuteDev/OneMTA/pull/92) ([@dependabot](https://github.com/dependabot))
+
+**Full Changelog**: [`1.2.2...1.2.3`](https://github.com/KatsuteDev/OneMTA/compare/1.2.2...1.2.3)
+
 ## 1.2.2
 
 ### 🔧 Optimizations
