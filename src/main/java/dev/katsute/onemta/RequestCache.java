@@ -21,83 +21,82 @@ package dev.katsute.onemta;
 import dev.katsute.onemta.GTFSRealtimeProto.FeedMessage;
 import dev.katsute.onemta.Json.JsonObject;
 
-import java.util.*;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 final class RequestCache {
 
     private static final int MINIMUM_CACHE = 60;
 
-    // how long to retain cached data in seconds
-    private final int retainCacheSeconds;
-    // cache, concurrency safe due to synchronized methods
-    private final List<CachedData> cache = new ArrayList<>();
+    // how long to retain cached data
+    private final int retainCacheMillis;
+    // cache
+    private final Map<String,CachedData> cache = new ConcurrentHashMap<>();
 
     @SuppressWarnings("SameParameterValue")
     RequestCache(final int retainCacheSeconds){
-        this.retainCacheSeconds = Math.min(retainCacheSeconds, MINIMUM_CACHE);
+        this.retainCacheMillis = Math.max(retainCacheSeconds, MINIMUM_CACHE) * 1000;
     }
 
-    synchronized final JsonObject getJSON(
+    final JsonObject getJSON(
         final String url,
         final Map<String,String> query,
         final Map<String,String> headers
     ){
-        // return cached result
-        cache.removeIf(CachedData::isExpired);
-        for(final CachedData cd : cache)
-            if(cd.equals(url, query, headers))
-                return cd.getJson();
+        final String key = url + query.hashCode() + headers.hashCode();
+        final CachedData cd = cache.get(key);
 
-        // return and cache new result
-        final JsonObject json = Requests.getJSON(url, query, headers);
-        cache.add(new CachedData(url, query, headers, json));
-        return json;
+        if(cd == null || cd.isExpired()){ // check if expired
+            synchronized(this){ // lock write
+                final CachedData temp = cache.get(key);
+                if(temp == null || temp.isExpired()){ // re-check if expired
+                    final JsonObject json = Requests.getJSON(url, query, headers);
+                    cache.put(key, new CachedData(json)); // write
+                    return json;
+                }
+                return temp.getJson();
+            }
+        }
+
+        return cd.getJson();
     }
 
-    synchronized final FeedMessage getProtobuf(
+    final FeedMessage getProtobuf(
         final String url,
         final Map<String,String> query,
         final Map<String,String> headers
     ){
-        // return cached result
-        cache.removeIf(CachedData::isExpired);
-        for(final CachedData cd : cache)
-            if(cd.equals(url, query, headers))
-                return cd.getProtobuf();
+        final String key = url + query.hashCode() + headers.hashCode();
+        final CachedData cd = cache.get(key);
 
-        // return and cache new result
-        final FeedMessage protobuf = Requests.getProtobuf(url, query, headers);
-        cache.add(new CachedData(url, query, headers, protobuf));
-        return protobuf;
+        if(cd == null || cd.isExpired()){ // check if expired
+            synchronized(this){ // lock write
+                final CachedData temp = cache.get(key);
+                if(temp == null || temp.isExpired()){ // re-check if expired
+                    final FeedMessage proto = Requests.getProtobuf(url, query, headers);
+                    cache.put(key, new CachedData(proto)); // write
+                    return proto;
+                }
+                return temp.getProtobuf();
+            }
+        }
+
+        return cd.getProtobuf();
     }
 
-    class CachedData {
-
-        private final String url;
-        private final Map<String,String> query;
-        private final Map<String,String> headers;
+    final class CachedData {
 
         private final Object object;
 
         private final long expires;
 
-        CachedData(
-            final String url,
-            final Map<String,String> query,
-            final Map<String,String> headers,
-            final Object object
-        ){
-            this.url     = url;
-            this.query   = new HashMap<>(query);
-            this.headers = new HashMap<>(headers);
-
+        CachedData(final Object object){
             this.object  = object;
-
-            this.expires = (System.currentTimeMillis() / 1000L) + retainCacheSeconds;
+            this.expires = System.currentTimeMillis() + retainCacheMillis;
         }
 
         private boolean isExpired(){
-            return (System.currentTimeMillis() / 1000L) > expires;
+            return System.currentTimeMillis() > expires;
         }
 
         private JsonObject getJson(){
@@ -106,10 +105,6 @@ final class RequestCache {
 
         private FeedMessage getProtobuf(){
             return (FeedMessage) object;
-        }
-
-        public final boolean equals(final String url, final Map<String,String> query, final Map<String,String> headers){
-            return !isExpired() && this.url.equals(url) && this.query.equals(query) && this.headers.equals(headers);
         }
 
     }
