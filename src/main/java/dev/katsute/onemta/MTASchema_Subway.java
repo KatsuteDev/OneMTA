@@ -47,9 +47,9 @@ abstract class MTASchema_Subway extends MTASchema {
                     : SubwayDirection.SOUTH;
     }
 
-    private static final Pattern express = Pattern.compile("[X]$", Pattern.CASE_INSENSITIVE);
+    private static final Pattern express = Pattern.compile("X$", Pattern.CASE_INSENSITIVE);
 
-    private static String stripExpress(final String route){
+    static String stripExpress(final String route){
         return express.matcher(route).replaceAll("");
     }
 
