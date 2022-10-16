@@ -113,7 +113,7 @@ final class MTAImpl extends MTA {
     // subway methods
 
     FeedMessage resolveSubwayFeed(final String route_id){
-        final String route = Objects.requireNonNull(MTASchema_Subway.resolveSubwayLine(route_id), "Subway route with ID '" + route_id + "' not found");
+        final String route = MTASchema_Subway.stripExpress(Objects.requireNonNull(MTASchema_Subway.resolveSubwayLine(route_id), "Subway route with ID '" + route_id + "' not found"));
         switch(route){
             case "A":
             case "C":
