@@ -56,7 +56,7 @@ Compiled binaries can be installed from:
     [![static datafeeds](https://raw.githubusercontent.com/KatsuteDev/OneMTA/main/assets/static-datafeeds.png)](http://web.mta.info/developers/developer-data-terms.html#data)
  4. Initialize OneMTA
     ```java
-    MTA mta = mta = MTA.create(
+    MTA mta = MTA.create(
         busToken,
         subwayToken,
         DataResource.create(DataResourceType.Bus_Bronx, new File("google_transit_bronx.zip")),
