@@ -14,7 +14,7 @@ jobs:
     timeout-minutes: 30
     strategy:
       matrix:
-        java: [8, 11, 17, 18]
+        java: [8, 11, 17]
         group: [MTA, Bus, Subway, LIRR, MNR]
       fail-fast: false
       max-parallel: 1
@@ -41,11 +41,11 @@ jobs:
         run: |
           echo ${{ matrix.group }} > src/test/java/resources/TEST_GROUP
 
-      - name: ✔ Test with Maven
+      - name: ✔️ Test with Maven
         continue-on-error: true
         run: mvn test -fae --no-transfer-progress
 
-      - name: ✔ Generate Report
+      - name: ✔️ Generate Report
         uses: Katsute/Workflows/actions/java/report@main
         with:
           token: ${{ secrets.BOT }}
