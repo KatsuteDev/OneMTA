@@ -101,7 +101,7 @@ final class MTAService {
         final FeedMessage getTripUpdates(final String token){
             return cache.getProtobuf(
                 gtfsURL + "tripUpdates",
-                new HashMap<>(){{
+                new HashMap<String,String>(){{
                     put("key", token);
                 }},
                 new HashMap<>()
@@ -111,7 +111,7 @@ final class MTAService {
         final FeedMessage getVehiclePositions(final String token){
             return cache.getProtobuf(
                 gtfsURL + "vehiclePositions",
-                new HashMap<>(){{
+                new HashMap<String,String>(){{
                     put("key", token);
                 }},
                 new HashMap<>()
@@ -121,7 +121,7 @@ final class MTAService {
         final FeedMessage getAlerts(final String token){
             return cache.getProtobuf(
                 gtfsURL + "alerts",
-                new HashMap<>(){{
+                new HashMap<String,String>(){{
                     put("key", token);
                 }},
                 new HashMap<>()
