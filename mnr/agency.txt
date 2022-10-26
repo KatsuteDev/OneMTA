@@ -1,0 +1,2 @@
+agency_id,agency_name,agency_url,agency_timezone,agency_phone,agency_lang
+1,Metro-North Railroad,http://www.mta.info/mnr,America/New_York,212-532-4900,EN

@@ -1,0 +1,7 @@
+route_id,agency_id,route_short_name,route_long_name,route_desc,route_type,route_url,route_color,route_text_color
+3,1,,New Haven,,2,,EE0034,FFFFFF
+4,1,,New Canaan,,2,,EE0034,FFFFFF
+5,1,,Danbury,,2,,EE0034,FFFFFF
+6,1,,Waterbury,,2,,EE0034,FFFFFF
+1,1,,Hudson,,2,,009B3A,FFFFFF
+2,1,,Harlem,,2,,0039A6,FFFFFF

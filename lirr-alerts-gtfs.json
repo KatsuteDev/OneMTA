@@ -1,0 +1,889 @@
+{
+  "header": {
+    "gtfsRealtimeVersion": "2.0",
+    "incrementality": "FULL_DATASET",
+    "timestamp": "1666749865",
+    "mercuryFeedHeader": {
+      "mercuryVersion": "1.0"
+    }
+  },
+  "entity": [{
+    "id": "lmm:planned_work:7188",
+    "alert": {
+      "activePeriod": [{
+        "start": "1667710800",
+        "end": "1667721600"
+      }],
+      "informedEntity": [{
+        "agencyId": "LI",
+        "routeId": "1",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:1:10"
+        }
+      }, {
+        "agencyId": "LI",
+        "routeId": "10",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:10:10"
+        }
+      }, {
+        "agencyId": "LI",
+        "routeId": "12",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:12:10"
+        }
+      }, {
+        "agencyId": "LI",
+        "routeId": "2",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:2:10"
+        }
+      }, {
+        "agencyId": "LI",
+        "routeId": "3",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:3:10"
+        }
+      }, {
+        "agencyId": "LI",
+        "routeId": "4",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:4:10"
+        }
+      }, {
+        "agencyId": "LI",
+        "routeId": "5",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:5:10"
+        }
+      }, {
+        "agencyId": "LI",
+        "routeId": "6",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:6:10"
+        }
+      }, {
+        "agencyId": "LI",
+        "routeId": "7",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:7:10"
+        }
+      }, {
+        "agencyId": "LI",
+        "routeId": "8",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:8:10"
+        }
+      }, {
+        "agencyId": "LI",
+        "routeId": "9",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:9:10"
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Service adjustments for change to Standard Time",
+          "language": "en"
+        }, {
+          "text": "Service adjustments for change to Standard Time",
+          "language": "en-html"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "At 2 AM, clocks will be set back one hour from Eastern Daylight Time (EDT) to Eastern Standard Time (EST). This requires us to make some adjustments to our overnight service, detailed below.\n\nYou may experience technical difficulties with the TrainTime App and station platform signs if you are traveling during the changeover.\n\nAll trains that are enroute during the time change will complete their trips promptly. Trains will not wait an hour for the clock to \"catch up\" to their schedules.\nEastbound\nDuring the 1 AM EDT hour, regular service will operate, including all regular connections. The 2:25 AM train from Valley Stream to Far Rockaway will instead originate at 1:25 AM EST in order to maintain connections for those coming from Penn Station and Jamaica.\n\nDuring the 1 AM EST hour, two trains will depart from Penn Station, with no connections available:\n1:39 AM EST from Penn Station stopping at Woodside, Forest Hills, Kew Gardens, Jamaica, Rockville Centre, and all stops to Babylon.\n1:53 AM EST from Penn Station stopping at Jamaica, Mineola, Westbury, Hicksville, and all stops to Ronkonkoma.\nRegular service resumes at 2 AM EST.\nWestbound\nDuring the 1 AM EDT hour, regular service will operate.\n\nThe following westbound trains scheduled to begin their trips during the 2 AM hour will instead operate during the 1 AM EST hour:\nThe 2:13 AM train from Ronkonkoma to Penn Station will depart Ronkonkoma at 1:13 AM EST.\nThe 2:19 AM train from Huntington to Penn Station will depart Huntington at 1:19 AM EST.\nThe 2:27 AM train from Bayside to Penn Station will depart Bayside at 1:27 AM EST. The shuttle bus from Port Washington will depart at 1:24 AM EDT.\nNo trains will begin their trips in the 2 AM EST hour.\n\nRegular service resumes at 3 AM EST.",
+          "language": "en"
+        }, {
+          "text": "\u003cp\u003eAt 2 AM, clocks will be set back one hour from Eastern Daylight Time (EDT) to Eastern Standard Time (EST). This requires us to make some adjustments to our overnight service, detailed below.\u003c/p\u003e\u003cp style\u003d\"min-height:10px\"\u003e\u003c/p\u003e\u003cp\u003eYou may experience technical difficulties with the TrainTime App and station platform signs if you are traveling during the changeover.\u003c/p\u003e\u003cp style\u003d\"min-height:10px\"\u003e\u003c/p\u003e\u003cp\u003e\u003cstrong\u003eAll trains that are enroute during the time change will complete their trips promptly.\u003c/strong\u003e Trains will not wait an hour for the clock to \"catch up\" to their schedules.\u003c/p\u003e\u003ch3\u003eEastbound\u003c/h3\u003e\u003cp\u003eDuring the \u003cstrong\u003e1 AM EDT\u003c/strong\u003e hour, regular service will operate, including all regular connections. The 2:25 AM train from Valley Stream to Far Rockaway will instead originate at 1:25 AM EST in order to maintain connections for those coming from Penn Station and Jamaica.\u003c/p\u003e\u003cp style\u003d\"min-height:10px\"\u003e\u003c/p\u003e\u003cp\u003eDuring the \u003cstrong\u003e1 AM EST\u003c/strong\u003e hour, two trains will depart from Penn Station, with no connections available:\u003c/p\u003e\u003cul\u003e\u003cli\u003e\u003cp\u003e1:39 AM EST from Penn Station stopping at Woodside, Forest Hills, Kew Gardens, Jamaica, Rockville Centre, and all stops to Babylon.\u003c/p\u003e\u003c/li\u003e\u003cli\u003e\u003cp\u003e1:53 AM EST from Penn Station stopping at Jamaica, Mineola, Westbury, Hicksville, and all stops to Ronkonkoma.\u003c/p\u003e\u003c/li\u003e\u003c/ul\u003e\u003cp\u003eRegular service resumes at \u003cstrong\u003e2 AM EST\u003c/strong\u003e.\u003c/p\u003e\u003ch3\u003eWestbound\u003c/h3\u003e\u003cp\u003eDuring the \u003cstrong\u003e1 AM EDT\u003c/strong\u003e hour, regular service will operate.\u003c/p\u003e\u003cp style\u003d\"min-height:10px\"\u003e\u003c/p\u003e\u003cp\u003eThe following westbound trains scheduled to begin their trips during the 2 AM hour will instead operate during the \u003cstrong\u003e1 AM EST\u003c/strong\u003e hour:\u003c/p\u003e\u003cul\u003e\u003cli\u003e\u003cp\u003eThe 2:13 AM train from Ronkonkoma to Penn Station will depart Ronkonkoma at 1:13 AM EST.\u003c/p\u003e\u003c/li\u003e\u003cli\u003e\u003cp\u003eThe 2:19 AM train from Huntington to Penn Station will depart Huntington at 1:19 AM EST.\u003c/p\u003e\u003c/li\u003e\u003cli\u003e\u003cp\u003eThe 2:27 AM train from Bayside to Penn Station will depart Bayside at 1:27 AM EST. The shuttle bus from Port Washington will depart at 1:24 AM EDT.\u003c/p\u003e\u003c/li\u003e\u003c/ul\u003e\u003cp\u003eNo trains will begin their trips in the \u003cstrong\u003e2 AM EST\u003c/strong\u003e hour.\u003c/p\u003e\u003cp style\u003d\"min-height:10px\"\u003e\u003c/p\u003e\u003cp\u003eRegular service resumes at \u003cstrong\u003e3 AM EST\u003c/strong\u003e.\u003c/p\u003e",
+          "language": "en-html"
+        }]
+      },
+      "mercuryAlert": {
+        "createdAt": "1666727242",
+        "updatedAt": "1666727244",
+        "alertType": "Special Schedule",
+        "displayBeforeActive": "3600",
+        "humanReadableActivePeriod": {
+          "translation": [{
+            "text": "Nov 6, Sunday, 1:00 AM to 3:00 AM",
+            "language": "en"
+          }]
+        }
+      }
+    }
+  }, {
+    "id": "lmm:planned_work:7185",
+    "alert": {
+      "activePeriod": [{
+        "start": "1667808000",
+        "end": "1668223800"
+      }, {
+        "start": "1668412800",
+        "end": "1668828600"
+      }],
+      "informedEntity": [{
+        "agencyId": "LI",
+        "routeId": "9",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:9:10"
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Some trains leave up to 7 minutes earlier than usual, and five afternoon trains are cancelled",
+          "language": "en"
+        }, {
+          "text": "Some trains leave up to 7 minutes earlier than usual, and five afternoon trains are cancelled",
+          "language": "en-html"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "The following trains are cancelled:\nEastbound\nThe 4:40 PM from Penn to Port Washington is cancelled. The 4:43 PM from Penn to Great Neck will leave 10 minutes later and is extended to Port Washington.\nThe 5:26 PM from Penn to Port Washington is cancelled. The 5:20 PM from Penn to Great Neck will be extended to Port Washington.\nThe 6:14 PM from Penn to Great Neck is cancelled. The 6:10 PM from Penn to Port Washington will make all stops.\nWestbound\nThe 5:44 PM from Great Neck due Penn at 6:17 PM is cancelled.\nThe 6:23 PM from Great Neck due Penn at 6:58 PM is cancelled. The 6:24 PM from Port Washington to Penn will make all stops.\nPlease use the TrainTime app to plan your trip. These schedule changes are in support of track and signal work east of Great Neck as we finish up the Great Neck Pocket Track. We thank you for your patience.",
+          "language": "en"
+        }, {
+          "text": "\u003cp\u003eThe following trains are cancelled:\u003c/p\u003e\u003ch3\u003eEastbound\u003c/h3\u003e\u003cul\u003e\u003cli\u003e\u003cp\u003eThe 4:40 PM from Penn to Port Washington is cancelled. The 4:43 PM from Penn to Great Neck will leave 10 minutes later and is extended to Port Washington.\u003c/p\u003e\u003c/li\u003e\u003cli\u003e\u003cp\u003eThe 5:26 PM from Penn to Port Washington is cancelled. The 5:20 PM from Penn to Great Neck will be extended to Port Washington.\u003c/p\u003e\u003c/li\u003e\u003cli\u003e\u003cp\u003eThe 6:14 PM from Penn to Great Neck is cancelled. The 6:10 PM from Penn to Port Washington will make all stops.\u003c/p\u003e\u003c/li\u003e\u003c/ul\u003e\u003ch3\u003eWestbound\u003c/h3\u003e\u003cul\u003e\u003cli\u003e\u003cp\u003eThe 5:44 PM from Great Neck due Penn at 6:17 PM is cancelled.\u003c/p\u003e\u003c/li\u003e\u003cli\u003e\u003cp\u003eThe 6:23 PM from Great Neck due Penn at 6:58 PM is cancelled. The 6:24 PM from Port Washington to Penn will make all stops.\u003c/p\u003e\u003c/li\u003e\u003c/ul\u003e\u003cp\u003ePlease use the TrainTime app to plan your trip. These schedule changes are in support of track and signal work east of Great Neck as we finish up the Great Neck Pocket Track. We thank you for your patience.\u003c/p\u003e",
+          "language": "en-html"
+        }]
+      },
+      "mercuryAlert": {
+        "createdAt": "1666721486",
+        "updatedAt": "1666727117",
+        "alertType": "Special Schedule",
+        "displayBeforeActive": "0",
+        "humanReadableActivePeriod": {
+          "translation": [{
+            "text": "Nov 7 - 11 and Nov 14 - 18, Mon to Fri",
+            "language": "en"
+          }]
+        }
+      }
+    }
+  }, {
+    "id": "lmm:planned_work:7184",
+    "alert": {
+      "activePeriod": [{
+        "start": "1667615400",
+        "end": "1667808000"
+      }, {
+        "start": "1668223800",
+        "end": "1668412800"
+      }, {
+        "start": "1668828600",
+        "end": "1669017600"
+      }],
+      "informedEntity": [{
+        "agencyId": "LI",
+        "routeId": "9",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:9:24"
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Buses replace trains between Bayside and Port Washington",
+          "language": "en"
+        }, {
+          "text": "Buses replace trains between Bayside and Port Washington",
+          "language": "en-html"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Trains will run on regular schedules between Penn Station and Bayside.\n\nBus service will run every hour between Bayside and Port Washington, making all stops except Plandome.\nBuses will not stop at Plandome due to low bridges in the area. Customers should use the bus stop at Manhasset instead.\n\nThe last trains to run on Friday night are the 9:48 PM from Penn Station and the 10:38 PM from Port Washington. Service resumes with the 3:18 AM from Penn Station and the 3:23 AM from Port Washington on Monday morning.",
+          "language": "en"
+        }, {
+          "text": "\u003cp\u003eTrains will run on regular schedules between Penn Station and Bayside.\u003c/p\u003e\u003cp style\u003d\"min-height:10px\"\u003e\u003c/p\u003e\u003cp\u003eBus service will run \u003cstrong\u003eevery hour \u003c/strong\u003ebetween Bayside and Port Washington, making all stops except Plandome.\u003c/p\u003e\u003cp\u003eBuses will not stop at Plandome due to low bridges in the area. Customers should use the bus stop at Manhasset instead.\u003c/p\u003e\u003cp style\u003d\"min-height:10px\"\u003e\u003c/p\u003e\u003cp\u003eThe last trains to run on Friday night are the 9:48 PM from Penn Station and the 10:38 PM from Port Washington. Service resumes with the 3:18 AM from Penn Station and the 3:23 AM from Port Washington on Monday morning.\u003c/p\u003e",
+          "language": "en-html"
+        }]
+      },
+      "mercuryAlert": {
+        "createdAt": "1666721298",
+        "updatedAt": "1666726980",
+        "alertType": "Planned - Substitute Buses",
+        "displayBeforeActive": "3600",
+        "humanReadableActivePeriod": {
+          "translation": [{
+            "text": "Nov 4 - 7, Nov 11 - 14, and Nov 18 - 21, Fri 10:30 PM to Mon 3:00 AM",
+            "language": "en"
+          }]
+        }
+      }
+    }
+  }, {
+    "id": "lmm:planned_work:7156",
+    "alert": {
+      "activePeriod": [{
+        "start": "1667310300",
+        "end": "1667331000"
+      }, {
+        "start": "1667396700",
+        "end": "1667417400"
+      }, {
+        "start": "1667483100",
+        "end": "1667503800"
+      }],
+      "informedEntity": [{
+        "agencyId": "LI",
+        "routeId": "9",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:9:24"
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Buses replace trains between Great Neck and Port Washington\nTrains run every hour between Penn Station and Great Neck, making all stops",
+          "language": "en"
+        }, {
+          "text": "Buses replace trains between Great Neck and Port Washington\u003cbr/\u003eTrains run every hour between Penn Station and Great Neck, making all stops",
+          "language": "en-html"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Buses will connect Great Neck with Manhasset and Port Washington, and vans will connect Great Neck with Plandome while we work on the Great Neck Pocket Track. Westbound buses/vans will leave up to 40 minutes earlier than normal train times.\n\nThe last trains to run to/from Port Washington are the 8:51 AM from Penn Station and the 9:40 AM from Port Washington. Service resumes with the 2:48 PM from Penn Station and the 3:41 PM from Port Washington.",
+          "language": "en"
+        }, {
+          "text": "\u003cp\u003eBuses will connect Great Neck with Manhasset and Port Washington, and vans will connect Great Neck with Plandome while we work on the Great Neck Pocket Track. Westbound buses/vans will leave up to 40 minutes earlier than normal train times.\u003c/p\u003e\u003cp style\u003d\"line-height: 1.14;\"\u003e\u003c/p\u003e\u003cp style\u003d\"line-height: 1.14;\"\u003eThe last trains to run to/from Port Washington are the 8:51 AM from Penn Station and the 9:40 AM from Port Washington. Service resumes with the 2:48 PM from Penn Station and the 3:41 PM from Port Washington.\u003c/p\u003e",
+          "language": "en-html"
+        }]
+      },
+      "mercuryAlert": {
+        "createdAt": "1666362056",
+        "updatedAt": "1666392886",
+        "alertType": "Planned - Substitute Buses",
+        "displayBeforeActive": "3600",
+        "humanReadableActivePeriod": {
+          "translation": [{
+            "text": "Nov 1 - 3, Tue to Thu, 9:45 AM to 3:30 PM",
+            "language": "en"
+          }]
+        }
+      }
+    }
+  }, {
+    "id": "lmm:planned_work:7146",
+    "alert": {
+      "activePeriod": [{
+        "start": "1667008800",
+        "end": "1667016900"
+      }],
+      "informedEntity": [{
+        "agencyId": "LI",
+        "routeId": "3",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:3:25"
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "No trains between Jamaica and East Williston",
+          "language": "en"
+        }, {
+          "text": "No trains between Jamaica and East Williston",
+          "language": "en-html"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Eastbound riders will board the 9:42 or 10:37 PM trains from Penn Station and transfer at Mineola for bus service to East Williston, where train service resumes.\n\nWestbound riders on the 9:40 and 10:48 PM trains from Oyster Bay will transfer at East Williston for bus service to Mineola where trains are available.",
+          "language": "en"
+        }, {
+          "text": "\u003cp\u003eEastbound riders will board the \u003cstrong\u003e9:42 or 10:37 PM trains from Penn Station\u003c/strong\u003e and transfer at Mineola for bus service to East Williston, where train service resumes.\u003c/p\u003e\u003cp\u003e\u003c/p\u003e\u003cp\u003eWestbound riders on the 9:40 and 10:48 PM trains from Oyster Bay will transfer at East Williston for bus service to Mineola where trains are available.\u003c/p\u003e",
+          "language": "en-html"
+        }]
+      },
+      "mercuryAlert": {
+        "createdAt": "1666295677",
+        "updatedAt": "1666295678",
+        "alertType": "Planned - Part Suspended",
+        "displayBeforeActive": "3600",
+        "humanReadableActivePeriod": {
+          "translation": [{
+            "text": "Starting at 10 PM Friday October 28",
+            "language": "en"
+          }]
+        }
+      }
+    }
+  }, {
+    "id": "lmm:planned_work:7011",
+    "alert": {
+      "activePeriod": [{
+        "start": "1666706400",
+        "end": "1666726200"
+      }, {
+        "start": "1666792800",
+        "end": "1666812600"
+      }],
+      "informedEntity": [{
+        "agencyId": "LI",
+        "routeId": "10",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:10:24"
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Buses replace trains between Huntington and Port Jefferson",
+          "language": "en"
+        }, {
+          "text": "Buses replace trains between Huntington and Port Jefferson",
+          "language": "en-html"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "If possible, consider using the Ronkonkoma Branch while we perform track inspections. If you need to use bus service, be advised that westbound buses will depart up to 40 minutes earlier than normal train times.\n\nThe last trains to operate are the 8:17 AM from Jamaica and the 9:07 AM from Port Jefferson. Service resumes with the 4:06 PM from Huntington and the 4:06 PM from Port Jefferson.",
+          "language": "en"
+        }, {
+          "text": "\u003cp\u003eIf possible, consider using the Ronkonkoma Branch while we perform track inspections. If you need to use bus service, be advised that westbound buses will depart up to 40 minutes earlier than normal train times.\u003c/p\u003e\u003cp style\u003d\"line-height: 1.14;\"\u003e\u003c/p\u003e\u003cp style\u003d\"line-height: 1.14;\"\u003eThe last trains to operate are the 8:17 AM from Jamaica and the 9:07 AM from Port Jefferson. Service resumes with the 4:06 PM from Huntington and the 4:06 PM from Port Jefferson.\u003c/p\u003e",
+          "language": "en-html"
+        }]
+      },
+      "mercuryAlert": {
+        "createdAt": "1665512044",
+        "updatedAt": "1666726200",
+        "alertType": "Planned - Substitute Buses",
+        "displayBeforeActive": "3600",
+        "humanReadableActivePeriod": {
+          "translation": [{
+            "text": "Oct 25 - 26, Tue and Wed, 10:00 AM to 3:30 PM",
+            "language": "en"
+          }]
+        },
+        "cloneId": "lmm:planned_work:5775"
+      }
+    }
+  }, {
+    "id": "lmm:planned_work:6823",
+    "alert": {
+      "activePeriod": [{
+        "start": "1667037600",
+        "end": "1667100600"
+      }],
+      "informedEntity": [{
+        "agencyId": "LI",
+        "routeId": "11",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:11:39"
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "There is no LIRR service to/from UBS Arena this weekend",
+          "language": "en"
+        }, {
+          "text": "There is no LIRR service to/from UBS Arena this weekend",
+          "language": "en-html"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "While we test the new signal system near Queens Village, we will not be able to run trains to Belmont Park or Elmont-UBS Arena stations this weekend.\n\nPlease consider alternate transportation if you are going to the Islanders game on Saturday. We apologize for the inconvenience.",
+          "language": "en"
+        }, {
+          "text": "\u003cp\u003eWhile we test the new signal system near Queens Village, we will not be able to run trains to Belmont Park or Elmont-UBS Arena stations this weekend.\u003c/p\u003e\u003cp style\u003d\"line-height: 1.14;\"\u003e\u003c/p\u003e\u003cp style\u003d\"line-height: 1.14;\"\u003ePlease consider alternate transportation if you are going to the Islanders game on Saturday. We apologize for the inconvenience.\u003c/p\u003e",
+          "language": "en-html"
+        }]
+      },
+      "mercuryAlert": {
+        "createdAt": "1664974910",
+        "updatedAt": "1665991803",
+        "alertType": "Planned - Suspended",
+        "displayBeforeActive": "3600",
+        "humanReadableActivePeriod": {
+          "translation": [{
+            "text": "Saturday, October 29",
+            "language": "en"
+          }]
+        }
+      }
+    }
+  }, {
+    "id": "lmm:planned_work:6822",
+    "alert": {
+      "activePeriod": [{
+        "start": "1667007900",
+        "end": "1667202300"
+      }],
+      "informedEntity": [{
+        "agencyId": "LI",
+        "routeId": "2",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:2:39"
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "No trains between Jamaica and Hempstead",
+          "language": "en"
+        }, {
+          "text": "No trains between Jamaica and Hempstead",
+          "language": "en-html"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Trains will run between Atlantic Terminal and Jamaica only. Bus service will be available from Jamaica in two sections:\nStopping at Hollis, Queens Village, Bellerose, and Mineola; with select buses also serving East Williston.\nStopping at Floral Park, Stewart Manor, Nassau Boulevard, Garden City, and Hempstead.\nThe last trains to run on Friday night are the 9:42 PM from Atlantic Terminal and the 10:16 PM from Hempstead. Service resumes with the 3:56 AM from Hempstead and the 5:48 AM from Jamaica on Monday morning.\n\nPlease consider using the West Hempstead Branch, Lynbrook, or Valley Stream stations instead. We appreciate your patience while we test signals near Queens Village.",
+          "language": "en"
+        }, {
+          "text": "\u003cp style\u003d\"line-height: 1.14;\"\u003eTrains will run between Atlantic Terminal and Jamaica only. Bus service will be available from Jamaica in two sections:\u003c/p\u003e\u003cul\u003e\u003cli\u003e\u003cp style\u003d\"line-height: 1.14;\"\u003eStopping at Hollis, Queens Village, Bellerose, and Mineola; with select buses also serving East Williston.\u003c/p\u003e\u003c/li\u003e\u003cli\u003e\u003cp style\u003d\"line-height: 1.14;\"\u003eStopping at Floral Park, Stewart Manor, Nassau Boulevard, Garden City, and Hempstead.\u003c/p\u003e\u003c/li\u003e\u003c/ul\u003e\u003cp style\u003d\"line-height: 1.14;\"\u003eThe last trains to run on Friday night are the 9:42 PM from Atlantic Terminal and the 10:16 PM from Hempstead. Service resumes with the 3:56 AM from Hempstead and the 5:48 AM from Jamaica on Monday morning.\u003c/p\u003e\u003cp style\u003d\"line-height: 1.14;\"\u003e\u003c/p\u003e\u003cp style\u003d\"line-height: 1.14;\"\u003ePlease consider using the West Hempstead Branch, Lynbrook, or Valley Stream stations instead. We appreciate your patience while we test signals near Queens Village.\u003c/p\u003e",
+          "language": "en-html"
+        }]
+      },
+      "mercuryAlert": {
+        "createdAt": "1664974389",
+        "updatedAt": "1666377753",
+        "alertType": "Planned - Suspended",
+        "displayBeforeActive": "3600",
+        "humanReadableActivePeriod": {
+          "translation": [{
+            "text": "Oct 28 - 31, Fri 9:45 PM to Mon 3:45 AM",
+            "language": "en"
+          }]
+        }
+      }
+    }
+  }, {
+    "id": "lmm:planned_work:6820",
+    "alert": {
+      "activePeriod": [{
+        "start": "1667016060",
+        "end": "1667188740"
+      }],
+      "informedEntity": [{
+        "agencyId": "LI",
+        "routeId": "1",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:1:10"
+        }
+      }, {
+        "agencyId": "LI",
+        "routeId": "12",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:12:10"
+        }
+      }, {
+        "agencyId": "LI",
+        "routeId": "5",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:5:10"
+        }
+      }, {
+        "agencyId": "LI",
+        "routeId": "6",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:6:10"
+        }
+      }, {
+        "agencyId": "LI",
+        "routeId": "7",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:7:10"
+        }
+      }, {
+        "agencyId": "LI",
+        "routeId": "8",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:8:10"
+        }
+      }, {
+        "agencyId": "LI",
+        "routeId": "9",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:9:10"
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Minor schedule and connection adjustments",
+          "language": "en"
+        }, {
+          "text": "Minor schedule and connection adjustments",
+          "language": "en-html"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Special timetables are in effect systemwide while we test the new signal system near Queens Village\n\nWhile there are no major changes to service on this branch, you should check the TrainTime app or the special PDF timetables for minor changes in departure and connecting train times that may affect your trip.",
+          "language": "en"
+        }, {
+          "text": "\u003cp\u003eSpecial timetables are in effect systemwide while we test the new signal system near Queens Village\u003c/p\u003e\u003cp\u003e\u003c/p\u003e\u003cp\u003eWhile there are no major changes to service on this branch, you should check the \u003ca title\u003d\"\" target\u003d\"_blank\" href\u003d\"https://app.mylirr.org/\" rel\u003d\"noopener noreferrer nofollow\"\u003eTrainTime app\u003c/a\u003e or the \u003ca title\u003d\"\" target\u003d\"_blank\" href\u003d\"http://web.mta.info/lirr/Timetable/\" rel\u003d\"noopener noreferrer nofollow\"\u003especial PDF timetables\u003c/a\u003e for minor changes in departure and connecting train times that may affect your trip.\u003c/p\u003e",
+          "language": "en-html"
+        }]
+      },
+      "mercuryAlert": {
+        "createdAt": "1664973985",
+        "updatedAt": "1665991803",
+        "alertType": "Special Schedule",
+        "displayBeforeActive": "0",
+        "humanReadableActivePeriod": {
+          "translation": [{
+            "text": "Oct 29 - 30, Sat 12:01 AM to Sun 11:59 PM",
+            "language": "en"
+          }]
+        }
+      }
+    }
+  }, {
+    "id": "lmm:planned_work:6819",
+    "alert": {
+      "activePeriod": [{
+        "start": "1667016900",
+        "end": "1667197800"
+      }],
+      "informedEntity": [{
+        "agencyId": "LI",
+        "routeId": "3",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:3:25"
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "No trains between Jamaica and East Williston",
+          "language": "en"
+        }, {
+          "text": "No trains between Jamaica and East Williston",
+          "language": "en-html"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Shuttle buses connect East Williston, Mineola, and Jamaica, where train service is available. Click here to learn more about this service change.\n\nPlease allow up to 60 minutes of additional travel time or consider using the Port Washington Branch instead.\n\nFor detailed schedule information, use the LIRR TrainTime app.",
+          "language": "en"
+        }, {
+          "text": "\u003cp\u003eShuttle buses connect East Williston, Mineola, and Jamaica, where train service is available. \u003ca title\u003d\"\" target\u003d\"_blank\" href\u003d\"https://new.mta.info/article/hicksville-jamaica-service-change-2022\" rel\u003d\"noopener noreferrer nofollow\"\u003eClick here to learn more about this service change.\u003c/a\u003e\u003c/p\u003e\u003cp style\u003d\"min-height:10px\"\u003e\u003c/p\u003e\u003cp\u003ePlease allow up to 60 minutes of additional travel time or consider using the Port Washington Branch instead.\u003c/p\u003e\u003cp style\u003d\"min-height:10px\"\u003e\u003c/p\u003e\u003cp\u003eFor detailed schedule information, use the \u003ca title\u003d\"\" target\u003d\"_blank\" href\u003d\"https://new.mta.info/traintime\" rel\u003d\"noopener noreferrer nofollow\"\u003eLIRR TrainTime app\u003c/a\u003e.\u003c/p\u003e",
+          "language": "en-html"
+        }]
+      },
+      "mercuryAlert": {
+        "createdAt": "1664973210",
+        "updatedAt": "1665991803",
+        "alertType": "Planned - Part Suspended",
+        "displayBeforeActive": "3600",
+        "humanReadableActivePeriod": {
+          "translation": [{
+            "text": "Oct 29 - 31, Sat 12:15 AM to Mon 2:30 AM",
+            "language": "en"
+          }]
+        }
+      }
+    }
+  }, {
+    "id": "lmm:planned_work:6818",
+    "alert": {
+      "activePeriod": [{
+        "start": "1667016900",
+        "end": "1667197800"
+      }],
+      "informedEntity": [{
+        "agencyId": "LI",
+        "routeId": "4",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:4:25"
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "No trains between Jamaica and Hicksville",
+          "language": "en"
+        }, {
+          "text": "No trains between Jamaica and Hicksville",
+          "language": "en-html"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Trains run in four sections while we test the new signal system near Queens Village:\nBetween Greenport and Ronkonkoma\nBetween Ronkonkoma and Hicksville (bypassing Bethpage)\nBetween Hicksville and Babylon (stopping at Bethpage)\nBetween Babylon and Jamaica/Penn Station\nTransfer at Hicksville and Babylon for continuing service. Please allow up to 60 minutes of additional travel time or consider using the Babylon or Montauk Branches instead. Click here to learn more about this service change.\n\nBethpage riders: To travel towards Jamaica, wait on Platform B for a bi-level train to Babylon. To travel towards Ronkonkoma, wait on Platform A for a bi-level train to Hicksville. Use caution when crossing the tracks at Stewart Ave.\n\nFor detailed schedule information, use the LIRR TrainTime app.",
+          "language": "en"
+        }, {
+          "text": "\u003cp\u003eTrains run in four sections while we test the new signal system near Queens Village:\u003c/p\u003e\u003cul\u003e\u003cli\u003e\u003cp\u003eBetween Greenport and Ronkonkoma\u003c/p\u003e\u003c/li\u003e\u003cli\u003e\u003cp\u003eBetween Ronkonkoma and Hicksville (bypassing Bethpage)\u003c/p\u003e\u003c/li\u003e\u003cli\u003e\u003cp\u003eBetween Hicksville and Babylon (stopping at Bethpage)\u003c/p\u003e\u003c/li\u003e\u003cli\u003e\u003cp\u003eBetween Babylon and Jamaica/Penn Station\u003c/p\u003e\u003c/li\u003e\u003c/ul\u003e\u003cp\u003eTransfer at Hicksville and Babylon for continuing service. Please allow up to 60 minutes of additional travel time or consider using the Babylon or Montauk Branches instead. \u003ca title\u003d\"\" target\u003d\"_blank\" href\u003d\"https://new.mta.info/article/hicksville-jamaica-service-change-2022\" rel\u003d\"noopener noreferrer nofollow\"\u003eClick here to learn more about this service change.\u003c/a\u003e\u003c/p\u003e\u003cp style\u003d\"min-height:10px\"\u003e\u003c/p\u003e\u003cp\u003e\u003cb\u003eBethpage\u003c/b\u003e\u003cstrong\u003e riders:\u003c/strong\u003e To travel towards Jamaica, wait on Platform B for a bi-level train to Babylon. To travel towards Ronkonkoma, wait on Platform A for a bi-level train to Hicksville. Use caution when crossing the tracks at Stewart Ave.\u003c/p\u003e\u003cp style\u003d\"min-height:10px\"\u003e\u003c/p\u003e\u003cp\u003eFor detailed schedule information, use the \u003ca title\u003d\"\" target\u003d\"_blank\" href\u003d\"https://new.mta.info/traintime\" rel\u003d\"noopener noreferrer nofollow\"\u003eLIRR TrainTime app\u003c/a\u003e.\u003c/p\u003e",
+          "language": "en-html"
+        }]
+      },
+      "mercuryAlert": {
+        "createdAt": "1664972923",
+        "updatedAt": "1665991803",
+        "alertType": "Planned - Part Suspended",
+        "displayBeforeActive": "3600",
+        "humanReadableActivePeriod": {
+          "translation": [{
+            "text": "Oct 29 - 31, Sat 12:15 AM to Mon 2:30 AM",
+            "language": "en"
+          }]
+        }
+      }
+    }
+  }, {
+    "id": "lmm:planned_work:6816",
+    "alert": {
+      "activePeriod": [{
+        "start": "1667016900",
+        "end": "1667197800"
+      }],
+      "informedEntity": [{
+        "agencyId": "LI",
+        "routeId": "10",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:10:25"
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "No trains between Jamaica and Hicksville",
+          "language": "en"
+        }, {
+          "text": "No trains between Jamaica and Hicksville",
+          "language": "en-html"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Trains run in three sections while we test the new signal system near Queens Village:\nBetween Huntington or Port Jefferson and Hicksville\nBetween Hicksville and Babylon\nBetween Babylon and Jamaica/Penn Station\nTransfer at Hicksville and Babylon for continuing service. Please allow up to 60 minutes of additional travel time or consider using the Babylon or Montauk Branches instead. Click here to learn more about this service change.\n\nNICE will accept LIRR tickets on the n22 and n24 buses between Jamaica and Hicksville. Shuttle bus service is also available between Jamaica and Mineola, but will not stop at New Hyde Park or Merillon Avenue.\n\nFor detailed schedule information, use the LIRR TrainTime app.",
+          "language": "en"
+        }, {
+          "text": "\u003cp\u003eTrains run in three sections while we test the new signal system near Queens Village:\u003c/p\u003e\u003cul\u003e\u003cli\u003e\u003cp style\u003d\"line-height: 1.14;\"\u003eBetween Huntington or Port Jefferson and Hicksville\u003c/p\u003e\u003c/li\u003e\u003cli\u003e\u003cp style\u003d\"line-height: 1.14;\"\u003eBetween Hicksville and Babylon\u003c/p\u003e\u003c/li\u003e\u003cli\u003e\u003cp style\u003d\"line-height: 1.14;\"\u003eBetween Babylon and Jamaica/Penn Station\u003c/p\u003e\u003c/li\u003e\u003c/ul\u003e\u003cp style\u003d\"line-height: 1.14;\"\u003eTransfer at Hicksville and Babylon for continuing service. Please allow up to 60 minutes of additional travel time or consider using the Babylon or Montauk Branches instead. \u003ca title\u003d\"\" target\u003d\"_blank\" href\u003d\"https://new.mta.info/article/hicksville-jamaica-service-change-2022\" rel\u003d\"noopener noreferrer nofollow\"\u003eClick here to learn more about this service change.\u003c/a\u003e\u003c/p\u003e\u003cp style\u003d\"line-height: 1.14;\"\u003e\u003c/p\u003e\u003cp style\u003d\"line-height: 1.14;\"\u003eNICE will accept LIRR tickets on the n22 and n24 buses between Jamaica and Hicksville. Shuttle bus service is also available between Jamaica and Mineola, but will not stop at New Hyde Park or Merillon Avenue.\u003c/p\u003e\u003cp style\u003d\"line-height: 1.14;\"\u003e\u003c/p\u003e\u003cp style\u003d\"line-height: 1.14;\"\u003eFor detailed schedule information, use the \u003ca title\u003d\"\" target\u003d\"_blank\" href\u003d\"https://new.mta.info/traintime\" rel\u003d\"noopener noreferrer nofollow\"\u003eLIRR TrainTime app\u003c/a\u003e.\u003c/p\u003e",
+          "language": "en-html"
+        }]
+      },
+      "mercuryAlert": {
+        "createdAt": "1664971573",
+        "updatedAt": "1665991803",
+        "alertType": "Planned - Part Suspended",
+        "displayBeforeActive": "3600",
+        "humanReadableActivePeriod": {
+          "translation": [{
+            "text": "Oct 29 - 31, Sat 12:15 AM to Mon 2:30 AM",
+            "language": "en"
+          }]
+        }
+      }
+    }
+  }, {
+    "id": "lmm:planned_work:6758",
+    "alert": {
+      "activePeriod": [{
+        "start": "1664769600",
+        "end": "1665086400"
+      }, {
+        "start": "1665115200",
+        "end": "1665172800"
+      }, {
+        "start": "1665201600",
+        "end": "1665259200"
+      }, {
+        "start": "1665288000",
+        "end": "1665345600"
+      }, {
+        "start": "1665374400",
+        "end": "1665691200"
+      }, {
+        "start": "1665720000",
+        "end": "1665777600"
+      }, {
+        "start": "1665806400",
+        "end": "1665864000"
+      }, {
+        "start": "1665892800",
+        "end": "1666123200"
+      }, {
+        "start": "1666152000",
+        "end": "1666209600"
+      }, {
+        "start": "1666238400",
+        "end": "1666296000"
+      }, {
+        "start": "1666324800",
+        "end": "1666382400"
+      }, {
+        "start": "1666411200",
+        "end": "1666468800"
+      }, {
+        "start": "1666497600",
+        "end": "1666814400"
+      }, {
+        "start": "1666843200",
+        "end": "1666900800"
+      }, {
+        "start": "1666929600",
+        "end": "1667016000"
+      }],
+      "informedEntity": [{
+        "agencyId": "LI",
+        "routeId": "11",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:11:1"
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Event service only",
+          "language": "en"
+        }, {
+          "text": "Event service only",
+          "language": "en-html"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Trains only run to Belmont Park station when there are events at UBS Arena or Belmont Park.",
+          "language": "en"
+        }, {
+          "text": "\u003cp\u003eTrains only run to Belmont Park station when there are events at \u003ca target\u003d\"_blank\" href\u003d\"https://new.mta.info/agency/long-island-rail-road/take-the-train-to-the-game/lirr-service-to-ubs-arena\" rel\u003d\"noopener noreferrer nofollow\"\u003eUBS Arena\u003c/a\u003e or Belmont Park.\u003c/p\u003e",
+          "language": "en-html"
+        }]
+      },
+      "mercuryAlert": {
+        "createdAt": "1664738628",
+        "updatedAt": "1666497600",
+        "alertType": "No Scheduled Service",
+        "displayBeforeActive": "3600",
+        "humanReadableActivePeriod": {
+          "translation": [{
+            "text": "Every day",
+            "language": "en"
+          }]
+        },
+        "cloneId": "lmm:planned_work:3594"
+      }
+    }
+  }, {
+    "id": "lmm:planned_work:6677",
+    "alert": {
+      "activePeriod": [{
+        "start": "1668229260",
+        "end": "1668401940"
+      }],
+      "informedEntity": [{
+        "agencyId": "LI",
+        "routeId": "4",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:4:10"
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Trains leave up to 5 minutes earlier than normal",
+          "language": "en"
+        }, {
+          "text": "Trains leave up to 5 minutes earlier than normal",
+          "language": "en-html"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Trains will make added stops at Floral Park, Queens Village, and Hollis while Hempstead Branch service is suspended.",
+          "language": "en"
+        }, {
+          "text": "\u003cp\u003eTrains will make added stops at Floral Park, Queens Village, and Hollis while Hempstead Branch service is suspended.\u003c/p\u003e",
+          "language": "en-html"
+        }]
+      },
+      "mercuryAlert": {
+        "createdAt": "1664331377",
+        "updatedAt": "1666721829",
+        "alertType": "Special Schedule",
+        "displayBeforeActive": "0",
+        "humanReadableActivePeriod": {
+          "translation": [{
+            "text": "Saturday and Sunday, Nov 12 - 13",
+            "language": "en"
+          }]
+        }
+      }
+    }
+  }, {
+    "id": "lmm:planned_work:6676",
+    "alert": {
+      "activePeriod": [{
+        "start": "1668229260",
+        "end": "1668401940"
+      }],
+      "informedEntity": [{
+        "agencyId": "LI",
+        "routeId": "2",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:2:39"
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "No trains between Jamaica and Hempstead",
+          "language": "en"
+        }, {
+          "text": "No trains between Jamaica and Hempstead",
+          "language": "en-html"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Ronkonkoma Branch trains will stop at Hollis, Queens Village, and Floral Park.\nFor Elmont-UBS Arena, use Belmont Park station instead.\nFor Bellerose, transfer at Queens Village for bus service.\nFor Stewart Manor, Nassau Boulevard, Garden City, and Hempstead, transfer at Mineola for bus service.\nThere is no service at Country Life Press. Use Mineola or Garden City stations instead.\nIf you can, use nearby New Hyde Park, Merillon Avenue, or Mineola stations, as bus service will add 30 minutes of extra travel time.\n\nThe last trains to operate on Friday night are the 11:36 PM from Hempstead and the 11:44 PM from Atlantic Terminal. Service resumes with the 12:16 AM from Hempstead and 1:49 AM from Atlantic Terminal on Monday morning.\n\nWe are installing longer-lasting concrete ties between Bellerose and Floral Park.",
+          "language": "en"
+        }, {
+          "text": "\u003cul\u003e\u003cli\u003e\u003cp\u003eRonkonkoma Branch trains will stop at \u003cb\u003eHollis\u003c/b\u003e, \u003cb\u003eQueens Village\u003c/b\u003e, and \u003cb\u003eFloral Park\u003c/b\u003e.\u003c/p\u003e\u003c/li\u003e\u003cli\u003e\u003cp\u003eFor \u003cb\u003eElmont-UBS Arena\u003c/b\u003e, use Belmont Park station instead.\u003c/p\u003e\u003c/li\u003e\u003cli\u003e\u003cp\u003eFor \u003cb\u003eBellerose\u003c/b\u003e, transfer at Queens Village for bus service.\u003c/p\u003e\u003c/li\u003e\u003cli\u003e\u003cp\u003eFor \u003cb\u003eStewart Manor\u003c/b\u003e, \u003cb\u003eNassau Boulevard\u003c/b\u003e, \u003cb\u003eGarden City\u003c/b\u003e, and \u003cb\u003eHempstead\u003c/b\u003e, transfer at \u003cstrong\u003eMineola \u003c/strong\u003efor bus service.\u003c/p\u003e\u003c/li\u003e\u003cli\u003e\u003cp\u003eThere is no service at \u003cb\u003eCountry Life Press\u003c/b\u003e. Use Mineola or Garden City stations instead.\u003c/p\u003e\u003c/li\u003e\u003c/ul\u003e\u003cp\u003eIf you can, use nearby New Hyde Park, Merillon Avenue, or Mineola stations, as bus service will add 30 minutes of extra travel time.\u003c/p\u003e\u003cp style\u003d\"min-height:10px\"\u003e\u003c/p\u003e\u003cp\u003eThe last trains to operate on Friday night are the 11:36 PM from Hempstead and the 11:44 PM from Atlantic Terminal. Service resumes with the 12:16 AM from Hempstead and 1:49 AM from Atlantic Terminal on Monday morning.\u003c/p\u003e\u003cp style\u003d\"min-height:10px\"\u003e\u003c/p\u003e\u003cp\u003eWe are installing longer-lasting concrete ties between Bellerose and Floral Park.\u003c/p\u003e",
+          "language": "en-html"
+        }]
+      },
+      "mercuryAlert": {
+        "createdAt": "1664331144",
+        "updatedAt": "1666722896",
+        "alertType": "Planned - Suspended",
+        "displayBeforeActive": "3600",
+        "humanReadableActivePeriod": {
+          "translation": [{
+            "text": "Nov 12 - 13, Sat 12:01 AM to Sun 11:59 PM",
+            "language": "en"
+          }]
+        }
+      }
+    }
+  }, {
+    "id": "lmm:planned_work:6675",
+    "alert": {
+      "activePeriod": [{
+        "start": "1668222900",
+        "end": "1668229140"
+      }],
+      "informedEntity": [{
+        "agencyId": "LI",
+        "routeId": "2",
+        "mercuryEntitySelector": {
+          "sortOrder": "LI:2:10"
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Two westbound trains leave later",
+          "language": "en"
+        }, {
+          "text": "Two westbound trains leave later",
+          "language": "en-html"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "The 10:16 PM westbound train from Hempstead will depart at 10:40 PM.\nThe 11:19 PM westbound train from Hempstead will depart at 11:36 PM.\n\nThese adjustments are in preparation for weekend concrete tie installation near Floral Park. Please listen for station announcements as trains will share one track between Bellerose and Garden City during this time.",
+          "language": "en"
+        }, {
+          "text": "\u003cp\u003eThe \u003cstrong\u003e10:16 PM \u003c/strong\u003ewestbound train from Hempstead will depart at 10:40 PM.\u003c/p\u003e\u003cp style\u003d\"line-height: 1.14;\"\u003eThe \u003cstrong\u003e11:19 PM\u003c/strong\u003e westbound train from Hempstead will depart at 11:36 PM.\u003c/p\u003e\u003cp style\u003d\"line-height: 1.14;\"\u003e\u003c/p\u003e\u003cp style\u003d\"line-height: 1.14;\"\u003eThese adjustments are in preparation for weekend concrete tie installation near Floral Park. Please listen for station announcements as trains will share one track between Bellerose and Garden City during this time.\u003c/p\u003e",
+          "language": "en-html"
+        }]
+      },
+      "mercuryAlert": {
+        "createdAt": "1664330771",
+        "updatedAt": "1666722954",
+        "alertType": "Special Schedule",
+        "displayBeforeActive": "3600",
+        "humanReadableActivePeriod": {
+          "translation": [{
+            "text": "Nov 11, Friday, 10:15 PM to 11:59 PM",
+            "language": "en"
+          }]
+        }
+      }
+    }
+  }]
+}
