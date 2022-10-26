@@ -27,6 +27,7 @@ import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URI;
 import java.util.*;
+import java.util.Collections;
 import java.util.function.Function;
 import java.util.regex.MatchResult;
 import java.util.regex.Pattern;
@@ -43,7 +44,7 @@ abstract class Requests {
         try{
             conn = getConnection(
                 url,
-                new HashMap<>(query),
+                Collections.unmodifiableMap(query),
                 new HashMap<String,String>(headers){{
                     put("Accept", "application/json; charset=UTF-8");
                 }}
@@ -77,7 +78,7 @@ abstract class Requests {
         try{
             conn = getConnection(
                 url,
-                new HashMap<>(query),
+                Collections.unmodifiableMap(query),
                 new HashMap<String,String>(headers){{
                     put("Accept", "application/json; charset=UTF-8");
                 }}
@@ -122,7 +123,7 @@ abstract class Requests {
         try{
             conn = getConnection(
                 url,
-                new HashMap<>(query),
+                Collections.unmodifiableMap(query),
                 new HashMap<String,String>(headers){{
                     put("Accept", "application/x-protobuf");
                 }}
