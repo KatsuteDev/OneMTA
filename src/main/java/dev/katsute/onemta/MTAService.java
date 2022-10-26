@@ -53,6 +53,8 @@ final class MTAService {
 
         private final String baseURL = "https://bustime.mta.info/api/2/siri/";
 
+        private final String gtfsURL = "http://gtfsrt.prod.obanyc.com/";
+
         private BusService(){ }
 
         final JsonObject getVehicle(
@@ -91,6 +93,36 @@ final class MTAService {
                     if(stop != null)        put("MonitoringRef", String.valueOf(stop));
                     if(line != null)        put("LineRef", "MTA%20NYCT_" + line);
                     if(direction != null)   put("DirectionRef", String.valueOf(direction));
+                }},
+                new HashMap<>()
+            );
+        }
+
+        final FeedMessage getTripUpdates(final String token){
+            return cache.getProtobuf(
+                gtfsURL + "tripUpdates",
+                new HashMap<>(){{
+                    put("key", token);
+                }},
+                new HashMap<>()
+            );
+        }
+
+        final FeedMessage getVehiclePositions(final String token){
+            return cache.getProtobuf(
+                gtfsURL + "vehiclePositions",
+                new HashMap<>(){{
+                    put("key", token);
+                }},
+                new HashMap<>()
+            );
+        }
+
+        final FeedMessage getAlerts(final String token){
+            return cache.getProtobuf(
+                gtfsURL + "alerts",
+                new HashMap<>(){{
+                    put("key", token);
                 }},
                 new HashMap<>()
             );
