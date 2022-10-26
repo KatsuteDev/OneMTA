@@ -108,6 +108,7 @@ abstract class Requests {
         MTARRProto          .registerAllExtensions(registry);
         LIRRProto           .registerAllExtensions(registry);
         MNRRProto           .registerAllExtensions(registry);
+        OneBusAwayProto     .registerAllExtensions(registry);
         CrowdingProto       .registerAllExtensions(registry);
         ServiceStatusProto  .registerAllExtensions(registry);
     }
