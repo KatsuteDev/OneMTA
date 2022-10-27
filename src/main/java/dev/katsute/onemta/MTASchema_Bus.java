@@ -256,7 +256,7 @@ abstract class MTASchema_Bus extends MTASchema {
             private Alert[] getAlerts(final boolean update){
                 if(alerts == null || update){
                     final List<Alert> alerts = new ArrayList<>();
-                    final GTFSRealtimeProto.FeedMessage feed = cast(mta).service.alerts.getBus(cast(mta).subwayToken);
+                    final GTFSRealtimeProto.FeedMessage feed = cast(mta).service.alerts.getBus();
                     final int len = feed.getEntityCount();
                     for(int i = 0; i < len; i++){
                         final Alert alert = MTASchema_Bus.asTransitAlert(mta, feed.getEntity(i));
@@ -416,7 +416,7 @@ abstract class MTASchema_Bus extends MTASchema {
             private Alert[] getAlerts(final boolean update){
                 if(alerts == null || update){
                     final List<Alert> alerts = new ArrayList<>();
-                    final GTFSRealtimeProto.FeedMessage feed = cast(mta).service.alerts.getBus(cast(mta).subwayToken);
+                    final GTFSRealtimeProto.FeedMessage feed = cast(mta).service.alerts.getBus();
                     final int len = feed.getEntityCount();
                     for(int i = 0; i < len; i++){
                         final Alert alert = MTASchema_Bus.asTransitAlert(mta, feed.getEntity(i));

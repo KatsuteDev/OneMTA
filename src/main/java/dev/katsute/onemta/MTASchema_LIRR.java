@@ -89,7 +89,7 @@ abstract class MTASchema_LIRR extends MTASchema {
                 if(vehicles == null || update){
                     final String route = String.valueOf(route_id);
 
-                    final FeedMessage feed = cast(mta).service.lirr.getLIRR(cast(mta).subwayToken);
+                    final FeedMessage feed = cast(mta).service.lirr.getLIRR();
                     final int len          = feed.getEntityCount();
 
                     TripUpdate tripUpdate = null;
@@ -133,7 +133,7 @@ abstract class MTASchema_LIRR extends MTASchema {
             private LIRR.Alert[] getAlerts(final boolean update){
                 if(alerts == null || update){
                     final List<LIRR.Alert> alerts = new ArrayList<>();
-                    final GTFSRealtimeProto.FeedMessage feed = cast(mta).service.alerts.getLIRR(cast(mta).subwayToken);
+                    final GTFSRealtimeProto.FeedMessage feed = cast(mta).service.alerts.getLIRR();
                     final int len = feed.getEntityCount();
                     for(int i = 0; i < len; i++){
                         final LIRR.Alert alert = MTASchema_LIRR.asTransitAlert(mta, feed.getEntity(i));
@@ -269,7 +269,7 @@ abstract class MTASchema_LIRR extends MTASchema {
                 if(vehicles == null || update){
                     final String stop = String.valueOf(stopID);
 
-                    final FeedMessage feed = cast(mta).service.lirr.getLIRR(cast(mta).subwayToken);
+                    final FeedMessage feed = cast(mta).service.lirr.getLIRR();
                     final int len          = feed.getEntityCount();
 
                     TripUpdate tripUpdate = null;
@@ -324,7 +324,7 @@ abstract class MTASchema_LIRR extends MTASchema {
             private LIRR.Alert[] getAlerts(final boolean update){
                 if(alerts == null || update){
                     final List<LIRR.Alert> alerts = new ArrayList<>();
-                    final GTFSRealtimeProto.FeedMessage feed = cast(mta).service.alerts.getLIRR(cast(mta).subwayToken);
+                    final GTFSRealtimeProto.FeedMessage feed = cast(mta).service.alerts.getLIRR();
                     final int len = feed.getEntityCount();
                     for(int i = 0; i < len; i++){
                         final LIRR.Alert alert = MTASchema_LIRR.asTransitAlert(mta, feed.getEntity(i));

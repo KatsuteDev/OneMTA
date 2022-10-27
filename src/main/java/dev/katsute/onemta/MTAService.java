@@ -24,16 +24,20 @@ import dev.katsute.onemta.Json.JsonObject;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
-import java.util.Collections;
-import java.util.HashMap;
+import java.util.*;
 
-@SuppressWarnings("SpellCheckingInspection")
+@SuppressWarnings({"SpellCheckingInspection", "Convert2Diamond"})
 final class MTAService {
 
     private final RequestCache cache;
 
-    MTAService(final int cacheSeconds){
+    private final Map<String,String> busAuth, subwayAuth;
+
+    MTAService(final int cacheSeconds, final String busToken, final String subwayToken){
         this.cache = new RequestCache(cacheSeconds);
+
+        busAuth = Collections.singletonMap("key", busToken);
+        subwayAuth = Collections.singletonMap("x-api-key", subwayToken);
     }
 
     private static String encodeUTF8(final String string){
@@ -52,9 +56,9 @@ final class MTAService {
 
     final class BusService {
 
-        private final String baseURL = "https://bustime.mta.info/api/2/siri/";
+        private final String baseURL = "http://gtfsrt.prod.obanyc.com/";
 
-        private final String gtfsURL = "http://gtfsrt.prod.obanyc.com/";
+        private final String siriURL = "https://bustime.mta.info/api/2/siri/";
 
         private BusService(){ }
 
@@ -66,7 +70,7 @@ final class MTAService {
             final Boolean bus_company
         ){
             return cache.getJSON(
-                baseURL + "vehicle-monitoring.json",
+                siriURL + "vehicle-monitoring.json",
                 new HashMap<String,String>(){{
                                             put("key", token);
                                             put("version", "2");
@@ -86,7 +90,7 @@ final class MTAService {
             final Integer direction
         ){
             return cache.getJSON(
-                baseURL + "stop-monitoring.json",
+                siriURL + "stop-monitoring.json",
                 new HashMap<String,String>(){{
                                             put("key", token);
                                             put("version", "2");
@@ -99,32 +103,26 @@ final class MTAService {
             );
         }
 
-        final FeedMessage getTripUpdates(final String token){
+        final FeedMessage getTripUpdates(){
             return cache.getProtobuf(
-                gtfsURL + "tripUpdates",
-                new HashMap<String,String>(){{
-                    put("key", token);
-                }},
+                baseURL + "tripUpdates",
+                busAuth,
                 Collections.emptyMap()
             );
         }
 
-        final FeedMessage getVehiclePositions(final String token){
+        final FeedMessage getVehiclePositions(){
             return cache.getProtobuf(
-                gtfsURL + "vehiclePositions",
-                new HashMap<String,String>(){{
-                    put("key", token);
-                }},
+                baseURL + "vehiclePositions",
+                busAuth,
                 Collections.emptyMap()
             );
         }
 
-        final FeedMessage getAlerts(final String token){
+        final FeedMessage getAlerts(){
             return cache.getProtobuf(
-                gtfsURL + "alerts",
-                new HashMap<String,String>(){{
-                    put("key", token);
-                }},
+                baseURL + "alerts",
+                busAuth,
                 Collections.emptyMap()
             );
         }
@@ -137,83 +135,67 @@ final class MTAService {
 
         private SubwayService(){ }
 
-        final FeedMessage getACE(final String token){
+        final FeedMessage getACE(){
             return cache.getProtobuf(
                 baseURL + "nyct%2Fgtfs-ace",
                 Collections.emptyMap(),
-                new HashMap<String,String>(){{
-                    put("x-api-key", token);
-                }}
+                subwayAuth
             );
         }
 
-        final FeedMessage getBDFM(final String token){
+        final FeedMessage getBDFM(){
             return cache.getProtobuf(
                 baseURL + "nyct%2Fgtfs-bdfm",
                 Collections.emptyMap(),
-                new HashMap<String,String>(){{
-                    put("x-api-key", token);
-                }}
+                subwayAuth
             );
         }
 
-        final FeedMessage getG(final String token){
+        final FeedMessage getG(){
             return cache.getProtobuf(
                 baseURL + "nyct%2Fgtfs-g",
                 Collections.emptyMap(),
-                new HashMap<String,String>(){{
-                    put("x-api-key", token);
-                }}
+                subwayAuth
             );
         }
 
-        final FeedMessage getJZ(final String token){
+        final FeedMessage getJZ(){
             return cache.getProtobuf(
                 baseURL + "nyct%2Fgtfs-jz",
                 Collections.emptyMap(),
-                new HashMap<String,String>(){{
-                    put("x-api-key", token);
-                }}
+                subwayAuth
             );
         }
 
-        final FeedMessage getNQRW(final String token){
+        final FeedMessage getNQRW(){
             return cache.getProtobuf(
                 baseURL + "nyct%2Fgtfs-nqrw",
                 Collections.emptyMap(),
-                new HashMap<String,String>(){{
-                    put("x-api-key", token);
-                }}
+                subwayAuth
             );
         }
 
-        final FeedMessage getL(final String token){
+        final FeedMessage getL(){
             return cache.getProtobuf(
                 baseURL + "nyct%2Fgtfs-l",
                 Collections.emptyMap(),
-                new HashMap<String,String>(){{
-                    put("x-api-key", token);
-                }}
+                subwayAuth
             );
         }
 
-        final FeedMessage get1234567(final String token){
+        final FeedMessage get1234567(){
             return cache.getProtobuf(
                 baseURL + "nyct%2Fgtfs",
                 Collections.emptyMap(),
-                new HashMap<String,String>(){{
-                    put("x-api-key", token);
-                }}
+                subwayAuth
             );
         }
 
-        final FeedMessage getSI(final String token){
+        final FeedMessage getSI(){
             return cache.getProtobuf(
                 baseURL + "nyct%2Fgtfs-si",
                 Collections.emptyMap(),
-                new HashMap<String,String>(){{
-                    put("x-api-key", token);
-                }}
+                subwayAuth
             );
         }
 
@@ -225,13 +207,11 @@ final class MTAService {
 
         private LIRRService(){ }
 
-        final FeedMessage getLIRR(final String token){
+        final FeedMessage getLIRR(){
             return cache.getProtobuf(
                 baseURL + "lirr%2Fgtfs-lirr",
                 Collections.emptyMap(),
-                new HashMap<String,String>() {{
-                    put("x-api-key", token);
-                }}
+                subwayAuth
             );
         }
 
@@ -244,13 +224,11 @@ final class MTAService {
 
         private final String baseURL = "https://api-endpoint.mta.info/Dataservice/mtagtfsfeeds/";
 
-        final FeedMessage getMNR(final String token){
+        final FeedMessage getMNR(){
             return cache.getProtobuf(
                 baseURL + "mnr%2Fgtfs-mnr",
                 Collections.emptyMap(),
-                new HashMap<String,String>(){{
-                    put("x-api-key", token);
-                }}
+                subwayAuth
             );
         }
 
@@ -262,51 +240,35 @@ final class MTAService {
 
         private final String baseURL = "https://api-endpoint.mta.info/Dataservice/mtagtfsfeeds/";
 
-        final FeedMessage getBus(
-            final String token
-        ){
+        final FeedMessage getBus(){
             return cache.getProtobuf(
                 baseURL + "camsys%2Fbus-alerts",
                 Collections.emptyMap(),
-                new HashMap<String,String>(){{
-                    put("x-api-key", token);
-                }}
+                subwayAuth
             );
         }
 
-        final FeedMessage getSubway(
-            final String token
-        ){
+        final FeedMessage getSubway(){
             return cache.getProtobuf(
                 baseURL + "camsys%2Fsubway-alerts",
                 Collections.emptyMap(),
-                new HashMap<String,String>(){{
-                    put("x-api-key", token);
-                }}
+                subwayAuth
             );
         }
 
-        final FeedMessage getLIRR(
-            final String token
-        ){
+        final FeedMessage getLIRR(){
             return cache.getProtobuf(
                 baseURL + "camsys%2Flirr-alerts",
                 Collections.emptyMap(),
-                new HashMap<String,String>(){{
-                    put("x-api-key", token);
-                }}
+                subwayAuth
             );
         }
 
-        final FeedMessage getMNR(
-            final String token
-        ){
+        final FeedMessage getMNR(){
             return cache.getProtobuf(
                 baseURL + "camsys%2Fmnr-alerts",
                 Collections.emptyMap(),
-                new HashMap<String,String>(){{
-                    put("x-api-key", token);
-                }}
+                subwayAuth
             );
         }
 

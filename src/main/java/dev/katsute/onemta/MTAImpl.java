@@ -41,7 +41,7 @@ final class MTAImpl extends MTA {
     private final DataResource[] resources;
 
     MTAImpl(final String busToken, final String subwayToken, final int cacheSeconds, final DataResource... resources){
-        this.service     = new MTAService(cacheSeconds);
+        this.service     = new MTAService(cacheSeconds, busToken, subwayToken);
 
         this.busToken    = busToken;
         this.subwayToken = subwayToken;
@@ -103,7 +103,7 @@ final class MTAImpl extends MTA {
     @Override
     public final Bus.Alert[] getBusAlerts(){
         final List<Bus.Alert> alerts = new ArrayList<>();
-        final GTFSRealtimeProto.FeedMessage feed = service.alerts.getBus(subwayToken);
+        final GTFSRealtimeProto.FeedMessage feed = service.alerts.getBus();
         final int len = feed.getEntityCount();
         for(int i = 0; i < len; i++)
             alerts.add(MTASchema_Bus.asTransitAlert(this, feed.getEntity(i)));
@@ -121,24 +121,24 @@ final class MTAImpl extends MTA {
             case "FS":
             case "SF":
             case "SR":
-                return service.subway.getACE(subwayToken);
+                return service.subway.getACE();
             case "B":
             case "D":
             case "F":
             case "M":
-                return service.subway.getBDFM(subwayToken);
+                return service.subway.getBDFM();
             case "G":
-                return service.subway.getG(subwayToken);
+                return service.subway.getG();
             case "J":
             case "Z":
-                return service.subway.getJZ(subwayToken);
+                return service.subway.getJZ();
             case "N":
             case "Q":
             case "R":
             case "W":
-                return service.subway.getNQRW(subwayToken);
+                return service.subway.getNQRW();
             case "L":
-                return service.subway.getL(subwayToken);
+                return service.subway.getL();
             case "1":
             case "2":
             case "3":
@@ -147,9 +147,9 @@ final class MTAImpl extends MTA {
             case "6":
             case "7":
             case "GS":
-                return service.subway.get1234567(subwayToken);
+                return service.subway.get1234567();
             case "SI":
-                return service.subway.getSI(subwayToken);
+                return service.subway.getSI();
             default:
                 return null;
         }
@@ -224,7 +224,7 @@ final class MTAImpl extends MTA {
     @Override
     public final Subway.Alert[] getSubwayAlerts(){
         final List<Subway.Alert> alerts = new ArrayList<>();
-        final GTFSRealtimeProto.FeedMessage feed = service.alerts.getSubway(subwayToken);
+        final GTFSRealtimeProto.FeedMessage feed = service.alerts.getSubway();
         final int len = feed.getEntityCount();
         for(int i = 0; i < len; i++)
             alerts.add(MTASchema_Subway.asTransitAlert(this, feed.getEntity(i)));
@@ -252,7 +252,7 @@ final class MTAImpl extends MTA {
     public final LIRR.Vehicle getLIRRTrain(final String train_id){
         Objects.requireNonNull(train_id, "Train ID must not be null");
 
-        final FeedMessage feed = service.lirr.getLIRR(subwayToken);
+        final FeedMessage feed = service.lirr.getLIRR();
         final int len          = feed.getEntityCount();
 
         TripUpdate tripUpdate = null;
@@ -283,7 +283,7 @@ final class MTAImpl extends MTA {
     @Override
     public final LIRR.Alert[] getLIRRAlerts(){
         final List<LIRR.Alert> alerts = new ArrayList<>();
-        final GTFSRealtimeProto.FeedMessage feed = service.alerts.getLIRR(subwayToken);
+        final GTFSRealtimeProto.FeedMessage feed = service.alerts.getLIRR();
         final int len = feed.getEntityCount();
         for(int i = 0; i < len; i++)
             alerts.add(MTASchema_LIRR.asTransitAlert(this, feed.getEntity(i)));
@@ -310,7 +310,7 @@ final class MTAImpl extends MTA {
     @Override
     public final MNR.Vehicle getMNRTrain(final String train_id){
         Objects.requireNonNull(train_id, "Train ID must not be null");
-        final FeedMessage feed = service.mnr.getMNR(subwayToken);
+        final FeedMessage feed = service.mnr.getMNR();
         final int len = feed.getEntityCount();
 
         for(int i = 0; i < len; i++){
@@ -329,7 +329,7 @@ final class MTAImpl extends MTA {
     @Override
     public final MNR.Alert[] getMNRAlerts(){
         final List<MNR.Alert> alerts = new ArrayList<>();
-        final GTFSRealtimeProto.FeedMessage feed = service.alerts.getMNR(subwayToken);
+        final GTFSRealtimeProto.FeedMessage feed = service.alerts.getMNR();
         final int len = feed.getEntityCount();
         for(int i = 0; i < len; i++)
             alerts.add(MTASchema_MNR.asTransitAlert(this, feed.getEntity(i)));

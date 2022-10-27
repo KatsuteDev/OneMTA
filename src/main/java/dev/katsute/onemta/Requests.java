@@ -33,6 +33,7 @@ import java.util.regex.MatchResult;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+@SuppressWarnings("Convert2Diamond")
 abstract class Requests {
 
     static JsonObject getJSON(
