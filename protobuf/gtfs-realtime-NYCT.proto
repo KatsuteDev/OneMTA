@@ -1,6 +1,9 @@
 //
 // NYCT Subway extensions for the GTFS-realtime protocol.
 //
+
+syntax = "proto2";
+
 option java_package = "dev.katsute.onemta";
 option java_outer_classname = "NYCTSubwayProto";
 option optimize_for = CODE_SIZE;
