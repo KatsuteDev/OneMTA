@@ -43,7 +43,7 @@ abstract class Regex9 {
         matcher.reset();
         boolean result = matcher.find();
         if (result) {
-            @SuppressWarnings("StringBufferMayBeStringBuilder") 
+            @SuppressWarnings("StringBufferMayBeStringBuilder")
             final StringBuffer sb = new StringBuffer();
             do{
                 String replacement = replacer.apply(matcher);
