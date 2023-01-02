@@ -33,7 +33,7 @@ import java.util.Date;
  * @see TripStop
  * @see Alert
  * @since 1.0.0
- * @version 1.0.1
+ * @version 2.0.0
  * @author Katsute
  */
 public abstract class Bus {
@@ -62,233 +62,41 @@ public abstract class Bus {
      * Represents a bus vehicle.
      *
      * @since 1.0.0
-     * @version 1.0.0
+     * @version 2.0.0
      * @author Katsute
      */
-    public abstract static class Vehicle extends TransitVehicle<Route,Stop,Trip,Integer,String,Integer> implements Bearing, Location, Direction<BusDirection>, BusRouteTypes {
+    public abstract static class Vehicle extends GTFSVehicle<Route,Stop,Trip,Integer,String,Integer> implements Bearing, Location, Direction<BusDirection>, BusRouteTypes {
 
         /**
-         * Returns the origin stop code.
+         * Returns the estimated passenger count.
          *
-         * @return origin stop code
+         * @return passenger count
          *
-         * @see #getOriginStop()
-         * @since 1.0.0
+         * @since 2.0.0
          */
-        public abstract Integer getOriginStopCode();
-
-        /**
-         * Returns the origin stop.
-         *
-         * @return origin stop
-         *
-         * @see #getOriginStopCode()
-         * @since 1.0.0
-         */
-        public abstract Stop getOriginStop();
-
-        /**
-         * Returns the destination name.
-         *
-         * @return destination name
-         *
-         * @since 1.0.0
-         */
-        public abstract String getDestinationName();
-
-        /**
-         * Returns the progress rate.
-         *
-         * @return progress rate
-         *
-         * @since 1.0.0
-         */
-        public abstract String getProgressRate();
-
-        /**
-         * Returns the progress status.
-         *
-         * @return progress status
-         *
-         * @since 1.0.0
-         */
-        public abstract String[] getProgressStatus();
-
-        /**
-         * Returns the aimed arrival time.
-         *
-         * @return aimed arrival time
-         *
-         * @see Date
-         * @see #getAimedArrivalTimeEpochMillis()
-         * @since 1.0.0
-         */
-        public abstract Date getAimedArrivalTime();
-
-        /**
-         * Returns the aimed arrival time as milliseconds since epoch.
-         *
-         * @return aimed arrival time
-         *
-         * @see #getAimedArrivalTime()
-         * @since 1.0.0
-         */
-        public abstract Long getAimedArrivalTimeEpochMillis();
-
-        /**
-         * Returns the expected arrival time.
-         *
-         * @return expected arrival time
-         *
-         * @see Date
-         * @see #getExpectedArrivalTimeEpochMillis()
-         * @since 1.0.0
-         */
-        public abstract Date getExpectedArrivalTime();
-
-        /**
-         * Returns the expected arrival time as milliseconds since epoch.
-         *
-         * @return expected arrival time
-         *
-         * @see #getExpectedArrivalTime()
-         * @since 1.0.0
-         */
-        public abstract Long getExpectedArrivalTimeEpochMillis();
-
-        /**
-         * Returns the expected departure time.
-         *
-         * @return expected departure time
-         *
-         * @see Date
-         * @see #getExpectedDepartureTimeEpochMillis()
-         * @since 1.0.0
-         */
-        public abstract Date getExpectedDepartureTime();
-
-        /**
-         * Returns the expected departure time as milliseconds since epoch.
-         *
-         * @return expected departure time
-         *
-         * @see #getExpectedDepartureTime()
-         * @since 1.0.0
-         */
-        public abstract Long getExpectedDepartureTimeEpochMillis();
-
-        /**
-         * Returns the arrival proximity text.
-         *
-         * @return arrival proximity text
-         */
-        public abstract String getArrivalProximityText();
-
-        /**
-         * Returns the distance from the stop in meters.
-         *
-         * @return distance from stop
-         *
-         * @since 1.0.0
-         */
-        public abstract Integer getDistanceFromStop();
-
-        /**
-         * Returns number of stops between vehicle stop and requested stop.
-         *
-         * @return stops away
-         *
-         * @since 1.0.0
-         */
-        public abstract Integer getStopsAway();
-
-        /**
-         * Returns the stop name
-         *
-         * @return stop name
-         *
-         * @since 1.0.0
-         */
-        public abstract String getStopName();
+        public abstract Integer getPassengerCount();
 
     }
 
     /**
      * Represents a bus vehicle trip.
      *
-     * @see TripStop
+     * @see GTFSTransitTrip
      * @since 1.0.0
-     * @version 1.0.0
+     * @version 2.0.0
      * @author Katsute
      */
-    public abstract static class Trip extends TransitTrip<Vehicle,Route,TripStop> { }
+    public abstract static class Trip extends GTFSTransitTrip<Vehicle,Route,TripStop> { }
 
     /**
      * Represents a bus vehicle trip stop.
      *
-     * @see Trip
+     * @see GTFSTransitTripStop
      * @since 1.0.0
-     * @version 1.0.0
+     * @version 2.0.0
      * @author Katsute
      */
-    public abstract static class TripStop extends TransitTripStop<Stop,Trip,Integer> {
-
-        /**
-         * Returns the expected arrival time.
-         *
-         * @return expected arrival time
-         *
-         * @see Date
-         * @see #getExpectedArrivalTimeEpochMillis()
-         * @since 1.0.0
-         */
-        public abstract Date getExpectedArrivalTime();
-
-        /**
-         * Returns the expected arrival time as milliseconds since epoch.
-         *
-         * @return expected arrival time
-         *
-         * @see #getExpectedArrivalTime()
-         * @since 1.0.0
-         */
-        public abstract Long getExpectedArrivalTimeEpochMillis();
-
-        /**
-         * Returns the arrival proximity text.
-         *
-         * @return arrival proximity text
-         */
-        public abstract String getArrivalProximityText();
-
-        /**
-         * Returns the distance from the stop in meters.
-         *
-         * @return distance from stop
-         *
-         * @since 1.0.0
-         */
-        public abstract Integer getDistanceFromStop();
-
-        /**
-         * Returns number of stops between vehicle stop and requested stop.
-         *
-         * @return stops away
-         *
-         * @since 1.0.0
-         */
-        public abstract Integer getStopsAway();
-
-        /**
-         * Returns the stop name
-         *
-         * @return stop name
-         *
-         * @since 1.0.0
-         */
-        public abstract String getStopName();
-
-    }
+    public abstract static class TripStop extends GTFSTransitTripStop<Stop,Trip,Integer> { }
 
     /**
      * Represents a bus alert.

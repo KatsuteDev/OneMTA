@@ -18,6 +18,7 @@
 
 package dev.katsute.onemta.railroad;
 
+import dev.katsute.onemta.attribute.CurrentStatus;
 import dev.katsute.onemta.attribute.Location;
 import dev.katsute.onemta.types.GTFSTransitTrip;
 import dev.katsute.onemta.types.GTFSVehicle;
@@ -66,7 +67,7 @@ public abstract class MNR {
      * @version 1.0.0
      * @author Katsute
      */
-    public abstract static class Vehicle extends GTFSVehicle<Route,Stop,Trip,Integer,Integer> implements Location { }
+    public abstract static class Vehicle extends GTFSVehicle<Route,Stop,Trip,Integer,Integer,String> implements Location, CurrentStatus { }
 
     /**
      * Represents a Metro North Railroad (MNR) vehicle trip.

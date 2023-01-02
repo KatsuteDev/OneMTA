@@ -16,40 +16,24 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-package dev.katsute.onemta.railroad;
-
-import dev.katsute.onemta.attribute.Track;
-import dev.katsute.onemta.types.GTFSTransitTripStop;
-import dev.katsute.onemta.types.TransitTrip;
+package dev.katsute.onemta.attribute;
 
 /**
- * Represents a railroad trip stop.
+ * Indicates that the current status can be retrieved.
  *
- * @param <S> railroad stop type
- * @param <T> transit trip type
- *
- * @since 1.0.0
+ * @since 2.0.0
  * @version 2.0.0
  * @author Katsute
  */
-public abstract class RailroadTripStop<S extends RailroadStop<?,?>, T extends TransitTrip<?,?,?>> extends GTFSTransitTripStop<S,T,Integer> implements Track {
+public interface CurrentStatus {
 
     /**
-     * Returns the delay in seconds.
+     * Returns the current vehicle status.
      *
-     * @return delay
+     * @return vehicle status
      *
      * @since 1.0.0
      */
-    public abstract Integer getDelay();
-
-    /**
-     * Returns the train status.
-     *
-     * @return train status
-     *
-     * @since 1.0.0
-     */
-    public abstract String getTrainStatus();
+    String getCurrentStatus();
 
 }

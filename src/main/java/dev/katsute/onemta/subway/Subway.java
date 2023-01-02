@@ -18,9 +18,7 @@
 
 package dev.katsute.onemta.subway;
 
-import dev.katsute.onemta.attribute.Direction;
-import dev.katsute.onemta.attribute.RouteDescription;
-import dev.katsute.onemta.attribute.RouteShortName;
+import dev.katsute.onemta.attribute.*;
 import dev.katsute.onemta.types.*;
 
 /**
@@ -76,7 +74,7 @@ public abstract class Subway {
      * @version 1.0.0
      * @author Katsute
      */
-    public abstract static class Vehicle extends GTFSVehicle<Route,Stop,Trip,String,String> {
+    public abstract static class Vehicle extends GTFSVehicle<Route,Stop,Trip,String,String,String> implements CurrentStatus {
 
         /**
          * Returns if the train is running express.
@@ -104,10 +102,10 @@ public abstract class Subway {
      *
      * @since Trip
      * @since 1.0.0
-     * @version 1.0.0
+     * @version 2.0.0
      * @author Katsute
      */
-    public abstract static class TripStop extends GTFSTransitTripStop<Stop,Trip,String> {
+    public abstract static class TripStop extends GTFSTransitTripStop<Stop,Trip,String> implements Track {
 
         /**
          * Returns the actual track that a subway train arrived at.

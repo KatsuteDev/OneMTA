@@ -18,16 +18,16 @@
 
 package dev.katsute.onemta;
 
-import dev.katsute.onemta.Json.JsonObject;
+import dev.katsute.onemta.bus.Bus;
 import dev.katsute.onemta.bus.BusDirection;
 import dev.katsute.onemta.types.TransitAgency;
 import dev.katsute.onemta.types.TransitAlertPeriod;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.regex.Pattern;
 
+import static dev.katsute.onemta.GTFSRealtimeProto.*;
 import static dev.katsute.onemta.bus.Bus.*;
 
 @SuppressWarnings({"SpellCheckingInspection", "ConstantConditions"})
@@ -226,46 +226,44 @@ abstract class MTASchema_Bus extends MTASchema {
 
             private Vehicle[] getVehicles(final boolean update){
                 if(vehicles == null || update){
-                    final JsonObject json = cast(mta).service.bus.getVehicle(cast(mta).busToken, null, routeID, null, bc);
-
-                    final JsonObject vehicleMonitoringDelivery = json
-                        .getJsonObject("Siri")
-                        .getJsonObject("ServiceDelivery")
-                        .getJsonArray("VehicleMonitoringDelivery")[0];
-
-                    final JsonObject[] vehicleActivity =
-                        vehicleMonitoringDelivery.containsKey("VehicleActivity")
-                        ? vehicleMonitoringDelivery.getJsonArray("VehicleActivity")
-                        : new JsonObject[0];
+                    final FeedMessage feed = cast(mta).service.bus.getTripUpdates();
+                    final int len          = feed.getEntityCount();
 
                     final List<Vehicle> vehicles = new ArrayList<>();
-                    for(final JsonObject obj : vehicleActivity)
-                        vehicles.add(asVehicle(mta, obj.getJsonObject("MonitoredVehicleJourney"), this, null));
+                    for(int i = 0; i < len; i++){
+                        final FeedEntity entity = feed.getEntity(i);
+                        // only include trips with vehicles
+                        if(entity.hasVehicle() && entity.hasTripUpdate())
+                            // only include vehicles on this route
+                            if(entity.getTripUpdate().getTrip().getRouteId().equals(routeID))
+                                vehicles.add(asVehicle(mta, entity.getVehicle(), entity.getTripUpdate(), this));
+                    }
+
                     this.vehicles = Collections.unmodifiableList(vehicles);
                 }
                 return vehicles.toArray(new Vehicle[0]);
             }
 
-            private List<Alert> alerts = null;
+            private List<Bus.Alert> alerts = null;
 
             @Override
-            public final Alert[] getAlerts(){
+            public final Bus.Alert[] getAlerts(){
                 return getAlerts(false);
             }
 
-            private Alert[] getAlerts(final boolean update){
+            private Bus.Alert[] getAlerts(final boolean update){
                 if(alerts == null || update){
-                    final List<Alert> alerts = new ArrayList<>();
-                    final GTFSRealtimeProto.FeedMessage feed = cast(mta).service.alerts.getBus();
+                    final List<Bus.Alert> alerts = new ArrayList<>();
+                    final FeedMessage feed = cast(mta).service.alerts.getBus();
                     final int len = feed.getEntityCount();
                     for(int i = 0; i < len; i++){
-                        final Alert alert = MTASchema_Bus.asTransitAlert(mta, feed.getEntity(i));
+                        final Bus.Alert alert = MTASchema_Bus.asTransitAlert(mta, feed.getEntity(i));
                         if(Arrays.asList(alert.getRouteIDs()).contains(route_id))
                             alerts.add(alert);
                     }
                     this.alerts = alerts;
                 }
-                return alerts.toArray(new Alert[0]);
+                return alerts.toArray(new Bus.Alert[0]);
             }
 
             @Override
@@ -386,46 +384,61 @@ abstract class MTASchema_Bus extends MTASchema {
 
             private Vehicle[] getVehicles(final boolean update){
                 if(vehicles == null || update){
-                    final JsonObject json = cast(mta).service.bus.getStop(cast(mta).busToken, stop_id, null, null);
+                    final String stop = String.valueOf(stopID);
 
-                    final JsonObject stopMonitoringDelivery = json
-                        .getJsonObject("Siri")
-                        .getJsonObject("ServiceDelivery")
-                        .getJsonArray("StopMonitoringDelivery")[0];
-
-                    final JsonObject[] monitoredStopVisit =
-                        stopMonitoringDelivery.containsKey("MonitoredStopVisit")
-                        ? stopMonitoringDelivery.getJsonArray("MonitoredStopVisit")
-                        : new JsonObject[9];
+                    final FeedMessage feed = cast(mta).service.mnr.getMNR();
+                    final int len          = feed.getEntityCount();
 
                     final List<Vehicle> vehicles = new ArrayList<>();
-                    for(final JsonObject obj : monitoredStopVisit)
-                        vehicles.add(asVehicle(mta, obj.getJsonObject("MonitoredVehicleJourney"), null, this));
+                    OUTER:
+                    for(int i = 0; i < len; i++){
+                        final FeedEntity entity = feed.getEntity(i);
+                        // only include trips with vehicles
+                        if(
+                            entity.hasVehicle() &&
+                            entity.hasTripUpdate()
+                        ){
+                            if(entity.getTripUpdate().getStopTimeUpdateCount() > 0){
+                                final TripUpdate tu = entity.getTripUpdate();
+                                final int len2 = tu.getStopTimeUpdateCount();
+                                // check all stops on train route
+                                for(int u = 0; u < len2; u++){
+                                    final TripUpdate.StopTimeUpdate stu = tu.getStopTimeUpdate(u);
+                                    // check if this stop is en route
+                                    if(stu.getStopId().equalsIgnoreCase(stop)){
+                                        vehicles.add(asVehicle(mta, entity.getVehicle(), entity.getTripUpdate(), null));
+                                        continue OUTER;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
                     this.vehicles = Collections.unmodifiableList(vehicles);
                 }
                 return vehicles.toArray(new Vehicle[0]);
             }
 
-            private List<Alert> alerts = null;
+            private List<Bus.Alert> alerts = null;
 
             @Override
-            public final Alert[] getAlerts(){
+            public final Bus.Alert[] getAlerts(){
                 return getAlerts(false);
             }
 
-            private Alert[] getAlerts(final boolean update){
+            private Bus.Alert[] getAlerts(final boolean update){
                 if(alerts == null || update){
-                    final List<Alert> alerts = new ArrayList<>();
-                    final GTFSRealtimeProto.FeedMessage feed = cast(mta).service.alerts.getBus();
+                    final List<Bus.Alert> alerts = new ArrayList<>();
+                    final FeedMessage feed = cast(mta).service.alerts.getBus();
                     final int len = feed.getEntityCount();
                     for(int i = 0; i < len; i++){
-                        final Alert alert = MTASchema_Bus.asTransitAlert(mta, feed.getEntity(i));
+                        final Bus.Alert alert = MTASchema_Bus.asTransitAlert(mta, feed.getEntity(i));
                         if(Arrays.asList(alert.getStopIDs()).contains(stop_id))
                             alerts.add(alert);
                     }
                     this.alerts = alerts;
                 }
-                return alerts.toArray(new Alert[0]);
+                return alerts.toArray(new Bus.Alert[0]);
             }
 
             // onemta methods
@@ -470,59 +483,22 @@ abstract class MTASchema_Bus extends MTASchema {
 
     private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
 
-    static Vehicle asVehicle(final MTA mta, final JsonObject monitoredVehicleJourney, final Route optionalRoute, final Stop optionalStop){
-        final JsonObject monitoredCall = monitoredVehicleJourney.getJsonObject("MonitoredCall");
+    static Vehicle asVehicle(final MTA mta, final VehiclePosition vehicle, final TripUpdate tripUpdate, final Route optionalRoute){
+        final CrowdingProto.CrowdingDescriptor crowdingDescriptor = vehicle.getExtension(CrowdingProto.crowdingDescriptor);
         return new Vehicle() {
 
-            private final Integer vehicleID = requireNonNull(() -> Integer.valueOf(monitoredVehicleJourney.getString("VehicleRef").substring(9)));
+            private final Integer vehicleID = requireNonNull(() -> Integer.parseInt(vehicle.getVehicle().getLabel().split("_")[1]));
 
-            private Double latitude  = requireNonNull(() -> monitoredVehicleJourney.getJsonObject("VehicleLocation").getDouble("Latitude"));
-            private Double longitude = requireNonNull(() -> monitoredVehicleJourney.getJsonObject("VehicleLocation").getDouble("Longitude"));
-            // bearing is inverted
-            private Double bearing   = requireNonNull(() -> 360 - monitoredVehicleJourney.getDouble("Bearing"));
+            private Double latitude = requireNonNull(() -> Double.valueOf(vehicle.getPosition().getLatitude()));
+            private Double longitude = requireNonNull(() -> Double.valueOf(vehicle.getPosition().getLongitude()));
+            private Double bearing = requireNonNull(() -> Double.valueOf(vehicle.getPosition().getBearing()));
 
-            private BusDirection direction = requireNonNull(() -> BusDirection.asDirection(monitoredVehicleJourney.getInt("DirectionRef")));
+            private Integer stopID = requireNonNull(() -> Integer.valueOf(vehicle.getStopId()));
+            private String routeID = requireNonNull(() -> tripUpdate.getTrip().getRouteId());
 
-            private String routeID  = requireNonNull(() -> monitoredVehicleJourney.getString("LineRef").substring(monitoredVehicleJourney.getString("LineRef").indexOf('_') + 1));
-            private Integer stopID  = requireNonNull(() -> Integer.valueOf(monitoredCall.getString("StopPointRef").substring(4)));
-            private String stopName = requireNonNull(() -> monitoredCall.getStringArray("StopPointName")[0]);
+            private BusDirection direction = requireNonNull(() -> BusDirection.asDirection(tripUpdate.getTrip().getDirectionId()));
 
-            private Integer originStopCode = requireNonNull(() -> Integer.valueOf(monitoredVehicleJourney.getString("OriginRef").substring(4)));
-
-            private String destinationName = requireNonNull(() -> monitoredVehicleJourney.getStringArray("DestinationName")[0]);
-
-            private String progressRate     = requireNonNull(() -> monitoredVehicleJourney.getString("ProgressRate"));
-            private String[] progressStatus = requireNonNull(() -> monitoredVehicleJourney.getStringArray("ProgressStatus"));
-
-            private Long aimedArrivalTime      = requireNonNull(() -> {
-                try{
-                    return sdf.parse(monitoredCall.getString("AimedArrivalTime")).getTime();
-                }catch(final ParseException e){
-                    throw new RuntimeException(e);
-                }
-            });
-
-            private Long expectedArrivalTime   = requireNonNull(() -> {
-                try{
-                    return sdf.parse(monitoredCall.getString("ExpectedArrivalTime")).getTime();
-                }catch(final ParseException e){
-                    throw new RuntimeException(e);
-                }
-            });
-
-            private Long expectedDepartureTime = requireNonNull(() -> {
-                try{
-                    return sdf.parse(monitoredCall.getString("ExpectedDepartureTime")).getTime();
-                }catch(final ParseException e){
-                    throw new RuntimeException(e);
-                }
-            });
-
-            private String arrivalProximityText = requireNonNull(() -> monitoredCall.getString("ArrivalProximityText"));
-            private Integer distanceFromStop      = requireNonNull(() -> monitoredCall.getInt("DistanceFromStop"));
-            private Integer stopsAway = requireNonNull(() -> monitoredCall.getInt("NumberOfStopsAway"));
-
-            private Trip trip = monitoredVehicleJourney.containsKey("OnwardCalls") ? asTrip(mta, monitoredVehicleJourney.getJsonObject("OnwardCalls"), this) : null;
+            private Integer passengers = requireNonNull(crowdingDescriptor::getEstimatedCount);
 
             @Override
             public final Integer getVehicleID(){
@@ -550,79 +526,8 @@ abstract class MTASchema_Bus extends MTASchema {
             }
 
             @Override
-            public final Integer getOriginStopCode(){
-                return originStopCode;
-            }
-
-            private Stop originStop = null;
-
-            @Override
-            public final Stop getOriginStop(){
-                return originStopCode != null
-                    ? originStop != null
-                        ? originStop
-                        : (originStop = mta.getBusStop(originStopCode))
-                    : null;
-            }
-
-            @Override
-            public final String getDestinationName(){
-                return destinationName;
-            }
-
-            @Override
-            public final String getProgressRate(){
-                return progressRate;
-            }
-
-            @Override
-            public final String[] getProgressStatus(){
-                return progressStatus;
-            }
-
-            @Override
-            public final Date getAimedArrivalTime(){
-                return aimedArrivalTime != null ? new Date(aimedArrivalTime) : null;
-            }
-
-            @Override
-            public final Long getAimedArrivalTimeEpochMillis(){
-                return aimedArrivalTime;
-            }
-
-            @Override
-            public final Date getExpectedArrivalTime(){
-                return expectedArrivalTime != null ? new Date(expectedArrivalTime) : null;
-            }
-
-            @Override
-            public final Long getExpectedArrivalTimeEpochMillis(){
-                return expectedArrivalTime;
-            }
-
-            @Override
-            public final Date getExpectedDepartureTime(){
-                return expectedDepartureTime != null ? new Date(expectedDepartureTime) : null;
-            }
-
-            @Override
-            public final Long getExpectedDepartureTimeEpochMillis(){
-                return expectedDepartureTime;
-            }
-
-            @Override
-            public final String getArrivalProximityText(){
-                return arrivalProximityText;
-            }
-
-            @Override
-            public final Integer getDistanceFromStop(){
-                return distanceFromStop;
-            }
-
-            @Override
-            public final Integer getStopsAway(){
-                return stopsAway;
+            public final Integer getPassengerCount() {
+                return passengers;
             }
 
             @Override
@@ -633,11 +538,6 @@ abstract class MTASchema_Bus extends MTASchema {
             @Override
             public final Integer getStopID(){
                 return stopID;
-            }
-
-            @Override
-            public final String getStopName(){
-                return stopName;
             }
 
             // onemta methods
@@ -680,20 +580,15 @@ abstract class MTASchema_Bus extends MTASchema {
                    : null;
             }
 
+            private Trip trip = asTrip(mta, tripUpdate, this);
+
             @Override
             public final Trip getTrip(){
                 return getTrip(false);
             }
 
             private Trip getTrip(final boolean update){
-                if(trip != null && !update)
-                    return trip;
-                else{
-                    final Vehicle bus = mta.getBus(vehicleID);
-                    if(bus != null)
-                        return (trip = bus.getTrip());
-                }
-                return null;
+                return !update ? trip : (trip = mta.getBus(vehicleID).getTrip());
             }
 
             @Override
@@ -722,17 +617,6 @@ abstract class MTASchema_Bus extends MTASchema {
                 direction  = vehicle.getDirection();
                 routeID    = vehicle.getRouteID();
                 stopID     = vehicle.getStopID();
-                stopName   = vehicle.getStopName();
-                originStopCode  = vehicle.getOriginStopCode();
-                destinationName = vehicle.getDestinationName();
-                progressRate    = vehicle.getProgressRate();
-                progressStatus  = vehicle.getProgressStatus();
-                aimedArrivalTime      = vehicle.getAimedArrivalTimeEpochMillis();
-                expectedArrivalTime   = vehicle.getExpectedArrivalTimeEpochMillis();
-                expectedDepartureTime = vehicle.getExpectedDepartureTimeEpochMillis();
-                arrivalProximityText  = vehicle.getArrivalProximityText();
-                distanceFromStop      = vehicle.getDistanceFromStop();
-                stopsAway             = vehicle.getStopsAway();
             }
 
             // Java
@@ -747,49 +631,49 @@ abstract class MTASchema_Bus extends MTASchema {
                        ", direction=" + direction +
                        ", routeID='" + routeID + '\'' +
                        ", stopID=" + stopID +
-                       ", stopName='" + stopName + '\'' +
-                       ", originStopCode=" + originStopCode +
-                       ", destinationName='" + destinationName + '\'' +
-                       ", progressRate='" + progressRate + '\'' +
-                       ", progressStatus=" + Arrays.toString(progressStatus) +
-                       ", aimedArrivalTime=" + aimedArrivalTime +
-                       ", expectedArrivalTime=" + expectedArrivalTime +
-                       ", expectedDepartureTime=" + expectedDepartureTime +
-                       ", arrivalProximityText='" + arrivalProximityText + '\'' +
-                       ", distanceFromStop=" + distanceFromStop +
-                       ", stopsAway=" + stopsAway +
                        '}';
             }
 
         };
     }
 
-    static Trip asTrip(final MTA mta, final JsonObject onwardCalls, final Vehicle referringVehicle){
+    static Trip asTrip(final MTA mta, final TripUpdate tripUpdate, final Vehicle referringVehicle){
         return new Trip() {
 
             private final Vehicle vehicle = referringVehicle;
+
+            private final String tripID  = requireNonNull(() -> tripUpdate.getTrip().getTripId());
+            private final String routeID = requireNonNull(() -> tripUpdate.getTrip().getRouteId());
 
             private final List<TripStop> tripStops;
 
             {
                 final List<TripStop> stops = new ArrayList<>();
-
-                if(onwardCalls != null && onwardCalls.containsKey("OnwardCall"))
-                    for(final JsonObject obj : onwardCalls.getJsonArray("OnwardCall"))
-                        stops.add(asTripStop(mta, obj, this));
+                for(final TripUpdate.StopTimeUpdate update : tripUpdate.getStopTimeUpdateList())
+                    stops.add(asTripStop(mta, update, this));
                 tripStops = Collections.unmodifiableList(stops);
+            }
+
+            @Override
+            public final String getTripID(){
+                return tripID;
+            }
+
+            @Override
+            public final String getRouteID(){
+                return routeID;
             }
 
             // onemta methods
 
             @Override
-            public final Vehicle getVehicle(){
-                return vehicle;
+            public final Route getRoute(){
+                return vehicle.getRoute();
             }
 
             @Override
-            public final Route getRoute(){
-                return vehicle.getRoute();
+            public final Vehicle getVehicle(){
+                return vehicle;
             }
 
             @Override
@@ -802,65 +686,47 @@ abstract class MTASchema_Bus extends MTASchema {
             @Override
             public final String toString(){
                 return "Bus.Trip{" +
+                       "tripID='" + tripID + '\'' +
+                       ", routeID='" + routeID + '\'' +
                        '}';
             }
 
         };
     }
 
-    static TripStop asTripStop(final MTA mta, final JsonObject onwardCall, final Trip referringTrip){
+    static TripStop asTripStop(final MTA mta, final TripUpdate.StopTimeUpdate stopTimeUpdate, final Trip referringTrip){
         return new TripStop() {
 
             private final Trip trip = referringTrip;
 
-            private final Integer stopID  = requireNonNull(() -> Integer.valueOf(onwardCall.getString("StopPointRef").substring(4)));
-            private final String stopName = requireNonNull(() -> onwardCall.getStringArray("StopPointName")[0]);
+            private final Integer stopID = requireNonNull(() -> Integer.parseInt(stopTimeUpdate.getStopId()));
 
-            private final Long expectedArrivalTime = requireNonNull(() -> {
-                try{
-                    return sdf.parse(onwardCall.getString("ExpectedArrivalTime")).getTime();
-                }catch(final ParseException e){
-                    throw new RuntimeException(e);
-                }
-            });
-
-            private final String arrivalProximityText = requireNonNull(() -> onwardCall.getString("ArrivalProximityText"));
-            private final Integer distanceFromStop    = requireNonNull(() -> onwardCall.getInt("DistanceFromStop"));
-            private final Integer stopsAway           = requireNonNull(() -> onwardCall.getInt("NumberOfStopsAway"));
-
-            @Override
-            public final Long getExpectedArrivalTimeEpochMillis(){
-                return expectedArrivalTime;
-            }
-
-            @Override
-            public final Date getExpectedArrivalTime(){
-                return expectedArrivalTime != null ? new Date(expectedArrivalTime) : null;
-            }
-
-            @Override
-            public final String getArrivalProximityText(){
-                return arrivalProximityText;
-            }
-
-            @Override
-            public final Integer getDistanceFromStop(){
-                return distanceFromStop;
-            }
-
-            @Override
-            public final Integer getStopsAway(){
-                return stopsAway;
-            }
-
-            @Override
-            public final String getStopName(){
-                return stopName;
-            }
+            private final Long arrival   = requireNonNull(() -> stopTimeUpdate.getArrival().getTime() * 1000);
+            private final Long departure = requireNonNull(() -> stopTimeUpdate.getDeparture().getTime() * 1000);
 
             @Override
             public final Integer getStopID(){
                 return stopID;
+            }
+
+            @Override
+            public final Date getArrivalTime(){
+                return arrival != null ? new Date(arrival) : null;
+            }
+
+            @Override
+            public final Long getArrivalTimeEpochMillis(){
+                return arrival;
+            }
+
+            @Override
+            public final Date getDepartureTime(){
+                return departure != null ? new Date(departure) : null;
+            }
+
+            @Override
+            public final Long getDepartureTimeEpochMillis(){
+                return departure;
             }
 
             // onemta methods
@@ -881,22 +747,19 @@ abstract class MTASchema_Bus extends MTASchema {
 
             @Override
             public final String toString(){
-                return "Bus.TripStop{" +
-                       "stopID=" + stopID +
-                       ", stopName='" + stopName + '\'' +
-                       ", expectedArrivalTime=" + expectedArrivalTime +
-                       ", arrivalProximityText='" + arrivalProximityText + '\'' +
-                       ", distanceFromStop=" + distanceFromStop +
-                       ", stopsAway=" + stopsAway +
+                return "TripStop{" +
+                       "stopID='" + stopID + '\'' +
+                       ", arrival=" + arrival +
+                       ", departure=" + departure +
                        '}';
             }
 
         };
     }
 
-    static Alert asTransitAlert(final MTA mta, final GTFSRealtimeProto.FeedEntity feedEntity){
+    static Bus.Alert asTransitAlert(final MTA mta, final GTFSRealtimeProto.FeedEntity feedEntity){
         final GTFSRealtimeProto.Alert alert = feedEntity.getAlert();
-        return new Alert() {
+        return new Bus.Alert() {
 
             private final String alertID = requireNonNull(feedEntity::getId);
 

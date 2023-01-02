@@ -456,8 +456,6 @@ abstract class MTASchema_MNR extends MTASchema {
             private final String tripID  = requireNonNull(() -> tripUpdate.getTrip().getTripId());
             private final String routeID = requireNonNull(() -> tripUpdate.getTrip().getRouteId());
 
-            private final String scheRel = requireNonNull(() -> tripUpdate.getTrip().getScheduleRelationship().name());
-
             private final List<TripStop> tripStops;
 
             {
@@ -490,11 +488,6 @@ abstract class MTASchema_MNR extends MTASchema {
             }
 
             @Override
-            public final String getScheduleRelationship(){
-                return scheRel;
-            }
-
-            @Override
             public final TripStop[] getTripStops(){
                 return tripStops.toArray(new TripStop[0]);
             }
@@ -506,7 +499,6 @@ abstract class MTASchema_MNR extends MTASchema {
                 return "MNR.Trip{" +
                        "tripID='" + tripID + '\'' +
                        ", routeID='" + routeID + '\'' +
-                       ", scheduleRelationship='" + scheRel + '\'' +
                        '}';
             }
 

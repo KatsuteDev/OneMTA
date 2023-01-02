@@ -498,8 +498,6 @@ abstract class MTASchema_Subway extends MTASchema {
 
             private boolean express = routeID.toUpperCase().endsWith("X");
 
-            private Trip trip = asTrip(mta, tripUpdate, this);
-
             @Override
             public final String getVehicleID(){
                 return vehicleID;
@@ -540,6 +538,8 @@ abstract class MTASchema_Subway extends MTASchema {
             public final Route getRoute(){
                 return route != null ? route : (route = mta.getSubwayRoute(routeID));
             }
+
+            private Trip trip = asTrip(mta, tripUpdate, this);
 
             @Override
             public final Trip getTrip(){
@@ -586,8 +586,6 @@ abstract class MTASchema_Subway extends MTASchema {
             private final String tripID  = requireNonNull(() -> tripUpdate.getTrip().getTripId());
             private final String routeID = requireNonNull(() -> tripUpdate.getTrip().getRouteId());
 
-            private final String scheRel = requireNonNull(() -> tripUpdate.getTrip().getScheduleRelationship().name());
-
             private final SubwayDirection direction = requireNonNull(
                 () -> nyctTripDescriptor.hasDirection()
                 ? SubwayDirection.asDirection(nyctTripDescriptor.getDirection().getNumber())
@@ -611,11 +609,6 @@ abstract class MTASchema_Subway extends MTASchema {
             @Override
             public final String getRouteID(){
                 return routeID;
-            }
-
-            @Override
-            public final String getScheduleRelationship(){
-                return scheRel;
             }
 
             @Override
@@ -648,7 +641,6 @@ abstract class MTASchema_Subway extends MTASchema {
                        "tripID='" + tripID + '\'' +
                        ", routeID='" + routeID + '\'' +
                        ", direction=" + direction +
-                       ", scheduleRelationship='" + scheRel + '\'' +
                        '}';
             }
 

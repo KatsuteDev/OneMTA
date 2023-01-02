@@ -28,18 +28,9 @@ package dev.katsute.onemta.types;
  * @param <RID> route ID format
  *
  * @since 1.0.0
- * @version 1.0.0
+ * @version 2.0.0
  * @author Katsute
  */
-public abstract class GTFSVehicle<R extends TransitRoute<?,?,?>, S extends TransitStop<?,?,?>, T extends TransitTrip<?,?,?>, SID, RID> extends TransitVehicle<R,S,T,SID,RID,String> {
-
-    /**
-     * Returns the current vehicle status.
-     *
-     * @return vehicle status
-     *
-     * @since 1.0.0
-     */
-    public abstract String getCurrentStatus();
+public abstract class GTFSVehicle<R extends TransitRoute<?,?,?>, S extends TransitStop<?,?,?>, T extends TransitTrip<?,?,?>, SID, RID, VID> extends TransitVehicle<R,S,T,SID,RID,VID> {
 
 }

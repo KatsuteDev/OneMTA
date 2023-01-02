@@ -28,7 +28,7 @@ import java.util.Date;
  * @param <SID> stop ID format
  *
  * @since 1.0.0
- * @version 1.0.0
+ * @version 2.0.0
  * @author Katsute
  */
 public abstract class GTFSTransitTripStop<S extends TransitStop<?,?,?>, T extends TransitTrip<?,?,?>, SID> extends TransitTripStop<S,T,SID> {
@@ -74,14 +74,5 @@ public abstract class GTFSTransitTripStop<S extends TransitStop<?,?,?>, T extend
      * @since 1.0.0
      */
     public abstract Long getDepartureTimeEpochMillis();
-
-    /**
-     * Returns the track.
-     *
-     * @return track
-     *
-     * @since 1.0.0
-     */
-    public abstract String getTrack();
 
 }
