@@ -18,7 +18,7 @@
 
 package dev.katsute.onemta.subway;
 
-import dev.katsute.onemta.attribute.*;
+import dev.katsute.onemta.attribute.Direction;
 import dev.katsute.onemta.types.*;
 
 /**
@@ -45,7 +45,27 @@ public abstract class Subway {
      * @version 1.0.0
      * @author Katsute
      */
-    public abstract static class Route extends TransitRoute<String,Vehicle,Alert> implements RouteShortName, RouteDescription { }
+    public abstract static class Route extends TransitRoute<String,Vehicle,Alert> {
+
+        /**
+         * Returns the short route name.
+         *
+         * @return route short name
+         *
+         * @since 1.0.0
+         */
+        public abstract String getRouteShortName();
+
+        /**
+         * Returns the route description.
+         *
+         * @return route description
+         *
+         * @since 1.0.0
+         */
+        public abstract String getRouteDescription();
+
+    }
 
     /**
      * Represents a subway stop.
@@ -74,7 +94,16 @@ public abstract class Subway {
      * @version 1.0.0
      * @author Katsute
      */
-    public abstract static class Vehicle extends GTFSVehicle<Route,Stop,Trip,String,String,String> implements CurrentStatus {
+    public abstract static class Vehicle extends GTFSVehicle<Route,Stop,Trip,String,String,String> {
+
+        /**
+         * Returns the current vehicle status.
+         *
+         * @return vehicle status
+         *
+         * @since 1.0.0
+         */
+        public abstract String getCurrentStatus();
 
         /**
          * Returns if the train is running express.
@@ -105,7 +134,7 @@ public abstract class Subway {
      * @version 2.0.0
      * @author Katsute
      */
-    public abstract static class TripStop extends GTFSTransitTripStop<Stop,Trip,String> implements Track {
+    public abstract static class TripStop extends GTFSTransitTripStop<Stop,Trip,String> {
 
         /**
          * Returns the actual track that a subway train arrived at.
@@ -115,6 +144,15 @@ public abstract class Subway {
          * @since 1.0.0
          */
         public abstract String getActualTrack();
+
+        /**
+         * Returns the track.
+         *
+         * @return track
+         *
+         * @since 1.0.0
+         */
+        public abstract String getTrack();
 
     }
 

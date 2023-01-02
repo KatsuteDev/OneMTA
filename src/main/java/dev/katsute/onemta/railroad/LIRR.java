@@ -18,8 +18,6 @@
 
 package dev.katsute.onemta.railroad;
 
-import dev.katsute.onemta.attribute.Bearing;
-import dev.katsute.onemta.attribute.CurrentStatus;
 import dev.katsute.onemta.attribute.Direction;
 import dev.katsute.onemta.attribute.Location;
 import dev.katsute.onemta.types.GTFSTransitTrip;
@@ -70,7 +68,27 @@ public abstract class LIRR {
      * @version 1.0.0
      * @author Katsute
      */
-    public abstract static class Vehicle extends GTFSVehicle<Route,Stop,Trip,Integer,Integer,String>  implements Bearing, Location, CurrentStatus { }
+    public abstract static class Vehicle extends GTFSVehicle<Route,Stop,Trip,Integer,Integer,String> implements Location {
+
+        /**
+         * Returns the vehicle bearing, 0 being North.
+         *
+         * @return bearing
+         *
+         * @since 1.0.0
+         */
+        public abstract Double getBearing();
+
+        /**
+         * Returns the current vehicle status.
+         *
+         * @return vehicle status
+         *
+         * @since 1.0.0
+         */
+        public abstract String getCurrentStatus();
+
+    }
 
     /**
      * Represents a Long Island Railroad (LIRR) vehicle trip.
@@ -101,7 +119,18 @@ public abstract class LIRR {
      * @version 1.0.0
      * @author Katsute
      */
-    public abstract static class TripStop extends RailroadTripStop<Stop,Trip> { }
+    public abstract static class TripStop extends RailroadTripStop<Stop,Trip> {
+
+        /**
+         * Returns the track.
+         *
+         * @return track
+         *
+         * @since 1.0.0
+         */
+        public abstract String getTrack();
+
+    }
 
     /**
      * Represents a Long Island Railroad (LIRR) alert.

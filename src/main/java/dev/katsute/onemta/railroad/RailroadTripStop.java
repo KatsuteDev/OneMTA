@@ -18,7 +18,6 @@
 
 package dev.katsute.onemta.railroad;
 
-import dev.katsute.onemta.attribute.Track;
 import dev.katsute.onemta.types.GTFSTransitTripStop;
 import dev.katsute.onemta.types.TransitTrip;
 
@@ -32,7 +31,7 @@ import dev.katsute.onemta.types.TransitTrip;
  * @version 2.0.0
  * @author Katsute
  */
-public abstract class RailroadTripStop<S extends RailroadStop<?,?>, T extends TransitTrip<?,?,?>> extends GTFSTransitTripStop<S,T,Integer> implements Track {
+public abstract class RailroadTripStop<S extends RailroadStop<?,?>, T extends TransitTrip<?,?,?>> extends GTFSTransitTripStop<S,T,Integer> {
 
     /**
      * Returns the delay in seconds.

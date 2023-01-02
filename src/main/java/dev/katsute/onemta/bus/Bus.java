@@ -18,10 +18,9 @@
 
 package dev.katsute.onemta.bus;
 
-import dev.katsute.onemta.attribute.*;
+import dev.katsute.onemta.attribute.Direction;
+import dev.katsute.onemta.attribute.Location;
 import dev.katsute.onemta.types.*;
-
-import java.util.Date;
 
 /**
  * Represents bus related objects.
@@ -47,7 +46,27 @@ public abstract class Bus {
      * @version 1.0.0
      * @author Katsute
      */
-    public abstract static class Route extends TransitRoute<String,Vehicle,Alert> implements RouteShortName, RouteDescription, BusRouteTypes { }
+    public abstract static class Route extends TransitRoute<String,Vehicle,Alert> implements BusRouteTypes {
+
+        /**
+         * Returns the short route name.
+         *
+         * @return route short name
+         *
+         * @since 1.0.0
+         */
+        public abstract String getRouteShortName();
+
+        /**
+         * Returns the route description.
+         *
+         * @return route description
+         *
+         * @since 1.0.0
+         */
+        public abstract String getRouteDescription();
+
+    }
 
     /**
      * Represents a bus stop.
@@ -65,7 +84,16 @@ public abstract class Bus {
      * @version 2.0.0
      * @author Katsute
      */
-    public abstract static class Vehicle extends GTFSVehicle<Route,Stop,Trip,Integer,String,Integer> implements Bearing, Location, Direction<BusDirection>, BusRouteTypes {
+    public abstract static class Vehicle extends GTFSVehicle<Route,Stop,Trip,Integer,String,Integer> implements Location, Direction<BusDirection>, BusRouteTypes {
+
+        /**
+         * Returns the vehicle bearing, 0 being North.
+         *
+         * @return bearing
+         *
+         * @since 1.0.0
+         */
+        public abstract Double getBearing();
 
         /**
          * Returns the estimated passenger count.
