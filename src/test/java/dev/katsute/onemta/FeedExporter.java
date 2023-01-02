@@ -19,6 +19,7 @@ final class FeedExporter {
     @BeforeAll
     static void beforeAll(){
         Assumptions.assumeFalse("true".equalsIgnoreCase(System.getenv("CI")));
+        Assertions.assertTrue(new File("reference").exists() || new File("reference").mkdirs());
 
         mta = (MTAImpl) TestProvider.getOneMTA();
     }
@@ -67,7 +68,19 @@ final class FeedExporter {
     }
 
     @Test
-    final void exportAltFeeds() throws IOException{
+    final void exportAllFeeds() throws IOException{
+        Files.write(
+            new File("reference/bus-trip-gtfs.json").toPath(),
+            JsonFormat.printer().print(mta.service.bus.getTripUpdates(mta.busToken)).getBytes(StandardCharsets.UTF_8)
+        );
+        Files.write(
+            new File("reference/bus-position-gtfs.json").toPath(),
+            JsonFormat.printer().print(mta.service.bus.getVehiclePositions(mta.busToken)).getBytes(StandardCharsets.UTF_8)
+        );
+        Files.write(
+            new File("reference/bus-alerts-gtfs.json").toPath(),
+            JsonFormat.printer().print(mta.service.bus.getAlerts(mta.busToken)).getBytes(StandardCharsets.UTF_8)
+        );
         Files.write(
             new File("reference/subway-ace-gtfs.json").toPath(),
             JsonFormat.printer().print(mta.service.subway.getACE(mta.subwayToken)).getBytes(StandardCharsets.UTF_8)

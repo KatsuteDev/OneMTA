@@ -24,9 +24,10 @@ import dev.katsute.onemta.Json.JsonObject;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.util.Collections;
 import java.util.HashMap;
 
-@SuppressWarnings("SpellCheckingInspection")
+@SuppressWarnings({"SpellCheckingInspection", "Convert2Diamond"})
 final class MTAService {
 
     private final RequestCache cache;
@@ -51,9 +52,41 @@ final class MTAService {
 
     final class BusService {
 
-        private final String baseURL = "https://bustime.mta.info/api/2/siri/";
+        private final String baseURL = "http://gtfsrt.prod.obanyc.com/";
+
+        private final String siriURL = "https://bustime.mta.info/api/2/siri/";
 
         private BusService(){ }
+
+        final FeedMessage getTripUpdates(final String token){
+            return cache.getProtobuf(
+                baseURL + "tripUpdates",
+                new HashMap<String,String>(){{
+                    put("key", token);
+                }},
+                Collections.emptyMap()
+            );
+        }
+
+        final FeedMessage getVehiclePositions(final String token){
+            return cache.getProtobuf(
+                baseURL + "vehiclePositions",
+                new HashMap<String,String>(){{
+                    put("key", token);
+                }},
+                Collections.emptyMap()
+            );
+        }
+
+        final FeedMessage getAlerts(final String token){
+            return cache.getProtobuf(
+                baseURL + "alerts",
+                new HashMap<String,String>(){{
+                    put("key", token);
+                }},
+                Collections.emptyMap()
+            );
+        }
 
         final JsonObject getVehicle(
             final String token,
@@ -63,7 +96,7 @@ final class MTAService {
             final Boolean bus_company
         ){
             return cache.getJSON(
-                baseURL + "vehicle-monitoring.json",
+                siriURL + "vehicle-monitoring.json",
                 new HashMap<String,String>(){{
                                             put("key", token);
                                             put("version", "2");
@@ -83,7 +116,7 @@ final class MTAService {
             final Integer direction
         ){
             return cache.getJSON(
-                baseURL + "stop-monitoring.json",
+                siriURL + "stop-monitoring.json",
                 new HashMap<String,String>(){{
                                             put("key", token);
                                             put("version", "2");
