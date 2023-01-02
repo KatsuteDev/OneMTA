@@ -23,15 +23,22 @@ import dev.katsute.onemta.GTFSRealtimeProto.FeedMessage;
 import dev.katsute.onemta.Json.JsonObject;
 import dev.katsute.onemta.exception.HttpException;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URI;
-import java.util.*;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.function.Function;
 import java.util.regex.MatchResult;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+@SuppressWarnings("Convert2Diamond")
 abstract class Requests {
 
     static JsonObject getJSON(
@@ -43,7 +50,7 @@ abstract class Requests {
         try{
             conn = getConnection(
                 url,
-                new HashMap<>(query),
+                Collections.unmodifiableMap(query),
                 new HashMap<String,String>(headers){{
                     put("Accept", "application/json; charset=UTF-8");
                 }}
@@ -77,7 +84,7 @@ abstract class Requests {
         try{
             conn = getConnection(
                 url,
-                new HashMap<>(query),
+                Collections.unmodifiableMap(query),
                 new HashMap<String,String>(headers){{
                     put("Accept", "application/json; charset=UTF-8");
                 }}
@@ -122,7 +129,7 @@ abstract class Requests {
         try{
             conn = getConnection(
                 url,
-                new HashMap<>(query),
+                Collections.unmodifiableMap(query),
                 new HashMap<String,String>(headers){{
                     put("Accept", "application/x-protobuf");
                 }}

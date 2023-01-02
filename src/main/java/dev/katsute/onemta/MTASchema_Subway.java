@@ -222,7 +222,7 @@ abstract class MTASchema_Subway extends MTASchema {
             private Subway.Alert[] getAlerts(final boolean update){
                 if(alerts == null || update){
                     final List<Subway.Alert> alerts = new ArrayList<>();
-                    final GTFSRealtimeProto.FeedMessage feed = cast(mta).service.alerts.getSubway(cast(mta).subwayToken);
+                    final GTFSRealtimeProto.FeedMessage feed = cast(mta).service.alerts.getSubway();
                     final int len = feed.getEntityCount();
                     for(int i = 0; i < len; i++){
                         final Subway.Alert alert = MTASchema_Subway.asTransitAlert(mta, feed.getEntity(i));
@@ -421,7 +421,7 @@ abstract class MTASchema_Subway extends MTASchema {
             private Subway.Alert[] getAlerts(final boolean update){
                 if(alerts == null || update){
                     final List<Subway.Alert> alerts = new ArrayList<>();
-                    final GTFSRealtimeProto.FeedMessage feed = cast(mta).service.alerts.getSubway(cast(mta).subwayToken);
+                    final GTFSRealtimeProto.FeedMessage feed = cast(mta).service.alerts.getSubway();
                     final int len = feed.getEntityCount();
                     for(int i = 0; i < len; i++){
                         final Subway.Alert alert   = MTASchema_Subway.asTransitAlert(mta, feed.getEntity(i));

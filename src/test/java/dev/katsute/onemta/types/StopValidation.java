@@ -2,10 +2,13 @@ package dev.katsute.onemta.types;
 
 import dev.katsute.onemta.TestProvider;
 import dev.katsute.onemta.bus.Bus;
-import dev.katsute.onemta.railroad.*;
+import dev.katsute.onemta.railroad.LIRR;
+import dev.katsute.onemta.railroad.MNR;
+import dev.katsute.onemta.railroad.RailroadStop;
 import dev.katsute.onemta.subway.Subway;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotSame;
 
 /**
  * @see TransitStop

@@ -24,7 +24,7 @@ import dev.katsute.onemta.types.TransitAlertPeriod;
 import java.util.Date;
 import java.util.function.Supplier;
 
-import static dev.katsute.onemta.GTFSRealtimeProto.*;
+import static dev.katsute.onemta.GTFSRealtimeProto.TimeRange;
 
 abstract class MTASchema {
 

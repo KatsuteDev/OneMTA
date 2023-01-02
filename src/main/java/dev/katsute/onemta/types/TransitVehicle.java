@@ -18,7 +18,10 @@
 
 package dev.katsute.onemta.types;
 
-import dev.katsute.onemta.attribute.*;
+import dev.katsute.onemta.attribute.RouteReference;
+import dev.katsute.onemta.attribute.StopReference;
+import dev.katsute.onemta.attribute.TripReference;
+import dev.katsute.onemta.attribute.Updatable;
 
 /**
  * Represents a transit vehicle.

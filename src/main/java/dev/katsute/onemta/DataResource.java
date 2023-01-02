@@ -21,7 +21,10 @@ package dev.katsute.onemta;
 import dev.katsute.onemta.exception.DataResourceException;
 
 import java.io.*;
-import java.util.*;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;

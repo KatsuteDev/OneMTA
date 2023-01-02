@@ -18,8 +18,13 @@
 
 package dev.katsute.onemta.railroad;
 
-import dev.katsute.onemta.attribute.*;
-import dev.katsute.onemta.types.*;
+import dev.katsute.onemta.attribute.Bearing;
+import dev.katsute.onemta.attribute.Direction;
+import dev.katsute.onemta.attribute.Location;
+import dev.katsute.onemta.types.GTFSTransitTrip;
+import dev.katsute.onemta.types.GTFSVehicle;
+import dev.katsute.onemta.types.TransitAlert;
+import dev.katsute.onemta.types.TransitRoute;
 
 /**
  * Represents Long Island Railroad (LIRR) related objects.

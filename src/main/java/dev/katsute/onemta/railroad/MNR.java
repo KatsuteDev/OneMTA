@@ -19,7 +19,10 @@
 package dev.katsute.onemta.railroad;
 
 import dev.katsute.onemta.attribute.Location;
-import dev.katsute.onemta.types.*;
+import dev.katsute.onemta.types.GTFSTransitTrip;
+import dev.katsute.onemta.types.GTFSVehicle;
+import dev.katsute.onemta.types.TransitAlert;
+import dev.katsute.onemta.types.TransitRoute;
 
 /**
  * Represents Metro North Railroad (MNR) related objects.

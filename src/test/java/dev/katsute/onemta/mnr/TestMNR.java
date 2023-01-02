@@ -4,10 +4,13 @@ import dev.katsute.onemta.MTA;
 import dev.katsute.onemta.TestProvider;
 import dev.katsute.onemta.railroad.MNR;
 import dev.katsute.onemta.types.AlertValidation;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assumptions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
 final class TestMNR {
 

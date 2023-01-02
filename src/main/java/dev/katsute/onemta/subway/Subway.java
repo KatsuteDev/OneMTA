@@ -18,7 +18,9 @@
 
 package dev.katsute.onemta.subway;
 
-import dev.katsute.onemta.attribute.*;
+import dev.katsute.onemta.attribute.Direction;
+import dev.katsute.onemta.attribute.RouteDescription;
+import dev.katsute.onemta.attribute.RouteShortName;
 import dev.katsute.onemta.types.*;
 
 /**

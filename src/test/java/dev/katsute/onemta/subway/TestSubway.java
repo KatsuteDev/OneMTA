@@ -3,12 +3,14 @@ package dev.katsute.onemta.subway;
 import dev.katsute.onemta.MTA;
 import dev.katsute.onemta.TestProvider;
 import dev.katsute.onemta.types.AlertValidation;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assumptions.*;
+import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
 final class TestSubway {
 

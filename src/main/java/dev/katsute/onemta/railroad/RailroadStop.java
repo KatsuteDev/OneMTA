@@ -18,7 +18,9 @@
 
 package dev.katsute.onemta.railroad;
 
-import dev.katsute.onemta.types.*;
+import dev.katsute.onemta.types.TransitAlert;
+import dev.katsute.onemta.types.TransitStop;
+import dev.katsute.onemta.types.TransitVehicle;
 
 /**
  * Represents a railroad stop.

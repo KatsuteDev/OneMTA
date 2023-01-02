@@ -25,7 +25,7 @@ import dev.katsute.onemta.types.TransitAlertPeriod;
 import java.util.*;
 
 import static dev.katsute.onemta.GTFSRealtimeProto.*;
-import static dev.katsute.onemta.MNRRProto.*;
+import static dev.katsute.onemta.MNRRProto.MnrStopTimeUpdate;
 import static dev.katsute.onemta.railroad.MNR.*;
 
 @SuppressWarnings("SpellCheckingInspection")
@@ -87,7 +87,7 @@ abstract class MTASchema_MNR extends MTASchema {
 
             private Vehicle[] getVehicles(final boolean update){
                 if(vehicles == null || update){
-                    final FeedMessage feed = cast(mta).service.mnr.getMNR(cast(mta).subwayToken);
+                    final FeedMessage feed = cast(mta).service.mnr.getMNR();
                     final int len          = feed.getEntityCount();
 
                     final List<Vehicle> vehicles = new ArrayList<>();
@@ -115,7 +115,7 @@ abstract class MTASchema_MNR extends MTASchema {
             private MNR.Alert[] getAlerts(final boolean update){
                 if(alerts == null || update){
                     final List<MNR.Alert> alerts = new ArrayList<>();
-                    final GTFSRealtimeProto.FeedMessage feed = cast(mta).service.alerts.getMNR(cast(mta).subwayToken);
+                    final GTFSRealtimeProto.FeedMessage feed = cast(mta).service.alerts.getMNR();
                     final int len = feed.getEntityCount();
                     for(int i = 0; i < len; i++){
                         final MNR.Alert alert = MTASchema_MNR.asTransitAlert(mta, feed.getEntity(i));
@@ -251,7 +251,7 @@ abstract class MTASchema_MNR extends MTASchema {
                 if(vehicles == null || update){
                     final String stop = String.valueOf(stopID);
 
-                    final FeedMessage feed = cast(mta).service.mnr.getMNR(cast(mta).subwayToken);
+                    final FeedMessage feed = cast(mta).service.mnr.getMNR();
                     final int len          = feed.getEntityCount();
 
                     final List<Vehicle> vehicles = new ArrayList<>();
@@ -294,7 +294,7 @@ abstract class MTASchema_MNR extends MTASchema {
             private MNR.Alert[] getAlerts(final boolean update){
                 if(alerts == null || update){
                     final List<MNR.Alert> alerts = new ArrayList<>();
-                    final GTFSRealtimeProto.FeedMessage feed = cast(mta).service.alerts.getMNR(cast(mta).subwayToken);
+                    final GTFSRealtimeProto.FeedMessage feed = cast(mta).service.alerts.getMNR();
                     final int len = feed.getEntityCount();
                     for(int i = 0; i < len; i++){
                         final MNR.Alert alert = MTASchema_MNR.asTransitAlert(mta, feed.getEntity(i));
