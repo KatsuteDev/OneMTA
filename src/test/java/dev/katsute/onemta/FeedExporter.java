@@ -1,6 +1,5 @@
 package dev.katsute.onemta;
 
-import com.google.gson.*;
 import com.google.protobuf.util.JsonFormat;
 import org.junit.jupiter.api.*;
 
@@ -12,8 +11,6 @@ import java.nio.file.Files;
 @SuppressWarnings("NewClassNamingConvention")
 final class FeedExporter {
 
-    private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
-
     private static MTAImpl mta;
 
     @BeforeAll
@@ -24,51 +21,8 @@ final class FeedExporter {
         mta = (MTAImpl) TestProvider.getOneMTA();
     }
 
-    @SuppressWarnings("SpellCheckingInspection")
     @Test
-    final void exportFeeds() throws IOException{
-        Files.write(
-            new File("reference/bus-stop-siri.json").toPath(),
-            gson.toJson(JsonParser.parseString(mta.service.bus.getStop(mta.busToken, 400561, null, null).getRaw())).getBytes(StandardCharsets.UTF_8)
-        );
-
-        Files.write(
-            new File("reference/bus-vehicle-siri.json").toPath(),
-            gson.toJson(JsonParser.parseString(mta.service.bus.getVehicle(mta.busToken, null, "M1", null, null).getRaw())).getBytes(StandardCharsets.UTF_8)
-        );
-
-        Files.write(
-            new File("reference/subway-gtfs.json").toPath(),
-            JsonFormat.printer().print(mta.service.subway.get1234567()).getBytes(StandardCharsets.UTF_8)
-        );
-
-        Files.write(
-            new File("reference/lirr-gtfs.json").toPath(),
-            JsonFormat.printer().print(mta.service.lirr.getLIRR()).getBytes(StandardCharsets.UTF_8)
-        );
-
-        Files.write(
-            new File("reference/mnr-gtfs.json").toPath(),
-            JsonFormat.printer().print(mta.service.mnr.getMNR()).getBytes(StandardCharsets.UTF_8)
-        );
-    }
-
-    @Test
-    final void exportBusVehicle() throws IOException{
-         final MTAImpl mta = (MTAImpl) TestProvider.getOneMTA();
-
-         assert mta != null;
-
-         final Gson gson = new GsonBuilder().setPrettyPrinting().create();
-
-         Files.write(
-            new File("reference/bus-vehicle-specific-siri.json").toPath(),
-            gson.toJson(JsonParser.parseString(mta.service.bus.getVehicle(mta.busToken, 9567, null, null, null).getRaw())).getBytes(StandardCharsets.UTF_8)
-        );
-    }
-
-    @Test
-    final void exportAllFeeds() throws IOException{
+    final void exportBusFeeds() throws IOException{
         Files.write(
             new File("reference/bus-trip-gtfs.json").toPath(),
             JsonFormat.printer().print(mta.service.bus.getTripUpdates()).getBytes(StandardCharsets.UTF_8)
@@ -78,8 +32,16 @@ final class FeedExporter {
             JsonFormat.printer().print(mta.service.bus.getVehiclePositions()).getBytes(StandardCharsets.UTF_8)
         );
         Files.write(
-            new File("reference/bus-alerts-gtfs.json").toPath(),
+            new File("reference/bus-alerts-alt-gtfs.json").toPath(),
             JsonFormat.printer().print(mta.service.bus.getAlerts()).getBytes(StandardCharsets.UTF_8)
+        );
+    }
+
+    @Test
+    final void exportSubwayFeeds() throws IOException{
+        Files.write(
+            new File("reference/subway-gtfs.json").toPath(),
+            JsonFormat.printer().print(mta.service.subway.get1234567()).getBytes(StandardCharsets.UTF_8)
         );
         Files.write(
             new File("reference/subway-ace-gtfs.json").toPath(),
@@ -113,22 +75,33 @@ final class FeedExporter {
 
     @SuppressWarnings("SpellCheckingInspection")
     @Test
-    final void exportServiceAlerts() throws IOException{
+    final void exportTrainFeeds() throws IOException{
+        Files.write(
+            new File("reference/lirr-gtfs.json").toPath(),
+            JsonFormat.printer().print(mta.service.lirr.getLIRR()).getBytes(StandardCharsets.UTF_8)
+        );
+
+        Files.write(
+            new File("reference/mnr-gtfs.json").toPath(),
+            JsonFormat.printer().print(mta.service.mnr.getMNR()).getBytes(StandardCharsets.UTF_8)
+        );
+    }
+
+    @SuppressWarnings("SpellCheckingInspection")
+    @Test
+    final void exportAlertFeeds() throws IOException{
         Files.write(
             new File("reference/bus-alerts-gtfs.json").toPath(),
             JsonFormat.printer().print(mta.service.alerts.getBus()).getBytes(StandardCharsets.UTF_8)
         );
-
         Files.write(
             new File("reference/subway-alerts-gtfs.json").toPath(),
             JsonFormat.printer().print(mta.service.alerts.getSubway()).getBytes(StandardCharsets.UTF_8)
         );
-
         Files.write(
             new File("reference/lirr-alerts-gtfs.json").toPath(),
             JsonFormat.printer().print(mta.service.alerts.getLIRR()).getBytes(StandardCharsets.UTF_8)
         );
-
         Files.write(
             new File("reference/mnr-alerts-gtfs.json").toPath(),
             JsonFormat.printer().print(mta.service.alerts.getMNR()).getBytes(StandardCharsets.UTF_8)

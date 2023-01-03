@@ -115,7 +115,7 @@ abstract class MTASchema_MNR extends MTASchema {
             private MNR.Alert[] getAlerts(final boolean update){
                 if(alerts == null || update){
                     final String id = String.valueOf(routeID);
-                    this.alerts = List.of(cast(mta).getAlerts(
+                    this.alerts = Arrays.asList(cast(mta).getAlerts(
                         cast(mta).service.alerts.getMNR(),
                         ent -> {
                             final GTFSRealtimeProto.Alert alert;
@@ -300,7 +300,7 @@ abstract class MTASchema_MNR extends MTASchema {
             private MNR.Alert[] getAlerts(final boolean update){
                 if(alerts == null || update){
                     final String id = String.valueOf(stop_id);
-                    this.alerts = List.of(cast(mta).getAlerts(
+                    this.alerts = Arrays.asList(cast(mta).getAlerts(
                         cast(mta).service.alerts.getMNR(),
                         ent -> {
                             final GTFSRealtimeProto.Alert alert;

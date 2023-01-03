@@ -43,20 +43,4 @@ final class TestRegex9 {
 
     }
 
-    @Nested
-    final class TestCount {
-
-        @Test
-        public final void testNullMatcher(){
-            assertThrows(NullPointerException.class, () -> Regex9.count(null));
-        }
-
-        @Test
-        public final void testCount(){
-            assertEquals(9, Regex9.count(Pattern.compile("\\d").matcher(" 123456789 ")));
-            assertEquals(1, Regex9.count(Pattern.compile("\\d+").matcher(" 123456789 ")));
-        }
-
-    }
-
 }

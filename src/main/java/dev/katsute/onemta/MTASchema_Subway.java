@@ -222,7 +222,7 @@ abstract class MTASchema_Subway extends MTASchema {
             private Subway.Alert[] getAlerts(final boolean update){
                 if(alerts == null || update){
                     final String id = String.valueOf(route_id);
-                    this.alerts = List.of(cast(mta).getAlerts(
+                    this.alerts = Arrays.asList(cast(mta).getAlerts(
                         cast(mta).service.alerts.getSubway(),
                         ent -> {
                             final GTFSRealtimeProto.Alert alert;
@@ -426,7 +426,7 @@ abstract class MTASchema_Subway extends MTASchema {
 
             private Subway.Alert[] getAlerts(final boolean update){
                 if(alerts == null || update){
-                    this.alerts = List.of(cast(mta).getAlerts(
+                    this.alerts = Arrays.asList(cast(mta).getAlerts(
                         cast(mta).service.alerts.getSubway(),
                         ent -> {
                             final GTFSRealtimeProto.Alert alert;

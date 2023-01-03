@@ -56,19 +56,4 @@ abstract class Regex9 {
         return str;
     }
 
-    /**
-     * Returns match count.
-     *
-     * @param matcher matcher
-     * @return count
-     */
-    static int count(final Matcher matcher){
-        Objects.requireNonNull(matcher);
-        matcher.reset();
-        int count = 0;
-        while(matcher.find())
-            count++;
-        return count;
-    }
-
 }

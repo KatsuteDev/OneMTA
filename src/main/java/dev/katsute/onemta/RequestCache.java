@@ -19,7 +19,6 @@
 package dev.katsute.onemta;
 
 import dev.katsute.onemta.GTFSRealtimeProto.FeedMessage;
-import dev.katsute.onemta.Json.JsonObject;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -36,29 +35,6 @@ final class RequestCache {
     @SuppressWarnings("SameParameterValue")
     RequestCache(final int retainCacheSeconds){
         this.retainCacheMillis = Math.max(retainCacheSeconds, MINIMUM_CACHE) * 1000;
-    }
-
-    final JsonObject getJSON(
-        final String url,
-        final Map<String,String> query,
-        final Map<String,String> headers
-    ){
-        final String key = url + query.hashCode() + headers.hashCode();
-        final CachedData cd = cache.get(key);
-
-        if(cd == null || cd.isExpired()){ // check if expired
-            synchronized(this){ // lock write
-                final CachedData temp = cache.get(key);
-                if(temp == null || temp.isExpired()){ // re-check if expired
-                    final JsonObject json = Requests.getJSON(url, query, headers);
-                    cache.put(key, new CachedData(json)); // write
-                    return json;
-                }
-                return temp.getJson();
-            }
-        }
-
-        return cd.getJson();
     }
 
     final FeedMessage getProtobuf(
@@ -97,10 +73,6 @@ final class RequestCache {
 
         private boolean isExpired(){
             return System.currentTimeMillis() > expires;
-        }
-
-        private JsonObject getJson(){
-            return (JsonObject) object;
         }
 
         private FeedMessage getProtobuf(){

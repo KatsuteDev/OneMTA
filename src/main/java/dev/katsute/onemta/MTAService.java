@@ -19,14 +19,14 @@
 package dev.katsute.onemta;
 
 import dev.katsute.onemta.GTFSRealtimeProto.FeedMessage;
-import dev.katsute.onemta.Json.JsonObject;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
-import java.util.*;
+import java.util.Collections;
+import java.util.Map;
 
-@SuppressWarnings({"SpellCheckingInspection", "Convert2Diamond"})
+@SuppressWarnings("SpellCheckingInspection")
 final class MTAService {
 
     private final RequestCache cache;
@@ -58,9 +58,6 @@ final class MTAService {
 
         private final String baseURL = "http://gtfsrt.prod.obanyc.com/";
 
-        @Deprecated
-        private final String siriURL = "https://bustime.mta.info/api/2/siri/";
-
         private BusService(){ }
 
         final FeedMessage getTripUpdates(){
@@ -83,49 +80,6 @@ final class MTAService {
             return cache.getProtobuf(
                 baseURL + "alerts",
                 busAuth,
-                Collections.emptyMap()
-            );
-        }
-
-        @Deprecated
-        final JsonObject getVehicle(
-            final String token,
-            final Integer vehicle,
-            final String line,
-            final Integer direction,
-            final Boolean bus_company
-        ){
-            return cache.getJSON(
-                siriURL + "vehicle-monitoring.json",
-                new HashMap<String,String>(){{
-                                            put("key", token);
-                                            put("version", "2");
-                                            put("VehicleMonitoringDetailLevel", "calls");
-                    if(vehicle != null)     put("VehicleRef", String.valueOf(vehicle));
-                    if(line != null)        put("LineRef", (bus_company == null || !bus_company ? "MTA%20NYCT_" : "MTABC_") + encodeUTF8(line));
-                    if(direction != null)   put("DirectionRef", String.valueOf(direction));
-                }},
-                Collections.emptyMap()
-            );
-        }
-
-        @Deprecated
-        final JsonObject getStop(
-            final String token,
-            final Integer stop,
-            final String line,
-            final Integer direction
-        ){
-            return cache.getJSON(
-                siriURL + "stop-monitoring.json",
-                new HashMap<String,String>(){{
-                                            put("key", token);
-                                            put("version", "2");
-                                            put("OperatorRef", "MTA");
-                    if(stop != null)        put("MonitoringRef", String.valueOf(stop));
-                    if(line != null)        put("LineRef", "MTA%20NYCT_" + line);
-                    if(direction != null)   put("DirectionRef", String.valueOf(direction));
-                }},
                 Collections.emptyMap()
             );
         }
