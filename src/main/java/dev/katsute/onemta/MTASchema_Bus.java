@@ -30,7 +30,7 @@ import java.util.regex.Pattern;
 import static dev.katsute.onemta.GTFSRealtimeProto.*;
 import static dev.katsute.onemta.bus.Bus.*;
 
-@SuppressWarnings({"SpellCheckingInspection", "ConstantConditions"})
+@SuppressWarnings({"SpellCheckingInspection", "ConstantConditions", "Convert2Diamond"})
 abstract class MTASchema_Bus extends MTASchema {
 
     private static final Pattern type = Pattern.compile("^[X]|[XC+]$", Pattern.CASE_INSENSITIVE);
@@ -481,8 +481,6 @@ abstract class MTASchema_Bus extends MTASchema {
         };
     }
 
-    private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
-
     static Vehicle asVehicle(final MTA mta, final VehiclePosition vehicle, final TripUpdate tripUpdate, final Route optionalRoute){
         final CrowdingProto.CrowdingDescriptor crowdingDescriptor = vehicle.getExtension(CrowdingProto.crowdingDescriptor);
         return new Vehicle() {
@@ -569,7 +567,7 @@ abstract class MTASchema_Bus extends MTASchema {
                 return route != null ? route : (route = mta.getBusRoute(routeID));
             }
 
-            private Stop stop = optionalStop;
+            private Stop stop = null;
 
             @Override
             public final Stop getStop(){
@@ -597,10 +595,8 @@ abstract class MTASchema_Bus extends MTASchema {
 
                 Vehicle vehicle = null;
 
-                // if stop was provided, must use vehicle from stop
-                // so arrival times are based on this stop only, rather than next stop
-                if(optionalStop != null){
-                    for(final Vehicle veh : mta.getBusStop(optionalStop.getStopID()).getVehicles()){
+                if(stop != null){
+                    for(final Vehicle veh : mta.getBusStop(stop.getStopID()).getVehicles()){
                         if(Objects.equals(vehicleID, veh.getVehicleID())){
                             vehicle = veh;
                             break;

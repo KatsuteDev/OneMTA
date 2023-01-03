@@ -84,23 +84,26 @@ final class MTAImpl extends MTA {
 
     @Override
     public final Bus.Vehicle getBus(final int bus_id){
-        final JsonObject json = service.bus.getVehicle(busToken, bus_id, null, null, null);
+        final FeedMessage feed = service.bus.getVehiclePositions();
+        for(int i = 0, len = feed.getEntityCount(); i < len; i++){
+            final FeedEntity entity = feed.getEntity(i);
 
-        final JsonObject[] vehicleMonitoringDelivery = json
-            .getJsonObject("Siri")
-            .getJsonObject("ServiceDelivery")
-            .getJsonArray("VehicleMonitoringDelivery");
+            if(Integer.parseInt(entity.getId().split("_")[1]) != bus_id)
+                continue;
 
-        if(
-            !vehicleMonitoringDelivery[0].containsKey("VehicleActivity") || // null
-            vehicleMonitoringDelivery[0].getJsonArray("VehicleActivity").length == 0) // no vehicles
+            final String tripId = entity.getTripUpdate().getTrip().getTripId();
+
+            final FeedMessage feed2 = service.bus.getTripUpdates();
+            for(int j = 0, len2 = feed2.getEntityCount(); j < len2; j++){
+                final FeedEntity entity2 = feed2.getEntity(j);
+
+                if(entity2.getTripUpdate().getTrip().getTripId().equals(tripId)){
+                    return MTASchema_Bus.asVehicle(this, entity.getVehicle(), entity2.getTripUpdate(), null);
+                }
+            }
             return null;
-
-        final JsonObject monitoredVehicleJourney = vehicleMonitoringDelivery[0]
-            .getJsonArray("VehicleActivity")[0]
-            .getJsonObject("MonitoredVehicleJourney");
-
-        return MTASchema_Bus.asVehicle(this, monitoredVehicleJourney, null, null);
+        }
+        return null;
     }
 
     @Override
