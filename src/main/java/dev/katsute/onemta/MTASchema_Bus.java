@@ -252,15 +252,20 @@ abstract class MTASchema_Bus extends MTASchema {
 
             private Bus.Alert[] getAlerts(final boolean update){
                 if(alerts == null || update){
-                    final List<Bus.Alert> alerts = new ArrayList<>();
-                    final FeedMessage feed = cast(mta).service.alerts.getBus();
-                    final int len = feed.getEntityCount();
-                    for(int i = 0; i < len; i++){
-                        final Bus.Alert alert = MTASchema_Bus.asTransitAlert(mta, feed.getEntity(i));
-                        if(Arrays.asList(alert.getRouteIDs()).contains(route_id))
-                            alerts.add(alert);
-                    }
-                    this.alerts = alerts;
+                    this.alerts = List.of(cast(mta).getAlerts(
+                        cast(mta).service.alerts.getBus(),
+                        ent -> {
+                            final GTFSRealtimeProto.Alert alert;
+                            final int len;
+                            if(ent.hasAlert() && (len = (alert = ent.getAlert()).getInformedEntityCount()) > 0)
+                                for(int i = 0; i < len; i++)
+                                    if(alert.getInformedEntity(i).getRouteId().equals(route_id))
+                                        return true;
+                            return false;
+                        },
+                        ent -> asTransitAlert(mta, ent),
+                        new Bus.Alert[0]
+                    ));
                 }
                 return alerts.toArray(new Bus.Alert[0]);
             }
@@ -427,15 +432,21 @@ abstract class MTASchema_Bus extends MTASchema {
 
             private Bus.Alert[] getAlerts(final boolean update){
                 if(alerts == null || update){
-                    final List<Bus.Alert> alerts = new ArrayList<>();
-                    final FeedMessage feed = cast(mta).service.alerts.getBus();
-                    final int len = feed.getEntityCount();
-                    for(int i = 0; i < len; i++){
-                        final Bus.Alert alert = MTASchema_Bus.asTransitAlert(mta, feed.getEntity(i));
-                        if(Arrays.asList(alert.getStopIDs()).contains(stop_id))
-                            alerts.add(alert);
-                    }
-                    this.alerts = alerts;
+                    final String id = String.valueOf(stop_id);
+                    this.alerts = List.of(cast(mta).getAlerts(
+                        cast(mta).service.alerts.getBus(),
+                        ent -> {
+                            final GTFSRealtimeProto.Alert alert;
+                            final int len;
+                            if(ent.hasAlert() && (len = (alert = ent.getAlert()).getInformedEntityCount()) > 0)
+                                for(int i = 0; i < len; i++)
+                                    if(alert.getInformedEntity(i).getStopId().equals(id))
+                                        return true;
+                            return false;
+                        },
+                        ent -> asTransitAlert(mta, ent),
+                        new Bus.Alert[0]
+                    ));
                 }
                 return alerts.toArray(new Bus.Alert[0]);
             }

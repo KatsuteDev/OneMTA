@@ -132,15 +132,21 @@ abstract class MTASchema_LIRR extends MTASchema {
 
             private LIRR.Alert[] getAlerts(final boolean update){
                 if(alerts == null || update){
-                    final List<LIRR.Alert> alerts = new ArrayList<>();
-                    final GTFSRealtimeProto.FeedMessage feed = cast(mta).service.alerts.getLIRR();
-                    final int len = feed.getEntityCount();
-                    for(int i = 0; i < len; i++){
-                        final LIRR.Alert alert = MTASchema_LIRR.asTransitAlert(mta, feed.getEntity(i));
-                        if(Arrays.asList(alert.getRouteIDs()).contains(route_id))
-                            alerts.add(alert);
-                    }
-                    this.alerts = alerts;
+                    final String id = String.valueOf(route_id);
+                    this.alerts = List.of(cast(mta).getAlerts(
+                        cast(mta).service.alerts.getLIRR(),
+                        ent -> {
+                            final GTFSRealtimeProto.Alert alert;
+                            final int len;
+                            if(ent.hasAlert() && (len = (alert = ent.getAlert()).getInformedEntityCount()) > 0)
+                                for(int i = 0; i < len; i++)
+                                    if(alert.getInformedEntity(i).getRouteId().equals(id))
+                                        return true;
+                            return false;
+                        },
+                        ent -> asTransitAlert(mta, ent),
+                        new LIRR.Alert[0]
+                    ));
                 }
                 return alerts.toArray(new LIRR.Alert[0]);
             }
@@ -323,15 +329,21 @@ abstract class MTASchema_LIRR extends MTASchema {
 
             private LIRR.Alert[] getAlerts(final boolean update){
                 if(alerts == null || update){
-                    final List<LIRR.Alert> alerts = new ArrayList<>();
-                    final GTFSRealtimeProto.FeedMessage feed = cast(mta).service.alerts.getLIRR();
-                    final int len = feed.getEntityCount();
-                    for(int i = 0; i < len; i++){
-                        final LIRR.Alert alert = MTASchema_LIRR.asTransitAlert(mta, feed.getEntity(i));
-                        if(Arrays.asList(alert.getStopIDs()).contains(stopID))
-                            alerts.add(alert);
-                    }
-                    this.alerts = alerts;
+                    final String id = String.valueOf(stop_id);
+                    this.alerts = List.of(cast(mta).getAlerts(
+                        cast(mta).service.alerts.getLIRR(),
+                        ent -> {
+                            final GTFSRealtimeProto.Alert alert;
+                            final int len;
+                            if(ent.hasAlert() && (len = (alert = ent.getAlert()).getInformedEntityCount()) > 0)
+                                for(int i = 0; i < len; i++)
+                                    if(alert.getInformedEntity(i).getStopId().equals(id))
+                                        return true;
+                            return false;
+                        },
+                        ent -> asTransitAlert(mta, ent),
+                        new LIRR.Alert[0]
+                    ));
                 }
                 return alerts.toArray(new LIRR.Alert[0]);
             }

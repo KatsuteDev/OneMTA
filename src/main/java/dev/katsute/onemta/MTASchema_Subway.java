@@ -221,15 +221,21 @@ abstract class MTASchema_Subway extends MTASchema {
 
             private Subway.Alert[] getAlerts(final boolean update){
                 if(alerts == null || update){
-                    final List<Subway.Alert> alerts = new ArrayList<>();
-                    final GTFSRealtimeProto.FeedMessage feed = cast(mta).service.alerts.getSubway();
-                    final int len = feed.getEntityCount();
-                    for(int i = 0; i < len; i++){
-                        final Subway.Alert alert = MTASchema_Subway.asTransitAlert(mta, feed.getEntity(i));
-                        if(Arrays.asList(alert.getRouteIDs()).contains(routeID))
-                            alerts.add(alert);
-                    }
-                    this.alerts = alerts;
+                    final String id = String.valueOf(route_id);
+                    this.alerts = List.of(cast(mta).getAlerts(
+                        cast(mta).service.alerts.getSubway(),
+                        ent -> {
+                            final GTFSRealtimeProto.Alert alert;
+                            final int len;
+                            if(ent.hasAlert() && (len = (alert = ent.getAlert()).getInformedEntityCount()) > 0)
+                                for(int i = 0; i < len; i++)
+                                    if(alert.getInformedEntity(i).getRouteId().equals(id))
+                                        return true;
+                            return false;
+                        },
+                        ent -> asTransitAlert(mta, ent),
+                        new Subway.Alert[0]
+                    ));
                 }
                 return alerts.toArray(new Subway.Alert[0]);
             }
@@ -420,20 +426,20 @@ abstract class MTASchema_Subway extends MTASchema {
 
             private Subway.Alert[] getAlerts(final boolean update){
                 if(alerts == null || update){
-                    final List<Subway.Alert> alerts = new ArrayList<>();
-                    final GTFSRealtimeProto.FeedMessage feed = cast(mta).service.alerts.getSubway();
-                    final int len = feed.getEntityCount();
-                    for(int i = 0; i < len; i++){
-                        final Subway.Alert alert   = MTASchema_Subway.asTransitAlert(mta, feed.getEntity(i));
-                        for(final String id : alert.getStopIDs())
-                            if(id.equalsIgnoreCase(stop) || // if stop ID matches exactly
-                               // if stop direction is unknown, include alerts for any direction
-                               (stopDirection == null && stripDirection(id).equalsIgnoreCase(stop)) ||
-                               // if alert direction if unknown, include stops for any direction
-                               (MTASchema_Subway.getDirection(id) == null && stripDirection(stop).equalsIgnoreCase(id)))
-                                alerts.add(alert);
-                    }
-                    this.alerts = alerts;
+                    this.alerts = List.of(cast(mta).getAlerts(
+                        cast(mta).service.alerts.getSubway(),
+                        ent -> {
+                            final GTFSRealtimeProto.Alert alert;
+                            final int len;
+                            if(ent.hasAlert() && (len = (alert = ent.getAlert()).getInformedEntityCount()) > 0)
+                                for(int i = 0; i < len; i++)
+                                    if(alert.getInformedEntity(i).getStopId().equals(stop_id))
+                                        return true;
+                            return false;
+                        },
+                        ent -> asTransitAlert(mta, ent),
+                        new Subway.Alert[0]
+                    ));
                 }
                 return alerts.toArray(new Subway.Alert[0]);
             }

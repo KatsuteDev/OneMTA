@@ -290,7 +290,7 @@ final class MTAImpl extends MTA {
     @Override
     public final LIRR.Alert[] getLIRRAlerts(){
         return getAlerts(
-            service.alerts.getMNR(),
+            service.alerts.getLIRR(),
             ent -> MTASchema_LIRR.asTransitAlert(this, ent),
             new LIRR.Alert[0]
         );
