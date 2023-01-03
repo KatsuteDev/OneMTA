@@ -1,7 +1,7 @@
 package dev.katsute.onemta.types;
 
 import dev.katsute.onemta.TestProvider;
-import dev.katsute.onemta.attribute.VehiclesReference;
+import dev.katsute.onemta.attribute.Reference;
 import dev.katsute.onemta.bus.Bus;
 import dev.katsute.onemta.railroad.LIRR;
 import dev.katsute.onemta.railroad.MNR;
@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public abstract class VehicleValidation {
 
-    public static void requireVehicles(final VehiclesReference<?> vehicles){
+    public static void requireVehicles(final Reference.Vehicle<?> vehicles){
         assertNotEquals(0, vehicles.getVehicles().length, "No vehicles found, please rerun this test when vehicles are available");
     }
 

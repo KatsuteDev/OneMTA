@@ -18,8 +18,7 @@
 
 package dev.katsute.onemta.types;
 
-import dev.katsute.onemta.attribute.StopReference;
-import dev.katsute.onemta.attribute.TripReference;
+import dev.katsute.onemta.attribute.Reference;
 
 import java.util.Date;
 
@@ -34,7 +33,7 @@ import java.util.Date;
  * @version 1.0.0
  * @author Katsute
  */
-public abstract class TransitTripStop<S extends TransitStop<?,?,?>, T extends TransitTrip<?,?,?>, SID> implements StopReference<S>, TripReference<T> {
+public abstract class TransitTripStop<S extends TransitStop<?,?,?>, T extends TransitTrip<?,?,?>, SID> implements Reference.Stop<S>, Reference.Trip<T> {
 
     /**
      * Returns the arrival time.

@@ -1,4 +1,4 @@
 /**
- * Contains attributes for routes, stops, vehicles, trips, and alerts.
+ * Contains shared transit attributes.
  */
 package dev.katsute.onemta.attribute;

@@ -18,10 +18,7 @@
 
 package dev.katsute.onemta.types;
 
-import dev.katsute.onemta.attribute.RouteReference;
-import dev.katsute.onemta.attribute.StopReference;
-import dev.katsute.onemta.attribute.TripReference;
-import dev.katsute.onemta.attribute.Updatable;
+import dev.katsute.onemta.attribute.*;
 
 /**
  * Represents a transit vehicle.
@@ -33,7 +30,7 @@ import dev.katsute.onemta.attribute.Updatable;
  * @param <RID> route ID format
  * @param <VID> vehicle ID format
  */
-public abstract class TransitVehicle<R extends TransitRoute<?,?,?>, S extends TransitStop<?,?,?>, T extends TransitTrip<?,?,?>, SID, RID, VID> implements RouteReference<R>, StopReference<S>, TripReference<T>, Updatable {
+public abstract class TransitVehicle<R extends TransitRoute<?,?,?>, S extends TransitStop<?,?,?>, T extends TransitTrip<?,?,?>, SID, RID, VID> implements Reference.Route<R>, Reference.Stop<S>, Reference.Trip<T>, Updatable {
 
     /**
      * Returns the vehicle ID.

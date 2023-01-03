@@ -18,10 +18,7 @@
 
 package dev.katsute.onemta.types;
 
-import dev.katsute.onemta.attribute.Alerts;
-import dev.katsute.onemta.attribute.Location;
-import dev.katsute.onemta.attribute.Updatable;
-import dev.katsute.onemta.attribute.VehiclesReference;
+import dev.katsute.onemta.attribute.*;
 
 /**
  * Represents a transit stop.
@@ -34,7 +31,7 @@ import dev.katsute.onemta.attribute.VehiclesReference;
  * @version 1.1.0
  * @author Katsute
  */
-public abstract class TransitStop<SID, V extends TransitVehicle<?,?,?,?,?,?>, A extends TransitAlert<?,?,?,?>> implements Alerts<A>, Location, VehiclesReference<V>, Updatable {
+public abstract class TransitStop<SID, V extends TransitVehicle<?,?,?,?,?,?>, A extends TransitAlert<?,?,?,?>> implements Alerts<A>, Location, Reference.Vehicle<V>, Updatable {
 
     /**
      * Returns the stop ID.

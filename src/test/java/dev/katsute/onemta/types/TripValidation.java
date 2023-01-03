@@ -1,6 +1,6 @@
 package dev.katsute.onemta.types;
 
-import dev.katsute.onemta.attribute.TripReference;
+import dev.katsute.onemta.attribute.Reference;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -20,7 +20,7 @@ public abstract class TripValidation {
         assertNotNull(trip.getTripStops());
     }
 
-    public static void testTripReference(final TripReference<?> reference){
+    public static void testTripReference(final Reference.Trip<?> reference){
         assertSame(reference, reference.getTrip().getVehicle());
     }
 

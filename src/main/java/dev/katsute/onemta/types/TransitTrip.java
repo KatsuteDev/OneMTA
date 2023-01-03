@@ -18,7 +18,7 @@
 
 package dev.katsute.onemta.types;
 
-import dev.katsute.onemta.attribute.RouteReference;
+import dev.katsute.onemta.attribute.Reference;
 
 /**
  * Represents a transit trip.
@@ -31,7 +31,7 @@ import dev.katsute.onemta.attribute.RouteReference;
  * @version 1.0.0
  * @author Katsute
  */
-public abstract class TransitTrip<V extends TransitVehicle<?,?,?,?,?,?>, R extends TransitRoute<?,?,?>, S extends TransitTripStop<?,?,?>> implements RouteReference<R> {
+public abstract class TransitTrip<V extends TransitVehicle<?,?,?,?,?,?>, R extends TransitRoute<?,?,?>, S extends TransitTripStop<?,?,?>> implements Reference.Route<R> {
 
     /**
      * Returns the trip ID.
