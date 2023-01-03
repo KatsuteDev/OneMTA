@@ -24,8 +24,12 @@ import dev.katsute.onemta.railroad.LIRR;
 import dev.katsute.onemta.railroad.MNR;
 import dev.katsute.onemta.subway.Subway;
 import dev.katsute.onemta.subway.SubwayDirection;
+import dev.katsute.onemta.types.TransitAlert;
+import dev.katsute.onemta.types.TransitVehicle;
 
 import java.util.*;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
 import static dev.katsute.onemta.GTFSRealtimeProto.*;
 
@@ -49,7 +53,7 @@ final class MTAImpl extends MTA {
 
     // resources
 
-    DataResource getDataResource(final DataResourceType type){
+    final DataResource getDataResource(final DataResourceType type){
         for(final DataResource resource : resources)
             if(resource.getType() == type)
                 return resource;
@@ -80,41 +84,48 @@ final class MTAImpl extends MTA {
 
     @Override
     public final Bus.Vehicle getBus(final int bus_id){
-        final FeedMessage feed = service.bus.getVehiclePositions();
-        for(int i = 0, len = feed.getEntityCount(); i < len; i++){
-            final FeedEntity entity = feed.getEntity(i);
+        final String id = String.valueOf(bus_id);
+        return getVehicle(
+            service.bus.getVehiclePositions(),
+            ent ->
+                ent.hasId() &&
+                ent.getId().split("_").length == 2 &&
+                Objects.equals(ent.getId().split("_")[1], id),
+            ent -> {
+                if(!ent.getVehicle().hasTrip()) return null;
 
-            if(Integer.parseInt(entity.getId().split("_")[1]) != bus_id)
-                continue;
+                final String tripId = ent.getVehicle().getTrip().getTripId();
 
-            final String tripId = entity.getTripUpdate().getTrip().getTripId();
-
-            final FeedMessage feed2 = service.bus.getTripUpdates();
-            for(int j = 0, len2 = feed2.getEntityCount(); j < len2; j++){
-                final FeedEntity entity2 = feed2.getEntity(j);
-
-                if(entity2.getTripUpdate().getTrip().getTripId().equals(tripId)){
-                    return MTASchema_Bus.asVehicle(this, entity.getVehicle(), entity2.getTripUpdate(), null);
-                }
+                // find matching trip entity
+                final FeedEntity trip = getFeedEntity(
+                    service.bus.getTripUpdates(),
+                    tent ->
+                        !tent.hasTripUpdate() &&
+                        tent.getTripUpdate().hasTrip() &&
+                        Objects.equals(tent.getTripUpdate().getTrip().getTripId(), tripId)
+                );
+                return trip != null ? MTASchema_Bus.asVehicle(
+                    this,
+                    ent.getVehicle(),
+                    trip.getTripUpdate(),
+                    null
+                ) : null;
             }
-            return null;
-        }
-        return null;
+        );
     }
 
     @Override
     public final Bus.Alert[] getBusAlerts(){
-        final List<Bus.Alert> alerts = new ArrayList<>();
-        final GTFSRealtimeProto.FeedMessage feed = service.alerts.getBus();
-        final int len = feed.getEntityCount();
-        for(int i = 0; i < len; i++)
-            alerts.add(MTASchema_Bus.asTransitAlert(this, feed.getEntity(i)));
-        return alerts.toArray(new Bus.Alert[0]);
+        return getAlerts(
+            service.alerts.getBus(),
+            ent -> MTASchema_Bus.asTransitAlert(this, ent),
+            new Bus.Alert[0]
+        );
     }
 
     // subway methods
 
-    FeedMessage resolveSubwayFeed(final String route_id){
+    final FeedMessage resolveSubwayFeed(final String route_id){
         final String route = MTASchema_Subway.stripExpress(Objects.requireNonNull(MTASchema_Subway.resolveSubwayLine(route_id), "Subway route with ID '" + route_id + "' not found"));
         switch(route){
             case "A":
@@ -193,44 +204,42 @@ final class MTAImpl extends MTA {
 
     @Override
     public final Subway.Vehicle getSubwayTrain(final String train_id){
-        Objects.requireNonNull(train_id, "Train ID must not be null");
-
         final FeedMessage feed = resolveSubwayFeed(train_id.substring(1, train_id.indexOf(' ')));
-        @SuppressWarnings("ConstantConditions") // resolve will handle NPE
-        final int len          = feed.getEntityCount();
-
-        TripUpdate tripUpdate = null;
-        String tripVehicle    = null;
-
-        for(int i = 0; i < len; i++){
-            final FeedEntity entity = feed.getEntity(i);
-
-            // get next trip
-            if(entity.hasTripUpdate()){
-                if( // find trip for train
-                    entity.getTripUpdate().getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getTrainId().equals(train_id)
-                ){
-                    tripUpdate  = entity.getTripUpdate();
-                    tripVehicle = tripUpdate.getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getTrainId();
-                }
-            }else if( // get matching vehicle for trip
-                entity.hasVehicle() &&
-                entity.getVehicle().getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getTrainId().equals(tripVehicle)
-            )
-                return MTASchema_Subway.asVehicle(this, entity.getVehicle(), tripUpdate, null);
-        }
-
-        return null;
+        return getVehicle(
+            Objects.requireNonNull(feed),
+            ent ->
+                ent.hasTripUpdate() &&
+                ent.getTripUpdate().hasTrip() &&
+                ent.getTripUpdate().getTrip().hasExtension(NYCTSubwayProto.nyctTripDescriptor) &&
+                Objects.equals(ent.getTripUpdate().getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getTrainId(), train_id),
+            ent -> {
+                // find matching vehicle entity
+                final FeedEntity veh = getFeedEntity(
+                    feed,
+                    vent ->
+                        !vent.hasTripUpdate() &&
+                        vent.hasVehicle() &&
+                        vent.getVehicle().hasTrip() &&
+                        vent.getVehicle().getTrip().hasExtension(NYCTSubwayProto.nyctTripDescriptor) &&
+                        Objects.equals(vent.getVehicle().getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getTrainId(), train_id)
+                );
+                return veh != null ? MTASchema_Subway.asVehicle(
+                    this,
+                    veh.getVehicle(),
+                    ent.getTripUpdate(),
+                    null
+                ) : null;
+            }
+        );
     }
 
     @Override
     public final Subway.Alert[] getSubwayAlerts(){
-        final List<Subway.Alert> alerts = new ArrayList<>();
-        final GTFSRealtimeProto.FeedMessage feed = service.alerts.getSubway();
-        final int len = feed.getEntityCount();
-        for(int i = 0; i < len; i++)
-            alerts.add(MTASchema_Subway.asTransitAlert(this, feed.getEntity(i)));
-        return alerts.toArray(new Subway.Alert[0]);
+        return getAlerts(
+            service.alerts.getSubway(),
+            ent -> MTASchema_Subway.asTransitAlert(this, ent),
+            new Subway.Alert[0]
+        );
     }
 
     // lirr methods
@@ -252,44 +261,39 @@ final class MTAImpl extends MTA {
 
     @Override
     public final LIRR.Vehicle getLIRRTrain(final String train_id){
-        Objects.requireNonNull(train_id, "Train ID must not be null");
-
-        final FeedMessage feed = service.lirr.getLIRR();
-        final int len          = feed.getEntityCount();
-
-        TripUpdate tripUpdate = null;
-        String tripVehicle    = null;
-
-        for(int i = 0; i < len; i++){
-            final FeedEntity entity = feed.getEntity(i);
-
-            // get next trip
-            if(entity.hasTripUpdate()){
-                if( // only include trips with vehicle and with matching ID
-                    entity.getTripUpdate().hasVehicle() &&
-                    entity.getTripUpdate().getVehicle().getLabel().equals(train_id)
-                ){
-                    tripUpdate  = entity.getTripUpdate();
-                    tripVehicle = tripUpdate.getVehicle().getLabel();
-                }
-            }else if( // get matching vehicle for trip
-                entity.hasVehicle() &&
-                entity.getVehicle().getVehicle().getLabel().equals(tripVehicle)
-            )
-                return MTASchema_LIRR.asVehicle(this, entity.getVehicle(), tripUpdate, null);
-        }
-
-        return null;
+        return getVehicle(
+            service.lirr.getLIRR(),
+            ent ->
+                ent.hasTripUpdate() &&
+                ent.getTripUpdate().hasVehicle() &&
+                Objects.equals(ent.getTripUpdate().getVehicle().getLabel(), train_id),
+            ent -> {
+                // find matching vehicle entity
+                final FeedEntity veh = getFeedEntity(
+                    service.lirr.getLIRR(),
+                    vent ->
+                        !vent.hasTripUpdate() &&
+                        vent.hasVehicle() &&
+                        vent.getVehicle().hasVehicle() &&
+                        Objects.equals(vent.getVehicle().getVehicle().getLabel(), train_id)
+                );
+                return veh != null ? MTASchema_LIRR.asVehicle(
+                    this,
+                    veh.getVehicle(),
+                    ent.getTripUpdate(),
+                    null
+                ) : null;
+            }
+        );
     }
 
     @Override
     public final LIRR.Alert[] getLIRRAlerts(){
-        final List<LIRR.Alert> alerts = new ArrayList<>();
-        final GTFSRealtimeProto.FeedMessage feed = service.alerts.getLIRR();
-        final int len = feed.getEntityCount();
-        for(int i = 0; i < len; i++)
-            alerts.add(MTASchema_LIRR.asTransitAlert(this, feed.getEntity(i)));
-        return alerts.toArray(new LIRR.Alert[0]);
+        return getAlerts(
+            service.alerts.getMNR(),
+            ent -> MTASchema_LIRR.asTransitAlert(this, ent),
+            new LIRR.Alert[0]
+        );
     }
 
     // mnr methods
@@ -311,31 +315,67 @@ final class MTAImpl extends MTA {
 
     @Override
     public final MNR.Vehicle getMNRTrain(final String train_id){
-        Objects.requireNonNull(train_id, "Train ID must not be null");
-        final FeedMessage feed = service.mnr.getMNR();
-        final int len = feed.getEntityCount();
-
-        for(int i = 0; i < len; i++){
-            final FeedEntity entity = feed.getEntity(i);
-            if(
-                entity.hasVehicle() &&
-                entity.getVehicle().hasVehicle() &&
-                train_id.equals(entity.getVehicle().getVehicle().getLabel())
+        return getVehicle(
+            service.mnr.getMNR(),
+            ent -> Objects.equals(ent.getId(), train_id),
+            ent -> MTASchema_MNR.asVehicle(
+                this,
+                ent.getVehicle(),
+                ent.getTripUpdate(),
+                null
             )
-                return MTASchema_MNR.asVehicle(this, entity.getVehicle(), entity.getTripUpdate(), null);
-        }
-
-        return null;
+        );
     }
 
     @Override
     public final MNR.Alert[] getMNRAlerts(){
-        final List<MNR.Alert> alerts = new ArrayList<>();
-        final GTFSRealtimeProto.FeedMessage feed = service.alerts.getMNR();
+        return getAlerts(
+            service.alerts.getMNR(),
+            ent -> MTASchema_MNR.asTransitAlert(this, ent),
+            new MNR.Alert[0]
+        );
+    }
+
+    // shared methods
+
+    final FeedEntity getFeedEntity(final FeedMessage feed, final Predicate<FeedEntity> predicate){
         final int len = feed.getEntityCount();
-        for(int i = 0; i < len; i++)
-            alerts.add(MTASchema_MNR.asTransitAlert(this, feed.getEntity(i)));
-        return alerts.toArray(new MNR.Alert[0]);
+        for(int i = 0; i < len; i++){
+            final FeedEntity ent = feed.getEntity(i);
+            if(predicate.test(ent))
+                return ent;
+        }
+        return null;
+    }
+
+    final List<FeedEntity> getFeedEntities(final FeedMessage feed, final Predicate<FeedEntity> predicate){
+        final List<FeedEntity> enty = new ArrayList<>();
+        final int len = feed.getEntityCount();
+        for(int i = 0; i < len; i++){
+            final FeedEntity ent = feed.getEntity(i);
+            if(predicate.test(ent))
+                enty.add(ent);
+        }
+        return enty;
+    }
+
+    final <V extends TransitVehicle<?,?,?,?,?,?>> V getVehicle(final FeedMessage feed, final Predicate<FeedEntity> predicate, final Function<FeedEntity,V> transform){
+        final FeedEntity ent = getFeedEntity(feed, predicate);
+        return ent != null ? transform.apply(ent) : null;
+    }
+
+    final <A extends TransitAlert<?,?,?,?>> A[] getAlerts(final FeedMessage feed, final Function<FeedEntity,A> transform, final A[] arr){
+        return getAlerts(feed, null, transform, arr);
+    }
+
+    final <A extends TransitAlert<?,?,?,?>> A[] getAlerts(final FeedMessage feed, final Predicate<FeedEntity> filter, final Function<FeedEntity,A> transform, final A[] arr){
+        final List<A> alerts = new ArrayList<>();
+        final List<FeedEntity> enty = getFeedEntities(feed, filter);
+
+        for(final FeedEntity ent : enty)
+            alerts.add(transform.apply(ent));
+
+        return alerts.toArray(arr);
     }
 
 }

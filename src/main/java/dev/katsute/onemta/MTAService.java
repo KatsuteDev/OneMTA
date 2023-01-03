@@ -243,9 +243,7 @@ final class MTAService {
 
         private final String baseURL = "https://api-endpoint.mta.info/Dataservice/mtagtfsfeeds/";
 
-        final FeedMessage getBus(
-
-        ){
+        final FeedMessage getBus(){
             return cache.getProtobuf(
                 baseURL + "camsys%2Fbus-alerts",
                 Collections.emptyMap(),
@@ -253,9 +251,7 @@ final class MTAService {
             );
         }
 
-        final FeedMessage getSubway(
-
-        ){
+        final FeedMessage getSubway(){
             return cache.getProtobuf(
                 baseURL + "camsys%2Fsubway-alerts",
                 Collections.emptyMap(),
@@ -263,9 +259,7 @@ final class MTAService {
             );
         }
 
-        final FeedMessage getLIRR(
-
-        ){
+        final FeedMessage getLIRR(){
             return cache.getProtobuf(
                 baseURL + "camsys%2Flirr-alerts",
                 Collections.emptyMap(),
@@ -273,9 +267,7 @@ final class MTAService {
             );
         }
 
-        final FeedMessage getMNR(
-
-        ){
+        final FeedMessage getMNR(){
             return cache.getProtobuf(
                 baseURL + "camsys%2Fmnr-alerts",
                 Collections.emptyMap(),
