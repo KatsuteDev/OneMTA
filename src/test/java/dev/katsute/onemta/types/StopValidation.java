@@ -4,7 +4,6 @@ import dev.katsute.onemta.TestProvider;
 import dev.katsute.onemta.bus.Bus;
 import dev.katsute.onemta.railroad.LIRR;
 import dev.katsute.onemta.railroad.MNR;
-import dev.katsute.onemta.railroad.RailroadStop;
 import dev.katsute.onemta.subway.Subway;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -12,7 +11,6 @@ import static org.junit.jupiter.api.Assertions.assertNotSame;
 
 /**
  * @see TransitStop
- * @see RailroadStop
  */
 public abstract class StopValidation {
 
@@ -45,12 +43,6 @@ public abstract class StopValidation {
             assertNotSame(vehicles, temp.getVehicles());
             assertNotSame(alerts, temp.getAlerts());
         }
-    }
-
-    public static void testRailroadStop(final RailroadStop<?,?> stop){
-        assertNotNull(stop.getStopCode());
-        assertNotNull(stop.getStopDescription());
-        assertNotNull(stop.hasWheelchairBoarding());
     }
 
 }

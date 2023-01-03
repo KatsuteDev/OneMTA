@@ -138,12 +138,6 @@ final class TestSubwayRoute {
             }
 
             @Test
-            final void testGTFSTransitVehicles(){
-                for(final Vehicle vehicle : route.getVehicles())
-                    VehicleValidation.testGTFSVehicle(vehicle);
-            }
-
-            @Test
             final void testVehicleRouteReference(){
                 for(final Vehicle vehicle : route.getVehicles())
                     VehicleValidation.testVehicleRouteReference(route, vehicle);
@@ -169,14 +163,6 @@ final class TestSubwayRoute {
             }
 
             @Test
-            final void testGTFSVehicleTrips(){
-                for(final Vehicle vehicle : route.getVehicles()){
-                    assertNotNull(vehicle.getTrip());
-                    TripValidation.testGTFSTrip(vehicle.getTrip());
-                }
-            }
-
-            @Test
             final void testVehicleTripRouteReference(){
                 for(final Vehicle vehicle : route.getVehicles())
                     TripValidation.testTripRouteReference(vehicle);
@@ -191,12 +177,6 @@ final class TestSubwayRoute {
             final void testVehicleTripStops(){
                 for(final Vehicle vehicle : route.getVehicles())
                     TripValidation.testTripStops(vehicle.getTrip().getTripStops());
-            }
-
-            @Test
-            final void testGTFSTripStops(){
-                for(final Vehicle vehicle : route.getVehicles())
-                    TripValidation.testGTFSTripStops(vehicle.getTrip().getTripStops());
             }
 
         }

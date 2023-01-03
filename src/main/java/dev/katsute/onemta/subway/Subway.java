@@ -31,7 +31,7 @@ import dev.katsute.onemta.types.*;
  * @see TripStop
  * @see Alert
  * @since 1.0.0
- * @version 1.1.0
+ * @version 2.0.0
  * @author Katsute
  */
 public abstract class Subway {
@@ -91,10 +91,10 @@ public abstract class Subway {
      * Represents a subway vehicle.
      *
      * @since 1.0.0
-     * @version 1.0.0
+     * @version 2.0.0
      * @author Katsute
      */
-    public abstract static class Vehicle extends GTFSVehicle<Route,Stop,Trip,String,String,String> {
+    public abstract static class Vehicle extends TransitVehicle<Route,Stop,Trip,String,String,String> {
 
         /**
          * Returns the current vehicle status.
@@ -119,22 +119,22 @@ public abstract class Subway {
     /**
      * Represents a subway vehicle trip.
      *
-     * @see TripStop
-     * @since 1.0.0
-     * @version 1.0.0
-     * @author Katsute
-     */
-    public abstract static class Trip extends GTFSTransitTrip<Vehicle,Route,TripStop> implements Direction<SubwayDirection> { }
-
-    /**
-     * Represents a subway vehicle trip stop.
-     *
-     * @since Trip
+     * @see TransitTrip
      * @since 1.0.0
      * @version 2.0.0
      * @author Katsute
      */
-    public abstract static class TripStop extends GTFSTransitTripStop<Stop,Trip,String> {
+    public abstract static class Trip extends TransitTrip<Vehicle,Route,TripStop> implements Direction<SubwayDirection> { }
+
+    /**
+     * Represents a subway vehicle trip stop.
+     *
+     * @see TransitTripStop
+     * @since 1.0.0
+     * @version 2.0.0
+     * @author Katsute
+     */
+    public abstract static class TripStop extends TransitTripStop<Stop,Trip,String> {
 
         /**
          * Returns the actual track that a subway train arrived at.

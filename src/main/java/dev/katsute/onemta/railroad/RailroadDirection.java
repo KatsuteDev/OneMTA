@@ -33,7 +33,7 @@ public enum RailroadDirection {
     MANHATTAN(0),
 
     /**
-     * Long Island and North bound trains.
+     * Long Island and New York bound trains.
      */
     ORIGIN(1);
 

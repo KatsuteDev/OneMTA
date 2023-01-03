@@ -20,10 +20,7 @@ package dev.katsute.onemta.railroad;
 
 import dev.katsute.onemta.attribute.Direction;
 import dev.katsute.onemta.attribute.Location;
-import dev.katsute.onemta.types.GTFSTransitTrip;
-import dev.katsute.onemta.types.GTFSVehicle;
-import dev.katsute.onemta.types.TransitAlert;
-import dev.katsute.onemta.types.TransitRoute;
+import dev.katsute.onemta.types.*;
 
 /**
  * Represents Long Island Railroad (LIRR) related objects.
@@ -35,7 +32,7 @@ import dev.katsute.onemta.types.TransitRoute;
  * @see TripStop
  * @see Alert
  * @since 1.0.0
- * @version 1.0.0
+ * @version 2.0.0
  * @author Katsute
  */
 @SuppressWarnings("SpellCheckingInspection")
@@ -56,19 +53,49 @@ public abstract class LIRR {
      * Represents a Long Island Railroad (LIRR) stop.
      *
      * @since 1.0.0
-     * @version 1.0.0
+     * @version 2.0.0
      * @author Katsute
      */
-    public abstract static class Stop extends RailroadStop<Vehicle,Alert> { }
+    public abstract static class Stop extends TransitStop<Integer,Vehicle,Alert> {
+
+        /**
+         * Returns the stop code for the station.
+         *
+         * @return stop code
+         *
+         * @since 1.0.0
+         */
+        public abstract String getStopCode();
+
+        /**
+         * Returns the stop description.
+         *
+         * @return route description
+         *
+         * @since 1.0.0
+         */
+        public abstract String getStopDescription();
+
+        /**
+         * Returns if the stop is wheelchair accessible.
+         *
+         * @return wheelchair accessible
+         *
+         * @since 1.0.0
+         */
+        public abstract Boolean hasWheelchairBoarding();
+
+
+    }
 
     /**
      * Represents a Long Island Railroad (LIRR) vehicle.
      *
      * @since 1.0.0
-     * @version 1.0.0
+     * @version 2.0.0
      * @author Katsute
      */
-    public abstract static class Vehicle extends GTFSVehicle<Route,Stop,Trip,Integer,Integer,String> implements Location {
+    public abstract static class Vehicle extends TransitVehicle<Route,Stop,Trip,Integer,Integer,String> implements Location {
 
         /**
          * Returns the vehicle bearing, 0 being North.
@@ -93,12 +120,12 @@ public abstract class LIRR {
     /**
      * Represents a Long Island Railroad (LIRR) vehicle trip.
      *
-     * @see TripStop
+     * @see TransitTrip
      * @since 1.0.0
      * @version 2.0.0
      * @author Katsute
      */
-    public abstract static class Trip extends GTFSTransitTrip<Vehicle,Route,TripStop> implements Direction<RailroadDirection> {
+    public abstract static class Trip extends TransitTrip<Vehicle,Route,TripStop> implements Direction<RailroadDirection> {
 
         /**
          * Returns the schedule relationship.
@@ -116,10 +143,28 @@ public abstract class LIRR {
      *
      * @see Trip
      * @since 1.0.0
-     * @version 1.0.0
+     * @version 2.0.0
      * @author Katsute
      */
-    public abstract static class TripStop extends RailroadTripStop<Stop,Trip> {
+    public abstract static class TripStop extends TransitTripStop<Stop,Trip,Integer> {
+
+        /**
+         * Returns the delay in seconds.
+         *
+         * @return delay
+         *
+         * @since 1.0.0
+         */
+        public abstract Integer getDelay();
+
+        /**
+         * Returns the train status.
+         *
+         * @return train status
+         *
+         * @since 1.0.0
+         */
+        public abstract String getTrainStatus();
 
         /**
          * Returns the track.

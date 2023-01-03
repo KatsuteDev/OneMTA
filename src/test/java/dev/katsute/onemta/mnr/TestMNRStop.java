@@ -106,12 +106,6 @@ final class TestMNRStop {
                     VehicleValidation.testVehicle(vehicle);
             }
 
-            @Test
-            final void testGTFSTransitVehicles(){
-                for(final Vehicle vehicle : stop.getVehicles())
-                    VehicleValidation.testGTFSVehicle(vehicle);
-            }
-
         }
 
         @Nested
@@ -131,14 +125,6 @@ final class TestMNRStop {
                     TripValidation.testTripReference(vehicle);
             }
 
-            @Test
-            final void testGTFSVehicleTrips(){
-                for(final Vehicle vehicle : stop.getVehicles()){
-                    assertNotNull(vehicle.getTrip());
-                    TripValidation.testGTFSTrip(vehicle.getTrip());
-                }
-            }
-
         }
 
         @Nested
@@ -148,12 +134,6 @@ final class TestMNRStop {
             final void testVehicleTripStops(){
                 for(final Vehicle vehicle : stop.getVehicles())
                     TripValidation.testTripStops(vehicle.getTrip().getTripStops());
-            }
-
-            @Test
-            final void testGTFSTripStops(){
-                for(final Vehicle vehicle : stop.getVehicles())
-                    TripValidation.testGTFSTripStops(vehicle.getTrip().getTripStops());
             }
 
             @Test

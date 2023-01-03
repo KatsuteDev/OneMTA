@@ -84,7 +84,7 @@ public abstract class Bus {
      * @version 2.0.0
      * @author Katsute
      */
-    public abstract static class Vehicle extends GTFSVehicle<Route,Stop,Trip,Integer,String,Integer> implements Location, Direction<BusDirection>, BusRouteTypes {
+    public abstract static class Vehicle extends TransitVehicle<Route,Stop,Trip,Integer,String,Integer> implements Location, Direction<BusDirection>, BusRouteTypes {
 
         /**
          * Returns the vehicle bearing, 0 being North.
@@ -109,22 +109,22 @@ public abstract class Bus {
     /**
      * Represents a bus vehicle trip.
      *
-     * @see GTFSTransitTrip
+     * @see TransitTrip
      * @since 1.0.0
      * @version 2.0.0
      * @author Katsute
      */
-    public abstract static class Trip extends GTFSTransitTrip<Vehicle,Route,TripStop> { }
+    public abstract static class Trip extends TransitTrip<Vehicle,Route,TripStop> { }
 
     /**
      * Represents a bus vehicle trip stop.
      *
-     * @see GTFSTransitTripStop
+     * @see TransitTripStop
      * @since 1.0.0
      * @version 2.0.0
      * @author Katsute
      */
-    public abstract static class TripStop extends GTFSTransitTripStop<Stop,Trip,Integer> { }
+    public abstract static class TripStop extends TransitTripStop<Stop,Trip,Integer> { }
 
     /**
      * Represents a bus alert.

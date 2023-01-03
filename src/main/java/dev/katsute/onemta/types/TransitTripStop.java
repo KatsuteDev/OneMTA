@@ -21,6 +21,8 @@ package dev.katsute.onemta.types;
 import dev.katsute.onemta.attribute.StopReference;
 import dev.katsute.onemta.attribute.TripReference;
 
+import java.util.Date;
+
 /**
  * Represents a transit trip stop.
  *
@@ -33,6 +35,48 @@ import dev.katsute.onemta.attribute.TripReference;
  * @author Katsute
  */
 public abstract class TransitTripStop<S extends TransitStop<?,?,?>, T extends TransitTrip<?,?,?>, SID> implements StopReference<S>, TripReference<T> {
+
+    /**
+     * Returns the arrival time.
+     *
+     * @return arrival time
+     *
+     * @see Date
+     * @see #getArrivalTimeEpochMillis()
+     * @since 1.0.0
+     */
+    public abstract Date getArrivalTime();
+
+    /**
+     * Returns the arrival time as milliseconds since epoch.
+     *
+     * @return arrival time
+     *
+     * @see #getArrivalTime()
+     * @since 1.0.0
+     */
+    public abstract Long getArrivalTimeEpochMillis();
+
+    /**
+     * Returns the departure time.
+     *
+     * @return departure time
+     *
+     * @see Date
+     * @see #getDepartureTimeEpochMillis()
+     * @since 1.0.0
+     */
+    public abstract Date getDepartureTime();
+
+    /**
+     * Returns the departure time as milliseconds since epoch.
+     *
+     * @return departure time
+     *
+     * @see #getDepartureTime()
+     * @since 1.0.0
+     */
+    public abstract Long getDepartureTimeEpochMillis();
 
     /**
      * Returns the stop ID.

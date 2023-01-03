@@ -91,24 +91,6 @@ final class TestBusRoute {
 
             @Test
             final void testVehicles(){
-                { // not all bus vehicles have this for some reason
-                    assertTrue(TestProvider.atleastOneTrue(
-                        route.getVehicles(), Bus.Vehicle.class,
-                        v -> v.getExpectedArrivalTime() != null &&
-                            v.getExpectedArrivalTimeEpochMillis() != null &&
-                            v.getExpectedDepartureTime() != null &&
-                            v.getExpectedDepartureTimeEpochMillis() != null
-                    ));
-                }
-
-                { // not all noProgress have a progress status for some reason
-                    assertTrue(TestProvider.atleastOneTrue(
-                        route.getVehicles(), Bus.Vehicle.class,
-                        v -> v.getProgressRate().equals("noProgress") &&
-                            v.getProgressStatus() != null
-                    ));
-                }
-
                 { // test trip refresh
                     assertTrue(TestProvider.atleastOneTrue(
                         route.getVehicles(), Bus.Vehicle.class,

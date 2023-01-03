@@ -11,7 +11,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @see TransitVehicle
- * @see GTFSVehicle
  */
 public abstract class VehicleValidation {
 
@@ -45,10 +44,6 @@ public abstract class VehicleValidation {
 
             assertNotSame(trip, temp.getTrip());
         }
-    }
-
-    public static void testGTFSVehicle(final GTFSVehicle<?,?,?,?,?> vehicle){
-        assertNotNull(vehicle.getCurrentStatus());
     }
 
     //
