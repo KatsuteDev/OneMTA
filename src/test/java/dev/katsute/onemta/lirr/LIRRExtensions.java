@@ -2,10 +2,8 @@ package dev.katsute.onemta.lirr;
 
 import dev.katsute.onemta.MTA;
 
-import static dev.katsute.onemta.railroad.LIRR.Trip;
-import static dev.katsute.onemta.railroad.LIRR.Vehicle;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static dev.katsute.onemta.railroad.LIRR.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 abstract class LIRRExtensions {
 

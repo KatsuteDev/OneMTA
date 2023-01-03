@@ -18,7 +18,8 @@
 
 package dev.katsute.onemta.types;
 
-import dev.katsute.onemta.attribute.*;
+import dev.katsute.onemta.attribute.Reference;
+import dev.katsute.onemta.attribute.Updatable;
 
 /**
  * Represents a transit vehicle.

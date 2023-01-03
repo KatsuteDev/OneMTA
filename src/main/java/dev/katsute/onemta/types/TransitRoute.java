@@ -18,9 +18,7 @@
 
 package dev.katsute.onemta.types;
 
-import dev.katsute.onemta.attribute.Alerts;
-import dev.katsute.onemta.attribute.Reference;
-import dev.katsute.onemta.attribute.Updatable;
+import dev.katsute.onemta.attribute.*;
 
 /**
  * Represents a transit route.

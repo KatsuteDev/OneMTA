@@ -23,9 +23,7 @@ import dev.katsute.onemta.exception.JsonSyntaxException;
 import java.util.*;
 import java.util.function.Function;
 import java.util.function.Supplier;
-import java.util.regex.MatchResult;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.regex.*;
 
 import static dev.katsute.onemta.Json.Expect.*;
 import static dev.katsute.onemta.Json.Type.*;

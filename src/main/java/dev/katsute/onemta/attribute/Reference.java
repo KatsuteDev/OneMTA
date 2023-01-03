@@ -19,10 +19,7 @@
 package dev.katsute.onemta.attribute;
 
 import dev.katsute.onemta.subway.Subway;
-import dev.katsute.onemta.types.TransitRoute;
-import dev.katsute.onemta.types.TransitStop;
-import dev.katsute.onemta.types.TransitTrip;
-import dev.katsute.onemta.types.TransitVehicle;
+import dev.katsute.onemta.types.*;
 
 /**
  * Represents reference interfaces.

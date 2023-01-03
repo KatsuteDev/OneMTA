@@ -23,7 +23,6 @@ import dev.katsute.onemta.bus.BusDirection;
 import dev.katsute.onemta.types.TransitAgency;
 import dev.katsute.onemta.types.TransitAlertPeriod;
 
-import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.regex.Pattern;
 

@@ -2,10 +2,7 @@ package dev.katsute.onemta.subway;
 
 import dev.katsute.onemta.MTA;
 import dev.katsute.onemta.TestProvider;
-import dev.katsute.onemta.types.AlertValidation;
-import dev.katsute.onemta.types.StopValidation;
-import dev.katsute.onemta.types.TripValidation;
-import dev.katsute.onemta.types.VehicleValidation;
+import dev.katsute.onemta.types.*;
 import org.junit.jupiter.api.*;
 
 import static dev.katsute.onemta.subway.Subway.*;

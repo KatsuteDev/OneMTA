@@ -23,16 +23,10 @@ import dev.katsute.onemta.GTFSRealtimeProto.FeedMessage;
 import dev.katsute.onemta.Json.JsonObject;
 import dev.katsute.onemta.exception.HttpException;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URI;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Function;
 import java.util.regex.MatchResult;
 import java.util.regex.Pattern;

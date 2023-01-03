@@ -4,8 +4,7 @@ import dev.katsute.onemta.MTA;
 import dev.katsute.onemta.types.TripValidation;
 
 import static dev.katsute.onemta.subway.Subway.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 abstract class SubwayExtensions {
 

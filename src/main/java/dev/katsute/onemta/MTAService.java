@@ -24,9 +24,7 @@ import dev.katsute.onemta.Json.JsonObject;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 @SuppressWarnings({"SpellCheckingInspection", "Convert2Diamond"})
 final class MTAService {

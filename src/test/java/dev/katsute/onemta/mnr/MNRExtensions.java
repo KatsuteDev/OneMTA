@@ -2,9 +2,8 @@ package dev.katsute.onemta.mnr;
 
 import dev.katsute.onemta.MTA;
 
-import static dev.katsute.onemta.railroad.MNR.Vehicle;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static dev.katsute.onemta.railroad.MNR.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 abstract class MNRExtensions {
 

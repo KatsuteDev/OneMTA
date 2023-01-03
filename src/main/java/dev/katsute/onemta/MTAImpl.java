@@ -18,7 +18,6 @@
 
 package dev.katsute.onemta;
 
-import dev.katsute.onemta.Json.JsonObject;
 import dev.katsute.onemta.bus.Bus;
 import dev.katsute.onemta.exception.MissingResourceException;
 import dev.katsute.onemta.railroad.LIRR;
@@ -26,10 +25,7 @@ import dev.katsute.onemta.railroad.MNR;
 import dev.katsute.onemta.subway.Subway;
 import dev.katsute.onemta.subway.SubwayDirection;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 import static dev.katsute.onemta.GTFSRealtimeProto.*;
 

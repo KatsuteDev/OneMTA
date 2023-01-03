@@ -1,7 +1,6 @@
 package dev.katsute.onemta.bus;
 
 import dev.katsute.onemta.MTA;
-import dev.katsute.onemta.TestProvider;
 import dev.katsute.onemta.types.TripValidation;
 
 import static dev.katsute.onemta.bus.Bus.*;

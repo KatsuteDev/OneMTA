@@ -25,7 +25,7 @@ import dev.katsute.onemta.types.TransitAlertPeriod;
 import java.util.*;
 
 import static dev.katsute.onemta.GTFSRealtimeProto.*;
-import static dev.katsute.onemta.MNRRProto.MnrStopTimeUpdate;
+import static dev.katsute.onemta.MNRRProto.*;
 import static dev.katsute.onemta.railroad.MNR.*;
 
 @SuppressWarnings("SpellCheckingInspection")
