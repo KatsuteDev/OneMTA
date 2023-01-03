@@ -485,7 +485,7 @@ abstract class MTASchema_Bus extends MTASchema {
         final CrowdingProto.CrowdingDescriptor crowdingDescriptor = vehicle.getExtension(CrowdingProto.crowdingDescriptor);
         return new Vehicle() {
 
-            private final Integer vehicleID = requireNonNull(() -> Integer.parseInt(vehicle.getVehicle().getLabel().split("_")[1]));
+            private final Integer vehicleID = requireNonNull(() -> Integer.parseInt(vehicle.getVehicle().getId().split("_")[1]));
 
             private Double latitude = requireNonNull(() -> Double.valueOf(vehicle.getPosition().getLatitude()));
             private Double longitude = requireNonNull(() -> Double.valueOf(vehicle.getPosition().getLongitude()));
