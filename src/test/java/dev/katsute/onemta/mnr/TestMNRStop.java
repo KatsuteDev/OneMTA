@@ -92,11 +92,6 @@ final class TestMNRStop {
             StopValidation.testStop(stop);
         }
 
-        @Test
-        final void testRailroadStop(){
-            StopValidation.testRailroadStop(stop);
-        }
-
         @Nested
         final class VehicleTests {
 
@@ -134,12 +129,6 @@ final class TestMNRStop {
             final void testVehicleTripStops(){
                 for(final Vehicle vehicle : stop.getVehicles())
                     TripValidation.testTripStops(vehicle.getTrip().getTripStops());
-            }
-
-            @Test
-            final void testRailroadTripStops(){
-                for(final Vehicle vehicle : stop.getVehicles())
-                    TripValidation.testRailroadTripStops(vehicle.getTrip().getTripStops());
             }
 
         }

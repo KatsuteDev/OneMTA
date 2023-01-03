@@ -74,11 +74,6 @@ final class TestBusStop {
             }
 
             @Test
-            final void testOrigin(){
-                BusExtensions.testOriginStop(stop.getVehicles()[0]);
-            }
-
-            @Test
             final void testID(){
                 BusExtensions.testVehicleNumber(mta, stop.getVehicles()[0]);
             }

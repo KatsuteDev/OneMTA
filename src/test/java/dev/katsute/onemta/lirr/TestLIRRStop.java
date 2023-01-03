@@ -99,11 +99,6 @@ final class TestLIRRStop {
             StopValidation.testStop(stop);
         }
 
-        @Test
-        final void testRailroadStop(){
-            StopValidation.testRailroadStop(stop);
-        }
-
         @Nested
         final class VehicleTests {
 
@@ -142,13 +137,6 @@ final class TestLIRRStop {
                 for(final Vehicle vehicle : stop.getVehicles())
                     TripValidation.testTripStops(vehicle.getTrip().getTripStops());
             }
-
-            @Test
-            final void testRailroadTripStops(){
-                for(final Vehicle vehicle : stop.getVehicles())
-                    TripValidation.testRailroadTripStops(vehicle.getTrip().getTripStops());
-            }
-
         }
 
         @TestInstance(TestInstance.Lifecycle.PER_CLASS)

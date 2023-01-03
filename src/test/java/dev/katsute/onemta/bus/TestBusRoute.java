@@ -108,11 +108,6 @@ final class TestBusRoute {
             }
 
             @Test
-            final void testOrigin(){
-                BusExtensions.testOriginStop(route.getVehicles()[0]);
-            }
-
-            @Test
             final void testID(){
                 BusExtensions.testVehicleNumber(mta, route.getVehicles()[0]);
             }

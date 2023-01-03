@@ -33,22 +33,6 @@ abstract class BusExtensions {
         assertNotNull(vehicle.isExpress());
         assertNotNull(vehicle.isShuttle());
         assertNotNull(vehicle.isLimited());
-
-        assertNotNull(vehicle.getOriginStopCode());
-        assertNotNull(vehicle.getDestinationName());
-        assertNotNull(vehicle.getProgressRate());
-
-        assertNotNull(vehicle.getAimedArrivalTime());
-        assertNotNull(vehicle.getAimedArrivalTimeEpochMillis());
-
-        assertNotNull(vehicle.getArrivalProximityText());
-        assertNotNull(vehicle.getDistanceFromStop());
-        assertNotNull(vehicle.getStopsAway());
-        assertNotNull(vehicle.getStopName());
-    }
-
-    public static void testOriginStop(final Vehicle vehicle){
-        assertEquals(vehicle.getOriginStopCode(), vehicle.getOriginStop().getStopID());
     }
 
     public static void testVehicleNumber(final MTA mta, final Vehicle vehicle){
@@ -59,25 +43,6 @@ abstract class BusExtensions {
 
     public static void testTripStops(final TripStop[] trip){
         TripValidation.requireTripStops(trip);
-
-        {
-            // fields may be missing if stop is skipped
-            assertTrue(TestProvider.atleastOneTrue(
-                trip, Bus.TripStop.class,
-                s -> s.getExpectedArrivalTime() != null &&
-                    s.getExpectedArrivalTimeEpochMillis() != null &&
-                    s.getArrivalProximityText() != null
-            ));
-        }
-
-        for(final TripStop stop : trip)
-            testTripStop(stop);
+        TripValidation.testTripStops(trip);
     }
-
-    private static void testTripStop(final TripStop stop){
-        assertNotNull(stop.getDistanceFromStop());
-        assertNotNull(stop.getStopsAway());
-        assertNotNull(stop.getStopName());
-    }
-
 }

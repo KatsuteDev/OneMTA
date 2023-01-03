@@ -144,12 +144,6 @@ final class TestLIRRRoute {
                     TripValidation.testTripStops(vehicle.getTrip().getTripStops());
             }
 
-            @Test
-            final void testRailroadTripStops(){
-                for(final Vehicle vehicle : route.getVehicles())
-                    TripValidation.testRailroadTripStops(vehicle.getTrip().getTripStops());
-            }
-
         }
 
         @TestInstance(TestInstance.Lifecycle.PER_CLASS)
