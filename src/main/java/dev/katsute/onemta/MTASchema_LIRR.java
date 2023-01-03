@@ -625,6 +625,11 @@ abstract class MTASchema_LIRR extends MTASchema {
                 return status;
             }
 
+            @Override
+            public final Integer getStopSequence(){
+                return null;
+            }
+
             // onemta methods
 
             private Stop stop = null;

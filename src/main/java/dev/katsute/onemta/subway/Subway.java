@@ -114,6 +114,15 @@ public abstract class Subway {
          */
         public abstract Boolean isExpress();
 
+        /**
+         * Returns the stop sequence.
+         *
+         * @return stop sequence
+         *
+         * @since 2.0.0
+         */
+        public abstract Integer getStopSequence();
+
     }
 
     /**

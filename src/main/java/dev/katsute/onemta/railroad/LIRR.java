@@ -175,6 +175,15 @@ public abstract class LIRR {
          */
         public abstract String getTrack();
 
+        /**
+         * Returns the stop sequence.
+         *
+         * @return stop sequence
+         *
+         * @since 2.0.0
+         */
+        public abstract Integer getStopSequence();
+
     }
 
     /**

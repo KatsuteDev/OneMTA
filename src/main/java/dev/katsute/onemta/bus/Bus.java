@@ -114,7 +114,18 @@ public abstract class Bus {
      * @version 2.0.0
      * @author Katsute
      */
-    public abstract static class Trip extends TransitTrip<Vehicle,Route,TripStop> { }
+    public abstract static class Trip extends TransitTrip<Vehicle,Route,TripStop> {
+
+        /**
+         * Returns the delay from the schedule. Negative numbers implies ahead of schedule.
+         *
+         * @return delay in seconds
+         *
+         * @since 2.0.0
+         */
+        public abstract Integer getDelay();
+
+    }
 
     /**
      * Represents a bus vehicle trip stop.
@@ -124,7 +135,18 @@ public abstract class Bus {
      * @version 2.0.0
      * @author Katsute
      */
-    public abstract static class TripStop extends TransitTripStop<Stop,Trip,Integer> { }
+    public abstract static class TripStop extends TransitTripStop<Stop,Trip,Integer> {
+
+        /**
+         * Returns the stop sequence.
+         *
+         * @return stop sequence
+         *
+         * @since 2.0.0
+         */
+        public abstract Integer getStopSequence();
+
+    }
 
     /**
      * Represents a bus alert.

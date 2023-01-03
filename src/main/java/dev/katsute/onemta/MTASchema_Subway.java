@@ -524,6 +524,11 @@ abstract class MTASchema_Subway extends MTASchema {
                 return routeID;
             }
 
+            @Override
+            public final Integer getStopSequence(){
+                return null;
+            }
+
             // onemta methods
 
             @Override

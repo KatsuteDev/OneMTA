@@ -68,8 +68,7 @@ public abstract class Reference {
     public interface Stop<S extends TransitStop<?,?,?>> {
 
         /**
-         * For bus vehicles retrieved from a stop it will return the stop. <br>
-         * For all other vehicles it will return the next stop on the route. <br>
+         * For all vehicles it will return the current or next stop on the route. <br>
          * For trip stops it will return the trip stop.
          *
          * @return stop

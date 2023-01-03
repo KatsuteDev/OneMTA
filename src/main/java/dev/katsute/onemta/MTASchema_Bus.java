@@ -670,6 +670,11 @@ abstract class MTASchema_Bus extends MTASchema {
                 return routeID;
             }
 
+            @Override
+            public final Integer getDelay(){
+                return null;
+            }
+
             // onemta methods
 
             @Override
@@ -733,6 +738,11 @@ abstract class MTASchema_Bus extends MTASchema {
             @Override
             public final Long getDepartureTimeEpochMillis(){
                 return departure;
+            }
+
+            @Override
+            public final Integer getStopSequence(){
+                return null;
             }
 
             // onemta methods

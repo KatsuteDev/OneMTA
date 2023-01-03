@@ -94,15 +94,15 @@ final class MTAImpl extends MTA {
             ent -> {
                 if(!ent.getVehicle().hasTrip()) return null;
 
-                final String tripId = ent.getVehicle().getTrip().getTripId();
+                final String busId = ent.getId();
 
                 // find matching trip entity
                 final FeedEntity trip = getFeedEntity(
                     service.bus.getTripUpdates(),
                     tent ->
                         !tent.hasTripUpdate() &&
-                        tent.getTripUpdate().hasTrip() &&
-                        Objects.equals(tent.getTripUpdate().getTrip().getTripId(), tripId)
+                        tent.getTripUpdate().hasVehicle() &&
+                        Objects.equals(tent.getTripUpdate().getVehicle().getId(), busId)
                 );
                 return trip != null ? MTASchema_Bus.asVehicle(
                     this,
