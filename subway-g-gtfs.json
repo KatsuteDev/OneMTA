@@ -1,7 +1,7 @@
 {
   "header": {
     "gtfsRealtimeVersion": "1.0",
-    "timestamp": "1666749913",
+    "timestamp": "1672873116",
     "mercuryFeedHeader": {
       "mercuryVersion": "1.0"
     }
@@ -10,58 +10,79 @@
     "id": "000001G",
     "tripUpdate": {
       "trip": {
-        "tripId": "129518_G..S",
-        "startTime": "21:35:11",
-        "startDate": "20221025",
+        "tripId": "104526_G..N",
+        "startTime": "17:25:16",
+        "startDate": "20230104",
         "routeId": "G",
         "nyctTripDescriptor": {
-          "trainId": "1G 2135 CRS/CHU",
+          "trainId": "1G 1726 CHU/CRS",
+          "isAssigned": true
+        }
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "time": "1672873185"
+        },
+        "departure": {
+          "time": "1672873185"
+        },
+        "stopId": "G24N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672873245"
+        },
+        "departure": {
+          "time": "1672873245"
+        },
+        "stopId": "G22N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "D2",
+          "actualTrack": "D2"
+        }
+      }]
+    }
+  }, {
+    "id": "000002G",
+    "vehicle": {
+      "trip": {
+        "tripId": "104526_G..N",
+        "startTime": "17:25:16",
+        "startDate": "20230104",
+        "routeId": "G",
+        "nyctTripDescriptor": {
+          "trainId": "1G 1726 CHU/CRS",
+          "isAssigned": true
+        }
+      },
+      "currentStopSequence": 18,
+      "currentStatus": "STOPPED_AT",
+      "timestamp": "1672873065",
+      "stopId": "G26N"
+    }
+  }, {
+    "id": "000003G",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "104705_G..S",
+        "startTime": "17:27:03",
+        "startDate": "20230104",
+        "routeId": "G",
+        "nyctTripDescriptor": {
+          "trainId": "1G 1727 CRS/CHU",
           "isAssigned": true,
           "direction": "SOUTH"
         }
       },
       "stopTimeUpdate": [{
         "arrival": {
-          "time": "1666749900"
+          "time": "1672873167"
         },
         "departure": {
-          "time": "1666749900"
-        },
-        "stopId": "F23S",
-        "nyctStopTimeUpdate": {
-          "scheduledTrack": "B1",
-          "actualTrack": "B1"
-        }
-      }, {
-        "arrival": {
-          "time": "1666749965"
-        },
-        "departure": {
-          "time": "1666749965"
-        },
-        "stopId": "F24S",
-        "nyctStopTimeUpdate": {
-          "scheduledTrack": "B1",
-          "actualTrack": "B1"
-        }
-      }, {
-        "arrival": {
-          "time": "1666750055"
-        },
-        "departure": {
-          "time": "1666750055"
-        },
-        "stopId": "F25S",
-        "nyctStopTimeUpdate": {
-          "scheduledTrack": "B1",
-          "actualTrack": "B1"
-        }
-      }, {
-        "arrival": {
-          "time": "1666750205"
-        },
-        "departure": {
-          "time": "1666750205"
+          "time": "1672873167"
         },
         "stopId": "F26S",
         "nyctStopTimeUpdate": {
@@ -70,10 +91,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666750295"
+          "time": "1672873287"
         },
         "departure": {
-          "time": "1666750295"
+          "time": "1672873287"
         },
         "stopId": "F27S",
         "nyctStopTimeUpdate": {
@@ -83,230 +104,44 @@
       }]
     }
   }, {
-    "id": "000002G",
+    "id": "000004G",
     "vehicle": {
       "trip": {
-        "tripId": "129518_G..S",
-        "startTime": "21:35:11",
-        "startDate": "20221025",
+        "tripId": "104705_G..S",
+        "startTime": "17:27:03",
+        "startDate": "20230104",
         "routeId": "G",
         "nyctTripDescriptor": {
-          "trainId": "1G 2135 CRS/CHU",
+          "trainId": "1G 1727 CRS/CHU",
           "isAssigned": true,
           "direction": "SOUTH"
         }
       },
-      "currentStopSequence": 16,
+      "currentStopSequence": 18,
       "currentStatus": "STOPPED_AT",
-      "timestamp": "1666749900",
-      "stopId": "F23S"
-    }
-  }, {
-    "id": "000003G",
-    "tripUpdate": {
-      "trip": {
-        "tripId": "129288_G..N",
-        "startTime": "21:32:53",
-        "startDate": "20221025",
-        "routeId": "G",
-        "nyctTripDescriptor": {
-          "trainId": "1G 2132 CHU/CRS",
-          "isAssigned": true
-        }
-      },
-      "stopTimeUpdate": [{
-        "arrival": {
-          "time": "1666749900"
-        },
-        "departure": {
-          "time": "1666749900"
-        },
-        "stopId": "G24N",
-        "nyctStopTimeUpdate": {
-          "scheduledTrack": "E2",
-          "actualTrack": "E2"
-        }
-      }, {
-        "arrival": {
-          "time": "1666749965"
-        },
-        "departure": {
-          "time": "1666749965"
-        },
-        "stopId": "G22N",
-        "nyctStopTimeUpdate": {
-          "scheduledTrack": "D2",
-          "actualTrack": "D2"
-        }
-      }]
-    }
-  }, {
-    "id": "000004G",
-    "vehicle": {
-      "trip": {
-        "tripId": "129288_G..N",
-        "startTime": "21:32:53",
-        "startDate": "20221025",
-        "routeId": "G",
-        "nyctTripDescriptor": {
-          "trainId": "1G 2132 CHU/CRS",
-          "isAssigned": true
-        }
-      },
-      "currentStopSequence": 19,
-      "currentStatus": "STOPPED_AT",
-      "timestamp": "1666749900",
-      "stopId": "G24N"
+      "timestamp": "1672873083",
+      "stopId": "F25S"
     }
   }, {
     "id": "000005G",
     "tripUpdate": {
       "trip": {
-        "tripId": "130203_G..N",
-        "startTime": "21:42:02",
-        "startDate": "20221025",
+        "tripId": "105505_G..S",
+        "startTime": "17:35:03",
+        "startDate": "20230104",
         "routeId": "G",
         "nyctTripDescriptor": {
-          "trainId": "1G 2143 CHU/CRS",
-          "isAssigned": true
-        }
-      },
-      "stopTimeUpdate": [{
-        "arrival": {
-          "time": "1666749900"
-        },
-        "departure": {
-          "time": "1666749900"
-        },
-        "stopId": "G32N",
-        "nyctStopTimeUpdate": {
-          "scheduledTrack": "E2",
-          "actualTrack": "E2"
-        }
-      }, {
-        "arrival": {
-          "time": "1666749965"
-        },
-        "departure": {
-          "time": "1666749965"
-        },
-        "stopId": "G31N",
-        "nyctStopTimeUpdate": {
-          "scheduledTrack": "E2",
-          "actualTrack": "E2"
-        }
-      }, {
-        "arrival": {
-          "time": "1666750025"
-        },
-        "departure": {
-          "time": "1666750025"
-        },
-        "stopId": "G30N",
-        "nyctStopTimeUpdate": {
-          "scheduledTrack": "E2",
-          "actualTrack": "E2"
-        }
-      }, {
-        "arrival": {
-          "time": "1666750115"
-        },
-        "departure": {
-          "time": "1666750115"
-        },
-        "stopId": "G29N",
-        "nyctStopTimeUpdate": {
-          "scheduledTrack": "E2",
-          "actualTrack": "E2"
-        }
-      }, {
-        "arrival": {
-          "time": "1666750265"
-        },
-        "departure": {
-          "time": "1666750265"
-        },
-        "stopId": "G28N",
-        "nyctStopTimeUpdate": {
-          "scheduledTrack": "E2",
-          "actualTrack": "E2"
-        }
-      }, {
-        "arrival": {
-          "time": "1666750325"
-        },
-        "departure": {
-          "time": "1666750325"
-        },
-        "stopId": "G26N",
-        "nyctStopTimeUpdate": {
-          "scheduledTrack": "E2",
-          "actualTrack": "E2"
-        }
-      }, {
-        "arrival": {
-          "time": "1666750475"
-        },
-        "departure": {
-          "time": "1666750475"
-        },
-        "stopId": "G24N",
-        "nyctStopTimeUpdate": {
-          "scheduledTrack": "E2",
-          "actualTrack": "E2"
-        }
-      }, {
-        "arrival": {
-          "time": "1666750535"
-        },
-        "departure": {
-          "time": "1666750535"
-        },
-        "stopId": "G22N",
-        "nyctStopTimeUpdate": {
-          "scheduledTrack": "D2",
-          "actualTrack": "D2"
-        }
-      }]
-    }
-  }, {
-    "id": "000006G",
-    "vehicle": {
-      "trip": {
-        "tripId": "130203_G..N",
-        "startTime": "21:42:02",
-        "startDate": "20221025",
-        "routeId": "G",
-        "nyctTripDescriptor": {
-          "trainId": "1G 2143 CHU/CRS",
-          "isAssigned": true
-        }
-      },
-      "currentStopSequence": 13,
-      "currentStatus": "STOPPED_AT",
-      "timestamp": "1666749900",
-      "stopId": "G32N"
-    }
-  }, {
-    "id": "000007G",
-    "tripUpdate": {
-      "trip": {
-        "tripId": "130385_G..S",
-        "startTime": "21:43:51",
-        "startDate": "20221025",
-        "routeId": "G",
-        "nyctTripDescriptor": {
-          "trainId": "1G 2143+ CRS/CHU",
+          "trainId": "1G 1735 CRS/CHU",
           "isAssigned": true,
           "direction": "SOUTH"
         }
       },
       "stopTimeUpdate": [{
         "arrival": {
-          "time": "1666749895"
+          "time": "1672873113"
         },
         "departure": {
-          "time": "1666749895"
+          "time": "1672873113"
         },
         "stopId": "F21S",
         "nyctStopTimeUpdate": {
@@ -315,10 +150,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666749965"
+          "time": "1672873233"
         },
         "departure": {
-          "time": "1666749965"
+          "time": "1672873233"
         },
         "stopId": "F22S",
         "nyctStopTimeUpdate": {
@@ -327,10 +162,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666750085"
+          "time": "1672873353"
         },
         "departure": {
-          "time": "1666750085"
+          "time": "1672873353"
         },
         "stopId": "F23S",
         "nyctStopTimeUpdate": {
@@ -339,10 +174,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666750175"
+          "time": "1672873473"
         },
         "departure": {
-          "time": "1666750175"
+          "time": "1672873473"
         },
         "stopId": "F24S",
         "nyctStopTimeUpdate": {
@@ -351,10 +186,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666750265"
+          "time": "1672873563"
         },
         "departure": {
-          "time": "1666750265"
+          "time": "1672873563"
         },
         "stopId": "F25S",
         "nyctStopTimeUpdate": {
@@ -363,10 +198,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666750415"
+          "time": "1672873713"
         },
         "departure": {
-          "time": "1666750415"
+          "time": "1672873713"
         },
         "stopId": "F26S",
         "nyctStopTimeUpdate": {
@@ -375,10 +210,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666750505"
+          "time": "1672873833"
         },
         "departure": {
-          "time": "1666750505"
+          "time": "1672873833"
         },
         "stopId": "F27S",
         "nyctStopTimeUpdate": {
@@ -388,139 +223,43 @@
       }]
     }
   }, {
-    "id": "000008G",
+    "id": "000006G",
     "vehicle": {
       "trip": {
-        "tripId": "130385_G..S",
-        "startTime": "21:43:51",
-        "startDate": "20221025",
+        "tripId": "105505_G..S",
+        "startTime": "17:35:03",
+        "startDate": "20230104",
         "routeId": "G",
         "nyctTripDescriptor": {
-          "trainId": "1G 2143+ CRS/CHU",
+          "trainId": "1G 1735 CRS/CHU",
           "isAssigned": true,
           "direction": "SOUTH"
         }
       },
-      "currentStopSequence": 14,
+      "currentStopSequence": 13,
       "currentStatus": "STOPPED_AT",
-      "timestamp": "1666749895",
-      "stopId": "F21S"
+      "timestamp": "1672873023",
+      "stopId": "F20S"
     }
   }, {
-    "id": "000009G",
+    "id": "000007G",
     "tripUpdate": {
       "trip": {
-        "tripId": "131341_G..N",
-        "startTime": "21:53:25",
-        "startDate": "20221025",
+        "tripId": "105153_G..N",
+        "startTime": "17:31:32",
+        "startDate": "20230104",
         "routeId": "G",
         "nyctTripDescriptor": {
-          "trainId": "1G 2154 CHU/CRS",
+          "trainId": "1G 1733+ CHU/CRS",
           "isAssigned": true
         }
       },
       "stopTimeUpdate": [{
         "arrival": {
-          "time": "1666749890"
+          "time": "1672873100"
         },
         "departure": {
-          "time": "1666749890"
-        },
-        "stopId": "F21N",
-        "nyctStopTimeUpdate": {
-          "scheduledTrack": "B2",
-          "actualTrack": "B2"
-        }
-      }, {
-        "arrival": {
-          "time": "1666749965"
-        },
-        "departure": {
-          "time": "1666749965"
-        },
-        "stopId": "F20N",
-        "nyctStopTimeUpdate": {
-          "scheduledTrack": "B2",
-          "actualTrack": "B2"
-        }
-      }, {
-        "arrival": {
-          "time": "1666750055"
-        },
-        "departure": {
-          "time": "1666750055"
-        },
-        "stopId": "A42N",
-        "nyctStopTimeUpdate": {
-          "scheduledTrack": "E2",
-          "actualTrack": "E2"
-        }
-      }, {
-        "arrival": {
-          "time": "1666750145"
-        },
-        "departure": {
-          "time": "1666750145"
-        },
-        "stopId": "G36N",
-        "nyctStopTimeUpdate": {
-          "scheduledTrack": "E2",
-          "actualTrack": "E2"
-        }
-      }, {
-        "arrival": {
-          "time": "1666750235"
-        },
-        "departure": {
-          "time": "1666750235"
-        },
-        "stopId": "G35N",
-        "nyctStopTimeUpdate": {
-          "scheduledTrack": "E2",
-          "actualTrack": "E2"
-        }
-      }, {
-        "arrival": {
-          "time": "1666750325"
-        },
-        "departure": {
-          "time": "1666750325"
-        },
-        "stopId": "G34N",
-        "nyctStopTimeUpdate": {
-          "scheduledTrack": "E2",
-          "actualTrack": "E2"
-        }
-      }, {
-        "arrival": {
-          "time": "1666750385"
-        },
-        "departure": {
-          "time": "1666750385"
-        },
-        "stopId": "G33N",
-        "nyctStopTimeUpdate": {
-          "scheduledTrack": "E2",
-          "actualTrack": "E2"
-        }
-      }, {
-        "arrival": {
-          "time": "1666750475"
-        },
-        "departure": {
-          "time": "1666750475"
-        },
-        "stopId": "G32N",
-        "nyctStopTimeUpdate": {
-          "scheduledTrack": "E2",
-          "actualTrack": "E2"
-        }
-      }, {
-        "arrival": {
-          "time": "1666750565"
-        },
-        "departure": {
-          "time": "1666750565"
+          "time": "1672873100"
         },
         "stopId": "G31N",
         "nyctStopTimeUpdate": {
@@ -529,10 +268,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666750625"
+          "time": "1672873168"
         },
         "departure": {
-          "time": "1666750625"
+          "time": "1672873168"
         },
         "stopId": "G30N",
         "nyctStopTimeUpdate": {
@@ -541,10 +280,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666750715"
+          "time": "1672873228"
         },
         "departure": {
-          "time": "1666750715"
+          "time": "1672873228"
         },
         "stopId": "G29N",
         "nyctStopTimeUpdate": {
@@ -553,10 +292,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666750865"
+          "time": "1672873408"
         },
         "departure": {
-          "time": "1666750865"
+          "time": "1672873408"
         },
         "stopId": "G28N",
         "nyctStopTimeUpdate": {
@@ -565,10 +304,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666750925"
+          "time": "1672873498"
         },
         "departure": {
-          "time": "1666750925"
+          "time": "1672873498"
         },
         "stopId": "G26N",
         "nyctStopTimeUpdate": {
@@ -577,10 +316,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666751075"
+          "time": "1672873648"
         },
         "departure": {
-          "time": "1666751075"
+          "time": "1672873648"
         },
         "stopId": "G24N",
         "nyctStopTimeUpdate": {
@@ -589,10 +328,187 @@
         }
       }, {
         "arrival": {
-          "time": "1666751135"
+          "time": "1672873708"
         },
         "departure": {
-          "time": "1666751135"
+          "time": "1672873708"
+        },
+        "stopId": "G22N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "D2",
+          "actualTrack": "D2"
+        }
+      }]
+    }
+  }, {
+    "id": "000008G",
+    "vehicle": {
+      "trip": {
+        "tripId": "105153_G..N",
+        "startTime": "17:31:32",
+        "startDate": "20230104",
+        "routeId": "G",
+        "nyctTripDescriptor": {
+          "trainId": "1G 1733+ CHU/CRS",
+          "isAssigned": true
+        }
+      },
+      "currentStopSequence": 14,
+      "currentStatus": "STOPPED_AT",
+      "timestamp": "1672873100",
+      "stopId": "G31N"
+    }
+  }, {
+    "id": "000009G",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "106150_G..N",
+        "startTime": "17:41:30",
+        "startDate": "20230104",
+        "routeId": "G",
+        "nyctTripDescriptor": {
+          "trainId": "1G 1743+ CHU/CRS",
+          "isAssigned": true
+        }
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "time": "1672873167"
+        },
+        "departure": {
+          "time": "1672873167"
+        },
+        "stopId": "G36N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672873257"
+        },
+        "departure": {
+          "time": "1672873257"
+        },
+        "stopId": "G35N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672873347"
+        },
+        "departure": {
+          "time": "1672873347"
+        },
+        "stopId": "G34N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672873407"
+        },
+        "departure": {
+          "time": "1672873407"
+        },
+        "stopId": "G33N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672873497"
+        },
+        "departure": {
+          "time": "1672873497"
+        },
+        "stopId": "G32N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672873587"
+        },
+        "departure": {
+          "time": "1672873587"
+        },
+        "stopId": "G31N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672873677"
+        },
+        "departure": {
+          "time": "1672873677"
+        },
+        "stopId": "G30N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672873737"
+        },
+        "departure": {
+          "time": "1672873737"
+        },
+        "stopId": "G29N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672873917"
+        },
+        "departure": {
+          "time": "1672873917"
+        },
+        "stopId": "G28N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672874007"
+        },
+        "departure": {
+          "time": "1672874007"
+        },
+        "stopId": "G26N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672874157"
+        },
+        "departure": {
+          "time": "1672874157"
+        },
+        "stopId": "G24N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672874217"
+        },
+        "departure": {
+          "time": "1672874217"
         },
         "stopId": "G22N",
         "nyctStopTimeUpdate": {
@@ -605,52 +521,40 @@
     "id": "000010G",
     "vehicle": {
       "trip": {
-        "tripId": "131341_G..N",
-        "startTime": "21:53:25",
-        "startDate": "20221025",
+        "tripId": "106150_G..N",
+        "startTime": "17:41:30",
+        "startDate": "20230104",
         "routeId": "G",
         "nyctTripDescriptor": {
-          "trainId": "1G 2154 CHU/CRS",
+          "trainId": "1G 1743+ CHU/CRS",
           "isAssigned": true
         }
       },
-      "currentStopSequence": 6,
+      "currentStopSequence": 8,
       "currentStatus": "STOPPED_AT",
-      "timestamp": "1666749890",
-      "stopId": "F21N"
+      "timestamp": "1672873080",
+      "stopId": "A42N"
     }
   }, {
     "id": "000011G",
     "tripUpdate": {
       "trip": {
-        "tripId": "131200_G..S",
-        "startTime": "21:52:00",
-        "startDate": "20221025",
+        "tripId": "106400_G..S",
+        "startTime": "17:44:00",
+        "startDate": "20230104",
         "routeId": "G",
         "nyctTripDescriptor": {
-          "trainId": "1G 2152 CRS/CHU",
+          "trainId": "1G 1744 CRS/CHU",
           "isAssigned": true,
           "direction": "SOUTH"
         }
       },
       "stopTimeUpdate": [{
         "arrival": {
-          "time": "1666749900"
+          "time": "1672873100"
         },
         "departure": {
-          "time": "1666749900"
-        },
-        "stopId": "G32S",
-        "nyctStopTimeUpdate": {
-          "scheduledTrack": "E1",
-          "actualTrack": "E1"
-        }
-      }, {
-        "arrival": {
-          "time": "1666749965"
-        },
-        "departure": {
-          "time": "1666749965"
+          "time": "1672873100"
         },
         "stopId": "G33S",
         "nyctStopTimeUpdate": {
@@ -659,10 +563,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666750025"
+          "time": "1672873167"
         },
         "departure": {
-          "time": "1666750025"
+          "time": "1672873167"
         },
         "stopId": "G34S",
         "nyctStopTimeUpdate": {
@@ -671,10 +575,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666750115"
+          "time": "1672873257"
         },
         "departure": {
-          "time": "1666750115"
+          "time": "1672873257"
         },
         "stopId": "G35S",
         "nyctStopTimeUpdate": {
@@ -683,10 +587,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666750205"
+          "time": "1672873347"
         },
         "departure": {
-          "time": "1666750205"
+          "time": "1672873347"
         },
         "stopId": "G36S",
         "nyctStopTimeUpdate": {
@@ -695,10 +599,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666750325"
+          "time": "1672873467"
         },
         "departure": {
-          "time": "1666750325"
+          "time": "1672873467"
         },
         "stopId": "A42S",
         "nyctStopTimeUpdate": {
@@ -707,10 +611,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666750445"
+          "time": "1672873587"
         },
         "departure": {
-          "time": "1666750445"
+          "time": "1672873587"
         },
         "stopId": "F20S",
         "nyctStopTimeUpdate": {
@@ -719,10 +623,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666750535"
+          "time": "1672873677"
         },
         "departure": {
-          "time": "1666750535"
+          "time": "1672873677"
         },
         "stopId": "F21S",
         "nyctStopTimeUpdate": {
@@ -731,10 +635,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666750655"
+          "time": "1672873797"
         },
         "departure": {
-          "time": "1666750655"
+          "time": "1672873797"
         },
         "stopId": "F22S",
         "nyctStopTimeUpdate": {
@@ -743,10 +647,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666750775"
+          "time": "1672873917"
         },
         "departure": {
-          "time": "1666750775"
+          "time": "1672873917"
         },
         "stopId": "F23S",
         "nyctStopTimeUpdate": {
@@ -755,10 +659,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666750865"
+          "time": "1672874037"
         },
         "departure": {
-          "time": "1666750865"
+          "time": "1672874037"
         },
         "stopId": "F24S",
         "nyctStopTimeUpdate": {
@@ -767,10 +671,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666750955"
+          "time": "1672874127"
         },
         "departure": {
-          "time": "1666750955"
+          "time": "1672874127"
         },
         "stopId": "F25S",
         "nyctStopTimeUpdate": {
@@ -779,10 +683,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666751105"
+          "time": "1672874277"
         },
         "departure": {
-          "time": "1666751105"
+          "time": "1672874277"
         },
         "stopId": "F26S",
         "nyctStopTimeUpdate": {
@@ -791,10 +695,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666751195"
+          "time": "1672874397"
         },
         "departure": {
-          "time": "1666751195"
+          "time": "1672874397"
         },
         "stopId": "F27S",
         "nyctStopTimeUpdate": {
@@ -807,357 +711,41 @@
     "id": "000012G",
     "vehicle": {
       "trip": {
-        "tripId": "131200_G..S",
-        "startTime": "21:52:00",
-        "startDate": "20221025",
+        "tripId": "106400_G..S",
+        "startTime": "17:44:00",
+        "startDate": "20230104",
         "routeId": "G",
         "nyctTripDescriptor": {
-          "trainId": "1G 2152 CRS/CHU",
+          "trainId": "1G 1744 CRS/CHU",
           "isAssigned": true,
           "direction": "SOUTH"
         }
       },
-      "currentStopSequence": 7,
+      "currentStopSequence": 8,
       "currentStatus": "STOPPED_AT",
-      "timestamp": "1666749900",
-      "stopId": "G32S"
+      "timestamp": "1672873100",
+      "stopId": "G33S"
     }
   }, {
     "id": "000013G",
     "tripUpdate": {
       "trip": {
-        "tripId": "132600_G..N",
-        "startTime": "22:06:00",
-        "startDate": "20221025",
+        "tripId": "107213_G..S",
+        "startTime": "17:52:08",
+        "startDate": "20230104",
         "routeId": "G",
         "nyctTripDescriptor": {
-          "trainId": "1G 2206 CHU/CRS"
-        }
-      },
-      "stopTimeUpdate": [{
-        "arrival": {
-          "time": "1666749960"
-        },
-        "departure": {
-          "time": "1666749960"
-        },
-        "stopId": "F27N",
-        "nyctStopTimeUpdate": {
-          "scheduledTrack": "B2",
-          "actualTrack": "B2"
-        }
-      }, {
-        "arrival": {
-          "time": "1666750080"
-        },
-        "departure": {
-          "time": "1666750080"
-        },
-        "stopId": "F26N",
-        "nyctStopTimeUpdate": {
-          "scheduledTrack": "B2",
-          "actualTrack": "B2"
-        }
-      }, {
-        "arrival": {
-          "time": "1666750230"
-        },
-        "departure": {
-          "time": "1666750230"
-        },
-        "stopId": "F25N",
-        "nyctStopTimeUpdate": {
-          "scheduledTrack": "B2",
-          "actualTrack": "B2"
-        }
-      }, {
-        "arrival": {
-          "time": "1666750350"
-        },
-        "departure": {
-          "time": "1666750350"
-        },
-        "stopId": "F24N",
-        "nyctStopTimeUpdate": {
-          "scheduledTrack": "B2",
-          "actualTrack": "B2"
-        }
-      }, {
-        "arrival": {
-          "time": "1666750470"
-        },
-        "departure": {
-          "time": "1666750470"
-        },
-        "stopId": "F23N",
-        "nyctStopTimeUpdate": {
-          "scheduledTrack": "B2",
-          "actualTrack": "B2"
-        }
-      }, {
-        "arrival": {
-          "time": "1666750560"
-        },
-        "departure": {
-          "time": "1666750560"
-        },
-        "stopId": "F22N",
-        "nyctStopTimeUpdate": {
-          "scheduledTrack": "B2",
-          "actualTrack": "B2"
-        }
-      }, {
-        "arrival": {
-          "time": "1666750680"
-        },
-        "departure": {
-          "time": "1666750680"
-        },
-        "stopId": "F21N",
-        "nyctStopTimeUpdate": {
-          "scheduledTrack": "B2",
-          "actualTrack": "B2"
-        }
-      }, {
-        "arrival": {
-          "time": "1666750770"
-        },
-        "departure": {
-          "time": "1666750770"
-        },
-        "stopId": "F20N",
-        "nyctStopTimeUpdate": {
-          "scheduledTrack": "B2",
-          "actualTrack": "B2"
-        }
-      }, {
-        "arrival": {
-          "time": "1666750860"
-        },
-        "departure": {
-          "time": "1666750860"
-        },
-        "stopId": "A42N",
-        "nyctStopTimeUpdate": {
-          "scheduledTrack": "E2",
-          "actualTrack": "E2"
-        }
-      }, {
-        "arrival": {
-          "time": "1666750950"
-        },
-        "departure": {
-          "time": "1666750950"
-        },
-        "stopId": "G36N",
-        "nyctStopTimeUpdate": {
-          "scheduledTrack": "E2",
-          "actualTrack": "E2"
-        }
-      }, {
-        "arrival": {
-          "time": "1666751040"
-        },
-        "departure": {
-          "time": "1666751040"
-        },
-        "stopId": "G35N",
-        "nyctStopTimeUpdate": {
-          "scheduledTrack": "E2",
-          "actualTrack": "E2"
-        }
-      }, {
-        "arrival": {
-          "time": "1666751130"
-        },
-        "departure": {
-          "time": "1666751130"
-        },
-        "stopId": "G34N",
-        "nyctStopTimeUpdate": {
-          "scheduledTrack": "E2",
-          "actualTrack": "E2"
-        }
-      }, {
-        "arrival": {
-          "time": "1666751190"
-        },
-        "departure": {
-          "time": "1666751190"
-        },
-        "stopId": "G33N",
-        "nyctStopTimeUpdate": {
-          "scheduledTrack": "E2",
-          "actualTrack": "E2"
-        }
-      }, {
-        "arrival": {
-          "time": "1666751280"
-        },
-        "departure": {
-          "time": "1666751280"
-        },
-        "stopId": "G32N",
-        "nyctStopTimeUpdate": {
-          "scheduledTrack": "E2",
-          "actualTrack": "E2"
-        }
-      }, {
-        "arrival": {
-          "time": "1666751370"
-        },
-        "departure": {
-          "time": "1666751370"
-        },
-        "stopId": "G31N",
-        "nyctStopTimeUpdate": {
-          "scheduledTrack": "E2",
-          "actualTrack": "E2"
-        }
-      }, {
-        "arrival": {
-          "time": "1666751430"
-        },
-        "departure": {
-          "time": "1666751430"
-        },
-        "stopId": "G30N",
-        "nyctStopTimeUpdate": {
-          "scheduledTrack": "E2",
-          "actualTrack": "E2"
-        }
-      }, {
-        "arrival": {
-          "time": "1666751520"
-        },
-        "departure": {
-          "time": "1666751520"
-        },
-        "stopId": "G29N",
-        "nyctStopTimeUpdate": {
-          "scheduledTrack": "E2",
-          "actualTrack": "E2"
-        }
-      }, {
-        "arrival": {
-          "time": "1666751670"
-        },
-        "departure": {
-          "time": "1666751670"
-        },
-        "stopId": "G28N",
-        "nyctStopTimeUpdate": {
-          "scheduledTrack": "E2",
-          "actualTrack": "E2"
-        }
-      }, {
-        "arrival": {
-          "time": "1666751730"
-        },
-        "departure": {
-          "time": "1666751730"
-        },
-        "stopId": "G26N",
-        "nyctStopTimeUpdate": {
-          "scheduledTrack": "E2",
-          "actualTrack": "E2"
-        }
-      }, {
-        "arrival": {
-          "time": "1666751880"
-        },
-        "departure": {
-          "time": "1666751880"
-        },
-        "stopId": "G24N",
-        "nyctStopTimeUpdate": {
-          "scheduledTrack": "E2",
-          "actualTrack": "E2"
-        }
-      }, {
-        "arrival": {
-          "time": "1666751940"
-        },
-        "departure": {
-          "time": "1666751940"
-        },
-        "stopId": "G22N",
-        "nyctStopTimeUpdate": {
-          "scheduledTrack": "D2",
-          "actualTrack": "D2"
-        }
-      }]
-    }
-  }, {
-    "id": "000014G",
-    "vehicle": {
-      "trip": {
-        "tripId": "132600_G..N",
-        "startTime": "22:06:00",
-        "startDate": "20221025",
-        "routeId": "G",
-        "nyctTripDescriptor": {
-          "trainId": "1G 2206 CHU/CRS"
-        }
-      },
-      "timestamp": "1666749960",
-      "stopId": "F27N"
-    }
-  }, {
-    "id": "000015G",
-    "tripUpdate": {
-      "trip": {
-        "tripId": "132800_G..S",
-        "startTime": "22:08:00",
-        "startDate": "20221025",
-        "routeId": "G",
-        "nyctTripDescriptor": {
-          "trainId": "1G 2208 CRS/CHU",
+          "trainId": "1G 1752 CRS/CHU",
+          "isAssigned": true,
           "direction": "SOUTH"
         }
       },
       "stopTimeUpdate": [{
         "arrival": {
-          "time": "1666750080"
+          "time": "1672873095"
         },
         "departure": {
-          "time": "1666750080"
-        },
-        "stopId": "G22S",
-        "nyctStopTimeUpdate": {
-          "scheduledTrack": "D1",
-          "actualTrack": "D1"
-        }
-      }, {
-        "arrival": {
-          "time": "1666750140"
-        },
-        "departure": {
-          "time": "1666750140"
-        },
-        "stopId": "G24S",
-        "nyctStopTimeUpdate": {
-          "scheduledTrack": "E1",
-          "actualTrack": "E1"
-        }
-      }, {
-        "arrival": {
-          "time": "1666750290"
-        },
-        "departure": {
-          "time": "1666750290"
-        },
-        "stopId": "G26S",
-        "nyctStopTimeUpdate": {
-          "scheduledTrack": "E1",
-          "actualTrack": "E1"
-        }
-      }, {
-        "arrival": {
-          "time": "1666750350"
-        },
-        "departure": {
-          "time": "1666750350"
+          "time": "1672873095"
         },
         "stopId": "G28S",
         "nyctStopTimeUpdate": {
@@ -1166,10 +754,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666750500"
+          "time": "1672873190"
         },
         "departure": {
-          "time": "1666750500"
+          "time": "1672873190"
         },
         "stopId": "G29S",
         "nyctStopTimeUpdate": {
@@ -1178,10 +766,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666750590"
+          "time": "1672873280"
         },
         "departure": {
-          "time": "1666750590"
+          "time": "1672873280"
         },
         "stopId": "G30S",
         "nyctStopTimeUpdate": {
@@ -1190,10 +778,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666750650"
+          "time": "1672873340"
         },
         "departure": {
-          "time": "1666750650"
+          "time": "1672873340"
         },
         "stopId": "G31S",
         "nyctStopTimeUpdate": {
@@ -1202,10 +790,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666750740"
+          "time": "1672873430"
         },
         "departure": {
-          "time": "1666750740"
+          "time": "1672873430"
         },
         "stopId": "G32S",
         "nyctStopTimeUpdate": {
@@ -1214,10 +802,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666750830"
+          "time": "1672873520"
         },
         "departure": {
-          "time": "1666750830"
+          "time": "1672873520"
         },
         "stopId": "G33S",
         "nyctStopTimeUpdate": {
@@ -1226,10 +814,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666750890"
+          "time": "1672873580"
         },
         "departure": {
-          "time": "1666750890"
+          "time": "1672873580"
         },
         "stopId": "G34S",
         "nyctStopTimeUpdate": {
@@ -1238,10 +826,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666750980"
+          "time": "1672873670"
         },
         "departure": {
-          "time": "1666750980"
+          "time": "1672873670"
         },
         "stopId": "G35S",
         "nyctStopTimeUpdate": {
@@ -1250,10 +838,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666751070"
+          "time": "1672873760"
         },
         "departure": {
-          "time": "1666751070"
+          "time": "1672873760"
         },
         "stopId": "G36S",
         "nyctStopTimeUpdate": {
@@ -1262,10 +850,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666751160"
+          "time": "1672873880"
         },
         "departure": {
-          "time": "1666751160"
+          "time": "1672873880"
         },
         "stopId": "A42S",
         "nyctStopTimeUpdate": {
@@ -1274,10 +862,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666751250"
+          "time": "1672874000"
         },
         "departure": {
-          "time": "1666751250"
+          "time": "1672874000"
         },
         "stopId": "F20S",
         "nyctStopTimeUpdate": {
@@ -1286,10 +874,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666751340"
+          "time": "1672874090"
         },
         "departure": {
-          "time": "1666751340"
+          "time": "1672874090"
         },
         "stopId": "F21S",
         "nyctStopTimeUpdate": {
@@ -1298,10 +886,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666751460"
+          "time": "1672874210"
         },
         "departure": {
-          "time": "1666751460"
+          "time": "1672874210"
         },
         "stopId": "F22S",
         "nyctStopTimeUpdate": {
@@ -1310,10 +898,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666751580"
+          "time": "1672874330"
         },
         "departure": {
-          "time": "1666751580"
+          "time": "1672874330"
         },
         "stopId": "F23S",
         "nyctStopTimeUpdate": {
@@ -1322,10 +910,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666751670"
+          "time": "1672874450"
         },
         "departure": {
-          "time": "1666751670"
+          "time": "1672874450"
         },
         "stopId": "F24S",
         "nyctStopTimeUpdate": {
@@ -1334,10 +922,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666751760"
+          "time": "1672874540"
         },
         "departure": {
-          "time": "1666751760"
+          "time": "1672874540"
         },
         "stopId": "F25S",
         "nyctStopTimeUpdate": {
@@ -1346,10 +934,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666751910"
+          "time": "1672874690"
         },
         "departure": {
-          "time": "1666751910"
+          "time": "1672874690"
         },
         "stopId": "F26S",
         "nyctStopTimeUpdate": {
@@ -1358,10 +946,296 @@
         }
       }, {
         "arrival": {
-          "time": "1666752000"
+          "time": "1672874810"
         },
         "departure": {
-          "time": "1666752000"
+          "time": "1672874810"
+        },
+        "stopId": "F27S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "B1",
+          "actualTrack": "B1"
+        }
+      }]
+    }
+  }, {
+    "id": "000014G",
+    "vehicle": {
+      "trip": {
+        "tripId": "107213_G..S",
+        "startTime": "17:52:08",
+        "startDate": "20230104",
+        "routeId": "G",
+        "nyctTripDescriptor": {
+          "trainId": "1G 1752 CRS/CHU",
+          "isAssigned": true,
+          "direction": "SOUTH"
+        }
+      },
+      "currentStopSequence": 3,
+      "currentStatus": "STOPPED_AT",
+      "timestamp": "1672873095",
+      "stopId": "G28S"
+    }
+  }, {
+    "id": "000015G",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "107850_G..S",
+        "startTime": "17:58:30",
+        "startDate": "20230104",
+        "routeId": "G",
+        "nyctTripDescriptor": {
+          "trainId": "1G 1758+ CRS/CHU",
+          "direction": "SOUTH"
+        }
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "time": "1672873110"
+        },
+        "departure": {
+          "time": "1672873110"
+        },
+        "stopId": "G22S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "D1",
+          "actualTrack": "D1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672873170"
+        },
+        "departure": {
+          "time": "1672873170"
+        },
+        "stopId": "G24S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E1",
+          "actualTrack": "E1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672873320"
+        },
+        "departure": {
+          "time": "1672873320"
+        },
+        "stopId": "G26S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E1",
+          "actualTrack": "E1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672873410"
+        },
+        "departure": {
+          "time": "1672873410"
+        },
+        "stopId": "G28S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E1",
+          "actualTrack": "E1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672873590"
+        },
+        "departure": {
+          "time": "1672873590"
+        },
+        "stopId": "G29S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E1",
+          "actualTrack": "E1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672873680"
+        },
+        "departure": {
+          "time": "1672873680"
+        },
+        "stopId": "G30S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E1",
+          "actualTrack": "E1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672873740"
+        },
+        "departure": {
+          "time": "1672873740"
+        },
+        "stopId": "G31S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E1",
+          "actualTrack": "E1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672873830"
+        },
+        "departure": {
+          "time": "1672873830"
+        },
+        "stopId": "G32S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E1",
+          "actualTrack": "E1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672873920"
+        },
+        "departure": {
+          "time": "1672873920"
+        },
+        "stopId": "G33S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E1",
+          "actualTrack": "E1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672873980"
+        },
+        "departure": {
+          "time": "1672873980"
+        },
+        "stopId": "G34S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E1",
+          "actualTrack": "E1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672874070"
+        },
+        "departure": {
+          "time": "1672874070"
+        },
+        "stopId": "G35S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E1",
+          "actualTrack": "E1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672874160"
+        },
+        "departure": {
+          "time": "1672874160"
+        },
+        "stopId": "G36S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E1",
+          "actualTrack": "E1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672874280"
+        },
+        "departure": {
+          "time": "1672874280"
+        },
+        "stopId": "A42S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E1",
+          "actualTrack": "E1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672874400"
+        },
+        "departure": {
+          "time": "1672874400"
+        },
+        "stopId": "F20S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "B1",
+          "actualTrack": "B1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672874490"
+        },
+        "departure": {
+          "time": "1672874490"
+        },
+        "stopId": "F21S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "B1",
+          "actualTrack": "B1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672874610"
+        },
+        "departure": {
+          "time": "1672874610"
+        },
+        "stopId": "F22S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "B1",
+          "actualTrack": "B1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672874730"
+        },
+        "departure": {
+          "time": "1672874730"
+        },
+        "stopId": "F23S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "B1",
+          "actualTrack": "B1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672874850"
+        },
+        "departure": {
+          "time": "1672874850"
+        },
+        "stopId": "F24S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "B1",
+          "actualTrack": "B1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672874940"
+        },
+        "departure": {
+          "time": "1672874940"
+        },
+        "stopId": "F25S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "B1",
+          "actualTrack": "B1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672875090"
+        },
+        "departure": {
+          "time": "1672875090"
+        },
+        "stopId": "F26S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "B1",
+          "actualTrack": "B1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672875210"
+        },
+        "departure": {
+          "time": "1672875210"
         },
         "stopId": "F27S",
         "nyctStopTimeUpdate": {
@@ -1374,282 +1248,282 @@
     "id": "000016G",
     "vehicle": {
       "trip": {
-        "tripId": "132800_G..S",
-        "startTime": "22:08:00",
-        "startDate": "20221025",
+        "tripId": "107850_G..S",
+        "startTime": "17:58:30",
+        "startDate": "20230104",
         "routeId": "G",
         "nyctTripDescriptor": {
-          "trainId": "1G 2208 CRS/CHU",
+          "trainId": "1G 1758+ CRS/CHU",
           "direction": "SOUTH"
         }
       },
-      "timestamp": "1666750080",
+      "currentStatus": "INCOMING_AT",
+      "timestamp": "1672873110",
       "stopId": "G22S"
     }
   }, {
     "id": "000017G",
     "tripUpdate": {
       "trip": {
-        "tripId": "133650_G..S",
-        "startTime": "22:16:30",
-        "startDate": "20221025",
+        "tripId": "107950_G..N",
+        "startTime": "17:59:30",
+        "startDate": "20230104",
         "routeId": "G",
         "nyctTripDescriptor": {
-          "trainId": "1G 2216+ CRS/CHU",
-          "direction": "SOUTH"
+          "trainId": "1G 1759+ CHU/CRS"
         }
       },
       "stopTimeUpdate": [{
         "arrival": {
-          "time": "1666750590"
+          "time": "1672873170"
         },
         "departure": {
-          "time": "1666750590"
+          "time": "1672873170"
         },
-        "stopId": "G22S",
+        "stopId": "F27N",
         "nyctStopTimeUpdate": {
-          "scheduledTrack": "D1",
-          "actualTrack": "D1"
+          "scheduledTrack": "B2",
+          "actualTrack": "B2"
         }
       }, {
         "arrival": {
-          "time": "1666750650"
+          "time": "1672873290"
         },
         "departure": {
-          "time": "1666750650"
+          "time": "1672873290"
         },
-        "stopId": "G24S",
+        "stopId": "F26N",
         "nyctStopTimeUpdate": {
-          "scheduledTrack": "E1",
-          "actualTrack": "E1"
+          "scheduledTrack": "B2",
+          "actualTrack": "B2"
         }
       }, {
         "arrival": {
-          "time": "1666750800"
+          "time": "1672873470"
         },
         "departure": {
-          "time": "1666750800"
+          "time": "1672873470"
         },
-        "stopId": "G26S",
+        "stopId": "F25N",
         "nyctStopTimeUpdate": {
-          "scheduledTrack": "E1",
-          "actualTrack": "E1"
+          "scheduledTrack": "B2",
+          "actualTrack": "B2"
         }
       }, {
         "arrival": {
-          "time": "1666750860"
+          "time": "1672873590"
         },
         "departure": {
-          "time": "1666750860"
+          "time": "1672873590"
         },
-        "stopId": "G28S",
+        "stopId": "F24N",
         "nyctStopTimeUpdate": {
-          "scheduledTrack": "E1",
-          "actualTrack": "E1"
+          "scheduledTrack": "B2",
+          "actualTrack": "B2"
         }
       }, {
         "arrival": {
-          "time": "1666751010"
+          "time": "1672873710"
         },
         "departure": {
-          "time": "1666751010"
+          "time": "1672873710"
         },
-        "stopId": "G29S",
+        "stopId": "F23N",
         "nyctStopTimeUpdate": {
-          "scheduledTrack": "E1",
-          "actualTrack": "E1"
+          "scheduledTrack": "B2",
+          "actualTrack": "B2"
         }
       }, {
         "arrival": {
-          "time": "1666751100"
+          "time": "1672873800"
         },
         "departure": {
-          "time": "1666751100"
+          "time": "1672873800"
         },
-        "stopId": "G30S",
+        "stopId": "F22N",
         "nyctStopTimeUpdate": {
-          "scheduledTrack": "E1",
-          "actualTrack": "E1"
+          "scheduledTrack": "B2",
+          "actualTrack": "B2"
         }
       }, {
         "arrival": {
-          "time": "1666751160"
+          "time": "1672873920"
         },
         "departure": {
-          "time": "1666751160"
+          "time": "1672873920"
         },
-        "stopId": "G31S",
+        "stopId": "F21N",
         "nyctStopTimeUpdate": {
-          "scheduledTrack": "E1",
-          "actualTrack": "E1"
+          "scheduledTrack": "B2",
+          "actualTrack": "B2"
         }
       }, {
         "arrival": {
-          "time": "1666751250"
+          "time": "1672874010"
         },
         "departure": {
-          "time": "1666751250"
+          "time": "1672874010"
         },
-        "stopId": "G32S",
+        "stopId": "F20N",
         "nyctStopTimeUpdate": {
-          "scheduledTrack": "E1",
-          "actualTrack": "E1"
+          "scheduledTrack": "B2",
+          "actualTrack": "B2"
         }
       }, {
         "arrival": {
-          "time": "1666751340"
+          "time": "1672874160"
         },
         "departure": {
-          "time": "1666751340"
+          "time": "1672874160"
         },
-        "stopId": "G33S",
+        "stopId": "A42N",
         "nyctStopTimeUpdate": {
-          "scheduledTrack": "E1",
-          "actualTrack": "E1"
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
         }
       }, {
         "arrival": {
-          "time": "1666751400"
+          "time": "1672874310"
         },
         "departure": {
-          "time": "1666751400"
+          "time": "1672874310"
         },
-        "stopId": "G34S",
+        "stopId": "G36N",
         "nyctStopTimeUpdate": {
-          "scheduledTrack": "E1",
-          "actualTrack": "E1"
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
         }
       }, {
         "arrival": {
-          "time": "1666751490"
+          "time": "1672874400"
         },
         "departure": {
-          "time": "1666751490"
+          "time": "1672874400"
         },
-        "stopId": "G35S",
+        "stopId": "G35N",
         "nyctStopTimeUpdate": {
-          "scheduledTrack": "E1",
-          "actualTrack": "E1"
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
         }
       }, {
         "arrival": {
-          "time": "1666751580"
+          "time": "1672874490"
         },
         "departure": {
-          "time": "1666751580"
+          "time": "1672874490"
         },
-        "stopId": "G36S",
+        "stopId": "G34N",
         "nyctStopTimeUpdate": {
-          "scheduledTrack": "E1",
-          "actualTrack": "E1"
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
         }
       }, {
         "arrival": {
-          "time": "1666751670"
+          "time": "1672874550"
         },
         "departure": {
-          "time": "1666751670"
+          "time": "1672874550"
         },
-        "stopId": "A42S",
+        "stopId": "G33N",
         "nyctStopTimeUpdate": {
-          "scheduledTrack": "E1",
-          "actualTrack": "E1"
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
         }
       }, {
         "arrival": {
-          "time": "1666751760"
+          "time": "1672874640"
         },
         "departure": {
-          "time": "1666751760"
+          "time": "1672874640"
         },
-        "stopId": "F20S",
+        "stopId": "G32N",
         "nyctStopTimeUpdate": {
-          "scheduledTrack": "B1",
-          "actualTrack": "B1"
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
         }
       }, {
         "arrival": {
-          "time": "1666751850"
+          "time": "1672874730"
         },
         "departure": {
-          "time": "1666751850"
+          "time": "1672874730"
         },
-        "stopId": "F21S",
+        "stopId": "G31N",
         "nyctStopTimeUpdate": {
-          "scheduledTrack": "B1",
-          "actualTrack": "B1"
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
         }
       }, {
         "arrival": {
-          "time": "1666751970"
+          "time": "1672874820"
         },
         "departure": {
-          "time": "1666751970"
+          "time": "1672874820"
         },
-        "stopId": "F22S",
+        "stopId": "G30N",
         "nyctStopTimeUpdate": {
-          "scheduledTrack": "B1",
-          "actualTrack": "B1"
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
         }
       }, {
         "arrival": {
-          "time": "1666752090"
+          "time": "1672874880"
         },
         "departure": {
-          "time": "1666752090"
+          "time": "1672874880"
         },
-        "stopId": "F23S",
+        "stopId": "G29N",
         "nyctStopTimeUpdate": {
-          "scheduledTrack": "B1",
-          "actualTrack": "B1"
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
         }
       }, {
         "arrival": {
-          "time": "1666752180"
+          "time": "1672875060"
         },
         "departure": {
-          "time": "1666752180"
+          "time": "1672875060"
         },
-        "stopId": "F24S",
+        "stopId": "G28N",
         "nyctStopTimeUpdate": {
-          "scheduledTrack": "B1",
-          "actualTrack": "B1"
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
         }
       }, {
         "arrival": {
-          "time": "1666752270"
+          "time": "1672875150"
         },
         "departure": {
-          "time": "1666752270"
+          "time": "1672875150"
         },
-        "stopId": "F25S",
+        "stopId": "G26N",
         "nyctStopTimeUpdate": {
-          "scheduledTrack": "B1",
-          "actualTrack": "B1"
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
         }
       }, {
         "arrival": {
-          "time": "1666752420"
+          "time": "1672875300"
         },
         "departure": {
-          "time": "1666752420"
+          "time": "1672875300"
         },
-        "stopId": "F26S",
+        "stopId": "G24N",
         "nyctStopTimeUpdate": {
-          "scheduledTrack": "B1",
-          "actualTrack": "B1"
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
         }
       }, {
         "arrival": {
-          "time": "1666752510"
+          "time": "1672875360"
         },
         "departure": {
-          "time": "1666752510"
+          "time": "1672875360"
         },
-        "stopId": "F27S",
+        "stopId": "G22N",
         "nyctStopTimeUpdate": {
-          "scheduledTrack": "B1",
-          "actualTrack": "B1"
+          "scheduledTrack": "D2",
+          "actualTrack": "D2"
         }
       }]
     }
@@ -1657,247 +1531,280 @@
     "id": "000018G",
     "vehicle": {
       "trip": {
-        "tripId": "133650_G..S",
-        "startTime": "22:16:30",
-        "startDate": "20221025",
+        "tripId": "107950_G..N",
+        "startTime": "17:59:30",
+        "startDate": "20230104",
         "routeId": "G",
         "nyctTripDescriptor": {
-          "trainId": "1G 2216+ CRS/CHU",
-          "direction": "SOUTH"
+          "trainId": "1G 1759+ CHU/CRS"
         }
       },
-      "timestamp": "1666750590",
-      "stopId": "G22S"
+      "timestamp": "1672873170",
+      "stopId": "F27N"
     }
   }, {
     "id": "000019G",
     "tripUpdate": {
       "trip": {
-        "tripId": "132010_G..S",
-        "startTime": "22:00:06",
-        "startDate": "20221025",
+        "tripId": "108700_G..N",
+        "startTime": "18:07:00",
+        "startDate": "20230104",
         "routeId": "G",
         "nyctTripDescriptor": {
-          "trainId": "1G 2200 CRS/CHU",
-          "isAssigned": true,
-          "direction": "SOUTH"
+          "trainId": "1G 1807 CHU/CRS"
         }
       },
       "stopTimeUpdate": [{
         "arrival": {
-          "time": "1666749900"
+          "time": "1672873620"
         },
         "departure": {
-          "time": "1666749900"
+          "time": "1672873620"
         },
-        "stopId": "G28S",
+        "stopId": "F27N",
         "nyctStopTimeUpdate": {
-          "scheduledTrack": "E1",
-          "actualTrack": "E1"
+          "scheduledTrack": "B2",
+          "actualTrack": "B2"
         }
       }, {
         "arrival": {
-          "time": "1666749991"
+          "time": "1672873740"
         },
         "departure": {
-          "time": "1666749991"
+          "time": "1672873740"
         },
-        "stopId": "G29S",
+        "stopId": "F26N",
         "nyctStopTimeUpdate": {
-          "scheduledTrack": "E1",
-          "actualTrack": "E1"
+          "scheduledTrack": "B2",
+          "actualTrack": "B2"
         }
       }, {
         "arrival": {
-          "time": "1666750081"
+          "time": "1672873890"
         },
         "departure": {
-          "time": "1666750081"
+          "time": "1672873890"
         },
-        "stopId": "G30S",
+        "stopId": "F25N",
         "nyctStopTimeUpdate": {
-          "scheduledTrack": "E1",
-          "actualTrack": "E1"
+          "scheduledTrack": "B2",
+          "actualTrack": "B2"
         }
       }, {
         "arrival": {
-          "time": "1666750141"
+          "time": "1672874010"
         },
         "departure": {
-          "time": "1666750141"
+          "time": "1672874010"
         },
-        "stopId": "G31S",
+        "stopId": "F24N",
         "nyctStopTimeUpdate": {
-          "scheduledTrack": "E1",
-          "actualTrack": "E1"
+          "scheduledTrack": "B2",
+          "actualTrack": "B2"
         }
       }, {
         "arrival": {
-          "time": "1666750231"
+          "time": "1672874130"
         },
         "departure": {
-          "time": "1666750231"
+          "time": "1672874130"
         },
-        "stopId": "G32S",
+        "stopId": "F23N",
         "nyctStopTimeUpdate": {
-          "scheduledTrack": "E1",
-          "actualTrack": "E1"
+          "scheduledTrack": "B2",
+          "actualTrack": "B2"
         }
       }, {
         "arrival": {
-          "time": "1666750321"
+          "time": "1672874220"
         },
         "departure": {
-          "time": "1666750321"
+          "time": "1672874220"
         },
-        "stopId": "G33S",
+        "stopId": "F22N",
         "nyctStopTimeUpdate": {
-          "scheduledTrack": "E1",
-          "actualTrack": "E1"
+          "scheduledTrack": "B2",
+          "actualTrack": "B2"
         }
       }, {
         "arrival": {
-          "time": "1666750381"
+          "time": "1672874340"
         },
         "departure": {
-          "time": "1666750381"
+          "time": "1672874340"
         },
-        "stopId": "G34S",
+        "stopId": "F21N",
         "nyctStopTimeUpdate": {
-          "scheduledTrack": "E1",
-          "actualTrack": "E1"
+          "scheduledTrack": "B2",
+          "actualTrack": "B2"
         }
       }, {
         "arrival": {
-          "time": "1666750471"
+          "time": "1672874430"
         },
         "departure": {
-          "time": "1666750471"
+          "time": "1672874430"
         },
-        "stopId": "G35S",
+        "stopId": "F20N",
         "nyctStopTimeUpdate": {
-          "scheduledTrack": "E1",
-          "actualTrack": "E1"
+          "scheduledTrack": "B2",
+          "actualTrack": "B2"
         }
       }, {
         "arrival": {
-          "time": "1666750561"
+          "time": "1672874610"
         },
         "departure": {
-          "time": "1666750561"
+          "time": "1672874610"
         },
-        "stopId": "G36S",
+        "stopId": "A42N",
         "nyctStopTimeUpdate": {
-          "scheduledTrack": "E1",
-          "actualTrack": "E1"
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
         }
       }, {
         "arrival": {
-          "time": "1666750726"
+          "time": "1672874790"
         },
         "departure": {
-          "time": "1666750726"
+          "time": "1672874790"
         },
-        "stopId": "A42S",
+        "stopId": "G36N",
         "nyctStopTimeUpdate": {
-          "scheduledTrack": "E1",
-          "actualTrack": "E1"
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
         }
       }, {
         "arrival": {
-          "time": "1666750891"
+          "time": "1672874880"
         },
         "departure": {
-          "time": "1666750891"
+          "time": "1672874880"
         },
-        "stopId": "F20S",
+        "stopId": "G35N",
         "nyctStopTimeUpdate": {
-          "scheduledTrack": "B1",
-          "actualTrack": "B1"
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
         }
       }, {
         "arrival": {
-          "time": "1666750981"
+          "time": "1672874970"
         },
         "departure": {
-          "time": "1666750981"
+          "time": "1672874970"
         },
-        "stopId": "F21S",
+        "stopId": "G34N",
         "nyctStopTimeUpdate": {
-          "scheduledTrack": "B1",
-          "actualTrack": "B1"
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
         }
       }, {
         "arrival": {
-          "time": "1666751101"
+          "time": "1672875030"
         },
         "departure": {
-          "time": "1666751101"
+          "time": "1672875030"
         },
-        "stopId": "F22S",
+        "stopId": "G33N",
         "nyctStopTimeUpdate": {
-          "scheduledTrack": "B1",
-          "actualTrack": "B1"
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
         }
       }, {
         "arrival": {
-          "time": "1666751221"
+          "time": "1672875120"
         },
         "departure": {
-          "time": "1666751221"
+          "time": "1672875120"
         },
-        "stopId": "F23S",
+        "stopId": "G32N",
         "nyctStopTimeUpdate": {
-          "scheduledTrack": "B1",
-          "actualTrack": "B1"
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
         }
       }, {
         "arrival": {
-          "time": "1666751311"
+          "time": "1672875210"
         },
         "departure": {
-          "time": "1666751311"
+          "time": "1672875210"
         },
-        "stopId": "F24S",
+        "stopId": "G31N",
         "nyctStopTimeUpdate": {
-          "scheduledTrack": "B1",
-          "actualTrack": "B1"
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
         }
       }, {
         "arrival": {
-          "time": "1666751401"
+          "time": "1672875300"
         },
         "departure": {
-          "time": "1666751401"
+          "time": "1672875300"
         },
-        "stopId": "F25S",
+        "stopId": "G30N",
         "nyctStopTimeUpdate": {
-          "scheduledTrack": "B1",
-          "actualTrack": "B1"
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
         }
       }, {
         "arrival": {
-          "time": "1666751551"
+          "time": "1672875360"
         },
         "departure": {
-          "time": "1666751551"
+          "time": "1672875360"
         },
-        "stopId": "F26S",
+        "stopId": "G29N",
         "nyctStopTimeUpdate": {
-          "scheduledTrack": "B1",
-          "actualTrack": "B1"
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
         }
       }, {
         "arrival": {
-          "time": "1666751641"
+          "time": "1672875540"
         },
         "departure": {
-          "time": "1666751641"
+          "time": "1672875540"
         },
-        "stopId": "F27S",
+        "stopId": "G28N",
         "nyctStopTimeUpdate": {
-          "scheduledTrack": "B1",
-          "actualTrack": "B1"
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672875630"
+        },
+        "departure": {
+          "time": "1672875630"
+        },
+        "stopId": "G26N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672875780"
+        },
+        "departure": {
+          "time": "1672875780"
+        },
+        "stopId": "G24N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672875840"
+        },
+        "departure": {
+          "time": "1672875840"
+        },
+        "stopId": "G22N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "D2",
+          "actualTrack": "D2"
         }
       }]
     }
@@ -1905,40 +1812,36 @@
     "id": "000020G",
     "vehicle": {
       "trip": {
-        "tripId": "132010_G..S",
-        "startTime": "22:00:06",
-        "startDate": "20221025",
+        "tripId": "108700_G..N",
+        "startTime": "18:07:00",
+        "startDate": "20230104",
         "routeId": "G",
         "nyctTripDescriptor": {
-          "trainId": "1G 2200 CRS/CHU",
-          "isAssigned": true,
-          "direction": "SOUTH"
+          "trainId": "1G 1807 CHU/CRS"
         }
       },
-      "currentStopSequence": 3,
-      "currentStatus": "STOPPED_AT",
-      "timestamp": "1666749900",
-      "stopId": "G28S"
+      "timestamp": "1672873620",
+      "stopId": "F27N"
     }
   }, {
     "id": "000021G",
     "tripUpdate": {
       "trip": {
-        "tripId": "134600_G..S",
-        "startTime": "22:26:00",
-        "startDate": "20221025",
+        "tripId": "108800_G..S",
+        "startTime": "18:08:00",
+        "startDate": "20230104",
         "routeId": "G",
         "nyctTripDescriptor": {
-          "trainId": "1G 2226 CRS/CHU",
+          "trainId": "1G 1808 CRS/CHU",
           "direction": "SOUTH"
         }
       },
       "stopTimeUpdate": [{
         "arrival": {
-          "time": "1666751160"
+          "time": "1672873680"
         },
         "departure": {
-          "time": "1666751160"
+          "time": "1672873680"
         },
         "stopId": "G22S",
         "nyctStopTimeUpdate": {
@@ -1947,10 +1850,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666751220"
+          "time": "1672873740"
         },
         "departure": {
-          "time": "1666751220"
+          "time": "1672873740"
         },
         "stopId": "G24S",
         "nyctStopTimeUpdate": {
@@ -1959,10 +1862,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666751370"
+          "time": "1672873890"
         },
         "departure": {
-          "time": "1666751370"
+          "time": "1672873890"
         },
         "stopId": "G26S",
         "nyctStopTimeUpdate": {
@@ -1971,10 +1874,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666751430"
+          "time": "1672873980"
         },
         "departure": {
-          "time": "1666751430"
+          "time": "1672873980"
         },
         "stopId": "G28S",
         "nyctStopTimeUpdate": {
@@ -1983,10 +1886,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666751580"
+          "time": "1672874160"
         },
         "departure": {
-          "time": "1666751580"
+          "time": "1672874160"
         },
         "stopId": "G29S",
         "nyctStopTimeUpdate": {
@@ -1995,10 +1898,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666751670"
+          "time": "1672874250"
         },
         "departure": {
-          "time": "1666751670"
+          "time": "1672874250"
         },
         "stopId": "G30S",
         "nyctStopTimeUpdate": {
@@ -2007,10 +1910,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666751730"
+          "time": "1672874310"
         },
         "departure": {
-          "time": "1666751730"
+          "time": "1672874310"
         },
         "stopId": "G31S",
         "nyctStopTimeUpdate": {
@@ -2019,10 +1922,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666751820"
+          "time": "1672874400"
         },
         "departure": {
-          "time": "1666751820"
+          "time": "1672874400"
         },
         "stopId": "G32S",
         "nyctStopTimeUpdate": {
@@ -2031,10 +1934,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666751910"
+          "time": "1672874490"
         },
         "departure": {
-          "time": "1666751910"
+          "time": "1672874490"
         },
         "stopId": "G33S",
         "nyctStopTimeUpdate": {
@@ -2043,10 +1946,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666751970"
+          "time": "1672874550"
         },
         "departure": {
-          "time": "1666751970"
+          "time": "1672874550"
         },
         "stopId": "G34S",
         "nyctStopTimeUpdate": {
@@ -2055,10 +1958,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666752060"
+          "time": "1672874640"
         },
         "departure": {
-          "time": "1666752060"
+          "time": "1672874640"
         },
         "stopId": "G35S",
         "nyctStopTimeUpdate": {
@@ -2067,10 +1970,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666752150"
+          "time": "1672874730"
         },
         "departure": {
-          "time": "1666752150"
+          "time": "1672874730"
         },
         "stopId": "G36S",
         "nyctStopTimeUpdate": {
@@ -2079,10 +1982,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666752240"
+          "time": "1672874850"
         },
         "departure": {
-          "time": "1666752240"
+          "time": "1672874850"
         },
         "stopId": "A42S",
         "nyctStopTimeUpdate": {
@@ -2091,10 +1994,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666752330"
+          "time": "1672874970"
         },
         "departure": {
-          "time": "1666752330"
+          "time": "1672874970"
         },
         "stopId": "F20S",
         "nyctStopTimeUpdate": {
@@ -2103,10 +2006,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666752420"
+          "time": "1672875060"
         },
         "departure": {
-          "time": "1666752420"
+          "time": "1672875060"
         },
         "stopId": "F21S",
         "nyctStopTimeUpdate": {
@@ -2115,10 +2018,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666752540"
+          "time": "1672875180"
         },
         "departure": {
-          "time": "1666752540"
+          "time": "1672875180"
         },
         "stopId": "F22S",
         "nyctStopTimeUpdate": {
@@ -2127,10 +2030,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666752660"
+          "time": "1672875300"
         },
         "departure": {
-          "time": "1666752660"
+          "time": "1672875300"
         },
         "stopId": "F23S",
         "nyctStopTimeUpdate": {
@@ -2139,10 +2042,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666752750"
+          "time": "1672875420"
         },
         "departure": {
-          "time": "1666752750"
+          "time": "1672875420"
         },
         "stopId": "F24S",
         "nyctStopTimeUpdate": {
@@ -2151,10 +2054,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666752840"
+          "time": "1672875510"
         },
         "departure": {
-          "time": "1666752840"
+          "time": "1672875510"
         },
         "stopId": "F25S",
         "nyctStopTimeUpdate": {
@@ -2163,10 +2066,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666752990"
+          "time": "1672875660"
         },
         "departure": {
-          "time": "1666752990"
+          "time": "1672875660"
         },
         "stopId": "F26S",
         "nyctStopTimeUpdate": {
@@ -2175,10 +2078,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666753080"
+          "time": "1672875780"
         },
         "departure": {
-          "time": "1666753080"
+          "time": "1672875780"
         },
         "stopId": "F27S",
         "nyctStopTimeUpdate": {
@@ -2191,72 +2094,37 @@
     "id": "000022G",
     "vehicle": {
       "trip": {
-        "tripId": "134600_G..S",
-        "startTime": "22:26:00",
-        "startDate": "20221025",
+        "tripId": "108800_G..S",
+        "startTime": "18:08:00",
+        "startDate": "20230104",
         "routeId": "G",
         "nyctTripDescriptor": {
-          "trainId": "1G 2226 CRS/CHU",
+          "trainId": "1G 1808 CRS/CHU",
           "direction": "SOUTH"
         }
       },
-      "timestamp": "1666751160",
+      "timestamp": "1672873680",
       "stopId": "G22S"
     }
   }, {
     "id": "000023G",
     "tripUpdate": {
       "trip": {
-        "tripId": "133800_G..N",
-        "startTime": "22:18:00",
-        "startDate": "20221025",
+        "tripId": "107200_G..N",
+        "startTime": "17:52:00",
+        "startDate": "20230104",
         "routeId": "G",
         "nyctTripDescriptor": {
-          "trainId": "1G 2218 CHU/CRS"
+          "trainId": "1G 1753+ CHU/CRS",
+          "isAssigned": true
         }
       },
       "stopTimeUpdate": [{
         "arrival": {
-          "time": "1666750680"
+          "time": "1672873100"
         },
         "departure": {
-          "time": "1666750680"
-        },
-        "stopId": "F27N",
-        "nyctStopTimeUpdate": {
-          "scheduledTrack": "B2",
-          "actualTrack": "B2"
-        }
-      }, {
-        "arrival": {
-          "time": "1666750800"
-        },
-        "departure": {
-          "time": "1666750800"
-        },
-        "stopId": "F26N",
-        "nyctStopTimeUpdate": {
-          "scheduledTrack": "B2",
-          "actualTrack": "B2"
-        }
-      }, {
-        "arrival": {
-          "time": "1666750950"
-        },
-        "departure": {
-          "time": "1666750950"
-        },
-        "stopId": "F25N",
-        "nyctStopTimeUpdate": {
-          "scheduledTrack": "B2",
-          "actualTrack": "B2"
-        }
-      }, {
-        "arrival": {
-          "time": "1666751070"
-        },
-        "departure": {
-          "time": "1666751070"
+          "time": "1672873100"
         },
         "stopId": "F24N",
         "nyctStopTimeUpdate": {
@@ -2265,10 +2133,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666751190"
+          "time": "1672873167"
         },
         "departure": {
-          "time": "1666751190"
+          "time": "1672873167"
         },
         "stopId": "F23N",
         "nyctStopTimeUpdate": {
@@ -2277,10 +2145,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666751280"
+          "time": "1672873257"
         },
         "departure": {
-          "time": "1666751280"
+          "time": "1672873257"
         },
         "stopId": "F22N",
         "nyctStopTimeUpdate": {
@@ -2289,10 +2157,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666751400"
+          "time": "1672873377"
         },
         "departure": {
-          "time": "1666751400"
+          "time": "1672873377"
         },
         "stopId": "F21N",
         "nyctStopTimeUpdate": {
@@ -2301,10 +2169,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666751490"
+          "time": "1672873467"
         },
         "departure": {
-          "time": "1666751490"
+          "time": "1672873467"
         },
         "stopId": "F20N",
         "nyctStopTimeUpdate": {
@@ -2313,10 +2181,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666751580"
+          "time": "1672873587"
         },
         "departure": {
-          "time": "1666751580"
+          "time": "1672873587"
         },
         "stopId": "A42N",
         "nyctStopTimeUpdate": {
@@ -2325,10 +2193,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666751670"
+          "time": "1672873707"
         },
         "departure": {
-          "time": "1666751670"
+          "time": "1672873707"
         },
         "stopId": "G36N",
         "nyctStopTimeUpdate": {
@@ -2337,10 +2205,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666751760"
+          "time": "1672873797"
         },
         "departure": {
-          "time": "1666751760"
+          "time": "1672873797"
         },
         "stopId": "G35N",
         "nyctStopTimeUpdate": {
@@ -2349,10 +2217,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666751850"
+          "time": "1672873887"
         },
         "departure": {
-          "time": "1666751850"
+          "time": "1672873887"
         },
         "stopId": "G34N",
         "nyctStopTimeUpdate": {
@@ -2361,10 +2229,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666751910"
+          "time": "1672873947"
         },
         "departure": {
-          "time": "1666751910"
+          "time": "1672873947"
         },
         "stopId": "G33N",
         "nyctStopTimeUpdate": {
@@ -2373,10 +2241,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666752000"
+          "time": "1672874037"
         },
         "departure": {
-          "time": "1666752000"
+          "time": "1672874037"
         },
         "stopId": "G32N",
         "nyctStopTimeUpdate": {
@@ -2385,10 +2253,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666752090"
+          "time": "1672874127"
         },
         "departure": {
-          "time": "1666752090"
+          "time": "1672874127"
         },
         "stopId": "G31N",
         "nyctStopTimeUpdate": {
@@ -2397,10 +2265,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666752150"
+          "time": "1672874217"
         },
         "departure": {
-          "time": "1666752150"
+          "time": "1672874217"
         },
         "stopId": "G30N",
         "nyctStopTimeUpdate": {
@@ -2409,10 +2277,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666752240"
+          "time": "1672874277"
         },
         "departure": {
-          "time": "1666752240"
+          "time": "1672874277"
         },
         "stopId": "G29N",
         "nyctStopTimeUpdate": {
@@ -2421,10 +2289,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666752390"
+          "time": "1672874457"
         },
         "departure": {
-          "time": "1666752390"
+          "time": "1672874457"
         },
         "stopId": "G28N",
         "nyctStopTimeUpdate": {
@@ -2433,10 +2301,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666752450"
+          "time": "1672874547"
         },
         "departure": {
-          "time": "1666752450"
+          "time": "1672874547"
         },
         "stopId": "G26N",
         "nyctStopTimeUpdate": {
@@ -2445,10 +2313,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666752600"
+          "time": "1672874697"
         },
         "departure": {
-          "time": "1666752600"
+          "time": "1672874697"
         },
         "stopId": "G24N",
         "nyctStopTimeUpdate": {
@@ -2457,10 +2325,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666752660"
+          "time": "1672874757"
         },
         "departure": {
-          "time": "1666752660"
+          "time": "1672874757"
         },
         "stopId": "G22N",
         "nyctStopTimeUpdate": {
@@ -2473,35 +2341,38 @@
     "id": "000024G",
     "vehicle": {
       "trip": {
-        "tripId": "133800_G..N",
-        "startTime": "22:18:00",
-        "startDate": "20221025",
+        "tripId": "107200_G..N",
+        "startTime": "17:52:00",
+        "startDate": "20230104",
         "routeId": "G",
         "nyctTripDescriptor": {
-          "trainId": "1G 2218 CHU/CRS"
+          "trainId": "1G 1753+ CHU/CRS",
+          "isAssigned": true
         }
       },
-      "timestamp": "1666750680",
-      "stopId": "F27N"
+      "currentStopSequence": 3,
+      "currentStatus": "STOPPED_AT",
+      "timestamp": "1672873100",
+      "stopId": "F24N"
     }
   }, {
     "id": "000025G",
     "tripUpdate": {
       "trip": {
-        "tripId": "135000_G..N",
-        "startTime": "22:30:00",
-        "startDate": "20221025",
+        "tripId": "109500_G..N",
+        "startTime": "18:15:00",
+        "startDate": "20230104",
         "routeId": "G",
         "nyctTripDescriptor": {
-          "trainId": "1G 2230 CHU/CRS"
+          "trainId": "1G 1815 CHU/CRS"
         }
       },
       "stopTimeUpdate": [{
         "arrival": {
-          "time": "1666751400"
+          "time": "1672874100"
         },
         "departure": {
-          "time": "1666751400"
+          "time": "1672874100"
         },
         "stopId": "F27N",
         "nyctStopTimeUpdate": {
@@ -2510,10 +2381,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666751520"
+          "time": "1672874220"
         },
         "departure": {
-          "time": "1666751520"
+          "time": "1672874220"
         },
         "stopId": "F26N",
         "nyctStopTimeUpdate": {
@@ -2522,10 +2393,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666751670"
+          "time": "1672874370"
         },
         "departure": {
-          "time": "1666751670"
+          "time": "1672874370"
         },
         "stopId": "F25N",
         "nyctStopTimeUpdate": {
@@ -2534,10 +2405,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666751790"
+          "time": "1672874490"
         },
         "departure": {
-          "time": "1666751790"
+          "time": "1672874490"
         },
         "stopId": "F24N",
         "nyctStopTimeUpdate": {
@@ -2546,10 +2417,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666751910"
+          "time": "1672874610"
         },
         "departure": {
-          "time": "1666751910"
+          "time": "1672874610"
         },
         "stopId": "F23N",
         "nyctStopTimeUpdate": {
@@ -2558,10 +2429,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666752000"
+          "time": "1672874700"
         },
         "departure": {
-          "time": "1666752000"
+          "time": "1672874700"
         },
         "stopId": "F22N",
         "nyctStopTimeUpdate": {
@@ -2570,10 +2441,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666752120"
+          "time": "1672874820"
         },
         "departure": {
-          "time": "1666752120"
+          "time": "1672874820"
         },
         "stopId": "F21N",
         "nyctStopTimeUpdate": {
@@ -2582,10 +2453,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666752210"
+          "time": "1672874910"
         },
         "departure": {
-          "time": "1666752210"
+          "time": "1672874910"
         },
         "stopId": "F20N",
         "nyctStopTimeUpdate": {
@@ -2594,10 +2465,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666752300"
+          "time": "1672875060"
         },
         "departure": {
-          "time": "1666752300"
+          "time": "1672875060"
         },
         "stopId": "A42N",
         "nyctStopTimeUpdate": {
@@ -2606,10 +2477,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666752390"
+          "time": "1672875210"
         },
         "departure": {
-          "time": "1666752390"
+          "time": "1672875210"
         },
         "stopId": "G36N",
         "nyctStopTimeUpdate": {
@@ -2618,10 +2489,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666752480"
+          "time": "1672875300"
         },
         "departure": {
-          "time": "1666752480"
+          "time": "1672875300"
         },
         "stopId": "G35N",
         "nyctStopTimeUpdate": {
@@ -2630,10 +2501,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666752570"
+          "time": "1672875390"
         },
         "departure": {
-          "time": "1666752570"
+          "time": "1672875390"
         },
         "stopId": "G34N",
         "nyctStopTimeUpdate": {
@@ -2642,10 +2513,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666752630"
+          "time": "1672875450"
         },
         "departure": {
-          "time": "1666752630"
+          "time": "1672875450"
         },
         "stopId": "G33N",
         "nyctStopTimeUpdate": {
@@ -2654,10 +2525,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666752720"
+          "time": "1672875540"
         },
         "departure": {
-          "time": "1666752720"
+          "time": "1672875540"
         },
         "stopId": "G32N",
         "nyctStopTimeUpdate": {
@@ -2666,10 +2537,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666752810"
+          "time": "1672875630"
         },
         "departure": {
-          "time": "1666752810"
+          "time": "1672875630"
         },
         "stopId": "G31N",
         "nyctStopTimeUpdate": {
@@ -2678,10 +2549,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666752870"
+          "time": "1672875720"
         },
         "departure": {
-          "time": "1666752870"
+          "time": "1672875720"
         },
         "stopId": "G30N",
         "nyctStopTimeUpdate": {
@@ -2690,10 +2561,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666752960"
+          "time": "1672875780"
         },
         "departure": {
-          "time": "1666752960"
+          "time": "1672875780"
         },
         "stopId": "G29N",
         "nyctStopTimeUpdate": {
@@ -2702,10 +2573,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666753110"
+          "time": "1672875960"
         },
         "departure": {
-          "time": "1666753110"
+          "time": "1672875960"
         },
         "stopId": "G28N",
         "nyctStopTimeUpdate": {
@@ -2714,10 +2585,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666753170"
+          "time": "1672876050"
         },
         "departure": {
-          "time": "1666753170"
+          "time": "1672876050"
         },
         "stopId": "G26N",
         "nyctStopTimeUpdate": {
@@ -2726,10 +2597,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666753320"
+          "time": "1672876200"
         },
         "departure": {
-          "time": "1666753320"
+          "time": "1672876200"
         },
         "stopId": "G24N",
         "nyctStopTimeUpdate": {
@@ -2738,10 +2609,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666753380"
+          "time": "1672876260"
         },
         "departure": {
-          "time": "1666753380"
+          "time": "1672876260"
         },
         "stopId": "G22N",
         "nyctStopTimeUpdate": {
@@ -2754,36 +2625,36 @@
     "id": "000026G",
     "vehicle": {
       "trip": {
-        "tripId": "135000_G..N",
-        "startTime": "22:30:00",
-        "startDate": "20221025",
+        "tripId": "109500_G..N",
+        "startTime": "18:15:00",
+        "startDate": "20230104",
         "routeId": "G",
         "nyctTripDescriptor": {
-          "trainId": "1G 2230 CHU/CRS"
+          "trainId": "1G 1815 CHU/CRS"
         }
       },
-      "timestamp": "1666751400",
+      "timestamp": "1672874100",
       "stopId": "F27N"
     }
   }, {
     "id": "000027G",
     "tripUpdate": {
       "trip": {
-        "tripId": "135800_G..S",
-        "startTime": "22:38:00",
-        "startDate": "20221025",
+        "tripId": "109700_G..S",
+        "startTime": "18:17:00",
+        "startDate": "20230104",
         "routeId": "G",
         "nyctTripDescriptor": {
-          "trainId": "1G 2238 CRS/CHU",
+          "trainId": "1G 1817 CRS/CHU",
           "direction": "SOUTH"
         }
       },
       "stopTimeUpdate": [{
         "arrival": {
-          "time": "1666751880"
+          "time": "1672874220"
         },
         "departure": {
-          "time": "1666751880"
+          "time": "1672874220"
         },
         "stopId": "G22S",
         "nyctStopTimeUpdate": {
@@ -2792,10 +2663,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666751940"
+          "time": "1672874280"
         },
         "departure": {
-          "time": "1666751940"
+          "time": "1672874280"
         },
         "stopId": "G24S",
         "nyctStopTimeUpdate": {
@@ -2804,10 +2675,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666752090"
+          "time": "1672874430"
         },
         "departure": {
-          "time": "1666752090"
+          "time": "1672874430"
         },
         "stopId": "G26S",
         "nyctStopTimeUpdate": {
@@ -2816,10 +2687,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666752150"
+          "time": "1672874520"
         },
         "departure": {
-          "time": "1666752150"
+          "time": "1672874520"
         },
         "stopId": "G28S",
         "nyctStopTimeUpdate": {
@@ -2828,10 +2699,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666752300"
+          "time": "1672874700"
         },
         "departure": {
-          "time": "1666752300"
+          "time": "1672874700"
         },
         "stopId": "G29S",
         "nyctStopTimeUpdate": {
@@ -2840,10 +2711,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666752390"
+          "time": "1672874790"
         },
         "departure": {
-          "time": "1666752390"
+          "time": "1672874790"
         },
         "stopId": "G30S",
         "nyctStopTimeUpdate": {
@@ -2852,10 +2723,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666752450"
+          "time": "1672874850"
         },
         "departure": {
-          "time": "1666752450"
+          "time": "1672874850"
         },
         "stopId": "G31S",
         "nyctStopTimeUpdate": {
@@ -2864,10 +2735,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666752540"
+          "time": "1672874940"
         },
         "departure": {
-          "time": "1666752540"
+          "time": "1672874940"
         },
         "stopId": "G32S",
         "nyctStopTimeUpdate": {
@@ -2876,10 +2747,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666752630"
+          "time": "1672875030"
         },
         "departure": {
-          "time": "1666752630"
+          "time": "1672875030"
         },
         "stopId": "G33S",
         "nyctStopTimeUpdate": {
@@ -2888,10 +2759,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666752690"
+          "time": "1672875090"
         },
         "departure": {
-          "time": "1666752690"
+          "time": "1672875090"
         },
         "stopId": "G34S",
         "nyctStopTimeUpdate": {
@@ -2900,10 +2771,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666752780"
+          "time": "1672875180"
         },
         "departure": {
-          "time": "1666752780"
+          "time": "1672875180"
         },
         "stopId": "G35S",
         "nyctStopTimeUpdate": {
@@ -2912,10 +2783,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666752870"
+          "time": "1672875270"
         },
         "departure": {
-          "time": "1666752870"
+          "time": "1672875270"
         },
         "stopId": "G36S",
         "nyctStopTimeUpdate": {
@@ -2924,10 +2795,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666752960"
+          "time": "1672875390"
         },
         "departure": {
-          "time": "1666752960"
+          "time": "1672875390"
         },
         "stopId": "A42S",
         "nyctStopTimeUpdate": {
@@ -2936,10 +2807,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666753050"
+          "time": "1672875510"
         },
         "departure": {
-          "time": "1666753050"
+          "time": "1672875510"
         },
         "stopId": "F20S",
         "nyctStopTimeUpdate": {
@@ -2948,10 +2819,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666753140"
+          "time": "1672875600"
         },
         "departure": {
-          "time": "1666753140"
+          "time": "1672875600"
         },
         "stopId": "F21S",
         "nyctStopTimeUpdate": {
@@ -2960,10 +2831,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666753260"
+          "time": "1672875720"
         },
         "departure": {
-          "time": "1666753260"
+          "time": "1672875720"
         },
         "stopId": "F22S",
         "nyctStopTimeUpdate": {
@@ -2972,10 +2843,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666753380"
+          "time": "1672875840"
         },
         "departure": {
-          "time": "1666753380"
+          "time": "1672875840"
         },
         "stopId": "F23S",
         "nyctStopTimeUpdate": {
@@ -2984,10 +2855,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666753470"
+          "time": "1672875960"
         },
         "departure": {
-          "time": "1666753470"
+          "time": "1672875960"
         },
         "stopId": "F24S",
         "nyctStopTimeUpdate": {
@@ -2996,10 +2867,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666753560"
+          "time": "1672876050"
         },
         "departure": {
-          "time": "1666753560"
+          "time": "1672876050"
         },
         "stopId": "F25S",
         "nyctStopTimeUpdate": {
@@ -3008,10 +2879,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666753710"
+          "time": "1672876200"
         },
         "departure": {
-          "time": "1666753710"
+          "time": "1672876200"
         },
         "stopId": "F26S",
         "nyctStopTimeUpdate": {
@@ -3020,10 +2891,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666753800"
+          "time": "1672876290"
         },
         "departure": {
-          "time": "1666753800"
+          "time": "1672876290"
         },
         "stopId": "F27S",
         "nyctStopTimeUpdate": {
@@ -3036,36 +2907,36 @@
     "id": "000028G",
     "vehicle": {
       "trip": {
-        "tripId": "135800_G..S",
-        "startTime": "22:38:00",
-        "startDate": "20221025",
+        "tripId": "109700_G..S",
+        "startTime": "18:17:00",
+        "startDate": "20230104",
         "routeId": "G",
         "nyctTripDescriptor": {
-          "trainId": "1G 2238 CRS/CHU",
+          "trainId": "1G 1817 CRS/CHU",
           "direction": "SOUTH"
         }
       },
-      "timestamp": "1666751880",
+      "timestamp": "1672874220",
       "stopId": "G22S"
     }
   }, {
     "id": "000029G",
     "tripUpdate": {
       "trip": {
-        "tripId": "136200_G..N",
-        "startTime": "22:42:00",
-        "startDate": "20221025",
+        "tripId": "110150_G..N",
+        "startTime": "18:21:30",
+        "startDate": "20230104",
         "routeId": "G",
         "nyctTripDescriptor": {
-          "trainId": "1G 2242 CHU/CRS"
+          "trainId": "1G 1821+ CHU/CRS"
         }
       },
       "stopTimeUpdate": [{
         "arrival": {
-          "time": "1666752120"
+          "time": "1672874490"
         },
         "departure": {
-          "time": "1666752120"
+          "time": "1672874490"
         },
         "stopId": "F27N",
         "nyctStopTimeUpdate": {
@@ -3074,10 +2945,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666752240"
+          "time": "1672874610"
         },
         "departure": {
-          "time": "1666752240"
+          "time": "1672874610"
         },
         "stopId": "F26N",
         "nyctStopTimeUpdate": {
@@ -3086,10 +2957,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666752390"
+          "time": "1672874760"
         },
         "departure": {
-          "time": "1666752390"
+          "time": "1672874760"
         },
         "stopId": "F25N",
         "nyctStopTimeUpdate": {
@@ -3098,10 +2969,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666752510"
+          "time": "1672874880"
         },
         "departure": {
-          "time": "1666752510"
+          "time": "1672874880"
         },
         "stopId": "F24N",
         "nyctStopTimeUpdate": {
@@ -3110,10 +2981,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666752630"
+          "time": "1672875000"
         },
         "departure": {
-          "time": "1666752630"
+          "time": "1672875000"
         },
         "stopId": "F23N",
         "nyctStopTimeUpdate": {
@@ -3122,10 +2993,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666752720"
+          "time": "1672875090"
         },
         "departure": {
-          "time": "1666752720"
+          "time": "1672875090"
         },
         "stopId": "F22N",
         "nyctStopTimeUpdate": {
@@ -3134,10 +3005,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666752840"
+          "time": "1672875210"
         },
         "departure": {
-          "time": "1666752840"
+          "time": "1672875210"
         },
         "stopId": "F21N",
         "nyctStopTimeUpdate": {
@@ -3146,10 +3017,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666752930"
+          "time": "1672875300"
         },
         "departure": {
-          "time": "1666752930"
+          "time": "1672875300"
         },
         "stopId": "F20N",
         "nyctStopTimeUpdate": {
@@ -3158,10 +3029,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666753020"
+          "time": "1672875450"
         },
         "departure": {
-          "time": "1666753020"
+          "time": "1672875450"
         },
         "stopId": "A42N",
         "nyctStopTimeUpdate": {
@@ -3170,10 +3041,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666753110"
+          "time": "1672875600"
         },
         "departure": {
-          "time": "1666753110"
+          "time": "1672875600"
         },
         "stopId": "G36N",
         "nyctStopTimeUpdate": {
@@ -3182,10 +3053,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666753200"
+          "time": "1672875690"
         },
         "departure": {
-          "time": "1666753200"
+          "time": "1672875690"
         },
         "stopId": "G35N",
         "nyctStopTimeUpdate": {
@@ -3194,10 +3065,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666753290"
+          "time": "1672875780"
         },
         "departure": {
-          "time": "1666753290"
+          "time": "1672875780"
         },
         "stopId": "G34N",
         "nyctStopTimeUpdate": {
@@ -3206,10 +3077,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666753350"
+          "time": "1672875840"
         },
         "departure": {
-          "time": "1666753350"
+          "time": "1672875840"
         },
         "stopId": "G33N",
         "nyctStopTimeUpdate": {
@@ -3218,10 +3089,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666753440"
+          "time": "1672875930"
         },
         "departure": {
-          "time": "1666753440"
+          "time": "1672875930"
         },
         "stopId": "G32N",
         "nyctStopTimeUpdate": {
@@ -3230,10 +3101,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666753530"
+          "time": "1672876020"
         },
         "departure": {
-          "time": "1666753530"
+          "time": "1672876020"
         },
         "stopId": "G31N",
         "nyctStopTimeUpdate": {
@@ -3242,10 +3113,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666753590"
+          "time": "1672876110"
         },
         "departure": {
-          "time": "1666753590"
+          "time": "1672876110"
         },
         "stopId": "G30N",
         "nyctStopTimeUpdate": {
@@ -3254,10 +3125,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666753680"
+          "time": "1672876170"
         },
         "departure": {
-          "time": "1666753680"
+          "time": "1672876170"
         },
         "stopId": "G29N",
         "nyctStopTimeUpdate": {
@@ -3266,10 +3137,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666753830"
+          "time": "1672876350"
         },
         "departure": {
-          "time": "1666753830"
+          "time": "1672876350"
         },
         "stopId": "G28N",
         "nyctStopTimeUpdate": {
@@ -3278,10 +3149,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666753890"
+          "time": "1672876440"
         },
         "departure": {
-          "time": "1666753890"
+          "time": "1672876440"
         },
         "stopId": "G26N",
         "nyctStopTimeUpdate": {
@@ -3290,10 +3161,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666754040"
+          "time": "1672876590"
         },
         "departure": {
-          "time": "1666754040"
+          "time": "1672876590"
         },
         "stopId": "G24N",
         "nyctStopTimeUpdate": {
@@ -3302,10 +3173,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666754100"
+          "time": "1672876650"
         },
         "departure": {
-          "time": "1666754100"
+          "time": "1672876650"
         },
         "stopId": "G22N",
         "nyctStopTimeUpdate": {
@@ -3318,36 +3189,36 @@
     "id": "000030G",
     "vehicle": {
       "trip": {
-        "tripId": "136200_G..N",
-        "startTime": "22:42:00",
-        "startDate": "20221025",
+        "tripId": "110150_G..N",
+        "startTime": "18:21:30",
+        "startDate": "20230104",
         "routeId": "G",
         "nyctTripDescriptor": {
-          "trainId": "1G 2242 CHU/CRS"
+          "trainId": "1G 1821+ CHU/CRS"
         }
       },
-      "timestamp": "1666752120",
+      "timestamp": "1672874490",
       "stopId": "F27N"
     }
   }, {
     "id": "000031G",
     "tripUpdate": {
       "trip": {
-        "tripId": "137050_G..S",
-        "startTime": "22:50:30",
-        "startDate": "20221025",
+        "tripId": "110500_G..S",
+        "startTime": "18:25:00",
+        "startDate": "20230104",
         "routeId": "G",
         "nyctTripDescriptor": {
-          "trainId": "1G 2250+ CRS/CHU",
+          "trainId": "1G 1825 CRS/CHU",
           "direction": "SOUTH"
         }
       },
       "stopTimeUpdate": [{
         "arrival": {
-          "time": "1666752630"
+          "time": "1672874700"
         },
         "departure": {
-          "time": "1666752630"
+          "time": "1672874700"
         },
         "stopId": "G22S",
         "nyctStopTimeUpdate": {
@@ -3356,10 +3227,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666752690"
+          "time": "1672874760"
         },
         "departure": {
-          "time": "1666752690"
+          "time": "1672874760"
         },
         "stopId": "G24S",
         "nyctStopTimeUpdate": {
@@ -3368,10 +3239,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666752840"
+          "time": "1672874910"
         },
         "departure": {
-          "time": "1666752840"
+          "time": "1672874910"
         },
         "stopId": "G26S",
         "nyctStopTimeUpdate": {
@@ -3380,10 +3251,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666752900"
+          "time": "1672875000"
         },
         "departure": {
-          "time": "1666752900"
+          "time": "1672875000"
         },
         "stopId": "G28S",
         "nyctStopTimeUpdate": {
@@ -3392,10 +3263,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666753050"
+          "time": "1672875180"
         },
         "departure": {
-          "time": "1666753050"
+          "time": "1672875180"
         },
         "stopId": "G29S",
         "nyctStopTimeUpdate": {
@@ -3404,10 +3275,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666753140"
+          "time": "1672875270"
         },
         "departure": {
-          "time": "1666753140"
+          "time": "1672875270"
         },
         "stopId": "G30S",
         "nyctStopTimeUpdate": {
@@ -3416,10 +3287,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666753200"
+          "time": "1672875330"
         },
         "departure": {
-          "time": "1666753200"
+          "time": "1672875330"
         },
         "stopId": "G31S",
         "nyctStopTimeUpdate": {
@@ -3428,10 +3299,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666753290"
+          "time": "1672875420"
         },
         "departure": {
-          "time": "1666753290"
+          "time": "1672875420"
         },
         "stopId": "G32S",
         "nyctStopTimeUpdate": {
@@ -3440,10 +3311,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666753380"
+          "time": "1672875510"
         },
         "departure": {
-          "time": "1666753380"
+          "time": "1672875510"
         },
         "stopId": "G33S",
         "nyctStopTimeUpdate": {
@@ -3452,10 +3323,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666753440"
+          "time": "1672875570"
         },
         "departure": {
-          "time": "1666753440"
+          "time": "1672875570"
         },
         "stopId": "G34S",
         "nyctStopTimeUpdate": {
@@ -3464,10 +3335,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666753530"
+          "time": "1672875660"
         },
         "departure": {
-          "time": "1666753530"
+          "time": "1672875660"
         },
         "stopId": "G35S",
         "nyctStopTimeUpdate": {
@@ -3476,10 +3347,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666753620"
+          "time": "1672875750"
         },
         "departure": {
-          "time": "1666753620"
+          "time": "1672875750"
         },
         "stopId": "G36S",
         "nyctStopTimeUpdate": {
@@ -3488,10 +3359,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666753770"
+          "time": "1672875840"
         },
         "departure": {
-          "time": "1666753770"
+          "time": "1672875840"
         },
         "stopId": "A42S",
         "nyctStopTimeUpdate": {
@@ -3500,10 +3371,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666753920"
+          "time": "1672875930"
         },
         "departure": {
-          "time": "1666753920"
+          "time": "1672875930"
         },
         "stopId": "F20S",
         "nyctStopTimeUpdate": {
@@ -3512,10 +3383,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666754010"
+          "time": "1672876020"
         },
         "departure": {
-          "time": "1666754010"
+          "time": "1672876020"
         },
         "stopId": "F21S",
         "nyctStopTimeUpdate": {
@@ -3524,10 +3395,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666754130"
+          "time": "1672876140"
         },
         "departure": {
-          "time": "1666754130"
+          "time": "1672876140"
         },
         "stopId": "F22S",
         "nyctStopTimeUpdate": {
@@ -3536,10 +3407,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666754250"
+          "time": "1672876260"
         },
         "departure": {
-          "time": "1666754250"
+          "time": "1672876260"
         },
         "stopId": "F23S",
         "nyctStopTimeUpdate": {
@@ -3548,10 +3419,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666754340"
+          "time": "1672876380"
         },
         "departure": {
-          "time": "1666754340"
+          "time": "1672876380"
         },
         "stopId": "F24S",
         "nyctStopTimeUpdate": {
@@ -3560,10 +3431,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666754430"
+          "time": "1672876470"
         },
         "departure": {
-          "time": "1666754430"
+          "time": "1672876470"
         },
         "stopId": "F25S",
         "nyctStopTimeUpdate": {
@@ -3572,10 +3443,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666754580"
+          "time": "1672876620"
         },
         "departure": {
-          "time": "1666754580"
+          "time": "1672876620"
         },
         "stopId": "F26S",
         "nyctStopTimeUpdate": {
@@ -3584,10 +3455,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666754670"
+          "time": "1672876710"
         },
         "departure": {
-          "time": "1666754670"
+          "time": "1672876710"
         },
         "stopId": "F27S",
         "nyctStopTimeUpdate": {
@@ -3600,36 +3471,36 @@
     "id": "000032G",
     "vehicle": {
       "trip": {
-        "tripId": "137050_G..S",
-        "startTime": "22:50:30",
-        "startDate": "20221025",
+        "tripId": "110500_G..S",
+        "startTime": "18:25:00",
+        "startDate": "20230104",
         "routeId": "G",
         "nyctTripDescriptor": {
-          "trainId": "1G 2250+ CRS/CHU",
+          "trainId": "1G 1825 CRS/CHU",
           "direction": "SOUTH"
         }
       },
-      "timestamp": "1666752630",
+      "timestamp": "1672874700",
       "stopId": "G22S"
     }
   }, {
     "id": "000033G",
     "tripUpdate": {
       "trip": {
-        "tripId": "137500_G..N",
-        "startTime": "22:55:00",
-        "startDate": "20221025",
+        "tripId": "110850_G..N",
+        "startTime": "18:28:30",
+        "startDate": "20230104",
         "routeId": "G",
         "nyctTripDescriptor": {
-          "trainId": "1G 2255 CHU/CRS"
+          "trainId": "1G 1828+ CHU/CRS"
         }
       },
       "stopTimeUpdate": [{
         "arrival": {
-          "time": "1666752900"
+          "time": "1672874910"
         },
         "departure": {
-          "time": "1666752900"
+          "time": "1672874910"
         },
         "stopId": "F27N",
         "nyctStopTimeUpdate": {
@@ -3638,10 +3509,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666753020"
+          "time": "1672875030"
         },
         "departure": {
-          "time": "1666753020"
+          "time": "1672875030"
         },
         "stopId": "F26N",
         "nyctStopTimeUpdate": {
@@ -3650,10 +3521,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666753170"
+          "time": "1672875180"
         },
         "departure": {
-          "time": "1666753170"
+          "time": "1672875180"
         },
         "stopId": "F25N",
         "nyctStopTimeUpdate": {
@@ -3662,10 +3533,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666753290"
+          "time": "1672875300"
         },
         "departure": {
-          "time": "1666753290"
+          "time": "1672875300"
         },
         "stopId": "F24N",
         "nyctStopTimeUpdate": {
@@ -3674,10 +3545,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666753410"
+          "time": "1672875420"
         },
         "departure": {
-          "time": "1666753410"
+          "time": "1672875420"
         },
         "stopId": "F23N",
         "nyctStopTimeUpdate": {
@@ -3686,10 +3557,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666753500"
+          "time": "1672875510"
         },
         "departure": {
-          "time": "1666753500"
+          "time": "1672875510"
         },
         "stopId": "F22N",
         "nyctStopTimeUpdate": {
@@ -3698,10 +3569,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666753620"
+          "time": "1672875630"
         },
         "departure": {
-          "time": "1666753620"
+          "time": "1672875630"
         },
         "stopId": "F21N",
         "nyctStopTimeUpdate": {
@@ -3710,10 +3581,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666753710"
+          "time": "1672875720"
         },
         "departure": {
-          "time": "1666753710"
+          "time": "1672875720"
         },
         "stopId": "F20N",
         "nyctStopTimeUpdate": {
@@ -3722,10 +3593,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666753800"
+          "time": "1672875885"
         },
         "departure": {
-          "time": "1666753800"
+          "time": "1672875885"
         },
         "stopId": "A42N",
         "nyctStopTimeUpdate": {
@@ -3734,10 +3605,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666753890"
+          "time": "1672876050"
         },
         "departure": {
-          "time": "1666753890"
+          "time": "1672876050"
         },
         "stopId": "G36N",
         "nyctStopTimeUpdate": {
@@ -3746,10 +3617,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666753980"
+          "time": "1672876140"
         },
         "departure": {
-          "time": "1666753980"
+          "time": "1672876140"
         },
         "stopId": "G35N",
         "nyctStopTimeUpdate": {
@@ -3758,10 +3629,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666754070"
+          "time": "1672876230"
         },
         "departure": {
-          "time": "1666754070"
+          "time": "1672876230"
         },
         "stopId": "G34N",
         "nyctStopTimeUpdate": {
@@ -3770,10 +3641,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666754130"
+          "time": "1672876290"
         },
         "departure": {
-          "time": "1666754130"
+          "time": "1672876290"
         },
         "stopId": "G33N",
         "nyctStopTimeUpdate": {
@@ -3782,10 +3653,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666754220"
+          "time": "1672876380"
         },
         "departure": {
-          "time": "1666754220"
+          "time": "1672876380"
         },
         "stopId": "G32N",
         "nyctStopTimeUpdate": {
@@ -3794,10 +3665,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666754310"
+          "time": "1672876470"
         },
         "departure": {
-          "time": "1666754310"
+          "time": "1672876470"
         },
         "stopId": "G31N",
         "nyctStopTimeUpdate": {
@@ -3806,10 +3677,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666754370"
+          "time": "1672876560"
         },
         "departure": {
-          "time": "1666754370"
+          "time": "1672876560"
         },
         "stopId": "G30N",
         "nyctStopTimeUpdate": {
@@ -3818,10 +3689,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666754460"
+          "time": "1672876620"
         },
         "departure": {
-          "time": "1666754460"
+          "time": "1672876620"
         },
         "stopId": "G29N",
         "nyctStopTimeUpdate": {
@@ -3830,10 +3701,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666754610"
+          "time": "1672876800"
         },
         "departure": {
-          "time": "1666754610"
+          "time": "1672876800"
         },
         "stopId": "G28N",
         "nyctStopTimeUpdate": {
@@ -3842,10 +3713,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666754670"
+          "time": "1672876890"
         },
         "departure": {
-          "time": "1666754670"
+          "time": "1672876890"
         },
         "stopId": "G26N",
         "nyctStopTimeUpdate": {
@@ -3854,10 +3725,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666754820"
+          "time": "1672877040"
         },
         "departure": {
-          "time": "1666754820"
+          "time": "1672877040"
         },
         "stopId": "G24N",
         "nyctStopTimeUpdate": {
@@ -3866,10 +3737,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666754880"
+          "time": "1672877100"
         },
         "departure": {
-          "time": "1666754880"
+          "time": "1672877100"
         },
         "stopId": "G22N",
         "nyctStopTimeUpdate": {
@@ -3882,36 +3753,317 @@
     "id": "000034G",
     "vehicle": {
       "trip": {
-        "tripId": "137500_G..N",
-        "startTime": "22:55:00",
-        "startDate": "20221025",
+        "tripId": "110850_G..N",
+        "startTime": "18:28:30",
+        "startDate": "20230104",
         "routeId": "G",
         "nyctTripDescriptor": {
-          "trainId": "1G 2255 CHU/CRS"
+          "trainId": "1G 1828+ CHU/CRS"
         }
       },
-      "timestamp": "1666752900",
+      "timestamp": "1672874910",
       "stopId": "F27N"
     }
   }, {
     "id": "000035G",
     "tripUpdate": {
       "trip": {
-        "tripId": "138250_G..S",
-        "startTime": "23:02:30",
-        "startDate": "20221025",
+        "tripId": "111700_G..N",
+        "startTime": "18:37:00",
+        "startDate": "20230104",
         "routeId": "G",
         "nyctTripDescriptor": {
-          "trainId": "1G 2302+ CRS/CHU",
+          "trainId": "1G 1837 CHU/CRS"
+        }
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "time": "1672875420"
+        },
+        "departure": {
+          "time": "1672875420"
+        },
+        "stopId": "F27N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "B2",
+          "actualTrack": "B2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672875540"
+        },
+        "departure": {
+          "time": "1672875540"
+        },
+        "stopId": "F26N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "B2",
+          "actualTrack": "B2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672875690"
+        },
+        "departure": {
+          "time": "1672875690"
+        },
+        "stopId": "F25N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "B2",
+          "actualTrack": "B2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672875810"
+        },
+        "departure": {
+          "time": "1672875810"
+        },
+        "stopId": "F24N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "B2",
+          "actualTrack": "B2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672875930"
+        },
+        "departure": {
+          "time": "1672875930"
+        },
+        "stopId": "F23N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "B2",
+          "actualTrack": "B2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672876020"
+        },
+        "departure": {
+          "time": "1672876020"
+        },
+        "stopId": "F22N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "B2",
+          "actualTrack": "B2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672876140"
+        },
+        "departure": {
+          "time": "1672876140"
+        },
+        "stopId": "F21N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "B2",
+          "actualTrack": "B2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672876230"
+        },
+        "departure": {
+          "time": "1672876230"
+        },
+        "stopId": "F20N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "B2",
+          "actualTrack": "B2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672876350"
+        },
+        "departure": {
+          "time": "1672876350"
+        },
+        "stopId": "A42N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672876500"
+        },
+        "departure": {
+          "time": "1672876500"
+        },
+        "stopId": "G36N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672876590"
+        },
+        "departure": {
+          "time": "1672876590"
+        },
+        "stopId": "G35N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672876680"
+        },
+        "departure": {
+          "time": "1672876680"
+        },
+        "stopId": "G34N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672876740"
+        },
+        "departure": {
+          "time": "1672876740"
+        },
+        "stopId": "G33N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672876830"
+        },
+        "departure": {
+          "time": "1672876830"
+        },
+        "stopId": "G32N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672876920"
+        },
+        "departure": {
+          "time": "1672876920"
+        },
+        "stopId": "G31N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672877010"
+        },
+        "departure": {
+          "time": "1672877010"
+        },
+        "stopId": "G30N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672877070"
+        },
+        "departure": {
+          "time": "1672877070"
+        },
+        "stopId": "G29N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672877250"
+        },
+        "departure": {
+          "time": "1672877250"
+        },
+        "stopId": "G28N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672877340"
+        },
+        "departure": {
+          "time": "1672877340"
+        },
+        "stopId": "G26N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672877490"
+        },
+        "departure": {
+          "time": "1672877490"
+        },
+        "stopId": "G24N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672877550"
+        },
+        "departure": {
+          "time": "1672877550"
+        },
+        "stopId": "G22N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "D2",
+          "actualTrack": "D2"
+        }
+      }]
+    }
+  }, {
+    "id": "000036G",
+    "vehicle": {
+      "trip": {
+        "tripId": "111700_G..N",
+        "startTime": "18:37:00",
+        "startDate": "20230104",
+        "routeId": "G",
+        "nyctTripDescriptor": {
+          "trainId": "1G 1837 CHU/CRS"
+        }
+      },
+      "timestamp": "1672875420",
+      "stopId": "F27N"
+    }
+  }, {
+    "id": "000037G",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "111200_G..S",
+        "startTime": "18:32:00",
+        "startDate": "20230104",
+        "routeId": "G",
+        "nyctTripDescriptor": {
+          "trainId": "1G 1832 CRS/CHU",
           "direction": "SOUTH"
         }
       },
       "stopTimeUpdate": [{
         "arrival": {
-          "time": "1666753350"
+          "time": "1672875120"
         },
         "departure": {
-          "time": "1666753350"
+          "time": "1672875120"
         },
         "stopId": "G22S",
         "nyctStopTimeUpdate": {
@@ -3920,10 +4072,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666753410"
+          "time": "1672875180"
         },
         "departure": {
-          "time": "1666753410"
+          "time": "1672875180"
         },
         "stopId": "G24S",
         "nyctStopTimeUpdate": {
@@ -3932,10 +4084,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666753560"
+          "time": "1672875330"
         },
         "departure": {
-          "time": "1666753560"
+          "time": "1672875330"
         },
         "stopId": "G26S",
         "nyctStopTimeUpdate": {
@@ -3944,10 +4096,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666753620"
+          "time": "1672875420"
         },
         "departure": {
-          "time": "1666753620"
+          "time": "1672875420"
         },
         "stopId": "G28S",
         "nyctStopTimeUpdate": {
@@ -3956,10 +4108,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666753770"
+          "time": "1672875600"
         },
         "departure": {
-          "time": "1666753770"
+          "time": "1672875600"
         },
         "stopId": "G29S",
         "nyctStopTimeUpdate": {
@@ -3968,10 +4120,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666753860"
+          "time": "1672875690"
         },
         "departure": {
-          "time": "1666753860"
+          "time": "1672875690"
         },
         "stopId": "G30S",
         "nyctStopTimeUpdate": {
@@ -3980,10 +4132,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666753920"
+          "time": "1672875750"
         },
         "departure": {
-          "time": "1666753920"
+          "time": "1672875750"
         },
         "stopId": "G31S",
         "nyctStopTimeUpdate": {
@@ -3992,10 +4144,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666754010"
+          "time": "1672875840"
         },
         "departure": {
-          "time": "1666754010"
+          "time": "1672875840"
         },
         "stopId": "G32S",
         "nyctStopTimeUpdate": {
@@ -4004,10 +4156,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666754100"
+          "time": "1672875930"
         },
         "departure": {
-          "time": "1666754100"
+          "time": "1672875930"
         },
         "stopId": "G33S",
         "nyctStopTimeUpdate": {
@@ -4016,10 +4168,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666754160"
+          "time": "1672875990"
         },
         "departure": {
-          "time": "1666754160"
+          "time": "1672875990"
         },
         "stopId": "G34S",
         "nyctStopTimeUpdate": {
@@ -4028,10 +4180,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666754250"
+          "time": "1672876080"
         },
         "departure": {
-          "time": "1666754250"
+          "time": "1672876080"
         },
         "stopId": "G35S",
         "nyctStopTimeUpdate": {
@@ -4040,10 +4192,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666754340"
+          "time": "1672876170"
         },
         "departure": {
-          "time": "1666754340"
+          "time": "1672876170"
         },
         "stopId": "G36S",
         "nyctStopTimeUpdate": {
@@ -4052,10 +4204,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666754430"
+          "time": "1672876290"
         },
         "departure": {
-          "time": "1666754430"
+          "time": "1672876290"
         },
         "stopId": "A42S",
         "nyctStopTimeUpdate": {
@@ -4064,10 +4216,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666754520"
+          "time": "1672876410"
         },
         "departure": {
-          "time": "1666754520"
+          "time": "1672876410"
         },
         "stopId": "F20S",
         "nyctStopTimeUpdate": {
@@ -4076,10 +4228,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666754610"
+          "time": "1672876500"
         },
         "departure": {
-          "time": "1666754610"
+          "time": "1672876500"
         },
         "stopId": "F21S",
         "nyctStopTimeUpdate": {
@@ -4088,10 +4240,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666754730"
+          "time": "1672876620"
         },
         "departure": {
-          "time": "1666754730"
+          "time": "1672876620"
         },
         "stopId": "F22S",
         "nyctStopTimeUpdate": {
@@ -4100,10 +4252,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666754850"
+          "time": "1672876740"
         },
         "departure": {
-          "time": "1666754850"
+          "time": "1672876740"
         },
         "stopId": "F23S",
         "nyctStopTimeUpdate": {
@@ -4112,10 +4264,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666754940"
+          "time": "1672876860"
         },
         "departure": {
-          "time": "1666754940"
+          "time": "1672876860"
         },
         "stopId": "F24S",
         "nyctStopTimeUpdate": {
@@ -4124,10 +4276,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666755030"
+          "time": "1672876950"
         },
         "departure": {
-          "time": "1666755030"
+          "time": "1672876950"
         },
         "stopId": "F25S",
         "nyctStopTimeUpdate": {
@@ -4136,10 +4288,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666755180"
+          "time": "1672877100"
         },
         "departure": {
-          "time": "1666755180"
+          "time": "1672877100"
         },
         "stopId": "F26S",
         "nyctStopTimeUpdate": {
@@ -4148,10 +4300,10 @@
         }
       }, {
         "arrival": {
-          "time": "1666755270"
+          "time": "1672877190"
         },
         "departure": {
-          "time": "1666755270"
+          "time": "1672877190"
         },
         "stopId": "F27S",
         "nyctStopTimeUpdate": {
@@ -4161,20 +4313,1431 @@
       }]
     }
   }, {
-    "id": "000036G",
+    "id": "000038G",
     "vehicle": {
       "trip": {
-        "tripId": "138250_G..S",
-        "startTime": "23:02:30",
-        "startDate": "20221025",
+        "tripId": "111200_G..S",
+        "startTime": "18:32:00",
+        "startDate": "20230104",
         "routeId": "G",
         "nyctTripDescriptor": {
-          "trainId": "1G 2302+ CRS/CHU",
+          "trainId": "1G 1832 CRS/CHU",
           "direction": "SOUTH"
         }
       },
-      "timestamp": "1666753350",
+      "timestamp": "1672875120",
       "stopId": "G22S"
+    }
+  }, {
+    "id": "000039G",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "111950_G..S",
+        "startTime": "18:39:30",
+        "startDate": "20230104",
+        "routeId": "G",
+        "nyctTripDescriptor": {
+          "trainId": "1G 1839+ CRS/CHU",
+          "direction": "SOUTH"
+        }
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "time": "1672875570"
+        },
+        "departure": {
+          "time": "1672875570"
+        },
+        "stopId": "G22S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "D1",
+          "actualTrack": "D1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672875630"
+        },
+        "departure": {
+          "time": "1672875630"
+        },
+        "stopId": "G24S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E1",
+          "actualTrack": "E1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672875780"
+        },
+        "departure": {
+          "time": "1672875780"
+        },
+        "stopId": "G26S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E1",
+          "actualTrack": "E1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672875870"
+        },
+        "departure": {
+          "time": "1672875870"
+        },
+        "stopId": "G28S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E1",
+          "actualTrack": "E1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672876050"
+        },
+        "departure": {
+          "time": "1672876050"
+        },
+        "stopId": "G29S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E1",
+          "actualTrack": "E1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672876140"
+        },
+        "departure": {
+          "time": "1672876140"
+        },
+        "stopId": "G30S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E1",
+          "actualTrack": "E1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672876200"
+        },
+        "departure": {
+          "time": "1672876200"
+        },
+        "stopId": "G31S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E1",
+          "actualTrack": "E1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672876290"
+        },
+        "departure": {
+          "time": "1672876290"
+        },
+        "stopId": "G32S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E1",
+          "actualTrack": "E1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672876380"
+        },
+        "departure": {
+          "time": "1672876380"
+        },
+        "stopId": "G33S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E1",
+          "actualTrack": "E1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672876440"
+        },
+        "departure": {
+          "time": "1672876440"
+        },
+        "stopId": "G34S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E1",
+          "actualTrack": "E1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672876530"
+        },
+        "departure": {
+          "time": "1672876530"
+        },
+        "stopId": "G35S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E1",
+          "actualTrack": "E1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672876620"
+        },
+        "departure": {
+          "time": "1672876620"
+        },
+        "stopId": "G36S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E1",
+          "actualTrack": "E1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672876710"
+        },
+        "departure": {
+          "time": "1672876710"
+        },
+        "stopId": "A42S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E1",
+          "actualTrack": "E1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672876800"
+        },
+        "departure": {
+          "time": "1672876800"
+        },
+        "stopId": "F20S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "B1",
+          "actualTrack": "B1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672876890"
+        },
+        "departure": {
+          "time": "1672876890"
+        },
+        "stopId": "F21S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "B1",
+          "actualTrack": "B1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672877010"
+        },
+        "departure": {
+          "time": "1672877010"
+        },
+        "stopId": "F22S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "B1",
+          "actualTrack": "B1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672877130"
+        },
+        "departure": {
+          "time": "1672877130"
+        },
+        "stopId": "F23S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "B1",
+          "actualTrack": "B1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672877220"
+        },
+        "departure": {
+          "time": "1672877220"
+        },
+        "stopId": "F24S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "B1",
+          "actualTrack": "B1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672877310"
+        },
+        "departure": {
+          "time": "1672877310"
+        },
+        "stopId": "F25S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "B1",
+          "actualTrack": "B1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672877460"
+        },
+        "departure": {
+          "time": "1672877460"
+        },
+        "stopId": "F26S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "B1",
+          "actualTrack": "B1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672877550"
+        },
+        "departure": {
+          "time": "1672877550"
+        },
+        "stopId": "F27S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "B1",
+          "actualTrack": "B1"
+        }
+      }]
+    }
+  }, {
+    "id": "000040G",
+    "vehicle": {
+      "trip": {
+        "tripId": "111950_G..S",
+        "startTime": "18:39:30",
+        "startDate": "20230104",
+        "routeId": "G",
+        "nyctTripDescriptor": {
+          "trainId": "1G 1839+ CRS/CHU",
+          "direction": "SOUTH"
+        }
+      },
+      "timestamp": "1672875570",
+      "stopId": "G22S"
+    }
+  }, {
+    "id": "000041G",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "112600_G..N",
+        "startTime": "18:46:00",
+        "startDate": "20230104",
+        "routeId": "G",
+        "nyctTripDescriptor": {
+          "trainId": "1G 1846 CHU/CRS"
+        }
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "time": "1672875960"
+        },
+        "departure": {
+          "time": "1672875960"
+        },
+        "stopId": "F27N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "B2",
+          "actualTrack": "B2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672876080"
+        },
+        "departure": {
+          "time": "1672876080"
+        },
+        "stopId": "F26N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "B2",
+          "actualTrack": "B2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672876230"
+        },
+        "departure": {
+          "time": "1672876230"
+        },
+        "stopId": "F25N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "B2",
+          "actualTrack": "B2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672876350"
+        },
+        "departure": {
+          "time": "1672876350"
+        },
+        "stopId": "F24N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "B2",
+          "actualTrack": "B2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672876470"
+        },
+        "departure": {
+          "time": "1672876470"
+        },
+        "stopId": "F23N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "B2",
+          "actualTrack": "B2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672876560"
+        },
+        "departure": {
+          "time": "1672876560"
+        },
+        "stopId": "F22N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "B2",
+          "actualTrack": "B2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672876680"
+        },
+        "departure": {
+          "time": "1672876680"
+        },
+        "stopId": "F21N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "B2",
+          "actualTrack": "B2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672876770"
+        },
+        "departure": {
+          "time": "1672876770"
+        },
+        "stopId": "F20N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "B2",
+          "actualTrack": "B2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672876860"
+        },
+        "departure": {
+          "time": "1672876860"
+        },
+        "stopId": "A42N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672876980"
+        },
+        "departure": {
+          "time": "1672876980"
+        },
+        "stopId": "G36N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672877070"
+        },
+        "departure": {
+          "time": "1672877070"
+        },
+        "stopId": "G35N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672877160"
+        },
+        "departure": {
+          "time": "1672877160"
+        },
+        "stopId": "G34N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672877220"
+        },
+        "departure": {
+          "time": "1672877220"
+        },
+        "stopId": "G33N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672877310"
+        },
+        "departure": {
+          "time": "1672877310"
+        },
+        "stopId": "G32N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672877400"
+        },
+        "departure": {
+          "time": "1672877400"
+        },
+        "stopId": "G31N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672877490"
+        },
+        "departure": {
+          "time": "1672877490"
+        },
+        "stopId": "G30N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672877550"
+        },
+        "departure": {
+          "time": "1672877550"
+        },
+        "stopId": "G29N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672877730"
+        },
+        "departure": {
+          "time": "1672877730"
+        },
+        "stopId": "G28N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672877820"
+        },
+        "departure": {
+          "time": "1672877820"
+        },
+        "stopId": "G26N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672877970"
+        },
+        "departure": {
+          "time": "1672877970"
+        },
+        "stopId": "G24N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672878030"
+        },
+        "departure": {
+          "time": "1672878030"
+        },
+        "stopId": "G22N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "D2",
+          "actualTrack": "D2"
+        }
+      }]
+    }
+  }, {
+    "id": "000042G",
+    "vehicle": {
+      "trip": {
+        "tripId": "112600_G..N",
+        "startTime": "18:46:00",
+        "startDate": "20230104",
+        "routeId": "G",
+        "nyctTripDescriptor": {
+          "trainId": "1G 1846 CHU/CRS"
+        }
+      },
+      "timestamp": "1672875960",
+      "stopId": "F27N"
+    }
+  }, {
+    "id": "000043G",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "112750_G..S",
+        "startTime": "18:47:30",
+        "startDate": "20230104",
+        "routeId": "G",
+        "nyctTripDescriptor": {
+          "trainId": "1G 1847+ CRS/CHU",
+          "direction": "SOUTH"
+        }
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "time": "1672876050"
+        },
+        "departure": {
+          "time": "1672876050"
+        },
+        "stopId": "G22S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "D1",
+          "actualTrack": "D1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672876110"
+        },
+        "departure": {
+          "time": "1672876110"
+        },
+        "stopId": "G24S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E1",
+          "actualTrack": "E1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672876260"
+        },
+        "departure": {
+          "time": "1672876260"
+        },
+        "stopId": "G26S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E1",
+          "actualTrack": "E1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672876350"
+        },
+        "departure": {
+          "time": "1672876350"
+        },
+        "stopId": "G28S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E1",
+          "actualTrack": "E1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672876530"
+        },
+        "departure": {
+          "time": "1672876530"
+        },
+        "stopId": "G29S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E1",
+          "actualTrack": "E1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672876620"
+        },
+        "departure": {
+          "time": "1672876620"
+        },
+        "stopId": "G30S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E1",
+          "actualTrack": "E1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672876680"
+        },
+        "departure": {
+          "time": "1672876680"
+        },
+        "stopId": "G31S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E1",
+          "actualTrack": "E1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672876770"
+        },
+        "departure": {
+          "time": "1672876770"
+        },
+        "stopId": "G32S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E1",
+          "actualTrack": "E1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672876860"
+        },
+        "departure": {
+          "time": "1672876860"
+        },
+        "stopId": "G33S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E1",
+          "actualTrack": "E1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672876920"
+        },
+        "departure": {
+          "time": "1672876920"
+        },
+        "stopId": "G34S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E1",
+          "actualTrack": "E1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672877010"
+        },
+        "departure": {
+          "time": "1672877010"
+        },
+        "stopId": "G35S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E1",
+          "actualTrack": "E1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672877100"
+        },
+        "departure": {
+          "time": "1672877100"
+        },
+        "stopId": "G36S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E1",
+          "actualTrack": "E1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672877190"
+        },
+        "departure": {
+          "time": "1672877190"
+        },
+        "stopId": "A42S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E1",
+          "actualTrack": "E1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672877280"
+        },
+        "departure": {
+          "time": "1672877280"
+        },
+        "stopId": "F20S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "B1",
+          "actualTrack": "B1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672877370"
+        },
+        "departure": {
+          "time": "1672877370"
+        },
+        "stopId": "F21S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "B1",
+          "actualTrack": "B1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672877490"
+        },
+        "departure": {
+          "time": "1672877490"
+        },
+        "stopId": "F22S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "B1",
+          "actualTrack": "B1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672877610"
+        },
+        "departure": {
+          "time": "1672877610"
+        },
+        "stopId": "F23S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "B1",
+          "actualTrack": "B1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672877700"
+        },
+        "departure": {
+          "time": "1672877700"
+        },
+        "stopId": "F24S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "B1",
+          "actualTrack": "B1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672877790"
+        },
+        "departure": {
+          "time": "1672877790"
+        },
+        "stopId": "F25S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "B1",
+          "actualTrack": "B1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672877940"
+        },
+        "departure": {
+          "time": "1672877940"
+        },
+        "stopId": "F26S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "B1",
+          "actualTrack": "B1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672878030"
+        },
+        "departure": {
+          "time": "1672878030"
+        },
+        "stopId": "F27S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "B1",
+          "actualTrack": "B1"
+        }
+      }]
+    }
+  }, {
+    "id": "000044G",
+    "vehicle": {
+      "trip": {
+        "tripId": "112750_G..S",
+        "startTime": "18:47:30",
+        "startDate": "20230104",
+        "routeId": "G",
+        "nyctTripDescriptor": {
+          "trainId": "1G 1847+ CRS/CHU",
+          "direction": "SOUTH"
+        }
+      },
+      "timestamp": "1672876050",
+      "stopId": "G22S"
+    }
+  }, {
+    "id": "000045G",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "113550_G..S",
+        "startTime": "18:55:30",
+        "startDate": "20230104",
+        "routeId": "G",
+        "nyctTripDescriptor": {
+          "trainId": "1G 1855+ CRS/CHU",
+          "direction": "SOUTH"
+        }
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "time": "1672876530"
+        },
+        "departure": {
+          "time": "1672876530"
+        },
+        "stopId": "G22S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "D1",
+          "actualTrack": "D1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672876590"
+        },
+        "departure": {
+          "time": "1672876590"
+        },
+        "stopId": "G24S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E1",
+          "actualTrack": "E1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672876740"
+        },
+        "departure": {
+          "time": "1672876740"
+        },
+        "stopId": "G26S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E1",
+          "actualTrack": "E1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672876830"
+        },
+        "departure": {
+          "time": "1672876830"
+        },
+        "stopId": "G28S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E1",
+          "actualTrack": "E1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672877010"
+        },
+        "departure": {
+          "time": "1672877010"
+        },
+        "stopId": "G29S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E1",
+          "actualTrack": "E1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672877100"
+        },
+        "departure": {
+          "time": "1672877100"
+        },
+        "stopId": "G30S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E1",
+          "actualTrack": "E1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672877160"
+        },
+        "departure": {
+          "time": "1672877160"
+        },
+        "stopId": "G31S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E1",
+          "actualTrack": "E1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672877250"
+        },
+        "departure": {
+          "time": "1672877250"
+        },
+        "stopId": "G32S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E1",
+          "actualTrack": "E1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672877340"
+        },
+        "departure": {
+          "time": "1672877340"
+        },
+        "stopId": "G33S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E1",
+          "actualTrack": "E1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672877400"
+        },
+        "departure": {
+          "time": "1672877400"
+        },
+        "stopId": "G34S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E1",
+          "actualTrack": "E1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672877490"
+        },
+        "departure": {
+          "time": "1672877490"
+        },
+        "stopId": "G35S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E1",
+          "actualTrack": "E1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672877580"
+        },
+        "departure": {
+          "time": "1672877580"
+        },
+        "stopId": "G36S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E1",
+          "actualTrack": "E1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672877700"
+        },
+        "departure": {
+          "time": "1672877700"
+        },
+        "stopId": "A42S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E1",
+          "actualTrack": "E1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672877820"
+        },
+        "departure": {
+          "time": "1672877820"
+        },
+        "stopId": "F20S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "B1",
+          "actualTrack": "B1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672877910"
+        },
+        "departure": {
+          "time": "1672877910"
+        },
+        "stopId": "F21S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "B1",
+          "actualTrack": "B1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672878030"
+        },
+        "departure": {
+          "time": "1672878030"
+        },
+        "stopId": "F22S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "B1",
+          "actualTrack": "B1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672878150"
+        },
+        "departure": {
+          "time": "1672878150"
+        },
+        "stopId": "F23S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "B1",
+          "actualTrack": "B1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672878240"
+        },
+        "departure": {
+          "time": "1672878240"
+        },
+        "stopId": "F24S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "B1",
+          "actualTrack": "B1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672878330"
+        },
+        "departure": {
+          "time": "1672878330"
+        },
+        "stopId": "F25S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "B1",
+          "actualTrack": "B1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672878480"
+        },
+        "departure": {
+          "time": "1672878480"
+        },
+        "stopId": "F26S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "B1",
+          "actualTrack": "B1"
+        }
+      }, {
+        "arrival": {
+          "time": "1672878570"
+        },
+        "departure": {
+          "time": "1672878570"
+        },
+        "stopId": "F27S",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "B1",
+          "actualTrack": "B1"
+        }
+      }]
+    }
+  }, {
+    "id": "000046G",
+    "vehicle": {
+      "trip": {
+        "tripId": "113550_G..S",
+        "startTime": "18:55:30",
+        "startDate": "20230104",
+        "routeId": "G",
+        "nyctTripDescriptor": {
+          "trainId": "1G 1855+ CRS/CHU",
+          "direction": "SOUTH"
+        }
+      },
+      "timestamp": "1672876530",
+      "stopId": "G22S"
+    }
+  }, {
+    "id": "000047G",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "113250_G..N",
+        "startTime": "18:52:30",
+        "startDate": "20230104",
+        "routeId": "G",
+        "nyctTripDescriptor": {
+          "trainId": "1G 1852+ CHU/CRS"
+        }
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "time": "1672876350"
+        },
+        "departure": {
+          "time": "1672876350"
+        },
+        "stopId": "F27N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "B2",
+          "actualTrack": "B2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672876470"
+        },
+        "departure": {
+          "time": "1672876470"
+        },
+        "stopId": "F26N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "B2",
+          "actualTrack": "B2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672876620"
+        },
+        "departure": {
+          "time": "1672876620"
+        },
+        "stopId": "F25N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "B2",
+          "actualTrack": "B2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672876740"
+        },
+        "departure": {
+          "time": "1672876740"
+        },
+        "stopId": "F24N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "B2",
+          "actualTrack": "B2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672876860"
+        },
+        "departure": {
+          "time": "1672876860"
+        },
+        "stopId": "F23N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "B2",
+          "actualTrack": "B2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672876950"
+        },
+        "departure": {
+          "time": "1672876950"
+        },
+        "stopId": "F22N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "B2",
+          "actualTrack": "B2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672877070"
+        },
+        "departure": {
+          "time": "1672877070"
+        },
+        "stopId": "F21N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "B2",
+          "actualTrack": "B2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672877160"
+        },
+        "departure": {
+          "time": "1672877160"
+        },
+        "stopId": "F20N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "B2",
+          "actualTrack": "B2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672877250"
+        },
+        "departure": {
+          "time": "1672877250"
+        },
+        "stopId": "A42N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672877340"
+        },
+        "departure": {
+          "time": "1672877340"
+        },
+        "stopId": "G36N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672877430"
+        },
+        "departure": {
+          "time": "1672877430"
+        },
+        "stopId": "G35N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672877520"
+        },
+        "departure": {
+          "time": "1672877520"
+        },
+        "stopId": "G34N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672877580"
+        },
+        "departure": {
+          "time": "1672877580"
+        },
+        "stopId": "G33N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672877670"
+        },
+        "departure": {
+          "time": "1672877670"
+        },
+        "stopId": "G32N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672877760"
+        },
+        "departure": {
+          "time": "1672877760"
+        },
+        "stopId": "G31N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672877850"
+        },
+        "departure": {
+          "time": "1672877850"
+        },
+        "stopId": "G30N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672877910"
+        },
+        "departure": {
+          "time": "1672877910"
+        },
+        "stopId": "G29N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672878090"
+        },
+        "departure": {
+          "time": "1672878090"
+        },
+        "stopId": "G28N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672878180"
+        },
+        "departure": {
+          "time": "1672878180"
+        },
+        "stopId": "G26N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672878330"
+        },
+        "departure": {
+          "time": "1672878330"
+        },
+        "stopId": "G24N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "E2",
+          "actualTrack": "E2"
+        }
+      }, {
+        "arrival": {
+          "time": "1672878390"
+        },
+        "departure": {
+          "time": "1672878390"
+        },
+        "stopId": "G22N",
+        "nyctStopTimeUpdate": {
+          "scheduledTrack": "D2",
+          "actualTrack": "D2"
+        }
+      }]
+    }
+  }, {
+    "id": "000048G",
+    "vehicle": {
+      "trip": {
+        "tripId": "113250_G..N",
+        "startTime": "18:52:30",
+        "startDate": "20230104",
+        "routeId": "G",
+        "nyctTripDescriptor": {
+          "trainId": "1G 1852+ CHU/CRS"
+        }
+      },
+      "timestamp": "1672876350",
+      "stopId": "F27N"
     }
   }]
 }

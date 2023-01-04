@@ -1,0 +1,4410 @@
+{
+  "header": {
+    "gtfsRealtimeVersion": "1.0",
+    "incrementality": "FULL_DATASET",
+    "timestamp": "1672873100"
+  },
+  "entity": [{
+    "id": "MTA NYCT_lmm:alert:200650",
+    "alert": {
+      "activePeriod": [{
+        "start": "1672866496"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "routeId": "M9"
+      }, {
+        "agencyId": "MTA NYCT",
+        "routeId": "M55"
+      }, {
+        "agencyId": "MTA NYCT",
+        "routeId": "M22"
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Southbound M9, M55 and eastbound M22 buses are detoured because of utility work on Barclay St between Church St and Broadway.",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Southbound M9, M55 and eastbound M22 buses are detoured because of utility work on Barclay St between Church St and Broadway.\nNo stops will be missed, but you may experience extra turns.",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_CA_D2-Weekday-SDon-104000_MISC_328",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "S76",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "S76",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 5:20pm S76 to ST GEORGE FERRY / RAMP B is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:4471",
+    "alert": {
+      "activePeriod": [{
+        "start": "1653019200",
+        "end": "1688342400"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "S59",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "S59",
+          "directionId": 1
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "S59 is detoured in both directions from Forest Hill Rd between Richmond Av and Independence Av, you will experience a few extra turns, but no stops are missed",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "S59 is detoured in both directions from Forest Hill Rd between Richmond Av and Independence Av, you will experience a few extra turns, but no stops are missed\nWhat\u0027s happening?\nCostco entrance traffic blockage",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_QV_D2-Weekday-SDon-105500_MISC_227",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "Q1",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "Q1",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 5:35pm Q1 to AMBOY LA/SPRINGFIELD BL is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:5281",
+    "alert": {
+      "activePeriod": [{
+        "start": "1657080000",
+        "end": "1688342400"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "M96",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "M96",
+          "directionId": 1
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "M96 stops on E 97th St at 1st Ave and 2nd Ave are closed",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "M96 stops on E 97th St at 1st Ave and 2nd Ave are closed\nBuses will start and end their trips on 1st Ave at E 97th St.\n\nUse nearby stops on 96th St at 2nd Ave.\n\nWhat\u0027s happening?\nConstruction",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_QV_D2-Weekday-SDon-106000_MISC_261",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "Q46",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "Q46",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 5:40pm Q46 to UNION TPK/SPRINGFIELD BL is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_CA_D2-Weekday-SDon-106500_S4252_33",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "S52",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "S52",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 5:45pm S52 to UNIVERSITY DR/MEDICAL ARTS PAVILION E is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_UP_D2-Weekday-SDon-104700_B6_251",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B3",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B3",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 5:27pm B3 to AV U/E 71 ST is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_QV_D2-Weekday-SDon-104400_Q2_52",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "Q2",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "Q2",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 5:24pm Q2 to BELMONT PARK RACETRACK/UBS ARENA is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_QV_D2-Weekday-SDon-103700_MISC_271",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "Q46",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "Q46",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 5:17pm Q46 to 260 ST/LITTLE NECK PKY is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_CA_D2-Weekday-SDon-105500_MISC_382",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "S51",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "S51",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 5:35pm S51 to FR CAPODANNO BL/SAND LA is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:135",
+    "alert": {
+      "activePeriod": [{
+        "start": "1621828800",
+        "end": "1688342400"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "BX10",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "BX10",
+          "directionId": 1
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Northbound Bx10 stop on East Gun Hill Rd at Bainbridge Ave is closed",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Northbound Bx10 stop on East Gun Hill Rd at Bainbridge Ave is closed\nPlease use stops on Bainbridge Ave at East 210th St or on East Gun Hill Rd at Dekalb Ave.\n\nWhat\u0027s happening?\nConstruction",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:3019",
+    "alert": {
+      "activePeriod": [{
+        "start": "1643778000",
+        "end": "1706936340"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B60",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B60",
+          "directionId": 1
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Northbound B60 stop on Rockway Ave at Newport St is closed",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Northbound B60 stop on Rockway Ave at Newport St is closed\nPlease use the stop on Rockaway Ave at Riverdale Ave.\n\nWhat\u0027s happening?\nConstruction",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:895",
+    "alert": {
+      "activePeriod": [{
+        "start": "1631505600",
+        "end": "1688342400"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B65",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B65",
+          "directionId": 1
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Eastbound B65 stop on Dean St at 3rd Ave is closed",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Eastbound B65 stop on Dean St at 3rd Ave is closed\nPlease use the stop on Dean St between 4th Ave and 5th Ave.\n\nWhat\u0027s happening?\nConstruction",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_CA_D2-Weekday-SDon-107000_MISC_320",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "S46",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "S46",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 5:50pm S46 to TELEPORT DR/CORP COMMONS BLDG is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:7854",
+    "alert": {
+      "activePeriod": [{
+        "start": "1670562000",
+        "end": "1673240400"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "routeId": "M101"
+      }, {
+        "agencyId": "MTA NYCT",
+        "routeId": "M125"
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Westbound M101 and M125 stop on E 125th St at 3rd Ave is closed",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Westbound M101 and M125 stop on E 125th St at 3rd Ave is closed\nPlease use the stop on E 125th St at Lexington Ave.\n\nWhat\u0027s happening?\nConstruction",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_QV_D2-Weekday-SDon-109100_Q46_620",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "Q46",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "Q46",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 6:11pm Q46 to LIJ MEDICAL CTR/271 ST is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:6760",
+    "alert": {
+      "activePeriod": [{
+        "start": "1664769600",
+        "end": "1688342400"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "M11",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "M11",
+          "directionId": 1
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Northbound M11 stop on 10th Ave at W 40th St has been relocated to the corner before the intersection",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Northbound M11 stop on 10th Ave at W 40th St has been relocated to the corner before the intersection\nWhat\u0027s happening?\nNew building construction (expected completion 2025)",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_MQ_D2-Weekday-SDon-108000_M9_65",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "M9",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "M9",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 6:00pm M9 to 1 AV/E 26 ST is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_WF_D2-Weekday-SDon-104000_BX35_884",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "BX35",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "BX35",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 5:20pm BX35 to W 179 ST/BROADWAY is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_JA_D2-Weekday-SDon-107600_Q77_502",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "Q77",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "Q77",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 5:56pm Q77 to S CONDUIT AV/221 ST is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_CA_D2-Weekday-SDon-107200_MISC_386",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "S53",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "S53",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 5:52pm S53 to 4 AV/86 ST is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_UP_D2-Weekday-SDon-105100_B6_278",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B6",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B6",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 5:31pm B6 to LIVONIA AV/ASHFORD ST is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:alert:200647",
+    "alert": {
+      "activePeriod": [{
+        "start": "1672865946"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "routeId": "S66"
+      }, {
+        "agencyId": "MTA NYCT",
+        "routeId": "S78"
+      }, {
+        "agencyId": "MTA NYCT",
+        "routeId": "S79+"
+      }, {
+        "agencyId": "MTA NYCT",
+        "routeId": "S93"
+      }, {
+        "agencyId": "MTA NYCT",
+        "routeId": "SIM1"
+      }, {
+        "agencyId": "MTA NYCT",
+        "routeId": "SIM10"
+      }, {
+        "agencyId": "MTA NYCT",
+        "routeId": "SIM1C"
+      }, {
+        "agencyId": "MTA NYCT",
+        "routeId": "SIM22"
+      }, {
+        "agencyId": "MTA NYCT",
+        "routeId": "SIM31"
+      }, {
+        "agencyId": "MTA NYCT",
+        "routeId": "SIM4"
+      }, {
+        "agencyId": "MTA NYCT",
+        "routeId": "SIM6"
+      }, {
+        "agencyId": "MTA NYCT",
+        "routeId": "SIM8"
+      }, {
+        "agencyId": "MTA NYCT",
+        "routeId": "SIM33"
+      }, {
+        "agencyId": "MTA NYCT",
+        "routeId": "S74"
+      }, {
+        "agencyId": "MTA NYCT",
+        "routeId": "S40"
+      }, {
+        "agencyId": "MTA NYCT",
+        "routeId": "S46"
+      }, {
+        "agencyId": "MTA NYCT",
+        "routeId": "S48"
+      }, {
+        "agencyId": "MTA NYCT",
+        "routeId": "S51"
+      }, {
+        "agencyId": "MTA NYCT",
+        "routeId": "S52"
+      }, {
+        "agencyId": "MTA NYCT",
+        "routeId": "S53"
+      }, {
+        "agencyId": "MTA NYCT",
+        "routeId": "S54"
+      }, {
+        "agencyId": "MTA NYCT",
+        "routeId": "S55"
+      }, {
+        "agencyId": "MTA NYCT",
+        "routeId": "S56"
+      }, {
+        "agencyId": "MTA NYCT",
+        "routeId": "S57"
+      }, {
+        "agencyId": "MTA NYCT",
+        "routeId": "S59"
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "You may wait longer for this bus.",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "You may wait longer for this bus.\nWe\u0027re running as much service as we can with the bus operators we have available.\n\nSee the next bus arrival time at bt.mta.info",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:alert:200648",
+    "alert": {
+      "activePeriod": [{
+        "start": "1672865953",
+        "end": "1672885819"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "routeId": "B17"
+      }, {
+        "agencyId": "MTA NYCT",
+        "routeId": "B38"
+      }, {
+        "agencyId": "MTA NYCT",
+        "routeId": "B26"
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "You may wait longer for this bus. We\u0027re running as much service as we can with the bus operators we have available. Check bt.mta.info before you travel.",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "You may wait longer for this bus. We\u0027re running as much service as we can with the bus operators we have available. Check bt.mta.info before you travel.",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_UP_D2-Weekday-SDon-105700_B6_318",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B6",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B6",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 5:37pm B6 to LIVONIA AV/ASHFORD ST is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:7607",
+    "alert": {
+      "activePeriod": [{
+        "start": "1669006800",
+        "end": "1712462400"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B12",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B12",
+          "directionId": 1
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "B12 buses are detoured between Pacific St at Eastern Pkwy and Pitkin Ave at Howard Ave",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "B12 buses are detoured between Pacific St at Eastern Pkwy and Pitkin Ave at Howard Ave\nB12 buses make the following existing B14 and B60 stops on Rockaway Ave and Pitkin Ave.\n\nWestbound stops:\nB60 Rockaway Ave at Prospect Pl\nB14 along Pitkin Ave from Rockaway Ave to Legion St\n\nEastbound stops:\nB60 on Rockaway Ave at Pitkin Ave and East New York Ave\nB14 on Pitkin Ave at Saratoga Ave, Herzl St, and Thomas S Boyland Ave\n\nClosed eastbound B12 stops:\nPitkin Ave at Howard Ave\nSaratoga Ave at Pitkin Ave\nAlong East New York Ave from Strauss St to Mother Gaston Blvd\n\nClosed westbound B12 stops:\nSackman St at Dean St\nAlong East New York Ave from Mother Gaston Blvd to Lincoln Pl\n\nWhat\u0027s happening?\nInfrastructure upgrades along East New York Ave",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:1866",
+    "alert": {
+      "activePeriod": [{
+        "start": "1635825600",
+        "end": "1688342400"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "routeId": "M5"
+      }, {
+        "agencyId": "MTA NYCT",
+        "routeId": "M7"
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Northbound M5 and M7 stop on 6th Ave at W 54th St is closed",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Northbound M5 and M7 stop on 6th Ave at W 54th St is closed\nPlease use stops on 6th Ave at W 51st St or W 57th St.\n\nWhat\u0027s happening?\nConstruction",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:7606",
+    "alert": {
+      "activePeriod": [{
+        "start": "1669006800",
+        "end": "1712462400"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B7",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B7",
+          "directionId": 1
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "B7 buses will be detoured from Saratoga Ave between Eastern Parkway and Pitkin Ave",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "B7 buses will be detoured from Saratoga Ave between Eastern Parkway and Pitkin Ave\nFor northbound service, buses will make the B14 stops on Pitkin Ave at Saratoga Ave and Herzl St.\n\nFor southbound service, use the nearby B7 stops on Saratoga Ave at Park Pl or Sutter Ave.\n\nClosed northbound B7 stops:\nSaratoga Ave at Pitkin Ave\nEast New York Ave at Strauss St and Amboy St\n\nClosed southbound B7 stops:\nSaratoga Ave at St. Johns Pl and Pitkin Ave\n\nWhat\u0027s happening?\nInfrastructure upgrades along East New York Ave",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:2158",
+    "alert": {
+      "activePeriod": [{
+        "start": "1638352800",
+        "end": "1688342400"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B9",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B9",
+          "directionId": 1
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Westbound B9 stop on 60th St at Bay Pkwy has been relocated",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Westbound B9 stop on 60th St at Bay Pkwy has been relocated\nBuses stop across the street on 60th St between Bay Pkwy and 23rd Ave.\n\nWhat\u0027s happening?\nConstruction",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:7329",
+    "alert": {
+      "activePeriod": [{
+        "start": "1667379600",
+        "end": "1688342400"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B70",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B70",
+          "directionId": 1
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "B70 buses are detoured in both directions from 39th St between 1st Ave and 3rd Ave",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "B70 buses are detoured in both directions from 39th St between 1st Ave and 3rd Ave\nBuses start and end their trips at a temporary location on 2nd Ave at 37th St.\n\nNorthbound missed stops:\n3rd Ave at 39th St\n39th St at 2nd Ave and 1st Ave\n\nSouthbound missed stops:\n39th St from 1st Ave to 3rd Ave\n\nWhat\u0027s happening?\nNYC DEP Sewer Replacement",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_CS_D2-Weekday-SDon-107800_MISC_493",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "Q32",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "Q32",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 5:58pm Q32 to W 32 ST/7 AV is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:3125",
+    "alert": {
+      "activePeriod": [{
+        "start": "1672864200",
+        "end": "1672891200"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "S90",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "S90",
+          "directionId": 1
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "S90 LTD buses are detoured in both directions because of flooding on Bloomfield Ave between Chelsea Ave and Gulf Ave",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "S90 LTD buses are detoured in both directions because of flooding on Bloomfield Ave between Chelsea Ave and Gulf Ave\nYou\u0027ll experience a few turns, but no stops will be missed.",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:7845",
+    "alert": {
+      "activePeriod": [{
+        "start": "1672830000",
+        "end": "1672873200"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "Q20A",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "Q20A",
+          "directionId": 1
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Q20A stops on 20th Ave between 131st St and College Point Blvd, and all stops along College Point Blvd will be closed",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Q20A stops on 20th Ave between 131st St and College Point Blvd, and all stops along College Point Blvd will be closed\nBuses will start and end their trips on 15th Ave at College Point Blvd.\n\nNorthbound buses make requested stops along 14th Ave and 15th Ave.\n\nSouthbound buses make requested stops along 15th Ave.\n\nUse this map to view how buses will be detoured.\n\nWhat\u0027s happening?\nRoad work",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:129",
+    "alert": {
+      "activePeriod": [{
+        "start": "1672862400",
+        "end": "1672876800"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "routeId": "SIM15"
+      }, {
+        "agencyId": "MTA NYCT",
+        "routeId": "SIM35"
+      }, {
+        "agencyId": "MTA NYCT",
+        "routeId": "SIM5"
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Southbound SIM5, SIM15 and SIM35 stop on Water St at Hanover Sq will be closed because of construction",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Southbound SIM5, SIM15 and SIM35 stop on Water St at Hanover Sq will be closed because of construction\nPlease use a nearby temporary stop on Water St at Broad St.",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:2159",
+    "alert": {
+      "activePeriod": [{
+        "start": "1638352800",
+        "end": "1688342400"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B6",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B6",
+          "directionId": 1
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Westbound B6/B6 LTD stop on Bay Pkwy at 60th St has been relocated because of construction",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Westbound B6/B6 LTD stop on Bay Pkwy at 60th St has been relocated because of construction\nBuses are stopping across the street on Bay Pkwy between 60th St and 61st St.\n\nReminder: B6 LTD buses do not operate Sundays or overnight.",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:7327",
+    "alert": {
+      "activePeriod": [{
+        "start": "1667379658",
+        "end": "1688342400"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B35",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B35",
+          "directionId": 1
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "B35 stops on 39th St at 1st Ave in both directions and eastbound stops on 39th St at 2nd Ave and 3rd Ave are closed",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "B35 stops on 39th St at 1st Ave in both directions and eastbound stops on 39th St at 2nd Ave and 3rd Ave are closed\nBuses start and end their trips at a temporary location on 2nd Ave at 37th St and make an eastbound stop on 37th St and 4th Ave at the existing B70 bus stop.\n\nWhat\u0027s happening?\nNYC DEP Sewer Replacement",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_GA_D2-Weekday-SDon-105900_B47_449",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B62",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B62",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 5:39pm B62 to BOERUM PL/SCHERMERHORN ST is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_QV_D2-Weekday-SDon-106100_MISC_268",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "Q83",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "Q83",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 5:41pm Q83 to 153 ST/HILLSIDE AV is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_UP_D2-Weekday-SDon-103600_B6_297",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B6",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B6",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 5:16pm B6 to LIVONIA AV/ASHFORD ST is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:7484",
+    "alert": {
+      "activePeriod": [{
+        "start": "1668920400",
+        "end": "1673154000"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "routeId": "M1"
+      }, {
+        "agencyId": "MTA NYCT",
+        "routeId": "M4"
+      }, {
+        "agencyId": "MTA NYCT",
+        "routeId": "Q32"
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Southbound M1 and M1 LTD, M4 and M4 LTD and Westbound Q32 buses will not stop on 5th Ave at 49th St during the holiday season",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Southbound M1 and M1 LTD, M4 and M4 LTD and Westbound Q32 buses will not stop on 5th Ave at 49th St during the holiday season\nUse the stop on 5th Ave at 52nd St.\n\nM1 and M4 local buses also stop on 5th Ave at 46 St.\n\nReminder: M1 LTD and M4 LTD buses do not run on weekends.",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_MA_D2-Weekday-SDon-101000_MISC_829",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "SIM15",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "SIM15",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 4:50pm SIM15 to ELTINGVILLE/TRANSIT CENTER is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_UP_D2-Weekday-SDon-104100_B6_277",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B6",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B6",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 5:21pm B6 to LIVONIA AV/ASHFORD ST is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_QV_D2-Weekday-SDon-105500_MISC_248",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "Q83",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "Q83",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 5:35pm Q83 to 227 ST/113 DR is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:2227",
+    "alert": {
+      "activePeriod": [{
+        "start": "1672862400",
+        "end": "1672876800"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "routeId": "SIM5"
+      }, {
+        "agencyId": "MTA NYCT",
+        "routeId": "SIM6"
+      }, {
+        "agencyId": "MTA NYCT",
+        "routeId": "SIM9"
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Southbound SIM5, SIM6 and SIM9 buses will be detoured onto the lower level of the Verrazzano-Narrows Bridge because of construction",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Southbound SIM5, SIM6 and SIM9 buses will be detoured onto the lower level of the Verrazzano-Narrows Bridge because of construction\nYou will experience a few extra turns, but no stops will be missed, buses will exit onto Lily Pond Ave.",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:7518",
+    "alert": {
+      "activePeriod": [{
+        "start": "1668920400",
+        "end": "1673154000"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "M50",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "M50",
+          "directionId": 1
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Westbound M50 stop on W 49th St at 5th Ave and the eastbound stop on W 50th St at 6 Ave will be closed during the holiday season",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Westbound M50 stop on W 49th St at 5th Ave and the eastbound stop on W 50th St at 6 Ave will be closed during the holiday season\nFor eastbound service, use the stop on W 50th St at 7th Ave.\n\nFor westbound service, use the stop on E 49 St at Madison Ave.",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:7517",
+    "alert": {
+      "activePeriod": [{
+        "start": "1668920400",
+        "end": "1673154000"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "routeId": "M5"
+      }, {
+        "agencyId": "MTA NYCT",
+        "routeId": "M7"
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Northbound M5/M5 LTD and M7 buses will not stop on 6th Ave at 49th St or 50th St during the holiday season",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Northbound M5/M5 LTD and M7 buses will not stop on 6th Ave at 49th St or 50th St during the holiday season\nUse the stop on 6th Ave at 51st St.\n\nLocal buses also stop on 6th Ave at 47th St.\n\nReminder: M5 LTD buses do not operate on weekends or overnight.",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:7516",
+    "alert": {
+      "activePeriod": [{
+        "start": "1668920400",
+        "end": "1673154000"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "routeId": "M2"
+      }, {
+        "agencyId": "MTA NYCT",
+        "routeId": "M3"
+      }, {
+        "agencyId": "MTA NYCT",
+        "routeId": "M5"
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Southbound M2/M2 LTD, M3 and M5/M5 LTD buses will not stop on 5th Ave at 50th St during the holiday season",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Southbound M2/M2 LTD, M3 and M5/M5 LTD buses will not stop on 5th Ave at 50th St during the holiday season\nUse the stop on 5th Ave at 53rd St.\n\nLocal buses also stop on 5th Ave at 47th St.\n\nReminder: M2 LTD, M3, and M5/M5 LTD buses do not run at all times.",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_CH_D2-Weekday-SDon-104000_MISC_176",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "S74",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "S74",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 5:20pm S74 to ST GEORGE FERRY/RAMP C is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:5577",
+    "alert": {
+      "activePeriod": [{
+        "start": "1659067200",
+        "end": "1688342400"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B43",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B43",
+          "directionId": 1
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Northbound B43 stops along Graham Ave from Broadway to Johnson Ave are closed",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Northbound B43 stops along Graham Ave from Broadway to Johnson Ave are closed\nBuses will make stops along Manhattan Ave from Broadway to Montrose Ave.\n\nWhat\u0027s happening?\nConstruction",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:6787",
+    "alert": {
+      "activePeriod": [{
+        "start": "1621915200",
+        "end": "1688342400"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "routeId": "BX34"
+      }, {
+        "agencyId": "MTABC",
+        "routeId": "BXM4"
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Northbound Bx34 and BxM4 stops on Bainbridge Ave at East 212th St and Jerome Ave are closed",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Northbound Bx34 and BxM4 stops on Bainbridge Ave at East 212th St and Jerome Ave are closed\nPlease use stops on Jerome Ave at East 212th St or Bainbridge Ave.\n\nWhat\u0027s happening?\nNorthbound bus stops remain closed until further notice because of ongoing road construction",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:5576",
+    "alert": {
+      "activePeriod": [{
+        "start": "1659067200",
+        "end": "1688342400"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "M20",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "M20",
+          "directionId": 1
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Northbound M20 stop on 8th Ave at W 40th St is closed",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Northbound M20 stop on 8th Ave at W 40th St is closed\nPlease use the stops on 8th Ave at W 37th St or W 43rd St.\n\nWhat\u0027s happening?\nSubway grating construction",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_CH_D2-Weekday-SDon-103300_MISC_163",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "S74",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "S74",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 5:13pm S74 to ELTINGVILLE/TRANSIT CENTER is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:5575",
+    "alert": {
+      "activePeriod": [{
+        "start": "1659067200",
+        "end": "1688342400"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "M34A+",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "M34A+",
+          "directionId": 1
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Westbound M34A-SBS stop on 8th Ave at W 34th St is closed",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Westbound M34A-SBS stop on 8th Ave at W 34th St is closed\nPlease use the stops on 8th Ave at W 37th St or W 43rd St at 8th Ave.\n\nWhat\u0027s happening?\nSubway grating construction",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:2184",
+    "alert": {
+      "activePeriod": [{
+        "start": "1638162000",
+        "end": "1688342400"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "routeId": "Q17"
+      }, {
+        "agencyId": "MTA NYCT",
+        "routeId": "Q27"
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Q17 and Q27 buses are detoured in both directions from Main St and 138th St between 37th Ave and 39th Ave",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Q17 and Q27 buses are detoured in both directions from Main St and 138th St between 37th Ave and 39th Ave\nThe first southbound stop is being made on Main St at Roosevelt Ave.\n\nThe last northbound stop is made on 39th Ave and Main St, at the Q19 stop.\n\nNorthbound missed stop:\n39th Ave at Main St\n\nSouthbound missed stops:\nMain St at 39th Ave Q27\n138th St at 37th Ave Q17\n\nWhat\u0027s happening?\nConstruction",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_CS_D2-Weekday-SDon-108500_MISC_494",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "Q31",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "Q31",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 6:05pm Q31 to ARCHER AV/SUTPHIN PL is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_MQ_D2-Weekday-SDon-104900_M20_165",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "M20",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "M20",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 5:29pm M20 to BROADWAY/W 64 ST is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_MA_D2-Weekday-SDon-103000_SIM15_852",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "SIM15",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "SIM15",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 5:10pm SIM15 to ELTINGVILLE/TRANSIT CENTER is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:7190",
+    "alert": {
+      "activePeriod": [{
+        "start": "1667797200",
+        "end": "1680408000"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "BX27",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "BX27",
+          "directionId": 1
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Bx27 first and last stops on West Farms Rd at Hoe Ave and Hoe Ave at Westchester Av have been relocated to the nearby Bx4A stops at Gladstone Square",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Bx27 first and last stops on West Farms Rd at Hoe Ave and Hoe Ave at Westchester Av have been relocated to the nearby Bx4A stops at Gladstone Square\nThe last northbound stop is at the Bx4A stop on West Farms Rd at Hoe Ave.\n\nThe first southbound stop is the Bx4A stop on West Farms Rd at Westchester Ave.\n\nWhy the change?\nEasier access to the Bx5, Bx19 and the Simpson St station",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:6418",
+    "alert": {
+      "activePeriod": [{
+        "start": "1663128000",
+        "end": "1688342400"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "routeId": "X28"
+      }, {
+        "agencyId": "MTA NYCT",
+        "routeId": "X38"
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Northbound X28 and X38 stops on Surf Ave at W 21st St and W 20th St at Mermaid Ave are closed",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Northbound X28 and X38 stops on Surf Ave at W 21st St and W 20th St at Mermaid Ave are closed\nBuses are making stops on Surf Ave between W 22nd St and W 21st St and on W 21st St at Mermaid Ave.\n\nWhat\u0027s happening?\nConstruction",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:7983",
+    "alert": {
+      "activePeriod": [{
+        "start": "1671598800",
+        "end": "1680408000"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B38",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B38",
+          "directionId": 1
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Eastbound B38 stop on Fulton St at Lafayette Ave is closed. Please use the stop on Fulton St at Ashland Pl",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Eastbound B38 stop on Fulton St at Lafayette Ave is closed. Please use the stop on Fulton St at Ashland Pl",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:4553",
+    "alert": {
+      "activePeriod": [{
+        "start": "1653645600",
+        "end": "1688342400"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "M4",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "M4",
+          "directionId": 1
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Southbound M4 stop on 5th Ave at W 38th is closed",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Southbound M4 stop on 5th Ave at W 38th is closed\nPlease use the stops on 5th Ave at W 41st St or W 36th St.\n\nWhat\u0027s happening?\nSidewalk construction",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:4551",
+    "alert": {
+      "activePeriod": [{
+        "start": "1653645600",
+        "end": "1688342400"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "Q32",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "Q32",
+          "directionId": 1
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Westbound Q32 stop on 5th Ave at W 38th St is closed",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Westbound Q32 stop on 5th Ave at W 38th St is closed\nPlease use stops on 5th Ave at W 41st St or on W 37th St at 5th Ave.\n\nWhat\u0027s happening?\nSidewalk construction",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:4276",
+    "alert": {
+      "activePeriod": [{
+        "start": "1653969600",
+        "end": "1688342400"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "BX39",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "BX39",
+          "directionId": 1
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Southbound Bx39 stops on White Plains Rd at Patterson Ave and O\u0027Brien Ave are closed",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Southbound Bx39 stops on White Plains Rd at Patterson Ave and O\u0027Brien Ave are closed\nBuses are stopping on Soundview Ave at O\u0027Brien Ave in the Bx27 stop.\n\nWhat\u0027s happening?\nNYC DDC Sewer Reconstruction Project expected to run through 2025",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:4552",
+    "alert": {
+      "activePeriod": [{
+        "start": "1653645600",
+        "end": "1688342400"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "routeId": "M1"
+      }, {
+        "agencyId": "MTA NYCT",
+        "routeId": "M2"
+      }, {
+        "agencyId": "MTA NYCT",
+        "routeId": "M3"
+      }, {
+        "agencyId": "MTA NYCT",
+        "routeId": "M55"
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Southbound M1, M2, M3, and M55 stop on 5th Ave at W 38th is closed",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Southbound M1, M2, M3, and M55 stop on 5th Ave at W 38th is closed\nPlease use the stops on 5th Ave at W 41st St or W 35th St.\n\nWhat\u0027s happening?\nSidewalk construction",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:4277",
+    "alert": {
+      "activePeriod": [{
+        "start": "1653969600",
+        "end": "1688342400"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "BX27",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "BX27",
+          "directionId": 1
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Northbound Bx27 stop on Soundview Ave at O\u0027Brien Ave is closed",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Northbound Bx27 stop on Soundview Ave at O\u0027Brien Ave is closed\nPlease use the stops on Soundview Ave at Gildersleeve Ave or Patterson Ave.\n\nWhat\u0027s happening?\nNYC DDC Sewer Reconstruction Project expected to run through 2025",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:5001",
+    "alert": {
+      "activePeriod": [{
+        "start": "1655265600",
+        "end": "1688342400"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "M14D+",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "M14D+",
+          "directionId": 1
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Westbound M14D-SBS stop on 11th Ave at W 15th St is closed",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Westbound M14D-SBS stop on 11th Ave at W 15th St is closed\nBuses are making a stop on 10th Ave at W 15th St.\n\nWhat\u0027s happening?\nConstruction",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_MQ_D2-Weekday-SDon-106000_M9_66",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "M8",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "M8",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 5:40pm M8 to AV D/LOOP is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:4152",
+    "alert": {
+      "activePeriod": [{
+        "start": "1651464000",
+        "end": "1688342400"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "routeId": "SIM11"
+      }, {
+        "agencyId": "MTA NYCT",
+        "routeId": "SIM6"
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Southbound SIM6 and SIM11 stop on Lexington Ave at 56th St has been temporarily relocated to Lexington Ave at 55th St.",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Southbound SIM6 and SIM11 stop on Lexington Ave at 56th St has been temporarily relocated to Lexington Ave at 55th St.\nWhat\u0027s happening?\nConstruction",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_UP_D2-Weekday-SDon-107500_B1_31",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B1",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B1",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 5:56pm B1 to ORIENTAL BL/MACKENZIE ST is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_UP_D2-Weekday-SDon-105600_B6_292",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B6",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B6",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 5:36pm B6 to ROCKAWAY PKWY/SUBWAY STATION is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_CA_D2-Weekday-SDon-108200_MISC_337",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "S40",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "S40",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 6:02pm S40 to SOUTH AV/ARLINGTON PL is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_CH_D2-Weekday-SDon-099500_S7484_223",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "S74",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "S74",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 4:35pm S74 to ST GEORGE FERRY/RAMP C is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:8089",
+    "alert": {
+      "activePeriod": [{
+        "start": "1672462800",
+        "end": "1673154047"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "S93",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "S93",
+          "directionId": 1
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Eastbound S93 LTD early morning stop change at the College of Staten Island",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Eastbound S93 LTD early morning stop change at the College of Staten Island\nFrom 5:45 AM to 7 AM:\nNo service on Loop Road, eastbound S93 LTD buses will begin their trips from the stop at the College of Staten Island entrance at Victory Blvd.\n\nAfter 7 AM:\nEastbound S93 LTD buses will begin their trips at the regular stop on Loop Road in front of the South Administration building.",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:alert:200618",
+    "alert": {
+      "activePeriod": [{
+        "start": "1672856176"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "Q55",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "Q55",
+          "directionId": 1
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Westbound Q55 buses are detoured while they share Myrtle Av with L train shuttle buses.",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Westbound Q55 buses are detoured while they share Myrtle Av with L train shuttle buses.\nWhile detoured, stops on Myrtle Ave between St Nicholas Ave and Palmetto St will not be made. \nStops will be made along Ridgewood Pl, as requested. \n\nUse this map to see the detour route.",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_JA_D2-Weekday-SDon-106800_MISC_843",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "Q5",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "Q5",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 5:51pm Q5 to MERRICK BL/233 ST is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:6325",
+    "alert": {
+      "activePeriod": [{
+        "start": "1662955201",
+        "end": "1688342400"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B25",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B25",
+          "directionId": 1
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Eastbound B25 stops on Water St at Main St and Old Fulton St at Elizabeth Pl are closed",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Eastbound B25 stops on Water St at Main St and Old Fulton St at Elizabeth Pl are closed\nBuses will stop on Front St at Main St or use the stop on Old Fulton St at Hicks St.\n\nUse this map to view how buses are detoured.\n\nWhat\u0027s happening?\nConstruction on Front St at York St",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:4268",
+    "alert": {
+      "activePeriod": [{
+        "start": "1652068800",
+        "end": "1688342400"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B63",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B63",
+          "directionId": 1
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Northbound B63 stop on 5th Ave at 36th St has been relocated",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Northbound B63 stop on 5th Ave at 36th St has been relocated\nBuses will stop across the street on 5th Ave at 36th St.\n\nWhat\u0027s happening?\nSchool construction",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_UP_D2-Weekday-SDon-106300_B36_426",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B36",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B36",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 5:43pm B36 to NOSTRAND AV/GRAVESEND NECK RD is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:2083",
+    "alert": {
+      "activePeriod": [{
+        "start": "1637038800",
+        "end": "1688342400"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "M20",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "M20",
+          "directionId": 1
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Northbound M20 stop on Hudson St at Spring St is closed",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Northbound M20 stop on Hudson St at Spring St is closed\nPlease use the stop on Hudson St at Charlton St.\n\nWhat\u0027s happening?\nConstruction",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_WF_D2-Weekday-SDon-107100_BX35_876",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "BX35",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "BX35",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 5:51pm BX35 to W 179 ST/BROADWAY is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:2361",
+    "alert": {
+      "activePeriod": [{
+        "start": "1639976400",
+        "end": "1688342400"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B24",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B24",
+          "directionId": 1
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Eastbound B24 stop on Metropolitan Ave at Lorimer St is closed",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Eastbound B24 stop on Metropolitan Ave at Lorimer St is closed\nPlease use the stop on Metropolitan Ave at Union Ave or Leonard St.\n\nWhat\u0027s happening?\nConstruction",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_CA_D2-Weekday-SDon-105700_MISC_319",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "S53",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "S53",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 5:37pm S53 to 4 AV/86 ST is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:7770",
+    "alert": {
+      "activePeriod": [{
+        "start": "1669784400",
+        "end": "1688342400"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B70",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B70",
+          "directionId": 1
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Southbound B70 stops on 8th Ave at Bay Ridge Ave and on the 7th Ave Service Road at Ovington Ave and 72nd St are closed",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Southbound B70 stops on 8th Ave at Bay Ridge Ave and on the 7th Ave Service Road at Ovington Ave and 72nd St are closed\nBuses will make stops along Fort Hamilton Parkway from Bay Ridge Ave to Bay Ridge Pkwy.\n\nWhat\u0027s happening?\nConstruction and structural improvements on the Ovington Avenue Bridge",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:5073",
+    "alert": {
+      "activePeriod": [{
+        "start": "1655784000",
+        "end": "1688342400"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "routeId": "S74"
+      }, {
+        "agencyId": "MTA NYCT",
+        "routeId": "S78"
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Northbound S74 and S78 stop at the Bricktown Shopping Center on Tyrellan Ave is closed",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Northbound S74 and S78 stop at the Bricktown Shopping Center on Tyrellan Ave is closed\nBuses are stopping at the Target entrance by the stop sign.\n\nWhat\u0027s happening?\nConstruction",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_UP_D2-Weekday-SDon-104600_B6_317",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B6",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B6",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 5:26pm B6 to LIVONIA AV/ASHFORD ST is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:4260",
+    "alert": {
+      "activePeriod": [{
+        "start": "1652068800",
+        "end": "1688342400"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B67",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B67",
+          "directionId": 1
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Southbound B67 stop on Flatbush Ave at State St is closed",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Southbound B67 stop on Flatbush Ave at State St is closed\nBuses will stop on Flatbush Ave at Atlantic Ave in the B41 stop.\n\nWhat\u0027s happening?\nBuilding construction",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:5072",
+    "alert": {
+      "activePeriod": [{
+        "start": "1655870400",
+        "end": "1688342400"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "routeId": "S59"
+      }, {
+        "agencyId": "MTA NYCT",
+        "routeId": "S78"
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Northbound S59 and S78 stops on Hylan Blvd at Kenny Rd and Cunningham Rd is closed",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Northbound S59 and S78 stops on Hylan Blvd at Kenny Rd and Cunningham Rd is closed\nPlease use stops on Hylan Blvd at Richard Ave or Sharrott Ave.\n\nWhat\u0027s happening?\nEmergency utility work",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_QV_D2-Weekday-SDon-103600_MISC_229",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "Q88",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "Q88",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 5:16pm Q88 to 92 ST/59 AV is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_QV_D2-Weekday-SDon-104800_MISC_252",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "Q43",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "Q43",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 5:28pm Q43 to HILLSIDE AV/267 ST is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:7090",
+    "alert": {
+      "activePeriod": [{
+        "start": "1666184400",
+        "end": "1688342400"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "S62",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "S62",
+          "directionId": 1
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "S62 stops on Victory Blvd at Wild Ave are closed in both directions.",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "S62 stops on Victory Blvd at Wild Ave are closed in both directions.\nFor eastbound service, use the stop on Victory Blvd at Alberta Ave or Feldmeyers Lane.\nFor westbound service, use the stops on Victory Blvd at Burke Ave or Glen St.\n\nWhat\u0027s happening?\nConstruction",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_UP_D2-Weekday-SDon-103900_B3_129",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B3",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B3",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 5:19pm B3 to AV U/E 71 ST is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_CA_D2-Weekday-SDon-108000_MISC_352",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "S96",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "S96",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 6:00pm S96 to SOUTH AV/WEST SHORE PLAZA is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_UP_D2-Weekday-SDon-104700_B6_289",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B6",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B6",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 5:27pm B6 to ROCKAWAY PKWY/SUBWAY STATION is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:4538",
+    "alert": {
+      "activePeriod": [{
+        "start": "1653364800",
+        "end": "1688342400"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "routeId": "S40"
+      }, {
+        "agencyId": "MTA NYCT",
+        "routeId": "S44"
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Eastbound S40 and S44 stop on Richmond Terrace at Stuyvesant Pl is closed",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Eastbound S40 and S44 stop on Richmond Terrace at Stuyvesant Pl is closed\nPlease use the stops on Richmond Terrace at Nicholas St or Wall St.\n\nWhat\u0027s happening?\nBuilding construction through Summer 2023",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:1784",
+    "alert": {
+      "activePeriod": [{
+        "start": "1635757200",
+        "end": "1688342400"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B38",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B38",
+          "directionId": 1
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Eastbound B38 stop on Kossuth Pl at Bushwick Ave is closed because of construction",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Eastbound B38 stop on Kossuth Pl at Bushwick Ave is closed because of construction\nBuses are making a stop on DeKalb Ave at Bushwick Ave.",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_WF_D2-Weekday-SDon-104800_BX35_885",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "BX35",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "BX35",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 5:28pm BX35 to W 179 ST/BROADWAY is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:7769",
+    "alert": {
+      "activePeriod": [{
+        "start": "1669784400",
+        "end": "1688342400"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B64",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B64",
+          "directionId": 1
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "B64 buses are detoured from the Ovington Avenue Bridge between Bay Ridge Ave at Fort Hamilton Pkwy and 6th Ave",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "B64 buses are detoured from the Ovington Avenue Bridge between Bay Ridge Ave at Fort Hamilton Pkwy and 6th Ave\nThe last northbound stop before detouring is Bay Ridge Ave at 10th Ave. Buses then make requested stops along Fort Hamilton Pkwy and Bay Ridge Pkwy. Northbound service resumes on Bay Ridge Ave at 6th Ave.\n\nSouthbound buses are also detouring, but no stops are missed.\n\nNorthbound missed stops:\nBay Ridge Ave at Fort Hamilton Pkwy\n8th Ave at Bay Ridge Ave\n70 St at 7th Ave\nOvington Ave at 6th Ave\n\nWhat\u0027s happening?\nConstruction and structural improvements on the Ovington Avenue Bridge",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_JA_D2-Weekday-SDon-106200_Q5_208",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "Q5",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "Q5",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 5:45pm Q5 to MERRICK BL/233 ST is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_JG_D2-Weekday-SDon-105400_B8_133",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B8",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B8",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 5:34pm B8 to VA HOSPITAL/MAIN ENT BAY 2 is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:964",
+    "alert": {
+      "activePeriod": [{
+        "start": "1631160000",
+        "end": "1688342400"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B36",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B36",
+          "directionId": 1
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Westbound B36 stop on Surf Ave at W 17th St is closed because of construction",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Westbound B36 stop on Surf Ave at W 17th St is closed because of construction\nBuses are making a temporary stop on Surf Ave between W 17th St and W 19th St.",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:5865",
+    "alert": {
+      "activePeriod": [{
+        "start": "1672864800",
+        "end": "1672881600"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "SIM31",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "SIM31",
+          "directionId": 1
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Southbound SIM31 buses will be detoured from Gannon Ave North at Woolley Ave to Gannon Ave South at Bradley Ave",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Southbound SIM31 buses will be detoured from Gannon Ave North at Woolley Ave to Gannon Ave South at Bradley Ave\nYou will experience a few extra turns, but no stops will be missed.\n\nWhat\u0027s happening?\nWoolley Ave and Bradley Ave Rehabilitation Project",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:4897",
+    "alert": {
+      "activePeriod": [{
+        "start": "1655697600",
+        "end": "1688342400"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "M79+",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "M79+",
+          "directionId": 1
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Westbound M79-SBS stop on W 79th St at Riverside Drive has been relocated to the south side of W 79th St",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Westbound M79-SBS stop on W 79th St at Riverside Drive has been relocated to the south side of W 79th St\nWestbound M79-SBS buses are detouring at West End Ave to W 72nd St, then to Riverside Drive at W 79th St, the last stop.\n\nWhat\u0027s happening?\nReconstruction of the West 79th St Rotunda Complex",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:6479",
+    "alert": {
+      "activePeriod": [{
+        "start": "1663300800",
+        "end": "1688342400"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "routeId": "S57"
+      }, {
+        "agencyId": "MTA NYCT",
+        "routeId": "S61"
+      }, {
+        "agencyId": "MTA NYCT",
+        "routeId": "S91"
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Southbound S57, S61, and S91 stops on Bradley Ave at Victory Blvd and Purdy Ave and on North Gannon Ave and Bradley Ave are closed",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Southbound S57, S61, and S91 stops on Bradley Ave at Victory Blvd and Purdy Ave and on North Gannon Ave and Bradley Ave are closed\nThe last S57 stop before detouring will be Watchogue Rd at Frederick St.\n\nThe last S61 and S91 stop before detouring will be Victory Blvd at Jewett Ave.\n\nBuses also make stops along Victory Blvd from Bradley Ave to Woolley Ave.\n\nWhat\u0027s happening?\nWoolley Ave and Bradley Ave Rehabilitation Project",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:6754",
+    "alert": {
+      "activePeriod": [{
+        "start": "1664510400",
+        "end": "1680408000"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "M3",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "M3",
+          "directionId": 1
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Northbound M3 stop on St Nicholas Ave at W 190th St has been relocated and the stop at W 193rd St is closed",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Northbound M3 stop on St Nicholas Ave at W 190th St has been relocated and the stop at W 193rd St is closed\nThe relocated stop is one block south on St Nicholas Ave near W 189th St.\n\nA new stop has also been established on Amsterdam Ave at W 190th St.\n\nWhat\u0027s happening?\nNYC DOT Road Improvements",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:6511",
+    "alert": {
+      "activePeriod": [{
+        "start": "1663560000",
+        "end": "1688342400"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "Q24",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "Q24",
+          "directionId": 1
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Eastbound Q24 stops on Archer Ave from the Van Wyck Expwy Service Rd to Sutphin Blvd are closed",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Eastbound Q24 stops on Archer Ave from the Van Wyck Expwy Service Rd to Sutphin Blvd are closed\nBuses are making requested stops along Atlantic Ave between the Van Wyck Expwy and Sutphin Blvd.\n\nWhat\u0027s happening?\nConstruction",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_UP_D2-Weekday-SDon-103100_B6_305",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B6",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B6",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 5:11pm B6 to LIVONIA AV/ASHFORD ST is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:7685",
+    "alert": {
+      "activePeriod": [{
+        "start": "1668920400",
+        "end": "1673240340"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "routeId": "SIM10"
+      }, {
+        "agencyId": "MTA NYCT",
+        "routeId": "SIM1C"
+      }, {
+        "agencyId": "MTA NYCT",
+        "routeId": "SIM3"
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Northbound SIM1C, SIM3 and SIM10 buses will not drop-off at 6th Ave/50th St during the holiday season",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Northbound SIM1C, SIM3 and SIM10 buses will not drop-off at 6th Ave/50th St during the holiday season\nBuses will drop-off on 6th Ave between W 51st St and W 52nd St.\n\nReminder: SIM3 and SIM10 buses do not run on weekends.",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:6353",
+    "alert": {
+      "activePeriod": [{
+        "start": "1663560000",
+        "end": "1680408000"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "M125",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "M125",
+          "directionId": 1
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "The southbound M125 stop on Bergen Ave at E 149th St is closed and the new southbound stop is on 3rd Ave at E 150th St",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "The southbound M125 stop on Bergen Ave at E 149th St is closed and the new southbound stop is on 3rd Ave at E 150th St\nWhat\u0027s happened?\nCleared construction on Westchester Ave at Bergen St will now allow the southbound M125 to operate on its permanent route from 3rd Ave at E 150th St.",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:158",
+    "alert": {
+      "activePeriod": [{
+        "start": "1621915200",
+        "end": "1688342400"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "routeId": "M15"
+      }, {
+        "agencyId": "MTA NYCT",
+        "routeId": "M15+"
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Southbound M15/M15-SBS stop on 2nd Ave at 34th St has been relocated one block south across E 33rd St",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Southbound M15/M15-SBS stop on 2nd Ave at 34th St has been relocated one block south across E 33rd St\nWhat\u0027s happening?\nConstruction",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:3878",
+    "alert": {
+      "activePeriod": [{
+        "start": "1672862400",
+        "end": "1672880400"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "routeId": "X37"
+      }, {
+        "agencyId": "MTA NYCT",
+        "routeId": "X38"
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Southbound X37, X38 stop on 23rd St at 1st Ave will board at the SIM3, SIM6,  SIM10, SIM11, SIM31 stop in front of 348 E 23rd St",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Southbound X37, X38 stop on 23rd St at 1st Ave will board at the SIM3, SIM6,  SIM10, SIM11, SIM31 stop in front of 348 E 23rd St\nWhat\u0027s happening?\nD.E.P road work",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:alert:200585",
+    "alert": {
+      "activePeriod": [{
+        "start": "1672856176"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "routeId": "M101"
+      }, {
+        "agencyId": "MTA NYCT",
+        "routeId": "M102"
+      }, {
+        "agencyId": "MTA NYCT",
+        "routeId": "M103"
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "You may experience longer waits for this bus route. We\u0027re running as much service as we can with the bus operators we have available.",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "You may experience longer waits for this bus route. We\u0027re running as much service as we can with the bus operators we have available.\nSee when your next bus arrives by using bustime.mta.info",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_UP_D2-Weekday-SDon-100800_B6_313",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B6",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B6",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 4:48pm B6 to ROCKAWAY PKWY/SUBWAY STATION is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_GA_D2-Weekday-SDon-108000_B32_104",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B32",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B32",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 6:00pm B32 to 44 DR/21 ST is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:5530",
+    "alert": {
+      "activePeriod": [{
+        "start": "1658808000",
+        "end": "1704085200"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "M20",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "M20",
+          "directionId": 1
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Southbound M20 stop on 7th Ave at W 14th St has been temporarily relocated to 7th Ave at W 15th St",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Southbound M20 stop on 7th Ave at W 14th St has been temporarily relocated to 7th Ave at W 15th St\nWhat\u0027s happening?\nConstruction expected to run through 2024",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:140",
+    "alert": {
+      "activePeriod": [{
+        "start": "1621915200",
+        "end": "1688342400"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "BX3",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "BX3",
+          "directionId": 1
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Northbound Bx3 stop on University Ave at 174th St is closed",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Northbound Bx3 stop on University Ave at 174th St is closed\nBuses make a stop on University Ave at Featherbed Lane.\n\nWhat\u0027s happening?\nConstruction",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_CA_D2-Weekday-SDon-103400_S4696_55",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "S46",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "S46",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 5:14pm S46 to TELEPORT DR/CORP COMMONS BLDG is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:7791",
+    "alert": {
+      "activePeriod": [{
+        "start": "1672858800",
+        "end": "1672877700"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "routeId": "SIM10"
+      }, {
+        "agencyId": "MTA NYCT",
+        "routeId": "SIM31"
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Southbound SIM10 and SIM31 buses will not stop on 5th Ave and 51st St during the holiday season",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Southbound SIM10 and SIM31 buses will not stop on 5th Ave and 51st St during the holiday season\nBuses will make a temporary stop on 5th Ave at 48th St.",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_GH_D2-Weekday-SDon-105800_BX44A_713",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "BX4A",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "BX4A",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 5:38pm BX4A to W FARMS RD/WESTCHESTER AV is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:4959",
+    "alert": {
+      "activePeriod": [{
+        "start": "1655179200",
+        "end": "1688342400"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "routeId": "M31"
+      }, {
+        "agencyId": "MTA NYCT",
+        "routeId": "M57"
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Westbound M31 and M57 stop on W 57th St at 7th Ave has been relocated",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Westbound M31 and M57 stop on W 57th St at 7th Ave has been relocated\nBuses are making a temporary stop on the northeast corner of W 57th St at 7th Ave (see map).\n\nWhat\u0027s happening?\nSidewalk construction",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_QV_D2-Weekday-SDon-105900_MISC_279",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "Q88",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "Q88",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 5:39pm Q88 to 92 ST/59 AV is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_GA_D2-Weekday-SDon-108500_B47_434",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B47",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B47",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 6:05pm B47 to AV U/E 54 ST is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:2810",
+    "alert": {
+      "activePeriod": [{
+        "start": "1643000400",
+        "end": "1688342400"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B48",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B48",
+          "directionId": 1
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "B48 stops along Lorimer St between Grand St and Meeker Ave are closed",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "B48 stops along Lorimer St between Grand St and Meeker Ave are closed\nTemporary bus stops:\nUnion Ave at Metropolitan Ave (northbound)\nUnion Ave at Meeker Ave (southbound)\nUnion Ave at Ainslie St (both directions)\nGrand St at Union Ave at the existing Q54/Q59 stop (both directions)\n\nNorthbound closed stops:\nLorimer St from Grand St to Jackson St\n\nSouthbound closed stops:\nLorimer St from Skillman Ave to Ainslie St\n\nWhat\u0027s happening?\nConstruction at the Lorimer St L Station",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:5529",
+    "alert": {
+      "activePeriod": [{
+        "start": "1658808000",
+        "end": "1721966418"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "M66",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "M66",
+          "directionId": 1
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Eastbound M66 stop on E 68th St at Lexington Ave is closed. Buses are making a stop mid-block on E 68th St between Park Ave and Lexington Ave.",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Eastbound M66 stop on E 68th St at Lexington Ave is closed. Buses are making a stop mid-block on E 68th St between Park Ave and Lexington Ave.\nWhat\u0027s happening?\nConstruction expected to continue through 2024",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_UP_D2-Weekday-SDon-107700_B6_273",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B36",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "B36",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 5:57pm B36 to NOSTRAND AV/GRAVESEND NECK RD is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:146",
+    "alert": {
+      "activePeriod": [{
+        "start": "1621915200",
+        "end": "1688342400"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "BX36",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "BX36",
+          "directionId": 1
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Eastbound Bx36 stop on University Ave at 174th St is closed",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Eastbound Bx36 stop on University Ave at 174th St is closed\nBuses make a stop on University Ave at Featherbed Lane.\n\nWhat\u0027s happening?\nConstruction",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_lmm:planned_work:7827",
+    "alert": {
+      "activePeriod": [{
+        "start": "1669957200",
+        "end": "1688342400"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "routeId": "BX1"
+      }, {
+        "agencyId": "MTA NYCT",
+        "routeId": "BX2"
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Southbound Bx1 and Bx2 stops on Grand Concourse from E 192nd St to E Burnside Ave are closed",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Southbound Bx1 and Bx2 stops on Grand Concourse from E 192nd St to E Burnside Ave are closed\nPlease use the following stops for southbound service:\nGrand Concourse at E Kingsbridge Rd Bx1 Bx2\nGrand Concourse at E 179th St Bx2\nGrand Concourse at E 177th St Bx1\n\nWhat\u0027s happening?\nNYC DOT road work",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_FP_D2-Weekday-SDon-107900_Q58_857",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "Q58",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "Q58",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 5:59pm Q58 to 41 RD/MAIN ST is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTA NYCT_MQ_D2-Weekday-SDon-107000_M8_9",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "M22",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTA NYCT",
+        "trip": {
+          "routeId": "M22",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 5:50pm M22 to GRAND ST/FDR DR is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTABC_34481028-JKPD2-JK_D2-Weekday-04-SDon",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTABC",
+        "trip": {
+          "routeId": "Q60",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTABC",
+        "trip": {
+          "routeId": "Q60",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 6:03pm Q60 to E 60 ST/2 AV is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTABC_34568939-BPPD2-BP_D2-Weekday-04-SDon",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTABC",
+        "trip": {
+          "routeId": "Q113",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTABC",
+        "trip": {
+          "routeId": "Q113",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 5:40pm Q113 to SEAGIRT BL /BEACH 20 ST is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTABC_34481319-JKPD2-JK_D2-Weekday-04-SDon",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTABC",
+        "trip": {
+          "routeId": "Q08",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTABC",
+        "trip": {
+          "routeId": "Q08",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 5:29pm Q08 to GATEWAY CTR TERMINAL/GATEWAY DR is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTABC_lmm:planned_work:3887",
+    "alert": {
+      "activePeriod": [{
+        "start": "1649995200",
+        "end": "1688342400"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTABC",
+        "trip": {
+          "routeId": "Q50",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTABC",
+        "trip": {
+          "routeId": "Q50",
+          "directionId": 1
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Northbound Q50 stop on Whitestone Expressway East Service Road at 20th Ave is closed",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Northbound Q50 stop on Whitestone Expressway East Service Road at 20th Ave is closed\nBuses are making the QM2 stop on the Whitestone Expressway at 14th Ave.\n\nWhat\u0027s happening?\nConstruction",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTABC_34567688-BPPD2-BP_D2-Weekday-04-SDon",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTABC",
+        "trip": {
+          "routeId": "Q64",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTABC",
+        "trip": {
+          "routeId": "Q64",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 5:52pm Q64 to 108 ST/QUEENS BL is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTABC_lmm:alert:200649",
+    "alert": {
+      "activePeriod": [{
+        "start": "1672866175",
+        "end": "1672885845"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTABC",
+        "trip": {
+          "routeId": "Q111",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTABC",
+        "trip": {
+          "routeId": "Q111",
+          "directionId": 1
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "You may wait longer for this bus. We\u0027re running as much service as we can with the buses we have available. Check bt.mta.info before you travel.",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "You may wait longer for this bus. We\u0027re running as much service as we can with the buses we have available. Check bt.mta.info before you travel.",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTABC_34466147-CPPD2-CP_D2-Weekday-04-SDon",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTABC",
+        "trip": {
+          "routeId": "Q23",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTABC",
+        "trip": {
+          "routeId": "Q23",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 5:39pm Q23 to DITMARS BL/102 ST is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTABC_lmm:planned_work:8156",
+    "alert": {
+      "activePeriod": [{
+        "start": "1672765200",
+        "end": "1688342400"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTABC",
+        "routeId": "Q10"
+      }, {
+        "agencyId": "MTA NYCT",
+        "routeId": "Q3"
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Northbound Q3 and Q10 buses are detoured from Pan Am Road at JFK - you will experience some extra turns, but no stops are missed",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Northbound Q3 and Q10 buses are detoured from Pan Am Road at JFK - you will experience some extra turns, but no stops are missed\nWhat\u0027s happening?\nConstruction on Pan Am Road at JFK",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTABC_34572359-SCPD2-SC_D2-Weekday-04-SDon",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTABC",
+        "trip": {
+          "routeId": "B103",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTABC",
+        "trip": {
+          "routeId": "B103",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 4:52pm B103 to WILLIAMS AV / FLATLANDS AV is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTABC_34480997-JKPD2-JK_D2-Weekday-04-SDon",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTABC",
+        "trip": {
+          "routeId": "Q60",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTABC",
+        "trip": {
+          "routeId": "Q60",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 5:00pm Q60 to E 60 ST/2 AV is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTABC_lmm:planned_work:7589",
+    "alert": {
+      "activePeriod": [{
+        "start": "1672862400",
+        "end": "1672876800"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTABC",
+        "routeId": "QM10"
+      }, {
+        "agencyId": "MTABC",
+        "routeId": "QM12"
+      }, {
+        "agencyId": "MTABC",
+        "routeId": "QM24"
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Eastbound QM10, QM12 and QM24 stop on 6th Ave at 51st St will be relocated for the holiday season",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Eastbound QM10, QM12 and QM24 stop on 6th Ave at 51st St will be relocated for the holiday season\nPlease board buses across the street at the M7 stop on 6th Ave at 51st St.",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTABC_34466156-CPPD2-CP_D2-Weekday-04-SDon",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTABC",
+        "trip": {
+          "routeId": "Q23",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTABC",
+        "trip": {
+          "routeId": "Q23",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 6:15pm Q23 to DITMARS BL/102 ST is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTABC_lmm:planned_work:5640",
+    "alert": {
+      "activePeriod": [{
+        "start": "1659499200",
+        "end": "1688342400"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTABC",
+        "trip": {
+          "routeId": "Q50",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTABC",
+        "trip": {
+          "routeId": "Q50",
+          "directionId": 1
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Northbound Q50 stop on Roosevelt Ave at Main St has been temporarily relocated to Main St at 39th Ave in front of GNC",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Northbound Q50 stop on Roosevelt Ave at Main St has been temporarily relocated to Main St at 39th Ave in front of GNC\nWhat\u0027s happening?\nConstruction at the Flushing-Main St Subway Station",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTABC_lmm:planned_work:6893",
+    "alert": {
+      "activePeriod": [{
+        "start": "1665115233",
+        "end": "1688342400"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTABC",
+        "trip": {
+          "routeId": "Q25",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTABC",
+        "trip": {
+          "routeId": "Q25",
+          "directionId": 1
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Northbound Q25 stops on 7th Ave at 127th St and 125th St and on College Point Blvd at 7th Ave and Lax Ave are closed",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Northbound Q25 stops on 7th Ave at 127th St and 125th St and on College Point Blvd at 7th Ave and Lax Ave are closed\nThe last stop before detouring is 127th St at 9th Ave.\n\nBuses make requested stops along 5th Ave from 127th St to College Point Blvd.\n\nWhat\u0027s happening?\nCon Edison work",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTABC_lmm:planned_work:7591",
+    "alert": {
+      "activePeriod": [{
+        "start": "1672864200",
+        "end": "1672876800"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTABC",
+        "routeId": "QM16"
+      }, {
+        "agencyId": "MTABC",
+        "routeId": "QM17"
+      }, {
+        "agencyId": "MTABC",
+        "routeId": "QM18"
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Eastbound QM16, QM17 and QM18 buses will not stop on 6th Ave at W 51st St during the holiday season",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Eastbound QM16, QM17 and QM18 buses will not stop on 6th Ave at W 51st St during the holiday season\nBuses will make a stop on 6th Ave at W 48th St.",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTABC_34481026-JKPD2-JK_D2-Weekday-04-SDon",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTABC",
+        "trip": {
+          "routeId": "Q60",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTABC",
+        "trip": {
+          "routeId": "Q60",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 4:48pm Q60 to E 60 ST/2 AV is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTABC_lmm:planned_work:4205",
+    "alert": {
+      "activePeriod": [{
+        "start": "1672866000",
+        "end": "1672912800"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTABC",
+        "trip": {
+          "routeId": "Q113",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTABC",
+        "trip": {
+          "routeId": "Q113",
+          "directionId": 1
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Q113 buses will be detoured between Central Ave at Beach 9th St and Mott Ave at Beach Channel Drive",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Q113 buses will be detoured between Central Ave at Beach 9th St and Mott Ave at Beach Channel Drive\nThe last northbound stop before detouring will be made on Mott Ave at Central Ave.\n\nThe last southbound stop before detouring will be made on Central Ave at Virginia Ave.\n\nNorthbound missed stop:\nCentral Ave at Virginia St\n\nSouthbound missed stops:\nMott Ave at Beach 20th St\nCornaga Ave at Mott Ave\n\nWhat\u0027s happening?\nConstruction",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTABC_lmm:planned_work:4308",
+    "alert": {
+      "activePeriod": [{
+        "start": "1672866000",
+        "end": "1672887600"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTABC",
+        "routeId": "Q113"
+      }, {
+        "agencyId": "MTABC",
+        "routeId": "Q114"
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Southbound Q113 and Q114 bus stop on Guy R Brewer Blvd at 147th Ave is closed.",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Southbound Q113 and Q114 bus stop on Guy R Brewer Blvd at 147th Ave is closed.\nBuses will make a stop on 147th Ave at Guy R Brewer Blvd in the Q111 bus stop.\n\nWhat is happening?\nConstruction",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTABC_lmm:planned_work:1876",
+    "alert": {
+      "activePeriod": [{
+        "start": "1635912000",
+        "end": "1688342400"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTABC",
+        "routeId": "Q07"
+      }, {
+        "agencyId": "MTABC",
+        "routeId": "Q09"
+      }, {
+        "agencyId": "MTABC",
+        "routeId": "Q112"
+      }, {
+        "agencyId": "MTABC",
+        "routeId": "Q40"
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Q7, Q9, Q41 and Q112 buses may experience delays because of construction on the Van Wyck Expy overpass at Rockaway Blvd",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Q7, Q9, Q41 and Q112 buses may experience delays because of construction on the Van Wyck Expy overpass at Rockaway Blvd",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTABC_34481021-JKPD2-JK_D2-Weekday-04-SDon",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTABC",
+        "trip": {
+          "routeId": "Q60",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTABC",
+        "trip": {
+          "routeId": "Q60",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 4:33pm Q60 to E 60 ST/2 AV is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTABC_lmm:planned_work:7594",
+    "alert": {
+      "activePeriod": [{
+        "start": "1672828200",
+        "end": "1672894740"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTABC",
+        "routeId": "QM1"
+      }, {
+        "agencyId": "MTABC",
+        "routeId": "QM5"
+      }, {
+        "agencyId": "MTABC",
+        "routeId": "QM6"
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Eastbound QM1, QM5 and QM6 buses will not stop on 6th Ave at W 49th St during the holiday season",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Eastbound QM1, QM5 and QM6 buses will not stop on 6th Ave at W 49th St during the holiday season\nUse the stop on 6th Ave at W 48th St instead.",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTABC_lmm:planned_work:7593",
+    "alert": {
+      "activePeriod": [{
+        "start": "1672828800",
+        "end": "1672892100"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTABC",
+        "trip": {
+          "routeId": "QM15",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTABC",
+        "trip": {
+          "routeId": "QM15",
+          "directionId": 1
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Eastbound QM15 buses will not stop on 6th Ave at W 51st St during the holiday season",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Eastbound QM15 buses will not stop on 6th Ave at W 51st St during the holiday season\nBuses will make a stop on 6th Ave at W 48th St.",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTABC_lmm:alert:200634",
+    "alert": {
+      "activePeriod": [{
+        "start": "1672858850"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTABC",
+        "routeId": "B103"
+      }, {
+        "agencyId": "MTABC",
+        "routeId": "Q37"
+      }, {
+        "agencyId": "MTABC",
+        "routeId": "Q06"
+      }, {
+        "agencyId": "MTABC",
+        "routeId": "Q09"
+      }, {
+        "agencyId": "MTABC",
+        "routeId": "Q60"
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "You may wait longer for this bus.\nWe\u0027re running as much service as we can with the bus operators we have available.\nSee the next bus arrival time at bt.mta.info",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "You may wait longer for this bus.\nWe\u0027re running as much service as we can with the bus operators we have available.\nSee the next bus arrival time at bt.mta.info",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTABC_lmm:planned_work:7797",
+    "alert": {
+      "activePeriod": [{
+        "start": "1669957200",
+        "end": "1688342400"
+      }],
+      "informedEntity": [{
+        "agencyId": "MTABC",
+        "trip": {
+          "routeId": "BXM4",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTABC",
+        "trip": {
+          "routeId": "BXM4",
+          "directionId": 1
+        }
+      }],
+      "headerText": {
+        "translation": [{
+          "text": "Southbound BxM4 stops on Grand Concourse at E Fordham Rd and E Burnside Ave are closed",
+          "language": "EN"
+        }]
+      },
+      "descriptionText": {
+        "translation": [{
+          "text": "Southbound BxM4 stops on Grand Concourse at E Fordham Rd and E Burnside Ave are closed\nThe southbound stop on Grand Concourse at E Fordham Rd has been temporarily relocated to Grand Concourse and E 187th St at the express lane median.\n\nFor southbound service from E Burnside Ave, please use the stop on Grand Concourse at E 177th St. \n\nWhat\u0027s happening?\nNYC DOT road work",
+          "language": "EN"
+        }]
+      }
+    }
+  }, {
+    "id": "MTABC_34564258-YOPD2-YO_D2-Weekday-04",
+    "alert": {
+      "informedEntity": [{
+        "agencyId": "MTABC",
+        "trip": {
+          "routeId": "BXM2",
+          "directionId": 0
+        }
+      }, {
+        "agencyId": "MTABC",
+        "trip": {
+          "routeId": "BXM2",
+          "directionId": 1
+        }
+      }],
+      "effect": "REDUCED_SERVICE",
+      "descriptionText": {
+        "translation": [{
+          "text": "The 6:30pm BXM2 to RIVERDALE AV/W 263 ST is canceled",
+          "language": "EN"
+        }]
+      }
+    }
+  }]
+}

@@ -1,51 +1,57 @@
 {
   "Siri": {
     "ServiceDelivery": {
-      "ResponseTimestamp": "2022-01-17T15:55:24.517-05:00",
+      "ResponseTimestamp": "2023-01-02T13:39:05.280-05:00",
       "StopMonitoringDelivery": [
         {
           "MonitoredStopVisit": [
             {
               "MonitoredVehicleJourney": {
-                "LineRef": "MTA NYCT_M4",
+                "LineRef": "MTA NYCT_M3",
                 "DirectionRef": "0",
                 "FramedVehicleJourneyRef": {
-                  "DataFrameRef": "2022-01-17",
-                  "DatedVehicleJourneyRef": "MTA NYCT_MV_H2-Weekday-094600_M4_440"
+                  "DataFrameRef": "2023-01-02",
+                  "DatedVehicleJourneyRef": "MTA NYCT_MV_D2-Saturday-079800_M3_305"
                 },
-                "JourneyPatternRef": "MTA_M040058",
+                "JourneyPatternRef": "MTA_M030031",
                 "PublishedLineName": [
-                  "M4"
+                  "M3"
                 ],
                 "OperatorRef": "MTA NYCT",
-                "OriginRef": "MTA_400353",
-                "DestinationRef": "MTA_803067",
+                "OriginRef": "MTA_400001",
+                "DestinationRef": "MTA_903219",
                 "DestinationName": [
-                  "WSHNGTN HTS CLOISTRS via MADISN via BWAY"
+                  "FT GEORGE 193 ST via MADISON via ST NICH"
                 ],
                 "SituationRef": [
                   {
-                    "SituationSimpleRef": "MTABC_lmm:planned_work:2684"
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:6754"
                   },
                   {
-                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:2672"
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7731"
+                  },
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:4552"
+                  },
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7516"
                   }
                 ],
                 "Monitored": true,
                 "VehicleLocation": {
-                  "Longitude": -73.978966,
-                  "Latitude": 40.753224
+                  "Longitude": -73.978917,
+                  "Latitude": 40.753289
                 },
                 "Bearing": 52.94884,
                 "ProgressRate": "normalProgress",
-                "BlockRef": "MTA NYCT_MV_H2-Weekday_H_MV_25800_M4-425",
-                "VehicleRef": "MTA NYCT_3959",
+                "BlockRef": "MTA NYCT_MV_D2-Saturday_A_MV_25440_M3-309",
+                "VehicleRef": "MTA NYCT_9892",
                 "MonitoredCall": {
-                  "AimedArrivalTime": "2022-01-17T15:54:34.680-05:00",
-                  "ExpectedArrivalTime": "2022-01-17T15:55:25.517-05:00",
+                  "AimedArrivalTime": "2023-01-02T13:34:52.492-05:00",
+                  "ExpectedArrivalTime": "2023-01-02T13:39:06.280-05:00",
                   "ArrivalProximityText": "at stop",
-                  "ExpectedDepartureTime": "2022-01-17T15:55:25.517-05:00",
-                  "DistanceFromStop": 19,
+                  "ExpectedDepartureTime": "2023-01-02T13:39:06.280-05:00",
+                  "DistanceFromStop": 11,
                   "NumberOfStopsAway": 0,
                   "StopPointRef": "MTA_400561",
                   "VisitNumber": 1,
@@ -54,17 +60,129 @@
                   ]
                 }
               },
-              "RecordedAtTime": "2022-01-17T15:55:13.000-05:00"
+              "RecordedAtTime": "2023-01-02T13:38:51.289-05:00"
+            },
+            {
+              "MonitoredVehicleJourney": {
+                "LineRef": "MTA NYCT_M2",
+                "DirectionRef": "0",
+                "FramedVehicleJourneyRef": {
+                  "DataFrameRef": "2023-01-02",
+                  "DatedVehicleJourneyRef": "MTA NYCT_MV_D2-Saturday-080300_M2_210"
+                },
+                "JourneyPatternRef": "MTA_M020020",
+                "PublishedLineName": [
+                  "M2"
+                ],
+                "OperatorRef": "MTA NYCT",
+                "OriginRef": "MTA_400001",
+                "DestinationRef": "MTA_404876",
+                "DestinationName": [
+                  "LIMITED WASHINGTON HTS BROADWAY-168 ST"
+                ],
+                "SituationRef": [
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7731"
+                  },
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:4552"
+                  },
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7516"
+                  }
+                ],
+                "Monitored": true,
+                "VehicleLocation": {
+                  "Longitude": -73.980771,
+                  "Latitude": 40.750759
+                },
+                "Bearing": 54.462322,
+                "ProgressRate": "normalProgress",
+                "BlockRef": "MTA NYCT_MV_D2-Saturday_A_MV_30000_M2-213",
+                "VehicleRef": "MTA NYCT_9897",
+                "MonitoredCall": {
+                  "AimedArrivalTime": "2023-01-02T13:37:24.499-05:00",
+                  "ExpectedArrivalTime": "2023-01-02T13:40:31.254-05:00",
+                  "ArrivalProximityText": "\u003c 1 stop away",
+                  "ExpectedDepartureTime": "2023-01-02T13:40:31.254-05:00",
+                  "DistanceFromStop": 333,
+                  "NumberOfStopsAway": 0,
+                  "StopPointRef": "MTA_400561",
+                  "VisitNumber": 1,
+                  "StopPointName": [
+                    "MADISON AV/E 42 ST"
+                  ]
+                }
+              },
+              "RecordedAtTime": "2023-01-02T13:38:49.918-05:00"
+            },
+            {
+              "MonitoredVehicleJourney": {
+                "LineRef": "MTA NYCT_M4",
+                "DirectionRef": "0",
+                "FramedVehicleJourneyRef": {
+                  "DataFrameRef": "2023-01-02",
+                  "DatedVehicleJourneyRef": "MTA NYCT_MV_D2-Saturday-082300_M4_405"
+                },
+                "JourneyPatternRef": "MTA_M040077",
+                "PublishedLineName": [
+                  "M4"
+                ],
+                "OperatorRef": "MTA NYCT",
+                "OriginRef": "MTA_400353",
+                "DestinationRef": "MTA_803067",
+                "DestinationName": [
+                  "WSHNGTN HTS CLOISTRS via MADISN via BWAY"
+                ],
+                "OriginAimedDepartureTime": "2023-01-02T13:43:00.000-05:00",
+                "SituationRef": [
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:4553"
+                  },
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7731"
+                  },
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7484"
+                  }
+                ],
+                "Monitored": true,
+                "VehicleLocation": {
+                  "Longitude": -73.984841,
+                  "Latitude": 40.746866
+                },
+                "Bearing": 337.24902,
+                "ProgressRate": "noProgress",
+                "ProgressStatus": [
+                  "layover,prevTrip"
+                ],
+                "BlockRef": "MTA NYCT_MV_D2-Saturday_A_MV_39840_M4-405",
+                "VehicleRef": "MTA NYCT_9775",
+                "MonitoredCall": {
+                  "AimedArrivalTime": "2023-01-02T13:49:00.525-05:00",
+                  "ExpectedArrivalTime": "2023-01-02T13:48:34.254-05:00",
+                  "ArrivalProximityText": "0.6 miles away",
+                  "ExpectedDepartureTime": "2023-01-02T13:48:34.254-05:00",
+                  "DistanceFromStop": 968,
+                  "NumberOfStopsAway": 4,
+                  "StopPointRef": "MTA_400561",
+                  "VisitNumber": 1,
+                  "StopPointName": [
+                    "MADISON AV/E 42 ST"
+                  ]
+                }
+              },
+              "RecordedAtTime": "2023-01-02T13:39:01.960-05:00"
             },
             {
               "MonitoredVehicleJourney": {
                 "LineRef": "MTA NYCT_M3",
                 "DirectionRef": "0",
                 "FramedVehicleJourneyRef": {
-                  "DataFrameRef": "2022-01-17",
-                  "DatedVehicleJourneyRef": "MTA NYCT_MV_H2-Weekday-093500_M3_335"
+                  "DataFrameRef": "2023-01-02",
+                  "DatedVehicleJourneyRef": "MTA NYCT_MV_D2-Saturday-080900_M3_317"
                 },
-                "JourneyPatternRef": "MTA_M030006",
+                "JourneyPatternRef": "MTA_M030031",
                 "PublishedLineName": [
                   "M3"
                 ],
@@ -76,25 +194,34 @@
                 ],
                 "SituationRef": [
                   {
-                    "SituationSimpleRef": "MTABC_lmm:planned_work:2684"
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:6754"
+                  },
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7731"
+                  },
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:4552"
+                  },
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7516"
                   }
                 ],
                 "Monitored": true,
                 "VehicleLocation": {
-                  "Longitude": -73.979826,
-                  "Latitude": 40.752053
+                  "Longitude": -73.985006,
+                  "Latitude": 40.744943
                 },
-                "Bearing": 54.004124,
+                "Bearing": 54.027615,
                 "ProgressRate": "normalProgress",
-                "BlockRef": "MTA NYCT_MV_H2-Weekday_H_MV_44940_M3-335",
-                "VehicleRef": "MTA NYCT_3897",
+                "BlockRef": "MTA NYCT_MV_D2-Saturday_A_MV_26340_M3-311",
+                "VehicleRef": "MTA NYCT_9762",
                 "MonitoredCall": {
-                  "AimedArrivalTime": "2022-01-17T15:58:47.687-05:00",
-                  "ExpectedArrivalTime": "2022-01-17T15:56:51.834-05:00",
-                  "ArrivalProximityText": "1 stop away",
-                  "ExpectedDepartureTime": "2022-01-17T15:56:51.834-05:00",
-                  "DistanceFromStop": 168,
-                  "NumberOfStopsAway": 1,
+                  "AimedArrivalTime": "2023-01-02T13:45:52.505-05:00",
+                  "ExpectedArrivalTime": "2023-01-02T13:44:49.376-05:00",
+                  "ArrivalProximityText": "0.7 miles away",
+                  "ExpectedDepartureTime": "2023-01-02T13:44:49.376-05:00",
+                  "DistanceFromStop": 1071,
+                  "NumberOfStopsAway": 4,
                   "StopPointRef": "MTA_400561",
                   "VisitNumber": 1,
                   "StopPointName": [
@@ -102,17 +229,17 @@
                   ]
                 }
               },
-              "RecordedAtTime": "2022-01-17T15:55:17.000-05:00"
+              "RecordedAtTime": "2023-01-02T13:38:48.086-05:00"
             },
             {
               "MonitoredVehicleJourney": {
                 "LineRef": "MTA NYCT_M1",
                 "DirectionRef": "0",
                 "FramedVehicleJourneyRef": {
-                  "DataFrameRef": "2022-01-17",
-                  "DatedVehicleJourneyRef": "MTA NYCT_OF_H2-Weekday-092900_M1_131"
+                  "DataFrameRef": "2023-01-02",
+                  "DatedVehicleJourneyRef": "MTA NYCT_OF_D2-Saturday-079000_M1_118"
                 },
-                "JourneyPatternRef": "MTA_M010007",
+                "JourneyPatternRef": "MTA_M010024",
                 "PublishedLineName": [
                   "M1"
                 ],
@@ -124,31 +251,31 @@
                 ],
                 "SituationRef": [
                   {
-                    "SituationSimpleRef": "MTA NYCT_lmm:alert:121951"
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7731"
                   },
                   {
-                    "SituationSimpleRef": "MTABC_lmm:planned_work:2684"
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:4552"
                   },
                   {
-                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:2672"
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7484"
                   }
                 ],
                 "Monitored": true,
                 "VehicleLocation": {
-                  "Longitude": -73.979939,
-                  "Latitude": 40.751897
+                  "Longitude": -73.985575,
+                  "Latitude": 40.744168
                 },
-                "Bearing": 54.004124,
+                "Bearing": 53.329044,
                 "ProgressRate": "normalProgress",
-                "BlockRef": "MTA NYCT_OF_H2-Weekday_H_OF_23760_M1-109",
-                "VehicleRef": "MTA NYCT_9564",
+                "BlockRef": "MTA NYCT_OF_D2-Saturday_A_OF_31740_M1-114",
+                "VehicleRef": "MTA NYCT_9483",
                 "MonitoredCall": {
-                  "AimedArrivalTime": "2022-01-17T15:58:47.696-05:00",
-                  "ExpectedArrivalTime": "2022-01-17T15:56:45.744-05:00",
-                  "ArrivalProximityText": "1 stop away",
-                  "ExpectedDepartureTime": "2022-01-17T15:56:45.744-05:00",
-                  "DistanceFromStop": 188,
-                  "NumberOfStopsAway": 1,
+                  "AimedArrivalTime": "2023-01-02T13:32:52.513-05:00",
+                  "ExpectedArrivalTime": "2023-01-02T13:45:15.653-05:00",
+                  "ArrivalProximityText": "0.7 miles away",
+                  "ExpectedDepartureTime": "2023-01-02T13:45:15.653-05:00",
+                  "DistanceFromStop": 1170,
+                  "NumberOfStopsAway": 5,
                   "StopPointRef": "MTA_400561",
                   "VisitNumber": 1,
                   "StopPointName": [
@@ -156,258 +283,52 @@
                   ]
                 }
               },
-              "RecordedAtTime": "2022-01-17T15:55:07.000-05:00"
-            },
-            {
-              "MonitoredVehicleJourney": {
-                "LineRef": "MTA NYCT_M2",
-                "DirectionRef": "0",
-                "FramedVehicleJourneyRef": {
-                  "DataFrameRef": "2022-01-17",
-                  "DatedVehicleJourneyRef": "MTA NYCT_MV_H2-Weekday-094000_M3_323"
-                },
-                "JourneyPatternRef": "MTA_M020008",
-                "PublishedLineName": [
-                  "M2"
-                ],
-                "OperatorRef": "MTA NYCT",
-                "OriginRef": "MTA_400001",
-                "DestinationRef": "MTA_404876",
-                "DestinationName": [
-                  "LIMITED WASHINGTON HTS BROADWAY-168 ST"
-                ],
-                "SituationRef": [
-                  {
-                    "SituationSimpleRef": "MTABC_lmm:planned_work:2684"
-                  }
-                ],
-                "Monitored": true,
-                "VehicleLocation": {
-                  "Longitude": -73.982769,
-                  "Latitude": 40.748018
-                },
-                "Bearing": 53.391163,
-                "ProgressRate": "normalProgress",
-                "BlockRef": "MTA NYCT_MV_H2-Weekday_H_MV_21420_M2-207",
-                "VehicleRef": "MTA NYCT_4074",
-                "MonitoredCall": {
-                  "AimedArrivalTime": "2022-01-17T16:01:19.702-05:00",
-                  "ExpectedArrivalTime": "2022-01-17T15:59:30.465-05:00",
-                  "ArrivalProximityText": "1 stop away",
-                  "ExpectedDepartureTime": "2022-01-17T15:59:30.465-05:00",
-                  "DistanceFromStop": 680,
-                  "NumberOfStopsAway": 1,
-                  "StopPointRef": "MTA_400561",
-                  "VisitNumber": 1,
-                  "StopPointName": [
-                    "MADISON AV/E 42 ST"
-                  ]
-                }
-              },
-              "RecordedAtTime": "2022-01-17T15:55:06.000-05:00"
-            },
-            {
-              "MonitoredVehicleJourney": {
-                "LineRef": "MTA NYCT_M4",
-                "DirectionRef": "0",
-                "FramedVehicleJourneyRef": {
-                  "DataFrameRef": "2022-01-17",
-                  "DatedVehicleJourneyRef": "MTA NYCT_MV_H2-Weekday-096600_M5_521"
-                },
-                "JourneyPatternRef": "MTA_M040058",
-                "PublishedLineName": [
-                  "M4"
-                ],
-                "OperatorRef": "MTA NYCT",
-                "OriginRef": "MTA_400353",
-                "DestinationRef": "MTA_803067",
-                "DestinationName": [
-                  "WSHNGTN HTS CLOISTRS via MADISN via BWAY"
-                ],
-                "OriginAimedDepartureTime": "2022-01-17T16:06:00.000-05:00",
-                "SituationRef": [
-                  {
-                    "SituationSimpleRef": "MTABC_lmm:planned_work:2684"
-                  },
-                  {
-                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:2672"
-                  }
-                ],
-                "Monitored": true,
-                "VehicleLocation": {
-                  "Longitude": -73.983656,
-                  "Latitude": 40.746799
-                },
-                "Bearing": 53.426968,
-                "ProgressRate": "noProgress",
-                "ProgressStatus": [
-                  "layover"
-                ],
-                "BlockRef": "MTA NYCT_MV_H2-Weekday_H_MV_17700_M4-401",
-                "VehicleRef": "MTA NYCT_4083",
-                "MonitoredCall": {
-                  "AimedArrivalTime": "2022-01-17T16:14:34.709-05:00",
-                  "ExpectedArrivalTime": "2022-01-17T16:00:29.500-05:00",
-                  "ArrivalProximityText": "0.5 miles away",
-                  "ExpectedDepartureTime": "2022-01-17T16:00:29.500-05:00",
-                  "DistanceFromStop": 835,
-                  "NumberOfStopsAway": 3,
-                  "StopPointRef": "MTA_400561",
-                  "VisitNumber": 1,
-                  "StopPointName": [
-                    "MADISON AV/E 42 ST"
-                  ]
-                }
-              },
-              "RecordedAtTime": "2022-01-17T15:55:02.000-05:00"
-            },
-            {
-              "MonitoredVehicleJourney": {
-                "LineRef": "MTA NYCT_M4",
-                "DirectionRef": "0",
-                "FramedVehicleJourneyRef": {
-                  "DataFrameRef": "2022-01-17",
-                  "DatedVehicleJourneyRef": "MTA NYCT_MV_H2-Weekday-097500_M4_444"
-                },
-                "JourneyPatternRef": "MTA_M040058",
-                "PublishedLineName": [
-                  "M4"
-                ],
-                "OperatorRef": "MTA NYCT",
-                "OriginRef": "MTA_400353",
-                "DestinationRef": "MTA_803067",
-                "DestinationName": [
-                  "WSHNGTN HTS CLOISTRS via MADISN via BWAY"
-                ],
-                "OriginAimedDepartureTime": "2022-01-17T16:15:00.000-05:00",
-                "SituationRef": [
-                  {
-                    "SituationSimpleRef": "MTABC_lmm:planned_work:2684"
-                  },
-                  {
-                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:2672"
-                  }
-                ],
-                "Monitored": true,
-                "VehicleLocation": {
-                  "Longitude": -73.983799,
-                  "Latitude": 40.746606
-                },
-                "Bearing": 53.426968,
-                "ProgressRate": "noProgress",
-                "ProgressStatus": [
-                  "layover"
-                ],
-                "BlockRef": "MTA NYCT_MV_H2-Weekday_H_MV_34620_M4-435",
-                "VehicleRef": "MTA NYCT_4002",
-                "MonitoredCall": {
-                  "AimedArrivalTime": "2022-01-17T16:23:34.715-05:00",
-                  "ExpectedArrivalTime": "2022-01-17T16:00:46.158-05:00",
-                  "ArrivalProximityText": "0.5 miles away",
-                  "ExpectedDepartureTime": "2022-01-17T16:00:46.158-05:00",
-                  "DistanceFromStop": 860,
-                  "NumberOfStopsAway": 3,
-                  "StopPointRef": "MTA_400561",
-                  "VisitNumber": 1,
-                  "StopPointName": [
-                    "MADISON AV/E 42 ST"
-                  ]
-                }
-              },
-              "RecordedAtTime": "2022-01-17T15:55:13.000-05:00"
-            },
-            {
-              "MonitoredVehicleJourney": {
-                "LineRef": "MTA NYCT_Q32",
-                "DirectionRef": "0",
-                "FramedVehicleJourneyRef": {
-                  "DataFrameRef": "2022-01-17",
-                  "DatedVehicleJourneyRef": "MTA NYCT_CS_H2-Weekday-094500_MISC_443"
-                },
-                "JourneyPatternRef": "MTA_Q320054",
-                "PublishedLineName": [
-                  "Q32"
-                ],
-                "OperatorRef": "MTA NYCT",
-                "OriginRef": "MTA_400552",
-                "DestinationRef": "MTA_503582",
-                "DestinationName": [
-                  "JACKSON HTS NORTHERN-81 ST via ROOSEVELT"
-                ],
-                "SituationRef": [
-                  {
-                    "SituationSimpleRef": "MTABC_lmm:planned_work:2684"
-                  }
-                ],
-                "Monitored": true,
-                "VehicleLocation": {
-                  "Longitude": -73.989557,
-                  "Latitude": 40.748865
-                },
-                "Bearing": 336.6812,
-                "ProgressRate": "normalProgress",
-                "BlockRef": "MTA NYCT_CS_H2-Weekday_H_CS_49740_MISC-443",
-                "VehicleRef": "MTA NYCT_7413",
-                "MonitoredCall": {
-                  "AimedArrivalTime": "2022-01-17T15:56:49.719-05:00",
-                  "ExpectedArrivalTime": "2022-01-17T16:03:19.776-05:00",
-                  "ArrivalProximityText": "0.9 miles away",
-                  "ExpectedDepartureTime": "2022-01-17T16:03:19.776-05:00",
-                  "DistanceFromStop": 1423,
-                  "NumberOfStopsAway": 6,
-                  "StopPointRef": "MTA_400561",
-                  "VisitNumber": 1,
-                  "StopPointName": [
-                    "MADISON AV/E 42 ST"
-                  ]
-                }
-              },
-              "RecordedAtTime": "2022-01-17T15:55:03.000-05:00"
+              "RecordedAtTime": "2023-01-02T13:38:38.010-05:00"
             },
             {
               "MonitoredVehicleJourney": {
                 "LineRef": "MTA NYCT_M1",
                 "DirectionRef": "0",
                 "FramedVehicleJourneyRef": {
-                  "DataFrameRef": "2022-01-17",
-                  "DatedVehicleJourneyRef": "MTA NYCT_OF_H2-Weekday-094500_M1_133"
+                  "DataFrameRef": "2023-01-02",
+                  "DatedVehicleJourneyRef": "MTA NYCT_OF_D2-Saturday-080100_M1_120"
                 },
-                "JourneyPatternRef": "MTA_M010006",
+                "JourneyPatternRef": "MTA_M010024",
                 "PublishedLineName": [
                   "M1"
                 ],
                 "OperatorRef": "MTA NYCT",
-                "OriginRef": "MTA_400001",
+                "OriginRef": "MTA_903130",
                 "DestinationRef": "MTA_803003",
                 "DestinationName": [
                   "HARLEM 147 ST via MADISON AV"
                 ],
                 "SituationRef": [
                   {
-                    "SituationSimpleRef": "MTA NYCT_lmm:alert:121951"
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7731"
                   },
                   {
-                    "SituationSimpleRef": "MTABC_lmm:planned_work:2684"
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:4552"
                   },
                   {
-                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:2672"
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7484"
                   }
                 ],
                 "Monitored": true,
                 "VehicleLocation": {
-                  "Longitude": -73.985908,
-                  "Latitude": 40.741668
+                  "Longitude": -73.986795,
+                  "Latitude": 40.742037
                 },
                 "Bearing": 157.44176,
                 "ProgressRate": "normalProgress",
-                "BlockRef": "MTA NYCT_OF_H2-Weekday_H_OF_24960_M1-111",
-                "VehicleRef": "MTA NYCT_9576",
+                "BlockRef": "MTA NYCT_OF_D2-Saturday_A_OF_42240_M1-120",
+                "VehicleRef": "MTA NYCT_9471",
                 "MonitoredCall": {
-                  "AimedArrivalTime": "2022-01-17T16:08:47.725-05:00",
-                  "ExpectedArrivalTime": "2022-01-17T16:05:53.960-05:00",
-                  "ArrivalProximityText": "1.0 miles away",
-                  "ExpectedDepartureTime": "2022-01-17T16:05:53.960-05:00",
-                  "DistanceFromStop": 1537,
+                  "AimedArrivalTime": "2023-01-02T13:43:52.519-05:00",
+                  "ExpectedArrivalTime": "2023-01-02T13:46:52.601-05:00",
+                  "ArrivalProximityText": "0.9 miles away",
+                  "ExpectedDepartureTime": "2023-01-02T13:46:52.601-05:00",
+                  "DistanceFromStop": 1451,
                   "NumberOfStopsAway": 5,
                   "StopPointRef": "MTA_400561",
                   "VisitNumber": 1,
@@ -416,17 +337,17 @@
                   ]
                 }
               },
-              "RecordedAtTime": "2022-01-17T15:54:56.922-05:00"
+              "RecordedAtTime": "2023-01-02T13:38:40.625-05:00"
             },
             {
               "MonitoredVehicleJourney": {
                 "LineRef": "MTA NYCT_Q32",
                 "DirectionRef": "0",
                 "FramedVehicleJourneyRef": {
-                  "DataFrameRef": "2022-01-17",
-                  "DatedVehicleJourneyRef": "MTA NYCT_CS_H2-Weekday-095700_MISC_442"
+                  "DataFrameRef": "2023-01-02",
+                  "DatedVehicleJourneyRef": "MTA NYCT_CS_D2-Saturday-083300_MISC_415"
                 },
-                "JourneyPatternRef": "MTA_Q320054",
+                "JourneyPatternRef": "MTA_Q320059",
                 "PublishedLineName": [
                   "Q32"
                 ],
@@ -436,30 +357,36 @@
                 "DestinationName": [
                   "JACKSON HTS NORTHERN-81 ST via ROOSEVELT"
                 ],
-                "OriginAimedDepartureTime": "2022-01-17T15:57:00.000-05:00",
+                "OriginAimedDepartureTime": "2023-01-02T13:53:00.000-05:00",
                 "SituationRef": [
                   {
-                    "SituationSimpleRef": "MTABC_lmm:planned_work:2684"
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7731"
+                  },
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:4551"
+                  },
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7484"
                   }
                 ],
                 "Monitored": true,
                 "VehicleLocation": {
-                  "Longitude": -73.991046,
-                  "Latitude": 40.749485
+                  "Longitude": -73.991388,
+                  "Latitude": 40.749898
                 },
-                "Bearing": 338.21863,
+                "Bearing": 235.06906,
                 "ProgressRate": "noProgress",
                 "ProgressStatus": [
                   "layover,prevTrip"
                 ],
-                "BlockRef": "MTA NYCT_CS_H2-Weekday_H_CS_50460_MISC-442",
-                "VehicleRef": "MTA NYCT_4680",
+                "BlockRef": "MTA NYCT_CS_D2-Saturday_A_CS_43620_MISC-415",
+                "VehicleRef": "MTA NYCT_7393",
                 "MonitoredCall": {
-                  "AimedArrivalTime": "2022-01-17T16:08:49.729-05:00",
-                  "ExpectedArrivalTime": "2022-01-17T16:08:24.649-05:00",
+                  "AimedArrivalTime": "2023-01-02T14:03:08.574-05:00",
+                  "ExpectedArrivalTime": "2023-01-02T13:59:42.461-05:00",
                   "ArrivalProximityText": "1.0 miles away",
-                  "ExpectedDepartureTime": "2022-01-17T16:08:24.649-05:00",
-                  "DistanceFromStop": 1566,
+                  "ExpectedDepartureTime": "2023-01-02T13:59:42.461-05:00",
+                  "DistanceFromStop": 1640,
                   "NumberOfStopsAway": 7,
                   "StopPointRef": "MTA_400561",
                   "VisitNumber": 1,
@@ -468,105 +395,56 @@
                   ]
                 }
               },
-              "RecordedAtTime": "2022-01-17T15:54:54.000-05:00"
-            },
-            {
-              "MonitoredVehicleJourney": {
-                "LineRef": "MTA NYCT_Q32",
-                "DirectionRef": "0",
-                "FramedVehicleJourneyRef": {
-                  "DataFrameRef": "2022-01-17",
-                  "DatedVehicleJourneyRef": "MTA NYCT_CS_H2-Weekday-096900_MISC_435"
-                },
-                "JourneyPatternRef": "MTA_Q320054",
-                "PublishedLineName": [
-                  "Q32"
-                ],
-                "OperatorRef": "MTA NYCT",
-                "OriginRef": "MTA_400552",
-                "DestinationRef": "MTA_503582",
-                "DestinationName": [
-                  "JACKSON HTS NORTHERN-81 ST via ROOSEVELT"
-                ],
-                "OriginAimedDepartureTime": "2022-01-17T16:09:00.000-05:00",
-                "SituationRef": [
-                  {
-                    "SituationSimpleRef": "MTABC_lmm:planned_work:2684"
-                  }
-                ],
-                "Monitored": true,
-                "VehicleLocation": {
-                  "Longitude": -73.991134,
-                  "Latitude": 40.74952
-                },
-                "Bearing": 338.21863,
-                "ProgressRate": "noProgress",
-                "ProgressStatus": [
-                  "layover,prevTrip"
-                ],
-                "BlockRef": "MTA NYCT_CS_H2-Weekday_H_CS_51180_MISC-435",
-                "VehicleRef": "MTA NYCT_7436",
-                "MonitoredCall": {
-                  "AimedArrivalTime": "2022-01-17T16:20:49.733-05:00",
-                  "ExpectedArrivalTime": "2022-01-17T16:17:30.649-05:00",
-                  "ArrivalProximityText": "1.0 miles away",
-                  "ExpectedDepartureTime": "2022-01-17T16:17:30.649-05:00",
-                  "DistanceFromStop": 1575,
-                  "NumberOfStopsAway": 7,
-                  "StopPointRef": "MTA_400561",
-                  "VisitNumber": 1,
-                  "StopPointName": [
-                    "MADISON AV/E 42 ST"
-                  ]
-                }
-              },
-              "RecordedAtTime": "2022-01-17T15:55:00.000-05:00"
+              "RecordedAtTime": "2023-01-02T13:38:47.000-05:00"
             },
             {
               "MonitoredVehicleJourney": {
                 "LineRef": "MTA NYCT_M4",
                 "DirectionRef": "0",
                 "FramedVehicleJourneyRef": {
-                  "DataFrameRef": "2022-01-17",
-                  "DatedVehicleJourneyRef": "MTA NYCT_MV_H2-Weekday-099300_M4_422"
+                  "DataFrameRef": "2023-01-02",
+                  "DatedVehicleJourneyRef": "MTA NYCT_MV_D2-Saturday-083200_M4_422"
                 },
-                "JourneyPatternRef": "MTA_M040061",
+                "JourneyPatternRef": "MTA_M040077",
                 "PublishedLineName": [
                   "M4"
                 ],
                 "OperatorRef": "MTA NYCT",
                 "OriginRef": "MTA_400353",
-                "DestinationRef": "MTA_400636",
+                "DestinationRef": "MTA_803067",
                 "DestinationName": [
-                  "WSHNGTN HTS CABRINI via MADISON via BWAY"
+                  "WSHNGTN HTS CLOISTRS via MADISN via BWAY"
                 ],
-                "OriginAimedDepartureTime": "2022-01-17T16:33:00.000-05:00",
+                "OriginAimedDepartureTime": "2023-01-02T13:52:00.000-05:00",
                 "SituationRef": [
                   {
-                    "SituationSimpleRef": "MTABC_lmm:planned_work:2684"
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:4553"
                   },
                   {
-                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:2672"
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7731"
+                  },
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7484"
                   }
                 ],
                 "Monitored": true,
                 "VehicleLocation": {
-                  "Longitude": -73.981308,
-                  "Latitude": 40.752889
+                  "Longitude": -73.981396,
+                  "Latitude": 40.752776
                 },
-                "Bearing": 233.91856,
+                "Bearing": 233.1301,
                 "ProgressRate": "normalProgress",
                 "ProgressStatus": [
                   "prevTrip"
                 ],
-                "BlockRef": "MTA NYCT_MV_H2-Weekday_H_MV_19200_M4-402",
-                "VehicleRef": "MTA NYCT_3870",
+                "BlockRef": "MTA NYCT_MV_D2-Saturday_A_MV_20820_M4-402",
+                "VehicleRef": "MTA NYCT_9428",
                 "MonitoredCall": {
-                  "AimedArrivalTime": "2022-01-17T16:41:34.766-05:00",
-                  "ExpectedArrivalTime": "2022-01-17T16:38:43.666-05:00",
+                  "AimedArrivalTime": "2023-01-02T13:58:00.554-05:00",
+                  "ExpectedArrivalTime": "2023-01-02T13:56:30.606-05:00",
                   "ArrivalProximityText": "1.1 miles away",
-                  "ExpectedDepartureTime": "2022-01-17T16:38:43.666-05:00",
-                  "DistanceFromStop": 1761,
+                  "ExpectedDepartureTime": "2023-01-02T13:56:30.606-05:00",
+                  "DistanceFromStop": 1747,
                   "NumberOfStopsAway": 4,
                   "StopPointRef": "MTA_400561",
                   "VisitNumber": 1,
@@ -575,17 +453,17 @@
                   ]
                 }
               },
-              "RecordedAtTime": "2022-01-17T15:55:11.000-05:00"
+              "RecordedAtTime": "2023-01-02T13:38:39.589-05:00"
             },
             {
               "MonitoredVehicleJourney": {
                 "LineRef": "MTA NYCT_Q32",
                 "DirectionRef": "0",
                 "FramedVehicleJourneyRef": {
-                  "DataFrameRef": "2022-01-17",
-                  "DatedVehicleJourneyRef": "MTA NYCT_CS_H2-Weekday-098100_MISC_422"
+                  "DataFrameRef": "2023-01-02",
+                  "DatedVehicleJourneyRef": "MTA NYCT_CS_D2-Saturday-084500_MISC_413"
                 },
-                "JourneyPatternRef": "MTA_Q320054",
+                "JourneyPatternRef": "MTA_Q320059",
                 "PublishedLineName": [
                   "Q32"
                 ],
@@ -595,30 +473,36 @@
                 "DestinationName": [
                   "JACKSON HTS NORTHERN-81 ST via ROOSEVELT"
                 ],
-                "OriginAimedDepartureTime": "2022-01-17T16:21:00.000-05:00",
+                "OriginAimedDepartureTime": "2023-01-02T14:05:00.000-05:00",
                 "SituationRef": [
                   {
-                    "SituationSimpleRef": "MTABC_lmm:planned_work:2684"
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7731"
+                  },
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:4551"
+                  },
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7484"
                   }
                 ],
                 "Monitored": true,
                 "VehicleLocation": {
-                  "Longitude": -73.989601,
-                  "Latitude": 40.752313
+                  "Longitude": -73.989189,
+                  "Latitude": 40.752868
                 },
-                "Bearing": 234.24611,
+                "Bearing": 157.33229,
                 "ProgressRate": "normalProgress",
                 "ProgressStatus": [
                   "prevTrip"
                 ],
-                "BlockRef": "MTA NYCT_CS_H2-Weekday_H_CS_51900_MISC-422",
-                "VehicleRef": "MTA NYCT_4179",
+                "BlockRef": "MTA NYCT_CS_D2-Saturday_A_CS_44220_MISC-413",
+                "VehicleRef": "MTA NYCT_7402",
                 "MonitoredCall": {
-                  "AimedArrivalTime": "2022-01-17T16:32:49.753-05:00",
-                  "ExpectedArrivalTime": "2022-01-17T16:29:30.649-05:00",
-                  "ArrivalProximityText": "1.2 miles away",
-                  "ExpectedDepartureTime": "2022-01-17T16:29:30.649-05:00",
-                  "DistanceFromStop": 1948,
+                  "AimedArrivalTime": "2023-01-02T14:15:08.593-05:00",
+                  "ExpectedArrivalTime": "2023-01-02T14:11:42.461-05:00",
+                  "ArrivalProximityText": "1.3 miles away",
+                  "ExpectedDepartureTime": "2023-01-02T14:11:42.461-05:00",
+                  "DistanceFromStop": 2020,
                   "NumberOfStopsAway": 7,
                   "StopPointRef": "MTA_400561",
                   "VisitNumber": 1,
@@ -627,53 +511,56 @@
                   ]
                 }
               },
-              "RecordedAtTime": "2022-01-17T15:54:55.000-05:00"
+              "RecordedAtTime": "2023-01-02T13:38:58.000-05:00"
             },
             {
               "MonitoredVehicleJourney": {
                 "LineRef": "MTA NYCT_M4",
                 "DirectionRef": "0",
                 "FramedVehicleJourneyRef": {
-                  "DataFrameRef": "2022-01-17",
-                  "DatedVehicleJourneyRef": "MTA NYCT_MV_H2-Weekday-098400_M5_522"
+                  "DataFrameRef": "2023-01-02",
+                  "DatedVehicleJourneyRef": "MTA NYCT_MV_D2-Saturday-084000_M4_431"
                 },
-                "JourneyPatternRef": "MTA_M040061",
+                "JourneyPatternRef": "MTA_M040077",
                 "PublishedLineName": [
                   "M4"
                 ],
                 "OperatorRef": "MTA NYCT",
                 "OriginRef": "MTA_400353",
-                "DestinationRef": "MTA_400636",
+                "DestinationRef": "MTA_803067",
                 "DestinationName": [
-                  "WSHNGTN HTS CABRINI via MADISON via BWAY"
+                  "WSHNGTN HTS CLOISTRS via MADISN via BWAY"
                 ],
-                "OriginAimedDepartureTime": "2022-01-17T16:24:00.000-05:00",
+                "OriginAimedDepartureTime": "2023-01-02T14:00:00.000-05:00",
                 "SituationRef": [
                   {
-                    "SituationSimpleRef": "MTABC_lmm:planned_work:2684"
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:4553"
                   },
                   {
-                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:2672"
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7731"
+                  },
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7484"
                   }
                 ],
                 "Monitored": true,
                 "VehicleLocation": {
-                  "Longitude": -73.979274,
-                  "Latitude": 40.755688
+                  "Longitude": -73.978875,
+                  "Latitude": 40.756233
                 },
-                "Bearing": 233.74422,
+                "Bearing": 233.87686,
                 "ProgressRate": "normalProgress",
                 "ProgressStatus": [
                   "prevTrip"
                 ],
-                "BlockRef": "MTA NYCT_MV_H2-Weekday_H_MV_21540_M4-408",
-                "VehicleRef": "MTA NYCT_4078",
+                "BlockRef": "MTA NYCT_MV_D2-Saturday_A_MV_41100_M4-431",
+                "VehicleRef": "MTA NYCT_9896",
                 "MonitoredCall": {
-                  "AimedArrivalTime": "2022-01-17T16:32:34.772-05:00",
-                  "ExpectedArrivalTime": "2022-01-17T16:29:43.666-05:00",
-                  "ArrivalProximityText": "1.3 miles away",
-                  "ExpectedDepartureTime": "2022-01-17T16:29:43.666-05:00",
-                  "DistanceFromStop": 2117,
+                  "AimedArrivalTime": "2023-01-02T14:06:00.581-05:00",
+                  "ExpectedArrivalTime": "2023-01-02T14:04:30.606-05:00",
+                  "ArrivalProximityText": "1.4 miles away",
+                  "ExpectedDepartureTime": "2023-01-02T14:04:30.606-05:00",
+                  "DistanceFromStop": 2186,
                   "NumberOfStopsAway": 4,
                   "StopPointRef": "MTA_400561",
                   "VisitNumber": 1,
@@ -682,17 +569,17 @@
                   ]
                 }
               },
-              "RecordedAtTime": "2022-01-17T15:55:02.000-05:00"
+              "RecordedAtTime": "2023-01-02T13:39:01.684-05:00"
             },
             {
               "MonitoredVehicleJourney": {
                 "LineRef": "MTA NYCT_M2",
                 "DirectionRef": "0",
                 "FramedVehicleJourneyRef": {
-                  "DataFrameRef": "2022-01-17",
-                  "DatedVehicleJourneyRef": "MTA NYCT_MV_H2-Weekday-095200_M2_234"
+                  "DataFrameRef": "2023-01-02",
+                  "DatedVehicleJourneyRef": "MTA NYCT_MV_D2-Saturday-081500_M2_211"
                 },
-                "JourneyPatternRef": "MTA_M020008",
+                "JourneyPatternRef": "MTA_M020020",
                 "PublishedLineName": [
                   "M2"
                 ],
@@ -702,31 +589,33 @@
                 "DestinationName": [
                   "LIMITED WASHINGTON HTS BROADWAY-168 ST"
                 ],
-                "OriginAimedDepartureTime": "2022-01-17T15:52:00.000-05:00",
                 "SituationRef": [
                   {
-                    "SituationSimpleRef": "MTABC_lmm:planned_work:2684"
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7731"
+                  },
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:4552"
+                  },
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7516"
                   }
                 ],
                 "Monitored": true,
                 "VehicleLocation": {
-                  "Longitude": -73.990592,
-                  "Latitude": 40.73029
+                  "Longitude": -73.989868,
+                  "Latitude": 40.734146
                 },
-                "Bearing": 73.663956,
-                "ProgressRate": "noProgress",
-                "ProgressStatus": [
-                  "layover,prevTrip"
-                ],
-                "BlockRef": "MTA NYCT_MV_H2-Weekday_H_MV_14100_M2-203",
-                "VehicleRef": "MTA NYCT_3946",
+                "Bearing": 96.340195,
+                "ProgressRate": "normalProgress",
+                "BlockRef": "MTA NYCT_MV_D2-Saturday_A_MV_22560_M2-205",
+                "VehicleRef": "MTA NYCT_9808",
                 "MonitoredCall": {
-                  "AimedArrivalTime": "2022-01-17T16:13:19.784-05:00",
-                  "ExpectedArrivalTime": "2022-01-17T16:09:04.562-05:00",
-                  "ArrivalProximityText": "1.8 miles away",
-                  "ExpectedDepartureTime": "2022-01-17T16:09:04.562-05:00",
-                  "DistanceFromStop": 2918,
-                  "NumberOfStopsAway": 5,
+                  "AimedArrivalTime": "2023-01-02T13:49:24.534-05:00",
+                  "ExpectedArrivalTime": "2023-01-02T13:51:45.437-05:00",
+                  "ArrivalProximityText": "1.6 miles away",
+                  "ExpectedDepartureTime": "2023-01-02T13:51:45.437-05:00",
+                  "DistanceFromStop": 2507,
+                  "NumberOfStopsAway": 4,
                   "StopPointRef": "MTA_400561",
                   "VisitNumber": 1,
                   "StopPointName": [
@@ -734,51 +623,60 @@
                   ]
                 }
               },
-              "RecordedAtTime": "2022-01-17T15:55:14.000-05:00"
+              "RecordedAtTime": "2023-01-02T13:39:00.344-05:00"
             },
             {
               "MonitoredVehicleJourney": {
-                "LineRef": "MTA NYCT_M2",
+                "LineRef": "MTA NYCT_M3",
                 "DirectionRef": "0",
                 "FramedVehicleJourneyRef": {
-                  "DataFrameRef": "2022-01-17",
-                  "DatedVehicleJourneyRef": "MTA NYCT_MV_H2-Weekday-097600_M2_233"
+                  "DataFrameRef": "2023-01-02",
+                  "DatedVehicleJourneyRef": "MTA NYCT_MV_D2-Saturday-082600_M3_328"
                 },
-                "JourneyPatternRef": "MTA_M020008",
+                "JourneyPatternRef": "MTA_M030031",
                 "PublishedLineName": [
-                  "M2"
+                  "M3"
                 ],
                 "OperatorRef": "MTA NYCT",
                 "OriginRef": "MTA_400001",
-                "DestinationRef": "MTA_404876",
+                "DestinationRef": "MTA_903219",
                 "DestinationName": [
-                  "LIMITED WASHINGTON HTS BROADWAY-168 ST"
+                  "FT GEORGE 193 ST via MADISON via ST NICH"
                 ],
-                "OriginAimedDepartureTime": "2022-01-17T16:16:00.000-05:00",
+                "OriginAimedDepartureTime": "2023-01-02T13:46:00.000-05:00",
                 "SituationRef": [
                   {
-                    "SituationSimpleRef": "MTABC_lmm:planned_work:2684"
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:6754"
+                  },
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7731"
+                  },
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:4552"
+                  },
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7516"
                   }
                 ],
                 "Monitored": true,
                 "VehicleLocation": {
-                  "Longitude": -73.990592,
-                  "Latitude": 40.73029
+                  "Longitude": -73.991263,
+                  "Latitude": 40.730106
                 },
-                "Bearing": 73.663956,
+                "Bearing": 337.26562,
                 "ProgressRate": "noProgress",
                 "ProgressStatus": [
                   "layover,prevTrip"
                 ],
-                "BlockRef": "MTA NYCT_MV_H2-Weekday_H_MV_49740_M2-233",
-                "VehicleRef": "MTA NYCT_4245",
+                "BlockRef": "MTA NYCT_MV_D2-Saturday_A_MV_37740_M3-328",
+                "VehicleRef": "MTA NYCT_9853",
                 "MonitoredCall": {
-                  "AimedArrivalTime": "2022-01-17T16:37:19.789-05:00",
-                  "ExpectedArrivalTime": "2022-01-17T16:33:04.562-05:00",
+                  "AimedArrivalTime": "2023-01-02T14:02:52.560-05:00",
+                  "ExpectedArrivalTime": "2023-01-02T14:00:37.083-05:00",
                   "ArrivalProximityText": "1.8 miles away",
-                  "ExpectedDepartureTime": "2022-01-17T16:33:04.562-05:00",
-                  "DistanceFromStop": 2940,
-                  "NumberOfStopsAway": 5,
+                  "ExpectedDepartureTime": "2023-01-02T14:00:37.083-05:00",
+                  "DistanceFromStop": 2876,
+                  "NumberOfStopsAway": 13,
                   "StopPointRef": "MTA_400561",
                   "VisitNumber": 1,
                   "StopPointName": [
@@ -786,17 +684,17 @@
                   ]
                 }
               },
-              "RecordedAtTime": "2022-01-17T15:55:09.000-05:00"
+              "RecordedAtTime": "2023-01-02T13:38:44.488-05:00"
             },
             {
               "MonitoredVehicleJourney": {
                 "LineRef": "MTA NYCT_M2",
                 "DirectionRef": "0",
                 "FramedVehicleJourneyRef": {
-                  "DataFrameRef": "2022-01-17",
-                  "DatedVehicleJourneyRef": "MTA NYCT_MV_H2-Weekday-096400_M2_218"
+                  "DataFrameRef": "2023-01-02",
+                  "DatedVehicleJourneyRef": "MTA NYCT_MV_D2-Saturday-082800_M2_212"
                 },
-                "JourneyPatternRef": "MTA_M020008",
+                "JourneyPatternRef": "MTA_M020020",
                 "PublishedLineName": [
                   "M2"
                 ],
@@ -806,30 +704,36 @@
                 "DestinationName": [
                   "LIMITED WASHINGTON HTS BROADWAY-168 ST"
                 ],
-                "OriginAimedDepartureTime": "2022-01-17T16:04:00.000-05:00",
+                "OriginAimedDepartureTime": "2023-01-02T13:48:00.000-05:00",
                 "SituationRef": [
                   {
-                    "SituationSimpleRef": "MTABC_lmm:planned_work:2684"
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7731"
+                  },
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:4552"
+                  },
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7516"
                   }
                 ],
                 "Monitored": true,
                 "VehicleLocation": {
-                  "Longitude": -73.990638,
-                  "Latitude": 40.730136
+                  "Longitude": -73.990652,
+                  "Latitude": 40.73009
                 },
                 "Bearing": 73.00918,
                 "ProgressRate": "noProgress",
                 "ProgressStatus": [
                   "layover,prevTrip"
                 ],
-                "BlockRef": "MTA NYCT_MV_H2-Weekday_H_MV_20820_M2-206",
-                "VehicleRef": "MTA NYCT_3951",
+                "BlockRef": "MTA NYCT_MV_D2-Saturday_A_MV_15660_M2-203",
+                "VehicleRef": "MTA NYCT_9451",
                 "MonitoredCall": {
-                  "AimedArrivalTime": "2022-01-17T16:25:19.746-05:00",
-                  "ExpectedArrivalTime": "2022-01-17T16:21:04.562-05:00",
+                  "AimedArrivalTime": "2023-01-02T14:02:24.567-05:00",
+                  "ExpectedArrivalTime": "2023-01-02T14:01:54.789-05:00",
                   "ArrivalProximityText": "1.8 miles away",
-                  "ExpectedDepartureTime": "2022-01-17T16:21:04.562-05:00",
-                  "DistanceFromStop": 2958,
+                  "ExpectedDepartureTime": "2023-01-02T14:01:54.789-05:00",
+                  "DistanceFromStop": 2964,
                   "NumberOfStopsAway": 5,
                   "StopPointRef": "MTA_400561",
                   "VisitNumber": 1,
@@ -838,17 +742,17 @@
                   ]
                 }
               },
-              "RecordedAtTime": "2022-01-17T15:55:14.000-05:00"
+              "RecordedAtTime": "2023-01-02T13:38:38.978-05:00"
             },
             {
               "MonitoredVehicleJourney": {
                 "LineRef": "MTA NYCT_M3",
                 "DirectionRef": "0",
                 "FramedVehicleJourneyRef": {
-                  "DataFrameRef": "2022-01-17",
-                  "DatedVehicleJourneyRef": "MTA NYCT_MV_H2-Weekday-096500_M2_213"
+                  "DataFrameRef": "2023-01-02",
+                  "DatedVehicleJourneyRef": "MTA NYCT_MV_D2-Saturday-081800_M3_311"
                 },
-                "JourneyPatternRef": "MTA_M030006",
+                "JourneyPatternRef": "MTA_M030031",
                 "PublishedLineName": [
                   "M3"
                 ],
@@ -858,30 +762,39 @@
                 "DestinationName": [
                   "FT GEORGE 193 ST via MADISON via ST NICH"
                 ],
-                "OriginAimedDepartureTime": "2022-01-17T16:05:00.000-05:00",
+                "OriginAimedDepartureTime": "2023-01-02T13:38:00.000-05:00",
                 "SituationRef": [
                   {
-                    "SituationSimpleRef": "MTABC_lmm:planned_work:2684"
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:6754"
+                  },
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7731"
+                  },
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:4552"
+                  },
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7516"
                   }
                 ],
                 "Monitored": true,
                 "VehicleLocation": {
-                  "Longitude": -73.991289,
-                  "Latitude": 40.730117
+                  "Longitude": -73.991291,
+                  "Latitude": 40.730118
                 },
                 "Bearing": 337.26562,
                 "ProgressRate": "noProgress",
                 "ProgressStatus": [
                   "layover,prevTrip"
                 ],
-                "BlockRef": "MTA NYCT_MV_H2-Weekday_H_MV_19800_M3-303",
-                "VehicleRef": "MTA NYCT_4008",
+                "BlockRef": "MTA NYCT_MV_D2-Saturday_A_MV_37440_M3-327",
+                "VehicleRef": "MTA NYCT_9459",
                 "MonitoredCall": {
-                  "AimedArrivalTime": "2022-01-17T16:28:47.759-05:00",
-                  "ExpectedArrivalTime": "2022-01-17T16:22:58.818-05:00",
+                  "AimedArrivalTime": "2023-01-02T13:54:52.547-05:00",
+                  "ExpectedArrivalTime": "2023-01-02T13:58:43.093-05:00",
                   "ArrivalProximityText": "1.9 miles away",
-                  "ExpectedDepartureTime": "2022-01-17T16:22:58.818-05:00",
-                  "DistanceFromStop": 2981,
+                  "ExpectedDepartureTime": "2023-01-02T13:58:43.093-05:00",
+                  "DistanceFromStop": 2982,
                   "NumberOfStopsAway": 13,
                   "StopPointRef": "MTA_400561",
                   "VisitNumber": 1,
@@ -890,121 +803,17 @@
                   ]
                 }
               },
-              "RecordedAtTime": "2022-01-17T15:55:06.000-05:00"
-            },
-            {
-              "MonitoredVehicleJourney": {
-                "LineRef": "MTA NYCT_M3",
-                "DirectionRef": "0",
-                "FramedVehicleJourneyRef": {
-                  "DataFrameRef": "2022-01-17",
-                  "DatedVehicleJourneyRef": "MTA NYCT_MV_H2-Weekday-097700_M2_220"
-                },
-                "JourneyPatternRef": "MTA_M030006",
-                "PublishedLineName": [
-                  "M3"
-                ],
-                "OperatorRef": "MTA NYCT",
-                "OriginRef": "MTA_400001",
-                "DestinationRef": "MTA_903219",
-                "DestinationName": [
-                  "FT GEORGE 193 ST via MADISON via ST NICH"
-                ],
-                "OriginAimedDepartureTime": "2022-01-17T16:17:00.000-05:00",
-                "SituationRef": [
-                  {
-                    "SituationSimpleRef": "MTABC_lmm:planned_work:2684"
-                  }
-                ],
-                "Monitored": true,
-                "VehicleLocation": {
-                  "Longitude": -73.991289,
-                  "Latitude": 40.730117
-                },
-                "Bearing": 337.26562,
-                "ProgressRate": "normalProgress",
-                "ProgressStatus": [
-                  "prevTrip"
-                ],
-                "BlockRef": "MTA NYCT_MV_H2-Weekday_H_MV_25800_M3-318",
-                "VehicleRef": "MTA NYCT_4014",
-                "MonitoredCall": {
-                  "AimedArrivalTime": "2022-01-17T16:40:47.802-05:00",
-                  "ExpectedArrivalTime": "2022-01-17T16:34:58.818-05:00",
-                  "ArrivalProximityText": "1.9 miles away",
-                  "ExpectedDepartureTime": "2022-01-17T16:34:58.818-05:00",
-                  "DistanceFromStop": 2981,
-                  "NumberOfStopsAway": 13,
-                  "StopPointRef": "MTA_400561",
-                  "VisitNumber": 1,
-                  "StopPointName": [
-                    "MADISON AV/E 42 ST"
-                  ]
-                }
-              },
-              "RecordedAtTime": "2022-01-17T15:55:07.000-05:00"
-            },
-            {
-              "MonitoredVehicleJourney": {
-                "LineRef": "MTA NYCT_Q32",
-                "DirectionRef": "0",
-                "FramedVehicleJourneyRef": {
-                  "DataFrameRef": "2022-01-17",
-                  "DatedVehicleJourneyRef": "MTA NYCT_CS_H2-Weekday-099300_Q32_760"
-                },
-                "JourneyPatternRef": "MTA_Q320054",
-                "PublishedLineName": [
-                  "Q32"
-                ],
-                "OperatorRef": "MTA NYCT",
-                "OriginRef": "MTA_400552",
-                "DestinationRef": "MTA_503582",
-                "DestinationName": [
-                  "JACKSON HTS NORTHERN-81 ST via ROOSEVELT"
-                ],
-                "OriginAimedDepartureTime": "2022-01-17T16:33:00.000-05:00",
-                "SituationRef": [
-                  {
-                    "SituationSimpleRef": "MTABC_lmm:planned_work:2684"
-                  }
-                ],
-                "Monitored": true,
-                "VehicleLocation": {
-                  "Longitude": -73.980416,
-                  "Latitude": 40.754121
-                },
-                "Bearing": 234.1423,
-                "ProgressRate": "normalProgress",
-                "ProgressStatus": [
-                  "prevTrip"
-                ],
-                "BlockRef": "MTA NYCT_CS_H2-Weekday_H_CS_52620_Q32-760",
-                "VehicleRef": "MTA NYCT_7418",
-                "MonitoredCall": {
-                  "AimedArrivalTime": "2022-01-17T16:44:49.776-05:00",
-                  "ExpectedArrivalTime": "2022-01-17T16:41:30.649-05:00",
-                  "ArrivalProximityText": "1.9 miles away",
-                  "ExpectedDepartureTime": "2022-01-17T16:41:30.649-05:00",
-                  "DistanceFromStop": 3079,
-                  "NumberOfStopsAway": 7,
-                  "StopPointRef": "MTA_400561",
-                  "VisitNumber": 1,
-                  "StopPointName": [
-                    "MADISON AV/E 42 ST"
-                  ]
-                }
-              },
-              "RecordedAtTime": "2022-01-17T15:55:09.000-05:00"
+              "RecordedAtTime": "2023-01-02T13:38:53.289-05:00"
             },
             {
               "MonitoredVehicleJourney": {
                 "LineRef": "MTA NYCT_M1",
                 "DirectionRef": "0",
                 "FramedVehicleJourneyRef": {
-                  "DataFrameRef": "2022-01-17",
-                  "DatedVehicleJourneyRef": "MTA NYCT_OF_H2-Weekday-094800_M1_117"
+                  "DataFrameRef": "2023-01-02",
+                  "DatedVehicleJourneyRef": "MTA NYCT_OF_D2-Saturday-081400_M1_121"
                 },
-                "JourneyPatternRef": "MTA_M010007",
+                "JourneyPatternRef": "MTA_M010024",
                 "PublishedLineName": [
                   "M1"
                 ],
@@ -1016,31 +825,31 @@
                 ],
                 "SituationRef": [
                   {
-                    "SituationSimpleRef": "MTA NYCT_lmm:alert:121951"
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7731"
                   },
                   {
-                    "SituationSimpleRef": "MTABC_lmm:planned_work:2684"
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:4552"
                   },
                   {
-                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:2672"
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7484"
                   }
                 ],
                 "Monitored": true,
                 "VehicleLocation": {
-                  "Longitude": -73.992957,
-                  "Latitude": 40.728085
+                  "Longitude": -73.991619,
+                  "Latitude": 40.729643
                 },
-                "Bearing": 49.36052,
+                "Bearing": 49.331207,
                 "ProgressRate": "normalProgress",
-                "BlockRef": "MTA NYCT_OF_H2-Weekday_H_OF_17040_M1-101",
-                "VehicleRef": "MTA NYCT_3893",
+                "BlockRef": "MTA NYCT_OF_D2-Saturday_A_OF_17820_M1-106",
+                "VehicleRef": "MTA NYCT_9568",
                 "MonitoredCall": {
-                  "AimedArrivalTime": "2022-01-17T16:18:47.738-05:00",
-                  "ExpectedArrivalTime": "2022-01-17T16:16:07.820-05:00",
-                  "ArrivalProximityText": "2.0 miles away",
-                  "ExpectedDepartureTime": "2022-01-17T16:16:07.820-05:00",
-                  "DistanceFromStop": 3251,
-                  "NumberOfStopsAway": 15,
+                  "AimedArrivalTime": "2023-01-02T13:56:52.541-05:00",
+                  "ExpectedArrivalTime": "2023-01-02T13:55:50.416-05:00",
+                  "ArrivalProximityText": "1.9 miles away",
+                  "ExpectedDepartureTime": "2023-01-02T13:55:50.416-05:00",
+                  "DistanceFromStop": 3045,
+                  "NumberOfStopsAway": 14,
                   "StopPointRef": "MTA_400561",
                   "VisitNumber": 1,
                   "StopPointName": [
@@ -1048,53 +857,233 @@
                   ]
                 }
               },
-              "RecordedAtTime": "2022-01-17T15:55:23.000-05:00"
+              "RecordedAtTime": "2023-01-02T13:38:55.058-05:00"
+            },
+            {
+              "MonitoredVehicleJourney": {
+                "LineRef": "MTA NYCT_Q32",
+                "DirectionRef": "0",
+                "FramedVehicleJourneyRef": {
+                  "DataFrameRef": "2023-01-02",
+                  "DatedVehicleJourneyRef": "MTA NYCT_CS_D2-Saturday-085500_MISC_416"
+                },
+                "JourneyPatternRef": "MTA_Q320059",
+                "PublishedLineName": [
+                  "Q32"
+                ],
+                "OperatorRef": "MTA NYCT",
+                "OriginRef": "MTA_400552",
+                "DestinationRef": "MTA_503582",
+                "DestinationName": [
+                  "JACKSON HTS NORTHERN-81 ST via ROOSEVELT"
+                ],
+                "OriginAimedDepartureTime": "2023-01-02T14:15:00.000-05:00",
+                "SituationRef": [
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7731"
+                  },
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:4551"
+                  },
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7484"
+                  }
+                ],
+                "Monitored": true,
+                "VehicleLocation": {
+                  "Longitude": -73.9791,
+                  "Latitude": 40.755926
+                },
+                "Bearing": 233.6955,
+                "ProgressRate": "normalProgress",
+                "ProgressStatus": [
+                  "prevTrip"
+                ],
+                "BlockRef": "MTA NYCT_CS_D2-Saturday_A_CS_44820_MISC-416",
+                "VehicleRef": "MTA NYCT_4200",
+                "MonitoredCall": {
+                  "AimedArrivalTime": "2023-01-02T14:25:08.617-05:00",
+                  "ExpectedArrivalTime": "2023-01-02T14:21:42.461-05:00",
+                  "ArrivalProximityText": "2.1 miles away",
+                  "ExpectedDepartureTime": "2023-01-02T14:21:42.461-05:00",
+                  "DistanceFromStop": 3309,
+                  "NumberOfStopsAway": 7,
+                  "StopPointRef": "MTA_400561",
+                  "VisitNumber": 1,
+                  "StopPointName": [
+                    "MADISON AV/E 42 ST"
+                  ]
+                }
+              },
+              "RecordedAtTime": "2023-01-02T13:38:48.000-05:00"
+            },
+            {
+              "MonitoredVehicleJourney": {
+                "LineRef": "MTA NYCT_M1",
+                "DirectionRef": "0",
+                "FramedVehicleJourneyRef": {
+                  "DataFrameRef": "2023-01-02",
+                  "DatedVehicleJourneyRef": "MTA NYCT_OF_D2-Saturday-083100_M1_122"
+                },
+                "JourneyPatternRef": "MTA_M010024",
+                "PublishedLineName": [
+                  "M1"
+                ],
+                "OperatorRef": "MTA NYCT",
+                "OriginRef": "MTA_903130",
+                "DestinationRef": "MTA_803003",
+                "DestinationName": [
+                  "HARLEM 147 ST via MADISON AV"
+                ],
+                "OriginAimedDepartureTime": "2023-01-02T13:51:00.000-05:00",
+                "SituationRef": [
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7731"
+                  },
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:4552"
+                  },
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7484"
+                  }
+                ],
+                "Monitored": true,
+                "VehicleLocation": {
+                  "Longitude": -73.997808,
+                  "Latitude": 40.7206
+                },
+                "Bearing": 48.97046,
+                "ProgressRate": "normalProgress",
+                "ProgressStatus": [
+                  "prevTrip"
+                ],
+                "BlockRef": "MTA NYCT_OF_D2-Saturday_A_OF_25560_M1-105",
+                "VehicleRef": "MTA NYCT_9576",
+                "MonitoredCall": {
+                  "AimedArrivalTime": "2023-01-02T14:13:52.600-05:00",
+                  "ExpectedArrivalTime": "2023-01-02T14:11:59.948-05:00",
+                  "ArrivalProximityText": "2.6 miles away",
+                  "ExpectedDepartureTime": "2023-01-02T14:11:59.948-05:00",
+                  "DistanceFromStop": 4186,
+                  "NumberOfStopsAway": 18,
+                  "StopPointRef": "MTA_400561",
+                  "VisitNumber": 1,
+                  "StopPointName": [
+                    "MADISON AV/E 42 ST"
+                  ]
+                }
+              },
+              "RecordedAtTime": "2023-01-02T13:38:44.940-05:00"
+            },
+            {
+              "MonitoredVehicleJourney": {
+                "LineRef": "MTA NYCT_M3",
+                "DirectionRef": "0",
+                "FramedVehicleJourneyRef": {
+                  "DataFrameRef": "2023-01-02",
+                  "DatedVehicleJourneyRef": "MTA NYCT_MV_D2-Saturday-083200_M3_323"
+                },
+                "JourneyPatternRef": "MTA_M030031",
+                "PublishedLineName": [
+                  "M3"
+                ],
+                "OperatorRef": "MTA NYCT",
+                "OriginRef": "MTA_400001",
+                "DestinationRef": "MTA_903219",
+                "DestinationName": [
+                  "FT GEORGE 193 ST via MADISON via ST NICH"
+                ],
+                "OriginAimedDepartureTime": "2023-01-02T13:52:00.000-05:00",
+                "SituationRef": [
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:6754"
+                  },
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7731"
+                  },
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:4552"
+                  },
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7516"
+                  }
+                ],
+                "Monitored": true,
+                "VehicleLocation": {
+                  "Longitude": -73.990266,
+                  "Latitude": 40.7406
+                },
+                "Bearing": 234.02762,
+                "ProgressRate": "normalProgress",
+                "ProgressStatus": [
+                  "prevTrip"
+                ],
+                "BlockRef": "MTA NYCT_MV_D2-Saturday_A_MV_27240_M3-312",
+                "VehicleRef": "MTA NYCT_4053",
+                "MonitoredCall": {
+                  "AimedArrivalTime": "2023-01-02T14:08:52.588-05:00",
+                  "ExpectedArrivalTime": "2023-01-02T14:06:49.083-05:00",
+                  "ArrivalProximityText": "2.8 miles away",
+                  "ExpectedDepartureTime": "2023-01-02T14:06:49.083-05:00",
+                  "DistanceFromStop": 4530,
+                  "NumberOfStopsAway": 13,
+                  "StopPointRef": "MTA_400561",
+                  "VisitNumber": 1,
+                  "StopPointName": [
+                    "MADISON AV/E 42 ST"
+                  ]
+                }
+              },
+              "RecordedAtTime": "2023-01-02T13:38:34.000-05:00"
             },
             {
               "MonitoredVehicleJourney": {
                 "LineRef": "MTA NYCT_M4",
                 "DirectionRef": "0",
                 "FramedVehicleJourneyRef": {
-                  "DataFrameRef": "2022-01-17",
-                  "DatedVehicleJourneyRef": "MTA NYCT_MV_H2-Weekday-100300_M5_523"
+                  "DataFrameRef": "2023-01-02",
+                  "DatedVehicleJourneyRef": "MTA NYCT_MV_D2-Saturday-085300_M4_418"
                 },
-                "JourneyPatternRef": "MTA_M040061",
+                "JourneyPatternRef": "MTA_M040077",
                 "PublishedLineName": [
                   "M4"
                 ],
                 "OperatorRef": "MTA NYCT",
                 "OriginRef": "MTA_400353",
-                "DestinationRef": "MTA_400636",
+                "DestinationRef": "MTA_803067",
                 "DestinationName": [
-                  "WSHNGTN HTS CABRINI via MADISON via BWAY"
+                  "WSHNGTN HTS CLOISTRS via MADISN via BWAY"
                 ],
-                "OriginAimedDepartureTime": "2022-01-17T16:43:00.000-05:00",
+                "OriginAimedDepartureTime": "2023-01-02T14:13:00.000-05:00",
                 "SituationRef": [
                   {
-                    "SituationSimpleRef": "MTABC_lmm:planned_work:2684"
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:4553"
                   },
                   {
-                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:2672"
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7731"
+                  },
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7484"
                   }
                 ],
                 "Monitored": true,
                 "VehicleLocation": {
-                  "Longitude": -73.970038,
-                  "Latitude": 40.768335
+                  "Longitude": -73.963116,
+                  "Latitude": 40.777827
                 },
-                "Bearing": 233.94583,
+                "Bearing": 233.84181,
                 "ProgressRate": "normalProgress",
                 "ProgressStatus": [
                   "prevTrip"
                 ],
-                "BlockRef": "MTA NYCT_MV_H2-Weekday_H_MV_19800_M4-404",
-                "VehicleRef": "MTA NYCT_9775",
+                "BlockRef": "MTA NYCT_MV_D2-Saturday_A_MV_41640_M4-401",
+                "VehicleRef": "MTA NYCT_9829",
                 "MonitoredCall": {
-                  "AimedArrivalTime": "2022-01-17T16:51:34.814-05:00",
-                  "ExpectedArrivalTime": "2022-01-17T16:48:43.666-05:00",
-                  "ArrivalProximityText": "2.3 miles away",
-                  "ExpectedDepartureTime": "2022-01-17T16:48:43.666-05:00",
-                  "DistanceFromStop": 3724,
+                  "AimedArrivalTime": "2023-01-02T14:19:00.607-05:00",
+                  "ExpectedArrivalTime": "2023-01-02T14:17:30.606-05:00",
+                  "ArrivalProximityText": "3.1 miles away",
+                  "ExpectedDepartureTime": "2023-01-02T14:17:30.606-05:00",
+                  "DistanceFromStop": 4930,
                   "NumberOfStopsAway": 4,
                   "StopPointRef": "MTA_400561",
                   "VisitNumber": 1,
@@ -1103,75 +1092,17 @@
                   ]
                 }
               },
-              "RecordedAtTime": "2022-01-17T15:55:01.164-05:00"
-            },
-            {
-              "MonitoredVehicleJourney": {
-                "LineRef": "MTA NYCT_M1",
-                "DirectionRef": "0",
-                "FramedVehicleJourneyRef": {
-                  "DataFrameRef": "2022-01-17",
-                  "DatedVehicleJourneyRef": "MTA NYCT_OF_H2-Weekday-096800_M1_118"
-                },
-                "JourneyPatternRef": "MTA_M010007",
-                "PublishedLineName": [
-                  "M1"
-                ],
-                "OperatorRef": "MTA NYCT",
-                "OriginRef": "MTA_903130",
-                "DestinationRef": "MTA_803003",
-                "DestinationName": [
-                  "HARLEM 147 ST via MADISON AV"
-                ],
-                "OriginAimedDepartureTime": "2022-01-17T16:08:00.000-05:00",
-                "SituationRef": [
-                  {
-                    "SituationSimpleRef": "MTA NYCT_lmm:alert:121951"
-                  },
-                  {
-                    "SituationSimpleRef": "MTABC_lmm:planned_work:2684"
-                  },
-                  {
-                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:2672"
-                  }
-                ],
-                "Monitored": true,
-                "VehicleLocation": {
-                  "Longitude": -73.99784,
-                  "Latitude": 40.720563
-                },
-                "Bearing": 48.97046,
-                "ProgressRate": "noProgress",
-                "ProgressStatus": [
-                  "layover,prevTrip"
-                ],
-                "BlockRef": "MTA NYCT_OF_H2-Weekday_H_OF_24540_M1-110",
-                "VehicleRef": "MTA NYCT_3883",
-                "MonitoredCall": {
-                  "AimedArrivalTime": "2022-01-17T16:38:47.795-05:00",
-                  "ExpectedArrivalTime": "2022-01-17T16:32:11.293-05:00",
-                  "ArrivalProximityText": "2.6 miles away",
-                  "ExpectedDepartureTime": "2022-01-17T16:32:11.293-05:00",
-                  "DistanceFromStop": 4191,
-                  "NumberOfStopsAway": 18,
-                  "StopPointRef": "MTA_400561",
-                  "VisitNumber": 1,
-                  "StopPointName": [
-                    "MADISON AV/E 42 ST"
-                  ]
-                }
-              },
-              "RecordedAtTime": "2022-01-17T15:55:15.000-05:00"
+              "RecordedAtTime": "2023-01-02T13:38:52.451-05:00"
             },
             {
               "MonitoredVehicleJourney": {
                 "LineRef": "MTA NYCT_Q32",
                 "DirectionRef": "0",
                 "FramedVehicleJourneyRef": {
-                  "DataFrameRef": "2022-01-17",
-                  "DatedVehicleJourneyRef": "MTA NYCT_CS_H2-Weekday-100500_Q32_759"
+                  "DataFrameRef": "2023-01-02",
+                  "DatedVehicleJourneyRef": "MTA NYCT_CS_D2-Saturday-086500_MISC_417"
                 },
-                "JourneyPatternRef": "MTA_Q320054",
+                "JourneyPatternRef": "MTA_Q320059",
                 "PublishedLineName": [
                   "Q32"
                 ],
@@ -1181,30 +1112,36 @@
                 "DestinationName": [
                   "JACKSON HTS NORTHERN-81 ST via ROOSEVELT"
                 ],
-                "OriginAimedDepartureTime": "2022-01-17T16:45:00.000-05:00",
+                "OriginAimedDepartureTime": "2023-01-02T14:25:00.000-05:00",
                 "SituationRef": [
                   {
-                    "SituationSimpleRef": "MTABC_lmm:planned_work:2684"
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7731"
+                  },
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:4551"
+                  },
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7484"
                   }
                 ],
                 "Monitored": true,
                 "VehicleLocation": {
-                  "Longitude": -73.968141,
-                  "Latitude": 40.763015
+                  "Longitude": -73.963633,
+                  "Latitude": 40.7609
                 },
-                "Bearing": 157.20193,
+                "Bearing": 156.0375,
                 "ProgressRate": "normalProgress",
                 "ProgressStatus": [
                   "prevTrip"
                 ],
-                "BlockRef": "MTA NYCT_CS_H2-Weekday_H_CS_53340_Q32-759",
-                "VehicleRef": "MTA NYCT_4213",
+                "BlockRef": "MTA NYCT_CS_D2-Saturday_A_CS_45420_MISC-417",
+                "VehicleRef": "MTA NYCT_8757",
                 "MonitoredCall": {
-                  "AimedArrivalTime": "2022-01-17T16:56:49.828-05:00",
-                  "ExpectedArrivalTime": "2022-01-17T16:53:30.649-05:00",
-                  "ArrivalProximityText": "3.0 miles away",
-                  "ExpectedDepartureTime": "2022-01-17T16:53:30.649-05:00",
-                  "DistanceFromStop": 4871,
+                  "AimedArrivalTime": "2023-01-02T14:35:08.646-05:00",
+                  "ExpectedArrivalTime": "2023-01-02T14:31:42.461-05:00",
+                  "ArrivalProximityText": "3.3 miles away",
+                  "ExpectedDepartureTime": "2023-01-02T14:31:42.461-05:00",
+                  "DistanceFromStop": 5325,
                   "NumberOfStopsAway": 7,
                   "StopPointRef": "MTA_400561",
                   "VisitNumber": 1,
@@ -1213,17 +1150,75 @@
                   ]
                 }
               },
-              "RecordedAtTime": "2022-01-17T15:55:18.000-05:00"
+              "RecordedAtTime": "2023-01-02T13:38:58.949-05:00"
+            },
+            {
+              "MonitoredVehicleJourney": {
+                "LineRef": "MTA NYCT_M4",
+                "DirectionRef": "0",
+                "FramedVehicleJourneyRef": {
+                  "DataFrameRef": "2023-01-02",
+                  "DatedVehicleJourneyRef": "MTA NYCT_MV_D2-Saturday-086100_M4_436"
+                },
+                "JourneyPatternRef": "MTA_M040077",
+                "PublishedLineName": [
+                  "M4"
+                ],
+                "OperatorRef": "MTA NYCT",
+                "OriginRef": "MTA_400353",
+                "DestinationRef": "MTA_803067",
+                "DestinationName": [
+                  "WSHNGTN HTS CLOISTRS via MADISN via BWAY"
+                ],
+                "OriginAimedDepartureTime": "2023-01-02T14:21:00.000-05:00",
+                "SituationRef": [
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:4553"
+                  },
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7731"
+                  },
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7484"
+                  }
+                ],
+                "Monitored": true,
+                "VehicleLocation": {
+                  "Longitude": -73.958778,
+                  "Latitude": 40.783766
+                },
+                "Bearing": 234.83527,
+                "ProgressRate": "normalProgress",
+                "ProgressStatus": [
+                  "prevTrip"
+                ],
+                "BlockRef": "MTA NYCT_MV_D2-Saturday_A_MV_21780_M4-403",
+                "VehicleRef": "MTA NYCT_9605",
+                "MonitoredCall": {
+                  "AimedArrivalTime": "2023-01-02T14:27:00.623-05:00",
+                  "ExpectedArrivalTime": "2023-01-02T14:25:30.606-05:00",
+                  "ArrivalProximityText": "3.5 miles away",
+                  "ExpectedDepartureTime": "2023-01-02T14:25:30.606-05:00",
+                  "DistanceFromStop": 5684,
+                  "NumberOfStopsAway": 4,
+                  "StopPointRef": "MTA_400561",
+                  "VisitNumber": 1,
+                  "StopPointName": [
+                    "MADISON AV/E 42 ST"
+                  ]
+                }
+              },
+              "RecordedAtTime": "2023-01-02T13:38:36.186-05:00"
             },
             {
               "MonitoredVehicleJourney": {
                 "LineRef": "MTA NYCT_M3",
                 "DirectionRef": "0",
                 "FramedVehicleJourneyRef": {
-                  "DataFrameRef": "2022-01-17",
-                  "DatedVehicleJourneyRef": "MTA NYCT_MV_H2-Weekday-098900_M3_340"
+                  "DataFrameRef": "2023-01-02",
+                  "DatedVehicleJourneyRef": "MTA NYCT_MV_D2-Saturday-084100_M3_314"
                 },
-                "JourneyPatternRef": "MTA_M030006",
+                "JourneyPatternRef": "MTA_M030031",
                 "PublishedLineName": [
                   "M3"
                 ],
@@ -1233,30 +1228,39 @@
                 "DestinationName": [
                   "FT GEORGE 193 ST via MADISON via ST NICH"
                 ],
-                "OriginAimedDepartureTime": "2022-01-17T16:29:00.000-05:00",
+                "OriginAimedDepartureTime": "2023-01-02T14:01:00.000-05:00",
                 "SituationRef": [
                   {
-                    "SituationSimpleRef": "MTABC_lmm:planned_work:2684"
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:6754"
+                  },
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7731"
+                  },
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:4552"
+                  },
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7516"
                   }
                 ],
                 "Monitored": true,
                 "VehicleLocation": {
-                  "Longitude": -73.987404,
-                  "Latitude": 40.744527
+                  "Longitude": -73.97736,
+                  "Latitude": 40.758299
                 },
-                "Bearing": 234.02762,
+                "Bearing": 235.40771,
                 "ProgressRate": "normalProgress",
                 "ProgressStatus": [
                   "prevTrip"
                 ],
-                "BlockRef": "MTA NYCT_MV_H2-Weekday_H_MV_20400_M3-304",
-                "VehicleRef": "MTA NYCT_9680",
+                "BlockRef": "MTA NYCT_MV_D2-Saturday_A_MV_38520_M3-314",
+                "VehicleRef": "MTA NYCT_9608",
                 "MonitoredCall": {
-                  "AimedArrivalTime": "2022-01-17T16:52:47.824-05:00",
-                  "ExpectedArrivalTime": "2022-01-17T16:46:58.818-05:00",
-                  "ArrivalProximityText": "3.1 miles away",
-                  "ExpectedDepartureTime": "2022-01-17T16:46:58.818-05:00",
-                  "DistanceFromStop": 5029,
+                  "AimedArrivalTime": "2023-01-02T14:17:52.613-05:00",
+                  "ExpectedArrivalTime": "2023-01-02T14:19:52.654-05:00",
+                  "ArrivalProximityText": "4.2 miles away",
+                  "ExpectedDepartureTime": "2023-01-02T14:19:52.654-05:00",
+                  "DistanceFromStop": 6779,
                   "NumberOfStopsAway": 13,
                   "StopPointRef": "MTA_400561",
                   "VisitNumber": 1,
@@ -1265,17 +1269,17 @@
                   ]
                 }
               },
-              "RecordedAtTime": "2022-01-17T15:55:17.822-05:00"
+              "RecordedAtTime": "2023-01-02T13:38:52.000-05:00"
             },
             {
               "MonitoredVehicleJourney": {
                 "LineRef": "MTA NYCT_M1",
                 "DirectionRef": "0",
                 "FramedVehicleJourneyRef": {
-                  "DataFrameRef": "2022-01-17",
-                  "DatedVehicleJourneyRef": "MTA NYCT_OF_H2-Weekday-097800_M1_132"
+                  "DataFrameRef": "2023-01-02",
+                  "DatedVehicleJourneyRef": "MTA NYCT_OF_D2-Saturday-084900_M1_114"
                 },
-                "JourneyPatternRef": "MTA_M010007",
+                "JourneyPatternRef": "MTA_M010024",
                 "PublishedLineName": [
                   "M1"
                 ],
@@ -1285,36 +1289,36 @@
                 "DestinationName": [
                   "HARLEM 147 ST via MADISON AV"
                 ],
-                "OriginAimedDepartureTime": "2022-01-17T16:18:00.000-05:00",
+                "OriginAimedDepartureTime": "2023-01-02T14:09:00.000-05:00",
                 "SituationRef": [
                   {
-                    "SituationSimpleRef": "MTA NYCT_lmm:alert:121951"
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7731"
                   },
                   {
-                    "SituationSimpleRef": "MTABC_lmm:planned_work:2684"
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:4552"
                   },
                   {
-                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:2672"
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7484"
                   }
                 ],
                 "Monitored": true,
                 "VehicleLocation": {
-                  "Longitude": -73.995824,
-                  "Latitude": 40.726549
+                  "Longitude": -73.990845,
+                  "Latitude": 40.739794
                 },
-                "Bearing": 229.18492,
+                "Bearing": 234.55429,
                 "ProgressRate": "normalProgress",
                 "ProgressStatus": [
                   "prevTrip"
                 ],
-                "BlockRef": "MTA NYCT_OF_H2-Weekday_H_OF_18240_M1-102",
-                "VehicleRef": "MTA NYCT_6761",
+                "BlockRef": "MTA NYCT_OF_D2-Saturday_A_OF_45060_M1-114",
+                "VehicleRef": "MTA NYCT_3889",
                 "MonitoredCall": {
-                  "AimedArrivalTime": "2022-01-17T16:48:47.808-05:00",
-                  "ExpectedArrivalTime": "2022-01-17T16:42:11.293-05:00",
-                  "ArrivalProximityText": "3.3 miles away",
-                  "ExpectedDepartureTime": "2022-01-17T16:42:11.293-05:00",
-                  "DistanceFromStop": 5265,
+                  "AimedArrivalTime": "2023-01-02T14:31:52.635-05:00",
+                  "ExpectedArrivalTime": "2023-01-02T14:30:07.832-05:00",
+                  "ArrivalProximityText": "4.4 miles away",
+                  "ExpectedDepartureTime": "2023-01-02T14:30:07.832-05:00",
+                  "DistanceFromStop": 7138,
                   "NumberOfStopsAway": 18,
                   "StopPointRef": "MTA_400561",
                   "VisitNumber": 1,
@@ -1323,56 +1327,117 @@
                   ]
                 }
               },
-              "RecordedAtTime": "2022-01-17T15:54:56.000-05:00"
+              "RecordedAtTime": "2023-01-02T13:38:56.000-05:00"
             },
             {
               "MonitoredVehicleJourney": {
-                "LineRef": "MTA NYCT_M1",
+                "LineRef": "MTA NYCT_M4",
                 "DirectionRef": "0",
                 "FramedVehicleJourneyRef": {
-                  "DataFrameRef": "2022-01-17",
-                  "DatedVehicleJourneyRef": "MTA NYCT_OF_H2-Weekday-099300_M1_134"
+                  "DataFrameRef": "2023-01-02",
+                  "DatedVehicleJourneyRef": "MTA NYCT_MV_D2-Saturday-087200_M4_433"
                 },
-                "JourneyPatternRef": "MTA_M010006",
+                "JourneyPatternRef": "MTA_M040077",
                 "PublishedLineName": [
-                  "M1"
+                  "M4"
                 ],
                 "OperatorRef": "MTA NYCT",
-                "OriginRef": "MTA_400001",
-                "DestinationRef": "MTA_803003",
+                "OriginRef": "MTA_400353",
+                "DestinationRef": "MTA_803067",
                 "DestinationName": [
-                  "HARLEM 147 ST via MADISON AV"
+                  "WSHNGTN HTS CLOISTRS via MADISN via BWAY"
                 ],
-                "OriginAimedDepartureTime": "2022-01-17T16:33:00.000-05:00",
+                "OriginAimedDepartureTime": "2023-01-02T14:32:00.000-05:00",
                 "SituationRef": [
                   {
-                    "SituationSimpleRef": "MTA NYCT_lmm:alert:121951"
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:4553"
                   },
                   {
-                    "SituationSimpleRef": "MTABC_lmm:planned_work:2684"
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7731"
                   },
                   {
-                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:2672"
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7484"
                   }
                 ],
                 "Monitored": true,
                 "VehicleLocation": {
-                  "Longitude": -73.98624,
-                  "Latitude": 40.746123
+                  "Longitude": -73.950386,
+                  "Latitude": 40.795271
                 },
-                "Bearing": 234.63754,
+                "Bearing": 233.8172,
                 "ProgressRate": "normalProgress",
                 "ProgressStatus": [
                   "prevTrip"
                 ],
-                "BlockRef": "MTA NYCT_OF_H2-Weekday_H_OF_52500_M1-134",
-                "VehicleRef": "MTA NYCT_4364",
+                "BlockRef": "MTA NYCT_MV_D2-Saturday_A_MV_42600_M4-433",
+                "VehicleRef": "MTA NYCT_9883",
                 "MonitoredCall": {
-                  "AimedArrivalTime": "2022-01-17T16:56:47.835-05:00",
-                  "ExpectedArrivalTime": "2022-01-17T16:51:20.819-05:00",
-                  "ArrivalProximityText": "3.3 miles away",
-                  "ExpectedDepartureTime": "2022-01-17T16:51:20.819-05:00",
-                  "DistanceFromStop": 5294,
+                  "AimedArrivalTime": "2023-01-02T14:38:00.653-05:00",
+                  "ExpectedArrivalTime": "2023-01-02T14:36:30.606-05:00",
+                  "ArrivalProximityText": "4.4 miles away",
+                  "ExpectedDepartureTime": "2023-01-02T14:36:30.606-05:00",
+                  "DistanceFromStop": 7146,
+                  "NumberOfStopsAway": 4,
+                  "StopPointRef": "MTA_400561",
+                  "VisitNumber": 1,
+                  "StopPointName": [
+                    "MADISON AV/E 42 ST"
+                  ]
+                }
+              },
+              "RecordedAtTime": "2023-01-02T13:38:53.663-05:00"
+            },
+            {
+              "MonitoredVehicleJourney": {
+                "LineRef": "MTA NYCT_M3",
+                "DirectionRef": "0",
+                "FramedVehicleJourneyRef": {
+                  "DataFrameRef": "2023-01-02",
+                  "DatedVehicleJourneyRef": "MTA NYCT_MV_D2-Saturday-085700_M3_334"
+                },
+                "JourneyPatternRef": "MTA_M030031",
+                "PublishedLineName": [
+                  "M3"
+                ],
+                "OperatorRef": "MTA NYCT",
+                "OriginRef": "MTA_400001",
+                "DestinationRef": "MTA_903219",
+                "DestinationName": [
+                  "FT GEORGE 193 ST via MADISON via ST NICH"
+                ],
+                "OriginAimedDepartureTime": "2023-01-02T14:17:00.000-05:00",
+                "SituationRef": [
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:6754"
+                  },
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7731"
+                  },
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:4552"
+                  },
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7516"
+                  }
+                ],
+                "Monitored": true,
+                "VehicleLocation": {
+                  "Longitude": -73.973862,
+                  "Latitude": 40.763088
+                },
+                "Bearing": 237.52881,
+                "ProgressRate": "normalProgress",
+                "ProgressStatus": [
+                  "prevTrip"
+                ],
+                "BlockRef": "MTA NYCT_MV_D2-Saturday_A_MV_39420_M3-303",
+                "VehicleRef": "MTA NYCT_9898",
+                "MonitoredCall": {
+                  "AimedArrivalTime": "2023-01-02T14:33:52.642-05:00",
+                  "ExpectedArrivalTime": "2023-01-02T14:31:49.083-05:00",
+                  "ArrivalProximityText": "4.6 miles away",
+                  "ExpectedDepartureTime": "2023-01-02T14:31:49.083-05:00",
+                  "DistanceFromStop": 7387,
                   "NumberOfStopsAway": 13,
                   "StopPointRef": "MTA_400561",
                   "VisitNumber": 1,
@@ -1381,17 +1446,17 @@
                   ]
                 }
               },
-              "RecordedAtTime": "2022-01-17T15:55:16.000-05:00"
+              "RecordedAtTime": "2023-01-02T13:39:03.239-05:00"
             },
             {
               "MonitoredVehicleJourney": {
                 "LineRef": "MTA NYCT_M2",
                 "DirectionRef": "0",
                 "FramedVehicleJourneyRef": {
-                  "DataFrameRef": "2022-01-17",
-                  "DatedVehicleJourneyRef": "MTA NYCT_MV_H2-Weekday-100000_M2_236"
+                  "DataFrameRef": "2023-01-02",
+                  "DatedVehicleJourneyRef": "MTA NYCT_MV_D2-Saturday-085700_M2_205"
                 },
-                "JourneyPatternRef": "MTA_M020008",
+                "JourneyPatternRef": "MTA_M020020",
                 "PublishedLineName": [
                   "M2"
                 ],
@@ -1401,30 +1466,36 @@
                 "DestinationName": [
                   "LIMITED WASHINGTON HTS BROADWAY-168 ST"
                 ],
-                "OriginAimedDepartureTime": "2022-01-17T16:40:00.000-05:00",
+                "OriginAimedDepartureTime": "2023-01-02T14:17:00.000-05:00",
                 "SituationRef": [
                   {
-                    "SituationSimpleRef": "MTABC_lmm:planned_work:2684"
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7731"
+                  },
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:4552"
+                  },
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7516"
                   }
                 ],
                 "Monitored": true,
                 "VehicleLocation": {
-                  "Longitude": -73.984204,
-                  "Latitude": 40.748918
+                  "Longitude": -73.969692,
+                  "Latitude": 40.76881
                 },
-                "Bearing": 233.89748,
+                "Bearing": 233.97263,
                 "ProgressRate": "normalProgress",
                 "ProgressStatus": [
                   "prevTrip"
                 ],
-                "BlockRef": "MTA NYCT_MV_H2-Weekday_H_MV_21720_M2-208",
-                "VehicleRef": "MTA NYCT_9711",
+                "BlockRef": "MTA NYCT_MV_D2-Saturday_A_MV_33600_M2-204",
+                "VehicleRef": "MTA NYCT_9433",
                 "MonitoredCall": {
-                  "AimedArrivalTime": "2022-01-17T17:01:19.842-05:00",
-                  "ExpectedArrivalTime": "2022-01-17T16:57:04.562-05:00",
-                  "ArrivalProximityText": "3.5 miles away",
-                  "ExpectedDepartureTime": "2022-01-17T16:57:04.562-05:00",
-                  "DistanceFromStop": 5649,
+                  "AimedArrivalTime": "2023-01-02T14:31:24.629-05:00",
+                  "ExpectedArrivalTime": "2023-01-02T14:30:54.789-05:00",
+                  "ArrivalProximityText": "5.1 miles away",
+                  "ExpectedDepartureTime": "2023-01-02T14:30:54.789-05:00",
+                  "DistanceFromStop": 8176,
                   "NumberOfStopsAway": 5,
                   "StopPointRef": "MTA_400561",
                   "VisitNumber": 1,
@@ -1433,51 +1504,110 @@
                   ]
                 }
               },
-              "RecordedAtTime": "2022-01-17T15:55:09.236-05:00"
+              "RecordedAtTime": "2023-01-02T13:39:02.732-05:00"
+            },
+            {
+              "MonitoredVehicleJourney": {
+                "LineRef": "MTA NYCT_Q32",
+                "DirectionRef": "0",
+                "FramedVehicleJourneyRef": {
+                  "DataFrameRef": "2023-01-02",
+                  "DatedVehicleJourneyRef": "MTA NYCT_CS_D2-Saturday-087500_Q32_756"
+                },
+                "JourneyPatternRef": "MTA_Q320059",
+                "PublishedLineName": [
+                  "Q32"
+                ],
+                "OperatorRef": "MTA NYCT",
+                "OriginRef": "MTA_400552",
+                "DestinationRef": "MTA_503582",
+                "DestinationName": [
+                  "JACKSON HTS NORTHERN-81 ST via ROOSEVELT"
+                ],
+                "OriginAimedDepartureTime": "2023-01-02T13:00:00.000-05:00",
+                "SituationRef": [
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7731"
+                  },
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:4551"
+                  },
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7484"
+                  }
+                ],
+                "Monitored": true,
+                "VehicleLocation": {
+                  "Longitude": -73.936278,
+                  "Latitude": 40.747847
+                },
+                "Bearing": 135.51616,
+                "ProgressRate": "normalProgress",
+                "ProgressStatus": [
+                  "prevTrip"
+                ],
+                "BlockRef": "MTA NYCT_CS_D2-Saturday_A_CS_46020_Q32-756",
+                "VehicleRef": "MTA NYCT_8811",
+                "MonitoredCall": {
+                  "AimedArrivalTime": "2023-01-02T14:45:08.670-05:00",
+                  "ArrivalProximityText": "5.1 miles away",
+                  "DistanceFromStop": 8277,
+                  "NumberOfStopsAway": 7,
+                  "StopPointRef": "MTA_400561",
+                  "VisitNumber": 1,
+                  "StopPointName": [
+                    "MADISON AV/E 42 ST"
+                  ]
+                }
+              },
+              "RecordedAtTime": "2023-01-02T13:38:59.878-05:00"
             },
             {
               "MonitoredVehicleJourney": {
                 "LineRef": "MTA NYCT_M4",
                 "DirectionRef": "0",
                 "FramedVehicleJourneyRef": {
-                  "DataFrameRef": "2022-01-17",
-                  "DatedVehicleJourneyRef": "MTA NYCT_MV_H2-Weekday-102300_M5_525"
+                  "DataFrameRef": "2023-01-02",
+                  "DatedVehicleJourneyRef": "MTA NYCT_MV_D2-Saturday-088200_M4_434"
                 },
-                "JourneyPatternRef": "MTA_M040061",
+                "JourneyPatternRef": "MTA_M040077",
                 "PublishedLineName": [
                   "M4"
                 ],
                 "OperatorRef": "MTA NYCT",
                 "OriginRef": "MTA_400353",
-                "DestinationRef": "MTA_400636",
+                "DestinationRef": "MTA_803067",
                 "DestinationName": [
-                  "WSHNGTN HTS CABRINI via MADISON via BWAY"
+                  "WSHNGTN HTS CLOISTRS via MADISN via BWAY"
                 ],
-                "OriginAimedDepartureTime": "2022-01-17T17:03:00.000-05:00",
+                "OriginAimedDepartureTime": "2023-01-02T14:42:00.000-05:00",
                 "SituationRef": [
                   {
-                    "SituationSimpleRef": "MTABC_lmm:planned_work:2684"
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:4553"
                   },
                   {
-                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:2672"
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7731"
+                  },
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7484"
                   }
                 ],
                 "Monitored": true,
                 "VehicleLocation": {
-                  "Longitude": -73.955496,
-                  "Latitude": 40.788256
+                  "Longitude": -73.961992,
+                  "Latitude": 40.802167
                 },
-                "Bearing": 234.2981,
+                "Bearing": 336.68564,
                 "ProgressRate": "normalProgress",
                 "ProgressStatus": [
                   "prevTrip"
                 ],
-                "BlockRef": "MTA NYCT_MV_H2-Weekday_H_MV_19500_M4-403",
-                "VehicleRef": "MTA NYCT_9714",
+                "BlockRef": "MTA NYCT_MV_D2-Saturday_A_MV_43080_M4-434",
+                "VehicleRef": "MTA NYCT_9706",
                 "MonitoredCall": {
-                  "AimedArrivalTime": "2022-01-17T17:11:34.882-05:00",
-                  "ArrivalProximityText": "3.9 miles away",
-                  "DistanceFromStop": 6255,
+                  "AimedArrivalTime": "2023-01-02T14:48:00.677-05:00",
+                  "ArrivalProximityText": "5.3 miles away",
+                  "DistanceFromStop": 8586,
                   "NumberOfStopsAway": 4,
                   "StopPointRef": "MTA_400561",
                   "VisitNumber": 1,
@@ -1486,55 +1616,55 @@
                   ]
                 }
               },
-              "RecordedAtTime": "2022-01-17T15:55:00.526-05:00"
+              "RecordedAtTime": "2023-01-02T13:38:46.457-05:00"
             },
             {
               "MonitoredVehicleJourney": {
-                "LineRef": "MTA NYCT_M1",
+                "LineRef": "MTA NYCT_Q32",
                 "DirectionRef": "0",
                 "FramedVehicleJourneyRef": {
-                  "DataFrameRef": "2022-01-17",
-                  "DatedVehicleJourneyRef": "MTA NYCT_OF_H2-Weekday-099400_M7_214"
+                  "DataFrameRef": "2023-01-02",
+                  "DatedVehicleJourneyRef": "MTA NYCT_CS_D2-Saturday-088500_MISC_419"
                 },
-                "JourneyPatternRef": "MTA_M010007",
+                "JourneyPatternRef": "MTA_Q320059",
                 "PublishedLineName": [
-                  "M1"
+                  "Q32"
                 ],
                 "OperatorRef": "MTA NYCT",
-                "OriginRef": "MTA_903130",
-                "DestinationRef": "MTA_803003",
+                "OriginRef": "MTA_400552",
+                "DestinationRef": "MTA_503582",
                 "DestinationName": [
-                  "HARLEM 147 ST via MADISON AV"
+                  "JACKSON HTS NORTHERN-81 ST via ROOSEVELT"
                 ],
-                "OriginAimedDepartureTime": "2022-01-17T16:34:00.000-05:00",
+                "OriginAimedDepartureTime": "2023-01-02T13:10:00.000-05:00",
                 "SituationRef": [
                   {
-                    "SituationSimpleRef": "MTA NYCT_lmm:alert:121951"
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7731"
                   },
                   {
-                    "SituationSimpleRef": "MTABC_lmm:planned_work:2684"
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:4551"
                   },
                   {
-                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:2672"
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7484"
                   }
                 ],
                 "Monitored": true,
                 "VehicleLocation": {
-                  "Longitude": -73.995124,
-                  "Latitude": 40.733921
+                  "Longitude": -73.926852,
+                  "Latitude": 40.744274
                 },
-                "Bearing": 233.2858,
+                "Bearing": 172.87498,
                 "ProgressRate": "normalProgress",
                 "ProgressStatus": [
                   "prevTrip"
                 ],
-                "BlockRef": "MTA NYCT_OF_H2-Weekday_H_OF_25320_M1-112",
-                "VehicleRef": "MTA NYCT_9581",
+                "BlockRef": "MTA NYCT_CS_D2-Saturday_A_CS_46620_MISC-419",
+                "VehicleRef": "MTA NYCT_7408",
                 "MonitoredCall": {
-                  "AimedArrivalTime": "2022-01-17T17:04:47.850-05:00",
-                  "ArrivalProximityText": "4.0 miles away",
-                  "DistanceFromStop": 6392,
-                  "NumberOfStopsAway": 18,
+                  "AimedArrivalTime": "2023-01-02T14:55:08.681-05:00",
+                  "ArrivalProximityText": "5.7 miles away",
+                  "DistanceFromStop": 9229,
+                  "NumberOfStopsAway": 7,
                   "StopPointRef": "MTA_400561",
                   "VisitNumber": 1,
                   "StopPointName": [
@@ -1542,154 +1672,54 @@
                   ]
                 }
               },
-              "RecordedAtTime": "2022-01-17T15:55:14.787-05:00"
+              "RecordedAtTime": "2023-01-02T13:38:53.000-05:00"
             },
             {
               "MonitoredVehicleJourney": {
-                "LineRef": "MTA NYCT_M1",
+                "LineRef": "MTA NYCT_M2",
                 "DirectionRef": "0",
                 "FramedVehicleJourneyRef": {
-                  "DataFrameRef": "2022-01-17",
-                  "DatedVehicleJourneyRef": "MTA NYCT_OF_H2-Weekday-100900_M7_218"
+                  "DataFrameRef": "2023-01-02",
+                  "DatedVehicleJourneyRef": "MTA NYCT_MV_D2-Saturday-086900_M2_214"
                 },
-                "JourneyPatternRef": "MTA_M010006",
+                "JourneyPatternRef": "MTA_M020020",
                 "PublishedLineName": [
-                  "M1"
+                  "M2"
                 ],
                 "OperatorRef": "MTA NYCT",
                 "OriginRef": "MTA_400001",
-                "DestinationRef": "MTA_803003",
+                "DestinationRef": "MTA_404876",
                 "DestinationName": [
-                  "HARLEM 147 ST via MADISON AV"
+                  "LIMITED WASHINGTON HTS BROADWAY-168 ST"
                 ],
-                "OriginAimedDepartureTime": "2022-01-17T16:49:00.000-05:00",
+                "OriginAimedDepartureTime": "2023-01-02T14:29:00.000-05:00",
                 "SituationRef": [
                   {
-                    "SituationSimpleRef": "MTA NYCT_lmm:alert:121951"
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7731"
                   },
                   {
-                    "SituationSimpleRef": "MTABC_lmm:planned_work:2684"
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:4552"
                   },
                   {
-                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:2672"
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7516"
                   }
                 ],
                 "Monitored": true,
                 "VehicleLocation": {
-                  "Longitude": -73.977339,
-                  "Latitude": 40.758329
-                },
-                "Bearing": 234.10054,
-                "ProgressRate": "normalProgress",
-                "ProgressStatus": [
-                  "prevTrip"
-                ],
-                "BlockRef": "MTA NYCT_OF_H2-Weekday_H_OF_53340_M7-218",
-                "VehicleRef": "MTA NYCT_9574",
-                "MonitoredCall": {
-                  "AimedArrivalTime": "2022-01-17T17:12:47.873-05:00",
-                  "ArrivalProximityText": "4.3 miles away",
-                  "DistanceFromStop": 6845,
-                  "NumberOfStopsAway": 13,
-                  "StopPointRef": "MTA_400561",
-                  "VisitNumber": 1,
-                  "StopPointName": [
-                    "MADISON AV/E 42 ST"
-                  ]
-                }
-              },
-              "RecordedAtTime": "2022-01-17T15:55:01.839-05:00"
-            },
-            {
-              "MonitoredVehicleJourney": {
-                "LineRef": "MTA NYCT_M3",
-                "DirectionRef": "0",
-                "FramedVehicleJourneyRef": {
-                  "DataFrameRef": "2022-01-17",
-                  "DatedVehicleJourneyRef": "MTA NYCT_MV_H2-Weekday-100100_M2_219"
-                },
-                "JourneyPatternRef": "MTA_M030006",
-                "PublishedLineName": [
-                  "M3"
-                ],
-                "OperatorRef": "MTA NYCT",
-                "OriginRef": "MTA_400001",
-                "DestinationRef": "MTA_903219",
-                "DestinationName": [
-                  "FT GEORGE 193 ST via MADISON via ST NICH"
-                ],
-                "OriginAimedDepartureTime": "2022-01-17T16:41:00.000-05:00",
-                "SituationRef": [
-                  {
-                    "SituationSimpleRef": "MTABC_lmm:planned_work:2684"
-                  }
-                ],
-                "Monitored": true,
-                "VehicleLocation": {
-                  "Longitude": -73.97655,
-                  "Latitude": 40.759425
+                  "Longitude": -73.959529,
+                  "Latitude": 40.782736
                 },
                 "Bearing": 233.86462,
                 "ProgressRate": "normalProgress",
                 "ProgressStatus": [
                   "prevTrip"
                 ],
-                "BlockRef": "MTA NYCT_MV_H2-Weekday_H_MV_27420_M3-321",
-                "VehicleRef": "MTA NYCT_9753",
+                "BlockRef": "MTA NYCT_MV_D2-Saturday_A_MV_24900_M2-207",
+                "VehicleRef": "MTA NYCT_9425",
                 "MonitoredCall": {
-                  "AimedArrivalTime": "2022-01-17T17:04:47.858-05:00",
-                  "ArrivalProximityText": "4.3 miles away",
-                  "DistanceFromStop": 6921,
-                  "NumberOfStopsAway": 13,
-                  "StopPointRef": "MTA_400561",
-                  "VisitNumber": 1,
-                  "StopPointName": [
-                    "MADISON AV/E 42 ST"
-                  ]
-                }
-              },
-              "RecordedAtTime": "2022-01-17T15:55:21.857-05:00"
-            },
-            {
-              "MonitoredVehicleJourney": {
-                "LineRef": "MTA NYCT_M2",
-                "DirectionRef": "0",
-                "FramedVehicleJourneyRef": {
-                  "DataFrameRef": "2022-01-17",
-                  "DatedVehicleJourneyRef": "MTA NYCT_MV_H2-Weekday-101000_M3_314"
-                },
-                "JourneyPatternRef": "MTA_M020008",
-                "PublishedLineName": [
-                  "M2"
-                ],
-                "OperatorRef": "MTA NYCT",
-                "OriginRef": "MTA_400001",
-                "DestinationRef": "MTA_404876",
-                "DestinationName": [
-                  "LIMITED WASHINGTON HTS BROADWAY-168 ST"
-                ],
-                "OriginAimedDepartureTime": "2022-01-17T16:50:00.000-05:00",
-                "SituationRef": [
-                  {
-                    "SituationSimpleRef": "MTABC_lmm:planned_work:2684"
-                  }
-                ],
-                "Monitored": true,
-                "VehicleLocation": {
-                  "Longitude": -73.974794,
-                  "Latitude": 40.761819
-                },
-                "Bearing": 234.04337,
-                "ProgressRate": "normalProgress",
-                "ProgressStatus": [
-                  "prevTrip"
-                ],
-                "BlockRef": "MTA NYCT_MV_H2-Weekday_H_MV_24660_M2-213",
-                "VehicleRef": "MTA NYCT_4694",
-                "MonitoredCall": {
-                  "AimedArrivalTime": "2022-01-17T17:11:19.869-05:00",
-                  "ArrivalProximityText": "4.5 miles away",
-                  "DistanceFromStop": 7288,
+                  "AimedArrivalTime": "2023-01-02T14:43:24.659-05:00",
+                  "ArrivalProximityText": "6.2 miles away",
+                  "DistanceFromStop": 9946,
                   "NumberOfStopsAway": 5,
                   "StopPointRef": "MTA_400561",
                   "VisitNumber": 1,
@@ -1698,226 +1728,17 @@
                   ]
                 }
               },
-              "RecordedAtTime": "2022-01-17T15:55:03.000-05:00"
-            },
-            {
-              "MonitoredVehicleJourney": {
-                "LineRef": "MTA NYCT_Q32",
-                "DirectionRef": "0",
-                "FramedVehicleJourneyRef": {
-                  "DataFrameRef": "2022-01-17",
-                  "DatedVehicleJourneyRef": "MTA NYCT_CS_H2-Weekday-101700_Q32_761"
-                },
-                "JourneyPatternRef": "MTA_Q320054",
-                "PublishedLineName": [
-                  "Q32"
-                ],
-                "OperatorRef": "MTA NYCT",
-                "OriginRef": "MTA_400552",
-                "DestinationRef": "MTA_503582",
-                "DestinationName": [
-                  "JACKSON HTS NORTHERN-81 ST via ROOSEVELT"
-                ],
-                "OriginAimedDepartureTime": "2022-01-17T15:16:00.000-05:00",
-                "SituationRef": [
-                  {
-                    "SituationSimpleRef": "MTABC_lmm:planned_work:2684"
-                  }
-                ],
-                "Monitored": true,
-                "VehicleLocation": {
-                  "Longitude": -73.936188,
-                  "Latitude": 40.749652
-                },
-                "Bearing": 48.012787,
-                "ProgressRate": "normalProgress",
-                "ProgressStatus": [
-                  "prevTrip"
-                ],
-                "BlockRef": "MTA NYCT_CS_H2-Weekday_H_CS_54060_Q32-761",
-                "VehicleRef": "MTA NYCT_4201",
-                "MonitoredCall": {
-                  "AimedArrivalTime": "2022-01-17T17:08:49.863-05:00",
-                  "ArrivalProximityText": "5.0 miles away",
-                  "DistanceFromStop": 7991,
-                  "NumberOfStopsAway": 7,
-                  "StopPointRef": "MTA_400561",
-                  "VisitNumber": 1,
-                  "StopPointName": [
-                    "MADISON AV/E 42 ST"
-                  ]
-                }
-              },
-              "RecordedAtTime": "2022-01-17T15:54:52.000-05:00"
+              "RecordedAtTime": "2023-01-02T13:38:51.490-05:00"
             },
             {
               "MonitoredVehicleJourney": {
                 "LineRef": "MTA NYCT_M1",
                 "DirectionRef": "0",
                 "FramedVehicleJourneyRef": {
-                  "DataFrameRef": "2022-01-17",
-                  "DatedVehicleJourneyRef": "MTA NYCT_OF_H2-Weekday-102200_M35_303"
+                  "DataFrameRef": "2023-01-02",
+                  "DatedVehicleJourneyRef": "MTA NYCT_OF_D2-Saturday-086200_M1_124"
                 },
-                "JourneyPatternRef": "MTA_M010006",
-                "PublishedLineName": [
-                  "M1"
-                ],
-                "OperatorRef": "MTA NYCT",
-                "OriginRef": "MTA_400001",
-                "DestinationRef": "MTA_803003",
-                "DestinationName": [
-                  "HARLEM 147 ST via MADISON AV"
-                ],
-                "OriginAimedDepartureTime": "2022-01-17T17:02:00.000-05:00",
-                "SituationRef": [
-                  {
-                    "SituationSimpleRef": "MTA NYCT_lmm:alert:121951"
-                  },
-                  {
-                    "SituationSimpleRef": "MTABC_lmm:planned_work:2684"
-                  },
-                  {
-                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:2672"
-                  }
-                ],
-                "Monitored": true,
-                "VehicleLocation": {
-                  "Longitude": -73.970028,
-                  "Latitude": 40.768349
-                },
-                "Bearing": 233.94583,
-                "ProgressRate": "normalProgress",
-                "ProgressStatus": [
-                  "prevTrip"
-                ],
-                "BlockRef": "MTA NYCT_OF_H2-Weekday_H_OF_53940_M35-303",
-                "VehicleRef": "MTA NYCT_3838",
-                "MonitoredCall": {
-                  "AimedArrivalTime": "2022-01-17T17:25:47.902-05:00",
-                  "ArrivalProximityText": "5.0 miles away",
-                  "DistanceFromStop": 8118,
-                  "NumberOfStopsAway": 13,
-                  "StopPointRef": "MTA_400561",
-                  "VisitNumber": 1,
-                  "StopPointName": [
-                    "MADISON AV/E 42 ST"
-                  ]
-                }
-              },
-              "RecordedAtTime": "2022-01-17T15:53:47.000-05:00"
-            },
-            {
-              "MonitoredVehicleJourney": {
-                "LineRef": "MTA NYCT_M4",
-                "DirectionRef": "0",
-                "FramedVehicleJourneyRef": {
-                  "DataFrameRef": "2022-01-17",
-                  "DatedVehicleJourneyRef": "MTA NYCT_MV_H2-Weekday-104300_M4_443"
-                },
-                "JourneyPatternRef": "MTA_M040061",
-                "PublishedLineName": [
-                  "M4"
-                ],
-                "OperatorRef": "MTA NYCT",
-                "OriginRef": "MTA_400353",
-                "DestinationRef": "MTA_400636",
-                "DestinationName": [
-                  "WSHNGTN HTS CABRINI via MADISON via BWAY"
-                ],
-                "OriginAimedDepartureTime": "2022-01-17T17:23:00.000-05:00",
-                "SituationRef": [
-                  {
-                    "SituationSimpleRef": "MTABC_lmm:planned_work:2684"
-                  },
-                  {
-                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:2672"
-                  }
-                ],
-                "Monitored": true,
-                "VehicleLocation": {
-                  "Longitude": -73.957512,
-                  "Latitude": 40.800333
-                },
-                "Bearing": 337.7704,
-                "ProgressRate": "normalProgress",
-                "ProgressStatus": [
-                  "prevTrip"
-                ],
-                "BlockRef": "MTA NYCT_MV_H2-Weekday_H_MV_21480_M4-407",
-                "VehicleRef": "MTA NYCT_9773",
-                "MonitoredCall": {
-                  "AimedArrivalTime": "2022-01-17T17:31:34.923-05:00",
-                  "ArrivalProximityText": "5.0 miles away",
-                  "DistanceFromStop": 8125,
-                  "NumberOfStopsAway": 4,
-                  "StopPointRef": "MTA_400561",
-                  "VisitNumber": 1,
-                  "StopPointName": [
-                    "MADISON AV/E 42 ST"
-                  ]
-                }
-              },
-              "RecordedAtTime": "2022-01-17T15:54:59.393-05:00"
-            },
-            {
-              "MonitoredVehicleJourney": {
-                "LineRef": "MTA NYCT_M2",
-                "DirectionRef": "0",
-                "FramedVehicleJourneyRef": {
-                  "DataFrameRef": "2022-01-17",
-                  "DatedVehicleJourneyRef": "MTA NYCT_MV_H2-Weekday-102000_M3_322"
-                },
-                "JourneyPatternRef": "MTA_M020008",
-                "PublishedLineName": [
-                  "M2"
-                ],
-                "OperatorRef": "MTA NYCT",
-                "OriginRef": "MTA_400001",
-                "DestinationRef": "MTA_404876",
-                "DestinationName": [
-                  "LIMITED WASHINGTON HTS BROADWAY-168 ST"
-                ],
-                "OriginAimedDepartureTime": "2022-01-17T17:00:00.000-05:00",
-                "SituationRef": [
-                  {
-                    "SituationSimpleRef": "MTABC_lmm:planned_work:2684"
-                  }
-                ],
-                "Monitored": true,
-                "VehicleLocation": {
-                  "Longitude": -73.967615,
-                  "Latitude": 40.771657
-                },
-                "Bearing": 233.90303,
-                "ProgressRate": "normalProgress",
-                "ProgressStatus": [
-                  "prevTrip"
-                ],
-                "BlockRef": "MTA NYCT_MV_H2-Weekday_H_MV_25860_M2-217",
-                "VehicleRef": "MTA NYCT_4082",
-                "MonitoredCall": {
-                  "AimedArrivalTime": "2022-01-17T17:21:19.888-05:00",
-                  "ArrivalProximityText": "5.3 miles away",
-                  "DistanceFromStop": 8537,
-                  "NumberOfStopsAway": 5,
-                  "StopPointRef": "MTA_400561",
-                  "VisitNumber": 1,
-                  "StopPointName": [
-                    "MADISON AV/E 42 ST"
-                  ]
-                }
-              },
-              "RecordedAtTime": "2022-01-17T15:54:56.000-05:00"
-            },
-            {
-              "MonitoredVehicleJourney": {
-                "LineRef": "MTA NYCT_M1",
-                "DirectionRef": "0",
-                "FramedVehicleJourneyRef": {
-                  "DataFrameRef": "2022-01-17",
-                  "DatedVehicleJourneyRef": "MTA NYCT_OF_H2-Weekday-101000_M7_215"
-                },
-                "JourneyPatternRef": "MTA_M010007",
+                "JourneyPatternRef": "MTA_M010024",
                 "PublishedLineName": [
                   "M1"
                 ],
@@ -1927,34 +1748,34 @@
                 "DestinationName": [
                   "HARLEM 147 ST via MADISON AV"
                 ],
-                "OriginAimedDepartureTime": "2022-01-17T16:50:00.000-05:00",
+                "OriginAimedDepartureTime": "2023-01-02T14:22:00.000-05:00",
                 "SituationRef": [
                   {
-                    "SituationSimpleRef": "MTA NYCT_lmm:alert:121951"
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7731"
                   },
                   {
-                    "SituationSimpleRef": "MTABC_lmm:planned_work:2684"
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:4552"
                   },
                   {
-                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:2672"
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7484"
                   }
                 ],
                 "Monitored": true,
                 "VehicleLocation": {
-                  "Longitude": -73.978907,
-                  "Latitude": 40.756189
+                  "Longitude": -73.974451,
+                  "Latitude": 40.762292
                 },
-                "Bearing": 233.70769,
+                "Bearing": 232.72183,
                 "ProgressRate": "normalProgress",
                 "ProgressStatus": [
                   "prevTrip"
                 ],
-                "BlockRef": "MTA NYCT_OF_H2-Weekday_H_OF_26880_M1-115",
-                "VehicleRef": "MTA NYCT_9585",
+                "BlockRef": "MTA NYCT_OF_D2-Saturday_A_OF_19620_M1-107",
+                "VehicleRef": "MTA NYCT_9487",
                 "MonitoredCall": {
-                  "AimedArrivalTime": "2022-01-17T17:20:47.897-05:00",
-                  "ArrivalProximityText": "5.7 miles away",
-                  "DistanceFromStop": 9220,
+                  "AimedArrivalTime": "2023-01-02T14:44:52.666-05:00",
+                  "ArrivalProximityText": "6.2 miles away",
+                  "DistanceFromStop": 9996,
                   "NumberOfStopsAway": 18,
                   "StopPointRef": "MTA_400561",
                   "VisitNumber": 1,
@@ -1963,54 +1784,57 @@
                   ]
                 }
               },
-              "RecordedAtTime": "2022-01-17T15:55:09.571-05:00"
+              "RecordedAtTime": "2023-01-02T13:39:01.326-05:00"
             },
             {
               "MonitoredVehicleJourney": {
-                "LineRef": "MTA NYCT_M1",
+                "LineRef": "MTA NYCT_M3",
                 "DirectionRef": "0",
                 "FramedVehicleJourneyRef": {
-                  "DataFrameRef": "2022-01-17",
-                  "DatedVehicleJourneyRef": "MTA NYCT_OF_H2-Weekday-103200_M1_121"
+                  "DataFrameRef": "2023-01-02",
+                  "DatedVehicleJourneyRef": "MTA NYCT_MV_D2-Saturday-087900_M3_335"
                 },
-                "JourneyPatternRef": "MTA_M010006",
+                "JourneyPatternRef": "MTA_M030031",
                 "PublishedLineName": [
-                  "M1"
+                  "M3"
                 ],
                 "OperatorRef": "MTA NYCT",
                 "OriginRef": "MTA_400001",
-                "DestinationRef": "MTA_803003",
+                "DestinationRef": "MTA_903219",
                 "DestinationName": [
-                  "HARLEM 147 ST via MADISON AV"
+                  "FT GEORGE 193 ST via MADISON via ST NICH"
                 ],
-                "OriginAimedDepartureTime": "2022-01-17T15:12:00.000-05:00",
+                "OriginAimedDepartureTime": "2023-01-02T14:39:00.000-05:00",
                 "SituationRef": [
                   {
-                    "SituationSimpleRef": "MTA NYCT_lmm:alert:121951"
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:6754"
                   },
                   {
-                    "SituationSimpleRef": "MTABC_lmm:planned_work:2684"
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7731"
                   },
                   {
-                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:2672"
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:4552"
+                  },
+                  {
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7516"
                   }
                 ],
                 "Monitored": true,
                 "VehicleLocation": {
-                  "Longitude": -73.961267,
-                  "Latitude": 40.780361
+                  "Longitude": -73.958683,
+                  "Latitude": 40.783901
                 },
-                "Bearing": 233.86086,
+                "Bearing": 234.83527,
                 "ProgressRate": "normalProgress",
                 "ProgressStatus": [
                   "prevTrip"
                 ],
-                "BlockRef": "MTA NYCT_OF_H2-Weekday_H_OF_54540_M1-121",
-                "VehicleRef": "MTA NYCT_3867",
+                "BlockRef": "MTA NYCT_MV_D2-Saturday_A_MV_28560_M3-313",
+                "VehicleRef": "MTA NYCT_9755",
                 "MonitoredCall": {
-                  "AimedArrivalTime": "2022-01-17T17:35:47.934-05:00",
-                  "ArrivalProximityText": "6.0 miles away",
-                  "DistanceFromStop": 9644,
+                  "AimedArrivalTime": "2023-01-02T14:55:52.693-05:00",
+                  "ArrivalProximityText": "6.2 miles away",
+                  "DistanceFromStop": 10031,
                   "NumberOfStopsAway": 13,
                   "StopPointRef": "MTA_400561",
                   "VisitNumber": 1,
@@ -2019,73 +1843,17 @@
                   ]
                 }
               },
-              "RecordedAtTime": "2022-01-17T15:55:10.000-05:00"
+              "RecordedAtTime": "2023-01-02T13:38:35.698-05:00"
             },
             {
               "MonitoredVehicleJourney": {
                 "LineRef": "MTA NYCT_M1",
                 "DirectionRef": "0",
                 "FramedVehicleJourneyRef": {
-                  "DataFrameRef": "2022-01-17",
-                  "DatedVehicleJourneyRef": "MTA NYCT_OF_H2-Weekday-104200_M1_123"
+                  "DataFrameRef": "2023-01-02",
+                  "DatedVehicleJourneyRef": "MTA NYCT_OF_D2-Saturday-086900_M1_125"
                 },
-                "JourneyPatternRef": "MTA_M010006",
-                "PublishedLineName": [
-                  "M1"
-                ],
-                "OperatorRef": "MTA NYCT",
-                "OriginRef": "MTA_400001",
-                "DestinationRef": "MTA_803003",
-                "DestinationName": [
-                  "HARLEM 147 ST via MADISON AV"
-                ],
-                "OriginAimedDepartureTime": "2022-01-17T15:22:00.000-05:00",
-                "SituationRef": [
-                  {
-                    "SituationSimpleRef": "MTA NYCT_lmm:alert:121951"
-                  },
-                  {
-                    "SituationSimpleRef": "MTABC_lmm:planned_work:2684"
-                  },
-                  {
-                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:2672"
-                  }
-                ],
-                "Monitored": true,
-                "VehicleLocation": {
-                  "Longitude": -73.958243,
-                  "Latitude": 40.784514
-                },
-                "Bearing": 234.02762,
-                "ProgressRate": "normalProgress",
-                "ProgressStatus": [
-                  "prevTrip"
-                ],
-                "BlockRef": "MTA NYCT_OF_H2-Weekday_H_OF_27780_M1-117",
-                "VehicleRef": "MTA NYCT_3868",
-                "MonitoredCall": {
-                  "AimedArrivalTime": "2022-01-17T17:45:47.940-05:00",
-                  "ArrivalProximityText": "6.3 miles away",
-                  "DistanceFromStop": 10171,
-                  "NumberOfStopsAway": 13,
-                  "StopPointRef": "MTA_400561",
-                  "VisitNumber": 1,
-                  "StopPointName": [
-                    "MADISON AV/E 42 ST"
-                  ]
-                }
-              },
-              "RecordedAtTime": "2022-01-17T15:55:17.000-05:00"
-            },
-            {
-              "MonitoredVehicleJourney": {
-                "LineRef": "MTA NYCT_M1",
-                "DirectionRef": "0",
-                "FramedVehicleJourneyRef": {
-                  "DataFrameRef": "2022-01-17",
-                  "DatedVehicleJourneyRef": "MTA NYCT_OF_H2-Weekday-102000_M1_120"
-                },
-                "JourneyPatternRef": "MTA_M010007",
+                "JourneyPatternRef": "MTA_M010024",
                 "PublishedLineName": [
                   "M1"
                 ],
@@ -2095,34 +1863,34 @@
                 "DestinationName": [
                   "HARLEM 147 ST via MADISON AV"
                 ],
-                "OriginAimedDepartureTime": "2022-01-17T17:00:00.000-05:00",
+                "OriginAimedDepartureTime": "2023-01-02T14:29:00.000-05:00",
                 "SituationRef": [
                   {
-                    "SituationSimpleRef": "MTA NYCT_lmm:alert:121951"
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7731"
                   },
                   {
-                    "SituationSimpleRef": "MTABC_lmm:planned_work:2684"
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:4552"
                   },
                   {
-                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:2672"
+                    "SituationSimpleRef": "MTA NYCT_lmm:planned_work:7484"
                   }
                 ],
                 "Monitored": true,
                 "VehicleLocation": {
-                  "Longitude": -73.971829,
-                  "Latitude": 40.765886
+                  "Longitude": -73.971761,
+                  "Latitude": 40.765977
                 },
-                "Bearing": 233.64658,
+                "Bearing": 234.00412,
                 "ProgressRate": "normalProgress",
                 "ProgressStatus": [
                   "prevTrip"
                 ],
-                "BlockRef": "MTA NYCT_OF_H2-Weekday_H_OF_19140_M1-103",
-                "VehicleRef": "MTA NYCT_9573",
+                "BlockRef": "MTA NYCT_OF_D2-Saturday_A_OF_36000_M1-115",
+                "VehicleRef": "MTA NYCT_9488",
                 "MonitoredCall": {
-                  "AimedArrivalTime": "2022-01-17T17:30:47.911-05:00",
+                  "AimedArrivalTime": "2023-01-02T14:51:52.687-05:00",
                   "ArrivalProximityText": "6.5 miles away",
-                  "DistanceFromStop": 10452,
+                  "DistanceFromStop": 10464,
                   "NumberOfStopsAway": 18,
                   "StopPointRef": "MTA_400561",
                   "VisitNumber": 1,
@@ -2131,61 +1899,11 @@
                   ]
                 }
               },
-              "RecordedAtTime": "2022-01-17T15:55:15.176-05:00"
-            },
-            {
-              "MonitoredVehicleJourney": {
-                "LineRef": "MTA NYCT_M2",
-                "DirectionRef": "0",
-                "FramedVehicleJourneyRef": {
-                  "DataFrameRef": "2022-01-17",
-                  "DatedVehicleJourneyRef": "MTA NYCT_MV_H2-Weekday-103000_M2_237"
-                },
-                "JourneyPatternRef": "MTA_M020008",
-                "PublishedLineName": [
-                  "M2"
-                ],
-                "OperatorRef": "MTA NYCT",
-                "OriginRef": "MTA_400001",
-                "DestinationRef": "MTA_404876",
-                "DestinationName": [
-                  "LIMITED WASHINGTON HTS BROADWAY-168 ST"
-                ],
-                "OriginAimedDepartureTime": "2022-01-17T15:04:00.000-05:00",
-                "SituationRef": [
-                  {
-                    "SituationSimpleRef": "MTABC_lmm:planned_work:2684"
-                  }
-                ],
-                "Monitored": true,
-                "VehicleLocation": {
-                  "Longitude": -73.955641,
-                  "Latitude": 40.788057
-                },
-                "Bearing": 233.83406,
-                "ProgressRate": "normalProgress",
-                "ProgressStatus": [
-                  "prevTrip"
-                ],
-                "BlockRef": "MTA NYCT_MV_H2-Weekday_H_MV_53340_M2-237",
-                "VehicleRef": "MTA NYCT_4254",
-                "MonitoredCall": {
-                  "AimedArrivalTime": "2022-01-17T17:31:19.928-05:00",
-                  "ArrivalProximityText": "6.6 miles away",
-                  "DistanceFromStop": 10621,
-                  "NumberOfStopsAway": 5,
-                  "StopPointRef": "MTA_400561",
-                  "VisitNumber": 1,
-                  "StopPointName": [
-                    "MADISON AV/E 42 ST"
-                  ]
-                }
-              },
-              "RecordedAtTime": "2022-01-17T15:55:15.000-05:00"
+              "RecordedAtTime": "2023-01-02T13:38:45.525-05:00"
             }
           ],
-          "ResponseTimestamp": "2022-01-17T15:55:24.517-05:00",
-          "ValidUntil": "2022-01-17T15:56:24.517-05:00"
+          "ResponseTimestamp": "2023-01-02T13:39:05.280-05:00",
+          "ValidUntil": "2023-01-02T13:40:05.280-05:00"
         }
       ],
       "SituationExchangeDelivery": [
@@ -2194,91 +1912,77 @@
             "PtSituationElement": [
               {
                 "PublicationWindow": {
-                  "StartTime": "2022-01-17T00:00:00.000-05:00",
-                  "EndTime": "2022-01-17T23:59:00.000-05:00"
+                  "StartTime": "2022-09-30T00:00:00.000-04:00",
+                  "EndTime": "2023-04-02T00:00:00.000-04:00"
                 },
                 "Severity": "undefined",
                 "Summary": [
-                  "Some bus routes will be operating a modified schedule on Martin Luther King, Jr Day"
+                  "Northbound M3 stop on St Nicholas Ave at W 190th St has been relocated and the stop at W 193rd St is closed"
                 ],
                 "Description": [
-                  "Some bus routes will be operating a modified schedule on Martin Luther King, Jr Day"
+                  "Northbound M3 stop on St Nicholas Ave at W 190th St has been relocated and the stop at W 193rd St is closed\nThe relocated stop is one block south on St Nicholas Ave near W 189th St.\n\nA new stop has also been established on Amsterdam Ave at W 190th St.\n\nWhat\u0027s happening?\nNYC DOT Road Improvements"
                 ],
                 "Affects": {
                   "VehicleJourneys": {
                     "AffectedVehicleJourney": [
                       {
-                        "LineRef": "MTABC_Q40"
+                        "LineRef": "MTA NYCT_M3",
+                        "DirectionRef": "0"
                       },
                       {
-                        "LineRef": "MTA NYCT_Q4"
+                        "LineRef": "MTA NYCT_M3",
+                        "DirectionRef": "1"
+                      }
+                    ]
+                  }
+                },
+                "CreationTime": "2022-09-30T15:52:57.000-04:00",
+                "SituationNumber": "MTA NYCT_lmm:planned_work:6754"
+              },
+              {
+                "PublicationWindow": {
+                  "StartTime": "2022-05-27T06:00:00.000-04:00",
+                  "EndTime": "2023-06-30T20:00:00.000-04:00"
+                },
+                "Severity": "undefined",
+                "Summary": [
+                  "Southbound M4 stop on 5th Ave at W 38th is closed"
+                ],
+                "Description": [
+                  "Southbound M4 stop on 5th Ave at W 38th is closed\nPlease use the stops on 5th Ave at W 41st St or W 36th St.\n\nWhat\u0027s happening?\nSidewalk construction"
+                ],
+                "Affects": {
+                  "VehicleJourneys": {
+                    "AffectedVehicleJourney": [
+                      {
+                        "LineRef": "MTA NYCT_M4",
+                        "DirectionRef": "0"
                       },
                       {
-                        "LineRef": "MTABC_Q39"
-                      },
-                      {
-                        "LineRef": "MTABC_Q38"
-                      },
-                      {
-                        "LineRef": "MTABC_Q37"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_Q36"
-                      },
-                      {
-                        "LineRef": "MTABC_Q35"
-                      },
-                      {
-                        "LineRef": "MTABC_Q34"
-                      },
-                      {
-                        "LineRef": "MTABC_Q33"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_Q32"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_Q31"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_Q30"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_Q3"
-                      },
-                      {
-                        "LineRef": "MTABC_Q29"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_Q28"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_Q27"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_Q26"
-                      },
-                      {
-                        "LineRef": "MTABC_Q25"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_Q24"
-                      },
-                      {
-                        "LineRef": "MTABC_Q23"
-                      },
-                      {
-                        "LineRef": "MTABC_Q22"
-                      },
-                      {
-                        "LineRef": "MTABC_Q21"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_Q20B"
-                      },
-                      {
-                        "LineRef": "MTABC_Q19"
-                      },
+                        "LineRef": "MTA NYCT_M4",
+                        "DirectionRef": "1"
+                      }
+                    ]
+                  }
+                },
+                "CreationTime": "2022-05-24T13:45:35.000-04:00",
+                "SituationNumber": "MTA NYCT_lmm:planned_work:4553"
+              },
+              {
+                "PublicationWindow": {
+                  "StartTime": "2023-01-02T00:00:00.000-05:00",
+                  "EndTime": "2023-01-02T23:59:00.000-05:00"
+                },
+                "Severity": "undefined",
+                "Summary": [
+                  "Bus service in Brooklyn, the Bronx, Manhattan and Queens is running on a Saturday schedule"
+                ],
+                "Description": [
+                  "Bus service in Brooklyn, the Bronx, Manhattan and Queens is running on a Saturday schedule\nIf your bus does not normally operate on a Saturday, it will not run today.\n\nNote: Staten Island bus service runs on a Sunday schedule"
+                ],
+                "Affects": {
+                  "VehicleJourneys": {
+                    "AffectedVehicleJourney": [
                       {
                         "LineRef": "MTA NYCT_B1"
                       },
@@ -2451,6 +2155,21 @@
                         "LineRef": "MTA NYCT_B9"
                       },
                       {
+                        "LineRef": "MTABC_BM1"
+                      },
+                      {
+                        "LineRef": "MTABC_BM2"
+                      },
+                      {
+                        "LineRef": "MTABC_BM3"
+                      },
+                      {
+                        "LineRef": "MTABC_BM4"
+                      },
+                      {
+                        "LineRef": "MTABC_BM5"
+                      },
+                      {
                         "LineRef": "MTA NYCT_BX1"
                       },
                       {
@@ -2500,6 +2219,9 @@
                       },
                       {
                         "LineRef": "MTA NYCT_BX24"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_BX25"
                       },
                       {
                         "LineRef": "MTA NYCT_BX26"
@@ -2583,6 +2305,39 @@
                         "LineRef": "MTA NYCT_BX9"
                       },
                       {
+                        "LineRef": "MTABC_BXM1"
+                      },
+                      {
+                        "LineRef": "MTABC_BXM10"
+                      },
+                      {
+                        "LineRef": "MTABC_BXM11"
+                      },
+                      {
+                        "LineRef": "MTABC_BXM18"
+                      },
+                      {
+                        "LineRef": "MTABC_BXM2"
+                      },
+                      {
+                        "LineRef": "MTABC_BXM3"
+                      },
+                      {
+                        "LineRef": "MTABC_BXM4"
+                      },
+                      {
+                        "LineRef": "MTABC_BXM6"
+                      },
+                      {
+                        "LineRef": "MTABC_BXM7"
+                      },
+                      {
+                        "LineRef": "MTABC_BXM8"
+                      },
+                      {
+                        "LineRef": "MTABC_BXM9"
+                      },
+                      {
                         "LineRef": "MTA NYCT_M1"
                       },
                       {
@@ -2614,6 +2369,9 @@
                       },
                       {
                         "LineRef": "MTA NYCT_M12"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M125"
                       },
                       {
                         "LineRef": "MTA NYCT_M14A+"
@@ -2649,10 +2407,10 @@
                         "LineRef": "MTA NYCT_M31"
                       },
                       {
-                        "LineRef": "MTA NYCT_M34A+"
+                        "LineRef": "MTA NYCT_M34+"
                       },
                       {
-                        "LineRef": "MTA NYCT_M34+"
+                        "LineRef": "MTA NYCT_M34A+"
                       },
                       {
                         "LineRef": "MTA NYCT_M35"
@@ -2706,6 +2464,18 @@
                         "LineRef": "MTA NYCT_M98"
                       },
                       {
+                        "LineRef": "MTABC_Q06"
+                      },
+                      {
+                        "LineRef": "MTABC_Q07"
+                      },
+                      {
+                        "LineRef": "MTABC_Q08"
+                      },
+                      {
+                        "LineRef": "MTABC_Q09"
+                      },
+                      {
                         "LineRef": "MTA NYCT_Q1"
                       },
                       {
@@ -2748,265 +2518,405 @@
                         "LineRef": "MTA NYCT_Q12"
                       },
                       {
-                        "LineRef": "MTA NYCT_X38"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_X68"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_X64"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_X63"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_X37"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_X28"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_X27"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_S98"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_S96"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_S94"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_S93"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_S92"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_S91"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_S90"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_S89"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_S86"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_S84"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_S81"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_S79+"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_S78"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_S76"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_S74"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_S66"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_S62"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_S61"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_S59"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_S57"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_S56"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_S55"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_S54"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_S53"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_S52"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_S51"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_S48"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_S46"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_S44"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_S42"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_S40"
-                      },
-                      {
-                        "LineRef": "MTABC_Q09"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_Q88"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_Q85"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_Q84"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_Q83"
-                      },
-                      {
-                        "LineRef": "MTABC_Q08"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_Q77"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_Q76"
-                      },
-                      {
-                        "LineRef": "MTABC_Q72"
-                      },
-                      {
-                        "LineRef": "MTABC_Q70+"
-                      },
-                      {
-                        "LineRef": "MTABC_Q07"
-                      },
-                      {
-                        "LineRef": "MTABC_Q69"
-                      },
-                      {
-                        "LineRef": "MTABC_Q67"
-                      },
-                      {
-                        "LineRef": "MTABC_Q66"
-                      },
-                      {
-                        "LineRef": "MTABC_Q65"
-                      },
-                      {
-                        "LineRef": "MTABC_Q64"
-                      },
-                      {
-                        "LineRef": "MTABC_Q60"
-                      },
-                      {
-                        "LineRef": "MTABC_Q06"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_Q59"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_Q58"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_Q56"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_Q55"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_Q54"
-                      },
-                      {
-                        "LineRef": "MTABC_Q53+"
-                      },
-                      {
-                        "LineRef": "MTABC_Q52+"
-                      },
-                      {
-                        "LineRef": "MTABC_Q50"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_Q5"
-                      },
-                      {
-                        "LineRef": "MTABC_Q49"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_Q48"
-                      },
-                      {
-                        "LineRef": "MTABC_Q47"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_Q46"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_Q44+"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_Q43"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_Q42"
-                      },
-                      {
-                        "LineRef": "MTABC_Q41"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_Q20A"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_Q2"
-                      },
-                      {
-                        "LineRef": "MTABC_Q18"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_Q17"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_Q16"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_Q15A"
+                        "LineRef": "MTA NYCT_Q13"
                       },
                       {
                         "LineRef": "MTA NYCT_Q15"
                       },
                       {
-                        "LineRef": "MTA NYCT_Q13"
+                        "LineRef": "MTA NYCT_Q15A"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q16"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q17"
+                      },
+                      {
+                        "LineRef": "MTABC_Q18"
+                      },
+                      {
+                        "LineRef": "MTABC_Q19"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q2"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q20A"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q20B"
+                      },
+                      {
+                        "LineRef": "MTABC_Q21"
+                      },
+                      {
+                        "LineRef": "MTABC_Q22"
+                      },
+                      {
+                        "LineRef": "MTABC_Q23"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q24"
+                      },
+                      {
+                        "LineRef": "MTABC_Q25"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q26"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q27"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q28"
+                      },
+                      {
+                        "LineRef": "MTABC_Q29"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q3"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q30"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q31"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q32"
+                      },
+                      {
+                        "LineRef": "MTABC_Q33"
+                      },
+                      {
+                        "LineRef": "MTABC_Q34"
+                      },
+                      {
+                        "LineRef": "MTABC_Q35"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q36"
+                      },
+                      {
+                        "LineRef": "MTABC_Q37"
+                      },
+                      {
+                        "LineRef": "MTABC_Q38"
+                      },
+                      {
+                        "LineRef": "MTABC_Q39"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q4"
+                      },
+                      {
+                        "LineRef": "MTABC_Q40"
+                      },
+                      {
+                        "LineRef": "MTABC_Q41"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q42"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q43"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q44+"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q46"
+                      },
+                      {
+                        "LineRef": "MTABC_Q47"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q48"
+                      },
+                      {
+                        "LineRef": "MTABC_Q49"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q5"
+                      },
+                      {
+                        "LineRef": "MTABC_Q50"
+                      },
+                      {
+                        "LineRef": "MTABC_Q52+"
+                      },
+                      {
+                        "LineRef": "MTABC_Q53+"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q54"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q55"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q56"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q58"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q59"
+                      },
+                      {
+                        "LineRef": "MTABC_Q60"
+                      },
+                      {
+                        "LineRef": "MTABC_Q64"
+                      },
+                      {
+                        "LineRef": "MTABC_Q65"
+                      },
+                      {
+                        "LineRef": "MTABC_Q66"
+                      },
+                      {
+                        "LineRef": "MTABC_Q67"
+                      },
+                      {
+                        "LineRef": "MTABC_Q69"
+                      },
+                      {
+                        "LineRef": "MTABC_Q70+"
+                      },
+                      {
+                        "LineRef": "MTABC_Q72"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q76"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q77"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q83"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q84"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q85"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q88"
+                      },
+                      {
+                        "LineRef": "MTABC_QM1"
+                      },
+                      {
+                        "LineRef": "MTABC_QM10"
+                      },
+                      {
+                        "LineRef": "MTABC_QM11"
+                      },
+                      {
+                        "LineRef": "MTABC_QM12"
+                      },
+                      {
+                        "LineRef": "MTABC_QM15"
+                      },
+                      {
+                        "LineRef": "MTABC_QM16"
+                      },
+                      {
+                        "LineRef": "MTABC_QM17"
+                      },
+                      {
+                        "LineRef": "MTABC_QM18"
+                      },
+                      {
+                        "LineRef": "MTABC_QM2"
+                      },
+                      {
+                        "LineRef": "MTABC_QM20"
+                      },
+                      {
+                        "LineRef": "MTABC_QM21"
+                      },
+                      {
+                        "LineRef": "MTABC_QM24"
+                      },
+                      {
+                        "LineRef": "MTABC_QM25"
+                      },
+                      {
+                        "LineRef": "MTABC_QM3"
+                      },
+                      {
+                        "LineRef": "MTABC_QM31"
+                      },
+                      {
+                        "LineRef": "MTABC_QM32"
+                      },
+                      {
+                        "LineRef": "MTABC_QM34"
+                      },
+                      {
+                        "LineRef": "MTABC_QM35"
+                      },
+                      {
+                        "LineRef": "MTABC_QM36"
+                      },
+                      {
+                        "LineRef": "MTABC_QM4"
+                      },
+                      {
+                        "LineRef": "MTABC_QM40"
+                      },
+                      {
+                        "LineRef": "MTABC_QM42"
+                      },
+                      {
+                        "LineRef": "MTABC_QM44"
+                      },
+                      {
+                        "LineRef": "MTABC_QM5"
+                      },
+                      {
+                        "LineRef": "MTABC_QM6"
+                      },
+                      {
+                        "LineRef": "MTABC_QM7"
+                      },
+                      {
+                        "LineRef": "MTABC_QM8"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_X27"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_X28"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_X37"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_X38"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_X63"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_X64"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_X68"
                       }
                     ]
                   }
                 },
-                "CreationTime": "2022-01-07T16:08:55.000-05:00",
-                "SituationNumber": "MTABC_lmm:planned_work:2684"
+                "CreationTime": "2022-11-28T09:28:53.000-05:00",
+                "SituationNumber": "MTA NYCT_lmm:planned_work:7731"
               },
               {
                 "PublicationWindow": {
-                  "StartTime": "2022-01-17T00:00:00.000-05:00",
-                  "EndTime": "2022-01-17T23:59:00.000-05:00"
+                  "StartTime": "2022-05-27T06:00:00.000-04:00",
+                  "EndTime": "2023-06-30T20:00:00.000-04:00"
                 },
                 "Severity": "undefined",
                 "Summary": [
-                  "M1 and M4 Limited bus service will not operate on Martin Luther King, Jr Day, please use local service"
+                  "Westbound Q32 stop on 5th Ave at W 38th St is closed"
                 ],
                 "Description": [
-                  "M1 and M4 Limited bus service will not operate on Martin Luther King, Jr Day, please use local service"
+                  "Westbound Q32 stop on 5th Ave at W 38th St is closed\nPlease use stops on 5th Ave at W 41st St or on W 37th St at 5th Ave.\n\nWhat\u0027s happening?\nSidewalk construction"
+                ],
+                "Affects": {
+                  "VehicleJourneys": {
+                    "AffectedVehicleJourney": [
+                      {
+                        "LineRef": "MTA NYCT_Q32",
+                        "DirectionRef": "0"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q32",
+                        "DirectionRef": "1"
+                      }
+                    ]
+                  }
+                },
+                "CreationTime": "2022-05-24T13:29:57.000-04:00",
+                "SituationNumber": "MTA NYCT_lmm:planned_work:4551"
+              },
+              {
+                "PublicationWindow": {
+                  "StartTime": "2022-05-27T06:00:00.000-04:00",
+                  "EndTime": "2023-06-30T20:00:00.000-04:00"
+                },
+                "Severity": "undefined",
+                "Summary": [
+                  "Southbound M1, M2, M3, and M55 stop on 5th Ave at W 38th is closed"
+                ],
+                "Description": [
+                  "Southbound M1, M2, M3, and M55 stop on 5th Ave at W 38th is closed\nPlease use the stops on 5th Ave at W 41st St or W 35th St.\n\nWhat\u0027s happening?\nSidewalk construction"
+                ],
+                "Affects": {
+                  "VehicleJourneys": {
+                    "AffectedVehicleJourney": [
+                      {
+                        "LineRef": "MTA NYCT_M1"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M2"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M3"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M55"
+                      }
+                    ]
+                  }
+                },
+                "CreationTime": "2022-05-24T13:42:35.000-04:00",
+                "SituationNumber": "MTA NYCT_lmm:planned_work:4552"
+              },
+              {
+                "PublicationWindow": {
+                  "StartTime": "2022-11-20T00:00:00.000-05:00",
+                  "EndTime": "2023-01-08T00:00:00.000-05:00"
+                },
+                "Severity": "undefined",
+                "Summary": [
+                  "Southbound M2/M2 LTD, M3 and M5/M5 LTD buses will not stop on 5th Ave at 50th St during the holiday season"
+                ],
+                "Description": [
+                  "Southbound M2/M2 LTD, M3 and M5/M5 LTD buses will not stop on 5th Ave at 50th St during the holiday season\nUse the stop on 5th Ave at 53rd St.\n\nLocal buses also stop on 5th Ave at 47th St.\n\nReminder: M2 LTD, M3, and M5/M5 LTD buses do not run at all times."
+                ],
+                "Affects": {
+                  "VehicleJourneys": {
+                    "AffectedVehicleJourney": [
+                      {
+                        "LineRef": "MTA NYCT_M2"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M3"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_M5"
+                      }
+                    ]
+                  }
+                },
+                "CreationTime": "2022-11-09T15:31:38.000-05:00",
+                "SituationNumber": "MTA NYCT_lmm:planned_work:7516"
+              },
+              {
+                "PublicationWindow": {
+                  "StartTime": "2022-11-20T00:00:00.000-05:00",
+                  "EndTime": "2023-01-08T00:00:00.000-05:00"
+                },
+                "Severity": "undefined",
+                "Summary": [
+                  "Southbound M1 and M1 LTD, M4 and M4 LTD and Westbound Q32 buses will not stop on 5th Ave at 49th St during the holiday season"
+                ],
+                "Description": [
+                  "Southbound M1 and M1 LTD, M4 and M4 LTD and Westbound Q32 buses will not stop on 5th Ave at 49th St during the holiday season\nUse the stop on 5th Ave at 52nd St.\n\nM1 and M4 local buses also stop on 5th Ave at 46 St.\n\nReminder: M1 LTD and M4 LTD buses do not run on weekends."
                 ],
                 "Affects": {
                   "VehicleJourneys": {
@@ -3016,42 +2926,15 @@
                       },
                       {
                         "LineRef": "MTA NYCT_M4"
+                      },
+                      {
+                        "LineRef": "MTA NYCT_Q32"
                       }
                     ]
                   }
                 },
-                "CreationTime": "2022-01-07T12:51:11.000-05:00",
-                "SituationNumber": "MTA NYCT_lmm:planned_work:2672"
-              },
-              {
-                "PublicationWindow": {
-                  "StartTime": "2022-01-17T08:12:19.000-05:00",
-                  "EndTime": "2022-01-17T23:30:00.000-05:00"
-                },
-                "Severity": "undefined",
-                "Summary": [
-                  "You may wait longer for this bus route. We\u0027re running as much service as we can with the bus operators we have available."
-                ],
-                "Description": [
-                  "You may wait longer for this bus route. We\u0027re running as much service as we can with the bus operators we have available."
-                ],
-                "Affects": {
-                  "VehicleJourneys": {
-                    "AffectedVehicleJourney": [
-                      {
-                        "LineRef": "MTA NYCT_M7"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_M15+"
-                      },
-                      {
-                        "LineRef": "MTA NYCT_M1"
-                      }
-                    ]
-                  }
-                },
-                "CreationTime": "2022-01-17T07:16:59.000-05:00",
-                "SituationNumber": "MTA NYCT_lmm:alert:121951"
+                "CreationTime": "2022-11-08T13:40:22.000-05:00",
+                "SituationNumber": "MTA NYCT_lmm:planned_work:7484"
               }
             ]
           }
