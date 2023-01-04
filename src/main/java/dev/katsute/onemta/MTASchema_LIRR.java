@@ -428,7 +428,7 @@ abstract class MTASchema_LIRR extends MTASchema {
             }
 
             @Override
-            public final String getCurrentStatus(){
+            public final String getStatus(){
                 return status;
             }
 
@@ -475,7 +475,7 @@ abstract class MTASchema_LIRR extends MTASchema {
                 latitude  = vehicle.getLatitude();
                 longitude = vehicle.getLongitude();
                 bearing   = vehicle.getBearing();
-                status    = vehicle.getCurrentStatus();
+                status    = vehicle.getStatus();
                 stopID    = vehicle.getStopID();
                 routeID   = vehicle.getRouteID();
             }
@@ -621,7 +621,7 @@ abstract class MTASchema_LIRR extends MTASchema {
             }
 
             @Override
-            public final String getTrainStatus(){
+            public final String getStatus(){
                 return status;
             }
 

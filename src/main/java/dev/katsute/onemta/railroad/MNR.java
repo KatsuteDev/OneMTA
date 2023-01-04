@@ -141,7 +141,7 @@ public abstract class MNR {
          *
          * @since 1.0.0
          */
-        public abstract String getTrainStatus();
+        public abstract String getStatus();
 
         /**
          * Returns the track.

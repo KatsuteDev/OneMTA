@@ -85,7 +85,6 @@ public abstract class LIRR {
          */
         public abstract Boolean hasWheelchairBoarding();
 
-
     }
 
     /**
@@ -113,7 +112,7 @@ public abstract class LIRR {
          *
          * @since 1.0.0
          */
-        public abstract String getCurrentStatus();
+        public abstract String getStatus();
 
     }
 
@@ -164,16 +163,7 @@ public abstract class LIRR {
          *
          * @since 1.0.0
          */
-        public abstract String getTrainStatus();
-
-        /**
-         * Returns the track.
-         *
-         * @return track
-         *
-         * @since 1.0.0
-         */
-        public abstract String getTrack();
+        public abstract String getStatus();
 
         /**
          * Returns the stop sequence.
@@ -183,6 +173,15 @@ public abstract class LIRR {
          * @since 2.0.0
          */
         public abstract Integer getStopSequence();
+
+        /**
+         * Returns the track.
+         *
+         * @return track
+         *
+         * @since 1.0.0
+         */
+        public abstract String getTrack();
 
     }
 

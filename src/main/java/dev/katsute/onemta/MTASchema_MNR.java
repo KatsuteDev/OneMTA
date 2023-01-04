@@ -568,7 +568,7 @@ abstract class MTASchema_MNR extends MTASchema {
             }
 
             @Override
-            public final String getTrainStatus(){
+            public final String getStatus(){
                 return status;
             }
 

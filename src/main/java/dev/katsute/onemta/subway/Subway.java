@@ -103,16 +103,7 @@ public abstract class Subway {
          *
          * @since 1.0.0
          */
-        public abstract String getCurrentStatus();
-
-        /**
-         * Returns if the train is running express.
-         *
-         * @return express train
-         *
-         * @since 1.0.3
-         */
-        public abstract Boolean isExpress();
+        public abstract String getStatus();
 
         /**
          * Returns the stop sequence.
@@ -122,6 +113,15 @@ public abstract class Subway {
          * @since 2.0.0
          */
         public abstract Integer getStopSequence();
+
+        /**
+         * Returns if the train is running express.
+         *
+         * @return express train
+         *
+         * @since 1.0.3
+         */
+        public abstract Boolean isExpress();
 
     }
 

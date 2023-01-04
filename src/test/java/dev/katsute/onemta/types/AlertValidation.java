@@ -43,7 +43,6 @@ public abstract class AlertValidation {
         return direction.matcher(stop).replaceAll("");
     }
 
-
     public static void testAlertReference(final Alerts<?> reference, final TransitAlert<?,?,?,?> alert){
         final boolean stop = reference instanceof TransitStop<?,?,?>;
         final Object id = stop ? ((TransitStop<?,?,?>) reference).getStopID() : ((TransitRoute<?,?,?>) reference).getRouteID();

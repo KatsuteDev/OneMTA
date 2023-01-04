@@ -510,7 +510,7 @@ abstract class MTASchema_Subway extends MTASchema {
             }
 
             @Override
-            public final String getCurrentStatus(){
+            public final String getStatus(){
                 return status;
             }
 
@@ -566,7 +566,7 @@ abstract class MTASchema_Subway extends MTASchema {
                 getTrip(true);
 
                 final Vehicle vehicle = mta.getSubwayTrain(vehicleID);
-                status  = vehicle.getCurrentStatus();
+                status  = vehicle.getStatus();
                 stopID  = vehicle.getStopID();
                 routeID = vehicle.getRouteID();
                 express = vehicle.isExpress();

@@ -30,6 +30,10 @@ import dev.katsute.onemta.attribute.Updatable;
  * @param <SID> stop ID format
  * @param <RID> route ID format
  * @param <VID> vehicle ID format
+ *
+ * @since 1.0.0
+ * @version 1.0.0
+ * @author Katsute
  */
 public abstract class TransitVehicle<R extends TransitRoute<?,?,?>, S extends TransitStop<?,?,?>, T extends TransitTrip<?,?,?>, SID, RID, VID> implements Reference.Route<R>, Reference.Stop<S>, Reference.Trip<T>, Updatable {
 
