@@ -92,16 +92,16 @@ public abstract class MNR {
      * @version 2.0.0
      * @author Katsute
      */
-    public abstract static class Vehicle extends TransitVehicle<Route,Stop,Trip,Integer,Integer,String> implements Location {
+    public abstract static class Vehicle extends TransitVehicle<Integer,Route,Integer,Stop,Integer,Trip> implements Location {
 
         /**
          * Returns the current vehicle status.
          *
          * @return vehicle status
          *
-         * @since 1.0.0
+         * @since 2.0.0
          */
-        public abstract String getCurrentStatus();
+        public abstract String getStatus();
 
     }
 

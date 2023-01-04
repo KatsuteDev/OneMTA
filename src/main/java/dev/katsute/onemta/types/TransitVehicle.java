@@ -35,7 +35,7 @@ import dev.katsute.onemta.attribute.Updatable;
  * @version 1.0.0
  * @author Katsute
  */
-public abstract class TransitVehicle<R extends TransitRoute<?,?,?>,S extends TransitStop<?,?,?>,T extends TransitTrip<?,?,?,?>,SID,RID,VID> implements Reference.Route<R>, Reference.Stop<S>, Reference.Trip<T>, Updatable {
+public abstract class TransitVehicle<RID,R extends TransitRoute<?,?,?>,SID,S extends TransitStop<?,?,?>,VID,T extends TransitTrip<?,?,?,?>> implements Reference.Route<R>, Reference.Stop<S>, Reference.Trip<T>, Updatable {
 
     /**
      * Returns the vehicle ID.

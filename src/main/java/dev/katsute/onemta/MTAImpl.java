@@ -260,13 +260,13 @@ final class MTAImpl extends MTA {
     }
 
     @Override
-    public final LIRR.Vehicle getLIRRTrain(final String train_id){
+    public final LIRR.Vehicle getLIRRTrain(final int train_id){
         return getVehicle(
             service.lirr.getLIRR(),
             ent ->
                 ent.hasTripUpdate() &&
                 ent.getTripUpdate().hasVehicle() &&
-                Objects.equals(ent.getTripUpdate().getVehicle().getLabel(), train_id),
+                Objects.equals(Integer.valueOf(ent.getTripUpdate().getVehicle().getLabel()), train_id),
             ent -> {
                 // find matching vehicle entity
                 final FeedEntity veh = getFeedEntity(
@@ -314,10 +314,10 @@ final class MTAImpl extends MTA {
     }
 
     @Override
-    public final MNR.Vehicle getMNRTrain(final String train_id){
+    public final MNR.Vehicle getMNRTrain(final int train_id){
         return getVehicle(
             service.mnr.getMNR(),
-            ent -> Objects.equals(ent.getId(), train_id),
+            ent -> Objects.equals(Integer.valueOf(ent.getId()), train_id),
             ent -> MTASchema_MNR.asVehicle(
                 this,
                 ent.getVehicle(),

@@ -84,7 +84,7 @@ public abstract class Bus {
      * @version 2.0.0
      * @author Katsute
      */
-    public abstract static class Vehicle extends TransitVehicle<Route,Stop,Trip,Integer,String,Integer> implements Location, Direction<BusDirection>, BusRouteTypes {
+    public abstract static class Vehicle extends TransitVehicle<String,Route,Integer,Stop,Integer,Trip> implements Location, Direction<BusDirection>, BusRouteTypes {
 
         /**
          * Returns the vehicle bearing, 0 being North.
@@ -102,7 +102,7 @@ public abstract class Bus {
          *
          * @since 2.0.0
          */
-        public abstract Integer getPassengerCount();
+        public abstract Integer getPassengers();
 
     }
 

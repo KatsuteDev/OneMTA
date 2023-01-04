@@ -94,7 +94,7 @@ public abstract class Subway {
      * @version 2.0.0
      * @author Katsute
      */
-    public abstract static class Vehicle extends TransitVehicle<Route,Stop,Trip,String,String,String> {
+    public abstract static class Vehicle extends TransitVehicle<String,Route,String,Stop,String,Trip> {
 
         /**
          * Returns the current vehicle status.

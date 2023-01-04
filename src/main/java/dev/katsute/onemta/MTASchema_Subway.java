@@ -493,16 +493,23 @@ abstract class MTASchema_Subway extends MTASchema {
     }
 
     static Vehicle asVehicle(final MTA mta, final VehiclePosition vehicle, final TripUpdate tripUpdate, final Route optionalRoute){
-        return new Vehicle() {
+        return new Vehicle(){
 
-            private final String vehicleID = tripUpdate.getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getTrainId();
+            private final String vehicleID = requireNonNull(() -> vehicle.getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getTrainId());
 
-            private String status   = requireNonNull(() -> vehicle.getCurrentStatus().name());
+            private String status = requireNonNull(() -> vehicle.getCurrentStatus().name());
 
-            private String stopID   = vehicle.getStopId();
-            private String routeID  = tripUpdate.getTrip().getRouteId();
+            private Integer sequence = requireNonNull(vehicle::getCurrentStopSequence);
 
-            private boolean express = routeID.toUpperCase().endsWith("X");
+            private String stopID = requireNonNull(vehicle::getStopId);
+            private Stop stop = null;
+
+            private String routeID = requireNonNull(() -> vehicle.getTrip().getRouteId());
+            private Route route = optionalRoute;
+
+            private Boolean express = requireNonNull(() -> routeID.toUpperCase().endsWith("X"));
+
+            private Trip trip = asTrip(mta, tripUpdate, this);
 
             @Override
             public final String getVehicleID(){
@@ -515,8 +522,13 @@ abstract class MTASchema_Subway extends MTASchema {
             }
 
             @Override
-            public final String getStopID(){
-                return stopID;
+            public final Integer getStopSequence(){
+                return sequence;
+            }
+
+            @Override
+            public final Boolean isExpress(){
+                return express;
             }
 
             @Override
@@ -525,32 +537,19 @@ abstract class MTASchema_Subway extends MTASchema {
             }
 
             @Override
-            public final Integer getStopSequence(){
-                return null;
+            public final Route getRoute(){
+                return route != null ? route : (route = mta.getSubwayRoute(routeID));
             }
-
-            // onemta methods
 
             @Override
-            public final Boolean isExpress(){
-                return express;
+            public final String getStopID(){
+                return stopID;
             }
-
-            private Stop stop = null;
 
             @Override
             public final Stop getStop(){
                 return stop != null ? stop : (stop = mta.getSubwayStop(stopID));
             }
-
-            private Route route = optionalRoute;
-
-            @Override
-            public final Route getRoute(){
-                return route != null ? route : (route = mta.getSubwayRoute(routeID));
-            }
-
-            private Trip trip = asTrip(mta, tripUpdate, this);
 
             @Override
             public final Trip getTrip(){
@@ -565,23 +564,29 @@ abstract class MTASchema_Subway extends MTASchema {
             public final void refresh(){
                 getTrip(true);
 
-                final Vehicle vehicle = mta.getSubwayTrain(vehicleID);
-                status  = vehicle.getStatus();
-                stopID  = vehicle.getStopID();
-                routeID = vehicle.getRouteID();
-                express = vehicle.isExpress();
+                Vehicle vehicle = mta.getSubwayTrain(vehicleID);
+
+                status   = vehicle.getStatus();
+                sequence = vehicle.getStopSequence();
+                express  = vehicle.isExpress();
+                routeID  = vehicle.getRouteID();
+                route    = null;
+                stopID   = vehicle.getStopID();
+                stop     = null;
             }
 
-            // Java
+            //
 
             @Override
             public final String toString(){
                 return "Subway.Vehicle{" +
-                       "status='" + status + '\'' +
-                       ", express='" + express + '\'' +
-                       ", vehicleID='" + vehicleID + '\'' +
+                       "vehicleID='" + vehicleID + '\'' +
+                       ", status='" + status + '\'' +
+                       ", sequence=" + sequence +
                        ", stopID='" + stopID + '\'' +
                        ", routeID='" + routeID + '\'' +
+                       ", express=" + express +
+                       ", trip=" + trip +
                        '}';
             }
 

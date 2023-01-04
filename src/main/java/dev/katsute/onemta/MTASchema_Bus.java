@@ -492,21 +492,25 @@ abstract class MTASchema_Bus extends MTASchema {
     }
 
     static Vehicle asVehicle(final MTA mta, final VehiclePosition vehicle, final TripUpdate tripUpdate, final Route optionalRoute){
-        final CrowdingProto.CrowdingDescriptor crowdingDescriptor = vehicle.getExtension(CrowdingProto.crowdingDescriptor);
-        return new Vehicle() {
+        return new Vehicle(){
 
-            private final Integer vehicleID = requireNonNull(() -> Integer.parseInt(vehicle.getVehicle().getId().split("_")[1]));
+            private final Integer vehicleID = requireNonNull(() -> Integer.valueOf(vehicle.getVehicle().getId().split("_")[1]));
 
             private Double latitude = requireNonNull(() -> Double.valueOf(vehicle.getPosition().getLatitude()));
             private Double longitude = requireNonNull(() -> Double.valueOf(vehicle.getPosition().getLongitude()));
             private Double bearing = requireNonNull(() -> Double.valueOf(vehicle.getPosition().getBearing()));
 
+            private BusDirection direction = requireNonNull(() -> BusDirection.asDirection(vehicle.getTrip().getDirectionId()));
+
+            private Integer passengers = requireNonNull(() -> vehicle.getExtension(CrowdingProto.crowdingDescriptor).getEstimatedCount());
+
             private Integer stopID = requireNonNull(() -> Integer.valueOf(vehicle.getStopId()));
-            private String routeID = requireNonNull(() -> tripUpdate.getTrip().getRouteId());
+            private Stop stop = null;
 
-            private BusDirection direction = requireNonNull(() -> BusDirection.asDirection(tripUpdate.getTrip().getDirectionId()));
+            private String routeID = requireNonNull(() -> vehicle.getTrip().getRouteId());
+            private Route route = optionalRoute;
 
-            private final Integer passengers = requireNonNull(crowdingDescriptor::getEstimatedCount);
+            private Trip trip = asTrip(mta, tripUpdate, this);
 
             @Override
             public final Integer getVehicleID(){
@@ -534,21 +538,9 @@ abstract class MTASchema_Bus extends MTASchema {
             }
 
             @Override
-            public final Integer getPassengerCount() {
+            public final Integer getPassengers(){
                 return passengers;
             }
-
-            @Override
-            public final String getRouteID(){
-                return routeID;
-            }
-
-            @Override
-            public final Integer getStopID(){
-                return stopID;
-            }
-
-            // onemta methods
 
             @Override
             public final Boolean isSelectBusService(){
@@ -570,25 +562,25 @@ abstract class MTASchema_Bus extends MTASchema {
                 return getRoute().isLimited();
             }
 
-            private Route route = optionalRoute;
+            @Override
+            public final String getRouteID(){
+                return routeID;
+            }
 
             @Override
             public final Route getRoute(){
                 return route != null ? route : (route = mta.getBusRoute(routeID));
             }
 
-            private Stop stop = null;
+            @Override
+            public final Integer getStopID(){
+                return stopID;
+            }
 
             @Override
             public final Stop getStop(){
-                return stopID != null
-                   ? stop != null
-                        ? stop
-                        : (stop = mta.getBusStop(stopID))
-                   : null;
+                return stop != null ? stop : (stop = mta.getBusStop(stopID));
             }
-
-            private Trip trip = asTrip(mta, tripUpdate, this);
 
             @Override
             public final Trip getTrip(){
@@ -603,40 +595,33 @@ abstract class MTASchema_Bus extends MTASchema {
             public final void refresh(){
                 getTrip(true);
 
-                Vehicle vehicle = null;
-
-                if(stop != null){
-                    for(final Vehicle veh : mta.getBusStop(stop.getStopID()).getVehicles()){
-                        if(Objects.equals(vehicleID, veh.getVehicleID())){
-                            vehicle = veh;
-                            break;
-                        }
-                    }
-                }
-
-                if(vehicle == null)
-                    vehicle = mta.getBus(vehicleID);
+                Vehicle vehicle = mta.getBus(vehicleID);
 
                 latitude   = vehicle.getLatitude();
                 longitude  = vehicle.getLongitude();
                 bearing    = vehicle.getBearing();
                 direction  = vehicle.getDirection();
+                passengers = vehicle.getPassengers();
                 routeID    = vehicle.getRouteID();
+                route      = null;
                 stopID     = vehicle.getStopID();
+                stop       = null;
             }
 
-            // Java
+            //
 
             @Override
-            public String toString(){
+            public final String toString(){
                 return "Bus.Vehicle{" +
                        "vehicleID=" + vehicleID +
                        ", latitude=" + latitude +
                        ", longitude=" + longitude +
                        ", bearing=" + bearing +
                        ", direction=" + direction +
-                       ", routeID='" + routeID + '\'' +
+                       ", passengers=" + passengers +
                        ", stopID=" + stopID +
+                       ", routeID='" + routeID + '\'' +
+                       ", trip=" + trip +
                        '}';
             }
 

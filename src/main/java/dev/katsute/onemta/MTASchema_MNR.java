@@ -361,22 +361,25 @@ abstract class MTASchema_MNR extends MTASchema {
     }
 
     static Vehicle asVehicle(final MTA mta, final VehiclePosition vehicle, final TripUpdate tripUpdate, final Route optionalRoute){
-        return new Vehicle() {
+        return new Vehicle(){
 
-            private final String vehicleID = requireNonNull(() -> vehicle.getVehicle().getLabel());
+            private final Integer vehicleID = requireNonNull(() -> Integer.valueOf(vehicle.getVehicle().getLabel()));
 
-            private Double latitude  = requireNonNull( () -> Double.valueOf(vehicle.getPosition().getLatitude()));
-            private Double longitude = requireNonNull( () -> Double.valueOf(vehicle.getPosition().getLongitude()));
+            private Double latitude = requireNonNull(() -> Double.valueOf(vehicle.getPosition().getLatitude()));
+            private Double longitude = requireNonNull(() -> Double.valueOf(vehicle.getPosition().getLongitude()));
 
-            private String status   = requireNonNull(() -> vehicle.getCurrentStatus().name());
+            private String status = requireNonNull(() -> vehicle.getCurrentStatus().name());
 
-            private Integer stopID  = requireNonNull(() -> Integer.valueOf(vehicle.hasStopId() ? vehicle.getStopId() : tripUpdate.getStopTimeUpdate(0).getStopId())); // fallback to next trip stop if stop id is not working
-            private Integer routeID = requireNonNull(() -> Integer.valueOf(tripUpdate.getTrip().getRouteId()));
+            private Integer stopID = requireNonNull(() -> Integer.valueOf(vehicle.getStopId()));
+            private Stop stop = null;
+
+            private Integer routeID = requireNonNull(() -> Integer.valueOf(vehicle.getTrip().getRouteId()));
+            private Route route = optionalRoute;
 
             private Trip trip = asTrip(mta, tripUpdate, this);
 
             @Override
-            public final String getVehicleID(){
+            public final Integer getVehicleID(){
                 return vehicleID;
             }
 
@@ -391,8 +394,18 @@ abstract class MTASchema_MNR extends MTASchema {
             }
 
             @Override
-            public final String getCurrentStatus(){
+            public final String getStatus(){
                 return status;
+            }
+
+            @Override
+            public final Integer getRouteID(){
+                return routeID;
+            }
+
+            @Override
+            public final Route getRoute(){
+                return route != null ? route : (route = mta.getMNRRoute(routeID));
             }
 
             @Override
@@ -401,24 +414,8 @@ abstract class MTASchema_MNR extends MTASchema {
             }
 
             @Override
-            public final Integer getRouteID(){
-                return routeID;
-            }
-
-            // onemta methods
-
-            private Stop stop = null;
-
-            @Override
             public final Stop getStop(){
-                return stop != null ? stop : (stop = mta.getMNRStop(Objects.requireNonNull(stopID, "Stop ID must not be null")));
-            }
-
-            private Route route = optionalRoute;
-
-            @Override
-            public final Route getRoute(){
-                return route != null ? route : (route = mta.getMNRRoute(Objects.requireNonNull(routeID, "Route ID must not be null")));
+                return stop != null ? stop : (stop = mta.getMNRStop(stopID));
             }
 
             @Override
@@ -434,25 +431,29 @@ abstract class MTASchema_MNR extends MTASchema {
             public final void refresh(){
                 getTrip(true);
 
-                final Vehicle vehicle = mta.getMNRTrain(vehicleID);
+                Vehicle vehicle = mta.getMNRTrain(vehicleID);
+
                 latitude  = vehicle.getLatitude();
                 longitude = vehicle.getLongitude();
-                status    = vehicle.getCurrentStatus();
-                stopID    = vehicle.getStopID();
+                status    = vehicle.getStatus();
                 routeID   = vehicle.getRouteID();
+                route     = null;
+                stopID    = vehicle.getStopID();
+                stop      = null;
             }
 
-            // Java
+            //
 
             @Override
             public final String toString(){
                 return "MNR.Vehicle{" +
-                       "vehicleID='" + vehicleID + '\'' +
+                       "vehicleID=" + vehicleID +
                        ", latitude=" + latitude +
                        ", longitude=" + longitude +
                        ", status='" + status + '\'' +
                        ", stopID=" + stopID +
-                       ", routeID=" + routeID +
+                       ", routeID='" + routeID + '\'' +
+                       ", trip=" + trip +
                        '}';
             }
 

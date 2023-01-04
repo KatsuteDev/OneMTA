@@ -392,23 +392,26 @@ abstract class MTASchema_LIRR extends MTASchema {
     }
 
     static Vehicle asVehicle(final MTA mta, final VehiclePosition vehicle, final TripUpdate tripUpdate, final Route optionalRoute){
-        return new Vehicle() {
+        return new Vehicle(){
 
-            private final String vehicleID = requireNonNull(() -> vehicle.getVehicle().getLabel());
+            private final Integer vehicleID = requireNonNull(() -> Integer.valueOf(vehicle.getVehicle().getLabel()));
 
-            private Double latitude  = requireNonNull(() -> Double.valueOf(vehicle.getPosition().getLatitude()));
+            private Double latitude = requireNonNull(() -> Double.valueOf(vehicle.getPosition().getLatitude()));
             private Double longitude = requireNonNull(() -> Double.valueOf(vehicle.getPosition().getLongitude()));
-            private Double bearing   = requireNonNull(() -> Double.valueOf(vehicle.getPosition().getBearing()));
+            private Double bearing = requireNonNull(() -> Double.valueOf(vehicle.getPosition().getBearing()));
 
-            private String status   = requireNonNull(() -> vehicle.getCurrentStatus().name());
+            private String status = requireNonNull(() -> vehicle.getCurrentStatus().name());
 
-            private Integer stopID  = requireNonNull(() -> Integer.valueOf(vehicle.getStopId()));
-            private Integer routeID = requireNonNull(() -> Integer.valueOf(tripUpdate.getTrip().getRouteId()));
+            private Integer stopID = requireNonNull(() -> Integer.valueOf(vehicle.getStopId()));
+            private Stop stop = null;
+
+            private Integer routeID = requireNonNull(() -> Integer.valueOf(vehicle.getTrip().getRouteId()));
+            private Route route = optionalRoute;
 
             private Trip trip = asTrip(mta, tripUpdate, this);
 
             @Override
-            public final String getVehicleID(){
+            public final Integer getVehicleID(){
                 return vehicleID;
             }
 
@@ -433,29 +436,23 @@ abstract class MTASchema_LIRR extends MTASchema {
             }
 
             @Override
+            public final Integer getRouteID(){
+                return routeID;
+            }
+
+            @Override
+            public final Route getRoute(){
+                return route != null ? route : (route = mta.getLIRRRoute(routeID));
+            }
+
+            @Override
             public final Integer getStopID(){
                 return stopID;
             }
 
             @Override
-            public final Integer getRouteID(){
-                return routeID;
-            }
-
-            // onemta methods
-
-            private Stop stop = null;
-
-            @Override
             public final Stop getStop(){
-                return stop != null ? stop : (stop = mta.getLIRRStop(Objects.requireNonNull(stopID, "Stop ID must not be null")));
-            }
-
-            private Route route = optionalRoute;
-
-            @Override
-            public final Route getRoute(){
-                return route != null ? route : (route = mta.getLIRRRoute(Objects.requireNonNull(routeID, "Route ID must not be null")));
+                return stop != null ? stop : (stop = mta.getLIRRStop(stopID));
             }
 
             @Override
@@ -471,27 +468,31 @@ abstract class MTASchema_LIRR extends MTASchema {
             public final void refresh(){
                 getTrip(true);
 
-                final Vehicle vehicle = mta.getLIRRTrain(vehicleID);
+                Vehicle vehicle = mta.getLIRRTrain(vehicleID);
+
                 latitude  = vehicle.getLatitude();
                 longitude = vehicle.getLongitude();
                 bearing   = vehicle.getBearing();
                 status    = vehicle.getStatus();
-                stopID    = vehicle.getStopID();
                 routeID   = vehicle.getRouteID();
+                route     = null;
+                stopID    = vehicle.getStopID();
+                stop      = null;
             }
 
-            // Java
+            //
 
             @Override
             public final String toString(){
                 return "LIRR.Vehicle{" +
-                       "vehicleID='" + vehicleID + '\'' +
+                       "vehicleID=" + vehicleID +
                        ", latitude=" + latitude +
                        ", longitude=" + longitude +
                        ", bearing=" + bearing +
                        ", status='" + status + '\'' +
                        ", stopID=" + stopID +
-                       ", routeID=" + routeID +
+                       ", routeID='" + routeID + '\'' +
+                       ", trip=" + trip +
                        '}';
             }
 
