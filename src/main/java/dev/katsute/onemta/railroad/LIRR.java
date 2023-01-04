@@ -148,24 +148,6 @@ public abstract class LIRR {
     public abstract static class TripStop extends TransitTripStop<Integer,Stop,Trip> {
 
         /**
-         * Returns the delay in seconds.
-         *
-         * @return delay
-         *
-         * @since 1.0.0
-         */
-        public abstract Integer getDelay();
-
-        /**
-         * Returns the train status.
-         *
-         * @return train status
-         *
-         * @since 1.0.0
-         */
-        public abstract String getStatus();
-
-        /**
          * Returns the stop sequence.
          *
          * @return stop sequence
@@ -175,6 +157,24 @@ public abstract class LIRR {
         public abstract Integer getStopSequence();
 
         /**
+         * Returns the delay in seconds.
+         *
+         * @return delay
+         *
+         * @since 1.0.0
+         */
+        public abstract Integer getDelay();
+
+        /**
+         * Returns the schedule relationship.
+         *
+         * @return schedule relationship
+         *
+         * @since 2.0.0
+         */
+        public abstract String getScheduleRelationship();
+
+        /**
          * Returns the track.
          *
          * @return track
@@ -182,6 +182,15 @@ public abstract class LIRR {
          * @since 1.0.0
          */
         public abstract String getTrack();
+
+        /**
+         * Returns the train status.
+         *
+         * @return train status
+         *
+         * @since 1.0.0
+         */
+        public abstract String getStatus();
 
     }
 

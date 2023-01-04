@@ -589,27 +589,22 @@ abstract class MTASchema_Subway extends MTASchema {
     }
 
     static Trip asTrip(final MTA mta, final TripUpdate tripUpdate, final Vehicle referringVehicle){
-        final NYCTSubwayProto.NyctTripDescriptor nyctTripDescriptor = tripUpdate.getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor);
-        return new Trip() {
+        return new Trip(){
+
+            private final String tripID = requireNonNull(() -> tripUpdate.getTrip().getTripId());
+            private final String route = requireNonNull(() -> tripUpdate.getTrip().getRouteId());
+
+            private final List<TripStop> stops;
+
+            private final SubwayDirection direction = requireNonNull(() -> SubwayDirection.asDirection(tripUpdate.getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getDirection().getNumber()));
 
             private final Vehicle vehicle = referringVehicle;
-
-            private final String tripID  = requireNonNull(() -> tripUpdate.getTrip().getTripId());
-            private final String routeID = requireNonNull(() -> tripUpdate.getTrip().getRouteId());
-
-            private final SubwayDirection direction = requireNonNull(
-                () -> nyctTripDescriptor.hasDirection()
-                ? SubwayDirection.asDirection(nyctTripDescriptor.getDirection().getNumber())
-                : SubwayDirection.NORTH
-            );
-
-            private final List<TripStop> tripStops;
 
             {
                 final List<TripStop> stops = new ArrayList<>();
                 for(final TripUpdate.StopTimeUpdate update : tripUpdate.getStopTimeUpdateList())
                     stops.add(asTripStop(mta, update, this));
-                tripStops = Collections.unmodifiableList(stops);
+                this.stops = Collections.unmodifiableList(stops);
             }
 
             @Override
@@ -619,15 +614,8 @@ abstract class MTASchema_Subway extends MTASchema {
 
             @Override
             public final String getRouteID(){
-                return routeID;
+                return route;
             }
-
-            @Override
-            public final SubwayDirection getDirection(){
-                return direction;
-            }
-
-            // onemta methods
 
             @Override
             public final Route getRoute(){
@@ -635,22 +623,28 @@ abstract class MTASchema_Subway extends MTASchema {
             }
 
             @Override
-            public final Vehicle getVehicle(){
-                return vehicle;
+            public final TripStop[] getTripStops(){
+                return stops.toArray(new TripStop[0]);
             }
 
             @Override
-            public final TripStop[] getTripStops(){
-                return tripStops.toArray(new TripStop[0]);
+            public final SubwayDirection getDirection(){
+                return direction;
             }
 
-            // Java
+            @Override
+            public final Vehicle getVehicle(){
+                return referringVehicle;
+            }
+
+            //
 
             @Override
             public final String toString(){
                 return "Subway.Trip{" +
                        "tripID='" + tripID + '\'' +
-                       ", routeID='" + routeID + '\'' +
+                       ", route='" + route + '\'' +
+                       ", stops=" + stops +
                        ", direction=" + direction +
                        '}';
             }
@@ -659,22 +653,30 @@ abstract class MTASchema_Subway extends MTASchema {
     }
 
     static TripStop asTripStop(final MTA mta, final TripUpdate.StopTimeUpdate stopTimeUpdate, final Trip referringTrip){
-        final NYCTSubwayProto.NyctStopTimeUpdate nyctStopTimeUpdate = stopTimeUpdate.getExtension(NYCTSubwayProto.nyctStopTimeUpdate);
-        return new TripStop() {
-
-            private final Trip trip = referringTrip;
+        return new TripStop(){
 
             private final String stopID = requireNonNull(stopTimeUpdate::getStopId);
 
-            private final Long arrival   = requireNonNull(() -> stopTimeUpdate.getArrival().getTime() * 1000);
+            private Stop stop = null;
+
+            private final Long arrival = requireNonNull(() -> stopTimeUpdate.getArrival().getTime() * 1000);
             private final Long departure = requireNonNull(() -> stopTimeUpdate.getDeparture().getTime() * 1000);
 
-            private final String track       = requireNonNull(nyctStopTimeUpdate::getScheduledTrack);
-            private final String actualTrack = requireNonNull(nyctStopTimeUpdate::getActualTrack);
+            private  final String scheduledTrack = requireNonNull(() -> stopTimeUpdate.getExtension(NYCTSubwayProto.nyctStopTimeUpdate).getScheduledTrack());
+            private  final String actualTrack = requireNonNull(() -> stopTimeUpdate.getExtension(NYCTSubwayProto.nyctStopTimeUpdate).getActualTrack());
+
+            private final String status = requireNonNull(() -> stopTimeUpdate.getExtension(MNRRProto.mnrStopTimeUpdate).getTrainStatus());
+
+            private final Trip trip = referringTrip;
 
             @Override
             public final String getStopID(){
                 return stopID;
+            }
+
+            @Override
+            public final Stop getStop(){
+                return stop != null ? stop : (stop = mta.getSubwayStop(stopID));
             }
 
             @Override
@@ -698,22 +700,13 @@ abstract class MTASchema_Subway extends MTASchema {
             }
 
             @Override
-            public final String getTrack(){
-                return track;
-            }
-
-            @Override
             public final String getActualTrack(){
                 return actualTrack;
             }
 
-            // onemta methods
-
-            private Stop stop = null;
-
             @Override
-            public final Stop getStop(){
-                return stop != null ? stop : (stop = mta.getSubwayStop(Objects.requireNonNull(stopID, "Stop ID must not be null")));
+            public final String getTrack(){
+                return scheduledTrack;
             }
 
             @Override
@@ -721,7 +714,7 @@ abstract class MTASchema_Subway extends MTASchema {
                 return trip;
             }
 
-            // Java
+            //
 
             @Override
             public final String toString(){
@@ -729,8 +722,9 @@ abstract class MTASchema_Subway extends MTASchema {
                        "stopID='" + stopID + '\'' +
                        ", arrival=" + arrival +
                        ", departure=" + departure +
-                       ", track='" + track + '\'' +
+                       ", scheduledTrack='" + scheduledTrack + '\'' +
                        ", actualTrack='" + actualTrack + '\'' +
+                       ", status='" + status + '\'' +
                        '}';
             }
 

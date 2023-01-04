@@ -146,7 +146,7 @@ public abstract class Subway {
     public abstract static class TripStop extends TransitTripStop<String,Stop,Trip> {
 
         /**
-         * Returns the actual track that a subway train arrived at.
+         * Returns the actual track.
          *
          * @return actual track
          *
@@ -155,7 +155,7 @@ public abstract class Subway {
         public abstract String getActualTrack();
 
         /**
-         * Returns the track.
+         * Returns the scheduled track.
          *
          * @return track
          *

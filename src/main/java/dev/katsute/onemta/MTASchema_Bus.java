@@ -644,20 +644,22 @@ abstract class MTASchema_Bus extends MTASchema {
     }
 
     static Trip asTrip(final MTA mta, final TripUpdate tripUpdate, final Vehicle referringVehicle){
-        return new Trip() {
+        return new Trip(){
+
+            private final String tripID = requireNonNull(() -> tripUpdate.getTrip().getTripId());
+            private final String route = requireNonNull(() -> tripUpdate.getTrip().getRouteId());
+
+            private final List<TripStop> stops;
+
+            private final Integer delay = requireNonNull(tripUpdate::getDelay);
 
             private final Vehicle vehicle = referringVehicle;
-
-            private final String tripID  = requireNonNull(() -> tripUpdate.getTrip().getTripId());
-            private final String routeID = requireNonNull(() -> tripUpdate.getTrip().getRouteId());
-
-            private final List<TripStop> tripStops;
 
             {
                 final List<TripStop> stops = new ArrayList<>();
                 for(final TripUpdate.StopTimeUpdate update : tripUpdate.getStopTimeUpdateList())
                     stops.add(asTripStop(mta, update, this));
-                tripStops = Collections.unmodifiableList(stops);
+                this.stops = Collections.unmodifiableList(stops);
             }
 
             @Override
@@ -667,15 +669,8 @@ abstract class MTASchema_Bus extends MTASchema {
 
             @Override
             public final String getRouteID(){
-                return routeID;
+                return route;
             }
-
-            @Override
-            public final Integer getDelay(){
-                return null;
-            }
-
-            // onemta methods
 
             @Override
             public final Route getRoute(){
@@ -683,22 +678,29 @@ abstract class MTASchema_Bus extends MTASchema {
             }
 
             @Override
-            public final Vehicle getVehicle(){
-                return vehicle;
+            public final TripStop[] getTripStops(){
+                return stops.toArray(new TripStop[0]);
             }
 
             @Override
-            public final TripStop[] getTripStops(){
-                return tripStops.toArray(new TripStop[0]);
+            public final Integer getDelay(){
+                return delay;
             }
 
-            // Java
+            @Override
+            public final Vehicle getVehicle(){
+                return referringVehicle;
+            }
+
+            //
 
             @Override
             public final String toString(){
                 return "Bus.Trip{" +
                        "tripID='" + tripID + '\'' +
-                       ", routeID='" + routeID + '\'' +
+                       ", route='" + route + '\'' +
+                       ", stops=" + stops +
+                       ", delay=" + delay +
                        '}';
             }
 
@@ -706,18 +708,27 @@ abstract class MTASchema_Bus extends MTASchema {
     }
 
     static TripStop asTripStop(final MTA mta, final TripUpdate.StopTimeUpdate stopTimeUpdate, final Trip referringTrip){
-        return new TripStop() {
+        return new TripStop(){
+
+            private final Integer stopID = requireNonNull(() -> Integer.valueOf(stopTimeUpdate.getStopId()));
+
+            private Stop stop = null;
+
+            private final Long arrival = requireNonNull(() -> stopTimeUpdate.getArrival().getTime() * 1000);
+            private final Long departure = requireNonNull(() -> stopTimeUpdate.getDeparture().getTime() * 1000);
+
+            private final Integer sequence = requireNonNull(stopTimeUpdate::getStopSequence);
 
             private final Trip trip = referringTrip;
-
-            private final Integer stopID = requireNonNull(() -> Integer.parseInt(stopTimeUpdate.getStopId()));
-
-            private final Long arrival   = requireNonNull(() -> stopTimeUpdate.getArrival().getTime() * 1000);
-            private final Long departure = requireNonNull(() -> stopTimeUpdate.getDeparture().getTime() * 1000);
 
             @Override
             public final Integer getStopID(){
                 return stopID;
+            }
+
+            @Override
+            public final Stop getStop(){
+                return stop != null ? stop : (stop = mta.getBusStop(stopID));
             }
 
             @Override
@@ -742,16 +753,7 @@ abstract class MTASchema_Bus extends MTASchema {
 
             @Override
             public final Integer getStopSequence(){
-                return null;
-            }
-
-            // onemta methods
-
-            private Stop stop = null;
-
-            @Override
-            public final Stop getStop(){
-                return stop != null ? stop : (stop = mta.getBusStop(Objects.requireNonNull(stopID, "Stop ID must not be null")));
+                return sequence;
             }
 
             @Override
@@ -759,14 +761,15 @@ abstract class MTASchema_Bus extends MTASchema {
                 return trip;
             }
 
-            // Java
+            //
 
             @Override
             public final String toString(){
-                return "TripStop{" +
-                       "stopID='" + stopID + '\'' +
+                return "Bus.TripStop{" +
+                       "stopID=" + stopID +
                        ", arrival=" + arrival +
                        ", departure=" + departure +
+                       ", sequence=" + sequence +
                        '}';
             }
 
