@@ -35,6 +35,7 @@ public abstract class TransitAlertPeriod {
      *
      * @return alert start
      *
+     * @see Date
      * @see #getStartEpochMillis()
      * @since 1.0.0
      */
@@ -55,6 +56,7 @@ public abstract class TransitAlertPeriod {
      *
      * @return alert end
      *
+     * @see Date
      * @see #getEndEpochMillis()
      * @since 1.0.0
      */
