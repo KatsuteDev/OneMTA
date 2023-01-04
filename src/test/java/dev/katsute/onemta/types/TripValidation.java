@@ -16,7 +16,7 @@ public abstract class TripValidation {
 
     //
 
-    public static void testTrip(final TransitTrip<?,?,?> trip){
+    public static void testTrip(final TransitTrip<?,?,?,?> trip){
         assertNotNull(trip.getTripStops());
     }
 

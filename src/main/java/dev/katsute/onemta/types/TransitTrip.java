@@ -23,15 +23,16 @@ import dev.katsute.onemta.attribute.Reference;
 /**
  * Represents a transit trip.
  *
- * @param <V> transit vehicle type
- * @param <R> transit route type
- * @param <S> transit stop type
+ * @param <RID> route ID format
+ * @param <R> route type
+ * @param <V> vehicle type
+ * @param <S> stop type
  *
  * @since 1.0.0
- * @version 1.0.0
+ * @version 2.0.0
  * @author Katsute
  */
-public abstract class TransitTrip<V extends TransitVehicle<?,?,?,?,?,?>, R extends TransitRoute<?,?,?>, S extends TransitTripStop<?,?,?>> implements Reference.Route<R> {
+public abstract class TransitTrip<RID,R extends TransitRoute<?,?,?>,V extends TransitVehicle<?,?,?,?,?,?>,S extends TransitTripStop<?,?,?>> implements Reference.Route<R> {
 
     /**
      * Returns the trip ID.
@@ -51,7 +52,7 @@ public abstract class TransitTrip<V extends TransitVehicle<?,?,?,?,?,?>, R exten
      * @see #getRoute()
      * @since 1.0.0
      */
-    public abstract String getRouteID();
+    public abstract RID getRouteID();
 
     /**
      * Returns the planned stops for the trip.

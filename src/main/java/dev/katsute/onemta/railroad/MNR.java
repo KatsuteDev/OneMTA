@@ -113,7 +113,7 @@ public abstract class MNR {
      * @version 2.0.0
      * @author Katsute
      */
-    public abstract static class Trip extends TransitTrip<Vehicle,Route,TripStop> { }
+    public abstract static class Trip extends TransitTrip<Integer,Route,Vehicle,TripStop> { }
 
     /**
      * Represents a Metro North Railroad (MNR) vehicle trip stop.
@@ -123,7 +123,7 @@ public abstract class MNR {
      * @version 2.0.0
      * @author Katsute
      */
-    public abstract static class TripStop extends TransitTripStop<Stop,Trip,Integer> {
+    public abstract static class TripStop extends TransitTripStop<Integer,Stop,Trip> {
 
         /**
          * Returns the delay in seconds.

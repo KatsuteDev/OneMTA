@@ -31,7 +31,7 @@ import dev.katsute.onemta.attribute.*;
  * @version 1.1.0
  * @author Katsute
  */
-public abstract class TransitRoute<RID, V extends TransitVehicle<?,?,?,?,?,?>, A extends TransitAlert<?,?,?,?>> implements Alerts<A>, Reference.Vehicle<V>, Updatable {
+public abstract class TransitRoute<RID,V extends TransitVehicle<?,?,?,?,?,?>,A extends TransitAlert<?,?,?,?>> implements Alerts<A>, Reference.Vehicle<V>, Updatable {
 
     /**
      * Returns the transit agency that is operating the route.

@@ -133,7 +133,7 @@ public abstract class Subway {
      * @version 2.0.0
      * @author Katsute
      */
-    public abstract static class Trip extends TransitTrip<Vehicle,Route,TripStop> implements Direction<SubwayDirection> { }
+    public abstract static class Trip extends TransitTrip<String,Route,Vehicle,TripStop> implements Direction<SubwayDirection> { }
 
     /**
      * Represents a subway vehicle trip stop.
@@ -143,7 +143,7 @@ public abstract class Subway {
      * @version 2.0.0
      * @author Katsute
      */
-    public abstract static class TripStop extends TransitTripStop<Stop,Trip,String> {
+    public abstract static class TripStop extends TransitTripStop<String,Stop,Trip> {
 
         /**
          * Returns the actual track that a subway train arrived at.

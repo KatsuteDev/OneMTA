@@ -124,7 +124,7 @@ public abstract class LIRR {
      * @version 2.0.0
      * @author Katsute
      */
-    public abstract static class Trip extends TransitTrip<Vehicle,Route,TripStop> implements Direction<RailroadDirection> {
+    public abstract static class Trip extends TransitTrip<Integer,Route,Vehicle,TripStop> implements Direction<RailroadDirection> {
 
         /**
          * Returns the schedule relationship.
@@ -145,7 +145,7 @@ public abstract class LIRR {
      * @version 2.0.0
      * @author Katsute
      */
-    public abstract static class TripStop extends TransitTripStop<Stop,Trip,Integer> {
+    public abstract static class TripStop extends TransitTripStop<Integer,Stop,Trip> {
 
         /**
          * Returns the delay in seconds.

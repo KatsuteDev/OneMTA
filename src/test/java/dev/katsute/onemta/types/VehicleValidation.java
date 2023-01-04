@@ -38,7 +38,7 @@ public abstract class VehicleValidation {
             else
                 return;
 
-            final TransitTrip<?,?,?> trip = temp.getTrip();
+            final TransitTrip<?,?,?,?> trip = temp.getTrip();
 
             temp.refresh();
 

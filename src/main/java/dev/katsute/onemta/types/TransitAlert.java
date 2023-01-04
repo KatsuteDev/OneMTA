@@ -33,7 +33,7 @@ import java.util.Date;
  * @version 2.0.0
  * @author Katsute
  */
-public abstract class TransitAlert<RID,R extends TransitRoute<?,?,?>, SID, S extends TransitStop<?,?,?>> {
+public abstract class TransitAlert<RID,R extends TransitRoute<?,?,?>,SID,S extends TransitStop<?,?,?>> {
 
     /**
      * Returns the alert ID.

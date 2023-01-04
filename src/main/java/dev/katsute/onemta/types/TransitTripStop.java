@@ -25,15 +25,15 @@ import java.util.Date;
 /**
  * Represents a transit trip stop.
  *
+ * @param <SID> stop ID format
  * @param <S> transit stop type
  * @param <T> transit trip type
- * @param <SID> stop ID format
  *
  * @since 1.0.0
  * @version 1.0.0
  * @author Katsute
  */
-public abstract class TransitTripStop<S extends TransitStop<?,?,?>, T extends TransitTrip<?,?,?>, SID> implements Reference.Stop<S>, Reference.Trip<T> {
+public abstract class TransitTripStop<SID,S extends TransitStop<?,?,?>,T extends TransitTrip<?,?,?,?>> implements Reference.Stop<S>, Reference.Trip<T> {
 
     /**
      * Returns the arrival time.

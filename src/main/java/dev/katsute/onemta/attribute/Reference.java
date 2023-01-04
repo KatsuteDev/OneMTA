@@ -88,7 +88,7 @@ public abstract class Reference {
      * @version 2.0.0
      * @author Katsute
      */
-    public interface Trip<T extends TransitTrip<?,?,?>> {
+    public interface Trip<T extends TransitTrip<?,?,?,?>> {
 
         /**
          * Returns the trip.
