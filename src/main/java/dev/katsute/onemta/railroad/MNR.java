@@ -158,7 +158,7 @@ public abstract class MNR {
      * Represents a Metro North Railroad (MNR) alert.
      *
      * @since 1.0.0
-     * @version 1.0.0
+     * @version 2.0.0
      * @author Katsute
      */
     public abstract static class Alert extends TransitAlert<Integer,Route,Integer,Stop> { }

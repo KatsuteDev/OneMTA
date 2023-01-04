@@ -169,7 +169,7 @@ public abstract class Subway {
      * Represents a subway alert.
      *
      * @since 1.0.0
-     * @version 1.0.0
+     * @version 2.0.0
      * @author Katsute
      */
     public abstract static class Alert extends TransitAlert<String,Route,String,Stop> { }

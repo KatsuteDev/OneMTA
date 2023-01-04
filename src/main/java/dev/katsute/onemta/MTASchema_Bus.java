@@ -32,7 +32,7 @@ import static dev.katsute.onemta.bus.Bus.*;
 @SuppressWarnings({"SpellCheckingInspection", "Convert2Diamond"})
 abstract class MTASchema_Bus extends MTASchema {
 
-    private static final Pattern type = Pattern.compile("^[X]|[XC+]$", Pattern.CASE_INSENSITIVE);
+    private static final Pattern type = Pattern.compile("^X|[XC+]$", Pattern.CASE_INSENSITIVE);
 
     static String stripType(final String route){
         return type.matcher(route).replaceAll("");

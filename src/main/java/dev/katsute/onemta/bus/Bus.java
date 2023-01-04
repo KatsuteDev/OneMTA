@@ -152,7 +152,7 @@ public abstract class Bus {
      * Represents a bus alert.
      *
      * @since 1.0.0
-     * @version 1.0.0
+     * @version 2.0.0
      * @author Katsute
      */
     public abstract static class Alert extends TransitAlert<String,Route,Integer,Stop> { }
