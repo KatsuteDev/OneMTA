@@ -52,7 +52,7 @@ abstract class MTASchema {
             private final String agencyID   = agency_id.toUpperCase();
             private final String agencyName = resource.getData("agency.txt").getValue("agency_id", agencyID, "agency_name");
 
-            // static data
+            //
 
             @Override
             public final String getAgencyID(){
@@ -64,7 +64,7 @@ abstract class MTASchema {
                 return agencyName;
             }
 
-            // Java
+            //
 
             @Override
             public final String toString(){
@@ -81,7 +81,7 @@ abstract class MTASchema {
         return new TransitAlertPeriod() {
 
             private final Long start = requireNonNull(() -> timeRange.getStart() * 1000);
-            private final Long end   = requireNonNull(() -> timeRange.getEnd() != 0 ? timeRange.getEnd() * 1000 : null);
+            private final Long end = requireNonNull(() -> timeRange.getEnd() != 0 ? timeRange.getEnd() * 1000 : null);
 
             @Override
             public final Date getStart(){
@@ -103,7 +103,7 @@ abstract class MTASchema {
                 return end;
             }
 
-            // Java
+            //
 
             @Override
             public final String toString(){

@@ -605,43 +605,44 @@ abstract class MTASchema_MNR extends MTASchema {
 
     static MNR.Alert asTransitAlert(final MTA mta, final GTFSRealtimeProto.FeedEntity feedEntity){
         final GTFSRealtimeProto.Alert alert = feedEntity.getAlert();
-        return new MNR.Alert() {
+        return new MNR.Alert(){
 
             private final String alertID = requireNonNull(feedEntity::getId);
 
-            private final String headerText      = requireNonNull(() -> alert.getHeaderText().getTranslation(0).getText());
-            private final String descriptionText = requireNonNull(() -> alert.getDescriptionText().getTranslation(0).getText());
+            private final List<TransitAlertPeriod> periods;
 
-            private final String alertType = requireNonNull(() -> alert.getExtension(ServiceStatusProto.mercuryAlert).getAlertType());
-
-            private final String effect = requireNonNull(() -> alert.getEffect().name());
-
-            private final List<TransitAlertPeriod> alertPeriods;
             private final List<Integer> routeIDs;
+            private List<Route> routes = null;
+
             private final List<Integer> stopIDs;
+            private List<Stop> stops = null;
+
+            private final String header = requireNonNull(() -> alert.getHeaderText().getTranslation(0).getText());
+            private final String description = requireNonNull(() -> alert.getDescriptionText().getTranslation(0).getText());
+
+            private final Long createdAt = requireNonNull(() -> alert.getExtension(ServiceStatusProto.mercuryAlert).getCreatedAt() * 1000);
+            private final Long updatedAt = requireNonNull(() -> alert.getExtension(ServiceStatusProto.mercuryAlert).getUpdatedAt() * 1000);
+
+            private final String type = requireNonNull(() -> alert.getExtension(ServiceStatusProto.mercuryAlert).getAlertType());
 
             {
-                final List<TransitAlertPeriod> alertPeriods = new ArrayList<>();
+                final List<TransitAlertPeriod> periods = new ArrayList<>();
                 for(final GTFSRealtimeProto.TimeRange range : alert.getActivePeriodList())
-                    alertPeriods.add(asTransitAlertTimeframe(range));
-                this.alertPeriods = Collections.unmodifiableList(alertPeriods);
+                    periods.add(asTransitAlertTimeframe(range));
+                this.periods = Collections.unmodifiableList(periods);
 
-                final List<Integer> routeIDs = new ArrayList<>();
-                final List<Integer> stopIDs = new ArrayList<>();
+                final List<Integer> routes = new ArrayList<>();
+                final List<Integer> stops = new ArrayList<>();
                 final int len = alert.getInformedEntityCount();
                 for(int i = 0; i < len; i++){
                     final GTFSRealtimeProto.EntitySelector entity = alert.getInformedEntity(i);
                     if(entity.hasRouteId())
-                        try{
-                            routeIDs.add(Integer.valueOf(entity.getRouteId()));
-                        }catch(final NumberFormatException ignored){ }
+                        routes.add(Integer.valueOf(entity.getRouteId()));
                     else if(entity.hasStopId())
-                        try{
-                            stopIDs.add(Integer.valueOf(entity.getStopId()));
-                        }catch(final NumberFormatException ignored){ }
+                        stops.add(Integer.valueOf(entity.getStopId()));
                 }
-                this.routeIDs = Collections.unmodifiableList(routeIDs);
-                this.stopIDs  = Collections.unmodifiableList(stopIDs);
+                this.routeIDs = Collections.unmodifiableList(routes);
+                this.stopIDs  = Collections.unmodifiableList(stops);
             }
 
             @Override
@@ -651,15 +652,13 @@ abstract class MTASchema_MNR extends MTASchema {
 
             @Override
             public final TransitAlertPeriod[] getActivePeriods(){
-                return alertPeriods.toArray(new TransitAlertPeriod[0]);
+                return periods.toArray(new TransitAlertPeriod[0]);
             }
 
             @Override
             public final Integer[] getRouteIDs(){
                 return routeIDs.toArray(new Integer[0]);
             }
-
-            private List<Route> routes = null;
 
             @Override
             public final Route[] getRoutes(){
@@ -677,8 +676,6 @@ abstract class MTASchema_MNR extends MTASchema {
                 return stopIDs.toArray(new Integer[0]);
             }
 
-            private List<Stop> stops = null;
-
             @Override
             public final Stop[] getStops(){
                 if(stops == null){
@@ -692,37 +689,53 @@ abstract class MTASchema_MNR extends MTASchema {
 
             @Override
             public final String getHeader(){
-                return headerText;
+                return header;
             }
 
             @Override
             public final String getDescription(){
-                return descriptionText;
+                return description;
+            }
+
+            @Override
+            public final Date getCreatedAt(){
+                return createdAt != null ? new Date(createdAt) : null;
+            }
+
+            @Override
+            public final Long getCreatedAtEpochMillis(){
+                return createdAt;
+            }
+
+            @Override
+            public final Date getUpdatedAt(){
+                return updatedAt != null ? new Date(updatedAt) : null;
+            }
+
+            @Override
+            public final Long getUpdatedAtEpochMillis(){
+                return updatedAt;
             }
 
             @Override
             public final String getAlertType(){
-                return alertType;
+                return type;
             }
 
-            @Override
-            public final String getEffect(){
-                return effect;
-            }
-
-            // Java
+            //
 
             @Override
             public final String toString(){
                 return "MNR.Alert{" +
                        "alertID='" + alertID + '\'' +
-                       ", headerText='" + headerText + '\'' +
-                       ", descriptionText='" + descriptionText + '\'' +
-                       ", alertType='" + alertType + '\'' +
-                       ", effect='" + effect + '\'' +
-                       ", alertPeriods=" + alertPeriods +
+                       ", periods=" + periods +
                        ", routeIDs=" + routeIDs +
                        ", stopIDs=" + stopIDs +
+                       ", header='" + header + '\'' +
+                       ", description='" + description + '\'' +
+                       ", createdAt=" + createdAt +
+                       ", updatedAt=" + updatedAt +
+                       ", type='" + type + '\'' +
                        '}';
             }
 

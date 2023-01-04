@@ -28,7 +28,8 @@ import dev.katsute.onemta.types.TransitAlert;
 import dev.katsute.onemta.types.TransitVehicle;
 
 import java.util.*;
-import java.util.function.*;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
 import static dev.katsute.onemta.GTFSRealtimeProto.*;
 
@@ -337,19 +338,6 @@ final class MTAImpl extends MTA {
 
     // shared methods
 
-    final void forEachFeedEntity(final FeedMessage feed, final Consumer<FeedEntity> consumer){
-        forEachFeedEntity(feed, consumer, null);
-    }
-
-    final void forEachFeedEntity(final FeedMessage feed, final Consumer<FeedEntity> consumer, final Predicate<FeedEntity> predicate){
-        final int len = feed.getEntityCount();
-        for(int i = 0; i < len; i++){
-            final FeedEntity ent = feed.getEntity(i);
-            if(predicate == null || predicate.test(ent))
-                consumer.accept(ent);
-        }
-    }
-
     final FeedEntity getFeedEntity(final FeedMessage feed, final Predicate<FeedEntity> predicate){
         final int len = feed.getEntityCount();
         for(int i = 0; i < len; i++){
@@ -358,12 +346,6 @@ final class MTAImpl extends MTA {
                 return ent;
         }
         return null;
-    }
-
-    final List<FeedEntity> getFeedEntities(final FeedMessage feed, final Predicate<FeedEntity> predicate){
-        final List<FeedEntity> enty = new ArrayList<>();
-        forEachFeedEntity(feed, enty::add, predicate);
-        return enty;
     }
 
     final <V extends TransitVehicle<?,?,?,?,?,?>> V getVehicle(final FeedMessage feed, final Predicate<FeedEntity> predicate, final Function<FeedEntity,V> transform){
@@ -377,7 +359,12 @@ final class MTAImpl extends MTA {
 
     final <A extends TransitAlert<?,?,?,?>> A[] getAlerts(final FeedMessage feed, final Predicate<FeedEntity> filter, final Function<FeedEntity,A> transform, final A[] arr){
         final List<A> alerts = new ArrayList<>();
-        forEachFeedEntity(feed, ent -> alerts.add(transform.apply(ent)), filter);
+        final int len = feed.getEntityCount();
+        for(int i = 0; i < len; i++){
+            final FeedEntity ent = feed.getEntity(i);
+            if(filter == null || filter.test(ent))
+                alerts.add(transform.apply(ent));
+        }
         return alerts.toArray(arr);
     }
 
