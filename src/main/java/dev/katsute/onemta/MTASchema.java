@@ -49,7 +49,7 @@ abstract class MTASchema {
     static TransitAgency asAgency(final String agency_id, final DataResource resource){
         return new TransitAgency() {
 
-            private final String agencyID   = agency_id.toUpperCase();
+            private final String agencyID = agency_id.toUpperCase();
             private final String agencyName = resource.getData("agency.txt").getValue("agency_id", agencyID, "agency_name");
 
             //

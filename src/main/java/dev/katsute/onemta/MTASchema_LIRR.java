@@ -34,17 +34,17 @@ abstract class MTASchema_LIRR extends MTASchema {
     static Route asRoute(final MTA mta, final int route_id){
         // find row
         final DataResource resource = getDataResource(mta, DataResourceType.LongIslandRailroad);
-        final CSV csv               = resource.getData("routes.txt");
-        final List<String> row      = csv.getRow("route_id", String.valueOf(route_id));
+        final CSV csv = resource.getData("routes.txt");
+        final List<String> row = csv.getRow("route_id", String.valueOf(route_id));
 
         // instantiate
         Objects.requireNonNull(row, "Failed to find LIRR route with id '" + route_id + "'");
 
         return new Route() {
 
-            private final Integer routeID       = route_id;
-            private final String routeLongName  = row.get(csv.getHeaderIndex("route_long_name"));
-            private final String routeColor     = row.get(csv.getHeaderIndex("route_color"));
+            private final Integer routeID = route_id;
+            private final String routeLongName = row.get(csv.getHeaderIndex("route_long_name"));
+            private final String routeColor = row.get(csv.getHeaderIndex("route_color"));
             private final String routeTextColor = row.get(csv.getHeaderIndex("route_text_color"));
 
             private final TransitAgency agency = asAgency("LI", resource);
@@ -173,8 +173,8 @@ abstract class MTASchema_LIRR extends MTASchema {
     static Stop asStop(final MTA mta, final String stop_code){
         // find row
         final DataResource resource = getDataResource(mta, DataResourceType.LongIslandRailroad);
-        final CSV csv               = resource.getData("stops.txt");
-        final List<String> row      = csv.getRow("stop_code", stop_code.toUpperCase());
+        final CSV csv = resource.getData("stops.txt");
+        final List<String> row = csv.getRow("stop_code", stop_code.toUpperCase());
 
         // instantiate
         Objects.requireNonNull(row, "Failed to find LIRR stop with stopcode '" + stop_code.toUpperCase() + "'");
@@ -185,21 +185,21 @@ abstract class MTASchema_LIRR extends MTASchema {
     static Stop asStop(final MTA mta, final int stop_id){
         // find row
         final DataResource resource = getDataResource(mta, DataResourceType.LongIslandRailroad);
-        final CSV csv               = resource.getData("stops.txt");
-        final List<String> row      = csv.getRow("stop_id", String.valueOf(stop_id));
+        final CSV csv = resource.getData("stops.txt");
+        final List<String> row = csv.getRow("stop_id", String.valueOf(stop_id));
 
         // instantiate
         Objects.requireNonNull(row, "Failed to find LIRR stop with id '" + stop_id + "'");
 
         return new Stop(){
 
-            private final Integer stopID  = stop_id;
+            private final Integer stopID = stop_id;
             private final String stopCode = row.get(csv.getHeaderIndex("stop_code"));
             private final String stopName = row.get(csv.getHeaderIndex("stop_name"));
             private final String stopDesc = row.get(csv.getHeaderIndex("stop_desc"));
 
-            private final Double stopLat  = Double.valueOf(row.get(csv.getHeaderIndex("stop_lat")));
-            private final Double stopLon  = Double.valueOf(row.get(csv.getHeaderIndex("stop_lon")));
+            private final Double stopLat = Double.valueOf(row.get(csv.getHeaderIndex("stop_lat")));
+            private final Double stopLon = Double.valueOf(row.get(csv.getHeaderIndex("stop_lon")));
 
             private final Boolean wheelchairAccessible = !row.get(csv.getHeaderIndex("wheelchair_boarding")).equals("2");
 
@@ -661,7 +661,7 @@ abstract class MTASchema_LIRR extends MTASchema {
                         stops.add(Integer.valueOf(entity.getStopId()));
                 }
                 this.routeIDs = Collections.unmodifiableList(routes);
-                this.stopIDs  = Collections.unmodifiableList(stops);
+                this.stopIDs = Collections.unmodifiableList(stops);
             }
 
             @Override

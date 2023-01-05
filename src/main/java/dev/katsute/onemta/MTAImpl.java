@@ -42,11 +42,11 @@ final class MTAImpl extends MTA {
     private final DataResource[] resources;
 
     MTAImpl(final String busToken, final String subwayToken, final int cacheSeconds, final DataResource... resources){
-        this.service     = new MTAService(busToken, subwayToken, cacheSeconds);
+        this.service = new MTAService(busToken, subwayToken, cacheSeconds);
 
-        this.busToken    = busToken;
+        this.busToken = busToken;
         this.subwayToken = subwayToken;
-        this.resources   = resources == null ? new DataResource[0] : Arrays.copyOf(resources, resources.length);
+        this.resources = resources == null ? new DataResource[0] : Arrays.copyOf(resources, resources.length);
     }
 
     // resources

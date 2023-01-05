@@ -18,18 +18,18 @@ import static org.junit.jupiter.api.Assumptions.*;
 public abstract class TestProvider {
 
     public static final String BUS_ROUTE = "M1";
-    public static final int BUS_STOP     = 400561;
+    public static final int BUS_STOP = 400561;
 
-    public static final int LIRR_ROUTE        = 9;
-    public static final int LIRR_STOP         = 56;
+    public static final int LIRR_ROUTE = 9;
+    public static final int LIRR_STOP = 56;
     public static final String LIRR_STOP_CODE = "FLS";
 
-    public static final int MNR_ROUTE        = 2;
-    public static final int MNR_STOP         = 59;
+    public static final int MNR_ROUTE = 2;
+    public static final int MNR_STOP = 59;
     public static final String MNR_STOP_CODE = "1WN";
 
     public static final String SUBWAY_ROUTE = "7";
-    public static final String SUBWAY_STOP  = "631";
+    public static final String SUBWAY_STOP = "631";
 
     //
 
@@ -59,10 +59,10 @@ public abstract class TestProvider {
     public static void acquireTestLock(){
         try{
             System.out.println("[↻] Checking rate limit...");
-            long now                = System.currentTimeMillis();
-            final int delay         = TEST_DELAY * 1000;
-            final long lastTest     = TEST_LOCK.exists() ? Long.parseLong(readFile(TEST_LOCK)) : -1;
-            final long allowedPass  = lastTest + delay;
+            long now = System.currentTimeMillis();
+            final int delay = TEST_DELAY * 1000;
+            final long lastTest = TEST_LOCK.exists() ? Long.parseLong(readFile(TEST_LOCK)) : -1;
+            final long allowedPass = lastTest + delay;
 
             if(lastTest != - 1 && now < allowedPass){
                 System.out.println("[⏸] Rate limit in place, waiting " + ((allowedPass - now) / 1000) + " seconds");
@@ -78,10 +78,10 @@ public abstract class TestProvider {
 
     //
 
-    private static final File bus    = new File(test_resources, "bus.txt");
+    private static final File bus = new File(test_resources, "bus.txt");
     private static final File subway = new File(test_resources, "subway.txt");
 
-    private static final boolean hasBus    = bus.exists();
+    private static final boolean hasBus = bus.exists();
     private static final boolean hasSubway = subway.exists();
 
     private static final Map<DataResourceType,String> resources = new HashMap<DataResourceType,String>(){{

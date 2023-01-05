@@ -33,31 +33,31 @@ abstract class CompilerTests {
 
         // route
 
-        Bus.Route M1    = mta.getBusRoute("M1", DataResourceType.Bus_Manhattan);
+        Bus.Route M1 = mta.getBusRoute("M1", DataResourceType.Bus_Manhattan);
         Subway.Route SI = mta.getSubwayRoute("SI");
-        LIRR.Route PW   = mta.getLIRRRoute(9);
-        MNR.Route HM    = mta.getMNRRoute(2);
+        LIRR.Route PW = mta.getLIRRRoute(9);
+        MNR.Route HM = mta.getMNRRoute(2);
 
         // stop
 
-        Bus.Stop stop   = mta.getBusStop(400561);
+        Bus.Stop stop = mta.getBusStop(400561);
         Subway.Stop GCT = mta.getSubwayStop("631");
-        LIRR.Stop FLS   = mta.getLIRRStop("FLS");
-        MNR.Stop WLN    = mta.getMNRStop("1WN");
+        LIRR.Stop FLS = mta.getLIRRStop("FLS");
+        MNR.Stop WLN = mta.getMNRStop("1WN");
 
         // vehicle
 
-        Bus.Vehicle[] busses     = stop.getVehicles();
+        Bus.Vehicle[] busses = stop.getVehicles();
         Subway.Vehicle[] subways = SI.getVehicles();
-        LIRR.Vehicle[] lirr      = PW.getVehicles();
-        MNR.Vehicle[] mnr        = WLN.getVehicles();
+        LIRR.Vehicle[] lirr = PW.getVehicles();
+        MNR.Vehicle[] mnr = WLN.getVehicles();
 
         // alerts
 
-        Bus.Alert[] busAlerts       = mta.getBusAlerts();
+        Bus.Alert[] busAlerts = mta.getBusAlerts();
         Subway.Alert[] subwayAlerts = SI.getAlerts();
-        LIRR.Alert[] lirrAlerts     = FLS.getAlerts();
-        MNR.Alert[] mnrAlerts       = mta.getMNRAlerts();
+        LIRR.Alert[] lirrAlerts = FLS.getAlerts();
+        MNR.Alert[] mnrAlerts = mta.getMNRAlerts();
     }
 
 }

@@ -67,7 +67,7 @@ final class RequestCache {
         private final long expires;
 
         CachedData(final Object object){
-            this.object  = object;
+            this.object = object;
             this.expires = System.currentTimeMillis() + retainCacheMillis;
         }
 

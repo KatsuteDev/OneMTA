@@ -48,11 +48,11 @@ final class MTAService {
         }
     }
 
-    final BusService bus        = new BusService();
-    final SubwayService subway  = new SubwayService();
-    final LIRRService lirr      = new LIRRService();
-    final MNRRService mnr       = new MNRRService();
-    final ServiceAlerts alerts  = new ServiceAlerts();
+    final BusService bus = new BusService();
+    final SubwayService subway = new SubwayService();
+    final LIRRService lirr = new LIRRService();
+    final MNRRService mnr = new MNRRService();
+    final ServiceAlerts alerts = new ServiceAlerts();
 
     final class BusService {
 

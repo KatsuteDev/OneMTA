@@ -98,7 +98,7 @@ abstract class Requests {
 
         headers.put("Cache-Control", "no-cache, no-store, must-revalidate");
 
-        for(final Map.Entry<String, String> entry : headers.entrySet())
+        for(final Map.Entry<String,String> entry : headers.entrySet())
             conn.setRequestProperty(entry.getKey(), entry.getValue());
 
         conn.setConnectTimeout(10_000);

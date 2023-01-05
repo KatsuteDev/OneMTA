@@ -87,9 +87,9 @@ abstract class MTASchema_Bus extends MTASchema {
             resources.addAll(defaults);
 
         // find row
-        DataResource d  = null;
-        CSV c           = null;
-        List<String> r  = null;
+        DataResource d = null;
+        CSV c = null;
+        List<String> r = null;
 
         for(final DataResource dr : resources)
             if(
@@ -105,8 +105,8 @@ abstract class MTASchema_Bus extends MTASchema {
         Objects.requireNonNull(r, "Failed to find bus route with id '" + id + "'");
 
         final DataResource resource = d;
-        final CSV csv               = c;
-        final List<String> row      = r;
+        final CSV csv = c;
+        final List<String> row = r;
 
         return new Route() {
 
@@ -324,9 +324,9 @@ abstract class MTASchema_Bus extends MTASchema {
             resources.addAll(defaults);
 
         // find row
-        DataResource d  = null;
-        CSV c           = null;
-        List<String> r  = null;
+        DataResource d = null;
+        CSV c = null;
+        List<String> r = null;
 
         for(final DataResource dr : resources)
             if(
@@ -342,8 +342,8 @@ abstract class MTASchema_Bus extends MTASchema {
         Objects.requireNonNull(r, "Failed to find bus stop with id '" + stop_id + "'");
 
         final DataResource resource = d;
-        final CSV csv               = c;
-        final List<String> row      = r;
+        final CSV csv = c;
+        final List<String> row = r;
 
         return new Stop() {
 
@@ -785,7 +785,7 @@ abstract class MTASchema_Bus extends MTASchema {
                         stops.add(Integer.valueOf(entity.getStopId()));
                 }
                 this.routeIDs = Collections.unmodifiableList(routes);
-                this.stopIDs  = Collections.unmodifiableList(stops);
+                this.stopIDs = Collections.unmodifiableList(stops);
             }
 
             @Override

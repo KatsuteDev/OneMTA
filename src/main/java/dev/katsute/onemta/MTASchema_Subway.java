@@ -114,8 +114,8 @@ abstract class MTASchema_Subway extends MTASchema {
     static Route asRoute(final MTA mta, final String route_id){
         // find row
         final DataResource resource = getDataResource(mta, DataResourceType.Subway);
-        final CSV csv               = resource.getData("routes.txt");
-        final List<String> row      = csv.getRow("route_id", resolveSubwayLine(route_id));
+        final CSV csv = resource.getData("routes.txt");
+        final List<String> row = csv.getRow("route_id", resolveSubwayLine(route_id));
 
         // instantiate
         Objects.requireNonNull(row, "Failed to find subway route with id '" + route_id + "'");
@@ -283,15 +283,15 @@ abstract class MTASchema_Subway extends MTASchema {
         final String stop = stop_id.toUpperCase();
         // find row
         final DataResource resource = getDataResource(mta, DataResourceType.Subway);
-        final CSV csv               = resource.getData("stops.txt");
-        final List<String> row      = csv.getRow("stop_id", stop);
+        final CSV csv = resource.getData("stops.txt");
+        final List<String> row = csv.getRow("stop_id", stop);
 
         // instantiate
         Objects.requireNonNull(row, "Failed to find subway stop with id '" + stop + "'");
 
         return new Stop() {
 
-            private final String stopID   = stop;
+            private final String stopID = stop;
             private final String stopName = row.get(csv.getHeaderIndex("stop_name"));
 
             private final Double stopLat = Double.valueOf(row.get(csv.getHeaderIndex("stop_lat")));
@@ -772,7 +772,7 @@ abstract class MTASchema_Subway extends MTASchema {
                         stops.add(entity.getStopId());
                 }
                 this.routeIDs = Collections.unmodifiableList(routes);
-                this.stopIDs  = Collections.unmodifiableList(stops);
+                this.stopIDs = Collections.unmodifiableList(stops);
             }
 
             @Override
