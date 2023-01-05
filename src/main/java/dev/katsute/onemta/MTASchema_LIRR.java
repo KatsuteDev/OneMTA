@@ -99,7 +99,7 @@ abstract class MTASchema_LIRR extends MTASchema {
                                     Objects.equals(vent.getVehicle().getVehicle().getLabel(), id)
                             );
 
-                            return MTASchema_LIRR.asVehicle(mta, veh.getVehicle(), ent.getTripUpdate(), null);
+                            return MTASchema_LIRR.asVehicle(mta, veh.getVehicle(), ent.getTripUpdate(), this);
                         },
                         new Vehicle[0]
                     )));

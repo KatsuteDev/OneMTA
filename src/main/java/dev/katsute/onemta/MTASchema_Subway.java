@@ -29,7 +29,7 @@ import java.util.regex.Pattern;
 import static dev.katsute.onemta.GTFSRealtimeProto.*;
 import static dev.katsute.onemta.subway.Subway.*;
 
-@SuppressWarnings({"SpellCheckingInspection", "Java9CollectionFactory"})
+@SuppressWarnings({"Java9CollectionFactory"})
 abstract class MTASchema_Subway extends MTASchema {
 
     private static final Pattern direction = Pattern.compile("[NS]$", Pattern.CASE_INSENSITIVE);
@@ -192,7 +192,7 @@ abstract class MTASchema_Subway extends MTASchema {
                                     Objects.equals(vent.getVehicle().getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getTrainId(), id)
                             );
 
-                            return MTASchema_Subway.asVehicle(mta, veh.getVehicle(), ent.getTripUpdate(), null);
+                            return MTASchema_Subway.asVehicle(mta, veh.getVehicle(), ent.getTripUpdate(), this);
                         },
                         new Vehicle[0]
                     )));
@@ -664,8 +664,8 @@ abstract class MTASchema_Subway extends MTASchema {
             private final Long arrival = requireNonNull(() -> stopTimeUpdate.getArrival().getTime() * 1000);
             private final Long departure = requireNonNull(() -> stopTimeUpdate.getDeparture().getTime() * 1000);
 
-            private  final String scheduledTrack = requireNonNull(() -> stopTimeUpdate.getExtension(NYCTSubwayProto.nyctStopTimeUpdate).getScheduledTrack());
-            private  final String actualTrack = requireNonNull(() -> stopTimeUpdate.getExtension(NYCTSubwayProto.nyctStopTimeUpdate).getActualTrack());
+            private final String scheduledTrack = requireNonNull(() -> stopTimeUpdate.getExtension(NYCTSubwayProto.nyctStopTimeUpdate).getScheduledTrack());
+            private final String actualTrack = requireNonNull(() -> stopTimeUpdate.getExtension(NYCTSubwayProto.nyctStopTimeUpdate).getActualTrack());
 
             private final String status = requireNonNull(() -> stopTimeUpdate.getExtension(MNRRProto.mnrStopTimeUpdate).getTrainStatus());
 

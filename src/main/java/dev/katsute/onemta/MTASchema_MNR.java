@@ -90,7 +90,7 @@ abstract class MTASchema_MNR extends MTASchema {
                             mta,
                             ent.getVehicle(),
                             ent.getTripUpdate(),
-                            null
+                            this
                         ),
                         new Vehicle[0]
                     )));

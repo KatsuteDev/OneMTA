@@ -77,7 +77,7 @@ final class MTAImpl extends MTA {
 
     @Override
     public final Bus.Stop getBusStop(final int stop_id, final DataResourceType type){
-        return  MTASchema_Bus.asStop(this, stop_id, type);
+        return MTASchema_Bus.asStop(this, stop_id, type);
     }
 
     @Override
@@ -87,8 +87,6 @@ final class MTAImpl extends MTA {
             service.bus.getVehiclePositions(),
             ent -> Objects.equals(ent.getId().split("_")[1], id), // don't match 'MTA NYCT_' or 'MTABC_' ; numbers are unique to each bus
             ent -> {
-                if(!ent.getVehicle().hasTrip()) return null;
-
                 final String busId = ent.getId();
 
                 // find matching trip entity
@@ -114,7 +112,7 @@ final class MTAImpl extends MTA {
     // subway methods
 
     final FeedMessage resolveSubwayFeed(final String route_id){
-        final String route = MTASchema_Subway.stripExpress(Objects.requireNonNull(MTASchema_Subway.resolveSubwayLine(route_id), "Subway route with ID '" + route_id + "' not found"));
+        final String route = MTASchema_Subway.stripExpress(Objects.requireNonNull(MTASchema_Subway.resolveSubwayLine(Objects.requireNonNull(route_id, "Route ID must not be null")), "Subway route with ID '" + route_id + "' not found"));
         switch(route){
             case "A":
             case "C":
@@ -192,10 +190,12 @@ final class MTAImpl extends MTA {
 
     @Override
     public final Subway.Vehicle getSubwayTrain(final String train_id){ // do not use number ID, trains on different feeds may use same number
-        final FeedMessage feed = resolveSubwayFeed(train_id.substring(1, train_id.indexOf(' '))); // isloate route code
+        Objects.requireNonNull(train_id, "Train ID must not be null");
+        if(!train_id.contains(" ") || train_id.endsWith("_")) return null;
+        final FeedMessage feed = Objects.requireNonNull(resolveSubwayFeed(train_id.substring(1, train_id.indexOf(' '))), "Failed to find feed for '" + train_id + '\''); // isolate route code
         final String id = train_id.substring(1); // don't match first symbol, may change for same train; see NYCT proto [train_id]
         return transformFirstEntity(
-            Objects.requireNonNull(feed),
+            feed,
             ent ->
                 ent.hasTripUpdate() &&
                 Objects.equals(ent.getTripUpdate().getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getTrainId().substring(1), id),
@@ -241,6 +241,7 @@ final class MTAImpl extends MTA {
 
     @Override
     public final LIRR.Vehicle getLIRRTrain(final String train_id){ // don't convert to number, train may have string ID
+        Objects.requireNonNull(train_id, "Train ID must not be null");
         return transformFirstEntity(
             service.lirr.getLIRR(),
             ent ->
@@ -288,6 +289,7 @@ final class MTAImpl extends MTA {
 
     @Override
     public final MNR.Vehicle getMNRTrain(final String train_id){ // don't convert to number, train may have string ID
+        Objects.requireNonNull(train_id, "Train ID must not be null");
         return transformFirstEntity(
             service.mnr.getMNR(),
             ent -> Objects.equals(ent.getId(), train_id),

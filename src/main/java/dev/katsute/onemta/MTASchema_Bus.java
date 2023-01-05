@@ -214,7 +214,7 @@ abstract class MTASchema_Bus extends MTASchema {
                                 mta,
                                 ent.getVehicle(),
                                 trip.getTripUpdate(),
-                                null
+                                this
                             ) : null;
                         },
                         new Vehicle[0]
