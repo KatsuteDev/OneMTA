@@ -298,7 +298,7 @@ public abstract class MTA {
      * @return LIRR train
      *
      * @see LIRR.Vehicle
-     * @since 2.0.0
+     * @since 1.0.0
      */
     public abstract LIRR.Vehicle getLIRRTrain(final String train_id);
 
@@ -356,7 +356,7 @@ public abstract class MTA {
      * @return MNR train
      *
      * @see MNR.Vehicle
-     * @since 2.0.0
+     * @since 1.0.0
      */
     public abstract MNR.Vehicle getMNRTrain(final String train_id);
 

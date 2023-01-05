@@ -201,12 +201,16 @@ final class MTAImpl extends MTA {
         final FeedMessage feed = resolveSubwayFeed(train_id.substring(1, train_id.indexOf(' ')));
         return getVehicle(
             Objects.requireNonNull(feed),
-            ent -> Objects.equals(ent.getTripUpdate().getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getTrainId(), train_id),
+            ent ->
+                ent.hasTripUpdate() &&
+                Objects.equals(ent.getTripUpdate().getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getTrainId(), train_id),
             ent -> {
                 // find matching vehicle entity
                 final FeedEntity veh = getFeedEntity(
                     feed,
-                    vent -> Objects.equals(vent.getVehicle().getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getTrainId(), train_id)
+                    vent ->
+                        vent.hasVehicle() &&
+                        Objects.equals(vent.getVehicle().getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getTrainId(), train_id)
                 );
                 return veh != null ? MTASchema_Subway.asVehicle(
                     this,
@@ -248,12 +252,16 @@ final class MTAImpl extends MTA {
     public final LIRR.Vehicle getLIRRTrain(final String train_id){
         return getVehicle(
             service.lirr.getLIRR(),
-            ent -> Objects.equals(ent.getTripUpdate().getVehicle().getLabel(), train_id),
+            ent ->
+                ent.hasTripUpdate() &&
+                Objects.equals(ent.getTripUpdate().getVehicle().getLabel(), train_id),
             ent -> {
                 // find matching vehicle entity
                 final FeedEntity veh = getFeedEntity(
                     service.lirr.getLIRR(),
-                    vent -> Objects.equals(vent.getVehicle().getVehicle().getLabel(), train_id)
+                    vent ->
+                        vent.hasVehicle() &&
+                        Objects.equals(vent.getVehicle().getVehicle().getLabel(), train_id)
                 );
                 return veh != null ? MTASchema_LIRR.asVehicle(
                     this,
