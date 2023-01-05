@@ -76,8 +76,8 @@ final class TestMTA {
 
         @Test
         final void testNullVehicle(){
-//            assertThrows(NullPointerException.class, () -> mta.getLIRRTrain(null));
-//            assertNull(mta.getLIRRTrain("NULL"));
+            assertThrows(NullPointerException.class, () -> mta.getLIRRTrain(null));
+            assertNull(mta.getLIRRTrain("NULL"));
         }
 
     }
@@ -97,8 +97,8 @@ final class TestMTA {
 
         @Test
         final void testNullVehicle(){
-//            assertThrows(NullPointerException.class, () -> mta.getMNRStop(null));
-//            assertNull(mta.getMNRTrain("NULL"));
+            assertThrows(NullPointerException.class, () -> mta.getMNRStop(null));
+            assertNull(mta.getMNRTrain("NULL"));
         }
 
     }

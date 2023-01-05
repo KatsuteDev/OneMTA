@@ -394,7 +394,7 @@ abstract class MTASchema_LIRR extends MTASchema {
     static Vehicle asVehicle(final MTA mta, final VehiclePosition vehicle, final TripUpdate tripUpdate, final Route optionalRoute){
         return new Vehicle(){
 
-            private final Integer vehicleID = requireNonNull(() -> Integer.valueOf(vehicle.getVehicle().getLabel()));
+            private final String vehicleID = requireNonNull(() -> vehicle.getVehicle().getLabel());
 
             private Double latitude = requireNonNull(() -> Double.valueOf(vehicle.getPosition().getLatitude()));
             private Double longitude = requireNonNull(() -> Double.valueOf(vehicle.getPosition().getLongitude()));
@@ -411,7 +411,7 @@ abstract class MTASchema_LIRR extends MTASchema {
             private Trip trip = asTrip(mta, tripUpdate, this);
 
             @Override
-            public final Integer getVehicleID(){
+            public final String getVehicleID(){
                 return vehicleID;
             }
 
@@ -485,7 +485,7 @@ abstract class MTASchema_LIRR extends MTASchema {
             @Override
             public final String toString(){
                 return "LIRR.Vehicle{" +
-                       "vehicleID=" + vehicleID +
+                       "vehicleID='" + vehicleID + '\'' +
                        ", latitude=" + latitude +
                        ", longitude=" + longitude +
                        ", bearing=" + bearing +

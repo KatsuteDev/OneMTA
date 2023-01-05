@@ -300,7 +300,7 @@ public abstract class MTA {
      * @see LIRR.Vehicle
      * @since 2.0.0
      */
-    public abstract LIRR.Vehicle getLIRRTrain(final int train_id);
+    public abstract LIRR.Vehicle getLIRRTrain(final String train_id);
 
     /**
      * Returns Long Island Railroad (LIRR) alerts.
@@ -358,7 +358,7 @@ public abstract class MTA {
      * @see MNR.Vehicle
      * @since 2.0.0
      */
-    public abstract MNR.Vehicle getMNRTrain(final int train_id);
+    public abstract MNR.Vehicle getMNRTrain(final String train_id);
 
     /**
      * Returns Metro North Railroad (MNR) alerts.

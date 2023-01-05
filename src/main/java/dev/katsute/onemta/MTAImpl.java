@@ -87,10 +87,7 @@ final class MTAImpl extends MTA {
         final String id = String.valueOf(bus_id);
         return getVehicle(
             service.bus.getVehiclePositions(),
-            ent ->
-                ent.hasId() &&
-                ent.getId().split("_").length == 2 &&
-                Objects.equals(ent.getId().split("_")[1], id),
+            ent -> Objects.equals(ent.getId().split("_")[1], id),
             ent -> {
                 if(!ent.getVehicle().hasTrip()) return null;
 
@@ -99,10 +96,7 @@ final class MTAImpl extends MTA {
                 // find matching trip entity
                 final FeedEntity trip = getFeedEntity(
                     service.bus.getTripUpdates(),
-                    tent ->
-                        !tent.hasTripUpdate() &&
-                        tent.getTripUpdate().hasVehicle() &&
-                        Objects.equals(tent.getTripUpdate().getVehicle().getId(), busId)
+                    tent -> Objects.equals(tent.getTripUpdate().getVehicle().getId(), busId)
                 );
                 return trip != null ? MTASchema_Bus.asVehicle(
                     this,
@@ -207,21 +201,12 @@ final class MTAImpl extends MTA {
         final FeedMessage feed = resolveSubwayFeed(train_id.substring(1, train_id.indexOf(' ')));
         return getVehicle(
             Objects.requireNonNull(feed),
-            ent ->
-                ent.hasTripUpdate() &&
-                ent.getTripUpdate().hasTrip() &&
-                ent.getTripUpdate().getTrip().hasExtension(NYCTSubwayProto.nyctTripDescriptor) &&
-                Objects.equals(ent.getTripUpdate().getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getTrainId(), train_id),
+            ent -> Objects.equals(ent.getTripUpdate().getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getTrainId(), train_id),
             ent -> {
                 // find matching vehicle entity
                 final FeedEntity veh = getFeedEntity(
                     feed,
-                    vent ->
-                        !vent.hasTripUpdate() &&
-                        vent.hasVehicle() &&
-                        vent.getVehicle().hasTrip() &&
-                        vent.getVehicle().getTrip().hasExtension(NYCTSubwayProto.nyctTripDescriptor) &&
-                        Objects.equals(vent.getVehicle().getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getTrainId(), train_id)
+                    vent -> Objects.equals(vent.getVehicle().getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getTrainId(), train_id)
                 );
                 return veh != null ? MTASchema_Subway.asVehicle(
                     this,
@@ -260,22 +245,15 @@ final class MTAImpl extends MTA {
     }
 
     @Override
-    public final LIRR.Vehicle getLIRRTrain(final int train_id){
+    public final LIRR.Vehicle getLIRRTrain(final String train_id){
         return getVehicle(
             service.lirr.getLIRR(),
-            ent ->
-                ent.hasTripUpdate() &&
-                ent.getTripUpdate().hasVehicle() &&
-                Objects.equals(Integer.valueOf(ent.getTripUpdate().getVehicle().getLabel()), train_id),
+            ent -> Objects.equals(ent.getTripUpdate().getVehicle().getLabel(), train_id),
             ent -> {
                 // find matching vehicle entity
                 final FeedEntity veh = getFeedEntity(
                     service.lirr.getLIRR(),
-                    vent ->
-                        !vent.hasTripUpdate() &&
-                        vent.hasVehicle() &&
-                        vent.getVehicle().hasVehicle() &&
-                        Objects.equals(vent.getVehicle().getVehicle().getLabel(), train_id)
+                    vent -> Objects.equals(vent.getVehicle().getVehicle().getLabel(), train_id)
                 );
                 return veh != null ? MTASchema_LIRR.asVehicle(
                     this,
@@ -314,10 +292,10 @@ final class MTAImpl extends MTA {
     }
 
     @Override
-    public final MNR.Vehicle getMNRTrain(final int train_id){
+    public final MNR.Vehicle getMNRTrain(final String train_id){
         return getVehicle(
             service.mnr.getMNR(),
-            ent -> Objects.equals(Integer.valueOf(ent.getId()), train_id),
+            ent -> Objects.equals(ent.getId(), train_id),
             ent -> MTASchema_MNR.asVehicle(
                 this,
                 ent.getVehicle(),
@@ -342,8 +320,10 @@ final class MTAImpl extends MTA {
         final int len = feed.getEntityCount();
         for(int i = 0; i < len; i++){
             final FeedEntity ent = feed.getEntity(i);
-            if(predicate.test(ent))
-                return ent;
+            try{
+                if(predicate.test(ent))
+                    return ent;
+            }catch(final Throwable ignored){ }
         }
         return null;
     }
@@ -362,8 +342,10 @@ final class MTAImpl extends MTA {
         final int len = feed.getEntityCount();
         for(int i = 0; i < len; i++){
             final FeedEntity ent = feed.getEntity(i);
-            if(filter == null || filter.test(ent))
-                alerts.add(transform.apply(ent));
+            try{
+                if(filter == null || filter.test(ent))
+                    alerts.add(transform.apply(ent));
+            }catch(final Throwable ignored){ }
         }
         return alerts.toArray(arr);
     }
