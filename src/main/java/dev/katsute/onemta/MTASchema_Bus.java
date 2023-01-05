@@ -29,7 +29,7 @@ import java.util.regex.Pattern;
 import static dev.katsute.onemta.GTFSRealtimeProto.*;
 import static dev.katsute.onemta.bus.Bus.*;
 
-@SuppressWarnings({"SpellCheckingInspection", "Convert2Diamond"})
+@SuppressWarnings({"Convert2Diamond", "Java9CollectionFactory"})
 abstract class MTASchema_Bus extends MTASchema {
 
     private static final Pattern type = Pattern.compile("^X|[XC+]$", Pattern.CASE_INSENSITIVE);
@@ -101,8 +101,6 @@ abstract class MTASchema_Bus extends MTASchema {
             )
                 break;
 
-        final boolean bc = d == resources.get(5); // Bus Company is always index 5
-
         // instantiate
         Objects.requireNonNull(r, "Failed to find bus route with id '" + id + "'");
 
@@ -115,15 +113,15 @@ abstract class MTASchema_Bus extends MTASchema {
             private final String routeID = id;
 
             private final String routeShortName = row.get(csv.getHeaderIndex("route_short_name"));
-            private final String routeLongName  = row.get(csv.getHeaderIndex("route_long_name"));
-            private final String routeDesc      = row.get(csv.getHeaderIndex("route_desc"));
+            private final String routeLongName = row.get(csv.getHeaderIndex("route_long_name"));
+            private final String routeDesc = row.get(csv.getHeaderIndex("route_desc"));
 
-            private final String routeColor     = row.get(csv.getHeaderIndex("route_color"));
+            private final String routeColor = row.get(csv.getHeaderIndex("route_color"));
             private final String routeTextColor = row.get(csv.getHeaderIndex("route_text_color"));
 
-            private final Boolean SBS     = route_id.endsWith("+") ||
-                                            routeShortName.endsWith("-SBS") ||
-                                            routeLongName.contains("Select Bus Service");
+            private final Boolean SBS = route_id.endsWith("+") ||
+                                        routeShortName.endsWith("-SBS") ||
+                                        routeLongName.contains("Select Bus Service");
             private final Boolean express = route_id.startsWith("X") ||
                                             route_id.endsWith("X") ||
                                             route_id.endsWith("C") ||
@@ -135,7 +133,8 @@ abstract class MTASchema_Bus extends MTASchema {
 
             private final TransitAgency agency = asAgency(row.get(csv.getHeaderIndex("agency_id")), resource);
 
-            // static data
+            private List<Vehicle> vehicles = null;
+            private List<Bus.Alert> alerts = null;
 
             @Override
             public final String getRouteID(){
@@ -167,8 +166,6 @@ abstract class MTASchema_Bus extends MTASchema {
                 return routeTextColor;
             }
 
-            // onemta methods
-
             @Override
             public final Boolean isSelectBusService(){
                 return SBS;
@@ -195,6 +192,68 @@ abstract class MTASchema_Bus extends MTASchema {
             }
 
             @Override
+            public final Vehicle[] getVehicles(){
+                return getVehicles(false);
+            }
+
+            private Vehicle[] getVehicles(final boolean update){
+                if(vehicles == null || update){
+                    this.vehicles = Collections.unmodifiableList(Arrays.asList(cast(mta).transformFeedEntities(
+                        cast(mta).service.bus.getVehiclePositions(),
+                        ent -> isExactRoute(ent.getVehicle().getTrip().getRouteId()), // match route
+                        ent -> {
+                            final String busId = ent.getId();
+
+                            // find matching trip entity
+                            final FeedEntity trip = cast(mta).getFeedEntity(
+                                cast(mta).service.bus.getTripUpdates(),
+                                tent -> Objects.equals(tent.getTripUpdate().getVehicle().getId(), busId)
+                            );
+
+                            return trip != null ? MTASchema_Bus.asVehicle(
+                                mta,
+                                ent.getVehicle(),
+                                trip.getTripUpdate(),
+                                null
+                            ) : null;
+                        },
+                        new Vehicle[0]
+                    )));
+                }
+                return vehicles.toArray(new Vehicle[0]);
+            }
+
+            @Override
+            public final Bus.Alert[] getAlerts(){
+                return getAlerts(false);
+            }
+
+            private Bus.Alert[] getAlerts(final boolean update){
+                if(alerts == null || update){
+                    this.alerts = Collections.unmodifiableList(Arrays.asList(cast(mta).transformFeedEntities(
+                        cast(mta).service.alerts.getBus(),
+                        ent -> {
+                            final GTFSRealtimeProto.Alert alert = ent.getAlert();
+                            final int len = alert.getInformedEntityCount();
+                            for(int i = 0; i < len; i++)
+                                if(isSameRoute(alert.getInformedEntity(i).getRouteId())) // check if alert includes this route
+                                    return true;
+                            return false;
+                        },
+                        ent -> asTransitAlert(mta, ent),
+                        new Bus.Alert[0]
+                    )));
+                }
+                return alerts.toArray(new Bus.Alert[0]);
+            }
+
+            @Override
+            public final void refresh(){
+                getAlerts(true);
+                getVehicles(true);
+            }
+
+            @Override
             public final boolean isExactRoute(final Object object){
                 if(object instanceof Route)
                     return getRouteID().equalsIgnoreCase(((Route) object).getRouteID());
@@ -214,69 +273,7 @@ abstract class MTASchema_Bus extends MTASchema {
                     return false;
             }
 
-            // live feed
-
-            private List<Vehicle> vehicles = null;
-
-            @Override
-            public final Vehicle[] getVehicles(){
-                return getVehicles(false);
-            }
-
-            private Vehicle[] getVehicles(final boolean update){
-                if(vehicles == null || update){
-                    final FeedMessage feed = cast(mta).service.bus.getTripUpdates();
-                    final int len          = feed.getEntityCount();
-
-                    final List<Vehicle> vehicles = new ArrayList<>();
-                    for(int i = 0; i < len; i++){
-                        final FeedEntity entity = feed.getEntity(i);
-                        // only include trips with vehicles
-                        if(entity.hasVehicle() && entity.hasTripUpdate())
-                            // only include vehicles on this route
-                            if(entity.getTripUpdate().getTrip().getRouteId().equals(routeID))
-                                vehicles.add(asVehicle(mta, entity.getVehicle(), entity.getTripUpdate(), this));
-                    }
-
-                    this.vehicles = Collections.unmodifiableList(vehicles);
-                }
-                return vehicles.toArray(new Vehicle[0]);
-            }
-
-            private List<Bus.Alert> alerts = null;
-
-            @Override
-            public final Bus.Alert[] getAlerts(){
-                return getAlerts(false);
-            }
-
-            private Bus.Alert[] getAlerts(final boolean update){
-                if(alerts == null || update){
-                    this.alerts = Arrays.asList(cast(mta).getAlerts(
-                        cast(mta).service.alerts.getBus(),
-                        ent -> {
-                            final GTFSRealtimeProto.Alert alert;
-                            final int len;
-                            if(ent.hasAlert() && (len = (alert = ent.getAlert()).getInformedEntityCount()) > 0)
-                                for(int i = 0; i < len; i++)
-                                    if(alert.getInformedEntity(i).getRouteId().equals(route_id))
-                                        return true;
-                            return false;
-                        },
-                        ent -> asTransitAlert(mta, ent),
-                        new Bus.Alert[0]
-                    ));
-                }
-                return alerts.toArray(new Bus.Alert[0]);
-            }
-
-            @Override
-            public final void refresh(){
-                getAlerts(true);
-                getVehicles(true);
-            }
-
-            // Java
+            //
 
             @Override
             public final String toString(){
@@ -350,12 +347,13 @@ abstract class MTASchema_Bus extends MTASchema {
 
         return new Stop() {
 
-            private final Integer stopID  = stop_id;
+            private final Integer stopID = stop_id;
             private final String stopName = row.get(csv.getHeaderIndex("stop_name"));
-            private final Double stopLat  = Double.valueOf(row.get(csv.getHeaderIndex("stop_lat")));
-            private final Double stopLon  = Double.valueOf(row.get(csv.getHeaderIndex("stop_lon")));
+            private final Double stopLat = Double.valueOf(row.get(csv.getHeaderIndex("stop_lat")));
+            private final Double stopLon = Double.valueOf(row.get(csv.getHeaderIndex("stop_lon")));
 
-            // static data
+            private List<Vehicle> vehicles = null;
+            private List<Bus.Alert> alerts = null;
 
             @Override
             public final Integer getStopID(){
@@ -377,10 +375,6 @@ abstract class MTASchema_Bus extends MTASchema {
                 return stopLon;
             }
 
-            // live feed
-
-            private List<Vehicle> vehicles = null;
-
             @Override
             public final Vehicle[] getVehicles(){
                 return getVehicles(false);
@@ -388,42 +382,37 @@ abstract class MTASchema_Bus extends MTASchema {
 
             private Vehicle[] getVehicles(final boolean update){
                 if(vehicles == null || update){
-                    final String stop = String.valueOf(stopID);
+                    this.vehicles = Collections.unmodifiableList(Arrays.asList(cast(mta).transformFeedEntities(
+                        cast(mta).service.bus.getTripUpdates(),
+                        ent -> {
+                            final TripUpdate trip = ent.getTripUpdate();
+                            final int len = trip.getStopTimeUpdateCount();
+                            for(int i = 0; i < len; i++)
+                                if(isSameStop(trip.getStopTimeUpdate(i))) // check if route includes this stop
+                                    return true;
+                            return false;
+                        },
+                        ent -> {
+                            final String busId = ent.getId();
 
-                    final FeedMessage feed = cast(mta).service.mnr.getMNR();
-                    final int len          = feed.getEntityCount();
+                            // find matching trip entity
+                            final FeedEntity trip = cast(mta).getFeedEntity(
+                                cast(mta).service.bus.getVehiclePositions(),
+                                tent -> Objects.equals(tent.getId(), busId)
+                            );
 
-                    final List<Vehicle> vehicles = new ArrayList<>();
-                    OUTER:
-                    for(int i = 0; i < len; i++){
-                        final FeedEntity entity = feed.getEntity(i);
-                        // only include trips with vehicles
-                        if(
-                            entity.hasVehicle() &&
-                            entity.hasTripUpdate()
-                        ){
-                            if(entity.getTripUpdate().getStopTimeUpdateCount() > 0){
-                                final TripUpdate tu = entity.getTripUpdate();
-                                final int len2 = tu.getStopTimeUpdateCount();
-                                // check all stops on train route
-                                for(int u = 0; u < len2; u++){
-                                    final TripUpdate.StopTimeUpdate stu = tu.getStopTimeUpdate(u);
-                                    // check if this stop is en route
-                                    if(stu.getStopId().equalsIgnoreCase(stop)){
-                                        vehicles.add(asVehicle(mta, entity.getVehicle(), entity.getTripUpdate(), null));
-                                        continue OUTER;
-                                    }
-                                }
-                            }
-                        }
-                    }
-
-                    this.vehicles = Collections.unmodifiableList(vehicles);
+                            return trip != null ? MTASchema_Bus.asVehicle(
+                                mta,
+                                ent.getVehicle(),
+                                trip.getTripUpdate(),
+                                null
+                            ) : null;
+                        },
+                        new Vehicle[0]
+                    )));
                 }
                 return vehicles.toArray(new Vehicle[0]);
             }
-
-            private List<Bus.Alert> alerts = null;
 
             @Override
             public final Bus.Alert[] getAlerts(){
@@ -432,26 +421,28 @@ abstract class MTASchema_Bus extends MTASchema {
 
             private Bus.Alert[] getAlerts(final boolean update){
                 if(alerts == null || update){
-                    final String id = String.valueOf(stop_id);
-                    this.alerts = Arrays.asList(cast(mta).getAlerts(
+                    this.alerts = Collections.unmodifiableList(Arrays.asList(cast(mta).transformFeedEntities(
                         cast(mta).service.alerts.getBus(),
                         ent -> {
-                            final GTFSRealtimeProto.Alert alert;
-                            final int len;
-                            if(ent.hasAlert() && (len = (alert = ent.getAlert()).getInformedEntityCount()) > 0)
-                                for(int i = 0; i < len; i++)
-                                    if(alert.getInformedEntity(i).getStopId().equals(id))
-                                        return true;
+                            final GTFSRealtimeProto.Alert alert = ent.getAlert();
+                            final int len = alert.getInformedEntityCount();
+                            for(int i = 0; i < len; i++)
+                                if(isSameStop(alert.getInformedEntity(i).getStopId())) // check if alert includes this stop
+                                    return true;
                             return false;
                         },
                         ent -> asTransitAlert(mta, ent),
                         new Bus.Alert[0]
-                    ));
+                    )));
                 }
                 return alerts.toArray(new Bus.Alert[0]);
             }
 
-            // onemta methods
+            @Override
+            public final void refresh(){
+                getAlerts(true);
+                getVehicles(true);
+            }
 
             @Override
             public final boolean isExactStop(final Object object){
@@ -470,13 +461,7 @@ abstract class MTASchema_Bus extends MTASchema {
                 return isExactStop(object);
             }
 
-            @Override
-            public final void refresh(){
-                getAlerts(true);
-                getVehicles(true);
-            }
-
-            // Java
+            //
 
             @Override
             public final String toString(){
@@ -595,17 +580,17 @@ abstract class MTASchema_Bus extends MTASchema {
             public final void refresh(){
                 getTrip(true);
 
-                Vehicle vehicle = mta.getBus(vehicleID);
+                final Vehicle vehicle = mta.getBus(vehicleID);
 
-                latitude   = vehicle.getLatitude();
-                longitude  = vehicle.getLongitude();
-                bearing    = vehicle.getBearing();
-                direction  = vehicle.getDirection();
+                latitude = vehicle.getLatitude();
+                longitude = vehicle.getLongitude();
+                bearing = vehicle.getBearing();
+                direction = vehicle.getDirection();
                 passengers = vehicle.getPassengers();
-                routeID    = vehicle.getRouteID();
-                route      = null;
-                stopID     = vehicle.getStopID();
-                stop       = null;
+                routeID = vehicle.getRouteID();
+                route = null;
+                stopID = vehicle.getStopID();
+                stop = null;
             }
 
             //

@@ -24,8 +24,6 @@ import dev.katsute.onemta.railroad.LIRR;
 import dev.katsute.onemta.railroad.MNR;
 import dev.katsute.onemta.subway.Subway;
 import dev.katsute.onemta.subway.SubwayDirection;
-import dev.katsute.onemta.types.TransitAlert;
-import dev.katsute.onemta.types.TransitVehicle;
 
 import java.util.*;
 import java.util.function.Function;
@@ -33,7 +31,7 @@ import java.util.function.Predicate;
 
 import static dev.katsute.onemta.GTFSRealtimeProto.*;
 
-@SuppressWarnings("SpellCheckingInspection")
+@SuppressWarnings({"SpellCheckingInspection", "DataFlowIssue"})
 final class MTAImpl extends MTA {
 
     final transient String busToken;
@@ -85,7 +83,7 @@ final class MTAImpl extends MTA {
     @Override
     public final Bus.Vehicle getBus(final int bus_id){
         final String id = String.valueOf(bus_id);
-        return getVehicle(
+        return transformFirstEntity(
             service.bus.getVehiclePositions(),
             ent -> Objects.equals(ent.getId().split("_")[1], id), // don't match 'MTA NYCT_' or 'MTABC_' ; numbers are unique to each bus
             ent -> {
@@ -98,19 +96,15 @@ final class MTAImpl extends MTA {
                     service.bus.getTripUpdates(),
                     tent -> Objects.equals(tent.getTripUpdate().getVehicle().getId(), busId)
                 );
-                return trip != null ? MTASchema_Bus.asVehicle(
-                    this,
-                    ent.getVehicle(),
-                    trip.getTripUpdate(),
-                    null
-                ) : null;
+
+                return MTASchema_Bus.asVehicle(this, ent.getVehicle(), trip.getTripUpdate(), null);
             }
         );
     }
 
     @Override
     public final Bus.Alert[] getBusAlerts(){
-        return getAlerts(
+        return transformFeedEntities(
             service.alerts.getBus(),
             ent -> MTASchema_Bus.asTransitAlert(this, ent),
             new Bus.Alert[0]
@@ -198,34 +192,30 @@ final class MTAImpl extends MTA {
 
     @Override
     public final Subway.Vehicle getSubwayTrain(final String train_id){ // do not use number ID, trains on different feeds may use same number
-        final FeedMessage feed = resolveSubwayFeed(train_id.substring(1, train_id.indexOf(' ')));
-        return getVehicle(
+        final FeedMessage feed = resolveSubwayFeed(train_id.substring(1, train_id.indexOf(' '))); // isloate route code
+        final String id = train_id.substring(1); // don't match first symbol, may change for same train; see NYCT proto [train_id]
+        return transformFirstEntity(
             Objects.requireNonNull(feed),
             ent ->
                 ent.hasTripUpdate() &&
-                Objects.equals(ent.getTripUpdate().getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getTrainId(), train_id),
+                Objects.equals(ent.getTripUpdate().getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getTrainId().substring(1), id),
             ent -> {
                 // find matching vehicle entity
-                final String id = train_id.substring(1); // don't match first symbol, may change for same train; see NYCT proto [train_id]
                 final FeedEntity veh = getFeedEntity(
                     feed,
                     vent ->
                         vent.hasVehicle() &&
                         Objects.equals(vent.getVehicle().getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getTrainId().substring(1), id)
                 );
-                return veh != null ? MTASchema_Subway.asVehicle(
-                    this,
-                    veh.getVehicle(),
-                    ent.getTripUpdate(),
-                    null
-                ) : null;
+
+                return MTASchema_Subway.asVehicle(this, veh.getVehicle(), ent.getTripUpdate(), null);
             }
         );
     }
 
     @Override
     public final Subway.Alert[] getSubwayAlerts(){
-        return getAlerts(
+        return transformFeedEntities(
             service.alerts.getSubway(),
             ent -> MTASchema_Subway.asTransitAlert(this, ent),
             new Subway.Alert[0]
@@ -251,7 +241,7 @@ final class MTAImpl extends MTA {
 
     @Override
     public final LIRR.Vehicle getLIRRTrain(final String train_id){ // don't convert to number, train may have string ID
-        return getVehicle(
+        return transformFirstEntity(
             service.lirr.getLIRR(),
             ent ->
                 ent.hasTripUpdate() &&
@@ -264,19 +254,15 @@ final class MTAImpl extends MTA {
                         vent.hasVehicle() &&
                         Objects.equals(vent.getVehicle().getVehicle().getLabel(), train_id)
                 );
-                return veh != null ? MTASchema_LIRR.asVehicle(
-                    this,
-                    veh.getVehicle(),
-                    ent.getTripUpdate(),
-                    null
-                ) : null;
+
+                return MTASchema_LIRR.asVehicle(this, veh.getVehicle(), ent.getTripUpdate(), null);
             }
         );
     }
 
     @Override
     public final LIRR.Alert[] getLIRRAlerts(){
-        return getAlerts(
+        return transformFeedEntities(
             service.alerts.getLIRR(),
             ent -> MTASchema_LIRR.asTransitAlert(this, ent),
             new LIRR.Alert[0]
@@ -302,7 +288,7 @@ final class MTAImpl extends MTA {
 
     @Override
     public final MNR.Vehicle getMNRTrain(final String train_id){ // don't convert to number, train may have string ID
-        return getVehicle(
+        return transformFirstEntity(
             service.mnr.getMNR(),
             ent -> Objects.equals(ent.getId(), train_id),
             ent -> MTASchema_MNR.asVehicle(
@@ -316,7 +302,7 @@ final class MTAImpl extends MTA {
 
     @Override
     public final MNR.Alert[] getMNRAlerts(){
-        return getAlerts(
+        return transformFeedEntities(
             service.alerts.getMNR(),
             ent -> MTASchema_MNR.asTransitAlert(this, ent),
             new MNR.Alert[0]
@@ -337,17 +323,17 @@ final class MTAImpl extends MTA {
         return null;
     }
 
-    final <V extends TransitVehicle<?,?,?,?,?,?>> V getVehicle(final FeedMessage feed, final Predicate<FeedEntity> predicate, final Function<FeedEntity,V> transform){
+    final <T> T transformFirstEntity(final FeedMessage feed, final Predicate<FeedEntity> predicate, final Function<FeedEntity,T> transform){
         final FeedEntity ent = getFeedEntity(feed, predicate);
         return ent != null ? transform.apply(ent) : null;
     }
 
-    final <A extends TransitAlert<?,?,?,?>> A[] getAlerts(final FeedMessage feed, final Function<FeedEntity,A> transform, final A[] arr){
-        return getAlerts(feed, null, transform, arr);
+    final <T> T[] transformFeedEntities(final FeedMessage feed, final Function<FeedEntity,T> transform, final T[] arr){
+        return transformFeedEntities(feed, null, transform, arr);
     }
 
-    final <A extends TransitAlert<?,?,?,?>> A[] getAlerts(final FeedMessage feed, final Predicate<FeedEntity> filter, final Function<FeedEntity,A> transform, final A[] arr){
-        final List<A> alerts = new ArrayList<>();
+    final <T> T[] transformFeedEntities(final FeedMessage feed, final Predicate<FeedEntity> filter, final Function<FeedEntity,T> transform, final T[] arr){
+        final List<T> alerts = new ArrayList<>();
         final int len = feed.getEntityCount();
         for(int i = 0; i < len; i++){
             final FeedEntity ent = feed.getEntity(i);
@@ -356,6 +342,7 @@ final class MTAImpl extends MTA {
                     alerts.add(transform.apply(ent));
             }catch(final Throwable ignored){ }
         }
+        alerts.removeIf(Objects::isNull);
         return alerts.toArray(arr);
     }
 
