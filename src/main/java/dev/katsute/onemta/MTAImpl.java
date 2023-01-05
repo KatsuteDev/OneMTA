@@ -87,7 +87,7 @@ final class MTAImpl extends MTA {
         final String id = String.valueOf(bus_id);
         return getVehicle(
             service.bus.getVehiclePositions(),
-            ent -> Objects.equals(ent.getId().split("_")[1], id),
+            ent -> Objects.equals(ent.getId().split("_")[1], id), // don't match 'MTA NYCT_' or 'MTABC_' ; numbers are unique to each bus
             ent -> {
                 if(!ent.getVehicle().hasTrip()) return null;
 
@@ -197,7 +197,7 @@ final class MTAImpl extends MTA {
     }
 
     @Override
-    public final Subway.Vehicle getSubwayTrain(final String train_id){
+    public final Subway.Vehicle getSubwayTrain(final String train_id){ // do not use number ID, trains on different feeds may use same number
         final FeedMessage feed = resolveSubwayFeed(train_id.substring(1, train_id.indexOf(' ')));
         return getVehicle(
             Objects.requireNonNull(feed),
@@ -206,11 +206,12 @@ final class MTAImpl extends MTA {
                 Objects.equals(ent.getTripUpdate().getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getTrainId(), train_id),
             ent -> {
                 // find matching vehicle entity
+                final String id = train_id.substring(1); // don't match first symbol, may change for same train; see NYCT proto [train_id]
                 final FeedEntity veh = getFeedEntity(
                     feed,
                     vent ->
                         vent.hasVehicle() &&
-                        Objects.equals(vent.getVehicle().getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getTrainId(), train_id)
+                        Objects.equals(vent.getVehicle().getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getTrainId().substring(1), id)
                 );
                 return veh != null ? MTASchema_Subway.asVehicle(
                     this,
@@ -249,7 +250,7 @@ final class MTAImpl extends MTA {
     }
 
     @Override
-    public final LIRR.Vehicle getLIRRTrain(final String train_id){
+    public final LIRR.Vehicle getLIRRTrain(final String train_id){ // don't convert to number, train may have string ID
         return getVehicle(
             service.lirr.getLIRR(),
             ent ->
@@ -300,7 +301,7 @@ final class MTAImpl extends MTA {
     }
 
     @Override
-    public final MNR.Vehicle getMNRTrain(final String train_id){
+    public final MNR.Vehicle getMNRTrain(final String train_id){ // don't convert to number, train may have string ID
         return getVehicle(
             service.mnr.getMNR(),
             ent -> Objects.equals(ent.getId(), train_id),

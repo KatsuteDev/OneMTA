@@ -97,6 +97,44 @@ public abstract class Subway {
     public abstract static class Vehicle extends TransitVehicle<String,Route,String,Stop,String,Trip> {
 
         /**
+         * Returns if the trip is assigned to an actual train. <br>
+         * If true, the vehicle is on a trip or is about to depart. <br>
+         * If false, the vehicle has not yet been assigned a trip or is being taken out of service.
+         *
+         * @return assigned
+         *
+         * @since 2.0.0
+         */
+        public abstract Boolean isAssigned();
+
+        /**
+         * Returns if the train is rerouted.
+         *
+         * @return rerouted train
+         *
+         * @since 2.0.0
+         */
+        public abstract Boolean isRerouted();
+
+        /**
+         * Returns if the train is following a skip stop pattern.
+         *
+         * @return skip stop train
+         *
+         * @since 2.0.0
+         */
+        public abstract Boolean isSkipStop();
+
+        /**
+         * Returns if the train is a turn train (shortly lined service)
+         *
+         * @return turn train
+         *
+         * @since 2.0.0
+         */
+        public abstract Boolean isTurnTrain();
+
+        /**
          * Returns the current vehicle status.
          *
          * @return vehicle status

@@ -497,6 +497,19 @@ abstract class MTASchema_Subway extends MTASchema {
 
             private final String vehicleID = requireNonNull(() -> vehicle.getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getTrainId());
 
+            private Boolean assigned = requireNonNull(() -> vehicle.getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getIsAssigned());
+
+            @SuppressWarnings("DataFlowIssue")
+            private Boolean rerouted = requireNonNull(() -> vehicleID.charAt(0) == '=');
+
+            @SuppressWarnings("DataFlowIssue")
+
+            private Boolean skipStop = requireNonNull(() -> vehicleID.charAt(0) == '/');
+
+            @SuppressWarnings("DataFlowIssue")
+
+            private Boolean turnTrain = requireNonNull(() -> vehicleID.charAt(0) == '$');
+
             private String status = requireNonNull(() -> vehicle.getCurrentStatus().name());
 
             private Integer sequence = requireNonNull(vehicle::getCurrentStopSequence);
@@ -514,6 +527,26 @@ abstract class MTASchema_Subway extends MTASchema {
             @Override
             public final String getVehicleID(){
                 return vehicleID;
+            }
+
+            @Override
+            public final Boolean isAssigned(){
+                return assigned;
+            }
+
+            @Override
+            public final Boolean isRerouted(){
+                return rerouted;
+            }
+
+            @Override
+            public final Boolean isSkipStop(){
+                return skipStop;
+            }
+
+            @Override
+            public final Boolean isTurnTrain(){
+                return turnTrain;
             }
 
             @Override
@@ -566,6 +599,10 @@ abstract class MTASchema_Subway extends MTASchema {
 
                 Vehicle vehicle = mta.getSubwayTrain(vehicleID);
 
+                assigned = vehicle.isAssigned();
+                rerouted  = vehicle.isRerouted();
+                skipStop  = vehicle.isSkipStop();
+                turnTrain = vehicle.isTurnTrain();
                 status   = vehicle.getStatus();
                 sequence = vehicle.getStopSequence();
                 express  = vehicle.isExpress();
@@ -581,6 +618,10 @@ abstract class MTASchema_Subway extends MTASchema {
             public final String toString(){
                 return "Subway.Vehicle{" +
                        "vehicleID='" + vehicleID + '\'' +
+                       ", assigned=" + assigned +
+                       ", rerouted=" + rerouted +
+                       ", skipStop=" + skipStop +
+                       ", turnTrain=" + turnTrain +
                        ", status='" + status + '\'' +
                        ", sequence=" + sequence +
                        ", stopID='" + stopID + '\'' +
