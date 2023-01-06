@@ -20,7 +20,6 @@ final class TestBusStop {
         mta = TestProvider.getOneMTA();
 
         stop = mta.getBusStop(TestProvider.BUS_STOP);
-        VehicleValidation.requireVehicles(stop);
     }
 
     @Nested

@@ -1,0 +1,17 @@
+package dev.katsute.onemta.subway;
+
+import dev.katsute.onemta.MTA;
+import dev.katsute.onemta.TestProvider;
+import org.junit.jupiter.api.BeforeAll;
+
+final class TestSubwayVehicle {
+
+    private static MTA mta;
+
+    @BeforeAll
+    static void beforeAll(){
+        TestProvider.testGroup("subway");
+        mta = TestProvider.getOneMTA();
+    }
+
+}

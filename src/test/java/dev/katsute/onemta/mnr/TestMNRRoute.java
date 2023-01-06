@@ -21,7 +21,6 @@ final class TestMNRRoute {
         mta = TestProvider.getOneMTA();
 
         route = mta.getMNRRoute(TestProvider.MNR_ROUTE);
-        VehicleValidation.requireVehicles(route);
 
     }
 

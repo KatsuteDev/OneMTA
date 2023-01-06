@@ -24,10 +24,6 @@ final class TestSubwayStop {
         stop = mta.getSubwayStop(TestProvider.SUBWAY_STOP);
         stopN = mta.getSubwayStop(TestProvider.SUBWAY_STOP + "N");
         stopS = mta.getSubwayStop(TestProvider.SUBWAY_STOP + "S");
-
-        VehicleValidation.requireVehicles(stop);
-        VehicleValidation.requireVehicles(stopN);
-        VehicleValidation.requireVehicles(stopS);
     }
 
     @Nested

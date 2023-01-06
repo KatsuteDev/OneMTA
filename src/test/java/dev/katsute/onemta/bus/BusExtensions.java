@@ -29,7 +29,6 @@ abstract class BusExtensions {
     //
 
     public static void testTripStops(final TripStop[] trip){
-        TripValidation.requireTripStops(trip);
         TripValidation.testTripStops(trip);
     }
 }

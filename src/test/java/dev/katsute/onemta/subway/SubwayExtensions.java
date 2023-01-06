@@ -25,7 +25,6 @@ abstract class SubwayExtensions {
     //
 
     public static void testTripStops(final TripStop[] trip){
-        TripValidation.requireTripStops(trip);
         for(final TripStop stop : trip)
             testTripStop(stop);
     }

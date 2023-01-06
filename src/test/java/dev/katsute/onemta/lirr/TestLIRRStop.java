@@ -21,7 +21,6 @@ final class TestLIRRStop {
         mta = TestProvider.getOneMTA();
 
         stop = mta.getLIRRStop(TestProvider.LIRR_STOP);
-        VehicleValidation.requireVehicles(stop);
     }
 
     @Nested

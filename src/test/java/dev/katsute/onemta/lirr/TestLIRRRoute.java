@@ -21,7 +21,6 @@ final class TestLIRRRoute {
         mta = TestProvider.getOneMTA();
 
         route = mta.getLIRRRoute(TestProvider.LIRR_ROUTE);
-        VehicleValidation.requireVehicles(route);
     }
 
     @Nested

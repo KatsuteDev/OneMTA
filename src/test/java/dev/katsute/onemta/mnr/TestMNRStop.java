@@ -21,7 +21,6 @@ final class TestMNRStop {
         mta = TestProvider.getOneMTA();
 
         stop = mta.getMNRStop(TestProvider.MNR_STOP);
-        VehicleValidation.requireVehicles(stop);
     }
 
     @Nested

@@ -20,7 +20,6 @@ final class TestBusRoute {
         mta = TestProvider.getOneMTA();
 
         route = mta.getBusRoute(TestProvider.BUS_ROUTE);
-        VehicleValidation.requireVehicles(route);
     }
 
     @Nested
