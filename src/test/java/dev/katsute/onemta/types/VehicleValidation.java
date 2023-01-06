@@ -21,6 +21,7 @@ public abstract class VehicleValidation {
     }
 
     private static void testVehicle(final TransitVehicle<?,?,?,?,?,?> vehicle){
+        TripValidation.testTrip(vehicle);
         assertNotNull(vehicle.getVehicleID());
         assertNotNull(vehicle.getStopID());
         assertNotNull(vehicle.getRouteID());

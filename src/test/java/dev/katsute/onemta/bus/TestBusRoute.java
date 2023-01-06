@@ -26,6 +26,8 @@ final class TestBusRoute {
     @Test
     final void testVehicles(){
         TestBusVehicle.testVehicles(route);
+        for(final Vehicle vehicle : route.getVehicles())
+            assertSame(route, vehicle.getRoute());
     }
 
     @Test

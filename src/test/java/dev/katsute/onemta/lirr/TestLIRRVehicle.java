@@ -25,7 +25,6 @@ final class TestLIRRVehicle {
     }
 
     static void testTrip(final LIRR.Trip trip){
-        TripValidation.testTrip(trip);
         assertNotNull(trip.getDirection());
         assertNotNull(trip.getScheduleRelationship());
         for(final LIRR.TripStop stop : trip.getTripStops())

@@ -27,6 +27,8 @@ final class TestLIRRRoute {
     @Test
     final void testVehicles(){
         TestLIRRVehicle.testVehicles(route);
+        for(final Vehicle vehicle : route.getVehicles())
+            assertSame(route, vehicle.getRoute());
     }
 
     @Nested

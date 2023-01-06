@@ -31,7 +31,6 @@ final class TestBusVehicle {
     }
 
     static void testTrip(final Bus.Trip trip){
-        TripValidation.testTrip(trip);
         assertNotNull(trip.getDelay());
         for(final Bus.TripStop stop : trip.getTripStops())
             testTripStop(stop);

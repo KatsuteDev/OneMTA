@@ -24,7 +24,6 @@ final class TestMNRVehicle {
     }
 
     static void testTrip(final MNR.Trip trip){
-        TripValidation.testTrip(trip);
         for(final MNR.TripStop stop : trip.getTripStops())
             testTripStop(stop);
     }

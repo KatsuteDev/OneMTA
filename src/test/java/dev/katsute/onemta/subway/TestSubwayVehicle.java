@@ -27,7 +27,6 @@ final class TestSubwayVehicle {
     }
 
     static void testTrip(final Subway.Trip trip){
-        TripValidation.testTrip(trip);
         assertNotNull(trip.getDirection());
         for(final Subway.TripStop stop : trip.getTripStops())
             testTripStop(stop);

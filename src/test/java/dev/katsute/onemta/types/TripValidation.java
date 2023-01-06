@@ -12,6 +12,7 @@ public abstract class TripValidation {
 
     public static void testTrip(final Reference.Trip<?> trip){
         testTrip(trip.getTrip());
+        assertSame(trip, trip.getTrip().getVehicle());
     }
 
     public static void testTrip(final TransitTrip<?,?,?,?> trip){
