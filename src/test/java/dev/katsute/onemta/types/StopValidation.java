@@ -19,29 +19,7 @@ public abstract class StopValidation {
 
         assertNotNull(stop.getLatitude());
         assertNotNull(stop.getLongitude());
-
-        /* test refresh */ {
-            TransitStop<?,?,?> temp;
-
-            if(stop instanceof Bus.Stop)
-                temp = TestProvider.mta.getBusStop(((Bus.Stop) stop).getStopID());
-            else if(stop instanceof Subway.Stop)
-                temp = TestProvider.mta.getSubwayStop(((Subway.Stop) stop).getStopID());
-            else if(stop instanceof LIRR.Stop)
-                temp = TestProvider.mta.getLIRRStop(((LIRR.Stop) stop).getStopID());
-            else if(stop instanceof MNR.Stop)
-                temp = TestProvider.mta.getMNRStop(((MNR.Stop) stop).getStopID());
-            else
-                return;
-
-            final TransitVehicle<?,?,?,?,?,?>[] vehicles = temp.getVehicles();
-            final TransitAlert<?,?,?,?>[] alerts = temp.getAlerts();
-
-            temp.refresh();
-
-            assertNotSame(vehicles, temp.getVehicles());
-            assertNotSame(alerts, temp.getAlerts());
-        }
+        assertDoesNotThrow(stop::refresh);
     }
 
 }

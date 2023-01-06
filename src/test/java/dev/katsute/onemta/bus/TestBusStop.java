@@ -24,26 +24,6 @@ final class TestBusStop {
     }
 
     @Nested
-    final class ComparatorTests {
-
-        @Test
-        final void testNotExact(){
-            assertFalse(stop.isExactStop(null));
-            assertFalse(stop.isExactStop(999));
-            assertFalse(stop.isExactStop("999"));
-        }
-
-        @Test
-        final void testExact(){
-            assertTrue(stop.isExactStop(stop));
-            assertTrue(stop.isExactStop(mta.getBusStop(TestProvider.BUS_STOP)));
-            assertTrue(stop.isExactStop(TestProvider.BUS_STOP));
-            assertTrue(stop.isExactStop(String.valueOf(TestProvider.BUS_STOP)));
-        }
-
-    }
-
-    @Nested
     final class TestExtensions {
 
         @Nested
@@ -78,11 +58,6 @@ final class TestBusStop {
 
     @Nested
     final class InheritedTests {
-
-        @Test
-        final void testTransitStop(){
-            StopValidation.testStop(stop);
-        }
 
         @Nested
         final class VehicleTests {
@@ -125,6 +100,46 @@ final class TestBusStop {
                 ));
             }
 
+        }
+
+    }
+
+    @Nested
+    final class StopTests {
+
+        @Test
+        final void testStop(){
+            StopValidation.testStop(stop);
+        }
+
+        @Test
+        final void testNotExact(){
+            assertFalse(stop.isExactStop(null));
+            assertFalse(stop.isExactStop(999));
+            assertFalse(stop.isExactStop("999"));
+        }
+
+        @Test
+        final void testExact(){
+            assertTrue(stop.isExactStop(stop));
+            assertTrue(stop.isExactStop(mta.getBusStop(TestProvider.BUS_STOP)));
+            assertTrue(stop.isExactStop(TestProvider.BUS_STOP));
+            assertTrue(stop.isExactStop(String.valueOf(TestProvider.BUS_STOP)));
+        }
+
+        @Test
+        final void testNotSame(){
+            assertFalse(stop.isSameStop(null));
+            assertFalse(stop.isSameStop(999));
+            assertFalse(stop.isSameStop("999"));
+        }
+
+        @Test
+        final void testSame(){
+            assertTrue(stop.isSameStop(stop));
+            assertTrue(stop.isSameStop(mta.getBusStop(TestProvider.BUS_STOP)));
+            assertTrue(stop.isSameStop(TestProvider.BUS_STOP));
+            assertTrue(stop.isSameStop(String.valueOf(TestProvider.BUS_STOP)));
         }
 
     }

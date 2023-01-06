@@ -25,32 +25,6 @@ final class TestLIRRStop {
     }
 
     @Nested
-    final class ComparatorTests {
-
-        @Test
-        final void testNotExact(){
-            assertFalse(stop.isExactStop(null));
-            assertFalse(stop.isExactStop(999));
-            assertFalse(stop.isExactStop("999"));
-        }
-
-        @Test
-        final void testExact(){
-            assertTrue(stop.isExactStop(stop));
-            assertTrue(stop.isExactStop(mta.getLIRRStop(TestProvider.LIRR_STOP)));
-            assertTrue(stop.isExactStop(TestProvider.LIRR_STOP));
-            assertTrue(stop.isExactStop(String.valueOf(TestProvider.LIRR_STOP)));
-        }
-
-        @Test
-        final void testStopCode(){
-            assertTrue(stop.isExactStop(TestProvider.LIRR_STOP_CODE));
-            assertTrue(stop.isExactStop(TestProvider.LIRR_STOP_CODE.toLowerCase()));
-        }
-
-    }
-
-    @Nested
     final class ExtensionTests {
 
         @Nested
@@ -86,11 +60,6 @@ final class TestLIRRStop {
 
     @Nested
     final class InheritedTests {
-
-        @Test
-        final void testTransitStop(){
-            StopValidation.testStop(stop);
-        }
 
         @Nested
         final class VehicleTests {
@@ -130,6 +99,59 @@ final class TestLIRRStop {
                 for(final Vehicle vehicle : stop.getVehicles())
                     TripValidation.testTripStops(vehicle.getTrip().getTripStops());
             }
+        }
+
+    }
+
+    @Test
+    final void testStop(){
+        assertNotNull(stop.getStopCode());
+        assertNotNull(stop.getStopDescription());
+        assertNotNull(stop.hasWheelchairBoarding());
+    }
+
+    @Nested
+    final class StopTests {
+
+        @Test
+        final void testStop(){
+            StopValidation.testStop(stop);
+        }
+
+        @Test
+        final void testNotExact(){
+            assertFalse(stop.isExactStop(null));
+            assertFalse(stop.isExactStop(999));
+            assertFalse(stop.isExactStop("999"));
+
+            assertTrue(stop.isExactStop(TestProvider.LIRR_STOP_CODE));
+            assertTrue(stop.isExactStop(TestProvider.LIRR_STOP_CODE.toLowerCase()));
+        }
+
+        @Test
+        final void testExact(){
+            assertTrue(stop.isExactStop(stop));
+            assertTrue(stop.isExactStop(mta.getLIRRStop(TestProvider.LIRR_STOP)));
+            assertTrue(stop.isExactStop(TestProvider.LIRR_STOP));
+            assertTrue(stop.isExactStop(String.valueOf(TestProvider.LIRR_STOP)));
+        }
+
+        @Test
+        final void testNotSame(){
+            assertFalse(stop.isSameStop(null));
+            assertFalse(stop.isSameStop(999));
+            assertFalse(stop.isSameStop("999"));
+
+            assertTrue(stop.isSameStop(TestProvider.LIRR_STOP_CODE));
+            assertTrue(stop.isSameStop(TestProvider.LIRR_STOP_CODE.toLowerCase()));
+        }
+
+        @Test
+        final void testSame(){
+            assertTrue(stop.isSameStop(stop));
+            assertTrue(stop.isSameStop(mta.getLIRRStop(TestProvider.LIRR_STOP)));
+            assertTrue(stop.isSameStop(TestProvider.LIRR_STOP));
+            assertTrue(stop.isSameStop(String.valueOf(TestProvider.LIRR_STOP)));
         }
 
     }

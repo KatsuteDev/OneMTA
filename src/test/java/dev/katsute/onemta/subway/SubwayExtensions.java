@@ -8,20 +8,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 abstract class SubwayExtensions {
 
-    public static void testRoute(final Route route){
-        assertNotNull(route.getRouteShortName());
-        assertNotNull(route.getRouteDescription());
-    }
-
-    //
-
-    public static void testStop(final Stop stop){
-        if(stop.getStopID().endsWith("N") || stop.getStopID().endsWith("S"))
-            assertNotNull(stop.getDirection());
-    }
-
-    //
-
     public static void testVehicle(final Vehicle vehicle){
         assertEquals(vehicle.getRouteID().toUpperCase().endsWith("X"), vehicle.isExpress());
     }

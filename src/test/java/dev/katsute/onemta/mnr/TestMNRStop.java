@@ -25,32 +25,6 @@ final class TestMNRStop {
     }
 
     @Nested
-    final class ComparatorTests {
-
-        @Test
-        final void testNotExact(){
-            assertFalse(stop.isExactStop(null));
-            assertFalse(stop.isExactStop(999));
-            assertFalse(stop.isExactStop("999"));
-        }
-
-        @Test
-        final void testExact(){
-            assertTrue(stop.isExactStop(stop));
-            assertTrue(stop.isExactStop(mta.getMNRStop(TestProvider.MNR_STOP)));
-            assertTrue(stop.isExactStop(TestProvider.MNR_STOP));
-            assertTrue(stop.isExactStop(String.valueOf(TestProvider.MNR_STOP)));
-        }
-
-        @Test
-        final void testStopCode(){
-            assertTrue(stop.isExactStop(TestProvider.MNR_STOP_CODE));
-            assertTrue(stop.isExactStop(TestProvider.MNR_STOP_CODE.toLowerCase()));
-        }
-
-    }
-
-    @Nested
     final class ExtensionTests {
 
         @Nested
@@ -80,11 +54,6 @@ final class TestMNRStop {
 
     @Nested
     final class InheritedTests {
-
-        @Test
-        final void testTransitStop(){
-            StopValidation.testStop(stop);
-        }
 
         @Nested
         final class VehicleTests {
@@ -125,6 +94,59 @@ final class TestMNRStop {
                     TripValidation.testTripStops(vehicle.getTrip().getTripStops());
             }
 
+        }
+
+    }
+
+    @Test
+    final void testStop(){
+        assertNotNull(stop.getStopCode());
+        assertNotNull(stop.getStopDescription());
+        assertNotNull(stop.hasWheelchairBoarding());
+    }
+
+    @Nested
+    final class StopTests {
+
+        @Test
+        final void testStop(){
+            StopValidation.testStop(stop);
+        }
+
+        @Test
+        final void testNotExact(){
+            assertFalse(stop.isExactStop(null));
+            assertFalse(stop.isExactStop(999));
+            assertFalse(stop.isExactStop("999"));
+
+            assertTrue(stop.isExactStop(TestProvider.MNR_STOP_CODE));
+            assertTrue(stop.isExactStop(TestProvider.MNR_STOP_CODE.toLowerCase()));
+        }
+
+        @Test
+        final void testExact(){
+            assertTrue(stop.isExactStop(stop));
+            assertTrue(stop.isExactStop(mta.getMNRStop(TestProvider.MNR_STOP)));
+            assertTrue(stop.isExactStop(TestProvider.MNR_STOP));
+            assertTrue(stop.isExactStop(String.valueOf(TestProvider.MNR_STOP)));
+        }
+
+        @Test
+        final void testNotSame(){
+            assertFalse(stop.isSameStop(null));
+            assertFalse(stop.isSameStop(999));
+            assertFalse(stop.isSameStop("999"));
+
+            assertTrue(stop.isSameStop(TestProvider.MNR_STOP_CODE));
+            assertTrue(stop.isSameStop(TestProvider.MNR_STOP_CODE.toLowerCase()));
+        }
+
+        @Test
+        final void testSame(){
+            assertTrue(stop.isSameStop(stop));
+            assertTrue(stop.isSameStop(mta.getMNRStop(TestProvider.MNR_STOP)));
+            assertTrue(stop.isSameStop(TestProvider.MNR_STOP));
+            assertTrue(stop.isSameStop(String.valueOf(TestProvider.MNR_STOP)));
         }
 
     }

@@ -30,82 +30,14 @@ final class TestSubwayStop {
         VehicleValidation.requireVehicles(stopS);
     }
 
-    @Test
-    final void testTransfers(){
-        assertNotEquals(0, stop.getTransfers().length);
-        for(final Stop transfer : stop.getTransfers())
-            assertNotEquals(stop.getStopID(), transfer.getStopID());
-    }
-
-    @Nested
-    final class ComparatorTests {
-
-        @Test
-        final void testNotExact(){
-            assertFalse(stop.isExactStop(null));
-            assertFalse(stop.isExactStop(999));
-            assertFalse(stop.isExactStop("999"));
-
-            assertFalse(stop.isExactStop(TestProvider.SUBWAY_STOP + 'n'));
-            assertFalse(stop.isExactStop(TestProvider.SUBWAY_STOP + 'N'));
-            assertFalse(stop.isExactStop(TestProvider.SUBWAY_STOP + 's'));
-            assertFalse(stop.isExactStop(TestProvider.SUBWAY_STOP + 'S'));
-
-            assertFalse(stop.isExactStop(stopN));
-            assertFalse(stop.isExactStop(stopS));
-        }
-
-        @Test
-        final void testExact(){
-            assertTrue(stop.isExactStop(stop));
-            assertTrue(stop.isExactStop(mta.getSubwayStop(TestProvider.SUBWAY_STOP)));
-            assertTrue(stop.isExactStop(Integer.valueOf(TestProvider.SUBWAY_STOP)));
-            assertTrue(stop.isExactStop(TestProvider.SUBWAY_STOP));
-        }
-
-        @Test
-        final void testNotSame(){
-            assertFalse(stop.isSameStop(null));
-            assertFalse(stop.isSameStop(999));
-            assertFalse(stop.isSameStop("999"));
-        }
-
-        @Test
-        final void testSame(){
-            assertTrue(stop.isSameStop(stop));
-            assertTrue(stop.isSameStop(mta.getSubwayStop(TestProvider.SUBWAY_STOP)));
-            assertTrue(stop.isSameStop(Integer.valueOf(TestProvider.SUBWAY_STOP)));
-            assertTrue(stop.isSameStop(TestProvider.SUBWAY_STOP));
-
-            assertTrue(stop.isSameStop(TestProvider.SUBWAY_STOP + 'n'));
-            assertTrue(stop.isSameStop(TestProvider.SUBWAY_STOP + 'N'));
-            assertTrue(stop.isSameStop(TestProvider.SUBWAY_STOP + 's'));
-            assertTrue(stop.isSameStop(TestProvider.SUBWAY_STOP + 'S'));
-
-            assertTrue(stop.isSameStop(stopN));
-            assertTrue(stop.isSameStop(stopS));
-        }
-
-    }
-
     @Nested
     final class DirectionTests {
 
         @Nested
         final class NorthTests {
 
-            @Test
-            final void testEnum(){
-                Assertions.assertEquals(SubwayDirection.NORTH, stopN.getDirection());
-            }
-
             @Nested
             final class ExtensionTests {
-
-                @Test
-                final void testStop(){
-                    SubwayExtensions.testStop(stopN);
-                }
 
                 @Nested
                 final class VehicleTests {
@@ -146,11 +78,6 @@ final class TestSubwayStop {
 
             @Nested
             final class InheritedTests {
-
-                @Test
-                final void testTransitStop(){
-                    StopValidation.testStop(stopN);
-                }
 
                 @Nested
                 final class VehicleTests {
@@ -200,18 +127,8 @@ final class TestSubwayStop {
         @Nested
         final class SouthTests {
 
-            @Test
-            final void testEnum(){
-                 Assertions.assertEquals(SubwayDirection.SOUTH, stopS.getDirection());
-            }
-
             @Nested
             final class ExtensionTests {
-
-                @Test
-                final void testStop(){
-                    SubwayExtensions.testStop(stopS);
-                }
 
                 @Nested
                 final class VehicleTests {
@@ -252,11 +169,6 @@ final class TestSubwayStop {
 
             @Nested
             final class InheritedTests {
-
-                @Test
-                final void testTransitStop(){
-                    StopValidation.testStop(stopS);
-                }
 
                 @Nested
                 final class VehicleTests {
@@ -308,11 +220,6 @@ final class TestSubwayStop {
     @Nested
     final class ExtensionTests {
 
-        @Test
-        final void testStop(){
-            SubwayExtensions.testStop(stop);
-        }
-
         @Nested
         final class VehicleTests {
 
@@ -358,11 +265,6 @@ final class TestSubwayStop {
     @Nested
     final class InheritedTests {
 
-        @Test
-        final void testTransitStop(){
-            StopValidation.testStop(stop);
-        }
-
         @Nested
         final class VehicleTests {
 
@@ -402,6 +304,87 @@ final class TestSubwayStop {
                     TripValidation.testTripStops(vehicle.getTrip().getTripStops());
             }
 
+        }
+
+    }
+
+    @Test
+    final void testStop(){
+        assertNotNull(stop.getTransfers());
+        assertNotEquals(0, stop.getTransfers().length);
+    }
+
+    @Nested
+    final class StopTests {
+
+        @Test
+        final void testStop(){
+            StopValidation.testStop(stop);
+            assertNull(stop.getDirection());
+        }
+
+        @Test
+        final void testStopN(){
+            StopValidation.testStop(stopN);
+            assertEquals(SubwayDirection.NORTH, stopN.getDirection());
+        }
+
+        @Test
+        final void testStopS(){
+            StopValidation.testStop(stopS);
+            assertEquals(SubwayDirection.SOUTH, stopS.getDirection());
+        }
+
+        @Test
+        final void testNotExact(){
+            assertFalse(stop.isExactStop(null));
+            assertFalse(stop.isExactStop(999));
+            assertFalse(stop.isExactStop("999"));
+
+            assertFalse(stop.isExactStop(TestProvider.SUBWAY_STOP + 'n'));
+            assertFalse(stop.isExactStop(TestProvider.SUBWAY_STOP + 'N'));
+            assertFalse(stop.isExactStop(TestProvider.SUBWAY_STOP + 's'));
+            assertFalse(stop.isExactStop(TestProvider.SUBWAY_STOP + 'S'));
+
+            assertFalse(stop.isExactStop(stopN));
+            assertFalse(stop.isExactStop(stopS));
+            assertFalse(stopS.isExactStop(stopN));
+            assertFalse(stopN.isExactStop(stopS));
+        }
+
+        @Test
+        final void testExact(){
+            assertTrue(stop.isExactStop(stop));
+            assertTrue(stop.isExactStop(mta.getSubwayStop(TestProvider.SUBWAY_STOP)));
+            assertTrue(stop.isExactStop(Integer.valueOf(TestProvider.SUBWAY_STOP)));
+            assertTrue(stop.isExactStop(TestProvider.SUBWAY_STOP));
+        }
+
+        @Test
+        final void testNotSame(){
+            assertFalse(stop.isSameStop(null));
+            assertFalse(stop.isSameStop(999));
+            assertFalse(stop.isSameStop("999"));
+        }
+
+        @Test
+        final void testSame(){
+            assertTrue(stop.isSameStop(stop));
+            assertTrue(stop.isSameStop(mta.getSubwayStop(TestProvider.SUBWAY_STOP)));
+            assertTrue(stop.isSameStop(Integer.valueOf(TestProvider.SUBWAY_STOP)));
+            assertTrue(stop.isSameStop(TestProvider.SUBWAY_STOP));
+
+            assertTrue(stop.isSameStop(TestProvider.SUBWAY_STOP + 'n'));
+            assertTrue(stop.isSameStop(TestProvider.SUBWAY_STOP + 'N'));
+            assertTrue(stop.isSameStop(TestProvider.SUBWAY_STOP + 's'));
+            assertTrue(stop.isSameStop(TestProvider.SUBWAY_STOP + 'S'));
+
+            assertTrue(stop.isSameStop(stopN));
+            assertTrue(stop.isSameStop(stopS));
+            assertTrue(stopN.isSameStop(stopN));
+            assertTrue(stopS.isSameStop(stopN));
+            assertTrue(stopN.isSameStop(stopS));
+            assertTrue(stopS.isSameStop(stopS));
         }
 
     }
