@@ -52,7 +52,7 @@ public abstract class AlertValidation {
         }
     }
 
-    public static void testAlertReference(final Alerts<?> reference, final TransitAlert<?,?,?,?> alert){
+    private static void testAlertReference(final Alerts<?> reference, final TransitAlert<?,?,?,?> alert){
         final boolean route = reference instanceof TransitRoute<?,?,?>;
         final Object id = route ? ((TransitRoute<?,?,?>) reference).getRouteID() : ((TransitStop<?,?,?>) reference).getStopID();
 

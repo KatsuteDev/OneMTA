@@ -20,17 +20,11 @@ public abstract class VehicleValidation {
             testVehicle(vehicle);
     }
 
-    public static void testVehicle(final TransitVehicle<?,?,?,?,?,?> vehicle){
+    private static void testVehicle(final TransitVehicle<?,?,?,?,?,?> vehicle){
         assertNotNull(vehicle.getVehicleID());
         assertNotNull(vehicle.getStopID());
         assertNotNull(vehicle.getRouteID());
         assertDoesNotThrow(vehicle::refresh);
-    }
-
-    //
-
-    public static void testVehicleRouteReference(final TransitRoute<?,?,?> reference, final TransitVehicle<?,?,?,?,?,?> vehicle){
-        assertSame(reference, vehicle.getRoute());
     }
 
 }

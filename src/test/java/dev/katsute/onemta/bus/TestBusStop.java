@@ -2,7 +2,8 @@ package dev.katsute.onemta.bus;
 
 import dev.katsute.onemta.MTA;
 import dev.katsute.onemta.TestProvider;
-import dev.katsute.onemta.types.*;
+import dev.katsute.onemta.types.AlertValidation;
+import dev.katsute.onemta.types.StopValidation;
 import org.junit.jupiter.api.*;
 
 import static dev.katsute.onemta.bus.Bus.*;
@@ -22,85 +23,9 @@ final class TestBusStop {
         stop = mta.getBusStop(TestProvider.BUS_STOP);
     }
 
-    @Nested
-    final class TestExtensions {
-
-        @Nested
-        final class VehicleTests {
-
-            @Test
-            final void testVehicles(){
-                { // test trip refresh
-                    assertTrue(TestProvider.atleastOneTrue(
-                        stop.getVehicles(), Bus.Vehicle.class,
-                        v -> {
-                            final Bus.Vehicle temp = mta.getBus(v.getVehicleID());
-                            final Bus.Trip trip = temp.getTrip();
-                            temp.refresh();
-                            return trip != temp.getTrip();
-                        }
-                    ));
-                }
-
-                for(final Vehicle vehicle : stop.getVehicles())
-                    BusExtensions.testVehicle(vehicle);
-            }
-
-            @Test
-            final void testID(){
-                BusExtensions.testVehicleNumber(mta, stop.getVehicles()[0]);
-            }
-
-        }
-
-    }
-
-    @Nested
-    final class InheritedTests {
-
-        @Nested
-        final class VehicleTests {
-
-            @Test
-            final void testTransitVehicles(){
-                for(final Vehicle vehicle : stop.getVehicles())
-                    VehicleValidation.testVehicle(vehicle);
-            }
-
-        }
-
-        @Nested
-        final class TripTests {
-
-            @Test
-            final void testVehicleTrips(){
-                for(final Vehicle vehicle : stop.getVehicles()){
-                    assertNotNull(vehicle.getTrip());
-                    TripValidation.testTrip(vehicle.getTrip());
-                }
-            }
-
-        }
-
-        @Nested
-        final class TripStopTests {
-
-            @Test
-            final void testVehicleTripStops(){
-                assertTrue(TestProvider.atleastOneTrue(
-                    stop.getVehicles(), Bus.Vehicle.class,
-                    v -> {
-                        if(v.getTrip() != null && v.getTrip().getTripStops().length > 0){
-                            TripValidation.testTripStops(v.getTrip().getTripStops());
-                            return true;
-                        }
-                        return false;
-                    }
-                ));
-            }
-
-        }
-
+    @Test
+    final void testVehicles(){
+        TestBusVehicle.testVehicles(stop);
     }
 
     @Nested

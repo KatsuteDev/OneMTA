@@ -2,8 +2,8 @@ package dev.katsute.onemta.mnr;
 
 import dev.katsute.onemta.MTA;
 import dev.katsute.onemta.TestProvider;
-import dev.katsute.onemta.railroad.MNR;
-import dev.katsute.onemta.types.*;
+import dev.katsute.onemta.types.AlertValidation;
+import dev.katsute.onemta.types.StopValidation;
 import org.junit.jupiter.api.*;
 
 import static dev.katsute.onemta.railroad.MNR.*;
@@ -23,78 +23,9 @@ final class TestMNRStop {
         stop = mta.getMNRStop(TestProvider.MNR_STOP);
     }
 
-    @Nested
-    final class ExtensionTests {
-
-        @Nested
-        final class VehicleTests {
-
-            @Test
-            final void testVehicles(){
-                { // not all MNR vehicles have stops for some reason
-                    assertTrue(TestProvider.atleastOneTrue(
-                        stop.getVehicles(), MNR.Vehicle.class,
-                        v -> v.getStopID() != null
-                    ));
-                }
-
-                for(final Vehicle vehicle : stop.getVehicles())
-                    MNRExtensions.testVehicle(vehicle);
-            }
-
-            @Test
-            final void testID(){
-                MNRExtensions.testVehicleNumber(mta, stop.getVehicles()[0]);
-            }
-
-        }
-
-    }
-
-    @Nested
-    final class InheritedTests {
-
-        @Nested
-        final class VehicleTests {
-
-            @Test
-            final void testTransitVehicles(){
-                for(final Vehicle vehicle : stop.getVehicles())
-                    VehicleValidation.testVehicle(vehicle);
-            }
-
-        }
-
-        @Nested
-        final class TripTests {
-
-            @Test
-            final void testVehicleTrips(){
-                for(final Vehicle vehicle : stop.getVehicles()){
-                    assertNotNull(vehicle.getTrip());
-                    TripValidation.testTrip(vehicle.getTrip());
-                }
-            }
-
-            @Test
-            final void testVehicleTripsReference(){
-                for(final Vehicle vehicle : stop.getVehicles())
-                    TripValidation.testTripReference(vehicle);
-            }
-
-        }
-
-        @Nested
-        final class TripStopTests {
-
-            @Test
-            final void testVehicleTripStops(){
-                for(final Vehicle vehicle : stop.getVehicles())
-                    TripValidation.testTripStops(vehicle.getTrip().getTripStops());
-            }
-
-        }
-
+    @Test
+    final void testVehicles(){
+        TestMNRVehicle.testVehicles(stop);
     }
 
     @Test
