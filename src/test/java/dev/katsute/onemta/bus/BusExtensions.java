@@ -8,18 +8,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 abstract class BusExtensions {
 
-    public static void testRoute(final Route route){
-        assertNotNull(route.getRouteShortName());
-        assertNotNull(route.getRouteDescription());
-
-        assertNotNull(route.isSelectBusService());
-        assertNotNull(route.isExpress());
-        assertNotNull(route.isShuttle());
-        assertNotNull(route.isLimited());
-    }
-
-    //
-
     public static void testVehicle(final Vehicle vehicle){
         assertNotNull(vehicle.getLatitude());
         assertNotNull(vehicle.getLongitude());

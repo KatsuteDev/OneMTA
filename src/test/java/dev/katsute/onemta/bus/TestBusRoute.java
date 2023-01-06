@@ -24,61 +24,7 @@ final class TestBusRoute {
     }
 
     @Nested
-    final class ComparatorTests {
-
-        @Test
-        final void testNotExact(){
-            assertFalse(route.isExactRoute(null));
-            assertFalse(route.isExactRoute(999));
-            assertFalse(route.isExactRoute("999"));
-
-            assertFalse(route.isExactRoute('x' + TestProvider.BUS_ROUTE));
-            assertFalse(route.isExactRoute('X' + TestProvider.BUS_ROUTE));
-            assertFalse(route.isExactRoute(TestProvider.BUS_ROUTE + 'x'));
-            assertFalse(route.isExactRoute(TestProvider.BUS_ROUTE + 'X'));
-            assertFalse(route.isExactRoute(TestProvider.BUS_ROUTE + 'c'));
-            assertFalse(route.isExactRoute(TestProvider.BUS_ROUTE + 'C'));
-            assertFalse(route.isExactRoute(TestProvider.BUS_ROUTE + '+'));
-        }
-
-        @Test
-        final void testExact(){
-            assertTrue(route.isExactRoute(route));
-            assertTrue(route.isExactRoute(mta.getBusRoute(TestProvider.BUS_ROUTE)));
-            assertTrue(route.isExactRoute(TestProvider.BUS_ROUTE));
-        }
-
-        @Test
-        final void testNotSame(){
-            assertFalse(route.isSameRoute(null));
-            assertFalse(route.isSameRoute(999));
-            assertFalse(route.isSameRoute("999"));
-        }
-
-        @Test
-        final void testSame(){
-            assertTrue(route.isSameRoute(route));
-            assertTrue(route.isSameRoute(mta.getBusRoute(TestProvider.BUS_ROUTE)));
-            assertTrue(route.isSameRoute(TestProvider.BUS_ROUTE));
-
-            assertTrue(route.isSameRoute('x' + TestProvider.BUS_ROUTE));
-            assertTrue(route.isSameRoute('X' + TestProvider.BUS_ROUTE));
-            assertTrue(route.isSameRoute(TestProvider.BUS_ROUTE + 'x'));
-            assertTrue(route.isSameRoute(TestProvider.BUS_ROUTE + 'X'));
-            assertTrue(route.isSameRoute(TestProvider.BUS_ROUTE + 'c'));
-            assertTrue(route.isSameRoute(TestProvider.BUS_ROUTE + 'C'));
-            assertTrue(route.isSameRoute(TestProvider.BUS_ROUTE + '+'));
-        }
-
-    }
-
-    @Nested
     final class ExtensionTests {
-
-        @Test
-        final void testRoute(){
-            BusExtensions.testRoute(route);
-        }
 
         @Nested
         final class VehicleTests {
@@ -131,11 +77,6 @@ final class TestBusRoute {
 
     @Nested
     final class InheritedTests {
-
-        @Test
-        final void testTransitRoute(){
-            RouteValidation.testRoute(route);
-        }
 
         @Nested
         final class VehicleTests {
@@ -196,6 +137,71 @@ final class TestBusRoute {
                 ));
             }
 
+        }
+
+    }
+
+    @Test
+    final void testRoute(){
+        assertNotNull(route.getRouteShortName());
+        assertNotNull(route.getRouteDescription());
+
+        assertNotNull(route.isSelectBusService());
+        assertNotNull(route.isExpress());
+        assertNotNull(route.isShuttle());
+        assertNotNull(route.isLimited());
+    }
+
+    @Nested
+    final class RouteTests {
+
+        @Test
+        final void testRoute(){
+            RouteValidation.testRoute(route);
+        }
+
+        @Test
+        final void testNotExact(){
+            assertFalse(route.isExactRoute(null));
+            assertFalse(route.isExactRoute(999));
+            assertFalse(route.isExactRoute("999"));
+
+            assertFalse(route.isExactRoute('x' + TestProvider.BUS_ROUTE));
+            assertFalse(route.isExactRoute('X' + TestProvider.BUS_ROUTE));
+            assertFalse(route.isExactRoute(TestProvider.BUS_ROUTE + 'x'));
+            assertFalse(route.isExactRoute(TestProvider.BUS_ROUTE + 'X'));
+            assertFalse(route.isExactRoute(TestProvider.BUS_ROUTE + 'c'));
+            assertFalse(route.isExactRoute(TestProvider.BUS_ROUTE + 'C'));
+            assertFalse(route.isExactRoute(TestProvider.BUS_ROUTE + '+'));
+        }
+
+        @Test
+        final void testExact(){
+            assertTrue(route.isExactRoute(route));
+            assertTrue(route.isExactRoute(mta.getBusRoute(TestProvider.BUS_ROUTE)));
+            assertTrue(route.isExactRoute(TestProvider.BUS_ROUTE));
+        }
+
+        @Test
+        final void testNotSame(){
+            assertFalse(route.isSameRoute(null));
+            assertFalse(route.isSameRoute(999));
+            assertFalse(route.isSameRoute("999"));
+        }
+
+        @Test
+        final void testSame(){
+            assertTrue(route.isSameRoute(route));
+            assertTrue(route.isSameRoute(mta.getBusRoute(TestProvider.BUS_ROUTE)));
+            assertTrue(route.isSameRoute(TestProvider.BUS_ROUTE));
+
+            assertTrue(route.isSameRoute('x' + TestProvider.BUS_ROUTE));
+            assertTrue(route.isSameRoute('X' + TestProvider.BUS_ROUTE));
+            assertTrue(route.isSameRoute(TestProvider.BUS_ROUTE + 'x'));
+            assertTrue(route.isSameRoute(TestProvider.BUS_ROUTE + 'X'));
+            assertTrue(route.isSameRoute(TestProvider.BUS_ROUTE + 'c'));
+            assertTrue(route.isSameRoute(TestProvider.BUS_ROUTE + 'C'));
+            assertTrue(route.isSameRoute(TestProvider.BUS_ROUTE + '+'));
         }
 
     }

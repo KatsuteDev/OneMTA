@@ -88,7 +88,7 @@ abstract class MTASchema_LIRR extends MTASchema {
                         cast(mta).service.lirr.getLIRR(),
                         ent ->
                             ent.hasTripUpdate() &&
-                            isSameRoute(ent.getTripUpdate().getTrip().getRouteId()), // check if trip is this route
+                            isExactRoute(ent.getTripUpdate().getTrip().getRouteId()), // check if trip is this route
                         ent -> {
                             // find matching vehicle entity
                             final String id = ent.getTripUpdate().getVehicle().getLabel();
@@ -120,7 +120,7 @@ abstract class MTASchema_LIRR extends MTASchema {
                             final GTFSRealtimeProto.Alert alert = ent.getAlert();
                             final int len = alert.getInformedEntityCount();
                             for(int i = 0; i < len; i++)
-                                if(isSameRoute(alert.getInformedEntity(i).getRouteId())) // check if alert includes this route
+                                if(isExactRoute(alert.getInformedEntity(i).getRouteId())) // check if alert includes this route
                                     return true;
                             return false;
                         },

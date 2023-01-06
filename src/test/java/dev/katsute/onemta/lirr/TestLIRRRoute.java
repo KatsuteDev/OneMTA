@@ -25,26 +25,6 @@ final class TestLIRRRoute {
     }
 
     @Nested
-    final class ComparatorTests {
-
-        @Test
-        final void testNotExact(){
-            assertFalse(route.isExactRoute(null));
-            assertFalse(route.isExactRoute(999));
-            assertFalse(route.isExactRoute("999"));
-        }
-
-        @Test
-        final void testExact(){
-            assertTrue(route.isExactRoute(route));
-            assertTrue(route.isExactRoute(mta.getLIRRRoute(TestProvider.LIRR_ROUTE)));
-            assertTrue(route.isExactRoute(TestProvider.LIRR_ROUTE));
-            assertTrue(route.isExactRoute(String.valueOf(TestProvider.LIRR_ROUTE)));
-        }
-
-    }
-
-    @Nested
     final class ExtensionTests {
 
         @Nested
@@ -80,11 +60,6 @@ final class TestLIRRRoute {
 
     @Nested
     final class InheritedTests {
-
-        @Test
-        final void testTransitRoute(){
-            RouteValidation.testRoute(route);
-        }
 
         @Nested
         final class VehicleTests {
@@ -137,6 +112,46 @@ final class TestLIRRRoute {
                     TripValidation.testTripStops(vehicle.getTrip().getTripStops());
             }
 
+        }
+
+    }
+
+    @Nested
+    final class RouteTests {
+
+        @Test
+        final void testRoute(){
+            RouteValidation.testRoute(route);
+        }
+
+        @Test
+        final void testNotExact(){
+            assertFalse(route.isExactRoute(null));
+            assertFalse(route.isExactRoute(999));
+            assertFalse(route.isExactRoute("999"));
+        }
+
+        @Test
+        final void testExact(){
+            assertTrue(route.isExactRoute(route));
+            assertTrue(route.isExactRoute(mta.getLIRRRoute(TestProvider.LIRR_ROUTE)));
+            assertTrue(route.isExactRoute(TestProvider.LIRR_ROUTE));
+            assertTrue(route.isExactRoute(String.valueOf(TestProvider.LIRR_ROUTE)));
+        }
+
+        @Test
+        final void testNotSame(){
+            assertFalse(route.isSameRoute(null));
+            assertFalse(route.isSameRoute(999));
+            assertFalse(route.isSameRoute("999"));
+        }
+
+        @Test
+        final void testSame(){
+            assertTrue(route.isSameRoute(route));
+            assertTrue(route.isSameRoute(mta.getLIRRRoute(TestProvider.LIRR_ROUTE)));
+            assertTrue(route.isSameRoute(TestProvider.LIRR_ROUTE));
+            assertTrue(route.isSameRoute(String.valueOf(TestProvider.LIRR_ROUTE)));
         }
 
     }

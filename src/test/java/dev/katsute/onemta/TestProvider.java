@@ -1,7 +1,5 @@
 package dev.katsute.onemta;
 
-import org.junit.jupiter.params.provider.Arguments;
-
 import java.io.*;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
@@ -9,7 +7,6 @@ import java.nio.file.Files;
 import java.util.*;
 import java.util.function.Predicate;
 import java.util.regex.Pattern;
-import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assumptions.*;
@@ -154,23 +151,6 @@ public abstract class TestProvider {
 
     static String strip(final String s){
         return dangling.matcher(s).replaceAll("");
-    }
-
-    //
-
-    public static final class ObjectStream {
-
-        private final List<Arguments> args = new ArrayList<>();
-
-        public final ObjectStream add(final Object... object){
-            args.add(Arguments.of(object));
-            return this;
-        }
-
-        public final Stream<Arguments> stream(){
-            return args.stream();
-        }
-
     }
 
 }

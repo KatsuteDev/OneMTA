@@ -24,47 +24,6 @@ final class TestSubwayRoute {
     }
 
     @Nested
-    final class ComparatorTests {
-
-        @Test
-        final void testNotExact(){
-            assertFalse(route.isExactRoute(null));
-            assertFalse(route.isExactRoute(999));
-            assertFalse(route.isExactRoute("999"));
-
-            assertFalse(route.isExactRoute(TestProvider.SUBWAY_ROUTE + 'x'));
-            assertFalse(route.isExactRoute(TestProvider.SUBWAY_ROUTE + 'X'));
-        }
-
-        @Test
-        final void testExact(){
-            assertTrue(route.isExactRoute(route));
-            assertTrue(route.isExactRoute(mta.getSubwayRoute(TestProvider.SUBWAY_ROUTE)));
-            assertTrue(route.isExactRoute(Integer.valueOf(TestProvider.SUBWAY_ROUTE)));
-            assertTrue(route.isExactRoute(TestProvider.SUBWAY_ROUTE));
-        }
-
-        @Test
-        final void testNotSame(){
-            assertFalse(route.isSameRoute(null));
-            assertFalse(route.isSameRoute(999));
-            assertFalse(route.isSameRoute("999"));
-        }
-
-        @Test
-        final void testSame(){
-            assertTrue(route.isSameRoute(route));
-            assertTrue(route.isSameRoute(mta.getSubwayRoute(TestProvider.SUBWAY_ROUTE)));
-            assertTrue(route.isSameRoute(Integer.valueOf(TestProvider.SUBWAY_ROUTE)));
-            assertTrue(route.isSameRoute(TestProvider.SUBWAY_ROUTE));
-
-            assertTrue(route.isSameRoute(TestProvider.SUBWAY_ROUTE + 'x'));
-            assertTrue(route.isSameRoute(TestProvider.SUBWAY_ROUTE + 'X'));
-        }
-
-    }
-
-    @Nested
     final class ExtensionTests {
 
         @Test
@@ -116,11 +75,6 @@ final class TestSubwayRoute {
 
     @Nested
     final class InheritedTests {
-
-        @Test
-        final void testTransitRoute(){
-            RouteValidation.testRoute(route);
-        }
 
         @Nested
         final class VehicleTests {
@@ -174,6 +128,59 @@ final class TestSubwayRoute {
             }
 
         }
+
+    }
+
+    @Test
+    final void testRoute(){
+        assertNotNull(route.getRouteShortName());
+        assertNotNull(route.getRouteDescription());
+    }
+
+    @Nested
+    final class RouteTests {
+
+        @Test
+        final void testRoute(){
+            RouteValidation.testRoute(route);
+        }
+
+        @Test
+        final void testNotExact(){
+            assertFalse(route.isExactRoute(null));
+            assertFalse(route.isExactRoute(999));
+            assertFalse(route.isExactRoute("999"));
+
+            assertFalse(route.isExactRoute(TestProvider.SUBWAY_ROUTE + 'x'));
+            assertFalse(route.isExactRoute(TestProvider.SUBWAY_ROUTE + 'X'));
+        }
+
+        @Test
+        final void testExact(){
+            assertTrue(route.isExactRoute(route));
+            assertTrue(route.isExactRoute(mta.getSubwayRoute(TestProvider.SUBWAY_ROUTE)));
+            assertTrue(route.isExactRoute(Integer.valueOf(TestProvider.SUBWAY_ROUTE)));
+            assertTrue(route.isExactRoute(TestProvider.SUBWAY_ROUTE));
+        }
+
+        @Test
+        final void testNotSame(){
+            assertFalse(route.isSameRoute(null));
+            assertFalse(route.isSameRoute(999));
+            assertFalse(route.isSameRoute("999"));
+        }
+
+        @Test
+        final void testSame(){
+            assertTrue(route.isSameRoute(route));
+            assertTrue(route.isSameRoute(mta.getSubwayRoute(TestProvider.SUBWAY_ROUTE)));
+            assertTrue(route.isSameRoute(Integer.valueOf(TestProvider.SUBWAY_ROUTE)));
+            assertTrue(route.isSameRoute(TestProvider.SUBWAY_ROUTE));
+
+            assertTrue(route.isSameRoute(TestProvider.SUBWAY_ROUTE + 'x'));
+            assertTrue(route.isSameRoute(TestProvider.SUBWAY_ROUTE + 'X'));
+        }
+
 
     }
 

@@ -15,12 +15,14 @@ import static org.junit.jupiter.api.Assumptions.*;
 public abstract class AlertValidation {
 
     public static void testAlerts(final Alerts<?> alerts){
+        assertNotNull(alerts);
         testAlerts(alerts.getAlerts());
         for(final TransitAlert<?,?,?,?> alert : alerts.getAlerts())
             testAlertReference(alerts, alert);
     }
 
     public static void testAlerts(final TransitAlert<?,?,?,?>[] alerts){
+        assertNotNull(alerts);
         assumeTrue(alerts.length > 0, "No alerts found, skipping alert tests");
         for(final TransitAlert<?,?,?,?> alert : alerts){
             assertNotNull(alert.getAlertID());
