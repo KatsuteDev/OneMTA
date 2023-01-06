@@ -4,7 +4,6 @@ import dev.katsute.onemta.attribute.Alerts;
 import dev.katsute.onemta.subway.Subway;
 
 import java.util.Arrays;
-import java.util.regex.Pattern;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assumptions.*;
@@ -15,57 +14,56 @@ import static org.junit.jupiter.api.Assumptions.*;
  */
 public abstract class AlertValidation {
 
-    public static void requireAlerts(final Alerts<?> alerts){
-        assumeTrue(alerts.getAlerts().length > 0, "No alerts found, skipping alert tests");
+    public static void testAlerts(final Alerts<?> alerts){
+        testAlerts(alerts.getAlerts());
+        for(final TransitAlert<?,?,?,?> alert : alerts.getAlerts())
+            testAlertReference(alerts, alert);
     }
 
-    //
-
-    public static void testAlert(final TransitAlert<?,?,?,?> alert){
-        assertNotNull(alert.getAlertID());
-        assertNotNull(alert.getHeader());
-        //assertNotNull(alert.getDescription());
-        assertNotNull(alert.getAlertType());
-
-        assertNotNull(alert.getRouteIDs());
-        assertNotNull(alert.getStopIDs());
-        assertNotEquals(0, alert.getRouteIDs().length + alert.getStopIDs().length);
-
-        assertNotNull(alert.getActivePeriods());
-        for(final TransitAlertPeriod period : alert.getActivePeriods())
-            testAlertPeriod(period);
-    }
-
-    private static final Pattern direction = Pattern.compile("N|S$", Pattern.CASE_INSENSITIVE);
-
-    private static String stripDirection(final String stop){
-        return direction.matcher(stop).replaceAll("");
-    }
-
-    public static void testAlertReference(final Alerts<?> reference, final TransitAlert<?,?,?,?> alert){
-        final boolean stop = reference instanceof TransitStop<?,?,?>;
-        final Object id = stop ? ((TransitStop<?,?,?>) reference).getStopID() : ((TransitRoute<?,?,?>) reference).getRouteID();
-
-        if(!stop)
-            assertTrue(Arrays.asList(alert.getRouteIDs()).contains(id), "Failed to find route " + id + " in " + Arrays.toString(alert.getRouteIDs()));
-        else if(!(reference instanceof Subway.Stop))
-            assertTrue(Arrays.asList(alert.getStopIDs()).contains(id), "Failed to find stop " + id + " in " + Arrays.toString(alert.getStopIDs()));
-        else{
-            for(final Object stopID : alert.getStopIDs())
-                if(stripDirection(stopID.toString()).equalsIgnoreCase(stripDirection(id.toString())))
-                    return;
-            fail("Failed to find stop " + id + " in " + Arrays.toString(alert.getStopIDs()));
+    public static void testAlerts(final TransitAlert<?,?,?,?>[] alerts){
+        assumeTrue(alerts.length > 0, "No alerts found, skipping alert tests");
+        for(final TransitAlert<?,?,?,?> alert : alerts){
+            assertNotNull(alert.getAlertID());
+            assertNotEquals(0, alert.getActivePeriods().length);
+            for(final TransitAlertPeriod period : alert.getActivePeriods()){
+                assertNotNull(period.getStartEpochMillis());
+                assertNotNull(period.getStart());
+                assertEquals(period.getStartEpochMillis(), period.getStart().getTime());
+                if(period.getEndEpochMillis() != null){
+                    assertNotNull(period.getEndEpochMillis());
+                    assertTrue(period.getStartEpochMillis() < period.getEndEpochMillis());
+                    assertEquals(period.getEndEpochMillis(), period.getEnd().getTime());
+                }
+            }
+            assertNotNull(alert.getRouteIDs());
+            assertNotNull(alert.getStopIDs());
+            assertNotEquals(0, alert.getRouteIDs().length + alert.getStopIDs().length);
+            assertNotNull(alert.getHeader());
+            assertNotNull(alert.getDescription());
+            assertNotNull(alert.getCreatedAt());
+            assertNotNull(alert.getCreatedAtEpochMillis());
+            assertEquals(alert.getCreatedAtEpochMillis(), alert.getCreatedAt().getTime());
+            assertNotNull(alert.getUpdatedAt());
+            assertNotNull(alert.getUpdatedAtEpochMillis());
+            assertEquals(alert.getUpdatedAtEpochMillis(), alert.getUpdatedAt().getTime());
+            assertNotNull(alert.getAlertType());
         }
     }
 
-    //
+    public static void testAlertReference(final Alerts<?> reference, final TransitAlert<?,?,?,?> alert){
+        final boolean route = reference instanceof TransitRoute<?,?,?>;
+        final Object id = route ? ((TransitRoute<?,?,?>) reference).getRouteID() : ((TransitStop<?,?,?>) reference).getStopID();
 
-    private static void testAlertPeriod(final TransitAlertPeriod period){
-        assertNotNull(period.getStartEpochMillis());
-        assertNotNull(period.getStart());
-
-        if(period.getEndEpochMillis() != null)
-            assertNotNull(period.getEndEpochMillis());
+        if(route)
+            assertTrue(Arrays.asList(alert.getRouteIDs()).contains(id));
+        else if(!(reference instanceof Subway.Stop)){
+            assertTrue(Arrays.asList(alert.getStopIDs()).contains(id));
+        }else{
+            for(final Object stop : alert.getStopIDs())
+                if(((Subway.Stop) reference).isSameStop(stop))
+                    return;
+            fail("Did not find stop '" + id + "' in " + Arrays.toString(alert.getStopIDs()));
+        }
     }
 
 }

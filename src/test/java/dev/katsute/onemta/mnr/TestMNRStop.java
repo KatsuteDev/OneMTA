@@ -127,34 +127,14 @@ final class TestMNRStop {
 
         }
 
-        @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-        @Nested
-        final class AlertTests {
+    }
 
-            @BeforeAll
-            final void beforeAll(){
-                AlertValidation.requireAlerts(stop);
-            }
+    @Nested
+    final class AlertTests {
 
-            @Test
-            final void testTransitAlerts(){
-                { // missing description caused by MTA missing data
-                    assertTrue(TestProvider.atleastOneTrue(
-                        stop.getAlerts(), MNR.Alert.class,
-                        a -> a.getDescription() != null
-                    ));
-                }
-
-                for(final Alert alert : stop.getAlerts())
-                    AlertValidation.testAlert(alert);
-            }
-
-            @Test
-            final void testTransitAlertsReference(){
-                for(final Alert alert : stop.getAlerts())
-                    AlertValidation.testAlertReference(stop, alert);
-            }
-
+        @Test
+        final void testTransitAlert(){
+            AlertValidation.testAlerts(stop);
         }
 
     }

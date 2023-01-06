@@ -2,12 +2,10 @@ package dev.katsute.onemta.mnr;
 
 import dev.katsute.onemta.MTA;
 import dev.katsute.onemta.TestProvider;
-import dev.katsute.onemta.railroad.MNR;
 import dev.katsute.onemta.types.AlertValidation;
 import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assumptions.*;
 
 final class TestMNR {
 
@@ -25,21 +23,11 @@ final class TestMNR {
     }
 
     @Nested
-    final class InheritedTests {
+    final class AlertTests {
 
         @Test
         final void testTransitAlert(){
-            assumeTrue(mta.getMNRAlerts().length > 0, "No alerts found, skipping alert tests");
-
-            { // missing description caused by MTA missing data
-                assertTrue(TestProvider.atleastOneTrue(
-                    mta.getMNRAlerts(), MNR.Alert.class,
-                    a -> a.getDescription() != null
-                ));
-            }
-
-            for(final MNR.Alert alert : mta.getMNRAlerts())
-                AlertValidation.testAlert(alert);
+            AlertValidation.testAlerts(mta.getMNRAlerts());
         }
 
     }

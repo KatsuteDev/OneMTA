@@ -193,36 +193,6 @@ final class TestSubwayStop {
 
                 }
 
-                @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-                @Nested
-                final class AlertTests {
-
-                    @BeforeAll
-                    final void beforeAll(){
-                        AlertValidation.requireAlerts(stop);
-                    }
-
-                    @Test
-                    final void testTransitAlerts(){
-                        { // missing description caused by MTA missing data
-                            assertTrue(TestProvider.atleastOneTrue(
-                                stopN.getAlerts(), Subway.Alert.class,
-                                a -> a.getDescription() != null
-                            ));
-                        }
-
-                        for(final Alert alert : stopN.getAlerts())
-                            AlertValidation.testAlert(alert);
-                    }
-
-                    @Test
-                    final void testTransitAlertsReference(){
-                        for(final Alert alert : stopN.getAlerts())
-                            AlertValidation.testAlertReference(stopN, alert);
-                    }
-
-                }
-
             }
 
         }
@@ -325,36 +295,6 @@ final class TestSubwayStop {
                     final void testVehicleTripStops(){
                         for(final Vehicle vehicle : stopS.getVehicles())
                             TripValidation.testTripStops(vehicle.getTrip().getTripStops());
-                    }
-
-                }
-
-                @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-                @Nested
-                final class AlertTests {
-
-                    @BeforeAll
-                    final void beforeAll(){
-                        AlertValidation.requireAlerts(stop);
-                    }
-
-                    @Test
-                    final void testTransitAlerts(){
-                        { // missing description caused by MTA missing data
-                            assertTrue(TestProvider.atleastOneTrue(
-                                stopS.getAlerts(), Subway.Alert.class,
-                                a -> a.getDescription() != null
-                            ));
-                        }
-
-                        for(final Alert alert : stopS.getAlerts())
-                            AlertValidation.testAlert(alert);
-                    }
-
-                    @Test
-                    final void testTransitAlertsReference(){
-                        for(final Alert alert : stopN.getAlerts())
-                            AlertValidation.testAlertReference(stopS, alert);
                     }
 
                 }
@@ -464,34 +404,24 @@ final class TestSubwayStop {
 
         }
 
-        @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-        @Nested
-        final class AlertTests {
+    }
 
-            @BeforeAll
-            final void beforeAll(){
-                AlertValidation.requireAlerts(stop);
-            }
+    @Nested
+    final class AlertTests {
 
-            @Test
-            final void testTransitAlerts(){
-                { // missing description caused by MTA missing data
-                    assertTrue(TestProvider.atleastOneTrue(
-                        stop.getAlerts(), Subway.Alert.class,
-                        a -> a.getDescription() != null
-                    ));
-                }
+        @Test
+        final void testTransitAlert(){
+            AlertValidation.testAlerts(stop);
+        }
 
-                for(final Alert alert : stop.getAlerts())
-                    AlertValidation.testAlert(alert);
-            }
+        @Test
+        final void testTransitAlertN(){
+            AlertValidation.testAlerts(stopN);
+        }
 
-            @Test
-            final void testTransitAlertsReference(){
-                for(final Alert alert : stop.getAlerts())
-                    AlertValidation.testAlertReference(stop, alert);
-            }
-
+        @Test
+        final void testTransitAlertS(){
+            AlertValidation.testAlerts(stopS);
         }
 
     }

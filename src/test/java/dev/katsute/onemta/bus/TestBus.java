@@ -5,7 +5,6 @@ import dev.katsute.onemta.types.AlertValidation;
 import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assumptions.*;
 
 final class TestBus {
 
@@ -58,21 +57,11 @@ final class TestBus {
     }
 
     @Nested
-    final class InheritedTests {
+    final class AlertTests {
 
         @Test
         final void testTransitAlert(){
-            assumeTrue(mta.getBusAlerts().length > 0, "No alerts found, skipping alert tests");
-
-            { // missing description caused by MTA missing data
-                assertTrue(TestProvider.atleastOneTrue(
-                    mta.getBusAlerts(), Bus.Alert.class,
-                    a -> a.getDescription() != null
-                ));
-            }
-
-            for(final Bus.Alert alert : mta.getBusAlerts())
-                AlertValidation.testAlert(alert);
+            AlertValidation.testAlerts(mta.getBusAlerts());
         }
 
     }

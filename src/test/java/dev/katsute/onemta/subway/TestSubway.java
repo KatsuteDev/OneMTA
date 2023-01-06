@@ -8,7 +8,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assumptions.*;
 
 final class TestSubway {
 
@@ -37,21 +36,11 @@ final class TestSubway {
     }
 
     @Nested
-    final class InheritedTests {
+    final class AlertTests {
 
         @Test
         final void testTransitAlert(){
-            assumeTrue(mta.getSubwayAlerts().length > 0, "No alerts found, skipping alert tests");
-
-            { // missing description caused by MTA missing data
-                assertTrue(TestProvider.atleastOneTrue(
-                    mta.getSubwayAlerts(), Subway.Alert.class,
-                    a -> a.getDescription() != null
-                ));
-            }
-
-            for(final Subway.Alert alert : mta.getSubwayAlerts())
-                AlertValidation.testAlert(alert);
+            AlertValidation.testAlerts(mta.getSubwayAlerts());
         }
 
     }

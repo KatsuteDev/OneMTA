@@ -198,34 +198,14 @@ final class TestBusRoute {
 
         }
 
-        @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-        @Nested
-        final class AlertTests {
+    }
 
-            @BeforeAll
-            final void beforeAll(){
-                AlertValidation.requireAlerts(route);
-            }
+    @Nested
+    final class AlertTests {
 
-            @Test
-            final void testTransitAlerts(){
-                { // missing description caused by MTA missing data
-                    assertTrue(TestProvider.atleastOneTrue(
-                        route.getAlerts(), Bus.Alert.class,
-                        a -> a.getDescription() != null
-                    ));
-                }
-
-                for(final Alert alert : route.getAlerts())
-                    AlertValidation.testAlert(alert);
-            }
-
-            @Test
-            final void testTransitAlertsReference(){
-                for(final Alert alert : route.getAlerts())
-                    AlertValidation.testAlertReference(route, alert);
-            }
-
+        @Test
+        final void testTransitAlert(){
+            AlertValidation.testAlerts(route);
         }
 
     }
