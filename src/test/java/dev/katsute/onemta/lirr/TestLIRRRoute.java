@@ -27,9 +27,9 @@ final class TestLIRRRoute {
 
     @Test
     final void testVehicles(){
-        TestLIRRVehicle.testVehicles(route);
         for(final Vehicle vehicle : route.getVehicles())
             assertSame(route, vehicle.getRoute());
+        TestLIRRVehicle.testVehicles(route);
         assertEquals(route.getVehicles()[0].getVehicleID(), mta.getLIRRTrain(route.getVehicles()[0].getVehicleID()).getVehicleID());
     }
 

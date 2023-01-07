@@ -41,7 +41,7 @@ public abstract class AlertValidation {
             assertNotNull(alert.getStopIDs());
             assertNotEquals(0, alert.getRouteIDs().length + alert.getStopIDs().length);
             assertNotNull(alert.getHeader());
-            assertNotNull(alert.getDescription());
+            // assertNotNull(alert.getDescription()); // missing in many cases
             assertNotNull(alert.getCreatedAt());
             assertNotNull(alert.getCreatedAtEpochMillis());
             assertEquals(alert.getCreatedAtEpochMillis(), alert.getCreatedAt().getTime());

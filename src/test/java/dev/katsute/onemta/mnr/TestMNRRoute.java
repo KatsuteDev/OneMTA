@@ -26,9 +26,9 @@ final class TestMNRRoute {
 
     @Test
     final void testVehicles(){
-        TestMNRVehicle.testVehicles(route);
         for(final Vehicle vehicle : route.getVehicles())
             assertSame(route, vehicle.getRoute());
+        TestMNRVehicle.testVehicles(route);
         assertEquals(route.getVehicles()[0].getVehicleID(), mta.getMNRTrain(route.getVehicles()[0].getVehicleID()).getVehicleID());
     }
 

@@ -26,9 +26,9 @@ final class TestSubwayRoute {
 
     @Test
     final void testVehicles(){
-        TestSubwayVehicle.testVehicles(route);
         for(final Vehicle vehicle : route.getVehicles())
             assertSame(route, vehicle.getRoute());
+        TestSubwayVehicle.testVehicles(route);
         assertEquals(route.getVehicles()[0].getVehicleID(), mta.getSubwayTrain(route.getVehicles()[0].getVehicleID()).getVehicleID());
     }
 

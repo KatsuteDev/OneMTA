@@ -388,17 +388,17 @@ abstract class MTASchema_Bus extends MTASchema {
                             final TripUpdate trip = ent.getTripUpdate();
                             final int len = trip.getStopTimeUpdateCount();
                             for(int i = 0; i < len; i++)
-                                if(isSameStop(trip.getStopTimeUpdate(i))) // check if route includes this stop
+                                if(isSameStop(trip.getStopTimeUpdate(i).getStopId())) // check if route includes this stop
                                     return true;
                             return false;
                         },
                         ent -> {
-                            final String busId = ent.getId();
+                            final String busId = ent.getTripUpdate().getVehicle().getId();
 
-                            // find matching trip entity
+                            // find matching position entity
                             final FeedEntity trip = cast(mta).getFeedEntity(
                                 cast(mta).service.bus.getVehiclePositions(),
-                                tent -> Objects.equals(tent.getId(), busId)
+                                pent -> Objects.equals(pent.getId(), busId)
                             );
 
                             return trip != null ? MTASchema_Bus.asVehicle(
