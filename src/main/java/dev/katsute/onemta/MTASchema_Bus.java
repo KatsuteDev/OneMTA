@@ -196,26 +196,22 @@ abstract class MTASchema_Bus extends MTASchema {
                 return getVehicles(false);
             }
 
+            @SuppressWarnings("DataFlowIssue")
             private Vehicle[] getVehicles(final boolean update){
                 if(vehicles == null || update){
                     this.vehicles = Collections.unmodifiableList(Arrays.asList(cast(mta).transformFeedEntities(
-                        cast(mta).service.bus.getVehiclePositions(),
-                        ent -> isExactRoute(ent.getVehicle().getTrip().getRouteId()), // match route
+                        cast(mta).service.bus.getTripUpdates(),
+                        ent -> isExactRoute(ent.getTripUpdate().getTrip().getRouteId()), // match route
                         ent -> {
-                            final String busId = ent.getId();
+                            final String busId = ent.getTripUpdate().getVehicle().getId();
 
-                            // find matching trip entity
-                            final FeedEntity trip = cast(mta).getFeedEntity(
-                                cast(mta).service.bus.getTripUpdates(),
-                                tent -> Objects.equals(tent.getTripUpdate().getVehicle().getId(), busId)
+                            // find matching position entity
+                            final FeedEntity pos = cast(mta).getFeedEntity(
+                                cast(mta).service.bus.getVehiclePositions(),
+                                pent -> Objects.equals(pent.getId(), busId)
                             );
 
-                            return trip != null ? MTASchema_Bus.asVehicle(
-                                mta,
-                                ent.getVehicle(),
-                                trip.getTripUpdate(),
-                                this
-                            ) : null;
+                            return MTASchema_Bus.asVehicle(mta, pos.getVehicle(), ent.getTripUpdate(), this);
                         },
                         new Vehicle[0]
                     )));
@@ -380,6 +376,7 @@ abstract class MTASchema_Bus extends MTASchema {
                 return getVehicles(false);
             }
 
+            @SuppressWarnings("DataFlowIssue")
             private Vehicle[] getVehicles(final boolean update){
                 if(vehicles == null || update){
                     this.vehicles = Collections.unmodifiableList(Arrays.asList(cast(mta).transformFeedEntities(
@@ -396,17 +393,12 @@ abstract class MTASchema_Bus extends MTASchema {
                             final String busId = ent.getTripUpdate().getVehicle().getId();
 
                             // find matching position entity
-                            final FeedEntity trip = cast(mta).getFeedEntity(
+                            final FeedEntity pos = cast(mta).getFeedEntity(
                                 cast(mta).service.bus.getVehiclePositions(),
                                 pent -> Objects.equals(pent.getId(), busId)
                             );
 
-                            return trip != null ? MTASchema_Bus.asVehicle(
-                                mta,
-                                ent.getVehicle(),
-                                trip.getTripUpdate(),
-                                null
-                            ) : null;
+                            return MTASchema_Bus.asVehicle(mta, pos.getVehicle(), ent.getTripUpdate(), null);
                         },
                         new Vehicle[0]
                     )));
