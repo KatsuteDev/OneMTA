@@ -29,7 +29,7 @@ import dev.katsute.onemta.attribute.Reference;
  * @param <S> stop type
  *
  * @since 1.0.0
- * @version 2.0.0
+ * @version 1.0.0
  * @author Katsute
  */
 public abstract class TransitTrip<RID,R extends TransitRoute<?,?,?>,V extends TransitVehicle<?,?,?,?,?,?>,S extends TransitTripStop<?,?,?>> implements Reference.Route<R> {
