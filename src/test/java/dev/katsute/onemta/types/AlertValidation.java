@@ -26,7 +26,8 @@ public abstract class AlertValidation {
         assumeTrue(alerts.length > 0, "No alerts found, skipping alert tests");
         for(final TransitAlert<?,?,?,?> alert : alerts){
             assertNotNull(alert.getAlertID());
-            assertNotEquals(0, alert.getActivePeriods().length);
+            // assertNotEquals(0, alert.getActivePeriods().length); // 0 in rare elevator cases
+            assertNotNull(alert.getActivePeriods());
             for(final TransitAlertPeriod period : alert.getActivePeriods()){
                 assertNotNull(period.getStartEpochMillis());
                 assertNotNull(period.getStart());

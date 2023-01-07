@@ -56,7 +56,7 @@ final class TestMTA {
         @Test
         final void testNullVehicle(){
             assertThrows(NullPointerException.class, () -> mta.getSubwayTrain(null));
-            assertNull(mta.getSubwayTrain("1 NULL NUL/NUL"));
+            assertNull(mta.getSubwayTrain("01 NULL NUL/NUL"));
         }
 
     }
