@@ -357,7 +357,7 @@ abstract class MTASchema_LIRR extends MTASchema {
             private Integer stopID = requireNonNull(() -> Integer.valueOf(vehicle.getStopId()));
             private Stop stop = null;
 
-            private Integer routeID = requireNonNull(() -> Integer.valueOf(vehicle.getTrip().getRouteId()));
+            private Integer routeID = requireNonNull(() -> Integer.valueOf(tripUpdate.getTrip().getRouteId()));
             private Route route = optionalRoute;
 
             private Trip trip = asTrip(mta, tripUpdate, this);
