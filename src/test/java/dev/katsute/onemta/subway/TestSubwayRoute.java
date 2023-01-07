@@ -20,6 +20,7 @@ final class TestSubwayRoute {
         TestProvider.testGroup("subway");
         mta = TestProvider.getOneMTA();
 
+        assert mta != null;
         route = mta.getSubwayRoute(TestProvider.SUBWAY_ROUTE);
     }
 
@@ -28,6 +29,7 @@ final class TestSubwayRoute {
         TestSubwayVehicle.testVehicles(route);
         for(final Vehicle vehicle : route.getVehicles())
             assertSame(route, vehicle.getRoute());
+        assertEquals(route.getVehicles()[0].getVehicleID(), mta.getSubwayTrain(route.getVehicles()[0].getVehicleID()).getVehicleID());
     }
 
     @Test

@@ -504,6 +504,7 @@ abstract class MTASchema_MNR extends MTASchema {
                 return stopID;
             }
 
+            @SuppressWarnings("DataFlowIssue")
             @Override
             public final Stop getStop(){
                 return stop != null ? stop : (stop = mta.getMNRStop(stopID));

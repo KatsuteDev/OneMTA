@@ -2,7 +2,6 @@ package dev.katsute.onemta.lirr;
 
 import dev.katsute.onemta.attribute.Reference;
 import dev.katsute.onemta.railroad.LIRR;
-import dev.katsute.onemta.types.TripValidation;
 import dev.katsute.onemta.types.VehicleValidation;
 
 import static org.junit.jupiter.api.Assertions.*;

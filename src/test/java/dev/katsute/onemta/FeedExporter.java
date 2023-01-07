@@ -37,6 +37,7 @@ final class FeedExporter {
         );
     }
 
+    @SuppressWarnings("SpellCheckingInspection")
     @Test
     final void exportSubwayFeeds() throws IOException{
         Files.write(

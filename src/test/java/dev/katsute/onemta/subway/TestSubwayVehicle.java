@@ -1,7 +1,6 @@
 package dev.katsute.onemta.subway;
 
 import dev.katsute.onemta.attribute.Reference;
-import dev.katsute.onemta.types.TripValidation;
 import dev.katsute.onemta.types.VehicleValidation;
 
 import static org.junit.jupiter.api.Assertions.*;

@@ -572,10 +572,12 @@ abstract class MTASchema_Bus extends MTASchema {
                 return getTrip(false);
             }
 
+            @SuppressWarnings("DataFlowIssue")
             private Trip getTrip(final boolean update){
                 return !update ? trip : (trip = mta.getBus(vehicleID).getTrip());
             }
 
+            @SuppressWarnings("DataFlowIssue")
             @Override
             public final void refresh(){
                 getTrip(true);
@@ -696,6 +698,7 @@ abstract class MTASchema_Bus extends MTASchema {
                 return stopID;
             }
 
+            @SuppressWarnings("DataFlowIssue")
             @Override
             public final Stop getStop(){
                 return stop != null ? stop : (stop = mta.getBusStop(stopID));

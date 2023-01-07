@@ -20,12 +20,14 @@ final class TestBusStop {
         TestProvider.testGroup("bus");
         mta = TestProvider.getOneMTA();
 
+        assert mta != null;
         stop = mta.getBusStop(TestProvider.BUS_STOP);
     }
 
     @Test
     final void testVehicles(){
         TestBusVehicle.testVehicles(stop);
+        assertEquals(stop.getVehicles()[0].getVehicleID(), mta.getBus(stop.getVehicles()[0].getVehicleID()).getVehicleID());
     }
 
     @Nested

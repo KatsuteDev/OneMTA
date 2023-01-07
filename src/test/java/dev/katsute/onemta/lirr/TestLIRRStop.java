@@ -21,12 +21,14 @@ final class TestLIRRStop {
         TestProvider.testGroup("lirr");
         mta = TestProvider.getOneMTA();
 
+        assert mta != null;
         stop = mta.getLIRRStop(TestProvider.LIRR_STOP);
     }
 
     @Test
     final void testVehicles(){
         TestLIRRVehicle.testVehicles(stop);
+        assertEquals(stop.getVehicles()[0].getVehicleID(), mta.getLIRRTrain(stop.getVehicles()[0].getVehicleID()).getVehicleID());
     }
 
     @Test

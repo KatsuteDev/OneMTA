@@ -20,6 +20,7 @@ final class TestBusRoute {
         TestProvider.testGroup("bus");
         mta = TestProvider.getOneMTA();
 
+        assert mta != null;
         route = mta.getBusRoute(TestProvider.BUS_ROUTE);
     }
 
@@ -28,6 +29,7 @@ final class TestBusRoute {
         TestBusVehicle.testVehicles(route);
         for(final Vehicle vehicle : route.getVehicles())
             assertSame(route, vehicle.getRoute());
+        assertEquals(route.getVehicles()[0].getVehicleID(), mta.getBus(route.getVehicles()[0].getVehicleID()).getVehicleID());
     }
 
     @Test

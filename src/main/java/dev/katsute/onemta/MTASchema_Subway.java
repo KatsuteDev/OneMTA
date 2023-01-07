@@ -174,6 +174,7 @@ abstract class MTASchema_Subway extends MTASchema {
                 return getVehicles(false);
             }
 
+            @SuppressWarnings("DataFlowIssue")
             private Vehicle[] getVehicles(final boolean update){
                 if(vehicles == null || update){
                     final FeedMessage feed = cast(mta).resolveSubwayFeed(routeID);
@@ -347,6 +348,7 @@ abstract class MTASchema_Subway extends MTASchema {
                 return getVehicles(false);
             }
 
+            @SuppressWarnings("DataFlowIssue")
             private Vehicle[] getVehicles(final boolean update){
                 if(vehicles == null || update){
                     final FeedMessage feed = cast(mta).resolveSubwayFeed(stop_id.substring(0, 1));

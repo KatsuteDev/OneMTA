@@ -20,8 +20,8 @@ final class TestMNRRoute {
         TestProvider.testGroup("mnr");
         mta = TestProvider.getOneMTA();
 
+        assert mta != null;
         route = mta.getMNRRoute(TestProvider.MNR_ROUTE);
-
     }
 
     @Test
@@ -29,6 +29,7 @@ final class TestMNRRoute {
         TestMNRVehicle.testVehicles(route);
         for(final Vehicle vehicle : route.getVehicles())
             assertSame(route, vehicle.getRoute());
+        assertEquals(route.getVehicles()[0].getVehicleID(), mta.getMNRTrain(route.getVehicles()[0].getVehicleID()).getVehicleID());
     }
 
     @Nested

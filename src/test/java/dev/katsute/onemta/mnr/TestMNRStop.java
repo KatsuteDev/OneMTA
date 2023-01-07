@@ -20,12 +20,14 @@ final class TestMNRStop {
         TestProvider.testGroup("mnr");
         mta = TestProvider.getOneMTA();
 
+        assert mta != null;
         stop = mta.getMNRStop(TestProvider.MNR_STOP);
     }
 
     @Test
     final void testVehicles(){
         TestMNRVehicle.testVehicles(stop);
+        assertEquals(stop.getVehicles()[0].getVehicleID(), mta.getMNRTrain(stop.getVehicles()[0].getVehicleID()).getVehicleID());
     }
 
     @Test

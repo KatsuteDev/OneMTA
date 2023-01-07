@@ -33,7 +33,7 @@ import dev.katsute.onemta.subway.SubwayDirection;
  * @version 1.0.0
  * @author Katsute
  */
-@SuppressWarnings("SpellCheckingInspection")
+@SuppressWarnings({"SpellCheckingInspection", "UnusedReturnValue"})
 public abstract class MTA {
 
     MTA(){ }

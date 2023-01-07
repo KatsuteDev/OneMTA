@@ -21,6 +21,7 @@ final class TestLIRRRoute {
         TestProvider.testGroup("lirr");
         mta = TestProvider.getOneMTA();
 
+        assert mta != null;
         route = mta.getLIRRRoute(TestProvider.LIRR_ROUTE);
     }
 
@@ -29,6 +30,7 @@ final class TestLIRRRoute {
         TestLIRRVehicle.testVehicles(route);
         for(final Vehicle vehicle : route.getVehicles())
             assertSame(route, vehicle.getRoute());
+        assertEquals(route.getVehicles()[0].getVehicleID(), mta.getLIRRTrain(route.getVehicles()[0].getVehicleID()).getVehicleID());
     }
 
     @Nested

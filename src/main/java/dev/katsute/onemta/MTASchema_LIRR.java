@@ -82,6 +82,7 @@ abstract class MTASchema_LIRR extends MTASchema {
                 return getVehicles(false);
             }
 
+            @SuppressWarnings("DataFlowIssue")
             private Vehicle[] getVehicles(final boolean update){
                 if(vehicles == null || update){
                     this.vehicles = Collections.unmodifiableList(Arrays.asList(cast(mta).transformFeedEntities(
@@ -246,6 +247,7 @@ abstract class MTASchema_LIRR extends MTASchema {
                 return getVehicles(false);
             }
 
+            @SuppressWarnings("DataFlowIssue")
             private Vehicle[] getVehicles(final boolean update){
                 if(vehicles == null || update){
                     this.vehicles = Collections.unmodifiableList(Arrays.asList(cast(mta).transformFeedEntities(
@@ -548,6 +550,7 @@ abstract class MTASchema_LIRR extends MTASchema {
                 return stopID;
             }
 
+            @SuppressWarnings("DataFlowIssue")
             @Override
             public final Stop getStop(){
                 return stop != null ? stop : (stop = mta.getLIRRStop(stopID));

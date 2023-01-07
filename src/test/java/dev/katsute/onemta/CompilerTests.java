@@ -17,7 +17,7 @@ abstract class CompilerTests {
 
         // setup
 
-        MTA mta = mta = MTA.create(
+        MTA mta = MTA.create(
             busToken,
             subwayToken,
             DataResource.create(DataResourceType.Bus_Bronx, new File("google_transit_bronx.zip")),

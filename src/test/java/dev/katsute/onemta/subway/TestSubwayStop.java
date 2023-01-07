@@ -22,6 +22,7 @@ final class TestSubwayStop {
         TestProvider.testGroup("subway");
         mta = TestProvider.getOneMTA();
 
+        assert mta != null;
         stop = mta.getSubwayStop(TestProvider.SUBWAY_STOP);
         stopN = mta.getSubwayStop(TestProvider.SUBWAY_STOP + "N");
         stopS = mta.getSubwayStop(TestProvider.SUBWAY_STOP + "S");
@@ -30,16 +31,19 @@ final class TestSubwayStop {
     @Test
     final void testVehicles(){
         TestSubwayVehicle.testVehicles(stop);
+        assertEquals(stop.getVehicles()[0].getVehicleID(), mta.getSubwayTrain(stop.getVehicles()[0].getVehicleID()).getVehicleID());
     }
 
     @Test
     final void testVehiclesN(){
         TestSubwayVehicle.testVehicles(stopN);
+        assertEquals(stopN.getVehicles()[0].getVehicleID(), mta.getSubwayTrain(stopN.getVehicles()[0].getVehicleID()).getVehicleID());
     }
 
     @Test
     final void testVehiclesS(){
         TestSubwayVehicle.testVehicles(stopS);
+        assertEquals(stopS.getVehicles()[0].getVehicleID(), mta.getSubwayTrain(stopS.getVehicles()[0].getVehicleID()).getVehicleID());
     }
 
     @Test

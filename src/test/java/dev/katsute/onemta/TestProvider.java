@@ -5,7 +5,6 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.*;
-import java.util.function.Predicate;
 import java.util.regex.Pattern;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -127,14 +126,6 @@ public abstract class TestProvider {
             fail(e);
             return null;
         }
-    }
-
-    public static <T> boolean atleastOneTrue(final T[] array, @SuppressWarnings("unused") final Class<T> T, final Predicate<T> predicate){
-        boolean passes = false;
-        for(final T t : array)
-            if(predicate.test(t))
-                passes = true;
-        return passes;
     }
 
     // java 9
