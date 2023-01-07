@@ -81,17 +81,13 @@ abstract class MTASchema_MNR extends MTASchema {
                 return getVehicles(false);
             }
 
+            @SuppressWarnings("DataFlowIssue")
             private Vehicle[] getVehicles(final boolean update){
                 if(vehicles == null || update){
                     this.vehicles = Collections.unmodifiableList(Arrays.asList(cast(mta).transformFeedEntities(
                         cast(mta).service.mnr.getMNR(),
                         ent -> isExactRoute(ent.getTripUpdate().getTrip().getRouteId()), // check if trip is this route
-                        ent -> MTASchema_MNR.asVehicle(
-                            mta,
-                            ent.getVehicle(),
-                            ent.getTripUpdate(),
-                            this
-                        ),
+                        ent -> MTASchema_MNR.asVehicle(mta, ent.getVehicle(), ent.getTripUpdate(), this),
                         new Vehicle[0]
                     )));
                 }
@@ -249,11 +245,7 @@ abstract class MTASchema_MNR extends MTASchema {
                             return false;
                         },
                         ent -> MTASchema_MNR.asVehicle(
-                            mta,
-                            ent.getVehicle(),
-                            ent.getTripUpdate(),
-                            null
-                        ),
+                            mta, ent.getVehicle(), ent.getTripUpdate(), null),
                         new Vehicle[0]
                     )));
                 }
@@ -335,10 +327,10 @@ abstract class MTASchema_MNR extends MTASchema {
 
             private String status = requireNonNull(() -> vehicle.getCurrentStatus().name());
 
-            private Integer stopID = requireNonNull(() -> Integer.valueOf(vehicle.getStopId()));
+            private Integer stopID = requireNonNull(() -> Integer.valueOf(vehicle.hasStopId() ? vehicle.getStopId() : tripUpdate.getStopTimeUpdate(0).getStopId()));
             private Stop stop = null;
 
-            private Integer routeID = requireNonNull(() -> Integer.valueOf(vehicle.getTrip().getRouteId()));
+            private Integer routeID = requireNonNull(() -> Integer.valueOf(tripUpdate.getTrip().getRouteId()));
             private Route route = optionalRoute;
 
             private Trip trip = asTrip(mta, tripUpdate, this);
