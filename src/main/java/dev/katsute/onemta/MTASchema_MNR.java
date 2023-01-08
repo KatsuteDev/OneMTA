@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Katsute <https://github.com/Katsute>
+ * Copyright (C) 2023 Katsute <https://github.com/Katsute>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,31 +25,31 @@ import dev.katsute.onemta.types.TransitAlertPeriod;
 import java.util.*;
 
 import static dev.katsute.onemta.GTFSRealtimeProto.*;
-import static dev.katsute.onemta.MNRRProto.*;
 import static dev.katsute.onemta.railroad.MNR.*;
 
-@SuppressWarnings("SpellCheckingInspection")
+@SuppressWarnings({"SpellCheckingInspection", "Java9CollectionFactory"})
 abstract class MTASchema_MNR extends MTASchema {
 
     static Route asRoute(final MTA mta, final int route_id){
         // find row
         final DataResource resource = getDataResource(mta, DataResourceType.MetroNorthRailroad);
-        final CSV csv               = resource.getData("routes.txt");
-        final List<String> row      = csv.getRow("route_id", String.valueOf(route_id));
+        final CSV csv = resource.getData("routes.txt");
+        final List<String> row = csv.getRow("route_id", String.valueOf(route_id));
 
         // instantiate
         Objects.requireNonNull(row, "Failed to find MNR route with id '" + route_id + "'");
 
         return new Route() {
 
-            private final int routeID           = route_id;
-            private final String routeLongName  = row.get(csv.getHeaderIndex("route_long_name"));
-            private final String routeColor     = row.get(csv.getHeaderIndex("route_color"));
+            private final int routeID = route_id;
+            private final String routeLongName = row.get(csv.getHeaderIndex("route_long_name"));
+            private final String routeColor = row.get(csv.getHeaderIndex("route_color"));
             private final String routeTextColor = row.get(csv.getHeaderIndex("route_text_color"));
 
             private final TransitAgency agency = asAgency(row.get(csv.getHeaderIndex("agency_id")), resource);
 
-            // static data
+            private List<Vehicle> vehicles = null;
+            private List<MNR.Alert> alerts = null;
 
             @Override
             public final Integer getRouteID(){
@@ -76,36 +76,23 @@ abstract class MTASchema_MNR extends MTASchema {
                 return agency;
             }
 
-            // live feed
-
-            private List<Vehicle> vehicles = null;
-
             @Override
             public final Vehicle[] getVehicles(){
                 return getVehicles(false);
             }
 
+            @SuppressWarnings("DataFlowIssue")
             private Vehicle[] getVehicles(final boolean update){
                 if(vehicles == null || update){
-                    final FeedMessage feed = cast(mta).service.mnr.getMNR(cast(mta).subwayToken);
-                    final int len          = feed.getEntityCount();
-
-                    final List<Vehicle> vehicles = new ArrayList<>();
-                    for(int i = 0; i < len; i++){
-                        final FeedEntity entity = feed.getEntity(i);
-                        // only include trips with vehicles
-                        if(entity.hasVehicle() && entity.hasTripUpdate())
-                            // only include vehicles on this route
-                            if(Integer.parseInt(entity.getTripUpdate().getTrip().getRouteId()) == routeID)
-                                vehicles.add(asVehicle(mta, entity.getVehicle(), entity.getTripUpdate(), this));
-                    }
-
-                    this.vehicles = Collections.unmodifiableList(vehicles);
+                    this.vehicles = Collections.unmodifiableList(Arrays.asList(cast(mta).transformFeedEntities(
+                        cast(mta).service.mnr.getMNR(),
+                        ent -> isExactRoute(ent.getTripUpdate().getTrip().getRouteId()), // check if trip is this route
+                        ent -> MTASchema_MNR.asVehicle(mta, ent.getVehicle(), ent.getTripUpdate(), this),
+                        new Vehicle[0]
+                    )));
                 }
                 return vehicles.toArray(new Vehicle[0]);
             }
-
-            private List<MNR.Alert> alerts = null;
 
             @Override
             public final MNR.Alert[] getAlerts(){
@@ -114,20 +101,28 @@ abstract class MTASchema_MNR extends MTASchema {
 
             private MNR.Alert[] getAlerts(final boolean update){
                 if(alerts == null || update){
-                    final List<MNR.Alert> alerts = new ArrayList<>();
-                    final GTFSRealtimeProto.FeedMessage feed = cast(mta).service.alerts.getMNR(cast(mta).subwayToken);
-                    final int len = feed.getEntityCount();
-                    for(int i = 0; i < len; i++){
-                        final MNR.Alert alert = MTASchema_MNR.asTransitAlert(mta, feed.getEntity(i));
-                        if(Arrays.asList(alert.getRouteIDs()).contains(route_id))
-                            alerts.add(alert);
-                    }
-                    this.alerts = alerts;
+                    this.alerts = Collections.unmodifiableList(Arrays.asList(cast(mta).transformFeedEntities(
+                        cast(mta).service.alerts.getMNR(),
+                        ent -> {
+                            final GTFSRealtimeProto.Alert alert = ent.getAlert();
+                            final int len = alert.getInformedEntityCount();
+                            for(int i = 0; i < len; i++)
+                                if(isExactRoute(alert.getInformedEntity(i).getRouteId())) // check if alert includes this stop
+                                    return true;
+                            return false;
+                        },
+                        ent -> asTransitAlert(mta, ent),
+                        new MNR.Alert[0]
+                    )));
                 }
                 return alerts.toArray(new MNR.Alert[0]);
             }
 
-            // onemta methods
+            @Override
+            public final void refresh(){
+                getAlerts(true);
+                getVehicles(true);
+            }
 
             @Override
             public final boolean isExactRoute(final Object object){
@@ -146,13 +141,7 @@ abstract class MTASchema_MNR extends MTASchema {
                 return isExactRoute(object);
             }
 
-            @Override
-            public final void refresh(){
-                getAlerts(true);
-                getVehicles(true);
-            }
-
-            // Java
+            //
 
             @Override
             public final String toString(){
@@ -171,8 +160,8 @@ abstract class MTASchema_MNR extends MTASchema {
     static Stop asStop(final MTA mta, final String stop_code){
         // find row
         final DataResource resource = getDataResource(mta, DataResourceType.MetroNorthRailroad);
-        final CSV csv               = resource.getData("stops.txt");
-        final List<String> row      = csv.getRow("stop_code", stop_code.toUpperCase());
+        final CSV csv = resource.getData("stops.txt");
+        final List<String> row = csv.getRow("stop_code", stop_code.toUpperCase());
 
         // instantiate
         Objects.requireNonNull(row, "Failed to find MNR stop with stopcode '" + stop_code.toUpperCase() + "'");
@@ -183,25 +172,26 @@ abstract class MTASchema_MNR extends MTASchema {
     static Stop asStop(final MTA mta, final int stop_id){
         // find row
         final DataResource resource = getDataResource(mta, DataResourceType.MetroNorthRailroad);
-        final CSV csv               = resource.getData("stops.txt");
-        final List<String> row      = csv.getRow("stop_id", String.valueOf(stop_id));
+        final CSV csv = resource.getData("stops.txt");
+        final List<String> row = csv.getRow("stop_id", String.valueOf(stop_id));
 
         // instantiate
         Objects.requireNonNull(row, "Failed to find MNR stop with id '" + stop_id + "'");
 
         return new Stop(){
 
-            private final Integer stopID  = stop_id;
+            private final Integer stopID = stop_id;
             private final String stopCode = row.get(csv.getHeaderIndex("stop_code"));
             private final String stopName = row.get(csv.getHeaderIndex("stop_name"));
             private final String stopDesc = row.get(csv.getHeaderIndex("stop_desc"));
 
-            private final Double stopLat  = Double.valueOf(row.get(csv.getHeaderIndex("stop_lat")));
-            private final Double stopLon  = Double.valueOf(row.get(csv.getHeaderIndex("stop_lon")));
+            private final Double stopLat = Double.valueOf(row.get(csv.getHeaderIndex("stop_lat")));
+            private final Double stopLon = Double.valueOf(row.get(csv.getHeaderIndex("stop_lon")));
 
             private final Boolean wheelchairAccessible = !row.get(csv.getHeaderIndex("wheelchair_boarding")).equals("2");
 
-            // static data
+            private List<Vehicle> vehicles = null;
+            private List<MNR.Alert> alerts = null;
 
             @Override
             public final Integer getStopID(){
@@ -238,10 +228,6 @@ abstract class MTASchema_MNR extends MTASchema {
                 return wheelchairAccessible;
             }
 
-            // live feed
-
-            private List<Vehicle> vehicles = null;
-
             @Override
             public final Vehicle[] getVehicles(){
                 return getVehicles(false);
@@ -249,42 +235,22 @@ abstract class MTASchema_MNR extends MTASchema {
 
             private Vehicle[] getVehicles(final boolean update){
                 if(vehicles == null || update){
-                    final String stop = String.valueOf(stopID);
-
-                    final FeedMessage feed = cast(mta).service.mnr.getMNR(cast(mta).subwayToken);
-                    final int len          = feed.getEntityCount();
-
-                    final List<Vehicle> vehicles = new ArrayList<>();
-                    OUTER:
-                    for(int i = 0; i < len; i++){
-                        final FeedEntity entity = feed.getEntity(i);
-                        // only include trips with vehicles
-                        if(
-                            entity.hasVehicle() &&
-                            entity.hasTripUpdate()
-                        ){
-                            if(entity.getTripUpdate().getStopTimeUpdateCount() > 0){
-                                final TripUpdate tu = entity.getTripUpdate();
-                                final int len2 = tu.getStopTimeUpdateCount();
-                                // check all stops on train route
-                                for(int u = 0; u < len2; u++){
-                                    final TripUpdate.StopTimeUpdate stu = tu.getStopTimeUpdate(u);
-                                    // check if this stop is en route
-                                    if(stu.getStopId().equalsIgnoreCase(stop)){
-                                        vehicles.add(asVehicle(mta, entity.getVehicle(), entity.getTripUpdate(), null));
-                                        continue OUTER;
-                                    }
-                                }
-                            }
-                        }
-                    }
-
-                    this.vehicles = Collections.unmodifiableList(vehicles);
+                    this.vehicles = Collections.unmodifiableList(Arrays.asList(cast(mta).transformFeedEntities(
+                        cast(mta).service.mnr.getMNR(),
+                        ent -> {
+                            final int len = ent.getTripUpdate().getStopTimeUpdateCount();
+                            for(int i = 0; i < len; i++)
+                                if(isExactStop(ent.getTripUpdate().getStopTimeUpdate(i).getStopId())) // check if trip includes this stop
+                                    return true;
+                            return false;
+                        },
+                        ent -> MTASchema_MNR.asVehicle(
+                            mta, ent.getVehicle(), ent.getTripUpdate(), null),
+                        new Vehicle[0]
+                    )));
                 }
                 return vehicles.toArray(new Vehicle[0]);
             }
-
-            private List<MNR.Alert> alerts = null;
 
             @Override
             public final MNR.Alert[] getAlerts(){
@@ -293,20 +259,28 @@ abstract class MTASchema_MNR extends MTASchema {
 
             private MNR.Alert[] getAlerts(final boolean update){
                 if(alerts == null || update){
-                    final List<MNR.Alert> alerts = new ArrayList<>();
-                    final GTFSRealtimeProto.FeedMessage feed = cast(mta).service.alerts.getMNR(cast(mta).subwayToken);
-                    final int len = feed.getEntityCount();
-                    for(int i = 0; i < len; i++){
-                        final MNR.Alert alert = MTASchema_MNR.asTransitAlert(mta, feed.getEntity(i));
-                        if(Arrays.asList(alert.getStopIDs()).contains(stopID))
-                            alerts.add(alert);
-                    }
-                    this.alerts = alerts;
+                    this.alerts = Collections.unmodifiableList(Arrays.asList(cast(mta).transformFeedEntities(
+                        cast(mta).service.alerts.getMNR(),
+                        ent -> {
+                            final GTFSRealtimeProto.Alert alert = ent.getAlert();
+                            final int len = alert.getInformedEntityCount();
+                            for(int i = 0; i < len; i++)
+                                if(isSameStop(alert.getInformedEntity(i).getStopId())) // check if alert includes this stop
+                                    return true;
+                            return false;
+                        },
+                        ent -> asTransitAlert(mta, ent),
+                        new MNR.Alert[0]
+                    )));
                 }
                 return alerts.toArray(new MNR.Alert[0]);
             }
 
-            // onemta methods
+            @Override
+            public final void refresh(){
+                getAlerts(true);
+                getVehicles(true);
+            }
 
             @Override
             public final boolean isExactStop(final Object object){
@@ -325,13 +299,7 @@ abstract class MTASchema_MNR extends MTASchema {
                 return isExactStop(object);
             }
 
-            @Override
-            public final void refresh(){
-                getAlerts(true);
-                getVehicles(true);
-            }
-
-            // Java
+            //
 
             @Override
             public final String toString(){
@@ -350,17 +318,20 @@ abstract class MTASchema_MNR extends MTASchema {
     }
 
     static Vehicle asVehicle(final MTA mta, final VehiclePosition vehicle, final TripUpdate tripUpdate, final Route optionalRoute){
-        return new Vehicle() {
+        return new Vehicle(){
 
             private final String vehicleID = requireNonNull(() -> vehicle.getVehicle().getLabel());
 
-            private Double latitude  = requireNonNull( () -> Double.valueOf(vehicle.getPosition().getLatitude()));
-            private Double longitude = requireNonNull( () -> Double.valueOf(vehicle.getPosition().getLongitude()));
+            private Double latitude = requireNonNull(() -> Double.valueOf(vehicle.getPosition().getLatitude()));
+            private Double longitude = requireNonNull(() -> Double.valueOf(vehicle.getPosition().getLongitude()));
 
-            private String status   = requireNonNull(() -> vehicle.getCurrentStatus().name());
+            private String status = requireNonNull(() -> vehicle.getCurrentStatus().name());
 
-            private Integer stopID  = requireNonNull(() -> Integer.valueOf(vehicle.hasStopId() ? vehicle.getStopId() : tripUpdate.getStopTimeUpdate(0).getStopId())); // fallback to next trip stop if stop id is not working
+            private Integer stopID = requireNonNull(() -> Integer.valueOf(vehicle.hasStopId() ? vehicle.getStopId() : tripUpdate.getStopTimeUpdate(0).getStopId()));
+            private Stop stop = null;
+
             private Integer routeID = requireNonNull(() -> Integer.valueOf(tripUpdate.getTrip().getRouteId()));
+            private Route route = optionalRoute;
 
             private Trip trip = asTrip(mta, tripUpdate, this);
 
@@ -380,8 +351,18 @@ abstract class MTASchema_MNR extends MTASchema {
             }
 
             @Override
-            public final String getCurrentStatus(){
+            public final String getStatus(){
                 return status;
+            }
+
+            @Override
+            public final Integer getRouteID(){
+                return routeID;
+            }
+
+            @Override
+            public final Route getRoute(){
+                return route != null ? route : (route = mta.getMNRRoute(routeID));
             }
 
             @Override
@@ -390,24 +371,8 @@ abstract class MTASchema_MNR extends MTASchema {
             }
 
             @Override
-            public final Integer getRouteID(){
-                return routeID;
-            }
-
-            // onemta methods
-
-            private Stop stop = null;
-
-            @Override
             public final Stop getStop(){
-                return stop != null ? stop : (stop = mta.getMNRStop(Objects.requireNonNull(stopID, "Stop ID must not be null")));
-            }
-
-            private Route route = optionalRoute;
-
-            @Override
-            public final Route getRoute(){
-                return route != null ? route : (route = mta.getMNRRoute(Objects.requireNonNull(routeID, "Route ID must not be null")));
+                return stop != null ? stop : (stop = mta.getMNRStop(stopID));
             }
 
             @Override
@@ -424,14 +389,17 @@ abstract class MTASchema_MNR extends MTASchema {
                 getTrip(true);
 
                 final Vehicle vehicle = mta.getMNRTrain(vehicleID);
-                latitude  = vehicle.getLatitude();
+
+                latitude = vehicle.getLatitude();
                 longitude = vehicle.getLongitude();
-                status    = vehicle.getCurrentStatus();
-                stopID    = vehicle.getStopID();
-                routeID   = vehicle.getRouteID();
+                status = vehicle.getStatus();
+                routeID = vehicle.getRouteID();
+                route = null;
+                stopID = vehicle.getStopID();
+                stop = null;
             }
 
-            // Java
+            //
 
             @Override
             public final String toString(){
@@ -441,7 +409,8 @@ abstract class MTASchema_MNR extends MTASchema {
                        ", longitude=" + longitude +
                        ", status='" + status + '\'' +
                        ", stopID=" + stopID +
-                       ", routeID=" + routeID +
+                       ", routeID='" + routeID + '\'' +
+                       ", trip=" + trip +
                        '}';
             }
 
@@ -449,22 +418,20 @@ abstract class MTASchema_MNR extends MTASchema {
     }
 
     static Trip asTrip(final MTA mta, final TripUpdate tripUpdate, final Vehicle referringVehicle){
-        return new Trip() {
+        return new Trip(){
+
+            private final String tripID = requireNonNull(() -> tripUpdate.getTrip().getTripId());
+            private final Integer route = requireNonNull(() -> Integer.valueOf(tripUpdate.getTrip().getRouteId()));
+
+            private final List<TripStop> stops;
 
             private final Vehicle vehicle = referringVehicle;
-
-            private final String tripID  = requireNonNull(() -> tripUpdate.getTrip().getTripId());
-            private final String routeID = requireNonNull(() -> tripUpdate.getTrip().getRouteId());
-
-            private final String scheRel = requireNonNull(() -> tripUpdate.getTrip().getScheduleRelationship().name());
-
-            private final List<TripStop> tripStops;
 
             {
                 final List<TripStop> stops = new ArrayList<>();
                 for(final TripUpdate.StopTimeUpdate update : tripUpdate.getStopTimeUpdateList())
                     stops.add(asTripStop(mta, update, this));
-                tripStops = Collections.unmodifiableList(stops);
+                this.stops = Collections.unmodifiableList(stops);
             }
 
             @Override
@@ -473,11 +440,9 @@ abstract class MTASchema_MNR extends MTASchema {
             }
 
             @Override
-            public final String getRouteID(){
-                return routeID;
+            public final Integer getRouteID(){
+                return route;
             }
-
-            // onemta methods
 
             @Override
             public final Route getRoute(){
@@ -485,28 +450,23 @@ abstract class MTASchema_MNR extends MTASchema {
             }
 
             @Override
-            public final Vehicle getVehicle(){
-                return vehicle;
-            }
-
-            @Override
-            public final String getScheduleRelationship(){
-                return scheRel;
-            }
-
-            @Override
             public final TripStop[] getTripStops(){
-                return tripStops.toArray(new TripStop[0]);
+                return stops.toArray(new TripStop[0]);
             }
 
-            // Java
+            @Override
+            public final Vehicle getVehicle(){
+                return referringVehicle;
+            }
+
+            //
 
             @Override
             public final String toString(){
                 return "MNR.Trip{" +
                        "tripID='" + tripID + '\'' +
-                       ", routeID='" + routeID + '\'' +
-                       ", scheduleRelationship='" + scheRel + '\'' +
+                       ", route='" + route + '\'' +
+                       ", stops=" + stops +
                        '}';
             }
 
@@ -514,23 +474,32 @@ abstract class MTASchema_MNR extends MTASchema {
     }
 
     static TripStop asTripStop(final MTA mta, final TripUpdate.StopTimeUpdate stopTimeUpdate, final Trip referringTrip){
-        final MnrStopTimeUpdate mnrStopTimeUpdate = stopTimeUpdate.getExtension(MNRRProto.mnrStopTimeUpdate);
-        return new TripStop() {
-
-            private final Trip trip      = referringTrip;
+        return new TripStop(){
 
             private final Integer stopID = requireNonNull(() -> Integer.valueOf(stopTimeUpdate.getStopId()));
 
-            private final Long arrival   = requireNonNull(() -> stopTimeUpdate.getArrival().getTime() * 1000);
-            private final Long departure = requireNonNull(() -> stopTimeUpdate.getDeparture().getTime() * 1000);
-            private final Integer delay  = requireNonNull(() -> stopTimeUpdate.getDeparture().getDelay());
+            private Stop stop = null;
 
-            private final String track   = requireNonNull(mnrStopTimeUpdate::getTrack);
-            private final String status  = requireNonNull(mnrStopTimeUpdate::getTrainStatus);
+            private final Long arrival = requireNonNull(() -> stopTimeUpdate.getArrival().getTime() * 1000);
+            private final Long departure = requireNonNull(() -> stopTimeUpdate.getDeparture().getTime() * 1000);
+
+            private final Integer delay = requireNonNull(() -> stopTimeUpdate.getDeparture().getDelay());
+
+            private final String track = requireNonNull(() -> stopTimeUpdate.getExtension(MNRRProto.mnrStopTimeUpdate).getTrack());
+
+            private final String status = requireNonNull(() -> stopTimeUpdate.getExtension(MNRRProto.mnrStopTimeUpdate).getTrainStatus());
+
+            private final Trip trip = referringTrip;
 
             @Override
             public final Integer getStopID(){
                 return stopID;
+            }
+
+            @SuppressWarnings("DataFlowIssue")
+            @Override
+            public final Stop getStop(){
+                return stop != null ? stop : (stop = mta.getMNRStop(stopID));
             }
 
             @Override
@@ -564,17 +533,8 @@ abstract class MTASchema_MNR extends MTASchema {
             }
 
             @Override
-            public final String getTrainStatus(){
+            public final String getStatus(){
                 return status;
-            }
-
-            // onemta methods
-
-            private Stop stop = null;
-
-            @Override
-            public final Stop getStop(){
-                return stop != null ? stop : (stop = mta.getMNRStop(Objects.requireNonNull(stopID, "Stop ID must not be null")));
             }
 
             @Override
@@ -582,7 +542,7 @@ abstract class MTASchema_MNR extends MTASchema {
                 return trip;
             }
 
-            // Java
+            //
 
             @Override
             public final String toString(){
@@ -601,43 +561,44 @@ abstract class MTASchema_MNR extends MTASchema {
 
     static MNR.Alert asTransitAlert(final MTA mta, final GTFSRealtimeProto.FeedEntity feedEntity){
         final GTFSRealtimeProto.Alert alert = feedEntity.getAlert();
-        return new MNR.Alert() {
+        return new MNR.Alert(){
 
             private final String alertID = requireNonNull(feedEntity::getId);
 
-            private final String headerText      = requireNonNull(() -> alert.getHeaderText().getTranslation(0).getText());
-            private final String descriptionText = requireNonNull(() -> alert.getDescriptionText().getTranslation(0).getText());
+            private final List<TransitAlertPeriod> periods;
 
-            private final String alertType = requireNonNull(() -> alert.getExtension(ServiceStatusProto.mercuryAlert).getAlertType());
-
-            private final String effect = requireNonNull(() -> alert.getEffect().name());
-
-            private final List<TransitAlertPeriod> alertPeriods;
             private final List<Integer> routeIDs;
+            private List<Route> routes = null;
+
             private final List<Integer> stopIDs;
+            private List<Stop> stops = null;
+
+            private final String header = requireNonNull(() -> alert.getHeaderText().getTranslation(0).getText());
+            private final String description = requireNonNull(() -> alert.getDescriptionText().getTranslation(0).getText());
+
+            private final Long createdAt = requireNonNull(() -> alert.getExtension(ServiceStatusProto.mercuryAlert).getCreatedAt() * 1000);
+            private final Long updatedAt = requireNonNull(() -> alert.getExtension(ServiceStatusProto.mercuryAlert).getUpdatedAt() * 1000);
+
+            private final String type = requireNonNull(() -> alert.getExtension(ServiceStatusProto.mercuryAlert).getAlertType());
 
             {
-                final List<TransitAlertPeriod> alertPeriods = new ArrayList<>();
+                final List<TransitAlertPeriod> periods = new ArrayList<>();
                 for(final GTFSRealtimeProto.TimeRange range : alert.getActivePeriodList())
-                    alertPeriods.add(asTransitAlertTimeframe(range));
-                this.alertPeriods = Collections.unmodifiableList(alertPeriods);
+                    periods.add(asTransitAlertTimeframe(range));
+                this.periods = Collections.unmodifiableList(periods);
 
-                final List<Integer> routeIDs = new ArrayList<>();
-                final List<Integer> stopIDs = new ArrayList<>();
+                final List<Integer> routes = new ArrayList<>();
+                final List<Integer> stops = new ArrayList<>();
                 final int len = alert.getInformedEntityCount();
                 for(int i = 0; i < len; i++){
                     final GTFSRealtimeProto.EntitySelector entity = alert.getInformedEntity(i);
                     if(entity.hasRouteId())
-                        try{
-                            routeIDs.add(Integer.valueOf(entity.getRouteId()));
-                        }catch(final NumberFormatException ignored){ }
+                        routes.add(Integer.valueOf(entity.getRouteId()));
                     else if(entity.hasStopId())
-                        try{
-                            stopIDs.add(Integer.valueOf(entity.getStopId()));
-                        }catch(final NumberFormatException ignored){ }
+                        stops.add(Integer.valueOf(entity.getStopId()));
                 }
-                this.routeIDs = Collections.unmodifiableList(routeIDs);
-                this.stopIDs  = Collections.unmodifiableList(stopIDs);
+                this.routeIDs = Collections.unmodifiableList(routes);
+                this.stopIDs = Collections.unmodifiableList(stops);
             }
 
             @Override
@@ -647,15 +608,13 @@ abstract class MTASchema_MNR extends MTASchema {
 
             @Override
             public final TransitAlertPeriod[] getActivePeriods(){
-                return alertPeriods.toArray(new TransitAlertPeriod[0]);
+                return periods.toArray(new TransitAlertPeriod[0]);
             }
 
             @Override
             public final Integer[] getRouteIDs(){
                 return routeIDs.toArray(new Integer[0]);
             }
-
-            private List<Route> routes = null;
 
             @Override
             public final Route[] getRoutes(){
@@ -673,8 +632,6 @@ abstract class MTASchema_MNR extends MTASchema {
                 return stopIDs.toArray(new Integer[0]);
             }
 
-            private List<Stop> stops = null;
-
             @Override
             public final Stop[] getStops(){
                 if(stops == null){
@@ -688,37 +645,53 @@ abstract class MTASchema_MNR extends MTASchema {
 
             @Override
             public final String getHeader(){
-                return headerText;
+                return header;
             }
 
             @Override
             public final String getDescription(){
-                return descriptionText;
+                return description;
+            }
+
+            @Override
+            public final Date getCreatedAt(){
+                return createdAt != null ? new Date(createdAt) : null;
+            }
+
+            @Override
+            public final Long getCreatedAtEpochMillis(){
+                return createdAt;
+            }
+
+            @Override
+            public final Date getUpdatedAt(){
+                return updatedAt != null ? new Date(updatedAt) : null;
+            }
+
+            @Override
+            public final Long getUpdatedAtEpochMillis(){
+                return updatedAt;
             }
 
             @Override
             public final String getAlertType(){
-                return alertType;
+                return type;
             }
 
-            @Override
-            public final String getEffect(){
-                return effect;
-            }
-
-            // Java
+            //
 
             @Override
             public final String toString(){
                 return "MNR.Alert{" +
                        "alertID='" + alertID + '\'' +
-                       ", headerText='" + headerText + '\'' +
-                       ", descriptionText='" + descriptionText + '\'' +
-                       ", alertType='" + alertType + '\'' +
-                       ", effect='" + effect + '\'' +
-                       ", alertPeriods=" + alertPeriods +
+                       ", periods=" + periods +
                        ", routeIDs=" + routeIDs +
                        ", stopIDs=" + stopIDs +
+                       ", header='" + header + '\'' +
+                       ", description='" + description + '\'' +
+                       ", createdAt=" + createdAt +
+                       ", updatedAt=" + updatedAt +
+                       ", type='" + type + '\'' +
                        '}';
             }
 

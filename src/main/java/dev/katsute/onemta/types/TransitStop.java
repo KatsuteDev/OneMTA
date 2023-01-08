@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Katsute <https://github.com/Katsute>
+ * Copyright (C) 2023 Katsute <https://github.com/Katsute>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -31,7 +31,7 @@ import dev.katsute.onemta.attribute.*;
  * @version 1.1.0
  * @author Katsute
  */
-public abstract class TransitStop<SID, V extends TransitVehicle<?,?,?,?,?,?>, A extends TransitAlert<?,?,?,?>> implements Alerts<A>, Location, VehiclesReference<V>, Updatable {
+public abstract class TransitStop<SID,V extends TransitVehicle<?,?,?,?,?,?>,A extends TransitAlert<?,?,?,?>> implements Alerts<A>, Location, Reference.Vehicle<V>, Updatable {
 
     /**
      * Returns the stop ID.

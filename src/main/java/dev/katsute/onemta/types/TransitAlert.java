@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Katsute <https://github.com/Katsute>
+ * Copyright (C) 2023 Katsute <https://github.com/Katsute>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,6 +18,8 @@
 
 package dev.katsute.onemta.types;
 
+import java.util.Date;
+
 /**
  * Represents a transit alert.
  *
@@ -28,10 +30,10 @@ package dev.katsute.onemta.types;
  *
  * @see TransitAlertPeriod
  * @since 1.0.0
- * @version 1.2.0
+ * @version 2.0.0
  * @author Katsute
  */
-public abstract class TransitAlert<RID, R extends TransitRoute<?,?,?>, SID, S extends TransitStop<?,?,?>> {
+public abstract class TransitAlert<RID,R extends TransitRoute<?,?,?>,SID,S extends TransitStop<?,?,?>> {
 
     /**
      * Returns the alert ID.
@@ -108,6 +110,48 @@ public abstract class TransitAlert<RID, R extends TransitRoute<?,?,?>, SID, S ex
     public abstract String getDescription();
 
     /**
+     * Returns when the alert was created.
+     *
+     * @return created at
+     *
+     * @see Date
+     * @see #getCreatedAtEpochMillis()
+     * @since 2.0.0
+     */
+    public abstract Date getCreatedAt();
+
+    /**
+     * Returns when the alert was created as milliseconds since epoch.
+     *
+     * @return created at
+     *
+     * @see #getCreatedAtEpochMillis()
+     * @since 2.0.0
+     */
+    public abstract Long getCreatedAtEpochMillis();
+
+    /**
+     * Returns when the alert was updated.
+     *
+     * @return created at
+     *
+     * @see Date
+     * @see #getUpdatedAtEpochMillis()
+     * @since 2.0.0
+     */
+    public abstract Date getUpdatedAt();
+
+    /**
+     * Returns when the alert was updated as milliseconds since epoch.
+     *
+     * @return created at
+     *
+     * @see #getUpdatedAtEpochMillis()
+     * @since 2.0.0
+     */
+    public abstract Long getUpdatedAtEpochMillis();
+
+    /**
      * Returns the alert type.
      *
      * @return alert type
@@ -115,14 +159,5 @@ public abstract class TransitAlert<RID, R extends TransitRoute<?,?,?>, SID, S ex
      * @since 1.0.0
      */
     public abstract String getAlertType();
-
-    /**
-     * Returns the effect of the current alert.
-     *
-     * @return alert effect
-     *
-     * @since 1.2.0
-     */
-    public abstract String getEffect();
 
 }

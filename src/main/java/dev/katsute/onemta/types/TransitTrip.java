@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Katsute <https://github.com/Katsute>
+ * Copyright (C) 2023 Katsute <https://github.com/Katsute>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,20 +18,41 @@
 
 package dev.katsute.onemta.types;
 
-import dev.katsute.onemta.attribute.RouteReference;
+import dev.katsute.onemta.attribute.Reference;
 
 /**
  * Represents a transit trip.
  *
- * @param <V> transit vehicle type
- * @param <R> transit route type
- * @param <S> transit stop type
+ * @param <RID> route ID format
+ * @param <R> route type
+ * @param <V> vehicle type
+ * @param <S> stop type
  *
  * @since 1.0.0
  * @version 1.0.0
  * @author Katsute
  */
-public abstract class TransitTrip<V extends TransitVehicle<?,?,?,?,?,?>, R extends TransitRoute<?,?,?>, S extends TransitTripStop<?,?,?>> implements RouteReference<R> {
+public abstract class TransitTrip<RID,R extends TransitRoute<?,?,?>,V extends TransitVehicle<?,?,?,?,?,?>,S extends TransitTripStop<?,?,?>> implements Reference.Route<R> {
+
+    /**
+     * Returns the trip ID.
+     *
+     * @return trip ID
+     *
+     * @see #getTripStops()
+     * @since 1.0.0
+     */
+    public abstract String getTripID();
+
+    /**
+     * Returns the route ID.
+     *
+     * @return route ID
+     *
+     * @see #getRoute()
+     * @since 1.0.0
+     */
+    public abstract RID getRouteID();
 
     /**
      * Returns the planned stops for the trip.

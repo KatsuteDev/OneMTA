@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Katsute <https://github.com/Katsute>
+ * Copyright (C) 2023 Katsute <https://github.com/Katsute>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -36,13 +36,14 @@ abstract class Regex9 {
      * @param replacer replacement function
      * @return replaced string
      */
-    static String replaceAll(final String str, final Matcher matcher, final Function<MatchResult, String> replacer) {
+    static String replaceAll(final String str, final Matcher matcher, final Function<MatchResult,String> replacer) {
         Objects.requireNonNull(str);
         Objects.requireNonNull(matcher);
         Objects.requireNonNull(replacer);
         matcher.reset();
         boolean result = matcher.find();
         if (result) {
+            @SuppressWarnings("StringBufferMayBeStringBuilder")
             final StringBuffer sb = new StringBuffer();
             do{
                 String replacement = replacer.apply(matcher);
@@ -53,21 +54,6 @@ abstract class Regex9 {
             return sb.toString();
         }
         return str;
-    }
-
-    /**
-     * Returns match count.
-     *
-     * @param matcher matcher
-     * @return count
-     */
-    static int count(final Matcher matcher){
-        Objects.requireNonNull(matcher);
-        matcher.reset();
-        int count = 0;
-        while(matcher.find())
-            count++;
-        return count;
     }
 
 }

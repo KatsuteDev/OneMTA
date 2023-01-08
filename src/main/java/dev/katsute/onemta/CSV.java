@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Katsute <https://github.com/Katsute>
+ * Copyright (C) 2023 Katsute <https://github.com/Katsute>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -27,6 +27,7 @@ class CSV {
     private final List<String> headers;
     private final List<List<String>> rows;
 
+    @SuppressWarnings("SpellCheckingInspection")
     private final int lenm1;
 
     CSV(final String csv){

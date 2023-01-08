@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Katsute <https://github.com/Katsute>
+ * Copyright (C) 2023 Katsute <https://github.com/Katsute>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,10 +20,10 @@ package dev.katsute.onemta;
 
 import com.google.protobuf.ExtensionRegistry;
 import dev.katsute.onemta.GTFSRealtimeProto.FeedMessage;
-import dev.katsute.onemta.Json.JsonObject;
 import dev.katsute.onemta.exception.HttpException;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URI;
 import java.util.*;
@@ -32,78 +32,13 @@ import java.util.regex.MatchResult;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+@SuppressWarnings("Convert2Diamond")
 abstract class Requests {
-
-    static JsonObject getJSON(
-        final String url,
-        final Map<String,String> query,
-        final Map<String,String> headers
-    ){
-        HttpURLConnection conn = null;
-        try{
-            conn = getConnection(
-                url,
-                new HashMap<>(query),
-                new HashMap<String,String>(headers){{
-                    put("Accept", "application/json; charset=UTF-8");
-                }}
-            );
-            try(
-                final InputStream IS = conn.getInputStream();
-                final InputStreamReader ISR = new InputStreamReader(IS);
-                final BufferedReader IN = new BufferedReader(ISR)
-            ){
-                String buffer;
-                final StringBuilder OUT = new StringBuilder();
-                while((buffer = IN.readLine()) != null)
-                    OUT.append(buffer);
-                return (JsonObject) Json.parse(OUT.toString());
-            }
-        }catch(final IOException e){
-            throw new HttpException(url, e);
-        }finally{
-            if(conn != null)
-                conn.disconnect();
-        }
-    }
-
-    @SuppressWarnings("unchecked")
-    static List<JsonObject> getJsonArray(
-        final String url,
-        final Map<String,String> query,
-        final Map<String,String> headers
-    ){
-        HttpURLConnection conn = null;
-        try{
-            conn = getConnection(
-                url,
-                new HashMap<>(query),
-                new HashMap<String,String>(headers){{
-                    put("Accept", "application/json; charset=UTF-8");
-                }}
-            );
-            try(
-                final InputStream IS = conn.getInputStream();
-                final InputStreamReader ISR = new InputStreamReader(IS);
-                final BufferedReader IN = new BufferedReader(ISR)
-            ){
-                String buffer;
-                final StringBuilder OUT = new StringBuilder();
-                while((buffer = IN.readLine()) != null)
-                    OUT.append(buffer);
-                return Collections.unmodifiableList((List<JsonObject>) Json.parse(OUT.toString()));
-            }
-        }catch(final IOException e){
-            throw new HttpException(url, e);
-        }finally{
-            if(conn != null)
-                conn.disconnect();
-        }
-    }
 
     private static final ExtensionRegistry registry = ExtensionRegistry.newInstance();
 
     static{
+        OneBusAwayProto     .registerAllExtensions(registry);
         NYCTSubwayProto     .registerAllExtensions(registry);
         MTARRProto          .registerAllExtensions(registry);
         LIRRProto           .registerAllExtensions(registry);
@@ -121,7 +56,7 @@ abstract class Requests {
         try{
             conn = getConnection(
                 url,
-                new HashMap<>(query),
+                Collections.unmodifiableMap(query),
                 new HashMap<String,String>(headers){{
                     put("Accept", "application/x-protobuf");
                 }}
@@ -163,7 +98,7 @@ abstract class Requests {
 
         headers.put("Cache-Control", "no-cache, no-store, must-revalidate");
 
-        for(final Map.Entry<String, String> entry : headers.entrySet())
+        for(final Map.Entry<String,String> entry : headers.entrySet())
             conn.setRequestProperty(entry.getKey(), entry.getValue());
 
         conn.setConnectTimeout(10_000);

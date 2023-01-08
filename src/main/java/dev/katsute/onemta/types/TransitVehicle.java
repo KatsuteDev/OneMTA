@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Katsute <https://github.com/Katsute>
+ * Copyright (C) 2023 Katsute <https://github.com/Katsute>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,7 +18,8 @@
 
 package dev.katsute.onemta.types;
 
-import dev.katsute.onemta.attribute.*;
+import dev.katsute.onemta.attribute.Reference;
+import dev.katsute.onemta.attribute.Updatable;
 
 /**
  * Represents a transit vehicle.
@@ -29,8 +30,12 @@ import dev.katsute.onemta.attribute.*;
  * @param <SID> stop ID format
  * @param <RID> route ID format
  * @param <VID> vehicle ID format
+ *
+ * @since 1.0.0
+ * @version 1.0.0
+ * @author Katsute
  */
-public abstract class TransitVehicle<R extends TransitRoute<?,?,?>, S extends TransitStop<?,?,?>, T extends TransitTrip<?,?,?>, SID, RID, VID> implements RouteReference<R>, StopReference<S>, TripReference<T>, Updatable {
+public abstract class TransitVehicle<RID,R extends TransitRoute<?,?,?>,SID,S extends TransitStop<?,?,?>,VID,T extends TransitTrip<?,?,?,?>> implements Reference.Route<R>, Reference.Stop<S>, Reference.Trip<T>, Updatable {
 
     /**
      * Returns the vehicle ID.

@@ -1,4 +1,4 @@
 /**
- * Contains generic types for routes, stops, vehicles, trips, and alerts.
+ * Contains generic transit types.
  */
 package dev.katsute.onemta.types;

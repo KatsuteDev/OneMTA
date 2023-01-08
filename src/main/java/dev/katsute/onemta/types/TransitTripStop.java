@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Katsute <https://github.com/Katsute>
+ * Copyright (C) 2023 Katsute <https://github.com/Katsute>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,21 +18,64 @@
 
 package dev.katsute.onemta.types;
 
-import dev.katsute.onemta.attribute.StopReference;
-import dev.katsute.onemta.attribute.TripReference;
+import dev.katsute.onemta.attribute.Reference;
+
+import java.util.Date;
 
 /**
  * Represents a transit trip stop.
  *
+ * @param <SID> stop ID format
  * @param <S> transit stop type
  * @param <T> transit trip type
- * @param <SID> stop ID format
  *
  * @since 1.0.0
  * @version 1.0.0
  * @author Katsute
  */
-public abstract class TransitTripStop<S extends TransitStop<?,?,?>, T extends TransitTrip<?,?,?>, SID> implements StopReference<S>, TripReference<T> {
+public abstract class TransitTripStop<SID,S extends TransitStop<?,?,?>,T extends TransitTrip<?,?,?,?>> implements Reference.Stop<S>, Reference.Trip<T> {
+
+    /**
+     * Returns the arrival time.
+     *
+     * @return arrival time
+     *
+     * @see Date
+     * @see #getArrivalTimeEpochMillis()
+     * @since 1.0.0
+     */
+    public abstract Date getArrivalTime();
+
+    /**
+     * Returns the arrival time as milliseconds since epoch.
+     *
+     * @return arrival time
+     *
+     * @see #getArrivalTime()
+     * @since 1.0.0
+     */
+    public abstract Long getArrivalTimeEpochMillis();
+
+    /**
+     * Returns the departure time.
+     *
+     * @return departure time
+     *
+     * @see Date
+     * @see #getDepartureTimeEpochMillis()
+     * @since 1.0.0
+     */
+    public abstract Date getDepartureTime();
+
+    /**
+     * Returns the departure time as milliseconds since epoch.
+     *
+     * @return departure time
+     *
+     * @see #getDepartureTime()
+     * @since 1.0.0
+     */
+    public abstract Long getDepartureTimeEpochMillis();
 
     /**
      * Returns the stop ID.

@@ -32,7 +32,7 @@ final class TestMTA {
 
         @Test
         final void testNullVehicle(){
-            assertNull(mta.getBus(0));
+            assertNull(mta.getBus(-1));
         }
 
     }
@@ -56,7 +56,7 @@ final class TestMTA {
         @Test
         final void testNullVehicle(){
             assertThrows(NullPointerException.class, () -> mta.getSubwayTrain(null));
-            assertNull(mta.getSubwayTrain("01 NULL"));
+            assertNull(mta.getSubwayTrain("01 NULL NUL/NUL"));
         }
 
     }

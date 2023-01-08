@@ -2,7 +2,8 @@ package dev.katsute.onemta.subway;
 
 import dev.katsute.onemta.MTA;
 import dev.katsute.onemta.TestProvider;
-import dev.katsute.onemta.types.*;
+import dev.katsute.onemta.types.AlertValidation;
+import dev.katsute.onemta.types.RouteValidation;
 import org.junit.jupiter.api.*;
 
 import static dev.katsute.onemta.subway.Subway.*;
@@ -19,12 +20,31 @@ final class TestSubwayRoute {
         TestProvider.testGroup("subway");
         mta = TestProvider.getOneMTA();
 
+        assert mta != null;
         route = mta.getSubwayRoute(TestProvider.SUBWAY_ROUTE);
-        VehicleValidation.requireVehicles(route);
+    }
+
+    @Test
+    final void testVehicles(){
+        for(final Vehicle vehicle : route.getVehicles())
+            assertSame(route, vehicle.getRoute());
+        TestSubwayVehicle.testVehicles(route);
+        assertEquals(route.getVehicles()[0].getVehicleID(), mta.getSubwayTrain(route.getVehicles()[0].getVehicleID()).getVehicleID());
+    }
+
+    @Test
+    final void testRoute(){
+        assertNotNull(route.getRouteShortName());
+        assertNotNull(route.getRouteDescription());
     }
 
     @Nested
-    final class ComparatorTests {
+    final class RouteTests {
+
+        @Test
+        final void testRoute(){
+            RouteValidation.testRoute(route);
+        }
 
         @Test
         final void testNotExact(){
@@ -62,167 +82,15 @@ final class TestSubwayRoute {
             assertTrue(route.isSameRoute(TestProvider.SUBWAY_ROUTE + 'X'));
         }
 
-    }
-
-    @Nested
-    final class ExtensionTests {
-
-        @Test
-        final void testStop(){
-            SubwayExtensions.testRoute(route);
-        }
-
-        @Nested
-        final class VehicleTests {
-
-            @Test
-            final void testVehicles(){
-                for(final Vehicle vehicle : route.getVehicles())
-                    SubwayExtensions.testVehicle(vehicle);
-            }
-
-            @Test
-            final void testID(){
-                SubwayExtensions.testVehicleNumber(mta, route.getVehicles()[0]);
-            }
-
-        }
-
-        @Nested
-        final class TripTests {
-
-            @Test
-            final void testVehicleTrips(){
-                for(final Vehicle vehicle : route.getVehicles()){
-                    assertNotNull(vehicle.getTrip());
-                    SubwayExtensions.testTrip(vehicle.getTrip());
-                }
-            }
-
-        }
-
-        @Nested
-        final class TripStopTests {
-
-            @Test
-            final void testVehicleTripStops(){
-                for(final Vehicle vehicle : route.getVehicles())
-                    SubwayExtensions.testTripStops(vehicle.getTrip().getTripStops());
-            }
-
-        }
 
     }
 
     @Nested
-    final class InheritedTests {
+    final class AlertTests {
 
         @Test
-        final void testTransitRoute(){
-            RouteValidation.testRoute(route);
-        }
-
-        @Nested
-        final class VehicleTests {
-
-            @Test
-            final void testTransitVehicles(){
-                for(final Vehicle vehicle : route.getVehicles())
-                    VehicleValidation.testVehicle(vehicle);
-            }
-
-            @Test
-            final void testGTFSTransitVehicles(){
-                for(final Vehicle vehicle : route.getVehicles())
-                    VehicleValidation.testGTFSVehicle(vehicle);
-            }
-
-            @Test
-            final void testVehicleRouteReference(){
-                for(final Vehicle vehicle : route.getVehicles())
-                    VehicleValidation.testVehicleRouteReference(route, vehicle);
-            }
-
-        }
-
-        @Nested
-        final class TripTests {
-
-            @Test
-            final void testVehicleTrips(){
-                for(final Vehicle vehicle : route.getVehicles()){
-                    assertNotNull(vehicle.getTrip());
-                    TripValidation.testTrip(vehicle.getTrip());
-                }
-            }
-
-            @Test
-            final void testVehicleTripsReference(){
-                for(final Vehicle vehicle : route.getVehicles())
-                    TripValidation.testTripReference(vehicle);
-            }
-
-            @Test
-            final void testGTFSVehicleTrips(){
-                for(final Vehicle vehicle : route.getVehicles()){
-                    assertNotNull(vehicle.getTrip());
-                    TripValidation.testGTFSTrip(vehicle.getTrip());
-                }
-            }
-
-            @Test
-            final void testVehicleTripRouteReference(){
-                for(final Vehicle vehicle : route.getVehicles())
-                    TripValidation.testTripRouteReference(vehicle);
-            }
-
-        }
-
-        @Nested
-        final class TripStopTests {
-
-            @Test
-            final void testVehicleTripStops(){
-                for(final Vehicle vehicle : route.getVehicles())
-                    TripValidation.testTripStops(vehicle.getTrip().getTripStops());
-            }
-
-            @Test
-            final void testGTFSTripStops(){
-                for(final Vehicle vehicle : route.getVehicles())
-                    TripValidation.testGTFSTripStops(vehicle.getTrip().getTripStops());
-            }
-
-        }
-
-        @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-        @Nested
-        final class AlertTests {
-
-            @BeforeAll
-            final void beforeAll(){
-                AlertValidation.requireAlerts(route);
-            }
-
-            @Test
-            final void testTransitAlerts(){
-                { // missing description caused by MTA missing data
-                    assertTrue(TestProvider.atleastOneTrue(
-                        route.getAlerts(), Subway.Alert.class,
-                        a -> a.getDescription() != null
-                    ));
-                }
-
-                for(final Alert alert : route.getAlerts())
-                    AlertValidation.testAlert(alert);
-            }
-
-            @Test
-            final void testTransitAlertsReference(){
-                for(final Alert alert : route.getAlerts())
-                    AlertValidation.testAlertReference(route, alert);
-            }
-
+        final void testTransitAlert(){
+            AlertValidation.testAlerts(route);
         }
 
     }

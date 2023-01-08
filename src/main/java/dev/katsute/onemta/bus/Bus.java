@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Katsute <https://github.com/Katsute>
+ * Copyright (C) 2023 Katsute <https://github.com/Katsute>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,10 +18,9 @@
 
 package dev.katsute.onemta.bus;
 
-import dev.katsute.onemta.attribute.*;
+import dev.katsute.onemta.attribute.Direction;
+import dev.katsute.onemta.attribute.Location;
 import dev.katsute.onemta.types.*;
-
-import java.util.Date;
 
 /**
  * Represents bus related objects.
@@ -33,7 +32,7 @@ import java.util.Date;
  * @see TripStop
  * @see Alert
  * @since 1.0.0
- * @version 1.0.1
+ * @version 2.0.0
  * @author Katsute
  */
 public abstract class Bus {
@@ -47,7 +46,27 @@ public abstract class Bus {
      * @version 1.0.0
      * @author Katsute
      */
-    public abstract static class Route extends TransitRoute<String,Vehicle,Alert> implements RouteShortName, RouteDescription, BusRouteTypes { }
+    public abstract static class Route extends TransitRoute<String,Vehicle,Alert> implements BusRouteTypes {
+
+        /**
+         * Returns the short route name.
+         *
+         * @return route short name
+         *
+         * @since 1.0.0
+         */
+        public abstract String getRouteShortName();
+
+        /**
+         * Returns the route description.
+         *
+         * @return route description
+         *
+         * @since 1.0.0
+         */
+        public abstract String getRouteDescription();
+
+    }
 
     /**
      * Represents a bus stop.
@@ -62,231 +81,70 @@ public abstract class Bus {
      * Represents a bus vehicle.
      *
      * @since 1.0.0
-     * @version 1.0.0
+     * @version 2.0.0
      * @author Katsute
      */
-    public abstract static class Vehicle extends TransitVehicle<Route,Stop,Trip,Integer,String,Integer> implements Bearing, Location, Direction<BusDirection>, BusRouteTypes {
+    public abstract static class Vehicle extends TransitVehicle<String,Route,Integer,Stop,Integer,Trip> implements Location, Direction<BusDirection>, BusRouteTypes {
 
         /**
-         * Returns the origin stop code.
+         * Returns the vehicle bearing, 0 being North.
          *
-         * @return origin stop code
-         *
-         * @see #getOriginStop()
-         * @since 1.0.0
-         */
-        public abstract Integer getOriginStopCode();
-
-        /**
-         * Returns the origin stop.
-         *
-         * @return origin stop
-         *
-         * @see #getOriginStopCode()
-         * @since 1.0.0
-         */
-        public abstract Stop getOriginStop();
-
-        /**
-         * Returns the destination name.
-         *
-         * @return destination name
+         * @return bearing
          *
          * @since 1.0.0
          */
-        public abstract String getDestinationName();
+        public abstract Double getBearing();
 
         /**
-         * Returns the progress rate.
+         * Returns the estimated passenger count.
          *
-         * @return progress rate
+         * @return passenger count
          *
-         * @since 1.0.0
+         * @since 2.0.0
          */
-        public abstract String getProgressRate();
-
-        /**
-         * Returns the progress status.
-         *
-         * @return progress status
-         *
-         * @since 1.0.0
-         */
-        public abstract String[] getProgressStatus();
-
-        /**
-         * Returns the aimed arrival time.
-         *
-         * @return aimed arrival time
-         *
-         * @see Date
-         * @see #getAimedArrivalTimeEpochMillis()
-         * @since 1.0.0
-         */
-        public abstract Date getAimedArrivalTime();
-
-        /**
-         * Returns the aimed arrival time as milliseconds since epoch.
-         *
-         * @return aimed arrival time
-         *
-         * @see #getAimedArrivalTime()
-         * @since 1.0.0
-         */
-        public abstract Long getAimedArrivalTimeEpochMillis();
-
-        /**
-         * Returns the expected arrival time.
-         *
-         * @return expected arrival time
-         *
-         * @see Date
-         * @see #getExpectedArrivalTimeEpochMillis()
-         * @since 1.0.0
-         */
-        public abstract Date getExpectedArrivalTime();
-
-        /**
-         * Returns the expected arrival time as milliseconds since epoch.
-         *
-         * @return expected arrival time
-         *
-         * @see #getExpectedArrivalTime()
-         * @since 1.0.0
-         */
-        public abstract Long getExpectedArrivalTimeEpochMillis();
-
-        /**
-         * Returns the expected departure time.
-         *
-         * @return expected departure time
-         *
-         * @see Date
-         * @see #getExpectedDepartureTimeEpochMillis()
-         * @since 1.0.0
-         */
-        public abstract Date getExpectedDepartureTime();
-
-        /**
-         * Returns the expected departure time as milliseconds since epoch.
-         *
-         * @return expected departure time
-         *
-         * @see #getExpectedDepartureTime()
-         * @since 1.0.0
-         */
-        public abstract Long getExpectedDepartureTimeEpochMillis();
-
-        /**
-         * Returns the arrival proximity text.
-         *
-         * @return arrival proximity text
-         */
-        public abstract String getArrivalProximityText();
-
-        /**
-         * Returns the distance from the stop in meters.
-         *
-         * @return distance from stop
-         *
-         * @since 1.0.0
-         */
-        public abstract Integer getDistanceFromStop();
-
-        /**
-         * Returns number of stops between vehicle stop and requested stop.
-         *
-         * @return stops away
-         *
-         * @since 1.0.0
-         */
-        public abstract Integer getStopsAway();
-
-        /**
-         * Returns the stop name
-         *
-         * @return stop name
-         *
-         * @since 1.0.0
-         */
-        public abstract String getStopName();
+        public abstract Integer getPassengers();
 
     }
 
     /**
      * Represents a bus vehicle trip.
      *
-     * @see TripStop
+     * @see TransitTrip
      * @since 1.0.0
-     * @version 1.0.0
+     * @version 2.0.0
      * @author Katsute
      */
-    public abstract static class Trip extends TransitTrip<Vehicle,Route,TripStop> { }
+    public abstract static class Trip extends TransitTrip<String,Route,Vehicle,TripStop> {
+
+        /**
+         * Returns the delay from the schedule. Negative numbers implies ahead of schedule.
+         *
+         * @return delay in seconds
+         *
+         * @since 2.0.0
+         */
+        public abstract Integer getDelay();
+
+    }
 
     /**
      * Represents a bus vehicle trip stop.
      *
-     * @see Trip
+     * @see TransitTripStop
      * @since 1.0.0
-     * @version 1.0.0
+     * @version 2.0.0
      * @author Katsute
      */
-    public abstract static class TripStop extends TransitTripStop<Stop,Trip,Integer> {
+    public abstract static class TripStop extends TransitTripStop<Integer,Stop,Trip> {
 
         /**
-         * Returns the expected arrival time.
+         * Returns the stop sequence.
          *
-         * @return expected arrival time
+         * @return stop sequence
          *
-         * @see Date
-         * @see #getExpectedArrivalTimeEpochMillis()
-         * @since 1.0.0
+         * @since 2.0.0
          */
-        public abstract Date getExpectedArrivalTime();
-
-        /**
-         * Returns the expected arrival time as milliseconds since epoch.
-         *
-         * @return expected arrival time
-         *
-         * @see #getExpectedArrivalTime()
-         * @since 1.0.0
-         */
-        public abstract Long getExpectedArrivalTimeEpochMillis();
-
-        /**
-         * Returns the arrival proximity text.
-         *
-         * @return arrival proximity text
-         */
-        public abstract String getArrivalProximityText();
-
-        /**
-         * Returns the distance from the stop in meters.
-         *
-         * @return distance from stop
-         *
-         * @since 1.0.0
-         */
-        public abstract Integer getDistanceFromStop();
-
-        /**
-         * Returns number of stops between vehicle stop and requested stop.
-         *
-         * @return stops away
-         *
-         * @since 1.0.0
-         */
-        public abstract Integer getStopsAway();
-
-        /**
-         * Returns the stop name
-         *
-         * @return stop name
-         *
-         * @since 1.0.0
-         */
-        public abstract String getStopName();
+        public abstract Integer getStopSequence();
 
     }
 
@@ -294,7 +152,7 @@ public abstract class Bus {
      * Represents a bus alert.
      *
      * @since 1.0.0
-     * @version 1.0.0
+     * @version 2.0.0
      * @author Katsute
      */
     public abstract static class Alert extends TransitAlert<String,Route,Integer,Stop> { }

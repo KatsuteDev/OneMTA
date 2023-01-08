@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Katsute <https://github.com/Katsute>
+ * Copyright (C) 2023 Katsute <https://github.com/Katsute>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -29,7 +29,7 @@ import java.util.regex.Pattern;
 import static dev.katsute.onemta.GTFSRealtimeProto.*;
 import static dev.katsute.onemta.subway.Subway.*;
 
-@SuppressWarnings("SpellCheckingInspection")
+@SuppressWarnings({"Java9CollectionFactory"})
 abstract class MTASchema_Subway extends MTASchema {
 
     private static final Pattern direction = Pattern.compile("[NS]$", Pattern.CASE_INSENSITIVE);
@@ -114,24 +114,25 @@ abstract class MTASchema_Subway extends MTASchema {
     static Route asRoute(final MTA mta, final String route_id){
         // find row
         final DataResource resource = getDataResource(mta, DataResourceType.Subway);
-        final CSV csv               = resource.getData("routes.txt");
-        final List<String> row      = csv.getRow("route_id", resolveSubwayLine(route_id));
+        final CSV csv = resource.getData("routes.txt");
+        final List<String> row = csv.getRow("route_id", resolveSubwayLine(route_id));
 
         // instantiate
         Objects.requireNonNull(row, "Failed to find subway route with id '" + route_id + "'");
 
         return new Route() {
 
-            private final String routeID        = resolveSubwayLine(route_id);
+            private final String routeID = resolveSubwayLine(route_id);
             private final String routeShortName = row.get(csv.getHeaderIndex("route_short_name"));
-            private final String routeLongName  = row.get(csv.getHeaderIndex("route_long_name"));
-            private final String routeDesc      = row.get(csv.getHeaderIndex("route_desc"));
-            private final String routeColor     = row.get(csv.getHeaderIndex("route_color"));
+            private final String routeLongName = row.get(csv.getHeaderIndex("route_long_name"));
+            private final String routeDesc = row.get(csv.getHeaderIndex("route_desc"));
+            private final String routeColor = row.get(csv.getHeaderIndex("route_color"));
             private final String routeTextColor = row.get(csv.getHeaderIndex("route_text_color"));
 
             private final TransitAgency agency = asAgency(row.get(csv.getHeaderIndex("agency_id")), resource);
 
-            // static data
+            private List<Vehicle> vehicles = null;
+            private List<Subway.Alert> alerts = null;
 
             @Override
             public final String getRouteID(){
@@ -168,51 +169,38 @@ abstract class MTASchema_Subway extends MTASchema {
                 return agency;
             }
 
-            // live feed
-
-            private List<Vehicle> vehicles = null;
-
             @Override
             public final Vehicle[] getVehicles(){
                 return getVehicles(false);
             }
 
+            @SuppressWarnings("DataFlowIssue")
             private Vehicle[] getVehicles(final boolean update){
                 if(vehicles == null || update){
                     final FeedMessage feed = cast(mta).resolveSubwayFeed(routeID);
-                    final int len          = Objects.requireNonNull(feed, "Could not find subway feed for route ID " + routeID).getEntityCount();
+                    this.vehicles = Collections.unmodifiableList(Arrays.asList(cast(mta).transformFeedEntities(
+                        feed,
+                        ent ->
+                            ent.hasTripUpdate() &&
+                            isExactRoute(ent.getTripUpdate().getTrip().getRouteId()), // check if trip is this route
+                        ent -> {
+                            // find matching vehicle entity
+                            final String id = ent.getTripUpdate().getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getTrainId();
+                            final FeedEntity veh = cast(mta).getFeedEntity(
+                                feed,
+                                vent ->
+                                    vent.hasVehicle() &&
+                                    Objects.equals(vent.getVehicle().getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getTrainId(), id)
+                            );
 
-                    TripUpdate tripUpdate = null;
-                    String tripVehicle    = null;
-
-                    final List<Vehicle> vehicles = new ArrayList<>();
-                    for(int i = 0; i < len; i++){
-                        final FeedEntity entity = feed.getEntity(i);
-
-                        // get next trip
-                        if(entity.hasTripUpdate()){
-                            if( // only include trips on this route
-                                stripExpress(entity.getTripUpdate().getTrip().getRouteId()).equalsIgnoreCase(stripExpress(route_id))
-                            ){
-                                tripUpdate  = entity.getTripUpdate();
-                                tripVehicle = tripUpdate.getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getTrainId();
-                            }
-                        }else if( // get matching vehicle for trip
-                            entity.hasVehicle() &&
-                            entity.getVehicle().getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getTrainId().equals(tripVehicle)
-                        ){
-                            vehicles.add(asVehicle(mta, entity.getVehicle(), tripUpdate, this));
-                            tripUpdate  = null;
-                            tripVehicle = null;
-                        }
-                    }
-
-                    this.vehicles = Collections.unmodifiableList(vehicles);
+                            return MTASchema_Subway.asVehicle(mta, veh.getVehicle(), ent.getTripUpdate(), this);
+                        },
+                        new Vehicle[0]
+                    )));
                 }
                 return vehicles.toArray(new Vehicle[0]);
             }
 
-            private List<Subway.Alert> alerts = null;
 
             @Override
             public final Subway.Alert[] getAlerts(){
@@ -221,20 +209,28 @@ abstract class MTASchema_Subway extends MTASchema {
 
             private Subway.Alert[] getAlerts(final boolean update){
                 if(alerts == null || update){
-                    final List<Subway.Alert> alerts = new ArrayList<>();
-                    final GTFSRealtimeProto.FeedMessage feed = cast(mta).service.alerts.getSubway(cast(mta).subwayToken);
-                    final int len = feed.getEntityCount();
-                    for(int i = 0; i < len; i++){
-                        final Subway.Alert alert = MTASchema_Subway.asTransitAlert(mta, feed.getEntity(i));
-                        if(Arrays.asList(alert.getRouteIDs()).contains(routeID))
-                            alerts.add(alert);
-                    }
-                    this.alerts = alerts;
+                    this.alerts = Collections.unmodifiableList(Arrays.asList(cast(mta).transformFeedEntities(
+                        cast(mta).service.alerts.getSubway(),
+                        ent -> {
+                            final GTFSRealtimeProto.Alert alert = ent.getAlert();
+                            final int len = alert.getInformedEntityCount();
+                            for(int i = 0; i < len; i++)
+                                if(isSameRoute(alert.getInformedEntity(i).getRouteId())) // check if alert includes this route
+                                    return true;
+                            return false;
+                        },
+                        ent -> asTransitAlert(mta, ent),
+                        new Subway.Alert[0]
+                    )));
                 }
                 return alerts.toArray(new Subway.Alert[0]);
             }
 
-            // onemta methods
+            @Override
+            public final void refresh(){
+                getAlerts(true);
+                getVehicles(true);
+            }
 
             @Override
             public final boolean isExactRoute(final Object object){
@@ -266,13 +262,7 @@ abstract class MTASchema_Subway extends MTASchema {
                     return false;
             }
 
-            @Override
-            public final void refresh(){
-                getAlerts(true);
-                getVehicles(true);
-            }
-
-            // Java
+            //
 
             @Override
             public final String toString(){
@@ -294,15 +284,15 @@ abstract class MTASchema_Subway extends MTASchema {
         final String stop = stop_id.toUpperCase();
         // find row
         final DataResource resource = getDataResource(mta, DataResourceType.Subway);
-        final CSV csv               = resource.getData("stops.txt");
-        final List<String> row      = csv.getRow("stop_id", stop);
+        final CSV csv = resource.getData("stops.txt");
+        final List<String> row = csv.getRow("stop_id", stop);
 
         // instantiate
         Objects.requireNonNull(row, "Failed to find subway stop with id '" + stop + "'");
 
         return new Stop() {
 
-            private final String stopID   = stop;
+            private final String stopID = stop;
             private final String stopName = row.get(csv.getHeaderIndex("stop_name"));
 
             private final Double stopLat = Double.valueOf(row.get(csv.getHeaderIndex("stop_lat")));
@@ -310,7 +300,8 @@ abstract class MTASchema_Subway extends MTASchema {
 
             private final SubwayDirection stopDirection = MTASchema_Subway.getDirection(stopID);
 
-            // static data
+            private List<Vehicle> vehicles = null;
+            private List<Subway.Alert> alerts = null;
 
             @Override
             public final String getStopID(){
@@ -352,66 +343,42 @@ abstract class MTASchema_Subway extends MTASchema {
                 return transfers.toArray(new Stop[0]);
             }
 
-            // live feed
-
-            private List<Vehicle> vehicles = null;
-
             @Override
             public final Vehicle[] getVehicles(){
                 return getVehicles(false);
             }
 
+            @SuppressWarnings("DataFlowIssue")
             private Vehicle[] getVehicles(final boolean update){
                 if(vehicles == null || update){
                     final FeedMessage feed = cast(mta).resolveSubwayFeed(stop_id.substring(0, 1));
-                    final int len          = Objects.requireNonNull(feed, "Could not find subway feed for stop ID " + stop_id).getEntityCount();
+                    this.vehicles = Collections.unmodifiableList(Arrays.asList(cast(mta).transformFeedEntities(
+                        feed,
+                        ent -> {
+                            final int len = ent.getTripUpdate().getStopTimeUpdateCount();
+                            for(int i = 0; i < len; i++)
+                                if(isSameStop(ent.getTripUpdate().getStopTimeUpdate(i).getStopId())) // check if trip includes this stop
+                                    return true;
+                            return false;
+                        },
+                        ent -> {
+                            // find matching vehicle entity
+                            final String id = ent.getTripUpdate().getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getTrainId();
+                            final FeedEntity veh = cast(mta).getFeedEntity(
+                                feed,
+                                vent ->
+                                    vent.hasVehicle() &&
+                                    Objects.equals(vent.getVehicle().getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getTrainId(), id)
+                            );
 
-                    TripUpdate tripUpdate = null;
-                    String tripVehicle    = null;
-
-                    final List<Vehicle> vehicles = new ArrayList<>();
-                    OUTER:
-                    for(int i = 0; i < len; i++){
-                        final FeedEntity entity = feed.getEntity(i);
-
-                        // get next trip
-                        if(entity.hasTripUpdate()){
-                            if( // only include trips at this stop
-                                entity.getTripUpdate().getStopTimeUpdateCount() > 0
-                            ){
-                                final TripUpdate tu = entity.getTripUpdate();
-                                final int len2 = tu.getStopTimeUpdateCount();
-                                // check all stops on train route
-                                for(int u = 0; u < len2; u++){
-                                    final TripUpdate.StopTimeUpdate stu = tu.getStopTimeUpdate(u);
-                                    // check if this stop is en route
-                                    if(
-                                        stopDirection == null
-                                        ? stripDirection(stu.getStopId()).equalsIgnoreCase(stripDirection(stop_id))
-                                        : stu.getStopId().equalsIgnoreCase(stop_id)
-                                    ){
-                                        tripUpdate  = entity.getTripUpdate();
-                                        tripVehicle = tripUpdate.getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getTrainId();
-                                        continue OUTER;
-                                    }
-                                }
-                            }
-                        }else if( // get matching vehicle for trip
-                            entity.hasVehicle() &&
-                            entity.getVehicle().getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getTrainId().equals(tripVehicle)
-                        ){
-                            vehicles.add(asVehicle(mta, entity.getVehicle(), tripUpdate, null));
-                            tripUpdate  = null;
-                            tripVehicle = null;
-                        }
-                    }
-
-                    this.vehicles = Collections.unmodifiableList(vehicles);
+                            return MTASchema_Subway.asVehicle(mta, veh.getVehicle(), ent.getTripUpdate(), null);
+                        },
+                        new Vehicle[0]
+                    )));
                 }
                 return vehicles.toArray(new Vehicle[0]);
             }
 
-            private List<Subway.Alert> alerts = null;
 
             @Override
             public final Subway.Alert[] getAlerts(){
@@ -420,25 +387,28 @@ abstract class MTASchema_Subway extends MTASchema {
 
             private Subway.Alert[] getAlerts(final boolean update){
                 if(alerts == null || update){
-                    final List<Subway.Alert> alerts = new ArrayList<>();
-                    final GTFSRealtimeProto.FeedMessage feed = cast(mta).service.alerts.getSubway(cast(mta).subwayToken);
-                    final int len = feed.getEntityCount();
-                    for(int i = 0; i < len; i++){
-                        final Subway.Alert alert   = MTASchema_Subway.asTransitAlert(mta, feed.getEntity(i));
-                        for(final String id : alert.getStopIDs())
-                            if(id.equalsIgnoreCase(stop) || // if stop ID matches exactly
-                               // if stop direction is unknown, include alerts for any direction
-                               (stopDirection == null && stripDirection(id).equalsIgnoreCase(stop)) ||
-                               // if alert direction if unknown, include stops for any direction
-                               (MTASchema_Subway.getDirection(id) == null && stripDirection(stop).equalsIgnoreCase(id)))
-                                alerts.add(alert);
-                    }
-                    this.alerts = alerts;
+                    this.alerts = Collections.unmodifiableList(Arrays.asList(cast(mta).transformFeedEntities(
+                        cast(mta).service.alerts.getSubway(),
+                        ent -> {
+                            final GTFSRealtimeProto.Alert alert = ent.getAlert();
+                            final int len = alert.getInformedEntityCount();
+                            for(int i = 0; i < len; i++)
+                                if(isSameStop(alert.getInformedEntity(i).getStopId())) // check if alert includes this stop
+                                    return true;
+                            return false;
+                        },
+                        ent -> asTransitAlert(mta, ent),
+                        new Subway.Alert[0]
+                    )));
                 }
                 return alerts.toArray(new Subway.Alert[0]);
             }
 
-            // onemta methods
+            @Override
+            public final void refresh(){
+                getAlerts(true);
+                getVehicles(true);
+            }
 
             @Override
             public final boolean isExactStop(final Object object){
@@ -464,13 +434,7 @@ abstract class MTASchema_Subway extends MTASchema {
                     return false;
             }
 
-            @Override
-            public final void refresh(){
-                getAlerts(true);
-                getVehicles(true);
-            }
-
-            // Java
+            //
 
             @Override
             public final String toString(){
@@ -487,16 +451,34 @@ abstract class MTASchema_Subway extends MTASchema {
     }
 
     static Vehicle asVehicle(final MTA mta, final VehiclePosition vehicle, final TripUpdate tripUpdate, final Route optionalRoute){
-        return new Vehicle() {
+        return new Vehicle(){
 
-            private final String vehicleID = tripUpdate.getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getTrainId();
+            private final String vehicleID = requireNonNull(() -> vehicle.getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getTrainId());
 
-            private String status   = requireNonNull(() -> vehicle.getCurrentStatus().name());
+            private Boolean assigned = requireNonNull(() -> vehicle.getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getIsAssigned());
 
-            private String stopID   = vehicle.getStopId();
-            private String routeID  = tripUpdate.getTrip().getRouteId();
+            @SuppressWarnings("DataFlowIssue")
+            private Boolean rerouted = requireNonNull(() -> vehicleID.charAt(0) == '=');
 
-            private boolean express = routeID.toUpperCase().endsWith("X");
+            @SuppressWarnings("DataFlowIssue")
+
+            private Boolean skipStop = requireNonNull(() -> vehicleID.charAt(0) == '/');
+
+            @SuppressWarnings("DataFlowIssue")
+
+            private Boolean turnTrain = requireNonNull(() -> vehicleID.charAt(0) == '$');
+
+            private String status = requireNonNull(() -> vehicle.getCurrentStatus().name());
+
+            private Integer sequence = requireNonNull(vehicle::getCurrentStopSequence);
+
+            private String stopID = requireNonNull(vehicle::getStopId);
+            private Stop stop = null;
+
+            private String routeID = requireNonNull(() -> vehicle.getTrip().getRouteId());
+            private Route route = optionalRoute;
+
+            private Boolean express = requireNonNull(() -> routeID.toUpperCase().endsWith("X"));
 
             private Trip trip = asTrip(mta, tripUpdate, this);
 
@@ -506,8 +488,48 @@ abstract class MTASchema_Subway extends MTASchema {
             }
 
             @Override
-            public final String getCurrentStatus(){
+            public final Boolean isAssigned(){
+                return assigned;
+            }
+
+            @Override
+            public final Boolean isRerouted(){
+                return rerouted;
+            }
+
+            @Override
+            public final Boolean isSkipStop(){
+                return skipStop;
+            }
+
+            @Override
+            public final Boolean isTurnTrain(){
+                return turnTrain;
+            }
+
+            @Override
+            public final String getStatus(){
                 return status;
+            }
+
+            @Override
+            public final Integer getStopSequence(){
+                return sequence;
+            }
+
+            @Override
+            public final Boolean isExpress(){
+                return express;
+            }
+
+            @Override
+            public final String getRouteID(){
+                return routeID;
+            }
+
+            @Override
+            public final Route getRoute(){
+                return route != null ? route : (route = mta.getSubwayRoute(routeID));
             }
 
             @Override
@@ -516,29 +538,8 @@ abstract class MTASchema_Subway extends MTASchema {
             }
 
             @Override
-            public final String getRouteID(){
-                return routeID;
-            }
-
-            // onemta methods
-
-            @Override
-            public final Boolean isExpress(){
-                return express;
-            }
-
-            private Stop stop = null;
-
-            @Override
             public final Stop getStop(){
                 return stop != null ? stop : (stop = mta.getSubwayStop(stopID));
-            }
-
-            private Route route = optionalRoute;
-
-            @Override
-            public final Route getRoute(){
-                return route != null ? route : (route = mta.getSubwayRoute(routeID));
             }
 
             @Override
@@ -555,22 +556,36 @@ abstract class MTASchema_Subway extends MTASchema {
                 getTrip(true);
 
                 final Vehicle vehicle = mta.getSubwayTrain(vehicleID);
-                status  = vehicle.getCurrentStatus();
-                stopID  = vehicle.getStopID();
-                routeID = vehicle.getRouteID();
+
+                assigned = vehicle.isAssigned();
+                rerouted = vehicle.isRerouted();
+                skipStop = vehicle.isSkipStop();
+                turnTrain = vehicle.isTurnTrain();
+                status = vehicle.getStatus();
+                sequence = vehicle.getStopSequence();
                 express = vehicle.isExpress();
+                routeID = vehicle.getRouteID();
+                route = null;
+                stopID = vehicle.getStopID();
+                stop = null;
             }
 
-            // Java
+            //
 
             @Override
             public final String toString(){
                 return "Subway.Vehicle{" +
-                       "status='" + status + '\'' +
-                       ", express='" + express + '\'' +
-                       ", vehicleID='" + vehicleID + '\'' +
+                       "vehicleID='" + vehicleID + '\'' +
+                       ", assigned=" + assigned +
+                       ", rerouted=" + rerouted +
+                       ", skipStop=" + skipStop +
+                       ", turnTrain=" + turnTrain +
+                       ", status='" + status + '\'' +
+                       ", sequence=" + sequence +
                        ", stopID='" + stopID + '\'' +
                        ", routeID='" + routeID + '\'' +
+                       ", express=" + express +
+                       ", trip=" + trip +
                        '}';
             }
 
@@ -578,29 +593,22 @@ abstract class MTASchema_Subway extends MTASchema {
     }
 
     static Trip asTrip(final MTA mta, final TripUpdate tripUpdate, final Vehicle referringVehicle){
-        final NYCTSubwayProto.NyctTripDescriptor nyctTripDescriptor = tripUpdate.getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor);
-        return new Trip() {
+        return new Trip(){
+
+            private final String tripID = requireNonNull(() -> tripUpdate.getTrip().getTripId());
+            private final String route = requireNonNull(() -> tripUpdate.getTrip().getRouteId());
+
+            private final List<TripStop> stops;
+
+            private final SubwayDirection direction = requireNonNull(() -> SubwayDirection.asDirection(tripUpdate.getTrip().getExtension(NYCTSubwayProto.nyctTripDescriptor).getDirection().getNumber()));
 
             private final Vehicle vehicle = referringVehicle;
-
-            private final String tripID  = requireNonNull(() -> tripUpdate.getTrip().getTripId());
-            private final String routeID = requireNonNull(() -> tripUpdate.getTrip().getRouteId());
-
-            private final String scheRel = requireNonNull(() -> tripUpdate.getTrip().getScheduleRelationship().name());
-
-            private final SubwayDirection direction = requireNonNull(
-                () -> nyctTripDescriptor.hasDirection()
-                ? SubwayDirection.asDirection(nyctTripDescriptor.getDirection().getNumber())
-                : SubwayDirection.NORTH
-            );
-
-            private final List<TripStop> tripStops;
 
             {
                 final List<TripStop> stops = new ArrayList<>();
                 for(final TripUpdate.StopTimeUpdate update : tripUpdate.getStopTimeUpdateList())
                     stops.add(asTripStop(mta, update, this));
-                tripStops = Collections.unmodifiableList(stops);
+                this.stops = Collections.unmodifiableList(stops);
             }
 
             @Override
@@ -610,20 +618,8 @@ abstract class MTASchema_Subway extends MTASchema {
 
             @Override
             public final String getRouteID(){
-                return routeID;
+                return route;
             }
-
-            @Override
-            public final String getScheduleRelationship(){
-                return scheRel;
-            }
-
-            @Override
-            public final SubwayDirection getDirection(){
-                return direction;
-            }
-
-            // onemta methods
 
             @Override
             public final Route getRoute(){
@@ -631,24 +627,29 @@ abstract class MTASchema_Subway extends MTASchema {
             }
 
             @Override
-            public final Vehicle getVehicle(){
-                return vehicle;
+            public final TripStop[] getTripStops(){
+                return stops.toArray(new TripStop[0]);
             }
 
             @Override
-            public final TripStop[] getTripStops(){
-                return tripStops.toArray(new TripStop[0]);
+            public final SubwayDirection getDirection(){
+                return direction;
             }
 
-            // Java
+            @Override
+            public final Vehicle getVehicle(){
+                return referringVehicle;
+            }
+
+            //
 
             @Override
             public final String toString(){
                 return "Subway.Trip{" +
                        "tripID='" + tripID + '\'' +
-                       ", routeID='" + routeID + '\'' +
+                       ", route='" + route + '\'' +
+                       ", stops=" + stops +
                        ", direction=" + direction +
-                       ", scheduleRelationship='" + scheRel + '\'' +
                        '}';
             }
 
@@ -656,22 +657,30 @@ abstract class MTASchema_Subway extends MTASchema {
     }
 
     static TripStop asTripStop(final MTA mta, final TripUpdate.StopTimeUpdate stopTimeUpdate, final Trip referringTrip){
-        final NYCTSubwayProto.NyctStopTimeUpdate nyctStopTimeUpdate = stopTimeUpdate.getExtension(NYCTSubwayProto.nyctStopTimeUpdate);
-        return new TripStop() {
-
-            private final Trip trip = referringTrip;
+        return new TripStop(){
 
             private final String stopID = requireNonNull(stopTimeUpdate::getStopId);
 
-            private final Long arrival   = requireNonNull(() -> stopTimeUpdate.getArrival().getTime() * 1000);
+            private Stop stop = null;
+
+            private final Long arrival = requireNonNull(() -> stopTimeUpdate.getArrival().getTime() * 1000);
             private final Long departure = requireNonNull(() -> stopTimeUpdate.getDeparture().getTime() * 1000);
 
-            private final String track       = requireNonNull(nyctStopTimeUpdate::getScheduledTrack);
-            private final String actualTrack = requireNonNull(nyctStopTimeUpdate::getActualTrack);
+            private final String scheduledTrack = requireNonNull(() -> stopTimeUpdate.getExtension(NYCTSubwayProto.nyctStopTimeUpdate).getScheduledTrack());
+            private final String actualTrack = requireNonNull(() -> stopTimeUpdate.getExtension(NYCTSubwayProto.nyctStopTimeUpdate).getActualTrack());
+
+            private final String status = requireNonNull(() -> stopTimeUpdate.getExtension(MNRRProto.mnrStopTimeUpdate).getTrainStatus());
+
+            private final Trip trip = referringTrip;
 
             @Override
             public final String getStopID(){
                 return stopID;
+            }
+
+            @Override
+            public final Stop getStop(){
+                return stop != null ? stop : (stop = mta.getSubwayStop(stopID));
             }
 
             @Override
@@ -695,22 +704,13 @@ abstract class MTASchema_Subway extends MTASchema {
             }
 
             @Override
-            public final String getTrack(){
-                return track;
-            }
-
-            @Override
             public final String getActualTrack(){
                 return actualTrack;
             }
 
-            // onemta methods
-
-            private Stop stop = null;
-
             @Override
-            public final Stop getStop(){
-                return stop != null ? stop : (stop = mta.getSubwayStop(Objects.requireNonNull(stopID, "Stop ID must not be null")));
+            public final String getTrack(){
+                return scheduledTrack;
             }
 
             @Override
@@ -718,7 +718,7 @@ abstract class MTASchema_Subway extends MTASchema {
                 return trip;
             }
 
-            // Java
+            //
 
             @Override
             public final String toString(){
@@ -726,8 +726,9 @@ abstract class MTASchema_Subway extends MTASchema {
                        "stopID='" + stopID + '\'' +
                        ", arrival=" + arrival +
                        ", departure=" + departure +
-                       ", track='" + track + '\'' +
+                       ", scheduledTrack='" + scheduledTrack + '\'' +
                        ", actualTrack='" + actualTrack + '\'' +
+                       ", status='" + status + '\'' +
                        '}';
             }
 
@@ -736,39 +737,44 @@ abstract class MTASchema_Subway extends MTASchema {
 
     static Subway.Alert asTransitAlert(final MTA mta, final GTFSRealtimeProto.FeedEntity feedEntity){
         final GTFSRealtimeProto.Alert alert = feedEntity.getAlert();
-        return new Subway.Alert() {
+        return new Subway.Alert(){
 
             private final String alertID = requireNonNull(feedEntity::getId);
 
-            private final String headerText      = requireNonNull(() -> alert.getHeaderText().getTranslation(0).getText());
-            private final String descriptionText = requireNonNull(() -> alert.getDescriptionText().getTranslation(0).getText());
+            private final List<TransitAlertPeriod> periods;
 
-            private final String alertType = requireNonNull(() -> alert.getExtension(ServiceStatusProto.mercuryAlert).getAlertType());
-
-            private final String effect = requireNonNull(() -> alert.getEffect().name());
-
-            private final List<TransitAlertPeriod> alertPeriods;
             private final List<String> routeIDs;
+            private List<Route> routes = null;
+
             private final List<String> stopIDs;
+            private List<Stop> stops = null;
+
+            private final String header = requireNonNull(() -> alert.getHeaderText().getTranslation(0).getText());
+            private final String description = requireNonNull(() -> alert.getDescriptionText().getTranslation(0).getText());
+
+            private final Long createdAt = requireNonNull(() -> alert.getExtension(ServiceStatusProto.mercuryAlert).getCreatedAt() * 1000);
+            private final Long updatedAt = requireNonNull(() -> alert.getExtension(ServiceStatusProto.mercuryAlert).getUpdatedAt() * 1000);
+
+            private final String type = requireNonNull(() -> alert.getExtension(ServiceStatusProto.mercuryAlert).getAlertType());
 
             {
-                final List<TransitAlertPeriod> alertPeriods = new ArrayList<>();
+                final List<TransitAlertPeriod> periods = new ArrayList<>();
                 for(final GTFSRealtimeProto.TimeRange range : alert.getActivePeriodList())
-                    alertPeriods.add(asTransitAlertTimeframe(range));
-                this.alertPeriods = Collections.unmodifiableList(alertPeriods);
+                    periods.add(asTransitAlertTimeframe(range));
+                this.periods = Collections.unmodifiableList(periods);
 
-                final List<String> routeIDs = new ArrayList<>();
-                final List<String> stopIDs = new ArrayList<>();
+                final List<String> routes = new ArrayList<>();
+                final List<String> stops = new ArrayList<>();
                 final int len = alert.getInformedEntityCount();
                 for(int i = 0; i < len; i++){
                     final GTFSRealtimeProto.EntitySelector entity = alert.getInformedEntity(i);
                     if(entity.hasRouteId())
-                        routeIDs.add(entity.getRouteId());
+                        routes.add(entity.getRouteId());
                     else if(entity.hasStopId())
-                        stopIDs.add(entity.getStopId());
+                        stops.add(entity.getStopId());
                 }
-                this.routeIDs = Collections.unmodifiableList(routeIDs);
-                this.stopIDs  = Collections.unmodifiableList(stopIDs);
+                this.routeIDs = Collections.unmodifiableList(routes);
+                this.stopIDs = Collections.unmodifiableList(stops);
             }
 
             @Override
@@ -778,15 +784,13 @@ abstract class MTASchema_Subway extends MTASchema {
 
             @Override
             public final TransitAlertPeriod[] getActivePeriods(){
-                return alertPeriods.toArray(new TransitAlertPeriod[0]);
+                return periods.toArray(new TransitAlertPeriod[0]);
             }
 
             @Override
             public final String[] getRouteIDs(){
                 return routeIDs.toArray(new String[0]);
             }
-
-            private List<Route> routes = null;
 
             @Override
             public final Route[] getRoutes(){
@@ -804,8 +808,6 @@ abstract class MTASchema_Subway extends MTASchema {
                 return stopIDs.toArray(new String[0]);
             }
 
-            private List<Stop> stops = null;
-
             @Override
             public final Stop[] getStops(){
                 if(stops == null){
@@ -819,37 +821,53 @@ abstract class MTASchema_Subway extends MTASchema {
 
             @Override
             public final String getHeader(){
-                return headerText;
+                return header;
             }
 
             @Override
             public final String getDescription(){
-                return descriptionText;
+                return description;
+            }
+
+            @Override
+            public final Date getCreatedAt(){
+                return createdAt != null ? new Date(createdAt) : null;
+            }
+
+            @Override
+            public final Long getCreatedAtEpochMillis(){
+                return createdAt;
+            }
+
+            @Override
+            public final Date getUpdatedAt(){
+                return updatedAt != null ? new Date(updatedAt) : null;
+            }
+
+            @Override
+            public final Long getUpdatedAtEpochMillis(){
+                return updatedAt;
             }
 
             @Override
             public final String getAlertType(){
-                return alertType;
+                return type;
             }
 
-            @Override
-            public final String getEffect(){
-                return effect;
-            }
-
-            // Java
+            //
 
             @Override
             public final String toString(){
                 return "Subway.Alert{" +
                        "alertID='" + alertID + '\'' +
-                       ", headerText='" + headerText + '\'' +
-                       ", descriptionText='" + descriptionText + '\'' +
-                       ", alertType='" + alertType + '\'' +
-                       ", effect='" + effect + '\'' +
-                       ", alertPeriods=" + alertPeriods +
+                       ", periods=" + periods +
                        ", routeIDs=" + routeIDs +
                        ", stopIDs=" + stopIDs +
+                       ", header='" + header + '\'' +
+                       ", description='" + description + '\'' +
+                       ", createdAt=" + createdAt +
+                       ", updatedAt=" + updatedAt +
+                       ", type='" + type + '\'' +
                        '}';
             }
 

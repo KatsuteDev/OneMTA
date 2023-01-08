@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Katsute <https://github.com/Katsute>
+ * Copyright (C) 2023 Katsute <https://github.com/Katsute>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -31,7 +31,7 @@ import dev.katsute.onemta.attribute.*;
  * @version 1.1.0
  * @author Katsute
  */
-public abstract class TransitRoute<RID, V extends TransitVehicle<?,?,?,?,?,?>, A extends TransitAlert<?,?,?,?>> implements Alerts<A>, VehiclesReference<V>, Updatable {
+public abstract class TransitRoute<RID,V extends TransitVehicle<?,?,?,?,?,?>,A extends TransitAlert<?,?,?,?>> implements Alerts<A>, Reference.Vehicle<V>, Updatable {
 
     /**
      * Returns the transit agency that is operating the route.

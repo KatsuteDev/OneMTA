@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Katsute <https://github.com/Katsute>
+ * Copyright (C) 2023 Katsute <https://github.com/Katsute>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -65,8 +65,8 @@ public abstract class DataResource {
         return new DataResource(){
 
             private final DataResourceType datatype = type;
-            private final Map<String,CSV> data      = new HashMap<>();
-            private final File source               = file;
+            private final Map<String,CSV> data = new HashMap<>();
+            private final File source = file;
 
             {
                 try(final ZipFile zip = new ZipFile(file)){

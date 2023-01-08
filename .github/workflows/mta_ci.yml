@@ -29,6 +29,9 @@ jobs:
           distribution: temurin
           java-version: ${{ matrix.java }}
 
+      - name: 📁 Create Folder
+        run: mkdir "src/test/java/resources"
+
       - name: 🔐 Load Client ID
         run: |
           echo ${{ secrets.BUS_TOKEN }} > src/test/java/resources/bus.txt

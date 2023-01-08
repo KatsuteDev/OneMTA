@@ -2,8 +2,8 @@ package dev.katsute.onemta.mnr;
 
 import dev.katsute.onemta.MTA;
 import dev.katsute.onemta.TestProvider;
-import dev.katsute.onemta.railroad.MNR;
-import dev.katsute.onemta.types.*;
+import dev.katsute.onemta.types.AlertValidation;
+import dev.katsute.onemta.types.StopValidation;
 import org.junit.jupiter.api.*;
 
 import static dev.katsute.onemta.railroad.MNR.*;
@@ -20,18 +20,39 @@ final class TestMNRStop {
         TestProvider.testGroup("mnr");
         mta = TestProvider.getOneMTA();
 
+        assert mta != null;
         stop = mta.getMNRStop(TestProvider.MNR_STOP);
-        VehicleValidation.requireVehicles(stop);
+    }
+
+    @Test
+    final void testVehicles(){
+        TestMNRVehicle.testVehicles(stop);
+        assertEquals(stop.getVehicles()[0].getVehicleID(), mta.getMNRTrain(stop.getVehicles()[0].getVehicleID()).getVehicleID());
+    }
+
+    @Test
+    final void testStop(){
+        assertNotNull(stop.getStopCode());
+        assertNotNull(stop.getStopDescription());
+        assertNotNull(stop.hasWheelchairBoarding());
     }
 
     @Nested
-    final class ComparatorTests {
+    final class StopTests {
+
+        @Test
+        final void testStop(){
+            StopValidation.testStop(stop);
+        }
 
         @Test
         final void testNotExact(){
             assertFalse(stop.isExactStop(null));
             assertFalse(stop.isExactStop(999));
             assertFalse(stop.isExactStop("999"));
+
+            assertTrue(stop.isExactStop(TestProvider.MNR_STOP_CODE));
+            assertTrue(stop.isExactStop(TestProvider.MNR_STOP_CODE.toLowerCase()));
         }
 
         @Test
@@ -43,149 +64,31 @@ final class TestMNRStop {
         }
 
         @Test
-        final void testStopCode(){
-            assertTrue(stop.isExactStop(TestProvider.MNR_STOP_CODE));
-            assertTrue(stop.isExactStop(TestProvider.MNR_STOP_CODE.toLowerCase()));
+        final void testNotSame(){
+            assertFalse(stop.isSameStop(null));
+            assertFalse(stop.isSameStop(999));
+            assertFalse(stop.isSameStop("999"));
+
+            assertTrue(stop.isSameStop(TestProvider.MNR_STOP_CODE));
+            assertTrue(stop.isSameStop(TestProvider.MNR_STOP_CODE.toLowerCase()));
+        }
+
+        @Test
+        final void testSame(){
+            assertTrue(stop.isSameStop(stop));
+            assertTrue(stop.isSameStop(mta.getMNRStop(TestProvider.MNR_STOP)));
+            assertTrue(stop.isSameStop(TestProvider.MNR_STOP));
+            assertTrue(stop.isSameStop(String.valueOf(TestProvider.MNR_STOP)));
         }
 
     }
 
     @Nested
-    final class ExtensionTests {
-
-        @Nested
-        final class VehicleTests {
-
-            @Test
-            final void testVehicles(){
-                { // not all MNR vehicles have stops for some reason
-                    assertTrue(TestProvider.atleastOneTrue(
-                        stop.getVehicles(), MNR.Vehicle.class,
-                        v -> v.getStopID() != null
-                    ));
-                }
-
-                for(final Vehicle vehicle : stop.getVehicles())
-                    MNRExtensions.testVehicle(vehicle);
-            }
-
-            @Test
-            final void testID(){
-                MNRExtensions.testVehicleNumber(mta, stop.getVehicles()[0]);
-            }
-
-        }
-
-    }
-
-    @Nested
-    final class InheritedTests {
+    final class AlertTests {
 
         @Test
-        final void testTransitStop(){
-            StopValidation.testStop(stop);
-        }
-
-        @Test
-        final void testRailroadStop(){
-            StopValidation.testRailroadStop(stop);
-        }
-
-        @Nested
-        final class VehicleTests {
-
-            @Test
-            final void testTransitVehicles(){
-                for(final Vehicle vehicle : stop.getVehicles())
-                    VehicleValidation.testVehicle(vehicle);
-            }
-
-            @Test
-            final void testGTFSTransitVehicles(){
-                for(final Vehicle vehicle : stop.getVehicles())
-                    VehicleValidation.testGTFSVehicle(vehicle);
-            }
-
-        }
-
-        @Nested
-        final class TripTests {
-
-            @Test
-            final void testVehicleTrips(){
-                for(final Vehicle vehicle : stop.getVehicles()){
-                    assertNotNull(vehicle.getTrip());
-                    TripValidation.testTrip(vehicle.getTrip());
-                }
-            }
-
-            @Test
-            final void testVehicleTripsReference(){
-                for(final Vehicle vehicle : stop.getVehicles())
-                    TripValidation.testTripReference(vehicle);
-            }
-
-            @Test
-            final void testGTFSVehicleTrips(){
-                for(final Vehicle vehicle : stop.getVehicles()){
-                    assertNotNull(vehicle.getTrip());
-                    TripValidation.testGTFSTrip(vehicle.getTrip());
-                }
-            }
-
-        }
-
-        @Nested
-        final class TripStopTests {
-
-            @Test
-            final void testVehicleTripStops(){
-                for(final Vehicle vehicle : stop.getVehicles())
-                    TripValidation.testTripStops(vehicle.getTrip().getTripStops());
-            }
-
-            @Test
-            final void testGTFSTripStops(){
-                for(final Vehicle vehicle : stop.getVehicles())
-                    TripValidation.testGTFSTripStops(vehicle.getTrip().getTripStops());
-            }
-
-            @Test
-            final void testRailroadTripStops(){
-                for(final Vehicle vehicle : stop.getVehicles())
-                    TripValidation.testRailroadTripStops(vehicle.getTrip().getTripStops());
-            }
-
-        }
-
-        @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-        @Nested
-        final class AlertTests {
-
-            @BeforeAll
-            final void beforeAll(){
-                AlertValidation.requireAlerts(stop);
-            }
-
-            @Test
-            final void testTransitAlerts(){
-                { // missing description caused by MTA missing data
-                    assertTrue(TestProvider.atleastOneTrue(
-                        stop.getAlerts(), MNR.Alert.class,
-                        a -> a.getDescription() != null
-                    ));
-                }
-
-                for(final Alert alert : stop.getAlerts())
-                    AlertValidation.testAlert(alert);
-            }
-
-            @Test
-            final void testTransitAlertsReference(){
-                for(final Alert alert : stop.getAlerts())
-                    AlertValidation.testAlertReference(stop, alert);
-            }
-
+        final void testTransitAlert(){
+            AlertValidation.testAlerts(stop);
         }
 
     }

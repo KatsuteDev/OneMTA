@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Katsute <https://github.com/Katsute>
+ * Copyright (C) 2023 Katsute <https://github.com/Katsute>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -28,28 +28,29 @@ import java.util.*;
 import static dev.katsute.onemta.GTFSRealtimeProto.*;
 import static dev.katsute.onemta.railroad.LIRR.*;
 
-@SuppressWarnings("SpellCheckingInspection")
+@SuppressWarnings({"SpellCheckingInspection", "Java9CollectionFactory"})
 abstract class MTASchema_LIRR extends MTASchema {
 
     static Route asRoute(final MTA mta, final int route_id){
         // find row
         final DataResource resource = getDataResource(mta, DataResourceType.LongIslandRailroad);
-        final CSV csv               = resource.getData("routes.txt");
-        final List<String> row      = csv.getRow("route_id", String.valueOf(route_id));
+        final CSV csv = resource.getData("routes.txt");
+        final List<String> row = csv.getRow("route_id", String.valueOf(route_id));
 
         // instantiate
         Objects.requireNonNull(row, "Failed to find LIRR route with id '" + route_id + "'");
 
         return new Route() {
 
-            private final Integer routeID       = route_id;
-            private final String routeLongName  = row.get(csv.getHeaderIndex("route_long_name"));
-            private final String routeColor     = row.get(csv.getHeaderIndex("route_color"));
+            private final Integer routeID = route_id;
+            private final String routeLongName = row.get(csv.getHeaderIndex("route_long_name"));
+            private final String routeColor = row.get(csv.getHeaderIndex("route_color"));
             private final String routeTextColor = row.get(csv.getHeaderIndex("route_text_color"));
 
             private final TransitAgency agency = asAgency("LI", resource);
 
-            // static data
+            private List<Vehicle> vehicles = null;
+            private List<LIRR.Alert> alerts = null;
 
             @Override
             public final Integer getRouteID(){
@@ -76,54 +77,36 @@ abstract class MTASchema_LIRR extends MTASchema {
                 return agency;
             }
 
-            // live feed
-
-            private List<Vehicle> vehicles = null;
-
             @Override
             public final Vehicle[] getVehicles(){
                 return getVehicles(false);
             }
 
+            @SuppressWarnings("DataFlowIssue")
             private Vehicle[] getVehicles(final boolean update){
                 if(vehicles == null || update){
-                    final String route = String.valueOf(route_id);
+                    this.vehicles = Collections.unmodifiableList(Arrays.asList(cast(mta).transformFeedEntities(
+                        cast(mta).service.lirr.getLIRR(),
+                        ent ->
+                            ent.hasTripUpdate() &&
+                            isExactRoute(ent.getTripUpdate().getTrip().getRouteId()), // check if trip is this route
+                        ent -> {
+                            // find matching vehicle entity
+                            final String id = ent.getTripUpdate().getVehicle().getLabel();
+                            final FeedEntity veh = cast(mta).getFeedEntity(
+                                cast(mta).service.lirr.getLIRR(),
+                                vent ->
+                                    vent.hasVehicle() &&
+                                    Objects.equals(vent.getVehicle().getVehicle().getLabel(), id)
+                            );
 
-                    final FeedMessage feed = cast(mta).service.lirr.getLIRR(cast(mta).subwayToken);
-                    final int len          = feed.getEntityCount();
-
-                    TripUpdate tripUpdate = null;
-                    String tripVehicle    = null;
-
-                    final List<Vehicle> vehicles = new ArrayList<>();
-                    for(int i = 0; i < len; i++){
-                        final FeedEntity entity = feed.getEntity(i);
-
-                        // get next trip
-                        if(entity.hasTripUpdate()){
-                            if( // only include trips with vehicle and on this route
-                                entity.getTripUpdate().hasVehicle() &&
-                                entity.getTripUpdate().getTrip().getRouteId().equals(route)
-                            ){
-                                tripUpdate  = entity.getTripUpdate();
-                                tripVehicle = tripUpdate.getVehicle().getLabel();
-                            }
-                        }else if( // get matching vehicle for trip
-                            entity.hasVehicle() &&
-                            entity.getVehicle().getVehicle().getLabel().equals(tripVehicle)
-                        ){
-                            vehicles.add(asVehicle(mta, entity.getVehicle(), tripUpdate, this));
-                            tripUpdate  = null;
-                            tripVehicle = null;
-                        }
-                    }
-
-                    this.vehicles = Collections.unmodifiableList(vehicles);
+                            return MTASchema_LIRR.asVehicle(mta, veh.getVehicle(), ent.getTripUpdate(), this);
+                        },
+                        new Vehicle[0]
+                    )));
                 }
                 return vehicles.toArray(new Vehicle[0]);
             }
-
-            private List<LIRR.Alert> alerts = null;
 
             @Override
             public final LIRR.Alert[] getAlerts(){
@@ -132,20 +115,28 @@ abstract class MTASchema_LIRR extends MTASchema {
 
             private LIRR.Alert[] getAlerts(final boolean update){
                 if(alerts == null || update){
-                    final List<LIRR.Alert> alerts = new ArrayList<>();
-                    final GTFSRealtimeProto.FeedMessage feed = cast(mta).service.alerts.getLIRR(cast(mta).subwayToken);
-                    final int len = feed.getEntityCount();
-                    for(int i = 0; i < len; i++){
-                        final LIRR.Alert alert = MTASchema_LIRR.asTransitAlert(mta, feed.getEntity(i));
-                        if(Arrays.asList(alert.getRouteIDs()).contains(route_id))
-                            alerts.add(alert);
-                    }
-                    this.alerts = alerts;
+                    this.alerts = Collections.unmodifiableList(Arrays.asList(cast(mta).transformFeedEntities(
+                        cast(mta).service.alerts.getLIRR(),
+                        ent -> {
+                            final GTFSRealtimeProto.Alert alert = ent.getAlert();
+                            final int len = alert.getInformedEntityCount();
+                            for(int i = 0; i < len; i++)
+                                if(isExactRoute(alert.getInformedEntity(i).getRouteId())) // check if alert includes this route
+                                    return true;
+                            return false;
+                        },
+                        ent -> asTransitAlert(mta, ent),
+                        new LIRR.Alert[0]
+                    )));
                 }
                 return alerts.toArray(new LIRR.Alert[0]);
             }
 
-            // onemta methods
+            @Override
+            public final void refresh(){
+                getAlerts(true);
+                getVehicles(true);
+            }
 
             @Override
             public final boolean isExactRoute(final Object object){
@@ -164,13 +155,7 @@ abstract class MTASchema_LIRR extends MTASchema {
                 return isExactRoute(object);
             }
 
-            @Override
-            public final void refresh(){
-                getAlerts(true);
-                getVehicles(true);
-            }
-
-            // Java
+            //
 
             @Override
             public final String toString(){
@@ -189,8 +174,8 @@ abstract class MTASchema_LIRR extends MTASchema {
     static Stop asStop(final MTA mta, final String stop_code){
         // find row
         final DataResource resource = getDataResource(mta, DataResourceType.LongIslandRailroad);
-        final CSV csv               = resource.getData("stops.txt");
-        final List<String> row      = csv.getRow("stop_code", stop_code.toUpperCase());
+        final CSV csv = resource.getData("stops.txt");
+        final List<String> row = csv.getRow("stop_code", stop_code.toUpperCase());
 
         // instantiate
         Objects.requireNonNull(row, "Failed to find LIRR stop with stopcode '" + stop_code.toUpperCase() + "'");
@@ -201,25 +186,26 @@ abstract class MTASchema_LIRR extends MTASchema {
     static Stop asStop(final MTA mta, final int stop_id){
         // find row
         final DataResource resource = getDataResource(mta, DataResourceType.LongIslandRailroad);
-        final CSV csv               = resource.getData("stops.txt");
-        final List<String> row      = csv.getRow("stop_id", String.valueOf(stop_id));
+        final CSV csv = resource.getData("stops.txt");
+        final List<String> row = csv.getRow("stop_id", String.valueOf(stop_id));
 
         // instantiate
         Objects.requireNonNull(row, "Failed to find LIRR stop with id '" + stop_id + "'");
 
         return new Stop(){
 
-            private final Integer stopID  = stop_id;
+            private final Integer stopID = stop_id;
             private final String stopCode = row.get(csv.getHeaderIndex("stop_code"));
             private final String stopName = row.get(csv.getHeaderIndex("stop_name"));
             private final String stopDesc = row.get(csv.getHeaderIndex("stop_desc"));
 
-            private final Double stopLat  = Double.valueOf(row.get(csv.getHeaderIndex("stop_lat")));
-            private final Double stopLon  = Double.valueOf(row.get(csv.getHeaderIndex("stop_lon")));
+            private final Double stopLat = Double.valueOf(row.get(csv.getHeaderIndex("stop_lat")));
+            private final Double stopLon = Double.valueOf(row.get(csv.getHeaderIndex("stop_lon")));
 
             private final Boolean wheelchairAccessible = !row.get(csv.getHeaderIndex("wheelchair_boarding")).equals("2");
 
-            // static data
+            private List<Vehicle> vehicles = null;
+            private List<LIRR.Alert> alerts = null;
 
             @Override
             public final Integer getStopID(){
@@ -256,65 +242,41 @@ abstract class MTASchema_LIRR extends MTASchema {
                 return wheelchairAccessible;
             }
 
-            // live feed
-
-            private List<Vehicle> vehicles = null;
-
             @Override
             public final Vehicle[] getVehicles(){
                 return getVehicles(false);
             }
 
+            @SuppressWarnings("DataFlowIssue")
             private Vehicle[] getVehicles(final boolean update){
                 if(vehicles == null || update){
-                    final String stop = String.valueOf(stopID);
+                    this.vehicles = Collections.unmodifiableList(Arrays.asList(cast(mta).transformFeedEntities(
+                        cast(mta).service.lirr.getLIRR(),
+                        ent -> {
+                            final int len = ent.getTripUpdate().getStopTimeUpdateCount();
+                            for(int i = 0; i < len; i++)
+                                if(isExactStop(ent.getTripUpdate().getStopTimeUpdate(i).getStopId())) // check if trip includes this stop
+                                    return true;
+                            return false;
+                        },
+                        ent -> {
+                            // find matching vehicle entity
+                            final String id = ent.getTripUpdate().getVehicle().getLabel();
+                            final FeedEntity veh = cast(mta).getFeedEntity(
+                                cast(mta).service.lirr.getLIRR(),
+                                vent ->
+                                    vent.hasVehicle() &&
+                                    Objects.equals(vent.getVehicle().getVehicle().getLabel(), id)
+                            );
 
-                    final FeedMessage feed = cast(mta).service.lirr.getLIRR(cast(mta).subwayToken);
-                    final int len          = feed.getEntityCount();
-
-                    TripUpdate tripUpdate = null;
-                    String tripVehicle    = null;
-
-                    final List<Vehicle> vehicles = new ArrayList<>();
-                    OUTER:
-                    for(int i = 0; i < len; i++){
-                        final FeedEntity entity = feed.getEntity(i);
-
-                        // get next trip
-                        if(entity.hasTripUpdate()){
-                            if( // only include trips at this stop
-                                entity.getTripUpdate().hasVehicle() &&
-                                entity.getTripUpdate().getStopTimeUpdateCount() > 0
-                            ){
-                                final TripUpdate tu = entity.getTripUpdate();
-                                final int len2 = tu.getStopTimeUpdateCount();
-                                // check all stops on train route
-                                for(int u = 0; u < len2; u++){
-                                    final TripUpdate.StopTimeUpdate stu = tu.getStopTimeUpdate(u);
-                                    // check if this stop is en route
-                                    if(stu.getStopId().equalsIgnoreCase(stop)){
-                                        tripUpdate  = entity.getTripUpdate();
-                                        tripVehicle = tripUpdate.getVehicle().getLabel();
-                                        continue OUTER;
-                                    }
-                                }
-                            }
-                        }else if( // get matching vehicle for trip
-                            entity.hasVehicle() &&
-                            entity.getVehicle().getVehicle().getLabel().equals(tripVehicle)
-                        ){
-                            vehicles.add(asVehicle(mta, entity.getVehicle(), tripUpdate, null));
-                            tripUpdate  = null;
-                            tripVehicle = null;
-                        }
-                    }
-
-                    this.vehicles = Collections.unmodifiableList(vehicles);
+                            return MTASchema_LIRR.asVehicle(mta, veh.getVehicle(), ent.getTripUpdate(), null);
+                        },
+                        new Vehicle[0]
+                    )));
                 }
                 return vehicles.toArray(new Vehicle[0]);
             }
 
-            private List<LIRR.Alert> alerts = null;
 
             @Override
             public final LIRR.Alert[] getAlerts(){
@@ -323,20 +285,28 @@ abstract class MTASchema_LIRR extends MTASchema {
 
             private LIRR.Alert[] getAlerts(final boolean update){
                 if(alerts == null || update){
-                    final List<LIRR.Alert> alerts = new ArrayList<>();
-                    final GTFSRealtimeProto.FeedMessage feed = cast(mta).service.alerts.getLIRR(cast(mta).subwayToken);
-                    final int len = feed.getEntityCount();
-                    for(int i = 0; i < len; i++){
-                        final LIRR.Alert alert = MTASchema_LIRR.asTransitAlert(mta, feed.getEntity(i));
-                        if(Arrays.asList(alert.getStopIDs()).contains(stopID))
-                            alerts.add(alert);
-                    }
-                    this.alerts = alerts;
+                    this.alerts = Collections.unmodifiableList(Arrays.asList(cast(mta).transformFeedEntities(
+                        cast(mta).service.alerts.getLIRR(),
+                        ent -> {
+                            final GTFSRealtimeProto.Alert alert = ent.getAlert();
+                            final int len = alert.getInformedEntityCount();
+                            for(int i = 0; i < len; i++)
+                                if(isSameStop(alert.getInformedEntity(i).getStopId())) // check if alert includes this stop
+                                    return true;
+                            return false;
+                        },
+                        ent -> asTransitAlert(mta, ent),
+                        new LIRR.Alert[0]
+                    )));
                 }
                 return alerts.toArray(new LIRR.Alert[0]);
             }
 
-            // onemta methods
+            @Override
+            public final void refresh(){
+                getAlerts(true);
+                getVehicles(true);
+            }
 
             @Override
             public final boolean isExactStop(final Object object){
@@ -355,13 +325,7 @@ abstract class MTASchema_LIRR extends MTASchema {
                 return isExactStop(object);
             }
 
-            @Override
-            public final void refresh(){
-                getAlerts(true);
-                getVehicles(true);
-            }
-
-            // Java
+            //
 
             @Override
             public final String toString(){
@@ -380,18 +344,21 @@ abstract class MTASchema_LIRR extends MTASchema {
     }
 
     static Vehicle asVehicle(final MTA mta, final VehiclePosition vehicle, final TripUpdate tripUpdate, final Route optionalRoute){
-        return new Vehicle() {
+        return new Vehicle(){
 
             private final String vehicleID = requireNonNull(() -> vehicle.getVehicle().getLabel());
 
-            private Double latitude  = requireNonNull(() -> Double.valueOf(vehicle.getPosition().getLatitude()));
+            private Double latitude = requireNonNull(() -> Double.valueOf(vehicle.getPosition().getLatitude()));
             private Double longitude = requireNonNull(() -> Double.valueOf(vehicle.getPosition().getLongitude()));
-            private Double bearing   = requireNonNull(() -> Double.valueOf(vehicle.getPosition().getBearing()));
+            private Double bearing = requireNonNull(() -> Double.valueOf(vehicle.getPosition().getBearing()));
 
-            private String status   = requireNonNull(() -> vehicle.getCurrentStatus().name());
+            private String status = requireNonNull(() -> vehicle.getCurrentStatus().name());
 
-            private Integer stopID  = requireNonNull(() -> Integer.valueOf(vehicle.getStopId()));
+            private Integer stopID = requireNonNull(() -> Integer.valueOf(vehicle.getStopId()));
+            private Stop stop = null;
+
             private Integer routeID = requireNonNull(() -> Integer.valueOf(tripUpdate.getTrip().getRouteId()));
+            private Route route = optionalRoute;
 
             private Trip trip = asTrip(mta, tripUpdate, this);
 
@@ -416,8 +383,18 @@ abstract class MTASchema_LIRR extends MTASchema {
             }
 
             @Override
-            public final String getCurrentStatus(){
+            public final String getStatus(){
                 return status;
+            }
+
+            @Override
+            public final Integer getRouteID(){
+                return routeID;
+            }
+
+            @Override
+            public final Route getRoute(){
+                return route != null ? route : (route = mta.getLIRRRoute(routeID));
             }
 
             @Override
@@ -426,24 +403,8 @@ abstract class MTASchema_LIRR extends MTASchema {
             }
 
             @Override
-            public final Integer getRouteID(){
-                return routeID;
-            }
-
-            // onemta methods
-
-            private Stop stop = null;
-
-            @Override
             public final Stop getStop(){
-                return stop != null ? stop : (stop = mta.getLIRRStop(Objects.requireNonNull(stopID, "Stop ID must not be null")));
-            }
-
-            private Route route = optionalRoute;
-
-            @Override
-            public final Route getRoute(){
-                return route != null ? route : (route = mta.getLIRRRoute(Objects.requireNonNull(routeID, "Route ID must not be null")));
+                return stop != null ? stop : (stop = mta.getLIRRStop(stopID));
             }
 
             @Override
@@ -460,15 +421,18 @@ abstract class MTASchema_LIRR extends MTASchema {
                 getTrip(true);
 
                 final Vehicle vehicle = mta.getLIRRTrain(vehicleID);
-                latitude  = vehicle.getLatitude();
+
+                latitude = vehicle.getLatitude();
                 longitude = vehicle.getLongitude();
-                bearing   = vehicle.getBearing();
-                status    = vehicle.getCurrentStatus();
-                stopID    = vehicle.getStopID();
-                routeID   = vehicle.getRouteID();
+                bearing = vehicle.getBearing();
+                status = vehicle.getStatus();
+                routeID = vehicle.getRouteID();
+                route = null;
+                stopID = vehicle.getStopID();
+                stop = null;
             }
 
-            // Java
+            //
 
             @Override
             public final String toString(){
@@ -479,7 +443,8 @@ abstract class MTASchema_LIRR extends MTASchema {
                        ", bearing=" + bearing +
                        ", status='" + status + '\'' +
                        ", stopID=" + stopID +
-                       ", routeID=" + routeID +
+                       ", routeID='" + routeID + '\'' +
+                       ", trip=" + trip +
                        '}';
             }
 
@@ -487,23 +452,24 @@ abstract class MTASchema_LIRR extends MTASchema {
     }
 
     static Trip asTrip(final MTA mta, final TripUpdate tripUpdate, final Vehicle referringVehicle){
-        return new Trip() {
+        return new Trip(){
 
-            private final Vehicle vehicle = referringVehicle;
+            private final String tripID = requireNonNull(() -> tripUpdate.getTrip().getTripId());
+            private final Integer route = requireNonNull(() -> Integer.valueOf(tripUpdate.getTrip().getRouteId()));
 
-            private final String tripID  = requireNonNull(() -> tripUpdate.getTrip().getTripId());
-            private final String routeID = requireNonNull(() -> tripUpdate.getTrip().getRouteId());
+            private final List<TripStop> stops;
 
-            private final String scheRel = requireNonNull(() -> tripUpdate.getTrip().getScheduleRelationship().name());
             private final RailroadDirection direction = requireNonNull(() -> RailroadDirection.asDirection(tripUpdate.getTrip().getDirectionId()));
 
-            private final List<TripStop> tripStops;
+            private final String scheduleRelationship = requireNonNull(() -> tripUpdate.getTrip().getScheduleRelationship().name());
+
+            private final Vehicle vehicle = referringVehicle;
 
             {
                 final List<TripStop> stops = new ArrayList<>();
                 for(final TripUpdate.StopTimeUpdate update : tripUpdate.getStopTimeUpdateList())
                     stops.add(asTripStop(mta, update, this));
-                tripStops = Collections.unmodifiableList(stops);
+                this.stops = Collections.unmodifiableList(stops);
             }
 
             @Override
@@ -512,16 +478,9 @@ abstract class MTASchema_LIRR extends MTASchema {
             }
 
             @Override
-            public final String getRouteID(){
-                return routeID;
+            public final Integer getRouteID(){
+                return route;
             }
-
-            @Override
-            public final RailroadDirection getDirection(){
-                return direction;
-            }
-
-            // onemta methods
 
             @Override
             public final Route getRoute(){
@@ -529,29 +488,35 @@ abstract class MTASchema_LIRR extends MTASchema {
             }
 
             @Override
-            public final Vehicle getVehicle(){
-                return vehicle;
+            public final TripStop[] getTripStops(){
+                return stops.toArray(new TripStop[0]);
+            }
+
+            @Override
+            public final RailroadDirection getDirection(){
+                return direction;
             }
 
             @Override
             public final String getScheduleRelationship(){
-                return scheRel;
+                return scheduleRelationship;
             }
 
             @Override
-            public final TripStop[] getTripStops(){
-                return tripStops.toArray(new TripStop[0]);
+            public final Vehicle getVehicle(){
+                return referringVehicle;
             }
 
-            // Java
+            //
 
             @Override
             public final String toString(){
                 return "LIRR.Trip{" +
                        "tripID='" + tripID + '\'' +
-                       ", routeID='" + routeID + '\'' +
+                       ", route=" + route +
+                       ", stops=" + stops +
                        ", direction=" + direction +
-                       ", scheduleRelationship='" + scheRel + '\'' +
+                       ", scheduleRelationship='" + scheduleRelationship + '\'' +
                        '}';
             }
 
@@ -559,23 +524,36 @@ abstract class MTASchema_LIRR extends MTASchema {
     }
 
     static TripStop asTripStop(final MTA mta, final TripUpdate.StopTimeUpdate stopTimeUpdate, final Trip referringTrip){
-        final MNRRProto.MnrStopTimeUpdate mnrStopTimeUpdate = stopTimeUpdate.getExtension(MNRRProto.mnrStopTimeUpdate);
-        return new TripStop() {
-
-            private final Trip trip      = referringTrip;
+        return new TripStop(){
 
             private final Integer stopID = requireNonNull(() -> Integer.valueOf(stopTimeUpdate.getStopId()));
 
-            private final Long arrival   = requireNonNull(() -> stopTimeUpdate.getArrival().getTime() * 1000);
-            private final Long departure = requireNonNull(() -> stopTimeUpdate.getDeparture().getTime() * 1000);
-            private final Integer delay  = requireNonNull(() -> stopTimeUpdate.getDeparture().getDelay());
+            private Stop stop = null;
 
-            private final String track   = requireNonNull(mnrStopTimeUpdate::getTrack);
-            private final String status  = requireNonNull(mnrStopTimeUpdate::getTrainStatus);
+            private final Long arrival = requireNonNull(() -> stopTimeUpdate.getArrival().getTime() * 1000);
+            private final Long departure = requireNonNull(() -> stopTimeUpdate.getDeparture().getTime() * 1000);
+
+            private final Integer sequence = requireNonNull(stopTimeUpdate::getStopSequence);
+
+            private final Integer delay = requireNonNull(() -> stopTimeUpdate.getDeparture().getDelay());
+
+            private final String scheduleRelationship = requireNonNull(() -> stopTimeUpdate.getScheduleRelationship().name());
+
+            private final String track = requireNonNull(() -> stopTimeUpdate.getExtension(MNRRProto.mnrStopTimeUpdate).getTrack());
+
+            private final String status = requireNonNull(() -> stopTimeUpdate.getExtension(MNRRProto.mnrStopTimeUpdate).getTrainStatus());
+
+            private final Trip trip = referringTrip;
 
             @Override
             public final Integer getStopID(){
                 return stopID;
+            }
+
+            @SuppressWarnings("DataFlowIssue")
+            @Override
+            public final Stop getStop(){
+                return stop != null ? stop : (stop = mta.getLIRRStop(stopID));
             }
 
             @Override
@@ -599,8 +577,18 @@ abstract class MTASchema_LIRR extends MTASchema {
             }
 
             @Override
+            public final Integer getStopSequence(){
+                return sequence;
+            }
+
+            @Override
             public final Integer getDelay(){
                 return delay;
+            }
+
+            @Override
+            public final String getScheduleRelationship(){
+                return scheduleRelationship;
             }
 
             @Override
@@ -609,17 +597,8 @@ abstract class MTASchema_LIRR extends MTASchema {
             }
 
             @Override
-            public final String getTrainStatus(){
+            public final String getStatus(){
                 return status;
-            }
-
-            // onemta methods
-
-            private Stop stop = null;
-
-            @Override
-            public final Stop getStop(){
-                return stop != null ? stop : (stop = mta.getLIRRStop(Objects.requireNonNull(stopID, "Stop ID must not be null")));
             }
 
             @Override
@@ -627,7 +606,7 @@ abstract class MTASchema_LIRR extends MTASchema {
                 return trip;
             }
 
-            // Java
+            //
 
             @Override
             public final String toString(){
@@ -635,7 +614,9 @@ abstract class MTASchema_LIRR extends MTASchema {
                        "stopID=" + stopID +
                        ", arrival=" + arrival +
                        ", departure=" + departure +
+                       ", sequence=" + sequence +
                        ", delay=" + delay +
+                       ", scheduleRelationship='" + scheduleRelationship + '\'' +
                        ", track='" + track + '\'' +
                        ", status='" + status + '\'' +
                        '}';
@@ -646,43 +627,44 @@ abstract class MTASchema_LIRR extends MTASchema {
 
     static LIRR.Alert asTransitAlert(final MTA mta, final GTFSRealtimeProto.FeedEntity feedEntity){
         final GTFSRealtimeProto.Alert alert = feedEntity.getAlert();
-        return new LIRR.Alert() {
+        return new LIRR.Alert(){
 
             private final String alertID = requireNonNull(feedEntity::getId);
 
-            private final String headerText      = requireNonNull(() -> alert.getHeaderText().getTranslation(0).getText());
-            private final String descriptionText = requireNonNull(() -> alert.getDescriptionText().getTranslation(0).getText());
+            private final List<TransitAlertPeriod> periods;
 
-            private final String alertType = requireNonNull(() -> alert.getExtension(ServiceStatusProto.mercuryAlert).getAlertType());
-
-            private final String effect = requireNonNull(() -> alert.getEffect().name());
-
-            private final List<TransitAlertPeriod> alertPeriods;
             private final List<Integer> routeIDs;
+            private List<Route> routes = null;
+
             private final List<Integer> stopIDs;
+            private List<Stop> stops = null;
+
+            private final String header = requireNonNull(() -> alert.getHeaderText().getTranslation(0).getText());
+            private final String description = requireNonNull(() -> alert.getDescriptionText().getTranslation(0).getText());
+
+            private final Long createdAt = requireNonNull(() -> alert.getExtension(ServiceStatusProto.mercuryAlert).getCreatedAt() * 1000);
+            private final Long updatedAt = requireNonNull(() -> alert.getExtension(ServiceStatusProto.mercuryAlert).getUpdatedAt() * 1000);
+
+            private final String type = requireNonNull(() -> alert.getExtension(ServiceStatusProto.mercuryAlert).getAlertType());
 
             {
-                final List<TransitAlertPeriod> alertPeriods = new ArrayList<>();
+                final List<TransitAlertPeriod> periods = new ArrayList<>();
                 for(final GTFSRealtimeProto.TimeRange range : alert.getActivePeriodList())
-                    alertPeriods.add(asTransitAlertTimeframe(range));
-                this.alertPeriods = Collections.unmodifiableList(alertPeriods);
+                    periods.add(asTransitAlertTimeframe(range));
+                this.periods = Collections.unmodifiableList(periods);
 
-                final List<Integer> routeIDs = new ArrayList<>();
-                final List<Integer> stopIDs = new ArrayList<>();
+                final List<Integer> routes = new ArrayList<>();
+                final List<Integer> stops = new ArrayList<>();
                 final int len = alert.getInformedEntityCount();
                 for(int i = 0; i < len; i++){
                     final GTFSRealtimeProto.EntitySelector entity = alert.getInformedEntity(i);
                     if(entity.hasRouteId())
-                        try{
-                            routeIDs.add(Integer.valueOf(entity.getRouteId()));
-                        }catch(final NumberFormatException ignored){ }
+                        routes.add(Integer.valueOf(entity.getRouteId()));
                     else if(entity.hasStopId())
-                        try{
-                            stopIDs.add(Integer.valueOf(entity.getStopId()));
-                        }catch(final NumberFormatException ignored){ }
+                        stops.add(Integer.valueOf(entity.getStopId()));
                 }
-                this.routeIDs = Collections.unmodifiableList(routeIDs);
-                this.stopIDs  = Collections.unmodifiableList(stopIDs);
+                this.routeIDs = Collections.unmodifiableList(routes);
+                this.stopIDs = Collections.unmodifiableList(stops);
             }
 
             @Override
@@ -692,15 +674,13 @@ abstract class MTASchema_LIRR extends MTASchema {
 
             @Override
             public final TransitAlertPeriod[] getActivePeriods(){
-                return alertPeriods.toArray(new TransitAlertPeriod[0]);
+                return periods.toArray(new TransitAlertPeriod[0]);
             }
 
             @Override
             public final Integer[] getRouteIDs(){
                 return routeIDs.toArray(new Integer[0]);
             }
-
-            private List<Route> routes = null;
 
             @Override
             public final Route[] getRoutes(){
@@ -718,8 +698,6 @@ abstract class MTASchema_LIRR extends MTASchema {
                 return stopIDs.toArray(new Integer[0]);
             }
 
-            private List<Stop> stops = null;
-
             @Override
             public final Stop[] getStops(){
                 if(stops == null){
@@ -733,37 +711,53 @@ abstract class MTASchema_LIRR extends MTASchema {
 
             @Override
             public final String getHeader(){
-                return headerText;
+                return header;
             }
 
             @Override
             public final String getDescription(){
-                return descriptionText;
+                return description;
+            }
+
+            @Override
+            public final Date getCreatedAt(){
+                return createdAt != null ? new Date(createdAt) : null;
+            }
+
+            @Override
+            public final Long getCreatedAtEpochMillis(){
+                return createdAt;
+            }
+
+            @Override
+            public final Date getUpdatedAt(){
+                return updatedAt != null ? new Date(updatedAt) : null;
+            }
+
+            @Override
+            public final Long getUpdatedAtEpochMillis(){
+                return updatedAt;
             }
 
             @Override
             public final String getAlertType(){
-                return alertType;
+                return type;
             }
 
-            @Override
-            public final String getEffect(){
-                return effect;
-            }
-
-            // Java
+            //
 
             @Override
             public final String toString(){
                 return "LIRR.Alert{" +
                        "alertID='" + alertID + '\'' +
-                       ", headerText='" + headerText + '\'' +
-                       ", descriptionText='" + descriptionText + '\'' +
-                       ", alertType='" + alertType + '\'' +
-                       ", effect='" + effect + '\'' +
-                       ", alertPeriods=" + alertPeriods +
+                       ", periods=" + periods +
                        ", routeIDs=" + routeIDs +
                        ", stopIDs=" + stopIDs +
+                       ", header='" + header + '\'' +
+                       ", description='" + description + '\'' +
+                       ", createdAt=" + createdAt +
+                       ", updatedAt=" + updatedAt +
+                       ", type='" + type + '\'' +
                        '}';
             }
 

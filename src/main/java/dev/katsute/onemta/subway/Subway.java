@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Katsute <https://github.com/Katsute>
+ * Copyright (C) 2023 Katsute <https://github.com/Katsute>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,7 +18,7 @@
 
 package dev.katsute.onemta.subway;
 
-import dev.katsute.onemta.attribute.*;
+import dev.katsute.onemta.attribute.Direction;
 import dev.katsute.onemta.types.*;
 
 /**
@@ -31,7 +31,7 @@ import dev.katsute.onemta.types.*;
  * @see TripStop
  * @see Alert
  * @since 1.0.0
- * @version 1.1.0
+ * @version 2.0.0
  * @author Katsute
  */
 public abstract class Subway {
@@ -45,7 +45,27 @@ public abstract class Subway {
      * @version 1.0.0
      * @author Katsute
      */
-    public abstract static class Route extends TransitRoute<String,Vehicle,Alert> implements RouteShortName, RouteDescription { }
+    public abstract static class Route extends TransitRoute<String,Vehicle,Alert> {
+
+        /**
+         * Returns the short route name.
+         *
+         * @return route short name
+         *
+         * @since 1.0.0
+         */
+        public abstract String getRouteShortName();
+
+        /**
+         * Returns the route description.
+         *
+         * @return route description
+         *
+         * @since 1.0.0
+         */
+        public abstract String getRouteDescription();
+
+    }
 
     /**
      * Represents a subway stop.
@@ -71,10 +91,66 @@ public abstract class Subway {
      * Represents a subway vehicle.
      *
      * @since 1.0.0
-     * @version 1.0.0
+     * @version 2.0.0
      * @author Katsute
      */
-    public abstract static class Vehicle extends GTFSVehicle<Route,Stop,Trip,String,String> {
+    public abstract static class Vehicle extends TransitVehicle<String,Route,String,Stop,String,Trip> {
+
+        /**
+         * Returns if the trip is assigned to an actual train. <br>
+         * If true, the vehicle is on a trip or is about to depart. <br>
+         * If false, the vehicle has not yet been assigned a trip or is being taken out of service.
+         *
+         * @return assigned
+         *
+         * @since 2.0.0
+         */
+        public abstract Boolean isAssigned();
+
+        /**
+         * Returns if the train is rerouted.
+         *
+         * @return rerouted train
+         *
+         * @since 2.0.0
+         */
+        public abstract Boolean isRerouted();
+
+        /**
+         * Returns if the train is following a skip stop pattern.
+         *
+         * @return skip stop train
+         *
+         * @since 2.0.0
+         */
+        public abstract Boolean isSkipStop();
+
+        /**
+         * Returns if the train is a turn train (shortly lined service)
+         *
+         * @return turn train
+         *
+         * @since 2.0.0
+         */
+        public abstract Boolean isTurnTrain();
+
+        /**
+         * Returns the current vehicle status.
+         *
+         * @return vehicle status
+         *
+         * @since 1.0.0
+         */
+        public abstract String getStatus();
+
+        /**
+         * Returns the stop sequence.
+         *
+         * @return stop sequence
+         *
+         * @since 2.0.0
+         */
+        public abstract Integer getStopSequence();
 
         /**
          * Returns if the train is running express.
@@ -90,25 +166,25 @@ public abstract class Subway {
     /**
      * Represents a subway vehicle trip.
      *
-     * @see TripStop
+     * @see TransitTrip
      * @since 1.0.0
-     * @version 1.0.0
+     * @version 2.0.0
      * @author Katsute
      */
-    public abstract static class Trip extends GTFSTransitTrip<Vehicle,Route,TripStop> implements Direction<SubwayDirection> { }
+    public abstract static class Trip extends TransitTrip<String,Route,Vehicle,TripStop> implements Direction<SubwayDirection> { }
 
     /**
      * Represents a subway vehicle trip stop.
      *
-     * @since Trip
+     * @see TransitTripStop
      * @since 1.0.0
-     * @version 1.0.0
+     * @version 2.0.0
      * @author Katsute
      */
-    public abstract static class TripStop extends GTFSTransitTripStop<Stop,Trip,String> {
+    public abstract static class TripStop extends TransitTripStop<String,Stop,Trip> {
 
         /**
-         * Returns the actual track that a subway train arrived at.
+         * Returns the actual track.
          *
          * @return actual track
          *
@@ -116,13 +192,22 @@ public abstract class Subway {
          */
         public abstract String getActualTrack();
 
+        /**
+         * Returns the scheduled track.
+         *
+         * @return track
+         *
+         * @since 1.0.0
+         */
+        public abstract String getTrack();
+
     }
 
     /**
      * Represents a subway alert.
      *
      * @since 1.0.0
-     * @version 1.0.0
+     * @version 2.0.0
      * @author Katsute
      */
     public abstract static class Alert extends TransitAlert<String,Route,String,Stop> { }

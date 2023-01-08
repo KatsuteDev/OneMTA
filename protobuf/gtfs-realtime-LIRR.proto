@@ -13,4 +13,3 @@ message MtaStopTimeUpdate {
   //can add additional fields here without having to extend StopTimeUpdate again
   }
 }
-

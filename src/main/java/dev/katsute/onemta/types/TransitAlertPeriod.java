@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Katsute <https://github.com/Katsute>
+ * Copyright (C) 2023 Katsute <https://github.com/Katsute>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -35,6 +35,7 @@ public abstract class TransitAlertPeriod {
      *
      * @return alert start
      *
+     * @see Date
      * @see #getStartEpochMillis()
      * @since 1.0.0
      */
@@ -55,6 +56,7 @@ public abstract class TransitAlertPeriod {
      *
      * @return alert end
      *
+     * @see Date
      * @see #getEndEpochMillis()
      * @since 1.0.0
      */
