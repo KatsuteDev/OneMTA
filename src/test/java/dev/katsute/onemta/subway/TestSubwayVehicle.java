@@ -22,7 +22,7 @@ final class TestSubwayVehicle {
         assertNotNull(vehicle.getStatus());
         assertNotNull(vehicle.getStopSequence());
         assertNotNull(vehicle.isExpress());
-        assertEquals(vehicle.getVehicleID().toUpperCase().endsWith("X"), vehicle.isExpress());
+        assertEquals(vehicle.getRouteID().toUpperCase().endsWith("X"), vehicle.isExpress());
     }
 
     static void testTrip(final Subway.Trip trip){

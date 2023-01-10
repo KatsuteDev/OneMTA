@@ -1,5 +1,104 @@
 # Changelog
 
+## 2.0.0
+
+### ⚠️ Breaking Change
+
+* Use GTFS bus feed [#111](https://github.com/KatsuteDev/OneMTA/pull/111) ([@Katsute](https://github.com/Katsute))
+  <h3 align="center">🛑 This major update includes breaking changes 🛑</h3>
+
+  This update drops the SIRI bus API in favor of the GTFS bus API. This update is most likely **not compatible** with previous versions of the bus API; all other modes should still be compatible with this update.
+
+   * Removed `Json` and `JsonSyntaxException`
+   * Removed `RailroadStop`
+   * Removed `RailroadTripStop`
+   * Replaced merged GTFS types into transit types
+   * Optimizations to request headers
+   * Optimizations to token usage
+   * Optimizations to vehicle feeds
+   * Optimizations to vehicle requests
+   * Optimizations to alert requests
+
+  #### Attributes
+
+  Inlined several attributes and removed respective interfaces:
+
+   * Removed `Bearing`
+   * Condensed `RouteReference`, `StopReference`, `TripReference`, and `VehiclesReference` into a single `Reference` class
+   * Removed `RouteDescription`
+   * Removed `RouteShortName`
+
+  #### Alerts
+
+   * Added created time
+   * Added updated time
+   * Removed alert effect
+   * Added alert type
+
+  #### Bus
+
+  Dropped SIRI API in favor of GTFS API.
+
+  ##### Stop
+
+   * Removed origin stop
+   * Removed destination
+   * Removed progress rate
+   * Removed progress status
+   * Removed aimed arrival time
+   * Removed expected departure time
+
+  ##### Vehicle
+
+   * Added passenger count
+   * Removed arrival proximity
+   * Removed stop distance
+
+  ##### Trip
+
+   * Added stop sequence
+   * Added delay
+
+  #### Subway
+
+  ##### Vehicle
+
+   * Added assigned indicator
+   * Added rerouted indicator
+   * Added skip stop indicator
+   * Added turn train indicator
+   * Added stop sequence
+
+  #### Long Island Railroad (LIRR)
+
+  ##### Trip
+
+   * Added trip stop sequence
+   * Added trip stop schedule relationship
+
+  #### Metro North Railroad (MNR)
+
+  ##### Vehicle
+
+   * Added status
+
+### 📘 Dependencies
+
+* Bump protobuf-java from 3.21.7 to 3.21.8 [#98](https://github.com/KatsuteDev/OneMTA/pull/98) ([@dependabot](https://github.com/dependabot))
+* Bump protobuf-java-util from 3.21.7 to 3.21.8 [#99](https://github.com/KatsuteDev/OneMTA/pull/99) ([@dependabot](https://github.com/dependabot))
+* Bump protobuf-java from 3.21.8 to 3.21.9 [#102](https://github.com/KatsuteDev/OneMTA/pull/102) ([@dependabot](https://github.com/dependabot))
+* Bump protobuf-java-util from 3.21.8 to 3.21.9 [#103](https://github.com/KatsuteDev/OneMTA/pull/103) ([@dependabot](https://github.com/dependabot))
+* Bump protobuf-java from 3.21.9 to 3.21.10 [#104](https://github.com/KatsuteDev/OneMTA/pull/104) ([@dependabot](https://github.com/dependabot))
+* Bump protobuf-java-util from 3.21.9 to 3.21.10 [#105](https://github.com/KatsuteDev/OneMTA/pull/105) ([@dependabot](https://github.com/dependabot))
+* Bump protobuf-java from 3.21.10 to 3.21.11 [#107](https://github.com/KatsuteDev/OneMTA/pull/107) ([@dependabot](https://github.com/dependabot))
+* Bump protobuf-java-util from 3.21.10 to 3.21.11 [#106](https://github.com/KatsuteDev/OneMTA/pull/106) ([@dependabot](https://github.com/dependabot))
+* Bump protobuf-java-util from 3.21.11 to 3.21.12 [#109](https://github.com/KatsuteDev/OneMTA/pull/109) ([@dependabot](https://github.com/dependabot))
+* Bump protobuf-java from 3.21.11 to 3.21.12 [#108](https://github.com/KatsuteDev/OneMTA/pull/108) ([@dependabot](https://github.com/dependabot))
+* Bump junit-jupiter-api from 5.9.1 to 5.9.2 [#113](https://github.com/KatsuteDev/OneMTA/pull/113) ([@dependabot](https://github.com/dependabot))
+* Bump junit-jupiter-params from 5.9.1 to 5.9.2 [#112](https://github.com/KatsuteDev/OneMTA/pull/112) ([@dependabot](https://github.com/dependabot))
+
+**Full Changelog**: [`1.2.3...2.0.0`](https://github.com/KatsuteDev/OneMTA/compare/1.2.3...2.0.0)
+
 ## 1.2.3
 
 ### 🐞 Bug Fixes
