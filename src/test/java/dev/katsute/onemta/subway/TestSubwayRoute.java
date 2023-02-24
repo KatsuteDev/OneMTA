@@ -82,7 +82,6 @@ final class TestSubwayRoute {
             assertTrue(route.isSameRoute(TestProvider.SUBWAY_ROUTE + 'X'));
         }
 
-
     }
 
     @Nested

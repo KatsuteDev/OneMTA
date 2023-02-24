@@ -201,7 +201,6 @@ abstract class MTASchema_Subway extends MTASchema {
                 return vehicles.toArray(new Vehicle[0]);
             }
 
-
             @Override
             public final Subway.Alert[] getAlerts(){
                 return getAlerts(false);
@@ -378,7 +377,6 @@ abstract class MTASchema_Subway extends MTASchema {
                 }
                 return vehicles.toArray(new Vehicle[0]);
             }
-
 
             @Override
             public final Subway.Alert[] getAlerts(){

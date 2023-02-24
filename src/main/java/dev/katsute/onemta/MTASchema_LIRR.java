@@ -277,7 +277,6 @@ abstract class MTASchema_LIRR extends MTASchema {
                 return vehicles.toArray(new Vehicle[0]);
             }
 
-
             @Override
             public final LIRR.Alert[] getAlerts(){
                 return getAlerts(false);
