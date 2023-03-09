@@ -81,11 +81,6 @@ abstract class ServiceStatusProto {
       return new MercuryFeedHeader();
     }
 
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return dev.katsute.onemta.ServiceStatusProto.internal_static_transit_realtime_MercuryFeedHeader_descriptor;
@@ -101,7 +96,8 @@ abstract class ServiceStatusProto {
 
     private int bitField0_;
     public static final int MERCURY_VERSION_FIELD_NUMBER = 1;
-    private volatile java.lang.Object mercuryVersion_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object mercuryVersion_ = "";
     /**
      * <pre>
      * Version of the Mercury extensions
@@ -130,7 +126,7 @@ abstract class ServiceStatusProto {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -153,7 +149,7 @@ abstract class ServiceStatusProto {
         getMercuryVersionBytes() {
       java.lang.Object ref = mercuryVersion_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         mercuryVersion_ = b;
@@ -279,24 +275,19 @@ abstract class ServiceStatusProto {
 
       // Construct using dev.katsute.onemta.ServiceStatusProto.MercuryFeedHeader.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         mercuryVersion_ = "";
-        bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
 
@@ -323,49 +314,21 @@ abstract class ServiceStatusProto {
       @java.lang.Override
       public dev.katsute.onemta.ServiceStatusProto.MercuryFeedHeader buildPartial() {
         dev.katsute.onemta.ServiceStatusProto.MercuryFeedHeader result = new dev.katsute.onemta.ServiceStatusProto.MercuryFeedHeader(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.mercuryVersion_ = mercuryVersion_;
-        result.bitField0_ = to_bitField0_;
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
+      private void buildPartial0(dev.katsute.onemta.ServiceStatusProto.MercuryFeedHeader result) {
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.mercuryVersion_ = mercuryVersion_;
+          to_bitField0_ |= 0x00000001;
+        }
+        result.bitField0_ |= to_bitField0_;
       }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
+
       private int bitField0_;
 
       private java.lang.Object mercuryVersion_ = "";
@@ -417,7 +380,7 @@ abstract class ServiceStatusProto {
           getMercuryVersionBytes() {
         java.lang.Object ref = mercuryVersion_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           mercuryVersion_ = b;
@@ -438,11 +401,9 @@ abstract class ServiceStatusProto {
        */
       public Builder setMercuryVersion(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
+        if (value == null) { throw new NullPointerException(); }
         mercuryVersion_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -456,8 +417,8 @@ abstract class ServiceStatusProto {
        * @return This builder for chaining.
        */
       public Builder clearMercuryVersion() {
-        bitField0_ = (bitField0_ & ~0x00000001);
         mercuryVersion_ = getDefaultInstance().getMercuryVersion();
+        bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
         return this;
       }
@@ -473,11 +434,9 @@ abstract class ServiceStatusProto {
        */
       public Builder setMercuryVersionBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
+        if (value == null) { throw new NullPointerException(); }
         mercuryVersion_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -519,10 +478,11 @@ abstract class ServiceStatusProto {
           builder.mergeFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
         } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(
-              e.getMessage()).setUnfinishedMessage(
-                  builder.buildPartial());
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
         }
         return builder.buildPartial();
       }
@@ -600,11 +560,6 @@ abstract class ServiceStatusProto {
       return new MercuryStationAlternative();
     }
 
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return dev.katsute.onemta.ServiceStatusProto.internal_static_transit_realtime_MercuryStationAlternative_descriptor;
@@ -801,18 +756,17 @@ abstract class ServiceStatusProto {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        if (affectedEntityBuilder_ == null) {
-          affectedEntity_ = null;
-        } else {
-          affectedEntityBuilder_.clear();
+        bitField0_ = 0;
+        affectedEntity_ = null;
+        if (affectedEntityBuilder_ != null) {
+          affectedEntityBuilder_.dispose();
+          affectedEntityBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000001);
-        if (notesBuilder_ == null) {
-          notes_ = null;
-        } else {
-          notesBuilder_.clear();
+        notes_ = null;
+        if (notesBuilder_ != null) {
+          notesBuilder_.dispose();
+          notesBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
@@ -839,61 +793,29 @@ abstract class ServiceStatusProto {
       @java.lang.Override
       public dev.katsute.onemta.ServiceStatusProto.MercuryStationAlternative buildPartial() {
         dev.katsute.onemta.ServiceStatusProto.MercuryStationAlternative result = new dev.katsute.onemta.ServiceStatusProto.MercuryStationAlternative(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          if (affectedEntityBuilder_ == null) {
-            result.affectedEntity_ = affectedEntity_;
-          } else {
-            result.affectedEntity_ = affectedEntityBuilder_.build();
-          }
-          to_bitField0_ |= 0x00000001;
-        }
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          if (notesBuilder_ == null) {
-            result.notes_ = notes_;
-          } else {
-            result.notes_ = notesBuilder_.build();
-          }
-          to_bitField0_ |= 0x00000002;
-        }
-        result.bitField0_ = to_bitField0_;
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
+      private void buildPartial0(dev.katsute.onemta.ServiceStatusProto.MercuryStationAlternative result) {
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.affectedEntity_ = affectedEntityBuilder_ == null
+              ? affectedEntity_
+              : affectedEntityBuilder_.build();
+          to_bitField0_ |= 0x00000001;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.notes_ = notesBuilder_ == null
+              ? notes_
+              : notesBuilder_.build();
+          to_bitField0_ |= 0x00000002;
+        }
+        result.bitField0_ |= to_bitField0_;
       }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
+
       private int bitField0_;
 
       private dev.katsute.onemta.GTFSRealtimeProto.EntitySelector affectedEntity_;
@@ -926,11 +848,11 @@ abstract class ServiceStatusProto {
             throw new NullPointerException();
           }
           affectedEntity_ = value;
-          onChanged();
         } else {
           affectedEntityBuilder_.setMessage(value);
         }
         bitField0_ |= 0x00000001;
+        onChanged();
         return this;
       }
       /**
@@ -940,11 +862,11 @@ abstract class ServiceStatusProto {
           dev.katsute.onemta.GTFSRealtimeProto.EntitySelector.Builder builderForValue) {
         if (affectedEntityBuilder_ == null) {
           affectedEntity_ = builderForValue.build();
-          onChanged();
         } else {
           affectedEntityBuilder_.setMessage(builderForValue.build());
         }
         bitField0_ |= 0x00000001;
+        onChanged();
         return this;
       }
       /**
@@ -953,31 +875,30 @@ abstract class ServiceStatusProto {
       public Builder mergeAffectedEntity(dev.katsute.onemta.GTFSRealtimeProto.EntitySelector value) {
         if (affectedEntityBuilder_ == null) {
           if (((bitField0_ & 0x00000001) != 0) &&
-              affectedEntity_ != null &&
-              affectedEntity_ != dev.katsute.onemta.GTFSRealtimeProto.EntitySelector.getDefaultInstance()) {
-            affectedEntity_ =
-              dev.katsute.onemta.GTFSRealtimeProto.EntitySelector.newBuilder(affectedEntity_).mergeFrom(value).buildPartial();
+            affectedEntity_ != null &&
+            affectedEntity_ != dev.katsute.onemta.GTFSRealtimeProto.EntitySelector.getDefaultInstance()) {
+            getAffectedEntityBuilder().mergeFrom(value);
           } else {
             affectedEntity_ = value;
           }
-          onChanged();
         } else {
           affectedEntityBuilder_.mergeFrom(value);
         }
         bitField0_ |= 0x00000001;
+        onChanged();
         return this;
       }
       /**
        * <code>required .transit_realtime.EntitySelector affected_entity = 1;</code>
        */
       public Builder clearAffectedEntity() {
-        if (affectedEntityBuilder_ == null) {
-          affectedEntity_ = null;
-          onChanged();
-        } else {
-          affectedEntityBuilder_.clear();
-        }
         bitField0_ = (bitField0_ & ~0x00000001);
+        affectedEntity_ = null;
+        if (affectedEntityBuilder_ != null) {
+          affectedEntityBuilder_.dispose();
+          affectedEntityBuilder_ = null;
+        }
+        onChanged();
         return this;
       }
       /**
@@ -1003,7 +924,7 @@ abstract class ServiceStatusProto {
        * <code>required .transit_realtime.EntitySelector affected_entity = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          dev.katsute.onemta.GTFSRealtimeProto.EntitySelector, dev.katsute.onemta.GTFSRealtimeProto.EntitySelector.Builder, dev.katsute.onemta.GTFSRealtimeProto.EntitySelectorOrBuilder>
+          dev.katsute.onemta.GTFSRealtimeProto.EntitySelector, dev.katsute.onemta.GTFSRealtimeProto.EntitySelector.Builder, dev.katsute.onemta.GTFSRealtimeProto.EntitySelectorOrBuilder> 
           getAffectedEntityFieldBuilder() {
         if (affectedEntityBuilder_ == null) {
           affectedEntityBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -1046,11 +967,11 @@ abstract class ServiceStatusProto {
             throw new NullPointerException();
           }
           notes_ = value;
-          onChanged();
         } else {
           notesBuilder_.setMessage(value);
         }
         bitField0_ |= 0x00000002;
+        onChanged();
         return this;
       }
       /**
@@ -1060,11 +981,11 @@ abstract class ServiceStatusProto {
           dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Builder builderForValue) {
         if (notesBuilder_ == null) {
           notes_ = builderForValue.build();
-          onChanged();
         } else {
           notesBuilder_.setMessage(builderForValue.build());
         }
         bitField0_ |= 0x00000002;
+        onChanged();
         return this;
       }
       /**
@@ -1073,31 +994,30 @@ abstract class ServiceStatusProto {
       public Builder mergeNotes(dev.katsute.onemta.GTFSRealtimeProto.TranslatedString value) {
         if (notesBuilder_ == null) {
           if (((bitField0_ & 0x00000002) != 0) &&
-              notes_ != null &&
-              notes_ != dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.getDefaultInstance()) {
-            notes_ =
-              dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.newBuilder(notes_).mergeFrom(value).buildPartial();
+            notes_ != null &&
+            notes_ != dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.getDefaultInstance()) {
+            getNotesBuilder().mergeFrom(value);
           } else {
             notes_ = value;
           }
-          onChanged();
         } else {
           notesBuilder_.mergeFrom(value);
         }
         bitField0_ |= 0x00000002;
+        onChanged();
         return this;
       }
       /**
        * <code>required .transit_realtime.TranslatedString notes = 2;</code>
        */
       public Builder clearNotes() {
-        if (notesBuilder_ == null) {
-          notes_ = null;
-          onChanged();
-        } else {
-          notesBuilder_.clear();
-        }
         bitField0_ = (bitField0_ & ~0x00000002);
+        notes_ = null;
+        if (notesBuilder_ != null) {
+          notesBuilder_.dispose();
+          notesBuilder_ = null;
+        }
+        onChanged();
         return this;
       }
       /**
@@ -1123,7 +1043,7 @@ abstract class ServiceStatusProto {
        * <code>required .transit_realtime.TranslatedString notes = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          dev.katsute.onemta.GTFSRealtimeProto.TranslatedString, dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Builder, dev.katsute.onemta.GTFSRealtimeProto.TranslatedStringOrBuilder>
+          dev.katsute.onemta.GTFSRealtimeProto.TranslatedString, dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Builder, dev.katsute.onemta.GTFSRealtimeProto.TranslatedStringOrBuilder> 
           getNotesFieldBuilder() {
         if (notesBuilder_ == null) {
           notesBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -1173,10 +1093,11 @@ abstract class ServiceStatusProto {
           builder.mergeFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
         } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(
-              e.getMessage()).setUnfinishedMessage(
-                  builder.buildPartial());
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
         }
         return builder.buildPartial();
       }
@@ -1244,7 +1165,7 @@ abstract class ServiceStatusProto {
     /**
      * <code>repeated .transit_realtime.MercuryStationAlternative station_alternative = 4;</code>
      */
-    java.util.List<dev.katsute.onemta.ServiceStatusProto.MercuryStationAlternative>
+    java.util.List<dev.katsute.onemta.ServiceStatusProto.MercuryStationAlternative> 
         getStationAlternativeList();
     /**
      * <code>repeated .transit_realtime.MercuryStationAlternative station_alternative = 4;</code>
@@ -1257,7 +1178,7 @@ abstract class ServiceStatusProto {
     /**
      * <code>repeated .transit_realtime.MercuryStationAlternative station_alternative = 4;</code>
      */
-    java.util.List<? extends dev.katsute.onemta.ServiceStatusProto.MercuryStationAlternativeOrBuilder>
+    java.util.List<? extends dev.katsute.onemta.ServiceStatusProto.MercuryStationAlternativeOrBuilder> 
         getStationAlternativeOrBuilderList();
     /**
      * <code>repeated .transit_realtime.MercuryStationAlternative station_alternative = 4;</code>
@@ -1386,7 +1307,7 @@ abstract class ServiceStatusProto {
     /**
      * <code>repeated .transit_realtime.EntitySelector affected_stations = 10;</code>
      */
-    java.util.List<dev.katsute.onemta.GTFSRealtimeProto.EntitySelector>
+    java.util.List<dev.katsute.onemta.GTFSRealtimeProto.EntitySelector> 
         getAffectedStationsList();
     /**
      * <code>repeated .transit_realtime.EntitySelector affected_stations = 10;</code>
@@ -1399,7 +1320,7 @@ abstract class ServiceStatusProto {
     /**
      * <code>repeated .transit_realtime.EntitySelector affected_stations = 10;</code>
      */
-    java.util.List<? extends dev.katsute.onemta.GTFSRealtimeProto.EntitySelectorOrBuilder>
+    java.util.List<? extends dev.katsute.onemta.GTFSRealtimeProto.EntitySelectorOrBuilder> 
         getAffectedStationsOrBuilderList();
     /**
      * <code>repeated .transit_realtime.EntitySelector affected_stations = 10;</code>
@@ -1481,8 +1402,10 @@ abstract class ServiceStatusProto {
     private MercuryAlert() {
       alertType_ = "";
       stationAlternative_ = java.util.Collections.emptyList();
-      servicePlanNumber_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-      generalOrderNumber_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      servicePlanNumber_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+      generalOrderNumber_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
       affectedStations_ = java.util.Collections.emptyList();
       cloneId_ = "";
     }
@@ -1494,11 +1417,6 @@ abstract class ServiceStatusProto {
       return new MercuryAlert();
     }
 
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return dev.katsute.onemta.ServiceStatusProto.internal_static_transit_realtime_MercuryAlert_descriptor;
@@ -1514,7 +1432,7 @@ abstract class ServiceStatusProto {
 
     private int bitField0_;
     public static final int CREATED_AT_FIELD_NUMBER = 1;
-    private long createdAt_;
+    private long createdAt_ = 0L;
     /**
      * <code>required uint64 created_at = 1;</code>
      * @return Whether the createdAt field is set.
@@ -1533,7 +1451,7 @@ abstract class ServiceStatusProto {
     }
 
     public static final int UPDATED_AT_FIELD_NUMBER = 2;
-    private long updatedAt_;
+    private long updatedAt_ = 0L;
     /**
      * <code>required uint64 updated_at = 2;</code>
      * @return Whether the updatedAt field is set.
@@ -1552,7 +1470,8 @@ abstract class ServiceStatusProto {
     }
 
     public static final int ALERT_TYPE_FIELD_NUMBER = 3;
-    private volatile java.lang.Object alertType_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object alertType_ = "";
     /**
      * <code>required string alert_type = 3;</code>
      * @return Whether the alertType field is set.
@@ -1571,7 +1490,7 @@ abstract class ServiceStatusProto {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -1589,7 +1508,7 @@ abstract class ServiceStatusProto {
         getAlertTypeBytes() {
       java.lang.Object ref = alertType_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         alertType_ = b;
@@ -1600,6 +1519,7 @@ abstract class ServiceStatusProto {
     }
 
     public static final int STATION_ALTERNATIVE_FIELD_NUMBER = 4;
+    @SuppressWarnings("serial")
     private java.util.List<dev.katsute.onemta.ServiceStatusProto.MercuryStationAlternative> stationAlternative_;
     /**
      * <code>repeated .transit_realtime.MercuryStationAlternative station_alternative = 4;</code>
@@ -1612,7 +1532,7 @@ abstract class ServiceStatusProto {
      * <code>repeated .transit_realtime.MercuryStationAlternative station_alternative = 4;</code>
      */
     @java.lang.Override
-    public java.util.List<? extends dev.katsute.onemta.ServiceStatusProto.MercuryStationAlternativeOrBuilder>
+    public java.util.List<? extends dev.katsute.onemta.ServiceStatusProto.MercuryStationAlternativeOrBuilder> 
         getStationAlternativeOrBuilderList() {
       return stationAlternative_;
     }
@@ -1640,7 +1560,9 @@ abstract class ServiceStatusProto {
     }
 
     public static final int SERVICE_PLAN_NUMBER_FIELD_NUMBER = 5;
-    private com.google.protobuf.LazyStringList servicePlanNumber_;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.LazyStringArrayList servicePlanNumber_ =
+        com.google.protobuf.LazyStringArrayList.emptyList();
     /**
      * <code>repeated string service_plan_number = 5;</code>
      * @return A list containing the servicePlanNumber.
@@ -1675,7 +1597,9 @@ abstract class ServiceStatusProto {
     }
 
     public static final int GENERAL_ORDER_NUMBER_FIELD_NUMBER = 6;
-    private com.google.protobuf.LazyStringList generalOrderNumber_;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.LazyStringArrayList generalOrderNumber_ =
+        com.google.protobuf.LazyStringArrayList.emptyList();
     /**
      * <code>repeated string general_order_number = 6;</code>
      * @return A list containing the generalOrderNumber.
@@ -1710,7 +1634,7 @@ abstract class ServiceStatusProto {
     }
 
     public static final int DISPLAY_BEFORE_ACTIVE_FIELD_NUMBER = 7;
-    private long displayBeforeActive_;
+    private long displayBeforeActive_ = 0L;
     /**
      * <pre>
      * A time interval, in seconds, indicating how long before each active period
@@ -1786,7 +1710,7 @@ abstract class ServiceStatusProto {
     }
 
     public static final int DIRECTIONALITY_FIELD_NUMBER = 9;
-    private long directionality_;
+    private long directionality_ = 0L;
     /**
      * <code>optional uint64 directionality = 9;</code>
      * @return Whether the directionality field is set.
@@ -1805,6 +1729,7 @@ abstract class ServiceStatusProto {
     }
 
     public static final int AFFECTED_STATIONS_FIELD_NUMBER = 10;
+    @SuppressWarnings("serial")
     private java.util.List<dev.katsute.onemta.GTFSRealtimeProto.EntitySelector> affectedStations_;
     /**
      * <code>repeated .transit_realtime.EntitySelector affected_stations = 10;</code>
@@ -1817,7 +1742,7 @@ abstract class ServiceStatusProto {
      * <code>repeated .transit_realtime.EntitySelector affected_stations = 10;</code>
      */
     @java.lang.Override
-    public java.util.List<? extends dev.katsute.onemta.GTFSRealtimeProto.EntitySelectorOrBuilder>
+    public java.util.List<? extends dev.katsute.onemta.GTFSRealtimeProto.EntitySelectorOrBuilder> 
         getAffectedStationsOrBuilderList() {
       return affectedStations_;
     }
@@ -1871,7 +1796,7 @@ abstract class ServiceStatusProto {
     }
 
     public static final int NO_AFFECTED_STATIONS_FIELD_NUMBER = 12;
-    private boolean noAffectedStations_;
+    private boolean noAffectedStations_ = false;
     /**
      * <code>optional bool no_affected_stations = 12;</code>
      * @return Whether the noAffectedStations field is set.
@@ -1890,7 +1815,8 @@ abstract class ServiceStatusProto {
     }
 
     public static final int CLONE_ID_FIELD_NUMBER = 13;
-    private volatile java.lang.Object cloneId_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object cloneId_ = "";
     /**
      * <pre>
      * The ids of the planned work cloned from
@@ -1917,7 +1843,7 @@ abstract class ServiceStatusProto {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -1939,7 +1865,7 @@ abstract class ServiceStatusProto {
         getCloneIdBytes() {
       java.lang.Object ref = cloneId_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         cloneId_ = b;
@@ -2085,48 +2011,42 @@ abstract class ServiceStatusProto {
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         createdAt_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000001);
         updatedAt_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000002);
         alertType_ = "";
-        bitField0_ = (bitField0_ & ~0x00000004);
         if (stationAlternativeBuilder_ == null) {
           stationAlternative_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000008);
         } else {
+          stationAlternative_ = null;
           stationAlternativeBuilder_.clear();
         }
-        servicePlanNumber_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000010);
-        generalOrderNumber_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000020);
+        bitField0_ = (bitField0_ & ~0x00000008);
+        servicePlanNumber_ =
+            com.google.protobuf.LazyStringArrayList.emptyList();
+        generalOrderNumber_ =
+            com.google.protobuf.LazyStringArrayList.emptyList();
         displayBeforeActive_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000040);
-        if (humanReadableActivePeriodBuilder_ == null) {
-          humanReadableActivePeriod_ = null;
-        } else {
-          humanReadableActivePeriodBuilder_.clear();
+        humanReadableActivePeriod_ = null;
+        if (humanReadableActivePeriodBuilder_ != null) {
+          humanReadableActivePeriodBuilder_.dispose();
+          humanReadableActivePeriodBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000080);
         directionality_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000100);
         if (affectedStationsBuilder_ == null) {
           affectedStations_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000200);
         } else {
+          affectedStations_ = null;
           affectedStationsBuilder_.clear();
         }
-        if (screensSummaryBuilder_ == null) {
-          screensSummary_ = null;
-        } else {
-          screensSummaryBuilder_.clear();
+        bitField0_ = (bitField0_ & ~0x00000200);
+        screensSummary_ = null;
+        if (screensSummaryBuilder_ != null) {
+          screensSummaryBuilder_.dispose();
+          screensSummaryBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000400);
         noAffectedStations_ = false;
-        bitField0_ = (bitField0_ & ~0x00000800);
         cloneId_ = "";
-        bitField0_ = (bitField0_ & ~0x00001000);
         return this;
       }
 
@@ -2153,6 +2073,34 @@ abstract class ServiceStatusProto {
       @java.lang.Override
       public dev.katsute.onemta.ServiceStatusProto.MercuryAlert buildPartial() {
         dev.katsute.onemta.ServiceStatusProto.MercuryAlert result = new dev.katsute.onemta.ServiceStatusProto.MercuryAlert(this);
+        buildPartialRepeatedFields(result);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartialRepeatedFields(dev.katsute.onemta.ServiceStatusProto.MercuryAlert result) {
+        if (stationAlternativeBuilder_ == null) {
+          if (((bitField0_ & 0x00000008) != 0)) {
+            stationAlternative_ = java.util.Collections.unmodifiableList(stationAlternative_);
+            bitField0_ = (bitField0_ & ~0x00000008);
+          }
+          result.stationAlternative_ = stationAlternative_;
+        } else {
+          result.stationAlternative_ = stationAlternativeBuilder_.build();
+        }
+        if (affectedStationsBuilder_ == null) {
+          if (((bitField0_ & 0x00000200) != 0)) {
+            affectedStations_ = java.util.Collections.unmodifiableList(affectedStations_);
+            bitField0_ = (bitField0_ & ~0x00000200);
+          }
+          result.affectedStations_ = affectedStations_;
+        } else {
+          result.affectedStations_ = affectedStationsBuilder_.build();
+        }
+      }
+
+      private void buildPartial0(dev.katsute.onemta.ServiceStatusProto.MercuryAlert result) {
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -2164,59 +2112,35 @@ abstract class ServiceStatusProto {
           to_bitField0_ |= 0x00000002;
         }
         if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.alertType_ = alertType_;
           to_bitField0_ |= 0x00000004;
         }
-        result.alertType_ = alertType_;
-        if (stationAlternativeBuilder_ == null) {
-          if (((bitField0_ & 0x00000008) != 0)) {
-            stationAlternative_ = java.util.Collections.unmodifiableList(stationAlternative_);
-            bitField0_ = (bitField0_ & ~0x00000008);
-          }
-          result.stationAlternative_ = stationAlternative_;
-        } else {
-          result.stationAlternative_ = stationAlternativeBuilder_.build();
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          servicePlanNumber_.makeImmutable();
+          result.servicePlanNumber_ = servicePlanNumber_;
         }
-        if (((bitField0_ & 0x00000010) != 0)) {
-          servicePlanNumber_ = servicePlanNumber_.getUnmodifiableView();
-          bitField0_ = (bitField0_ & ~0x00000010);
+        if (((from_bitField0_ & 0x00000020) != 0)) {
+          generalOrderNumber_.makeImmutable();
+          result.generalOrderNumber_ = generalOrderNumber_;
         }
-        result.servicePlanNumber_ = servicePlanNumber_;
-        if (((bitField0_ & 0x00000020) != 0)) {
-          generalOrderNumber_ = generalOrderNumber_.getUnmodifiableView();
-          bitField0_ = (bitField0_ & ~0x00000020);
-        }
-        result.generalOrderNumber_ = generalOrderNumber_;
         if (((from_bitField0_ & 0x00000040) != 0)) {
           result.displayBeforeActive_ = displayBeforeActive_;
           to_bitField0_ |= 0x00000008;
         }
         if (((from_bitField0_ & 0x00000080) != 0)) {
-          if (humanReadableActivePeriodBuilder_ == null) {
-            result.humanReadableActivePeriod_ = humanReadableActivePeriod_;
-          } else {
-            result.humanReadableActivePeriod_ = humanReadableActivePeriodBuilder_.build();
-          }
+          result.humanReadableActivePeriod_ = humanReadableActivePeriodBuilder_ == null
+              ? humanReadableActivePeriod_
+              : humanReadableActivePeriodBuilder_.build();
           to_bitField0_ |= 0x00000010;
         }
         if (((from_bitField0_ & 0x00000100) != 0)) {
           result.directionality_ = directionality_;
           to_bitField0_ |= 0x00000020;
         }
-        if (affectedStationsBuilder_ == null) {
-          if (((bitField0_ & 0x00000200) != 0)) {
-            affectedStations_ = java.util.Collections.unmodifiableList(affectedStations_);
-            bitField0_ = (bitField0_ & ~0x00000200);
-          }
-          result.affectedStations_ = affectedStations_;
-        } else {
-          result.affectedStations_ = affectedStationsBuilder_.build();
-        }
         if (((from_bitField0_ & 0x00000400) != 0)) {
-          if (screensSummaryBuilder_ == null) {
-            result.screensSummary_ = screensSummary_;
-          } else {
-            result.screensSummary_ = screensSummaryBuilder_.build();
-          }
+          result.screensSummary_ = screensSummaryBuilder_ == null
+              ? screensSummary_
+              : screensSummaryBuilder_.build();
           to_bitField0_ |= 0x00000040;
         }
         if (((from_bitField0_ & 0x00000800) != 0)) {
@@ -2224,46 +2148,12 @@ abstract class ServiceStatusProto {
           to_bitField0_ |= 0x00000080;
         }
         if (((from_bitField0_ & 0x00001000) != 0)) {
+          result.cloneId_ = cloneId_;
           to_bitField0_ |= 0x00000100;
         }
-        result.cloneId_ = cloneId_;
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
+        result.bitField0_ |= to_bitField0_;
       }
 
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
       private int bitField0_;
 
       private long createdAt_ ;
@@ -2289,8 +2179,9 @@ abstract class ServiceStatusProto {
        * @return This builder for chaining.
        */
       public Builder setCreatedAt(long value) {
-        bitField0_ |= 0x00000001;
+
         createdAt_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -2328,8 +2219,9 @@ abstract class ServiceStatusProto {
        * @return This builder for chaining.
        */
       public Builder setUpdatedAt(long value) {
-        bitField0_ |= 0x00000002;
+
         updatedAt_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -2378,7 +2270,7 @@ abstract class ServiceStatusProto {
           getAlertTypeBytes() {
         java.lang.Object ref = alertType_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           alertType_ = b;
@@ -2394,11 +2286,9 @@ abstract class ServiceStatusProto {
        */
       public Builder setAlertType(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000004;
+        if (value == null) { throw new NullPointerException(); }
         alertType_ = value;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
@@ -2407,8 +2297,8 @@ abstract class ServiceStatusProto {
        * @return This builder for chaining.
        */
       public Builder clearAlertType() {
-        bitField0_ = (bitField0_ & ~0x00000004);
         alertType_ = getDefaultInstance().getAlertType();
+        bitField0_ = (bitField0_ & ~0x00000004);
         onChanged();
         return this;
       }
@@ -2419,11 +2309,9 @@ abstract class ServiceStatusProto {
        */
       public Builder setAlertTypeBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000004;
+        if (value == null) { throw new NullPointerException(); }
         alertType_ = value;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
@@ -2623,7 +2511,7 @@ abstract class ServiceStatusProto {
       /**
        * <code>repeated .transit_realtime.MercuryStationAlternative station_alternative = 4;</code>
        */
-      public java.util.List<? extends dev.katsute.onemta.ServiceStatusProto.MercuryStationAlternativeOrBuilder>
+      public java.util.List<? extends dev.katsute.onemta.ServiceStatusProto.MercuryStationAlternativeOrBuilder> 
            getStationAlternativeOrBuilderList() {
         if (stationAlternativeBuilder_ != null) {
           return stationAlternativeBuilder_.getMessageOrBuilderList();
@@ -2649,12 +2537,12 @@ abstract class ServiceStatusProto {
       /**
        * <code>repeated .transit_realtime.MercuryStationAlternative station_alternative = 4;</code>
        */
-      public java.util.List<dev.katsute.onemta.ServiceStatusProto.MercuryStationAlternative.Builder>
+      public java.util.List<dev.katsute.onemta.ServiceStatusProto.MercuryStationAlternative.Builder> 
            getStationAlternativeBuilderList() {
         return getStationAlternativeFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          dev.katsute.onemta.ServiceStatusProto.MercuryStationAlternative, dev.katsute.onemta.ServiceStatusProto.MercuryStationAlternative.Builder, dev.katsute.onemta.ServiceStatusProto.MercuryStationAlternativeOrBuilder>
+          dev.katsute.onemta.ServiceStatusProto.MercuryStationAlternative, dev.katsute.onemta.ServiceStatusProto.MercuryStationAlternative.Builder, dev.katsute.onemta.ServiceStatusProto.MercuryStationAlternativeOrBuilder> 
           getStationAlternativeFieldBuilder() {
         if (stationAlternativeBuilder_ == null) {
           stationAlternativeBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
@@ -2668,12 +2556,13 @@ abstract class ServiceStatusProto {
         return stationAlternativeBuilder_;
       }
 
-      private com.google.protobuf.LazyStringList servicePlanNumber_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      private com.google.protobuf.LazyStringArrayList servicePlanNumber_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
       private void ensureServicePlanNumberIsMutable() {
-        if (!((bitField0_ & 0x00000010) != 0)) {
+        if (!servicePlanNumber_.isModifiable()) {
           servicePlanNumber_ = new com.google.protobuf.LazyStringArrayList(servicePlanNumber_);
-          bitField0_ |= 0x00000010;
-         }
+        }
+        bitField0_ |= 0x00000010;
       }
       /**
        * <code>repeated string service_plan_number = 5;</code>
@@ -2681,7 +2570,8 @@ abstract class ServiceStatusProto {
        */
       public com.google.protobuf.ProtocolStringList
           getServicePlanNumberList() {
-        return servicePlanNumber_.getUnmodifiableView();
+        servicePlanNumber_.makeImmutable();
+        return servicePlanNumber_;
       }
       /**
        * <code>repeated string service_plan_number = 5;</code>
@@ -2715,11 +2605,10 @@ abstract class ServiceStatusProto {
        */
       public Builder setServicePlanNumber(
           int index, java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  ensureServicePlanNumberIsMutable();
+        if (value == null) { throw new NullPointerException(); }
+        ensureServicePlanNumberIsMutable();
         servicePlanNumber_.set(index, value);
+        bitField0_ |= 0x00000010;
         onChanged();
         return this;
       }
@@ -2730,11 +2619,10 @@ abstract class ServiceStatusProto {
        */
       public Builder addServicePlanNumber(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  ensureServicePlanNumberIsMutable();
+        if (value == null) { throw new NullPointerException(); }
+        ensureServicePlanNumberIsMutable();
         servicePlanNumber_.add(value);
+        bitField0_ |= 0x00000010;
         onChanged();
         return this;
       }
@@ -2748,6 +2636,7 @@ abstract class ServiceStatusProto {
         ensureServicePlanNumberIsMutable();
         com.google.protobuf.AbstractMessageLite.Builder.addAll(
             values, servicePlanNumber_);
+        bitField0_ |= 0x00000010;
         onChanged();
         return this;
       }
@@ -2756,8 +2645,9 @@ abstract class ServiceStatusProto {
        * @return This builder for chaining.
        */
       public Builder clearServicePlanNumber() {
-        servicePlanNumber_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000010);
+        servicePlanNumber_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000010);;
         onChanged();
         return this;
       }
@@ -2768,21 +2658,21 @@ abstract class ServiceStatusProto {
        */
       public Builder addServicePlanNumberBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  ensureServicePlanNumberIsMutable();
+        if (value == null) { throw new NullPointerException(); }
+        ensureServicePlanNumberIsMutable();
         servicePlanNumber_.add(value);
+        bitField0_ |= 0x00000010;
         onChanged();
         return this;
       }
 
-      private com.google.protobuf.LazyStringList generalOrderNumber_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      private com.google.protobuf.LazyStringArrayList generalOrderNumber_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
       private void ensureGeneralOrderNumberIsMutable() {
-        if (!((bitField0_ & 0x00000020) != 0)) {
+        if (!generalOrderNumber_.isModifiable()) {
           generalOrderNumber_ = new com.google.protobuf.LazyStringArrayList(generalOrderNumber_);
-          bitField0_ |= 0x00000020;
-         }
+        }
+        bitField0_ |= 0x00000020;
       }
       /**
        * <code>repeated string general_order_number = 6;</code>
@@ -2790,7 +2680,8 @@ abstract class ServiceStatusProto {
        */
       public com.google.protobuf.ProtocolStringList
           getGeneralOrderNumberList() {
-        return generalOrderNumber_.getUnmodifiableView();
+        generalOrderNumber_.makeImmutable();
+        return generalOrderNumber_;
       }
       /**
        * <code>repeated string general_order_number = 6;</code>
@@ -2824,11 +2715,10 @@ abstract class ServiceStatusProto {
        */
       public Builder setGeneralOrderNumber(
           int index, java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  ensureGeneralOrderNumberIsMutable();
+        if (value == null) { throw new NullPointerException(); }
+        ensureGeneralOrderNumberIsMutable();
         generalOrderNumber_.set(index, value);
+        bitField0_ |= 0x00000020;
         onChanged();
         return this;
       }
@@ -2839,11 +2729,10 @@ abstract class ServiceStatusProto {
        */
       public Builder addGeneralOrderNumber(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  ensureGeneralOrderNumberIsMutable();
+        if (value == null) { throw new NullPointerException(); }
+        ensureGeneralOrderNumberIsMutable();
         generalOrderNumber_.add(value);
+        bitField0_ |= 0x00000020;
         onChanged();
         return this;
       }
@@ -2857,6 +2746,7 @@ abstract class ServiceStatusProto {
         ensureGeneralOrderNumberIsMutable();
         com.google.protobuf.AbstractMessageLite.Builder.addAll(
             values, generalOrderNumber_);
+        bitField0_ |= 0x00000020;
         onChanged();
         return this;
       }
@@ -2865,8 +2755,9 @@ abstract class ServiceStatusProto {
        * @return This builder for chaining.
        */
       public Builder clearGeneralOrderNumber() {
-        generalOrderNumber_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000020);
+        generalOrderNumber_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000020);;
         onChanged();
         return this;
       }
@@ -2877,11 +2768,10 @@ abstract class ServiceStatusProto {
        */
       public Builder addGeneralOrderNumberBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  ensureGeneralOrderNumberIsMutable();
+        if (value == null) { throw new NullPointerException(); }
+        ensureGeneralOrderNumberIsMutable();
         generalOrderNumber_.add(value);
+        bitField0_ |= 0x00000020;
         onChanged();
         return this;
       }
@@ -2933,8 +2823,9 @@ abstract class ServiceStatusProto {
        * @return This builder for chaining.
        */
       public Builder setDisplayBeforeActive(long value) {
-        bitField0_ |= 0x00000040;
+
         displayBeforeActive_ = value;
+        bitField0_ |= 0x00000040;
         onChanged();
         return this;
       }
@@ -3002,11 +2893,11 @@ abstract class ServiceStatusProto {
             throw new NullPointerException();
           }
           humanReadableActivePeriod_ = value;
-          onChanged();
         } else {
           humanReadableActivePeriodBuilder_.setMessage(value);
         }
         bitField0_ |= 0x00000080;
+        onChanged();
         return this;
       }
       /**
@@ -3021,11 +2912,11 @@ abstract class ServiceStatusProto {
           dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Builder builderForValue) {
         if (humanReadableActivePeriodBuilder_ == null) {
           humanReadableActivePeriod_ = builderForValue.build();
-          onChanged();
         } else {
           humanReadableActivePeriodBuilder_.setMessage(builderForValue.build());
         }
         bitField0_ |= 0x00000080;
+        onChanged();
         return this;
       }
       /**
@@ -3039,18 +2930,17 @@ abstract class ServiceStatusProto {
       public Builder mergeHumanReadableActivePeriod(dev.katsute.onemta.GTFSRealtimeProto.TranslatedString value) {
         if (humanReadableActivePeriodBuilder_ == null) {
           if (((bitField0_ & 0x00000080) != 0) &&
-              humanReadableActivePeriod_ != null &&
-              humanReadableActivePeriod_ != dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.getDefaultInstance()) {
-            humanReadableActivePeriod_ =
-              dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.newBuilder(humanReadableActivePeriod_).mergeFrom(value).buildPartial();
+            humanReadableActivePeriod_ != null &&
+            humanReadableActivePeriod_ != dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.getDefaultInstance()) {
+            getHumanReadableActivePeriodBuilder().mergeFrom(value);
           } else {
             humanReadableActivePeriod_ = value;
           }
-          onChanged();
         } else {
           humanReadableActivePeriodBuilder_.mergeFrom(value);
         }
         bitField0_ |= 0x00000080;
+        onChanged();
         return this;
       }
       /**
@@ -3062,13 +2952,13 @@ abstract class ServiceStatusProto {
        * <code>optional .transit_realtime.TranslatedString human_readable_active_period = 8;</code>
        */
       public Builder clearHumanReadableActivePeriod() {
-        if (humanReadableActivePeriodBuilder_ == null) {
-          humanReadableActivePeriod_ = null;
-          onChanged();
-        } else {
-          humanReadableActivePeriodBuilder_.clear();
-        }
         bitField0_ = (bitField0_ & ~0x00000080);
+        humanReadableActivePeriod_ = null;
+        if (humanReadableActivePeriodBuilder_ != null) {
+          humanReadableActivePeriodBuilder_.dispose();
+          humanReadableActivePeriodBuilder_ = null;
+        }
+        onChanged();
         return this;
       }
       /**
@@ -3109,7 +2999,7 @@ abstract class ServiceStatusProto {
        * <code>optional .transit_realtime.TranslatedString human_readable_active_period = 8;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          dev.katsute.onemta.GTFSRealtimeProto.TranslatedString, dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Builder, dev.katsute.onemta.GTFSRealtimeProto.TranslatedStringOrBuilder>
+          dev.katsute.onemta.GTFSRealtimeProto.TranslatedString, dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Builder, dev.katsute.onemta.GTFSRealtimeProto.TranslatedStringOrBuilder> 
           getHumanReadableActivePeriodFieldBuilder() {
         if (humanReadableActivePeriodBuilder_ == null) {
           humanReadableActivePeriodBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -3145,8 +3035,9 @@ abstract class ServiceStatusProto {
        * @return This builder for chaining.
        */
       public Builder setDirectionality(long value) {
-        bitField0_ |= 0x00000100;
+
         directionality_ = value;
+        bitField0_ |= 0x00000100;
         onChanged();
         return this;
       }
@@ -3356,7 +3247,7 @@ abstract class ServiceStatusProto {
       /**
        * <code>repeated .transit_realtime.EntitySelector affected_stations = 10;</code>
        */
-      public java.util.List<? extends dev.katsute.onemta.GTFSRealtimeProto.EntitySelectorOrBuilder>
+      public java.util.List<? extends dev.katsute.onemta.GTFSRealtimeProto.EntitySelectorOrBuilder> 
            getAffectedStationsOrBuilderList() {
         if (affectedStationsBuilder_ != null) {
           return affectedStationsBuilder_.getMessageOrBuilderList();
@@ -3382,12 +3273,12 @@ abstract class ServiceStatusProto {
       /**
        * <code>repeated .transit_realtime.EntitySelector affected_stations = 10;</code>
        */
-      public java.util.List<dev.katsute.onemta.GTFSRealtimeProto.EntitySelector.Builder>
+      public java.util.List<dev.katsute.onemta.GTFSRealtimeProto.EntitySelector.Builder> 
            getAffectedStationsBuilderList() {
         return getAffectedStationsFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          dev.katsute.onemta.GTFSRealtimeProto.EntitySelector, dev.katsute.onemta.GTFSRealtimeProto.EntitySelector.Builder, dev.katsute.onemta.GTFSRealtimeProto.EntitySelectorOrBuilder>
+          dev.katsute.onemta.GTFSRealtimeProto.EntitySelector, dev.katsute.onemta.GTFSRealtimeProto.EntitySelector.Builder, dev.katsute.onemta.GTFSRealtimeProto.EntitySelectorOrBuilder> 
           getAffectedStationsFieldBuilder() {
         if (affectedStationsBuilder_ == null) {
           affectedStationsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
@@ -3431,11 +3322,11 @@ abstract class ServiceStatusProto {
             throw new NullPointerException();
           }
           screensSummary_ = value;
-          onChanged();
         } else {
           screensSummaryBuilder_.setMessage(value);
         }
         bitField0_ |= 0x00000400;
+        onChanged();
         return this;
       }
       /**
@@ -3445,11 +3336,11 @@ abstract class ServiceStatusProto {
           dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Builder builderForValue) {
         if (screensSummaryBuilder_ == null) {
           screensSummary_ = builderForValue.build();
-          onChanged();
         } else {
           screensSummaryBuilder_.setMessage(builderForValue.build());
         }
         bitField0_ |= 0x00000400;
+        onChanged();
         return this;
       }
       /**
@@ -3458,31 +3349,30 @@ abstract class ServiceStatusProto {
       public Builder mergeScreensSummary(dev.katsute.onemta.GTFSRealtimeProto.TranslatedString value) {
         if (screensSummaryBuilder_ == null) {
           if (((bitField0_ & 0x00000400) != 0) &&
-              screensSummary_ != null &&
-              screensSummary_ != dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.getDefaultInstance()) {
-            screensSummary_ =
-              dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.newBuilder(screensSummary_).mergeFrom(value).buildPartial();
+            screensSummary_ != null &&
+            screensSummary_ != dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.getDefaultInstance()) {
+            getScreensSummaryBuilder().mergeFrom(value);
           } else {
             screensSummary_ = value;
           }
-          onChanged();
         } else {
           screensSummaryBuilder_.mergeFrom(value);
         }
         bitField0_ |= 0x00000400;
+        onChanged();
         return this;
       }
       /**
        * <code>optional .transit_realtime.TranslatedString screens_summary = 11;</code>
        */
       public Builder clearScreensSummary() {
-        if (screensSummaryBuilder_ == null) {
-          screensSummary_ = null;
-          onChanged();
-        } else {
-          screensSummaryBuilder_.clear();
-        }
         bitField0_ = (bitField0_ & ~0x00000400);
+        screensSummary_ = null;
+        if (screensSummaryBuilder_ != null) {
+          screensSummaryBuilder_.dispose();
+          screensSummaryBuilder_ = null;
+        }
+        onChanged();
         return this;
       }
       /**
@@ -3508,7 +3398,7 @@ abstract class ServiceStatusProto {
        * <code>optional .transit_realtime.TranslatedString screens_summary = 11;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          dev.katsute.onemta.GTFSRealtimeProto.TranslatedString, dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Builder, dev.katsute.onemta.GTFSRealtimeProto.TranslatedStringOrBuilder>
+          dev.katsute.onemta.GTFSRealtimeProto.TranslatedString, dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Builder, dev.katsute.onemta.GTFSRealtimeProto.TranslatedStringOrBuilder> 
           getScreensSummaryFieldBuilder() {
         if (screensSummaryBuilder_ == null) {
           screensSummaryBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -3544,8 +3434,9 @@ abstract class ServiceStatusProto {
        * @return This builder for chaining.
        */
       public Builder setNoAffectedStations(boolean value) {
-        bitField0_ |= 0x00000800;
+
         noAffectedStations_ = value;
+        bitField0_ |= 0x00000800;
         onChanged();
         return this;
       }
@@ -3606,7 +3497,7 @@ abstract class ServiceStatusProto {
           getCloneIdBytes() {
         java.lang.Object ref = cloneId_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           cloneId_ = b;
@@ -3626,11 +3517,9 @@ abstract class ServiceStatusProto {
        */
       public Builder setCloneId(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00001000;
+        if (value == null) { throw new NullPointerException(); }
         cloneId_ = value;
+        bitField0_ |= 0x00001000;
         onChanged();
         return this;
       }
@@ -3643,8 +3532,8 @@ abstract class ServiceStatusProto {
        * @return This builder for chaining.
        */
       public Builder clearCloneId() {
-        bitField0_ = (bitField0_ & ~0x00001000);
         cloneId_ = getDefaultInstance().getCloneId();
+        bitField0_ = (bitField0_ & ~0x00001000);
         onChanged();
         return this;
       }
@@ -3659,11 +3548,9 @@ abstract class ServiceStatusProto {
        */
       public Builder setCloneIdBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00001000;
+        if (value == null) { throw new NullPointerException(); }
         cloneId_ = value;
+        bitField0_ |= 0x00001000;
         onChanged();
         return this;
       }
@@ -3705,10 +3592,11 @@ abstract class ServiceStatusProto {
           builder.mergeFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
         } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(
-              e.getMessage()).setUnfinishedMessage(
-                  builder.buildPartial());
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
         }
         return builder.buildPartial();
       }
@@ -3790,11 +3678,6 @@ abstract class ServiceStatusProto {
       return new MercuryEntitySelector();
     }
 
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return dev.katsute.onemta.ServiceStatusProto.internal_static_transit_realtime_MercuryEntitySelector_descriptor;
@@ -4248,7 +4131,8 @@ abstract class ServiceStatusProto {
 
     private int bitField0_;
     public static final int SORT_ORDER_FIELD_NUMBER = 1;
-    private volatile java.lang.Object sortOrder_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object sortOrder_ = "";
     /**
      * <pre>
      * Format for sort_order is 'GTFS-ID:Priority', e.g. 'MTASBWY:G:16'
@@ -4275,7 +4159,7 @@ abstract class ServiceStatusProto {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -4297,7 +4181,7 @@ abstract class ServiceStatusProto {
         getSortOrderBytes() {
       java.lang.Object ref = sortOrder_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         sortOrder_ = b;
@@ -4423,24 +4307,19 @@ abstract class ServiceStatusProto {
 
       // Construct using dev.katsute.onemta.ServiceStatusProto.MercuryEntitySelector.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         sortOrder_ = "";
-        bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
 
@@ -4467,49 +4346,21 @@ abstract class ServiceStatusProto {
       @java.lang.Override
       public dev.katsute.onemta.ServiceStatusProto.MercuryEntitySelector buildPartial() {
         dev.katsute.onemta.ServiceStatusProto.MercuryEntitySelector result = new dev.katsute.onemta.ServiceStatusProto.MercuryEntitySelector(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.sortOrder_ = sortOrder_;
-        result.bitField0_ = to_bitField0_;
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
+      private void buildPartial0(dev.katsute.onemta.ServiceStatusProto.MercuryEntitySelector result) {
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.sortOrder_ = sortOrder_;
+          to_bitField0_ |= 0x00000001;
+        }
+        result.bitField0_ |= to_bitField0_;
       }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
+
       private int bitField0_;
 
       private java.lang.Object sortOrder_ = "";
@@ -4558,7 +4409,7 @@ abstract class ServiceStatusProto {
           getSortOrderBytes() {
         java.lang.Object ref = sortOrder_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           sortOrder_ = b;
@@ -4578,11 +4429,9 @@ abstract class ServiceStatusProto {
        */
       public Builder setSortOrder(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
+        if (value == null) { throw new NullPointerException(); }
         sortOrder_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -4595,8 +4444,8 @@ abstract class ServiceStatusProto {
        * @return This builder for chaining.
        */
       public Builder clearSortOrder() {
-        bitField0_ = (bitField0_ & ~0x00000001);
         sortOrder_ = getDefaultInstance().getSortOrder();
+        bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
         return this;
       }
@@ -4611,11 +4460,9 @@ abstract class ServiceStatusProto {
        */
       public Builder setSortOrderBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
+        if (value == null) { throw new NullPointerException(); }
         sortOrder_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -4657,10 +4504,11 @@ abstract class ServiceStatusProto {
           builder.mergeFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
         } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(
-              e.getMessage()).setUnfinishedMessage(
-                  builder.buildPartial());
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
         }
         return builder.buildPartial();
       }
@@ -4717,22 +4565,22 @@ abstract class ServiceStatusProto {
         dev.katsute.onemta.ServiceStatusProto.MercuryEntitySelector.getDefaultInstance());
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_transit_realtime_MercuryFeedHeader_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_transit_realtime_MercuryFeedHeader_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_transit_realtime_MercuryStationAlternative_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_transit_realtime_MercuryStationAlternative_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_transit_realtime_MercuryAlert_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_transit_realtime_MercuryAlert_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_transit_realtime_MercuryEntitySelector_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_transit_realtime_MercuryEntitySelector_fieldAccessorTable;
 

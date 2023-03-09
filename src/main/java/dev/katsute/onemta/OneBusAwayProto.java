@@ -98,11 +98,6 @@ abstract class OneBusAwayProto {
       return new OneBusAwayFeedHeader();
     }
 
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return dev.katsute.onemta.OneBusAwayProto.internal_static_transit_realtime_OneBusAwayFeedHeader_descriptor;
@@ -118,7 +113,7 @@ abstract class OneBusAwayProto {
 
     private int bitField0_;
     public static final int INCREMENTAL_INDEX_FIELD_NUMBER = 1;
-    private long incrementalIndex_;
+    private long incrementalIndex_ = 0L;
     /**
      * <pre>
      * For an incremental feed, the index of the current incremental FeedMessage.
@@ -153,7 +148,7 @@ abstract class OneBusAwayProto {
     }
 
     public static final int INCREMENTAL_HEARTBEAT_INTERVAL_FIELD_NUMBER = 2;
-    private int incrementalHeartbeatInterval_;
+    private int incrementalHeartbeatInterval_ = 0;
     /**
      * <pre>
      * For an incremental feed, the maximum amount of time, in seconds, between
@@ -297,26 +292,20 @@ abstract class OneBusAwayProto {
 
       // Construct using dev.katsute.onemta.OneBusAwayProto.OneBusAwayFeedHeader.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         incrementalIndex_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000001);
         incrementalHeartbeatInterval_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
@@ -343,6 +332,12 @@ abstract class OneBusAwayProto {
       @java.lang.Override
       public dev.katsute.onemta.OneBusAwayProto.OneBusAwayFeedHeader buildPartial() {
         dev.katsute.onemta.OneBusAwayProto.OneBusAwayFeedHeader result = new dev.katsute.onemta.OneBusAwayProto.OneBusAwayFeedHeader(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(dev.katsute.onemta.OneBusAwayProto.OneBusAwayFeedHeader result) {
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -353,43 +348,9 @@ abstract class OneBusAwayProto {
           result.incrementalHeartbeatInterval_ = incrementalHeartbeatInterval_;
           to_bitField0_ |= 0x00000002;
         }
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
+        result.bitField0_ |= to_bitField0_;
       }
 
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
       private int bitField0_;
 
       private long incrementalIndex_ ;
@@ -439,8 +400,9 @@ abstract class OneBusAwayProto {
        * @return This builder for chaining.
        */
       public Builder setIncrementalIndex(long value) {
-        bitField0_ |= 0x00000001;
+
         incrementalIndex_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -507,8 +469,9 @@ abstract class OneBusAwayProto {
        * @return This builder for chaining.
        */
       public Builder setIncrementalHeartbeatInterval(int value) {
-        bitField0_ |= 0x00000002;
+
         incrementalHeartbeatInterval_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -567,10 +530,11 @@ abstract class OneBusAwayProto {
           builder.mergeFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
         } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(
-              e.getMessage()).setUnfinishedMessage(
-                  builder.buildPartial());
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
         }
         return builder.buildPartial();
       }
@@ -648,11 +612,6 @@ abstract class OneBusAwayProto {
       return new OneBusAwayFeedEntity();
     }
 
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return dev.katsute.onemta.OneBusAwayProto.internal_static_transit_realtime_OneBusAwayFeedEntity_descriptor;
@@ -668,7 +627,8 @@ abstract class OneBusAwayProto {
 
     private int bitField0_;
     public static final int SOURCE_FIELD_NUMBER = 1;
-    private volatile java.lang.Object source_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object source_ = "";
     /**
      * <pre>
      * Optional description of the source of a particular feed entity.
@@ -695,7 +655,7 @@ abstract class OneBusAwayProto {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -717,7 +677,7 @@ abstract class OneBusAwayProto {
         getSourceBytes() {
       java.lang.Object ref = source_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         source_ = b;
@@ -839,24 +799,19 @@ abstract class OneBusAwayProto {
 
       // Construct using dev.katsute.onemta.OneBusAwayProto.OneBusAwayFeedEntity.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         source_ = "";
-        bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
 
@@ -883,49 +838,21 @@ abstract class OneBusAwayProto {
       @java.lang.Override
       public dev.katsute.onemta.OneBusAwayProto.OneBusAwayFeedEntity buildPartial() {
         dev.katsute.onemta.OneBusAwayProto.OneBusAwayFeedEntity result = new dev.katsute.onemta.OneBusAwayProto.OneBusAwayFeedEntity(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.source_ = source_;
-        result.bitField0_ = to_bitField0_;
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
+      private void buildPartial0(dev.katsute.onemta.OneBusAwayProto.OneBusAwayFeedEntity result) {
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.source_ = source_;
+          to_bitField0_ |= 0x00000001;
+        }
+        result.bitField0_ |= to_bitField0_;
       }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
+
       private int bitField0_;
 
       private java.lang.Object source_ = "";
@@ -974,7 +901,7 @@ abstract class OneBusAwayProto {
           getSourceBytes() {
         java.lang.Object ref = source_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           source_ = b;
@@ -994,11 +921,9 @@ abstract class OneBusAwayProto {
        */
       public Builder setSource(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
+        if (value == null) { throw new NullPointerException(); }
         source_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -1011,8 +936,8 @@ abstract class OneBusAwayProto {
        * @return This builder for chaining.
        */
       public Builder clearSource() {
-        bitField0_ = (bitField0_ & ~0x00000001);
         source_ = getDefaultInstance().getSource();
+        bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
         return this;
       }
@@ -1027,11 +952,9 @@ abstract class OneBusAwayProto {
        */
       public Builder setSourceBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
+        if (value == null) { throw new NullPointerException(); }
         source_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -1073,10 +996,11 @@ abstract class OneBusAwayProto {
           builder.mergeFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
         } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(
-              e.getMessage()).setUnfinishedMessage(
-                  builder.buildPartial());
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
         }
         return builder.buildPartial();
       }
@@ -1107,11 +1031,13 @@ abstract class OneBusAwayProto {
      * Delay (in seconds) can be positive (meaning that the vehicle is late) or
      * negative (meaning that the vehicle is ahead of schedule). Delay of 0
      * means that the vehicle is exactly on time.
+     *
      * Deprecated in favor of TripUpdate.delay
      * </pre>
      *
      * <code>optional int32 delay = 1 [deprecated = true];</code>
-     * @deprecated
+     * @deprecated transit_realtime.OneBusAwayTripUpdate.delay is deprecated.
+     *     See gtfs-realtime-OneBusAway.proto;l=50
      * @return Whether the delay field is set.
      */
     @java.lang.Deprecated boolean hasDelay();
@@ -1120,11 +1046,13 @@ abstract class OneBusAwayProto {
      * Delay (in seconds) can be positive (meaning that the vehicle is late) or
      * negative (meaning that the vehicle is ahead of schedule). Delay of 0
      * means that the vehicle is exactly on time.
+     *
      * Deprecated in favor of TripUpdate.delay
      * </pre>
      *
      * <code>optional int32 delay = 1 [deprecated = true];</code>
-     * @deprecated
+     * @deprecated transit_realtime.OneBusAwayTripUpdate.delay is deprecated.
+     *     See gtfs-realtime-OneBusAway.proto;l=50
      * @return The delay.
      */
     @java.lang.Deprecated int getDelay();
@@ -1133,11 +1061,13 @@ abstract class OneBusAwayProto {
      * <pre>
      * Moment at which the trip update was computed. In POSIX time
      * (i.e., number of seconds since January 1st 1970 00:00:00 UTC).
+     *
      * Deprecated in favor of TripUpdate.timestamp
      * </pre>
      *
      * <code>optional uint64 timestamp = 2 [deprecated = true];</code>
-     * @deprecated
+     * @deprecated transit_realtime.OneBusAwayTripUpdate.timestamp is deprecated.
+     *     See gtfs-realtime-OneBusAway.proto;l=56
      * @return Whether the timestamp field is set.
      */
     @java.lang.Deprecated boolean hasTimestamp();
@@ -1145,11 +1075,13 @@ abstract class OneBusAwayProto {
      * <pre>
      * Moment at which the trip update was computed. In POSIX time
      * (i.e., number of seconds since January 1st 1970 00:00:00 UTC).
+     *
      * Deprecated in favor of TripUpdate.timestamp
      * </pre>
      *
      * <code>optional uint64 timestamp = 2 [deprecated = true];</code>
-     * @deprecated
+     * @deprecated transit_realtime.OneBusAwayTripUpdate.timestamp is deprecated.
+     *     See gtfs-realtime-OneBusAway.proto;l=56
      * @return The timestamp.
      */
     @java.lang.Deprecated long getTimestamp();
@@ -1236,11 +1168,6 @@ abstract class OneBusAwayProto {
       return new OneBusAwayTripUpdate();
     }
 
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return dev.katsute.onemta.OneBusAwayProto.internal_static_transit_realtime_OneBusAwayTripUpdate_descriptor;
@@ -1256,17 +1183,19 @@ abstract class OneBusAwayProto {
 
     private int bitField0_;
     public static final int DELAY_FIELD_NUMBER = 1;
-    private int delay_;
+    private int delay_ = 0;
     /**
      * <pre>
      * Delay (in seconds) can be positive (meaning that the vehicle is late) or
      * negative (meaning that the vehicle is ahead of schedule). Delay of 0
      * means that the vehicle is exactly on time.
+     *
      * Deprecated in favor of TripUpdate.delay
      * </pre>
      *
      * <code>optional int32 delay = 1 [deprecated = true];</code>
-     * @deprecated
+     * @deprecated transit_realtime.OneBusAwayTripUpdate.delay is deprecated.
+     *     See gtfs-realtime-OneBusAway.proto;l=50
      * @return Whether the delay field is set.
      */
     @java.lang.Override
@@ -1278,11 +1207,13 @@ abstract class OneBusAwayProto {
      * Delay (in seconds) can be positive (meaning that the vehicle is late) or
      * negative (meaning that the vehicle is ahead of schedule). Delay of 0
      * means that the vehicle is exactly on time.
+     *
      * Deprecated in favor of TripUpdate.delay
      * </pre>
      *
      * <code>optional int32 delay = 1 [deprecated = true];</code>
-     * @deprecated
+     * @deprecated transit_realtime.OneBusAwayTripUpdate.delay is deprecated.
+     *     See gtfs-realtime-OneBusAway.proto;l=50
      * @return The delay.
      */
     @java.lang.Override
@@ -1291,16 +1222,18 @@ abstract class OneBusAwayProto {
     }
 
     public static final int TIMESTAMP_FIELD_NUMBER = 2;
-    private long timestamp_;
+    private long timestamp_ = 0L;
     /**
      * <pre>
      * Moment at which the trip update was computed. In POSIX time
      * (i.e., number of seconds since January 1st 1970 00:00:00 UTC).
+     *
      * Deprecated in favor of TripUpdate.timestamp
      * </pre>
      *
      * <code>optional uint64 timestamp = 2 [deprecated = true];</code>
-     * @deprecated
+     * @deprecated transit_realtime.OneBusAwayTripUpdate.timestamp is deprecated.
+     *     See gtfs-realtime-OneBusAway.proto;l=56
      * @return Whether the timestamp field is set.
      */
     @java.lang.Override
@@ -1311,11 +1244,13 @@ abstract class OneBusAwayProto {
      * <pre>
      * Moment at which the trip update was computed. In POSIX time
      * (i.e., number of seconds since January 1st 1970 00:00:00 UTC).
+     *
      * Deprecated in favor of TripUpdate.timestamp
      * </pre>
      *
      * <code>optional uint64 timestamp = 2 [deprecated = true];</code>
-     * @deprecated
+     * @deprecated transit_realtime.OneBusAwayTripUpdate.timestamp is deprecated.
+     *     See gtfs-realtime-OneBusAway.proto;l=56
      * @return The timestamp.
      */
     @java.lang.Override
@@ -1324,7 +1259,8 @@ abstract class OneBusAwayProto {
     }
 
     public static final int TRIPHEADSIGN_FIELD_NUMBER = 3;
-    private volatile java.lang.Object tripHeadsign_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object tripHeadsign_ = "";
     /**
      * <pre>
      * trip headsign
@@ -1351,7 +1287,7 @@ abstract class OneBusAwayProto {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -1373,7 +1309,7 @@ abstract class OneBusAwayProto {
         getTripHeadsignBytes() {
       java.lang.Object ref = tripHeadsign_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         tripHeadsign_ = b;
@@ -1384,7 +1320,8 @@ abstract class OneBusAwayProto {
     }
 
     public static final int TRIPDIRECTION_FIELD_NUMBER = 4;
-    private volatile java.lang.Object tripDirection_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object tripDirection_ = "";
     /**
      * <pre>
      * trip direction
@@ -1411,7 +1348,7 @@ abstract class OneBusAwayProto {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -1433,7 +1370,7 @@ abstract class OneBusAwayProto {
         getTripDirectionBytes() {
       java.lang.Object ref = tripDirection_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         tripDirection_ = b;
@@ -1555,30 +1492,22 @@ abstract class OneBusAwayProto {
 
       // Construct using dev.katsute.onemta.OneBusAwayProto.OneBusAwayTripUpdate.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         delay_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000001);
         timestamp_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000002);
         tripHeadsign_ = "";
-        bitField0_ = (bitField0_ & ~0x00000004);
         tripDirection_ = "";
-        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
 
@@ -1605,6 +1534,12 @@ abstract class OneBusAwayProto {
       @java.lang.Override
       public dev.katsute.onemta.OneBusAwayProto.OneBusAwayTripUpdate buildPartial() {
         dev.katsute.onemta.OneBusAwayProto.OneBusAwayTripUpdate result = new dev.katsute.onemta.OneBusAwayProto.OneBusAwayTripUpdate(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(dev.katsute.onemta.OneBusAwayProto.OneBusAwayTripUpdate result) {
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -1616,50 +1551,16 @@ abstract class OneBusAwayProto {
           to_bitField0_ |= 0x00000002;
         }
         if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.tripHeadsign_ = tripHeadsign_;
           to_bitField0_ |= 0x00000004;
         }
-        result.tripHeadsign_ = tripHeadsign_;
         if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.tripDirection_ = tripDirection_;
           to_bitField0_ |= 0x00000008;
         }
-        result.tripDirection_ = tripDirection_;
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
+        result.bitField0_ |= to_bitField0_;
       }
 
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
       private int bitField0_;
 
       private int delay_ ;
@@ -1668,11 +1569,13 @@ abstract class OneBusAwayProto {
        * Delay (in seconds) can be positive (meaning that the vehicle is late) or
        * negative (meaning that the vehicle is ahead of schedule). Delay of 0
        * means that the vehicle is exactly on time.
+       *
        * Deprecated in favor of TripUpdate.delay
        * </pre>
        *
        * <code>optional int32 delay = 1 [deprecated = true];</code>
-       * @deprecated
+       * @deprecated transit_realtime.OneBusAwayTripUpdate.delay is deprecated.
+       *     See gtfs-realtime-OneBusAway.proto;l=50
        * @return Whether the delay field is set.
        */
       @java.lang.Override
@@ -1684,11 +1587,13 @@ abstract class OneBusAwayProto {
        * Delay (in seconds) can be positive (meaning that the vehicle is late) or
        * negative (meaning that the vehicle is ahead of schedule). Delay of 0
        * means that the vehicle is exactly on time.
+       *
        * Deprecated in favor of TripUpdate.delay
        * </pre>
        *
        * <code>optional int32 delay = 1 [deprecated = true];</code>
-       * @deprecated
+       * @deprecated transit_realtime.OneBusAwayTripUpdate.delay is deprecated.
+       *     See gtfs-realtime-OneBusAway.proto;l=50
        * @return The delay.
        */
       @java.lang.Override
@@ -1700,17 +1605,20 @@ abstract class OneBusAwayProto {
        * Delay (in seconds) can be positive (meaning that the vehicle is late) or
        * negative (meaning that the vehicle is ahead of schedule). Delay of 0
        * means that the vehicle is exactly on time.
+       *
        * Deprecated in favor of TripUpdate.delay
        * </pre>
        *
        * <code>optional int32 delay = 1 [deprecated = true];</code>
-       * @deprecated
+       * @deprecated transit_realtime.OneBusAwayTripUpdate.delay is deprecated.
+       *     See gtfs-realtime-OneBusAway.proto;l=50
        * @param value The delay to set.
        * @return This builder for chaining.
        */
       @java.lang.Deprecated public Builder setDelay(int value) {
-        bitField0_ |= 0x00000001;
+
         delay_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -1719,11 +1627,13 @@ abstract class OneBusAwayProto {
        * Delay (in seconds) can be positive (meaning that the vehicle is late) or
        * negative (meaning that the vehicle is ahead of schedule). Delay of 0
        * means that the vehicle is exactly on time.
+       *
        * Deprecated in favor of TripUpdate.delay
        * </pre>
        *
        * <code>optional int32 delay = 1 [deprecated = true];</code>
-       * @deprecated
+       * @deprecated transit_realtime.OneBusAwayTripUpdate.delay is deprecated.
+       *     See gtfs-realtime-OneBusAway.proto;l=50
        * @return This builder for chaining.
        */
       @java.lang.Deprecated public Builder clearDelay() {
@@ -1738,11 +1648,13 @@ abstract class OneBusAwayProto {
        * <pre>
        * Moment at which the trip update was computed. In POSIX time
        * (i.e., number of seconds since January 1st 1970 00:00:00 UTC).
+       *
        * Deprecated in favor of TripUpdate.timestamp
        * </pre>
        *
        * <code>optional uint64 timestamp = 2 [deprecated = true];</code>
-       * @deprecated
+       * @deprecated transit_realtime.OneBusAwayTripUpdate.timestamp is deprecated.
+       *     See gtfs-realtime-OneBusAway.proto;l=56
        * @return Whether the timestamp field is set.
        */
       @java.lang.Override
@@ -1753,11 +1665,13 @@ abstract class OneBusAwayProto {
        * <pre>
        * Moment at which the trip update was computed. In POSIX time
        * (i.e., number of seconds since January 1st 1970 00:00:00 UTC).
+       *
        * Deprecated in favor of TripUpdate.timestamp
        * </pre>
        *
        * <code>optional uint64 timestamp = 2 [deprecated = true];</code>
-       * @deprecated
+       * @deprecated transit_realtime.OneBusAwayTripUpdate.timestamp is deprecated.
+       *     See gtfs-realtime-OneBusAway.proto;l=56
        * @return The timestamp.
        */
       @java.lang.Override
@@ -1768,17 +1682,20 @@ abstract class OneBusAwayProto {
        * <pre>
        * Moment at which the trip update was computed. In POSIX time
        * (i.e., number of seconds since January 1st 1970 00:00:00 UTC).
+       *
        * Deprecated in favor of TripUpdate.timestamp
        * </pre>
        *
        * <code>optional uint64 timestamp = 2 [deprecated = true];</code>
-       * @deprecated
+       * @deprecated transit_realtime.OneBusAwayTripUpdate.timestamp is deprecated.
+       *     See gtfs-realtime-OneBusAway.proto;l=56
        * @param value The timestamp to set.
        * @return This builder for chaining.
        */
       @java.lang.Deprecated public Builder setTimestamp(long value) {
-        bitField0_ |= 0x00000002;
+
         timestamp_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -1786,11 +1703,13 @@ abstract class OneBusAwayProto {
        * <pre>
        * Moment at which the trip update was computed. In POSIX time
        * (i.e., number of seconds since January 1st 1970 00:00:00 UTC).
+       *
        * Deprecated in favor of TripUpdate.timestamp
        * </pre>
        *
        * <code>optional uint64 timestamp = 2 [deprecated = true];</code>
-       * @deprecated
+       * @deprecated transit_realtime.OneBusAwayTripUpdate.timestamp is deprecated.
+       *     See gtfs-realtime-OneBusAway.proto;l=56
        * @return This builder for chaining.
        */
       @java.lang.Deprecated public Builder clearTimestamp() {
@@ -1846,7 +1765,7 @@ abstract class OneBusAwayProto {
           getTripHeadsignBytes() {
         java.lang.Object ref = tripHeadsign_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           tripHeadsign_ = b;
@@ -1866,11 +1785,9 @@ abstract class OneBusAwayProto {
        */
       public Builder setTripHeadsign(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000004;
+        if (value == null) { throw new NullPointerException(); }
         tripHeadsign_ = value;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
@@ -1883,8 +1800,8 @@ abstract class OneBusAwayProto {
        * @return This builder for chaining.
        */
       public Builder clearTripHeadsign() {
-        bitField0_ = (bitField0_ & ~0x00000004);
         tripHeadsign_ = getDefaultInstance().getTripHeadsign();
+        bitField0_ = (bitField0_ & ~0x00000004);
         onChanged();
         return this;
       }
@@ -1899,11 +1816,9 @@ abstract class OneBusAwayProto {
        */
       public Builder setTripHeadsignBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000004;
+        if (value == null) { throw new NullPointerException(); }
         tripHeadsign_ = value;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
@@ -1954,7 +1869,7 @@ abstract class OneBusAwayProto {
           getTripDirectionBytes() {
         java.lang.Object ref = tripDirection_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           tripDirection_ = b;
@@ -1974,11 +1889,9 @@ abstract class OneBusAwayProto {
        */
       public Builder setTripDirection(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000008;
+        if (value == null) { throw new NullPointerException(); }
         tripDirection_ = value;
+        bitField0_ |= 0x00000008;
         onChanged();
         return this;
       }
@@ -1991,8 +1904,8 @@ abstract class OneBusAwayProto {
        * @return This builder for chaining.
        */
       public Builder clearTripDirection() {
-        bitField0_ = (bitField0_ & ~0x00000008);
         tripDirection_ = getDefaultInstance().getTripDirection();
+        bitField0_ = (bitField0_ & ~0x00000008);
         onChanged();
         return this;
       }
@@ -2007,11 +1920,9 @@ abstract class OneBusAwayProto {
        */
       public Builder setTripDirectionBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000008;
+        if (value == null) { throw new NullPointerException(); }
         tripDirection_ = value;
+        bitField0_ |= 0x00000008;
         onChanged();
         return this;
       }
@@ -2053,10 +1964,11 @@ abstract class OneBusAwayProto {
           builder.mergeFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
         } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(
-              e.getMessage()).setUnfinishedMessage(
-                  builder.buildPartial());
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
         }
         return builder.buildPartial();
       }
@@ -2122,11 +2034,6 @@ abstract class OneBusAwayProto {
       return new OneBusAwayStopTimeUpdate();
     }
 
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return dev.katsute.onemta.OneBusAwayProto.internal_static_transit_realtime_OneBusAwayStopTimeUpdate_descriptor;
@@ -2142,7 +2049,8 @@ abstract class OneBusAwayProto {
 
     private int bitField0_;
     public static final int STOPHEADSIGN_FIELD_NUMBER = 1;
-    private volatile java.lang.Object stopHeadsign_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object stopHeadsign_ = "";
     /**
      * <code>optional string stopHeadsign = 1;</code>
      * @return Whether the stopHeadsign field is set.
@@ -2161,7 +2069,7 @@ abstract class OneBusAwayProto {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -2179,7 +2087,7 @@ abstract class OneBusAwayProto {
         getStopHeadsignBytes() {
       java.lang.Object ref = stopHeadsign_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         stopHeadsign_ = b;
@@ -2301,24 +2209,19 @@ abstract class OneBusAwayProto {
 
       // Construct using dev.katsute.onemta.OneBusAwayProto.OneBusAwayStopTimeUpdate.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         stopHeadsign_ = "";
-        bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
 
@@ -2345,49 +2248,21 @@ abstract class OneBusAwayProto {
       @java.lang.Override
       public dev.katsute.onemta.OneBusAwayProto.OneBusAwayStopTimeUpdate buildPartial() {
         dev.katsute.onemta.OneBusAwayProto.OneBusAwayStopTimeUpdate result = new dev.katsute.onemta.OneBusAwayProto.OneBusAwayStopTimeUpdate(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.stopHeadsign_ = stopHeadsign_;
-        result.bitField0_ = to_bitField0_;
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
+      private void buildPartial0(dev.katsute.onemta.OneBusAwayProto.OneBusAwayStopTimeUpdate result) {
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.stopHeadsign_ = stopHeadsign_;
+          to_bitField0_ |= 0x00000001;
+        }
+        result.bitField0_ |= to_bitField0_;
       }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
+
       private int bitField0_;
 
       private java.lang.Object stopHeadsign_ = "";
@@ -2424,7 +2299,7 @@ abstract class OneBusAwayProto {
           getStopHeadsignBytes() {
         java.lang.Object ref = stopHeadsign_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           stopHeadsign_ = b;
@@ -2440,11 +2315,9 @@ abstract class OneBusAwayProto {
        */
       public Builder setStopHeadsign(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
+        if (value == null) { throw new NullPointerException(); }
         stopHeadsign_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -2453,8 +2326,8 @@ abstract class OneBusAwayProto {
        * @return This builder for chaining.
        */
       public Builder clearStopHeadsign() {
-        bitField0_ = (bitField0_ & ~0x00000001);
         stopHeadsign_ = getDefaultInstance().getStopHeadsign();
+        bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
         return this;
       }
@@ -2465,11 +2338,9 @@ abstract class OneBusAwayProto {
        */
       public Builder setStopHeadsignBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
+        if (value == null) { throw new NullPointerException(); }
         stopHeadsign_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -2511,10 +2382,11 @@ abstract class OneBusAwayProto {
           builder.mergeFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
         } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(
-              e.getMessage()).setUnfinishedMessage(
-                  builder.buildPartial());
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
         }
         return builder.buildPartial();
       }
@@ -2580,11 +2452,6 @@ abstract class OneBusAwayProto {
       return new OneBusAwayEntitySelector();
     }
 
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return dev.katsute.onemta.OneBusAwayProto.internal_static_transit_realtime_OneBusAwayEntitySelector_descriptor;
@@ -2600,7 +2467,8 @@ abstract class OneBusAwayProto {
 
     private int bitField0_;
     public static final int ELEVATORID_FIELD_NUMBER = 1;
-    private volatile java.lang.Object elevatorId_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object elevatorId_ = "";
     /**
      * <code>optional string elevatorId = 1;</code>
      * @return Whether the elevatorId field is set.
@@ -2619,7 +2487,7 @@ abstract class OneBusAwayProto {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -2637,7 +2505,7 @@ abstract class OneBusAwayProto {
         getElevatorIdBytes() {
       java.lang.Object ref = elevatorId_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         elevatorId_ = b;
@@ -2759,24 +2627,19 @@ abstract class OneBusAwayProto {
 
       // Construct using dev.katsute.onemta.OneBusAwayProto.OneBusAwayEntitySelector.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         elevatorId_ = "";
-        bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
 
@@ -2803,49 +2666,21 @@ abstract class OneBusAwayProto {
       @java.lang.Override
       public dev.katsute.onemta.OneBusAwayProto.OneBusAwayEntitySelector buildPartial() {
         dev.katsute.onemta.OneBusAwayProto.OneBusAwayEntitySelector result = new dev.katsute.onemta.OneBusAwayProto.OneBusAwayEntitySelector(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.elevatorId_ = elevatorId_;
-        result.bitField0_ = to_bitField0_;
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
+      private void buildPartial0(dev.katsute.onemta.OneBusAwayProto.OneBusAwayEntitySelector result) {
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.elevatorId_ = elevatorId_;
+          to_bitField0_ |= 0x00000001;
+        }
+        result.bitField0_ |= to_bitField0_;
       }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
+
       private int bitField0_;
 
       private java.lang.Object elevatorId_ = "";
@@ -2882,7 +2717,7 @@ abstract class OneBusAwayProto {
           getElevatorIdBytes() {
         java.lang.Object ref = elevatorId_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           elevatorId_ = b;
@@ -2898,11 +2733,9 @@ abstract class OneBusAwayProto {
        */
       public Builder setElevatorId(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
+        if (value == null) { throw new NullPointerException(); }
         elevatorId_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -2911,8 +2744,8 @@ abstract class OneBusAwayProto {
        * @return This builder for chaining.
        */
       public Builder clearElevatorId() {
-        bitField0_ = (bitField0_ & ~0x00000001);
         elevatorId_ = getDefaultInstance().getElevatorId();
+        bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
         return this;
       }
@@ -2923,11 +2756,9 @@ abstract class OneBusAwayProto {
        */
       public Builder setElevatorIdBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
+        if (value == null) { throw new NullPointerException(); }
         elevatorId_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -2969,10 +2800,11 @@ abstract class OneBusAwayProto {
           builder.mergeFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
         } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(
-              e.getMessage()).setUnfinishedMessage(
-                  builder.buildPartial());
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
         }
         return builder.buildPartial();
       }
@@ -3051,27 +2883,27 @@ abstract class OneBusAwayProto {
         dev.katsute.onemta.OneBusAwayProto.OneBusAwayEntitySelector.getDefaultInstance());
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_transit_realtime_OneBusAwayFeedHeader_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_transit_realtime_OneBusAwayFeedHeader_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_transit_realtime_OneBusAwayFeedEntity_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_transit_realtime_OneBusAwayFeedEntity_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_transit_realtime_OneBusAwayTripUpdate_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_transit_realtime_OneBusAwayTripUpdate_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_transit_realtime_OneBusAwayStopTimeUpdate_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_transit_realtime_OneBusAwayStopTimeUpdate_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_transit_realtime_OneBusAwayEntitySelector_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_transit_realtime_OneBusAwayEntitySelector_fieldAccessorTable;
 

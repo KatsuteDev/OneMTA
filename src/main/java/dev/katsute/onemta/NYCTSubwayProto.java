@@ -104,11 +104,6 @@ abstract class NYCTSubwayProto {
       return new TripReplacementPeriod();
     }
 
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return dev.katsute.onemta.NYCTSubwayProto.internal_static_TripReplacementPeriod_descriptor;
@@ -124,7 +119,8 @@ abstract class NYCTSubwayProto {
 
     private int bitField0_;
     public static final int ROUTE_ID_FIELD_NUMBER = 1;
-    private volatile java.lang.Object routeId_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object routeId_ = "";
     /**
      * <pre>
      * The replacement period is for this route
@@ -151,7 +147,7 @@ abstract class NYCTSubwayProto {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -173,7 +169,7 @@ abstract class NYCTSubwayProto {
         getRouteIdBytes() {
       java.lang.Object ref = routeId_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         routeId_ = b;
@@ -353,14 +349,13 @@ abstract class NYCTSubwayProto {
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         routeId_ = "";
-        bitField0_ = (bitField0_ & ~0x00000001);
-        if (replacementPeriodBuilder_ == null) {
-          replacementPeriod_ = null;
-        } else {
-          replacementPeriodBuilder_.clear();
+        replacementPeriod_ = null;
+        if (replacementPeriodBuilder_ != null) {
+          replacementPeriodBuilder_.dispose();
+          replacementPeriodBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
@@ -387,57 +382,27 @@ abstract class NYCTSubwayProto {
       @java.lang.Override
       public dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriod buildPartial() {
         dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriod result = new dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriod(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.routeId_ = routeId_;
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          if (replacementPeriodBuilder_ == null) {
-            result.replacementPeriod_ = replacementPeriod_;
-          } else {
-            result.replacementPeriod_ = replacementPeriodBuilder_.build();
-          }
-          to_bitField0_ |= 0x00000002;
-        }
-        result.bitField0_ = to_bitField0_;
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
+      private void buildPartial0(dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriod result) {
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.routeId_ = routeId_;
+          to_bitField0_ |= 0x00000001;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.replacementPeriod_ = replacementPeriodBuilder_ == null
+              ? replacementPeriod_
+              : replacementPeriodBuilder_.build();
+          to_bitField0_ |= 0x00000002;
+        }
+        result.bitField0_ |= to_bitField0_;
       }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
+
       private int bitField0_;
 
       private java.lang.Object routeId_ = "";
@@ -486,7 +451,7 @@ abstract class NYCTSubwayProto {
           getRouteIdBytes() {
         java.lang.Object ref = routeId_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           routeId_ = b;
@@ -506,11 +471,9 @@ abstract class NYCTSubwayProto {
        */
       public Builder setRouteId(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
+        if (value == null) { throw new NullPointerException(); }
         routeId_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -523,8 +486,8 @@ abstract class NYCTSubwayProto {
        * @return This builder for chaining.
        */
       public Builder clearRouteId() {
-        bitField0_ = (bitField0_ & ~0x00000001);
         routeId_ = getDefaultInstance().getRouteId();
+        bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
         return this;
       }
@@ -539,11 +502,9 @@ abstract class NYCTSubwayProto {
        */
       public Builder setRouteIdBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
+        if (value == null) { throw new NullPointerException(); }
         routeId_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -593,11 +554,11 @@ abstract class NYCTSubwayProto {
             throw new NullPointerException();
           }
           replacementPeriod_ = value;
-          onChanged();
         } else {
           replacementPeriodBuilder_.setMessage(value);
         }
         bitField0_ |= 0x00000002;
+        onChanged();
         return this;
       }
       /**
@@ -612,11 +573,11 @@ abstract class NYCTSubwayProto {
           dev.katsute.onemta.GTFSRealtimeProto.TimeRange.Builder builderForValue) {
         if (replacementPeriodBuilder_ == null) {
           replacementPeriod_ = builderForValue.build();
-          onChanged();
         } else {
           replacementPeriodBuilder_.setMessage(builderForValue.build());
         }
         bitField0_ |= 0x00000002;
+        onChanged();
         return this;
       }
       /**
@@ -630,18 +591,17 @@ abstract class NYCTSubwayProto {
       public Builder mergeReplacementPeriod(dev.katsute.onemta.GTFSRealtimeProto.TimeRange value) {
         if (replacementPeriodBuilder_ == null) {
           if (((bitField0_ & 0x00000002) != 0) &&
-              replacementPeriod_ != null &&
-              replacementPeriod_ != dev.katsute.onemta.GTFSRealtimeProto.TimeRange.getDefaultInstance()) {
-            replacementPeriod_ =
-              dev.katsute.onemta.GTFSRealtimeProto.TimeRange.newBuilder(replacementPeriod_).mergeFrom(value).buildPartial();
+            replacementPeriod_ != null &&
+            replacementPeriod_ != dev.katsute.onemta.GTFSRealtimeProto.TimeRange.getDefaultInstance()) {
+            getReplacementPeriodBuilder().mergeFrom(value);
           } else {
             replacementPeriod_ = value;
           }
-          onChanged();
         } else {
           replacementPeriodBuilder_.mergeFrom(value);
         }
         bitField0_ |= 0x00000002;
+        onChanged();
         return this;
       }
       /**
@@ -653,13 +613,13 @@ abstract class NYCTSubwayProto {
        * <code>optional .transit_realtime.TimeRange replacement_period = 2;</code>
        */
       public Builder clearReplacementPeriod() {
-        if (replacementPeriodBuilder_ == null) {
-          replacementPeriod_ = null;
-          onChanged();
-        } else {
-          replacementPeriodBuilder_.clear();
-        }
         bitField0_ = (bitField0_ & ~0x00000002);
+        replacementPeriod_ = null;
+        if (replacementPeriodBuilder_ != null) {
+          replacementPeriodBuilder_.dispose();
+          replacementPeriodBuilder_ = null;
+        }
+        onChanged();
         return this;
       }
       /**
@@ -700,7 +660,7 @@ abstract class NYCTSubwayProto {
        * <code>optional .transit_realtime.TimeRange replacement_period = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          dev.katsute.onemta.GTFSRealtimeProto.TimeRange, dev.katsute.onemta.GTFSRealtimeProto.TimeRange.Builder, dev.katsute.onemta.GTFSRealtimeProto.TimeRangeOrBuilder>
+          dev.katsute.onemta.GTFSRealtimeProto.TimeRange, dev.katsute.onemta.GTFSRealtimeProto.TimeRange.Builder, dev.katsute.onemta.GTFSRealtimeProto.TimeRangeOrBuilder> 
           getReplacementPeriodFieldBuilder() {
         if (replacementPeriodBuilder_ == null) {
           replacementPeriodBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -750,10 +710,11 @@ abstract class NYCTSubwayProto {
           builder.mergeFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
         } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(
-              e.getMessage()).setUnfinishedMessage(
-                  builder.buildPartial());
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
         }
         return builder.buildPartial();
       }
@@ -825,7 +786,7 @@ abstract class NYCTSubwayProto {
      *
      * <code>repeated .TripReplacementPeriod trip_replacement_period = 2;</code>
      */
-    java.util.List<dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriod>
+    java.util.List<dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriod> 
         getTripReplacementPeriodList();
     /**
      * <pre>
@@ -871,7 +832,7 @@ abstract class NYCTSubwayProto {
      *
      * <code>repeated .TripReplacementPeriod trip_replacement_period = 2;</code>
      */
-    java.util.List<? extends dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriodOrBuilder>
+    java.util.List<? extends dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriodOrBuilder> 
         getTripReplacementPeriodOrBuilderList();
     /**
      * <pre>
@@ -918,11 +879,6 @@ abstract class NYCTSubwayProto {
       return new NyctFeedHeader();
     }
 
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return dev.katsute.onemta.NYCTSubwayProto.internal_static_NyctFeedHeader_descriptor;
@@ -938,7 +894,8 @@ abstract class NYCTSubwayProto {
 
     private int bitField0_;
     public static final int NYCT_SUBWAY_VERSION_FIELD_NUMBER = 1;
-    private volatile java.lang.Object nyctSubwayVersion_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object nyctSubwayVersion_ = "";
     /**
      * <pre>
      * Version of the NYCT Subway extensions
@@ -967,7 +924,7 @@ abstract class NYCTSubwayProto {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -990,7 +947,7 @@ abstract class NYCTSubwayProto {
         getNyctSubwayVersionBytes() {
       java.lang.Object ref = nyctSubwayVersion_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         nyctSubwayVersion_ = b;
@@ -1001,6 +958,7 @@ abstract class NYCTSubwayProto {
     }
 
     public static final int TRIP_REPLACEMENT_PERIOD_FIELD_NUMBER = 2;
+    @SuppressWarnings("serial")
     private java.util.List<dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriod> tripReplacementPeriod_;
     /**
      * <pre>
@@ -1035,7 +993,7 @@ abstract class NYCTSubwayProto {
      * <code>repeated .TripReplacementPeriod trip_replacement_period = 2;</code>
      */
     @java.lang.Override
-    public java.util.List<? extends dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriodOrBuilder>
+    public java.util.List<? extends dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriodOrBuilder> 
         getTripReplacementPeriodOrBuilderList() {
       return tripReplacementPeriod_;
     }
@@ -1211,31 +1169,26 @@ abstract class NYCTSubwayProto {
 
       // Construct using dev.katsute.onemta.NYCTSubwayProto.NyctFeedHeader.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-          getTripReplacementPeriodFieldBuilder();
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         nyctSubwayVersion_ = "";
-        bitField0_ = (bitField0_ & ~0x00000001);
         if (tripReplacementPeriodBuilder_ == null) {
           tripReplacementPeriod_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
         } else {
+          tripReplacementPeriod_ = null;
           tripReplacementPeriodBuilder_.clear();
         }
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
@@ -1262,12 +1215,13 @@ abstract class NYCTSubwayProto {
       @java.lang.Override
       public dev.katsute.onemta.NYCTSubwayProto.NyctFeedHeader buildPartial() {
         dev.katsute.onemta.NYCTSubwayProto.NyctFeedHeader result = new dev.katsute.onemta.NYCTSubwayProto.NyctFeedHeader(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.nyctSubwayVersion_ = nyctSubwayVersion_;
+        buildPartialRepeatedFields(result);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartialRepeatedFields(dev.katsute.onemta.NYCTSubwayProto.NyctFeedHeader result) {
         if (tripReplacementPeriodBuilder_ == null) {
           if (((bitField0_ & 0x00000002) != 0)) {
             tripReplacementPeriod_ = java.util.Collections.unmodifiableList(tripReplacementPeriod_);
@@ -1277,43 +1231,18 @@ abstract class NYCTSubwayProto {
         } else {
           result.tripReplacementPeriod_ = tripReplacementPeriodBuilder_.build();
         }
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
       }
 
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
+      private void buildPartial0(dev.katsute.onemta.NYCTSubwayProto.NyctFeedHeader result) {
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.nyctSubwayVersion_ = nyctSubwayVersion_;
+          to_bitField0_ |= 0x00000001;
+        }
+        result.bitField0_ |= to_bitField0_;
       }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
+
       private int bitField0_;
 
       private java.lang.Object nyctSubwayVersion_ = "";
@@ -1365,7 +1294,7 @@ abstract class NYCTSubwayProto {
           getNyctSubwayVersionBytes() {
         java.lang.Object ref = nyctSubwayVersion_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           nyctSubwayVersion_ = b;
@@ -1386,11 +1315,9 @@ abstract class NYCTSubwayProto {
        */
       public Builder setNyctSubwayVersion(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
+        if (value == null) { throw new NullPointerException(); }
         nyctSubwayVersion_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -1404,8 +1331,8 @@ abstract class NYCTSubwayProto {
        * @return This builder for chaining.
        */
       public Builder clearNyctSubwayVersion() {
-        bitField0_ = (bitField0_ & ~0x00000001);
         nyctSubwayVersion_ = getDefaultInstance().getNyctSubwayVersion();
+        bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
         return this;
       }
@@ -1421,11 +1348,9 @@ abstract class NYCTSubwayProto {
        */
       public Builder setNyctSubwayVersionBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
+        if (value == null) { throw new NullPointerException(); }
         nyctSubwayVersion_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -1790,7 +1715,7 @@ abstract class NYCTSubwayProto {
        *
        * <code>repeated .TripReplacementPeriod trip_replacement_period = 2;</code>
        */
-      public java.util.List<? extends dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriodOrBuilder>
+      public java.util.List<? extends dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriodOrBuilder> 
            getTripReplacementPeriodOrBuilderList() {
         if (tripReplacementPeriodBuilder_ != null) {
           return tripReplacementPeriodBuilder_.getMessageOrBuilderList();
@@ -1849,12 +1774,12 @@ abstract class NYCTSubwayProto {
        *
        * <code>repeated .TripReplacementPeriod trip_replacement_period = 2;</code>
        */
-      public java.util.List<dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriod.Builder>
+      public java.util.List<dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriod.Builder> 
            getTripReplacementPeriodBuilderList() {
         return getTripReplacementPeriodFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriod, dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriod.Builder, dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriodOrBuilder>
+          dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriod, dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriod.Builder, dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriodOrBuilder> 
           getTripReplacementPeriodFieldBuilder() {
         if (tripReplacementPeriodBuilder_ == null) {
           tripReplacementPeriodBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
@@ -1905,10 +1830,11 @@ abstract class NYCTSubwayProto {
           builder.mergeFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
         } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(
-              e.getMessage()).setUnfinishedMessage(
-                  builder.buildPartial());
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
         }
         return builder.buildPartial();
       }
@@ -1939,17 +1865,21 @@ abstract class NYCTSubwayProto {
      * The nyct_train_id is meant for internal use only. It provides an
      * easy way to associated GTFS-realtime trip identifiers with NYCT rail
      * operations identifier
+     *
      * The ATS office system assigns unique train identification (Train ID) to
      * each train operating within or ready to enter the mainline of the
      * monitored territory. An example of this is 06 0123+ PEL/BBR and is decoded
      * as follows:
+     *
      * The first character represents the trip type designator. 0 identifies a
      * scheduled revenue trip. Other revenue trip values that are a result of a
      * change to the base schedule include; [= reroute], [/ skip stop], [$ turn
      * train] also known as shortly lined service.
+     *
      * The second character 6 represents the trip line i.e. number 6 train The
      * third set of characters identify the decoded origin time. The last
      * character may be blank "on the whole minute" or + "30 seconds"
+     *
      * Note: Origin times will not change when there is a trip type change.  This
      * is followed by a three character "Origin Location" / "Destination
      * Location"
@@ -1964,17 +1894,21 @@ abstract class NYCTSubwayProto {
      * The nyct_train_id is meant for internal use only. It provides an
      * easy way to associated GTFS-realtime trip identifiers with NYCT rail
      * operations identifier
+     *
      * The ATS office system assigns unique train identification (Train ID) to
      * each train operating within or ready to enter the mainline of the
      * monitored territory. An example of this is 06 0123+ PEL/BBR and is decoded
      * as follows:
+     *
      * The first character represents the trip type designator. 0 identifies a
      * scheduled revenue trip. Other revenue trip values that are a result of a
      * change to the base schedule include; [= reroute], [/ skip stop], [$ turn
      * train] also known as shortly lined service.
+     *
      * The second character 6 represents the trip line i.e. number 6 train The
      * third set of characters identify the decoded origin time. The last
      * character may be blank "on the whole minute" or + "30 seconds"
+     *
      * Note: Origin times will not change when there is a trip type change.  This
      * is followed by a three character "Origin Location" / "Destination
      * Location"
@@ -1989,17 +1923,21 @@ abstract class NYCTSubwayProto {
      * The nyct_train_id is meant for internal use only. It provides an
      * easy way to associated GTFS-realtime trip identifiers with NYCT rail
      * operations identifier
+     *
      * The ATS office system assigns unique train identification (Train ID) to
      * each train operating within or ready to enter the mainline of the
      * monitored territory. An example of this is 06 0123+ PEL/BBR and is decoded
      * as follows:
+     *
      * The first character represents the trip type designator. 0 identifies a
      * scheduled revenue trip. Other revenue trip values that are a result of a
      * change to the base schedule include; [= reroute], [/ skip stop], [$ turn
      * train] also known as shortly lined service.
+     *
      * The second character 6 represents the trip line i.e. number 6 train The
      * third set of characters identify the decoded origin time. The last
      * character may be blank "on the whole minute" or + "30 seconds"
+     *
      * Note: Origin times will not change when there is a trip type change.  This
      * is followed by a three character "Origin Location" / "Destination
      * Location"
@@ -2015,11 +1953,13 @@ abstract class NYCTSubwayProto {
      * <pre>
      * This trip has been assigned to a physical train. If true, this trip is
      * already underway or most likely will depart shortly.
+     *
      * Train Assignment is a function of the Automatic Train Supervision (ATS)
      * office system used by NYCT Rail Operations to monitor and track train
      * movements. ATS provides the ability to "assign" the nyct_train_id
      * attribute when a physical train is at its origin terminal. These assigned
      * trips have the is_assigned field set in the TripDescriptor.
+     *
      * When a train is at a terminal but has not been given a work program it is
      * declared unassigned and is tagged as such. Unassigned trains can be moved
      * to a storage location or assigned a nyct_train_id when a determination for
@@ -2034,11 +1974,13 @@ abstract class NYCTSubwayProto {
      * <pre>
      * This trip has been assigned to a physical train. If true, this trip is
      * already underway or most likely will depart shortly.
+     *
      * Train Assignment is a function of the Automatic Train Supervision (ATS)
      * office system used by NYCT Rail Operations to monitor and track train
      * movements. ATS provides the ability to "assign" the nyct_train_id
      * attribute when a physical train is at its origin terminal. These assigned
      * trips have the is_assigned field set in the TripDescriptor.
+     *
      * When a train is at a terminal but has not been given a work program it is
      * declared unassigned and is tagged as such. Unassigned trains can be moved
      * to a storage location or assigned a nyct_train_id when a determination for
@@ -2054,8 +1996,10 @@ abstract class NYCTSubwayProto {
      * <pre>
      * Uptown and Bronx-bound trains are moving NORTH.
      * Times Square Shuttle to Grand Central is also northbound.
+     *
      * Downtown and Brooklyn-bound trains are moving SOUTH.
      * Times Square Shuttle to Times Square is also southbound.
+     *
      * EAST and WEST are not used currently.
      * </pre>
      *
@@ -2067,8 +2011,10 @@ abstract class NYCTSubwayProto {
      * <pre>
      * Uptown and Bronx-bound trains are moving NORTH.
      * Times Square Shuttle to Grand Central is also northbound.
+     *
      * Downtown and Brooklyn-bound trains are moving SOUTH.
      * Times Square Shuttle to Times Square is also southbound.
+     *
      * EAST and WEST are not used currently.
      * </pre>
      *
@@ -2105,11 +2051,6 @@ abstract class NYCTSubwayProto {
       return new NyctTripDescriptor();
     }
 
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return dev.katsute.onemta.NYCTSubwayProto.internal_static_NyctTripDescriptor_descriptor;
@@ -2243,23 +2184,28 @@ abstract class NYCTSubwayProto {
 
     private int bitField0_;
     public static final int TRAIN_ID_FIELD_NUMBER = 1;
-    private volatile java.lang.Object trainId_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object trainId_ = "";
     /**
      * <pre>
      * The nyct_train_id is meant for internal use only. It provides an
      * easy way to associated GTFS-realtime trip identifiers with NYCT rail
      * operations identifier
+     *
      * The ATS office system assigns unique train identification (Train ID) to
      * each train operating within or ready to enter the mainline of the
      * monitored territory. An example of this is 06 0123+ PEL/BBR and is decoded
      * as follows:
+     *
      * The first character represents the trip type designator. 0 identifies a
      * scheduled revenue trip. Other revenue trip values that are a result of a
      * change to the base schedule include; [= reroute], [/ skip stop], [$ turn
      * train] also known as shortly lined service.
+     *
      * The second character 6 represents the trip line i.e. number 6 train The
      * third set of characters identify the decoded origin time. The last
      * character may be blank "on the whole minute" or + "30 seconds"
+     *
      * Note: Origin times will not change when there is a trip type change.  This
      * is followed by a three character "Origin Location" / "Destination
      * Location"
@@ -2277,17 +2223,21 @@ abstract class NYCTSubwayProto {
      * The nyct_train_id is meant for internal use only. It provides an
      * easy way to associated GTFS-realtime trip identifiers with NYCT rail
      * operations identifier
+     *
      * The ATS office system assigns unique train identification (Train ID) to
      * each train operating within or ready to enter the mainline of the
      * monitored territory. An example of this is 06 0123+ PEL/BBR and is decoded
      * as follows:
+     *
      * The first character represents the trip type designator. 0 identifies a
      * scheduled revenue trip. Other revenue trip values that are a result of a
      * change to the base schedule include; [= reroute], [/ skip stop], [$ turn
      * train] also known as shortly lined service.
+     *
      * The second character 6 represents the trip line i.e. number 6 train The
      * third set of characters identify the decoded origin time. The last
      * character may be blank "on the whole minute" or + "30 seconds"
+     *
      * Note: Origin times will not change when there is a trip type change.  This
      * is followed by a three character "Origin Location" / "Destination
      * Location"
@@ -2302,7 +2252,7 @@ abstract class NYCTSubwayProto {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -2316,17 +2266,21 @@ abstract class NYCTSubwayProto {
      * The nyct_train_id is meant for internal use only. It provides an
      * easy way to associated GTFS-realtime trip identifiers with NYCT rail
      * operations identifier
+     *
      * The ATS office system assigns unique train identification (Train ID) to
      * each train operating within or ready to enter the mainline of the
      * monitored territory. An example of this is 06 0123+ PEL/BBR and is decoded
      * as follows:
+     *
      * The first character represents the trip type designator. 0 identifies a
      * scheduled revenue trip. Other revenue trip values that are a result of a
      * change to the base schedule include; [= reroute], [/ skip stop], [$ turn
      * train] also known as shortly lined service.
+     *
      * The second character 6 represents the trip line i.e. number 6 train The
      * third set of characters identify the decoded origin time. The last
      * character may be blank "on the whole minute" or + "30 seconds"
+     *
      * Note: Origin times will not change when there is a trip type change.  This
      * is followed by a three character "Origin Location" / "Destination
      * Location"
@@ -2340,7 +2294,7 @@ abstract class NYCTSubwayProto {
         getTrainIdBytes() {
       java.lang.Object ref = trainId_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         trainId_ = b;
@@ -2351,16 +2305,18 @@ abstract class NYCTSubwayProto {
     }
 
     public static final int IS_ASSIGNED_FIELD_NUMBER = 2;
-    private boolean isAssigned_;
+    private boolean isAssigned_ = false;
     /**
      * <pre>
      * This trip has been assigned to a physical train. If true, this trip is
      * already underway or most likely will depart shortly.
+     *
      * Train Assignment is a function of the Automatic Train Supervision (ATS)
      * office system used by NYCT Rail Operations to monitor and track train
      * movements. ATS provides the ability to "assign" the nyct_train_id
      * attribute when a physical train is at its origin terminal. These assigned
      * trips have the is_assigned field set in the TripDescriptor.
+     *
      * When a train is at a terminal but has not been given a work program it is
      * declared unassigned and is tagged as such. Unassigned trains can be moved
      * to a storage location or assigned a nyct_train_id when a determination for
@@ -2378,11 +2334,13 @@ abstract class NYCTSubwayProto {
      * <pre>
      * This trip has been assigned to a physical train. If true, this trip is
      * already underway or most likely will depart shortly.
+     *
      * Train Assignment is a function of the Automatic Train Supervision (ATS)
      * office system used by NYCT Rail Operations to monitor and track train
      * movements. ATS provides the ability to "assign" the nyct_train_id
      * attribute when a physical train is at its origin terminal. These assigned
      * trips have the is_assigned field set in the TripDescriptor.
+     *
      * When a train is at a terminal but has not been given a work program it is
      * declared unassigned and is tagged as such. Unassigned trains can be moved
      * to a storage location or assigned a nyct_train_id when a determination for
@@ -2398,13 +2356,15 @@ abstract class NYCTSubwayProto {
     }
 
     public static final int DIRECTION_FIELD_NUMBER = 3;
-    private int direction_;
+    private int direction_ = 1;
     /**
      * <pre>
      * Uptown and Bronx-bound trains are moving NORTH.
      * Times Square Shuttle to Grand Central is also northbound.
+     *
      * Downtown and Brooklyn-bound trains are moving SOUTH.
      * Times Square Shuttle to Times Square is also southbound.
+     *
      * EAST and WEST are not used currently.
      * </pre>
      *
@@ -2418,8 +2378,10 @@ abstract class NYCTSubwayProto {
      * <pre>
      * Uptown and Bronx-bound trains are moving NORTH.
      * Times Square Shuttle to Grand Central is also northbound.
+     *
      * Downtown and Brooklyn-bound trains are moving SOUTH.
      * Times Square Shuttle to Times Square is also southbound.
+     *
      * EAST and WEST are not used currently.
      * </pre>
      *
@@ -2427,8 +2389,7 @@ abstract class NYCTSubwayProto {
      * @return The direction.
      */
     @java.lang.Override public dev.katsute.onemta.NYCTSubwayProto.NyctTripDescriptor.Direction getDirection() {
-      @SuppressWarnings("deprecation")
-      dev.katsute.onemta.NYCTSubwayProto.NyctTripDescriptor.Direction result = dev.katsute.onemta.NYCTSubwayProto.NyctTripDescriptor.Direction.valueOf(direction_);
+      dev.katsute.onemta.NYCTSubwayProto.NyctTripDescriptor.Direction result = dev.katsute.onemta.NYCTSubwayProto.NyctTripDescriptor.Direction.forNumber(direction_);
       return result == null ? dev.katsute.onemta.NYCTSubwayProto.NyctTripDescriptor.Direction.NORTH : result;
     }
 
@@ -2548,28 +2509,21 @@ abstract class NYCTSubwayProto {
 
       // Construct using dev.katsute.onemta.NYCTSubwayProto.NyctTripDescriptor.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         trainId_ = "";
-        bitField0_ = (bitField0_ & ~0x00000001);
         isAssigned_ = false;
-        bitField0_ = (bitField0_ & ~0x00000002);
         direction_ = 1;
-        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
 
@@ -2596,57 +2550,29 @@ abstract class NYCTSubwayProto {
       @java.lang.Override
       public dev.katsute.onemta.NYCTSubwayProto.NyctTripDescriptor buildPartial() {
         dev.katsute.onemta.NYCTSubwayProto.NyctTripDescriptor result = new dev.katsute.onemta.NYCTSubwayProto.NyctTripDescriptor(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(dev.katsute.onemta.NYCTSubwayProto.NyctTripDescriptor result) {
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.trainId_ = trainId_;
           to_bitField0_ |= 0x00000001;
         }
-        result.trainId_ = trainId_;
         if (((from_bitField0_ & 0x00000002) != 0)) {
           result.isAssigned_ = isAssigned_;
           to_bitField0_ |= 0x00000002;
         }
         if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.direction_ = direction_;
           to_bitField0_ |= 0x00000004;
         }
-        result.direction_ = direction_;
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
+        result.bitField0_ |= to_bitField0_;
       }
 
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
       private int bitField0_;
 
       private java.lang.Object trainId_ = "";
@@ -2655,17 +2581,21 @@ abstract class NYCTSubwayProto {
        * The nyct_train_id is meant for internal use only. It provides an
        * easy way to associated GTFS-realtime trip identifiers with NYCT rail
        * operations identifier
+       *
        * The ATS office system assigns unique train identification (Train ID) to
        * each train operating within or ready to enter the mainline of the
        * monitored territory. An example of this is 06 0123+ PEL/BBR and is decoded
        * as follows:
+       *
        * The first character represents the trip type designator. 0 identifies a
        * scheduled revenue trip. Other revenue trip values that are a result of a
        * change to the base schedule include; [= reroute], [/ skip stop], [$ turn
        * train] also known as shortly lined service.
+       *
        * The second character 6 represents the trip line i.e. number 6 train The
        * third set of characters identify the decoded origin time. The last
        * character may be blank "on the whole minute" or + "30 seconds"
+       *
        * Note: Origin times will not change when there is a trip type change.  This
        * is followed by a three character "Origin Location" / "Destination
        * Location"
@@ -2682,17 +2612,21 @@ abstract class NYCTSubwayProto {
        * The nyct_train_id is meant for internal use only. It provides an
        * easy way to associated GTFS-realtime trip identifiers with NYCT rail
        * operations identifier
+       *
        * The ATS office system assigns unique train identification (Train ID) to
        * each train operating within or ready to enter the mainline of the
        * monitored territory. An example of this is 06 0123+ PEL/BBR and is decoded
        * as follows:
+       *
        * The first character represents the trip type designator. 0 identifies a
        * scheduled revenue trip. Other revenue trip values that are a result of a
        * change to the base schedule include; [= reroute], [/ skip stop], [$ turn
        * train] also known as shortly lined service.
+       *
        * The second character 6 represents the trip line i.e. number 6 train The
        * third set of characters identify the decoded origin time. The last
        * character may be blank "on the whole minute" or + "30 seconds"
+       *
        * Note: Origin times will not change when there is a trip type change.  This
        * is followed by a three character "Origin Location" / "Destination
        * Location"
@@ -2720,17 +2654,21 @@ abstract class NYCTSubwayProto {
        * The nyct_train_id is meant for internal use only. It provides an
        * easy way to associated GTFS-realtime trip identifiers with NYCT rail
        * operations identifier
+       *
        * The ATS office system assigns unique train identification (Train ID) to
        * each train operating within or ready to enter the mainline of the
        * monitored territory. An example of this is 06 0123+ PEL/BBR and is decoded
        * as follows:
+       *
        * The first character represents the trip type designator. 0 identifies a
        * scheduled revenue trip. Other revenue trip values that are a result of a
        * change to the base schedule include; [= reroute], [/ skip stop], [$ turn
        * train] also known as shortly lined service.
+       *
        * The second character 6 represents the trip line i.e. number 6 train The
        * third set of characters identify the decoded origin time. The last
        * character may be blank "on the whole minute" or + "30 seconds"
+       *
        * Note: Origin times will not change when there is a trip type change.  This
        * is followed by a three character "Origin Location" / "Destination
        * Location"
@@ -2743,7 +2681,7 @@ abstract class NYCTSubwayProto {
           getTrainIdBytes() {
         java.lang.Object ref = trainId_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           trainId_ = b;
@@ -2757,17 +2695,21 @@ abstract class NYCTSubwayProto {
        * The nyct_train_id is meant for internal use only. It provides an
        * easy way to associated GTFS-realtime trip identifiers with NYCT rail
        * operations identifier
+       *
        * The ATS office system assigns unique train identification (Train ID) to
        * each train operating within or ready to enter the mainline of the
        * monitored territory. An example of this is 06 0123+ PEL/BBR and is decoded
        * as follows:
+       *
        * The first character represents the trip type designator. 0 identifies a
        * scheduled revenue trip. Other revenue trip values that are a result of a
        * change to the base schedule include; [= reroute], [/ skip stop], [$ turn
        * train] also known as shortly lined service.
+       *
        * The second character 6 represents the trip line i.e. number 6 train The
        * third set of characters identify the decoded origin time. The last
        * character may be blank "on the whole minute" or + "30 seconds"
+       *
        * Note: Origin times will not change when there is a trip type change.  This
        * is followed by a three character "Origin Location" / "Destination
        * Location"
@@ -2779,11 +2721,9 @@ abstract class NYCTSubwayProto {
        */
       public Builder setTrainId(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
+        if (value == null) { throw new NullPointerException(); }
         trainId_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -2792,17 +2732,21 @@ abstract class NYCTSubwayProto {
        * The nyct_train_id is meant for internal use only. It provides an
        * easy way to associated GTFS-realtime trip identifiers with NYCT rail
        * operations identifier
+       *
        * The ATS office system assigns unique train identification (Train ID) to
        * each train operating within or ready to enter the mainline of the
        * monitored territory. An example of this is 06 0123+ PEL/BBR and is decoded
        * as follows:
+       *
        * The first character represents the trip type designator. 0 identifies a
        * scheduled revenue trip. Other revenue trip values that are a result of a
        * change to the base schedule include; [= reroute], [/ skip stop], [$ turn
        * train] also known as shortly lined service.
+       *
        * The second character 6 represents the trip line i.e. number 6 train The
        * third set of characters identify the decoded origin time. The last
        * character may be blank "on the whole minute" or + "30 seconds"
+       *
        * Note: Origin times will not change when there is a trip type change.  This
        * is followed by a three character "Origin Location" / "Destination
        * Location"
@@ -2812,8 +2756,8 @@ abstract class NYCTSubwayProto {
        * @return This builder for chaining.
        */
       public Builder clearTrainId() {
-        bitField0_ = (bitField0_ & ~0x00000001);
         trainId_ = getDefaultInstance().getTrainId();
+        bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
         return this;
       }
@@ -2822,17 +2766,21 @@ abstract class NYCTSubwayProto {
        * The nyct_train_id is meant for internal use only. It provides an
        * easy way to associated GTFS-realtime trip identifiers with NYCT rail
        * operations identifier
+       *
        * The ATS office system assigns unique train identification (Train ID) to
        * each train operating within or ready to enter the mainline of the
        * monitored territory. An example of this is 06 0123+ PEL/BBR and is decoded
        * as follows:
+       *
        * The first character represents the trip type designator. 0 identifies a
        * scheduled revenue trip. Other revenue trip values that are a result of a
        * change to the base schedule include; [= reroute], [/ skip stop], [$ turn
        * train] also known as shortly lined service.
+       *
        * The second character 6 represents the trip line i.e. number 6 train The
        * third set of characters identify the decoded origin time. The last
        * character may be blank "on the whole minute" or + "30 seconds"
+       *
        * Note: Origin times will not change when there is a trip type change.  This
        * is followed by a three character "Origin Location" / "Destination
        * Location"
@@ -2844,11 +2792,9 @@ abstract class NYCTSubwayProto {
        */
       public Builder setTrainIdBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
+        if (value == null) { throw new NullPointerException(); }
         trainId_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -2858,11 +2804,13 @@ abstract class NYCTSubwayProto {
        * <pre>
        * This trip has been assigned to a physical train. If true, this trip is
        * already underway or most likely will depart shortly.
+       *
        * Train Assignment is a function of the Automatic Train Supervision (ATS)
        * office system used by NYCT Rail Operations to monitor and track train
        * movements. ATS provides the ability to "assign" the nyct_train_id
        * attribute when a physical train is at its origin terminal. These assigned
        * trips have the is_assigned field set in the TripDescriptor.
+       *
        * When a train is at a terminal but has not been given a work program it is
        * declared unassigned and is tagged as such. Unassigned trains can be moved
        * to a storage location or assigned a nyct_train_id when a determination for
@@ -2880,11 +2828,13 @@ abstract class NYCTSubwayProto {
        * <pre>
        * This trip has been assigned to a physical train. If true, this trip is
        * already underway or most likely will depart shortly.
+       *
        * Train Assignment is a function of the Automatic Train Supervision (ATS)
        * office system used by NYCT Rail Operations to monitor and track train
        * movements. ATS provides the ability to "assign" the nyct_train_id
        * attribute when a physical train is at its origin terminal. These assigned
        * trips have the is_assigned field set in the TripDescriptor.
+       *
        * When a train is at a terminal but has not been given a work program it is
        * declared unassigned and is tagged as such. Unassigned trains can be moved
        * to a storage location or assigned a nyct_train_id when a determination for
@@ -2902,11 +2852,13 @@ abstract class NYCTSubwayProto {
        * <pre>
        * This trip has been assigned to a physical train. If true, this trip is
        * already underway or most likely will depart shortly.
+       *
        * Train Assignment is a function of the Automatic Train Supervision (ATS)
        * office system used by NYCT Rail Operations to monitor and track train
        * movements. ATS provides the ability to "assign" the nyct_train_id
        * attribute when a physical train is at its origin terminal. These assigned
        * trips have the is_assigned field set in the TripDescriptor.
+       *
        * When a train is at a terminal but has not been given a work program it is
        * declared unassigned and is tagged as such. Unassigned trains can be moved
        * to a storage location or assigned a nyct_train_id when a determination for
@@ -2918,8 +2870,9 @@ abstract class NYCTSubwayProto {
        * @return This builder for chaining.
        */
       public Builder setIsAssigned(boolean value) {
-        bitField0_ |= 0x00000002;
+
         isAssigned_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -2927,11 +2880,13 @@ abstract class NYCTSubwayProto {
        * <pre>
        * This trip has been assigned to a physical train. If true, this trip is
        * already underway or most likely will depart shortly.
+       *
        * Train Assignment is a function of the Automatic Train Supervision (ATS)
        * office system used by NYCT Rail Operations to monitor and track train
        * movements. ATS provides the ability to "assign" the nyct_train_id
        * attribute when a physical train is at its origin terminal. These assigned
        * trips have the is_assigned field set in the TripDescriptor.
+       *
        * When a train is at a terminal but has not been given a work program it is
        * declared unassigned and is tagged as such. Unassigned trains can be moved
        * to a storage location or assigned a nyct_train_id when a determination for
@@ -2953,8 +2908,10 @@ abstract class NYCTSubwayProto {
        * <pre>
        * Uptown and Bronx-bound trains are moving NORTH.
        * Times Square Shuttle to Grand Central is also northbound.
+       *
        * Downtown and Brooklyn-bound trains are moving SOUTH.
        * Times Square Shuttle to Times Square is also southbound.
+       *
        * EAST and WEST are not used currently.
        * </pre>
        *
@@ -2968,8 +2925,10 @@ abstract class NYCTSubwayProto {
        * <pre>
        * Uptown and Bronx-bound trains are moving NORTH.
        * Times Square Shuttle to Grand Central is also northbound.
+       *
        * Downtown and Brooklyn-bound trains are moving SOUTH.
        * Times Square Shuttle to Times Square is also southbound.
+       *
        * EAST and WEST are not used currently.
        * </pre>
        *
@@ -2978,16 +2937,17 @@ abstract class NYCTSubwayProto {
        */
       @java.lang.Override
       public dev.katsute.onemta.NYCTSubwayProto.NyctTripDescriptor.Direction getDirection() {
-        @SuppressWarnings("deprecation")
-        dev.katsute.onemta.NYCTSubwayProto.NyctTripDescriptor.Direction result = dev.katsute.onemta.NYCTSubwayProto.NyctTripDescriptor.Direction.valueOf(direction_);
+        dev.katsute.onemta.NYCTSubwayProto.NyctTripDescriptor.Direction result = dev.katsute.onemta.NYCTSubwayProto.NyctTripDescriptor.Direction.forNumber(direction_);
         return result == null ? dev.katsute.onemta.NYCTSubwayProto.NyctTripDescriptor.Direction.NORTH : result;
       }
       /**
        * <pre>
        * Uptown and Bronx-bound trains are moving NORTH.
        * Times Square Shuttle to Grand Central is also northbound.
+       *
        * Downtown and Brooklyn-bound trains are moving SOUTH.
        * Times Square Shuttle to Times Square is also southbound.
+       *
        * EAST and WEST are not used currently.
        * </pre>
        *
@@ -3008,8 +2968,10 @@ abstract class NYCTSubwayProto {
        * <pre>
        * Uptown and Bronx-bound trains are moving NORTH.
        * Times Square Shuttle to Grand Central is also northbound.
+       *
        * Downtown and Brooklyn-bound trains are moving SOUTH.
        * Times Square Shuttle to Times Square is also southbound.
+       *
        * EAST and WEST are not used currently.
        * </pre>
        *
@@ -3060,10 +3022,11 @@ abstract class NYCTSubwayProto {
           builder.mergeFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
         } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(
-              e.getMessage()).setUnfinishedMessage(
-                  builder.buildPartial());
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
         }
         return builder.buildPartial();
       }
@@ -3097,9 +3060,11 @@ abstract class NYCTSubwayProto {
      * 2: southbound express
      * 3: northbound express
      * 4: northbound local
+     *
      * In the Bronx (except Dyre Ave line)
      * M: bi-directional express (in the AM express to Manhattan, in the PM
      * express away).
+     *
      * The Dyre Ave line is configured:
      * 1: southbound
      * 2: northbound
@@ -3118,9 +3083,11 @@ abstract class NYCTSubwayProto {
      * 2: southbound express
      * 3: northbound express
      * 4: northbound local
+     *
      * In the Bronx (except Dyre Ave line)
      * M: bi-directional express (in the AM express to Manhattan, in the PM
      * express away).
+     *
      * The Dyre Ave line is configured:
      * 1: southbound
      * 2: northbound
@@ -3139,9 +3106,11 @@ abstract class NYCTSubwayProto {
      * 2: southbound express
      * 3: northbound express
      * 4: northbound local
+     *
      * In the Bronx (except Dyre Ave line)
      * M: bi-directional express (in the AM express to Manhattan, in the PM
      * express away).
+     *
      * The Dyre Ave line is configured:
      * 1: southbound
      * 2: northbound
@@ -3159,9 +3128,11 @@ abstract class NYCTSubwayProto {
      * This is the actual track that the train is operating on and can be used to
      * determine if a train is operating according to its current schedule
      * (plan).
+     *
      * The actual track is known only shortly before the train reaches a station,
      * typically not before it leaves the previous station. Therefore, the NYCT
      * feed sets this field only for the first station of the remaining trip.
+     *
      * Different actual and scheduled track is the result of manually rerouting a
      * train off it scheduled path.  When this occurs, prediction data may become
      * unreliable since the train is no longer operating in accordance to its
@@ -3178,9 +3149,11 @@ abstract class NYCTSubwayProto {
      * This is the actual track that the train is operating on and can be used to
      * determine if a train is operating according to its current schedule
      * (plan).
+     *
      * The actual track is known only shortly before the train reaches a station,
      * typically not before it leaves the previous station. Therefore, the NYCT
      * feed sets this field only for the first station of the remaining trip.
+     *
      * Different actual and scheduled track is the result of manually rerouting a
      * train off it scheduled path.  When this occurs, prediction data may become
      * unreliable since the train is no longer operating in accordance to its
@@ -3197,9 +3170,11 @@ abstract class NYCTSubwayProto {
      * This is the actual track that the train is operating on and can be used to
      * determine if a train is operating according to its current schedule
      * (plan).
+     *
      * The actual track is known only shortly before the train reaches a station,
      * typically not before it leaves the previous station. Therefore, the NYCT
      * feed sets this field only for the first station of the remaining trip.
+     *
      * Different actual and scheduled track is the result of manually rerouting a
      * train off it scheduled path.  When this occurs, prediction data may become
      * unreliable since the train is no longer operating in accordance to its
@@ -3241,11 +3216,6 @@ abstract class NYCTSubwayProto {
       return new NyctStopTimeUpdate();
     }
 
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return dev.katsute.onemta.NYCTSubwayProto.internal_static_NyctStopTimeUpdate_descriptor;
@@ -3261,7 +3231,8 @@ abstract class NYCTSubwayProto {
 
     private int bitField0_;
     public static final int SCHEDULED_TRACK_FIELD_NUMBER = 1;
-    private volatile java.lang.Object scheduledTrack_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object scheduledTrack_ = "";
     /**
      * <pre>
      * Provides the planned station arrival track. The following is the Manhattan
@@ -3270,9 +3241,11 @@ abstract class NYCTSubwayProto {
      * 2: southbound express
      * 3: northbound express
      * 4: northbound local
+     *
      * In the Bronx (except Dyre Ave line)
      * M: bi-directional express (in the AM express to Manhattan, in the PM
      * express away).
+     *
      * The Dyre Ave line is configured:
      * 1: southbound
      * 2: northbound
@@ -3294,9 +3267,11 @@ abstract class NYCTSubwayProto {
      * 2: southbound express
      * 3: northbound express
      * 4: northbound local
+     *
      * In the Bronx (except Dyre Ave line)
      * M: bi-directional express (in the AM express to Manhattan, in the PM
      * express away).
+     *
      * The Dyre Ave line is configured:
      * 1: southbound
      * 2: northbound
@@ -3312,7 +3287,7 @@ abstract class NYCTSubwayProto {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -3329,9 +3304,11 @@ abstract class NYCTSubwayProto {
      * 2: southbound express
      * 3: northbound express
      * 4: northbound local
+     *
      * In the Bronx (except Dyre Ave line)
      * M: bi-directional express (in the AM express to Manhattan, in the PM
      * express away).
+     *
      * The Dyre Ave line is configured:
      * 1: southbound
      * 2: northbound
@@ -3346,7 +3323,7 @@ abstract class NYCTSubwayProto {
         getScheduledTrackBytes() {
       java.lang.Object ref = scheduledTrack_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         scheduledTrack_ = b;
@@ -3357,15 +3334,18 @@ abstract class NYCTSubwayProto {
     }
 
     public static final int ACTUAL_TRACK_FIELD_NUMBER = 2;
-    private volatile java.lang.Object actualTrack_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object actualTrack_ = "";
     /**
      * <pre>
      * This is the actual track that the train is operating on and can be used to
      * determine if a train is operating according to its current schedule
      * (plan).
+     *
      * The actual track is known only shortly before the train reaches a station,
      * typically not before it leaves the previous station. Therefore, the NYCT
      * feed sets this field only for the first station of the remaining trip.
+     *
      * Different actual and scheduled track is the result of manually rerouting a
      * train off it scheduled path.  When this occurs, prediction data may become
      * unreliable since the train is no longer operating in accordance to its
@@ -3385,9 +3365,11 @@ abstract class NYCTSubwayProto {
      * This is the actual track that the train is operating on and can be used to
      * determine if a train is operating according to its current schedule
      * (plan).
+     *
      * The actual track is known only shortly before the train reaches a station,
      * typically not before it leaves the previous station. Therefore, the NYCT
      * feed sets this field only for the first station of the remaining trip.
+     *
      * Different actual and scheduled track is the result of manually rerouting a
      * train off it scheduled path.  When this occurs, prediction data may become
      * unreliable since the train is no longer operating in accordance to its
@@ -3404,7 +3386,7 @@ abstract class NYCTSubwayProto {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -3418,9 +3400,11 @@ abstract class NYCTSubwayProto {
      * This is the actual track that the train is operating on and can be used to
      * determine if a train is operating according to its current schedule
      * (plan).
+     *
      * The actual track is known only shortly before the train reaches a station,
      * typically not before it leaves the previous station. Therefore, the NYCT
      * feed sets this field only for the first station of the remaining trip.
+     *
      * Different actual and scheduled track is the result of manually rerouting a
      * train off it scheduled path.  When this occurs, prediction data may become
      * unreliable since the train is no longer operating in accordance to its
@@ -3436,7 +3420,7 @@ abstract class NYCTSubwayProto {
         getActualTrackBytes() {
       java.lang.Object ref = actualTrack_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         actualTrack_ = b;
@@ -3562,26 +3546,20 @@ abstract class NYCTSubwayProto {
 
       // Construct using dev.katsute.onemta.NYCTSubwayProto.NyctStopTimeUpdate.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         scheduledTrack_ = "";
-        bitField0_ = (bitField0_ & ~0x00000001);
         actualTrack_ = "";
-        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
@@ -3608,53 +3586,25 @@ abstract class NYCTSubwayProto {
       @java.lang.Override
       public dev.katsute.onemta.NYCTSubwayProto.NyctStopTimeUpdate buildPartial() {
         dev.katsute.onemta.NYCTSubwayProto.NyctStopTimeUpdate result = new dev.katsute.onemta.NYCTSubwayProto.NyctStopTimeUpdate(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.scheduledTrack_ = scheduledTrack_;
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.actualTrack_ = actualTrack_;
-        result.bitField0_ = to_bitField0_;
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
+      private void buildPartial0(dev.katsute.onemta.NYCTSubwayProto.NyctStopTimeUpdate result) {
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.scheduledTrack_ = scheduledTrack_;
+          to_bitField0_ |= 0x00000001;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.actualTrack_ = actualTrack_;
+          to_bitField0_ |= 0x00000002;
+        }
+        result.bitField0_ |= to_bitField0_;
       }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
+
       private int bitField0_;
 
       private java.lang.Object scheduledTrack_ = "";
@@ -3666,9 +3616,11 @@ abstract class NYCTSubwayProto {
        * 2: southbound express
        * 3: northbound express
        * 4: northbound local
+       *
        * In the Bronx (except Dyre Ave line)
        * M: bi-directional express (in the AM express to Manhattan, in the PM
        * express away).
+       *
        * The Dyre Ave line is configured:
        * 1: southbound
        * 2: northbound
@@ -3689,9 +3641,11 @@ abstract class NYCTSubwayProto {
        * 2: southbound express
        * 3: northbound express
        * 4: northbound local
+       *
        * In the Bronx (except Dyre Ave line)
        * M: bi-directional express (in the AM express to Manhattan, in the PM
        * express away).
+       *
        * The Dyre Ave line is configured:
        * 1: southbound
        * 2: northbound
@@ -3723,9 +3677,11 @@ abstract class NYCTSubwayProto {
        * 2: southbound express
        * 3: northbound express
        * 4: northbound local
+       *
        * In the Bronx (except Dyre Ave line)
        * M: bi-directional express (in the AM express to Manhattan, in the PM
        * express away).
+       *
        * The Dyre Ave line is configured:
        * 1: southbound
        * 2: northbound
@@ -3739,7 +3695,7 @@ abstract class NYCTSubwayProto {
           getScheduledTrackBytes() {
         java.lang.Object ref = scheduledTrack_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           scheduledTrack_ = b;
@@ -3756,9 +3712,11 @@ abstract class NYCTSubwayProto {
        * 2: southbound express
        * 3: northbound express
        * 4: northbound local
+       *
        * In the Bronx (except Dyre Ave line)
        * M: bi-directional express (in the AM express to Manhattan, in the PM
        * express away).
+       *
        * The Dyre Ave line is configured:
        * 1: southbound
        * 2: northbound
@@ -3771,11 +3729,9 @@ abstract class NYCTSubwayProto {
        */
       public Builder setScheduledTrack(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
+        if (value == null) { throw new NullPointerException(); }
         scheduledTrack_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -3787,9 +3743,11 @@ abstract class NYCTSubwayProto {
        * 2: southbound express
        * 3: northbound express
        * 4: northbound local
+       *
        * In the Bronx (except Dyre Ave line)
        * M: bi-directional express (in the AM express to Manhattan, in the PM
        * express away).
+       *
        * The Dyre Ave line is configured:
        * 1: southbound
        * 2: northbound
@@ -3800,8 +3758,8 @@ abstract class NYCTSubwayProto {
        * @return This builder for chaining.
        */
       public Builder clearScheduledTrack() {
-        bitField0_ = (bitField0_ & ~0x00000001);
         scheduledTrack_ = getDefaultInstance().getScheduledTrack();
+        bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
         return this;
       }
@@ -3813,9 +3771,11 @@ abstract class NYCTSubwayProto {
        * 2: southbound express
        * 3: northbound express
        * 4: northbound local
+       *
        * In the Bronx (except Dyre Ave line)
        * M: bi-directional express (in the AM express to Manhattan, in the PM
        * express away).
+       *
        * The Dyre Ave line is configured:
        * 1: southbound
        * 2: northbound
@@ -3828,11 +3788,9 @@ abstract class NYCTSubwayProto {
        */
       public Builder setScheduledTrackBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
+        if (value == null) { throw new NullPointerException(); }
         scheduledTrack_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -3843,9 +3801,11 @@ abstract class NYCTSubwayProto {
        * This is the actual track that the train is operating on and can be used to
        * determine if a train is operating according to its current schedule
        * (plan).
+       *
        * The actual track is known only shortly before the train reaches a station,
        * typically not before it leaves the previous station. Therefore, the NYCT
        * feed sets this field only for the first station of the remaining trip.
+       *
        * Different actual and scheduled track is the result of manually rerouting a
        * train off it scheduled path.  When this occurs, prediction data may become
        * unreliable since the train is no longer operating in accordance to its
@@ -3864,9 +3824,11 @@ abstract class NYCTSubwayProto {
        * This is the actual track that the train is operating on and can be used to
        * determine if a train is operating according to its current schedule
        * (plan).
+       *
        * The actual track is known only shortly before the train reaches a station,
        * typically not before it leaves the previous station. Therefore, the NYCT
        * feed sets this field only for the first station of the remaining trip.
+       *
        * Different actual and scheduled track is the result of manually rerouting a
        * train off it scheduled path.  When this occurs, prediction data may become
        * unreliable since the train is no longer operating in accordance to its
@@ -3896,9 +3858,11 @@ abstract class NYCTSubwayProto {
        * This is the actual track that the train is operating on and can be used to
        * determine if a train is operating according to its current schedule
        * (plan).
+       *
        * The actual track is known only shortly before the train reaches a station,
        * typically not before it leaves the previous station. Therefore, the NYCT
        * feed sets this field only for the first station of the remaining trip.
+       *
        * Different actual and scheduled track is the result of manually rerouting a
        * train off it scheduled path.  When this occurs, prediction data may become
        * unreliable since the train is no longer operating in accordance to its
@@ -3913,7 +3877,7 @@ abstract class NYCTSubwayProto {
           getActualTrackBytes() {
         java.lang.Object ref = actualTrack_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           actualTrack_ = b;
@@ -3927,9 +3891,11 @@ abstract class NYCTSubwayProto {
        * This is the actual track that the train is operating on and can be used to
        * determine if a train is operating according to its current schedule
        * (plan).
+       *
        * The actual track is known only shortly before the train reaches a station,
        * typically not before it leaves the previous station. Therefore, the NYCT
        * feed sets this field only for the first station of the remaining trip.
+       *
        * Different actual and scheduled track is the result of manually rerouting a
        * train off it scheduled path.  When this occurs, prediction data may become
        * unreliable since the train is no longer operating in accordance to its
@@ -3943,11 +3909,9 @@ abstract class NYCTSubwayProto {
        */
       public Builder setActualTrack(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
+        if (value == null) { throw new NullPointerException(); }
         actualTrack_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -3956,9 +3920,11 @@ abstract class NYCTSubwayProto {
        * This is the actual track that the train is operating on and can be used to
        * determine if a train is operating according to its current schedule
        * (plan).
+       *
        * The actual track is known only shortly before the train reaches a station,
        * typically not before it leaves the previous station. Therefore, the NYCT
        * feed sets this field only for the first station of the remaining trip.
+       *
        * Different actual and scheduled track is the result of manually rerouting a
        * train off it scheduled path.  When this occurs, prediction data may become
        * unreliable since the train is no longer operating in accordance to its
@@ -3970,8 +3936,8 @@ abstract class NYCTSubwayProto {
        * @return This builder for chaining.
        */
       public Builder clearActualTrack() {
-        bitField0_ = (bitField0_ & ~0x00000002);
         actualTrack_ = getDefaultInstance().getActualTrack();
+        bitField0_ = (bitField0_ & ~0x00000002);
         onChanged();
         return this;
       }
@@ -3980,9 +3946,11 @@ abstract class NYCTSubwayProto {
        * This is the actual track that the train is operating on and can be used to
        * determine if a train is operating according to its current schedule
        * (plan).
+       *
        * The actual track is known only shortly before the train reaches a station,
        * typically not before it leaves the previous station. Therefore, the NYCT
        * feed sets this field only for the first station of the remaining trip.
+       *
        * Different actual and scheduled track is the result of manually rerouting a
        * train off it scheduled path.  When this occurs, prediction data may become
        * unreliable since the train is no longer operating in accordance to its
@@ -3996,11 +3964,9 @@ abstract class NYCTSubwayProto {
        */
       public Builder setActualTrackBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
+        if (value == null) { throw new NullPointerException(); }
         actualTrack_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -4042,10 +4008,11 @@ abstract class NYCTSubwayProto {
           builder.mergeFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
         } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(
-              e.getMessage()).setUnfinishedMessage(
-                  builder.buildPartial());
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
         }
         return builder.buildPartial();
       }
@@ -4102,22 +4069,22 @@ abstract class NYCTSubwayProto {
         dev.katsute.onemta.NYCTSubwayProto.NyctStopTimeUpdate.getDefaultInstance());
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_TripReplacementPeriod_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_TripReplacementPeriod_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_NyctFeedHeader_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_NyctFeedHeader_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_NyctTripDescriptor_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_NyctTripDescriptor_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_NyctStopTimeUpdate_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_NyctStopTimeUpdate_fieldAccessorTable;
 
