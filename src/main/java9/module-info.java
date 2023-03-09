@@ -57,7 +57,7 @@
  */
 module OneMTA {
 
-    requires com.google.protobuf;
+    requires protobuf.java;
 
     exports dev.katsute.onemta;
     exports dev.katsute.onemta.attribute;
