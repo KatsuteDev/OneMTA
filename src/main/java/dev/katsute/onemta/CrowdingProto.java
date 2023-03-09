@@ -88,11 +88,6 @@ abstract class CrowdingProto {
       return new CrowdingDescriptor();
     }
 
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return dev.katsute.onemta.CrowdingProto.internal_static_transit_realtime_CrowdingDescriptor_descriptor;
@@ -108,7 +103,7 @@ abstract class CrowdingProto {
 
     private int bitField0_;
     public static final int ESTIMATED_COUNT_FIELD_NUMBER = 1;
-    private int estimatedCount_;
+    private int estimatedCount_ = 0;
     /**
      * <pre>
      * raw count of passengers onboard vehicle
@@ -135,7 +130,7 @@ abstract class CrowdingProto {
     }
 
     public static final int ESTIMATED_CAPACITY_FIELD_NUMBER = 2;
-    private int estimatedCapacity_;
+    private int estimatedCapacity_ = 0;
     /**
      * <pre>
      * estimated capacity of vehicle considering current
@@ -281,26 +276,20 @@ abstract class CrowdingProto {
 
       // Construct using dev.katsute.onemta.CrowdingProto.CrowdingDescriptor.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         estimatedCount_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000001);
         estimatedCapacity_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
@@ -327,6 +316,12 @@ abstract class CrowdingProto {
       @java.lang.Override
       public dev.katsute.onemta.CrowdingProto.CrowdingDescriptor buildPartial() {
         dev.katsute.onemta.CrowdingProto.CrowdingDescriptor result = new dev.katsute.onemta.CrowdingProto.CrowdingDescriptor(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(dev.katsute.onemta.CrowdingProto.CrowdingDescriptor result) {
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -337,43 +332,9 @@ abstract class CrowdingProto {
           result.estimatedCapacity_ = estimatedCapacity_;
           to_bitField0_ |= 0x00000002;
         }
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
+        result.bitField0_ |= to_bitField0_;
       }
 
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
       private int bitField0_;
 
       private int estimatedCount_ ;
@@ -411,8 +372,9 @@ abstract class CrowdingProto {
        * @return This builder for chaining.
        */
       public Builder setEstimatedCount(int value) {
-        bitField0_ |= 0x00000001;
+
         estimatedCount_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -469,8 +431,9 @@ abstract class CrowdingProto {
        * @return This builder for chaining.
        */
       public Builder setEstimatedCapacity(int value) {
-        bitField0_ |= 0x00000002;
+
         estimatedCapacity_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -527,10 +490,11 @@ abstract class CrowdingProto {
           builder.mergeFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
         } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(
-              e.getMessage()).setUnfinishedMessage(
-                  builder.buildPartial());
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
         }
         return builder.buildPartial();
       }
@@ -565,7 +529,7 @@ abstract class CrowdingProto {
         dev.katsute.onemta.CrowdingProto.CrowdingDescriptor.getDefaultInstance());
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_transit_realtime_CrowdingDescriptor_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_transit_realtime_CrowdingDescriptor_fieldAccessorTable;
 

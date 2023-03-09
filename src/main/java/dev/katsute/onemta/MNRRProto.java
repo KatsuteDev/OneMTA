@@ -90,11 +90,6 @@ abstract class MNRRProto {
       return new MnrStopTimeUpdate();
     }
 
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return dev.katsute.onemta.MNRRProto.internal_static_transit_realtime_MnrStopTimeUpdate_descriptor;
@@ -110,7 +105,8 @@ abstract class MNRRProto {
 
     private int bitField0_;
     public static final int TRACK_FIELD_NUMBER = 1;
-    private volatile java.lang.Object track_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object track_ = "";
     /**
      * <pre>
      *can add additional fields here without having to //extend StopTimeUpdate again
@@ -137,7 +133,7 @@ abstract class MNRRProto {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -159,7 +155,7 @@ abstract class MNRRProto {
         getTrackBytes() {
       java.lang.Object ref = track_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         track_ = b;
@@ -170,7 +166,8 @@ abstract class MNRRProto {
     }
 
     public static final int TRAINSTATUS_FIELD_NUMBER = 2;
-    private volatile java.lang.Object trainStatus_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object trainStatus_ = "";
     /**
      * <code>optional string trainStatus = 2;</code>
      * @return Whether the trainStatus field is set.
@@ -189,7 +186,7 @@ abstract class MNRRProto {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -207,7 +204,7 @@ abstract class MNRRProto {
         getTrainStatusBytes() {
       java.lang.Object ref = trainStatus_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         trainStatus_ = b;
@@ -329,26 +326,20 @@ abstract class MNRRProto {
 
       // Construct using dev.katsute.onemta.MNRRProto.MnrStopTimeUpdate.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         track_ = "";
-        bitField0_ = (bitField0_ & ~0x00000001);
         trainStatus_ = "";
-        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
@@ -375,53 +366,25 @@ abstract class MNRRProto {
       @java.lang.Override
       public dev.katsute.onemta.MNRRProto.MnrStopTimeUpdate buildPartial() {
         dev.katsute.onemta.MNRRProto.MnrStopTimeUpdate result = new dev.katsute.onemta.MNRRProto.MnrStopTimeUpdate(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.track_ = track_;
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.trainStatus_ = trainStatus_;
-        result.bitField0_ = to_bitField0_;
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
+      private void buildPartial0(dev.katsute.onemta.MNRRProto.MnrStopTimeUpdate result) {
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.track_ = track_;
+          to_bitField0_ |= 0x00000001;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.trainStatus_ = trainStatus_;
+          to_bitField0_ |= 0x00000002;
+        }
+        result.bitField0_ |= to_bitField0_;
       }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
+
       private int bitField0_;
 
       private java.lang.Object track_ = "";
@@ -470,7 +433,7 @@ abstract class MNRRProto {
           getTrackBytes() {
         java.lang.Object ref = track_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           track_ = b;
@@ -490,11 +453,9 @@ abstract class MNRRProto {
        */
       public Builder setTrack(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
+        if (value == null) { throw new NullPointerException(); }
         track_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -507,8 +468,8 @@ abstract class MNRRProto {
        * @return This builder for chaining.
        */
       public Builder clearTrack() {
-        bitField0_ = (bitField0_ & ~0x00000001);
         track_ = getDefaultInstance().getTrack();
+        bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
         return this;
       }
@@ -523,11 +484,9 @@ abstract class MNRRProto {
        */
       public Builder setTrackBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
+        if (value == null) { throw new NullPointerException(); }
         track_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -566,7 +525,7 @@ abstract class MNRRProto {
           getTrainStatusBytes() {
         java.lang.Object ref = trainStatus_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           trainStatus_ = b;
@@ -582,11 +541,9 @@ abstract class MNRRProto {
        */
       public Builder setTrainStatus(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
+        if (value == null) { throw new NullPointerException(); }
         trainStatus_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -595,8 +552,8 @@ abstract class MNRRProto {
        * @return This builder for chaining.
        */
       public Builder clearTrainStatus() {
-        bitField0_ = (bitField0_ & ~0x00000002);
         trainStatus_ = getDefaultInstance().getTrainStatus();
+        bitField0_ = (bitField0_ & ~0x00000002);
         onChanged();
         return this;
       }
@@ -607,11 +564,9 @@ abstract class MNRRProto {
        */
       public Builder setTrainStatusBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
+        if (value == null) { throw new NullPointerException(); }
         trainStatus_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -653,10 +608,11 @@ abstract class MNRRProto {
           builder.mergeFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
         } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(
-              e.getMessage()).setUnfinishedMessage(
-                  builder.buildPartial());
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
         }
         return builder.buildPartial();
       }
@@ -691,7 +647,7 @@ abstract class MNRRProto {
         dev.katsute.onemta.MNRRProto.MnrStopTimeUpdate.getDefaultInstance());
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_transit_realtime_MnrStopTimeUpdate_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_transit_realtime_MnrStopTimeUpdate_fieldAccessorTable;
 

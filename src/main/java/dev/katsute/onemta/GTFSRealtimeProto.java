@@ -54,7 +54,7 @@ abstract class GTFSRealtimeProto {
      *
      * <code>repeated .transit_realtime.FeedEntity entity = 2;</code>
      */
-    java.util.List<dev.katsute.onemta.GTFSRealtimeProto.FeedEntity>
+    java.util.List<dev.katsute.onemta.GTFSRealtimeProto.FeedEntity> 
         getEntityList();
     /**
      * <pre>
@@ -79,7 +79,7 @@ abstract class GTFSRealtimeProto {
      *
      * <code>repeated .transit_realtime.FeedEntity entity = 2;</code>
      */
-    java.util.List<? extends dev.katsute.onemta.GTFSRealtimeProto.FeedEntityOrBuilder>
+    java.util.List<? extends dev.katsute.onemta.GTFSRealtimeProto.FeedEntityOrBuilder> 
         getEntityOrBuilderList();
     /**
      * <pre>
@@ -127,11 +127,6 @@ abstract class GTFSRealtimeProto {
       return new FeedMessage();
     }
 
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return dev.katsute.onemta.GTFSRealtimeProto.internal_static_transit_realtime_FeedMessage_descriptor;
@@ -185,6 +180,7 @@ abstract class GTFSRealtimeProto {
     }
 
     public static final int ENTITY_FIELD_NUMBER = 2;
+    @SuppressWarnings("serial")
     private java.util.List<dev.katsute.onemta.GTFSRealtimeProto.FeedEntity> entity_;
     /**
      * <pre>
@@ -205,7 +201,7 @@ abstract class GTFSRealtimeProto {
      * <code>repeated .transit_realtime.FeedEntity entity = 2;</code>
      */
     @java.lang.Override
-    public java.util.List<? extends dev.katsute.onemta.GTFSRealtimeProto.FeedEntityOrBuilder>
+    public java.util.List<? extends dev.katsute.onemta.GTFSRealtimeProto.FeedEntityOrBuilder> 
         getEntityOrBuilderList() {
       return entity_;
     }
@@ -387,18 +383,19 @@ abstract class GTFSRealtimeProto {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        if (headerBuilder_ == null) {
-          header_ = null;
-        } else {
-          headerBuilder_.clear();
+        bitField0_ = 0;
+        header_ = null;
+        if (headerBuilder_ != null) {
+          headerBuilder_.dispose();
+          headerBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000001);
         if (entityBuilder_ == null) {
           entity_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
         } else {
+          entity_ = null;
           entityBuilder_.clear();
         }
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
@@ -425,16 +422,13 @@ abstract class GTFSRealtimeProto {
       @java.lang.Override
       public dev.katsute.onemta.GTFSRealtimeProto.FeedMessage buildPartial() {
         dev.katsute.onemta.GTFSRealtimeProto.FeedMessage result = new dev.katsute.onemta.GTFSRealtimeProto.FeedMessage(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          if (headerBuilder_ == null) {
-            result.header_ = header_;
-          } else {
-            result.header_ = headerBuilder_.build();
-          }
-          to_bitField0_ |= 0x00000001;
-        }
+        buildPartialRepeatedFields(result);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartialRepeatedFields(dev.katsute.onemta.GTFSRealtimeProto.FeedMessage result) {
         if (entityBuilder_ == null) {
           if (((bitField0_ & 0x00000002) != 0)) {
             entity_ = java.util.Collections.unmodifiableList(entity_);
@@ -444,70 +438,20 @@ abstract class GTFSRealtimeProto {
         } else {
           result.entity_ = entityBuilder_.build();
         }
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
       }
 
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
+      private void buildPartial0(dev.katsute.onemta.GTFSRealtimeProto.FeedMessage result) {
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.header_ = headerBuilder_ == null
+              ? header_
+              : headerBuilder_.build();
+          to_bitField0_ |= 0x00000001;
+        }
+        result.bitField0_ |= to_bitField0_;
       }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public <Type> Builder setExtension(
-          com.google.protobuf.GeneratedMessage.GeneratedExtension<
-              dev.katsute.onemta.GTFSRealtimeProto.FeedMessage, Type> extension,
-          Type value) {
-        return super.setExtension(extension, value);
-      }
-      @java.lang.Override
-      public <Type> Builder setExtension(
-          com.google.protobuf.GeneratedMessage.GeneratedExtension<
-              dev.katsute.onemta.GTFSRealtimeProto.FeedMessage, java.util.List<Type>> extension,
-          int index, Type value) {
-        return super.setExtension(extension, index, value);
-      }
-      @java.lang.Override
-      public <Type> Builder addExtension(
-          com.google.protobuf.GeneratedMessage.GeneratedExtension<
-              dev.katsute.onemta.GTFSRealtimeProto.FeedMessage, java.util.List<Type>> extension,
-          Type value) {
-        return super.addExtension(extension, value);
-      }
-      @java.lang.Override
-      public <Type> Builder clearExtension(
-          com.google.protobuf.GeneratedMessage.GeneratedExtension<
-              dev.katsute.onemta.GTFSRealtimeProto.FeedMessage, ?> extension) {
-        return super.clearExtension(extension);
-      }
+
       private int bitField0_;
 
       private dev.katsute.onemta.GTFSRealtimeProto.FeedHeader header_;
@@ -552,11 +496,11 @@ abstract class GTFSRealtimeProto {
             throw new NullPointerException();
           }
           header_ = value;
-          onChanged();
         } else {
           headerBuilder_.setMessage(value);
         }
         bitField0_ |= 0x00000001;
+        onChanged();
         return this;
       }
       /**
@@ -570,11 +514,11 @@ abstract class GTFSRealtimeProto {
           dev.katsute.onemta.GTFSRealtimeProto.FeedHeader.Builder builderForValue) {
         if (headerBuilder_ == null) {
           header_ = builderForValue.build();
-          onChanged();
         } else {
           headerBuilder_.setMessage(builderForValue.build());
         }
         bitField0_ |= 0x00000001;
+        onChanged();
         return this;
       }
       /**
@@ -587,18 +531,17 @@ abstract class GTFSRealtimeProto {
       public Builder mergeHeader(dev.katsute.onemta.GTFSRealtimeProto.FeedHeader value) {
         if (headerBuilder_ == null) {
           if (((bitField0_ & 0x00000001) != 0) &&
-              header_ != null &&
-              header_ != dev.katsute.onemta.GTFSRealtimeProto.FeedHeader.getDefaultInstance()) {
-            header_ =
-              dev.katsute.onemta.GTFSRealtimeProto.FeedHeader.newBuilder(header_).mergeFrom(value).buildPartial();
+            header_ != null &&
+            header_ != dev.katsute.onemta.GTFSRealtimeProto.FeedHeader.getDefaultInstance()) {
+            getHeaderBuilder().mergeFrom(value);
           } else {
             header_ = value;
           }
-          onChanged();
         } else {
           headerBuilder_.mergeFrom(value);
         }
         bitField0_ |= 0x00000001;
+        onChanged();
         return this;
       }
       /**
@@ -609,13 +552,13 @@ abstract class GTFSRealtimeProto {
        * <code>required .transit_realtime.FeedHeader header = 1;</code>
        */
       public Builder clearHeader() {
-        if (headerBuilder_ == null) {
-          header_ = null;
-          onChanged();
-        } else {
-          headerBuilder_.clear();
-        }
         bitField0_ = (bitField0_ & ~0x00000001);
+        header_ = null;
+        if (headerBuilder_ != null) {
+          headerBuilder_.dispose();
+          headerBuilder_ = null;
+        }
+        onChanged();
         return this;
       }
       /**
@@ -653,7 +596,7 @@ abstract class GTFSRealtimeProto {
        * <code>required .transit_realtime.FeedHeader header = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          dev.katsute.onemta.GTFSRealtimeProto.FeedHeader, dev.katsute.onemta.GTFSRealtimeProto.FeedHeader.Builder, dev.katsute.onemta.GTFSRealtimeProto.FeedHeaderOrBuilder>
+          dev.katsute.onemta.GTFSRealtimeProto.FeedHeader, dev.katsute.onemta.GTFSRealtimeProto.FeedHeader.Builder, dev.katsute.onemta.GTFSRealtimeProto.FeedHeaderOrBuilder> 
           getHeaderFieldBuilder() {
         if (headerBuilder_ == null) {
           headerBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -921,7 +864,7 @@ abstract class GTFSRealtimeProto {
        *
        * <code>repeated .transit_realtime.FeedEntity entity = 2;</code>
        */
-      public java.util.List<? extends dev.katsute.onemta.GTFSRealtimeProto.FeedEntityOrBuilder>
+      public java.util.List<? extends dev.katsute.onemta.GTFSRealtimeProto.FeedEntityOrBuilder> 
            getEntityOrBuilderList() {
         if (entityBuilder_ != null) {
           return entityBuilder_.getMessageOrBuilderList();
@@ -959,12 +902,12 @@ abstract class GTFSRealtimeProto {
        *
        * <code>repeated .transit_realtime.FeedEntity entity = 2;</code>
        */
-      public java.util.List<dev.katsute.onemta.GTFSRealtimeProto.FeedEntity.Builder>
+      public java.util.List<dev.katsute.onemta.GTFSRealtimeProto.FeedEntity.Builder> 
            getEntityBuilderList() {
         return getEntityFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          dev.katsute.onemta.GTFSRealtimeProto.FeedEntity, dev.katsute.onemta.GTFSRealtimeProto.FeedEntity.Builder, dev.katsute.onemta.GTFSRealtimeProto.FeedEntityOrBuilder>
+          dev.katsute.onemta.GTFSRealtimeProto.FeedEntity, dev.katsute.onemta.GTFSRealtimeProto.FeedEntity.Builder, dev.katsute.onemta.GTFSRealtimeProto.FeedEntityOrBuilder> 
           getEntityFieldBuilder() {
         if (entityBuilder_ == null) {
           entityBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
@@ -1015,10 +958,11 @@ abstract class GTFSRealtimeProto {
           builder.mergeFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
         } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(
-              e.getMessage()).setUnfinishedMessage(
-                  builder.buildPartial());
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
         }
         return builder.buildPartial();
       }
@@ -1140,11 +1084,6 @@ abstract class GTFSRealtimeProto {
       return new FeedHeader();
     }
 
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return dev.katsute.onemta.GTFSRealtimeProto.internal_static_transit_realtime_FeedHeader_descriptor;
@@ -1264,7 +1203,8 @@ abstract class GTFSRealtimeProto {
 
     private int bitField0_;
     public static final int GTFS_REALTIME_VERSION_FIELD_NUMBER = 1;
-    private volatile java.lang.Object gtfsRealtimeVersion_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object gtfsRealtimeVersion_ = "";
     /**
      * <pre>
      * Version of the feed specification.
@@ -1293,7 +1233,7 @@ abstract class GTFSRealtimeProto {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -1316,7 +1256,7 @@ abstract class GTFSRealtimeProto {
         getGtfsRealtimeVersionBytes() {
       java.lang.Object ref = gtfsRealtimeVersion_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         gtfsRealtimeVersion_ = b;
@@ -1327,7 +1267,7 @@ abstract class GTFSRealtimeProto {
     }
 
     public static final int INCREMENTALITY_FIELD_NUMBER = 2;
-    private int incrementality_;
+    private int incrementality_ = 0;
     /**
      * <code>optional .transit_realtime.FeedHeader.Incrementality incrementality = 2 [default = FULL_DATASET];</code>
      * @return Whether the incrementality field is set.
@@ -1340,13 +1280,12 @@ abstract class GTFSRealtimeProto {
      * @return The incrementality.
      */
     @java.lang.Override public dev.katsute.onemta.GTFSRealtimeProto.FeedHeader.Incrementality getIncrementality() {
-      @SuppressWarnings("deprecation")
-      dev.katsute.onemta.GTFSRealtimeProto.FeedHeader.Incrementality result = dev.katsute.onemta.GTFSRealtimeProto.FeedHeader.Incrementality.valueOf(incrementality_);
+      dev.katsute.onemta.GTFSRealtimeProto.FeedHeader.Incrementality result = dev.katsute.onemta.GTFSRealtimeProto.FeedHeader.Incrementality.forNumber(incrementality_);
       return result == null ? dev.katsute.onemta.GTFSRealtimeProto.FeedHeader.Incrementality.FULL_DATASET : result;
     }
 
     public static final int TIMESTAMP_FIELD_NUMBER = 3;
-    private long timestamp_;
+    private long timestamp_ = 0L;
     /**
      * <pre>
      * This timestamp identifies the moment when the content of this feed has been
@@ -1493,28 +1432,21 @@ abstract class GTFSRealtimeProto {
 
       // Construct using dev.katsute.onemta.GTFSRealtimeProto.FeedHeader.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         gtfsRealtimeVersion_ = "";
-        bitField0_ = (bitField0_ & ~0x00000001);
         incrementality_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000002);
         timestamp_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
 
@@ -1541,84 +1473,29 @@ abstract class GTFSRealtimeProto {
       @java.lang.Override
       public dev.katsute.onemta.GTFSRealtimeProto.FeedHeader buildPartial() {
         dev.katsute.onemta.GTFSRealtimeProto.FeedHeader result = new dev.katsute.onemta.GTFSRealtimeProto.FeedHeader(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.gtfsRealtimeVersion_ = gtfsRealtimeVersion_;
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.incrementality_ = incrementality_;
-        if (((from_bitField0_ & 0x00000004) != 0)) {
-          result.timestamp_ = timestamp_;
-          to_bitField0_ |= 0x00000004;
-        }
-        result.bitField0_ = to_bitField0_;
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
+      private void buildPartial0(dev.katsute.onemta.GTFSRealtimeProto.FeedHeader result) {
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.gtfsRealtimeVersion_ = gtfsRealtimeVersion_;
+          to_bitField0_ |= 0x00000001;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.incrementality_ = incrementality_;
+          to_bitField0_ |= 0x00000002;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.timestamp_ = timestamp_;
+          to_bitField0_ |= 0x00000004;
+        }
+        result.bitField0_ |= to_bitField0_;
       }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public <Type> Builder setExtension(
-          com.google.protobuf.GeneratedMessage.GeneratedExtension<
-              dev.katsute.onemta.GTFSRealtimeProto.FeedHeader, Type> extension,
-          Type value) {
-        return super.setExtension(extension, value);
-      }
-      @java.lang.Override
-      public <Type> Builder setExtension(
-          com.google.protobuf.GeneratedMessage.GeneratedExtension<
-              dev.katsute.onemta.GTFSRealtimeProto.FeedHeader, java.util.List<Type>> extension,
-          int index, Type value) {
-        return super.setExtension(extension, index, value);
-      }
-      @java.lang.Override
-      public <Type> Builder addExtension(
-          com.google.protobuf.GeneratedMessage.GeneratedExtension<
-              dev.katsute.onemta.GTFSRealtimeProto.FeedHeader, java.util.List<Type>> extension,
-          Type value) {
-        return super.addExtension(extension, value);
-      }
-      @java.lang.Override
-      public <Type> Builder clearExtension(
-          com.google.protobuf.GeneratedMessage.GeneratedExtension<
-              dev.katsute.onemta.GTFSRealtimeProto.FeedHeader, ?> extension) {
-        return super.clearExtension(extension);
-      }
+
       private int bitField0_;
 
       private java.lang.Object gtfsRealtimeVersion_ = "";
@@ -1670,7 +1547,7 @@ abstract class GTFSRealtimeProto {
           getGtfsRealtimeVersionBytes() {
         java.lang.Object ref = gtfsRealtimeVersion_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           gtfsRealtimeVersion_ = b;
@@ -1691,11 +1568,9 @@ abstract class GTFSRealtimeProto {
        */
       public Builder setGtfsRealtimeVersion(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
+        if (value == null) { throw new NullPointerException(); }
         gtfsRealtimeVersion_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -1709,8 +1584,8 @@ abstract class GTFSRealtimeProto {
        * @return This builder for chaining.
        */
       public Builder clearGtfsRealtimeVersion() {
-        bitField0_ = (bitField0_ & ~0x00000001);
         gtfsRealtimeVersion_ = getDefaultInstance().getGtfsRealtimeVersion();
+        bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
         return this;
       }
@@ -1726,11 +1601,9 @@ abstract class GTFSRealtimeProto {
        */
       public Builder setGtfsRealtimeVersionBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
+        if (value == null) { throw new NullPointerException(); }
         gtfsRealtimeVersion_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -1749,8 +1622,7 @@ abstract class GTFSRealtimeProto {
        */
       @java.lang.Override
       public dev.katsute.onemta.GTFSRealtimeProto.FeedHeader.Incrementality getIncrementality() {
-        @SuppressWarnings("deprecation")
-        dev.katsute.onemta.GTFSRealtimeProto.FeedHeader.Incrementality result = dev.katsute.onemta.GTFSRealtimeProto.FeedHeader.Incrementality.valueOf(incrementality_);
+        dev.katsute.onemta.GTFSRealtimeProto.FeedHeader.Incrementality result = dev.katsute.onemta.GTFSRealtimeProto.FeedHeader.Incrementality.forNumber(incrementality_);
         return result == null ? dev.katsute.onemta.GTFSRealtimeProto.FeedHeader.Incrementality.FULL_DATASET : result;
       }
       /**
@@ -1819,8 +1691,9 @@ abstract class GTFSRealtimeProto {
        * @return This builder for chaining.
        */
       public Builder setTimestamp(long value) {
-        bitField0_ |= 0x00000004;
+
         timestamp_ = value;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
@@ -1878,10 +1751,11 @@ abstract class GTFSRealtimeProto {
           builder.mergeFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
         } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(
-              e.getMessage()).setUnfinishedMessage(
-                  builder.buildPartial());
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
         }
         return builder.buildPartial();
       }
@@ -2067,11 +1941,6 @@ abstract class GTFSRealtimeProto {
       return new FeedEntity();
     }
 
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return dev.katsute.onemta.GTFSRealtimeProto.internal_static_transit_realtime_FeedEntity_descriptor;
@@ -2087,7 +1956,8 @@ abstract class GTFSRealtimeProto {
 
     private int bitField0_;
     public static final int ID_FIELD_NUMBER = 1;
-    private volatile java.lang.Object id_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object id_ = "";
     /**
      * <pre>
      * The ids are used only to provide incrementality support. The id should be
@@ -2128,7 +1998,7 @@ abstract class GTFSRealtimeProto {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -2157,7 +2027,7 @@ abstract class GTFSRealtimeProto {
         getIdBytes() {
       java.lang.Object ref = id_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         id_ = b;
@@ -2168,7 +2038,7 @@ abstract class GTFSRealtimeProto {
     }
 
     public static final int IS_DELETED_FIELD_NUMBER = 2;
-    private boolean isDeleted_;
+    private boolean isDeleted_ = false;
     /**
      * <pre>
      * Whether this entity is to be deleted. Relevant only for incremental
@@ -2425,28 +2295,24 @@ abstract class GTFSRealtimeProto {
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         id_ = "";
-        bitField0_ = (bitField0_ & ~0x00000001);
         isDeleted_ = false;
-        bitField0_ = (bitField0_ & ~0x00000002);
-        if (tripUpdateBuilder_ == null) {
-          tripUpdate_ = null;
-        } else {
-          tripUpdateBuilder_.clear();
+        tripUpdate_ = null;
+        if (tripUpdateBuilder_ != null) {
+          tripUpdateBuilder_.dispose();
+          tripUpdateBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000004);
-        if (vehicleBuilder_ == null) {
-          vehicle_ = null;
-        } else {
-          vehicleBuilder_.clear();
+        vehicle_ = null;
+        if (vehicleBuilder_ != null) {
+          vehicleBuilder_.dispose();
+          vehicleBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000008);
-        if (alertBuilder_ == null) {
-          alert_ = null;
-        } else {
-          alertBuilder_.clear();
+        alert_ = null;
+        if (alertBuilder_ != null) {
+          alertBuilder_.dispose();
+          alertBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
 
@@ -2473,104 +2339,43 @@ abstract class GTFSRealtimeProto {
       @java.lang.Override
       public dev.katsute.onemta.GTFSRealtimeProto.FeedEntity buildPartial() {
         dev.katsute.onemta.GTFSRealtimeProto.FeedEntity result = new dev.katsute.onemta.GTFSRealtimeProto.FeedEntity(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(dev.katsute.onemta.GTFSRealtimeProto.FeedEntity result) {
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.id_ = id_;
           to_bitField0_ |= 0x00000001;
         }
-        result.id_ = id_;
         if (((from_bitField0_ & 0x00000002) != 0)) {
           result.isDeleted_ = isDeleted_;
           to_bitField0_ |= 0x00000002;
         }
         if (((from_bitField0_ & 0x00000004) != 0)) {
-          if (tripUpdateBuilder_ == null) {
-            result.tripUpdate_ = tripUpdate_;
-          } else {
-            result.tripUpdate_ = tripUpdateBuilder_.build();
-          }
+          result.tripUpdate_ = tripUpdateBuilder_ == null
+              ? tripUpdate_
+              : tripUpdateBuilder_.build();
           to_bitField0_ |= 0x00000004;
         }
         if (((from_bitField0_ & 0x00000008) != 0)) {
-          if (vehicleBuilder_ == null) {
-            result.vehicle_ = vehicle_;
-          } else {
-            result.vehicle_ = vehicleBuilder_.build();
-          }
+          result.vehicle_ = vehicleBuilder_ == null
+              ? vehicle_
+              : vehicleBuilder_.build();
           to_bitField0_ |= 0x00000008;
         }
         if (((from_bitField0_ & 0x00000010) != 0)) {
-          if (alertBuilder_ == null) {
-            result.alert_ = alert_;
-          } else {
-            result.alert_ = alertBuilder_.build();
-          }
+          result.alert_ = alertBuilder_ == null
+              ? alert_
+              : alertBuilder_.build();
           to_bitField0_ |= 0x00000010;
         }
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
+        result.bitField0_ |= to_bitField0_;
       }
 
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public <Type> Builder setExtension(
-          com.google.protobuf.GeneratedMessage.GeneratedExtension<
-              dev.katsute.onemta.GTFSRealtimeProto.FeedEntity, Type> extension,
-          Type value) {
-        return super.setExtension(extension, value);
-      }
-      @java.lang.Override
-      public <Type> Builder setExtension(
-          com.google.protobuf.GeneratedMessage.GeneratedExtension<
-              dev.katsute.onemta.GTFSRealtimeProto.FeedEntity, java.util.List<Type>> extension,
-          int index, Type value) {
-        return super.setExtension(extension, index, value);
-      }
-      @java.lang.Override
-      public <Type> Builder addExtension(
-          com.google.protobuf.GeneratedMessage.GeneratedExtension<
-              dev.katsute.onemta.GTFSRealtimeProto.FeedEntity, java.util.List<Type>> extension,
-          Type value) {
-        return super.addExtension(extension, value);
-      }
-      @java.lang.Override
-      public <Type> Builder clearExtension(
-          com.google.protobuf.GeneratedMessage.GeneratedExtension<
-              dev.katsute.onemta.GTFSRealtimeProto.FeedEntity, ?> extension) {
-        return super.clearExtension(extension);
-      }
       private int bitField0_;
 
       private java.lang.Object id_ = "";
@@ -2640,7 +2445,7 @@ abstract class GTFSRealtimeProto {
           getIdBytes() {
         java.lang.Object ref = id_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           id_ = b;
@@ -2667,11 +2472,9 @@ abstract class GTFSRealtimeProto {
        */
       public Builder setId(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
+        if (value == null) { throw new NullPointerException(); }
         id_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -2691,8 +2494,8 @@ abstract class GTFSRealtimeProto {
        * @return This builder for chaining.
        */
       public Builder clearId() {
-        bitField0_ = (bitField0_ & ~0x00000001);
         id_ = getDefaultInstance().getId();
+        bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
         return this;
       }
@@ -2714,11 +2517,9 @@ abstract class GTFSRealtimeProto {
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
+        if (value == null) { throw new NullPointerException(); }
         id_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -2761,8 +2562,9 @@ abstract class GTFSRealtimeProto {
        * @return This builder for chaining.
        */
       public Builder setIsDeleted(boolean value) {
-        bitField0_ |= 0x00000002;
+
         isDeleted_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -2827,11 +2629,11 @@ abstract class GTFSRealtimeProto {
             throw new NullPointerException();
           }
           tripUpdate_ = value;
-          onChanged();
         } else {
           tripUpdateBuilder_.setMessage(value);
         }
         bitField0_ |= 0x00000004;
+        onChanged();
         return this;
       }
       /**
@@ -2846,11 +2648,11 @@ abstract class GTFSRealtimeProto {
           dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.Builder builderForValue) {
         if (tripUpdateBuilder_ == null) {
           tripUpdate_ = builderForValue.build();
-          onChanged();
         } else {
           tripUpdateBuilder_.setMessage(builderForValue.build());
         }
         bitField0_ |= 0x00000004;
+        onChanged();
         return this;
       }
       /**
@@ -2864,18 +2666,17 @@ abstract class GTFSRealtimeProto {
       public Builder mergeTripUpdate(dev.katsute.onemta.GTFSRealtimeProto.TripUpdate value) {
         if (tripUpdateBuilder_ == null) {
           if (((bitField0_ & 0x00000004) != 0) &&
-              tripUpdate_ != null &&
-              tripUpdate_ != dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.getDefaultInstance()) {
-            tripUpdate_ =
-              dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.newBuilder(tripUpdate_).mergeFrom(value).buildPartial();
+            tripUpdate_ != null &&
+            tripUpdate_ != dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.getDefaultInstance()) {
+            getTripUpdateBuilder().mergeFrom(value);
           } else {
             tripUpdate_ = value;
           }
-          onChanged();
         } else {
           tripUpdateBuilder_.mergeFrom(value);
         }
         bitField0_ |= 0x00000004;
+        onChanged();
         return this;
       }
       /**
@@ -2887,13 +2688,13 @@ abstract class GTFSRealtimeProto {
        * <code>optional .transit_realtime.TripUpdate trip_update = 3;</code>
        */
       public Builder clearTripUpdate() {
-        if (tripUpdateBuilder_ == null) {
-          tripUpdate_ = null;
-          onChanged();
-        } else {
-          tripUpdateBuilder_.clear();
-        }
         bitField0_ = (bitField0_ & ~0x00000004);
+        tripUpdate_ = null;
+        if (tripUpdateBuilder_ != null) {
+          tripUpdateBuilder_.dispose();
+          tripUpdateBuilder_ = null;
+        }
+        onChanged();
         return this;
       }
       /**
@@ -2934,7 +2735,7 @@ abstract class GTFSRealtimeProto {
        * <code>optional .transit_realtime.TripUpdate trip_update = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          dev.katsute.onemta.GTFSRealtimeProto.TripUpdate, dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.Builder, dev.katsute.onemta.GTFSRealtimeProto.TripUpdateOrBuilder>
+          dev.katsute.onemta.GTFSRealtimeProto.TripUpdate, dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.Builder, dev.katsute.onemta.GTFSRealtimeProto.TripUpdateOrBuilder> 
           getTripUpdateFieldBuilder() {
         if (tripUpdateBuilder_ == null) {
           tripUpdateBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -2977,11 +2778,11 @@ abstract class GTFSRealtimeProto {
             throw new NullPointerException();
           }
           vehicle_ = value;
-          onChanged();
         } else {
           vehicleBuilder_.setMessage(value);
         }
         bitField0_ |= 0x00000008;
+        onChanged();
         return this;
       }
       /**
@@ -2991,11 +2792,11 @@ abstract class GTFSRealtimeProto {
           dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.Builder builderForValue) {
         if (vehicleBuilder_ == null) {
           vehicle_ = builderForValue.build();
-          onChanged();
         } else {
           vehicleBuilder_.setMessage(builderForValue.build());
         }
         bitField0_ |= 0x00000008;
+        onChanged();
         return this;
       }
       /**
@@ -3004,31 +2805,30 @@ abstract class GTFSRealtimeProto {
       public Builder mergeVehicle(dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition value) {
         if (vehicleBuilder_ == null) {
           if (((bitField0_ & 0x00000008) != 0) &&
-              vehicle_ != null &&
-              vehicle_ != dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.getDefaultInstance()) {
-            vehicle_ =
-              dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.newBuilder(vehicle_).mergeFrom(value).buildPartial();
+            vehicle_ != null &&
+            vehicle_ != dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.getDefaultInstance()) {
+            getVehicleBuilder().mergeFrom(value);
           } else {
             vehicle_ = value;
           }
-          onChanged();
         } else {
           vehicleBuilder_.mergeFrom(value);
         }
         bitField0_ |= 0x00000008;
+        onChanged();
         return this;
       }
       /**
        * <code>optional .transit_realtime.VehiclePosition vehicle = 4;</code>
        */
       public Builder clearVehicle() {
-        if (vehicleBuilder_ == null) {
-          vehicle_ = null;
-          onChanged();
-        } else {
-          vehicleBuilder_.clear();
-        }
         bitField0_ = (bitField0_ & ~0x00000008);
+        vehicle_ = null;
+        if (vehicleBuilder_ != null) {
+          vehicleBuilder_.dispose();
+          vehicleBuilder_ = null;
+        }
+        onChanged();
         return this;
       }
       /**
@@ -3054,7 +2854,7 @@ abstract class GTFSRealtimeProto {
        * <code>optional .transit_realtime.VehiclePosition vehicle = 4;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition, dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.Builder, dev.katsute.onemta.GTFSRealtimeProto.VehiclePositionOrBuilder>
+          dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition, dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.Builder, dev.katsute.onemta.GTFSRealtimeProto.VehiclePositionOrBuilder> 
           getVehicleFieldBuilder() {
         if (vehicleBuilder_ == null) {
           vehicleBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -3097,11 +2897,11 @@ abstract class GTFSRealtimeProto {
             throw new NullPointerException();
           }
           alert_ = value;
-          onChanged();
         } else {
           alertBuilder_.setMessage(value);
         }
         bitField0_ |= 0x00000010;
+        onChanged();
         return this;
       }
       /**
@@ -3111,11 +2911,11 @@ abstract class GTFSRealtimeProto {
           dev.katsute.onemta.GTFSRealtimeProto.Alert.Builder builderForValue) {
         if (alertBuilder_ == null) {
           alert_ = builderForValue.build();
-          onChanged();
         } else {
           alertBuilder_.setMessage(builderForValue.build());
         }
         bitField0_ |= 0x00000010;
+        onChanged();
         return this;
       }
       /**
@@ -3124,31 +2924,30 @@ abstract class GTFSRealtimeProto {
       public Builder mergeAlert(dev.katsute.onemta.GTFSRealtimeProto.Alert value) {
         if (alertBuilder_ == null) {
           if (((bitField0_ & 0x00000010) != 0) &&
-              alert_ != null &&
-              alert_ != dev.katsute.onemta.GTFSRealtimeProto.Alert.getDefaultInstance()) {
-            alert_ =
-              dev.katsute.onemta.GTFSRealtimeProto.Alert.newBuilder(alert_).mergeFrom(value).buildPartial();
+            alert_ != null &&
+            alert_ != dev.katsute.onemta.GTFSRealtimeProto.Alert.getDefaultInstance()) {
+            getAlertBuilder().mergeFrom(value);
           } else {
             alert_ = value;
           }
-          onChanged();
         } else {
           alertBuilder_.mergeFrom(value);
         }
         bitField0_ |= 0x00000010;
+        onChanged();
         return this;
       }
       /**
        * <code>optional .transit_realtime.Alert alert = 5;</code>
        */
       public Builder clearAlert() {
-        if (alertBuilder_ == null) {
-          alert_ = null;
-          onChanged();
-        } else {
-          alertBuilder_.clear();
-        }
         bitField0_ = (bitField0_ & ~0x00000010);
+        alert_ = null;
+        if (alertBuilder_ != null) {
+          alertBuilder_.dispose();
+          alertBuilder_ = null;
+        }
+        onChanged();
         return this;
       }
       /**
@@ -3174,7 +2973,7 @@ abstract class GTFSRealtimeProto {
        * <code>optional .transit_realtime.Alert alert = 5;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          dev.katsute.onemta.GTFSRealtimeProto.Alert, dev.katsute.onemta.GTFSRealtimeProto.Alert.Builder, dev.katsute.onemta.GTFSRealtimeProto.AlertOrBuilder>
+          dev.katsute.onemta.GTFSRealtimeProto.Alert, dev.katsute.onemta.GTFSRealtimeProto.Alert.Builder, dev.katsute.onemta.GTFSRealtimeProto.AlertOrBuilder> 
           getAlertFieldBuilder() {
         if (alertBuilder_ == null) {
           alertBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -3224,10 +3023,11 @@ abstract class GTFSRealtimeProto {
           builder.mergeFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
         } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(
-              e.getMessage()).setUnfinishedMessage(
-                  builder.buildPartial());
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
         }
         return builder.buildPartial();
       }
@@ -3323,10 +3123,12 @@ abstract class GTFSRealtimeProto {
      * some cases, past ones, i.e., those that already happened).
      * The updates must be sorted by stop_sequence, and apply for all the
      * following stops of the trip up to the next specified one.
+     *
      * Example 1:
      * For a trip with 20 stops, a StopTimeUpdate with arrival delay and departure
      * delay of 0 for stop_sequence of the current stop means that the trip is
      * exactly on time.
+     *
      * Example 2:
      * For the same trip instance, 3 StopTimeUpdates are provided:
      * - delay of 5 min for stop_sequence 3
@@ -3340,7 +3142,7 @@ abstract class GTFSRealtimeProto {
      *
      * <code>repeated .transit_realtime.TripUpdate.StopTimeUpdate stop_time_update = 2;</code>
      */
-    java.util.List<dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeUpdate>
+    java.util.List<dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeUpdate> 
         getStopTimeUpdateList();
     /**
      * <pre>
@@ -3348,10 +3150,12 @@ abstract class GTFSRealtimeProto {
      * some cases, past ones, i.e., those that already happened).
      * The updates must be sorted by stop_sequence, and apply for all the
      * following stops of the trip up to the next specified one.
+     *
      * Example 1:
      * For a trip with 20 stops, a StopTimeUpdate with arrival delay and departure
      * delay of 0 for stop_sequence of the current stop means that the trip is
      * exactly on time.
+     *
      * Example 2:
      * For the same trip instance, 3 StopTimeUpdates are provided:
      * - delay of 5 min for stop_sequence 3
@@ -3372,10 +3176,12 @@ abstract class GTFSRealtimeProto {
      * some cases, past ones, i.e., those that already happened).
      * The updates must be sorted by stop_sequence, and apply for all the
      * following stops of the trip up to the next specified one.
+     *
      * Example 1:
      * For a trip with 20 stops, a StopTimeUpdate with arrival delay and departure
      * delay of 0 for stop_sequence of the current stop means that the trip is
      * exactly on time.
+     *
      * Example 2:
      * For the same trip instance, 3 StopTimeUpdates are provided:
      * - delay of 5 min for stop_sequence 3
@@ -3396,10 +3202,12 @@ abstract class GTFSRealtimeProto {
      * some cases, past ones, i.e., those that already happened).
      * The updates must be sorted by stop_sequence, and apply for all the
      * following stops of the trip up to the next specified one.
+     *
      * Example 1:
      * For a trip with 20 stops, a StopTimeUpdate with arrival delay and departure
      * delay of 0 for stop_sequence of the current stop means that the trip is
      * exactly on time.
+     *
      * Example 2:
      * For the same trip instance, 3 StopTimeUpdates are provided:
      * - delay of 5 min for stop_sequence 3
@@ -3413,7 +3221,7 @@ abstract class GTFSRealtimeProto {
      *
      * <code>repeated .transit_realtime.TripUpdate.StopTimeUpdate stop_time_update = 2;</code>
      */
-    java.util.List<? extends dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeUpdateOrBuilder>
+    java.util.List<? extends dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeUpdateOrBuilder> 
         getStopTimeUpdateOrBuilderList();
     /**
      * <pre>
@@ -3421,10 +3229,12 @@ abstract class GTFSRealtimeProto {
      * some cases, past ones, i.e., those that already happened).
      * The updates must be sorted by stop_sequence, and apply for all the
      * following stops of the trip up to the next specified one.
+     *
      * Example 1:
      * For a trip with 20 stops, a StopTimeUpdate with arrival delay and departure
      * delay of 0 for stop_sequence of the current stop means that the trip is
      * exactly on time.
+     *
      * Example 2:
      * For the same trip instance, 3 StopTimeUpdates are provided:
      * - delay of 5 min for stop_sequence 3
@@ -3467,15 +3277,19 @@ abstract class GTFSRealtimeProto {
      * The current schedule deviation for the trip.  Delay should only be
      * specified when the prediction is given relative to some existing schedule
      * in GTFS.
+     *
      * Delay (in seconds) can be positive (meaning that the vehicle is late) or
      * negative (meaning that the vehicle is ahead of schedule). Delay of 0
      * means that the vehicle is exactly on time.
+     *
      * Delay information in StopTimeUpdates take precedent of trip-level delay
      * information, such that trip-level delay is only propagated until the next
      * stop along the trip with a StopTimeUpdate delay value specified.
+     *
      * Feed providers are strongly encouraged to provide a TripUpdate.timestamp
      * value indicating when the delay value was last updated, in order to
      * evaluate the freshness of the data.
+     *
      * NOTE: This field is still experimental, and subject to change. It may be
      * formally adopted in the future.
      * </pre>
@@ -3489,15 +3303,19 @@ abstract class GTFSRealtimeProto {
      * The current schedule deviation for the trip.  Delay should only be
      * specified when the prediction is given relative to some existing schedule
      * in GTFS.
+     *
      * Delay (in seconds) can be positive (meaning that the vehicle is late) or
      * negative (meaning that the vehicle is ahead of schedule). Delay of 0
      * means that the vehicle is exactly on time.
+     *
      * Delay information in StopTimeUpdates take precedent of trip-level delay
      * information, such that trip-level delay is only propagated until the next
      * stop along the trip with a StopTimeUpdate delay value specified.
+     *
      * Feed providers are strongly encouraged to provide a TripUpdate.timestamp
      * value indicating when the delay value was last updated, in order to
      * evaluate the freshness of the data.
+     *
      * NOTE: This field is still experimental, and subject to change. It may be
      * formally adopted in the future.
      * </pre>
@@ -3529,6 +3347,7 @@ abstract class GTFSRealtimeProto {
    * - A trip that proceeds along the schedule.
    * - A trip that proceeds along a route but has no fixed schedule.
    * - A trip that have been added or removed with regard to schedule.
+   *
    * The updates can be for future, predicted arrival/departure events, or for
    * past events that already occurred.
    * Normally, updates should get more precise and more certain (see
@@ -3537,6 +3356,7 @@ abstract class GTFSRealtimeProto {
    * precise and certain. In particular, if an update points to time in the past
    * but its update's uncertainty is not 0, the client should conclude that the
    * update is a (wrong) prediction and that the trip has not completed yet.
+   *
    * Note that the update can describe a trip that is already completed.
    * To this end, it is enough to provide an update for the last stop of the trip.
    * If the time of that is in the past, the client will conclude from that that
@@ -3573,11 +3393,6 @@ abstract class GTFSRealtimeProto {
       return new TripUpdate();
     }
 
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return dev.katsute.onemta.GTFSRealtimeProto.internal_static_transit_realtime_TripUpdate_descriptor;
@@ -3678,6 +3493,7 @@ abstract class GTFSRealtimeProto {
      *   both time and delay are specified, time will take precedence
      *   (although normally, time, if given for a scheduled trip, should be
      *   equal to scheduled time in GTFS + delay).
+     *
      * Uncertainty applies equally to both time and delay.
      * The uncertainty roughly specifies the expected error in true delay (but
      * note, we don't yet define its precise statistical meaning). It's possible
@@ -3707,11 +3523,6 @@ abstract class GTFSRealtimeProto {
         return new StopTimeEvent();
       }
 
-      @java.lang.Override
-      public final com.google.protobuf.UnknownFieldSet
-      getUnknownFields() {
-        return this.unknownFields;
-      }
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return dev.katsute.onemta.GTFSRealtimeProto.internal_static_transit_realtime_TripUpdate_StopTimeEvent_descriptor;
@@ -3727,7 +3538,7 @@ abstract class GTFSRealtimeProto {
 
       private int bitField0_;
       public static final int DELAY_FIELD_NUMBER = 1;
-      private int delay_;
+      private int delay_ = 0;
       /**
        * <pre>
        * Delay (in seconds) can be positive (meaning that the vehicle is late) or
@@ -3758,7 +3569,7 @@ abstract class GTFSRealtimeProto {
       }
 
       public static final int TIME_FIELD_NUMBER = 2;
-      private long time_;
+      private long time_ = 0L;
       /**
        * <pre>
        * Event as absolute time.
@@ -3789,7 +3600,7 @@ abstract class GTFSRealtimeProto {
       }
 
       public static final int UNCERTAINTY_FIELD_NUMBER = 3;
-      private int uncertainty_;
+      private int uncertainty_ = 0;
       /**
        * <pre>
        * If uncertainty is omitted, it is interpreted as unknown.
@@ -3922,6 +3733,7 @@ abstract class GTFSRealtimeProto {
        *   both time and delay are specified, time will take precedence
        *   (although normally, time, if given for a scheduled trip, should be
        *   equal to scheduled time in GTFS + delay).
+       *
        * Uncertainty applies equally to both time and delay.
        * The uncertainty roughly specifies the expected error in true delay (but
        * note, we don't yet define its precise statistical meaning). It's possible
@@ -3951,28 +3763,21 @@ abstract class GTFSRealtimeProto {
 
         // Construct using dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeEvent.newBuilder()
         private Builder() {
-          maybeForceBuilderInitialization();
+
         }
 
         private Builder(
             com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
           super(parent);
-          maybeForceBuilderInitialization();
-        }
-        private void maybeForceBuilderInitialization() {
-          if (com.google.protobuf.GeneratedMessageV3
-                  .alwaysUseFieldBuilders) {
-          }
+
         }
         @java.lang.Override
         public Builder clear() {
           super.clear();
+          bitField0_ = 0;
           delay_ = 0;
-          bitField0_ = (bitField0_ & ~0x00000001);
           time_ = 0L;
-          bitField0_ = (bitField0_ & ~0x00000002);
           uncertainty_ = 0;
-          bitField0_ = (bitField0_ & ~0x00000004);
           return this;
         }
 
@@ -3999,6 +3804,12 @@ abstract class GTFSRealtimeProto {
         @java.lang.Override
         public dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeEvent buildPartial() {
           dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeEvent result = new dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeEvent(this);
+          if (bitField0_ != 0) { buildPartial0(result); }
+          onBuilt();
+          return result;
+        }
+
+        private void buildPartial0(dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeEvent result) {
           int from_bitField0_ = bitField0_;
           int to_bitField0_ = 0;
           if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -4013,70 +3824,9 @@ abstract class GTFSRealtimeProto {
             result.uncertainty_ = uncertainty_;
             to_bitField0_ |= 0x00000004;
           }
-          result.bitField0_ = to_bitField0_;
-          onBuilt();
-          return result;
+          result.bitField0_ |= to_bitField0_;
         }
 
-        @java.lang.Override
-        public Builder clone() {
-          return super.clone();
-        }
-        @java.lang.Override
-        public Builder setField(
-            com.google.protobuf.Descriptors.FieldDescriptor field,
-            java.lang.Object value) {
-          return super.setField(field, value);
-        }
-        @java.lang.Override
-        public Builder clearField(
-            com.google.protobuf.Descriptors.FieldDescriptor field) {
-          return super.clearField(field);
-        }
-        @java.lang.Override
-        public Builder clearOneof(
-            com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-          return super.clearOneof(oneof);
-        }
-        @java.lang.Override
-        public Builder setRepeatedField(
-            com.google.protobuf.Descriptors.FieldDescriptor field,
-            int index, java.lang.Object value) {
-          return super.setRepeatedField(field, index, value);
-        }
-        @java.lang.Override
-        public Builder addRepeatedField(
-            com.google.protobuf.Descriptors.FieldDescriptor field,
-            java.lang.Object value) {
-          return super.addRepeatedField(field, value);
-        }
-        @java.lang.Override
-        public <Type> Builder setExtension(
-            com.google.protobuf.GeneratedMessage.GeneratedExtension<
-                dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeEvent, Type> extension,
-            Type value) {
-          return super.setExtension(extension, value);
-        }
-        @java.lang.Override
-        public <Type> Builder setExtension(
-            com.google.protobuf.GeneratedMessage.GeneratedExtension<
-                dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeEvent, java.util.List<Type>> extension,
-            int index, Type value) {
-          return super.setExtension(extension, index, value);
-        }
-        @java.lang.Override
-        public <Type> Builder addExtension(
-            com.google.protobuf.GeneratedMessage.GeneratedExtension<
-                dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeEvent, java.util.List<Type>> extension,
-            Type value) {
-          return super.addExtension(extension, value);
-        }
-        @java.lang.Override
-        public <Type> Builder clearExtension(
-            com.google.protobuf.GeneratedMessage.GeneratedExtension<
-                dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeEvent, ?> extension) {
-          return super.clearExtension(extension);
-        }
         private int bitField0_;
 
         private int delay_ ;
@@ -4120,8 +3870,9 @@ abstract class GTFSRealtimeProto {
          * @return This builder for chaining.
          */
         public Builder setDelay(int value) {
-          bitField0_ |= 0x00000001;
+
           delay_ = value;
+          bitField0_ |= 0x00000001;
           onChanged();
           return this;
         }
@@ -4183,8 +3934,9 @@ abstract class GTFSRealtimeProto {
          * @return This builder for chaining.
          */
         public Builder setTime(long value) {
-          bitField0_ |= 0x00000002;
+
           time_ = value;
+          bitField0_ |= 0x00000002;
           onChanged();
           return this;
         }
@@ -4249,8 +4001,9 @@ abstract class GTFSRealtimeProto {
          * @return This builder for chaining.
          */
         public Builder setUncertainty(int value) {
-          bitField0_ |= 0x00000004;
+
           uncertainty_ = value;
+          bitField0_ |= 0x00000004;
           onChanged();
           return this;
         }
@@ -4309,10 +4062,11 @@ abstract class GTFSRealtimeProto {
             builder.mergeFrom(input, extensionRegistry);
           } catch (com.google.protobuf.InvalidProtocolBufferException e) {
             throw e.setUnfinishedMessage(builder.buildPartial());
+          } catch (com.google.protobuf.UninitializedMessageException e) {
+            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
           } catch (java.io.IOException e) {
-            throw new com.google.protobuf.InvalidProtocolBufferException(
-                e.getMessage()).setUnfinishedMessage(
-                    builder.buildPartial());
+            throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                .setUnfinishedMessage(builder.buildPartial());
           }
           return builder.buildPartial();
         }
@@ -4459,11 +4213,6 @@ abstract class GTFSRealtimeProto {
         return new StopTimeUpdate();
       }
 
-      @java.lang.Override
-      public final com.google.protobuf.UnknownFieldSet
-      getUnknownFields() {
-        return this.unknownFields;
-      }
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return dev.katsute.onemta.GTFSRealtimeProto.internal_static_transit_realtime_TripUpdate_StopTimeUpdate_descriptor;
@@ -4659,7 +4408,7 @@ abstract class GTFSRealtimeProto {
 
       private int bitField0_;
       public static final int STOP_SEQUENCE_FIELD_NUMBER = 1;
-      private int stopSequence_;
+      private int stopSequence_ = 0;
       /**
        * <pre>
        * Must be the same as in stop_times.txt in the corresponding GTFS feed.
@@ -4686,7 +4435,8 @@ abstract class GTFSRealtimeProto {
       }
 
       public static final int STOP_ID_FIELD_NUMBER = 4;
-      private volatile java.lang.Object stopId_;
+      @SuppressWarnings("serial")
+      private volatile java.lang.Object stopId_ = "";
       /**
        * <pre>
        * Must be the same as in stops.txt in the corresponding GTFS feed.
@@ -4713,7 +4463,7 @@ abstract class GTFSRealtimeProto {
         if (ref instanceof java.lang.String) {
           return (java.lang.String) ref;
         } else {
-          com.google.protobuf.ByteString bs =
+          com.google.protobuf.ByteString bs = 
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           if (bs.isValidUtf8()) {
@@ -4735,7 +4485,7 @@ abstract class GTFSRealtimeProto {
           getStopIdBytes() {
         java.lang.Object ref = stopId_;
         if (ref instanceof java.lang.String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           stopId_ = b;
@@ -4798,7 +4548,7 @@ abstract class GTFSRealtimeProto {
       }
 
       public static final int SCHEDULE_RELATIONSHIP_FIELD_NUMBER = 5;
-      private int scheduleRelationship_;
+      private int scheduleRelationship_ = 0;
       /**
        * <code>optional .transit_realtime.TripUpdate.StopTimeUpdate.ScheduleRelationship schedule_relationship = 5 [default = SCHEDULED];</code>
        * @return Whether the scheduleRelationship field is set.
@@ -4811,8 +4561,7 @@ abstract class GTFSRealtimeProto {
        * @return The scheduleRelationship.
        */
       @java.lang.Override public dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeUpdate.ScheduleRelationship getScheduleRelationship() {
-        @SuppressWarnings("deprecation")
-        dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeUpdate.ScheduleRelationship result = dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeUpdate.ScheduleRelationship.valueOf(scheduleRelationship_);
+        dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeUpdate.ScheduleRelationship result = dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeUpdate.ScheduleRelationship.forNumber(scheduleRelationship_);
         return result == null ? dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeUpdate.ScheduleRelationship.SCHEDULED : result;
       }
 
@@ -4953,24 +4702,20 @@ abstract class GTFSRealtimeProto {
         @java.lang.Override
         public Builder clear() {
           super.clear();
+          bitField0_ = 0;
           stopSequence_ = 0;
-          bitField0_ = (bitField0_ & ~0x00000001);
           stopId_ = "";
-          bitField0_ = (bitField0_ & ~0x00000002);
-          if (arrivalBuilder_ == null) {
-            arrival_ = null;
-          } else {
-            arrivalBuilder_.clear();
+          arrival_ = null;
+          if (arrivalBuilder_ != null) {
+            arrivalBuilder_.dispose();
+            arrivalBuilder_ = null;
           }
-          bitField0_ = (bitField0_ & ~0x00000004);
-          if (departureBuilder_ == null) {
-            departure_ = null;
-          } else {
-            departureBuilder_.clear();
+          departure_ = null;
+          if (departureBuilder_ != null) {
+            departureBuilder_.dispose();
+            departureBuilder_ = null;
           }
-          bitField0_ = (bitField0_ & ~0x00000008);
           scheduleRelationship_ = 0;
-          bitField0_ = (bitField0_ & ~0x00000010);
           return this;
         }
 
@@ -4997,6 +4742,12 @@ abstract class GTFSRealtimeProto {
         @java.lang.Override
         public dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeUpdate buildPartial() {
           dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeUpdate result = new dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeUpdate(this);
+          if (bitField0_ != 0) { buildPartial0(result); }
+          onBuilt();
+          return result;
+        }
+
+        private void buildPartial0(dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeUpdate result) {
           int from_bitField0_ = bitField0_;
           int to_bitField0_ = 0;
           if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -5004,93 +4755,28 @@ abstract class GTFSRealtimeProto {
             to_bitField0_ |= 0x00000001;
           }
           if (((from_bitField0_ & 0x00000002) != 0)) {
+            result.stopId_ = stopId_;
             to_bitField0_ |= 0x00000002;
           }
-          result.stopId_ = stopId_;
           if (((from_bitField0_ & 0x00000004) != 0)) {
-            if (arrivalBuilder_ == null) {
-              result.arrival_ = arrival_;
-            } else {
-              result.arrival_ = arrivalBuilder_.build();
-            }
+            result.arrival_ = arrivalBuilder_ == null
+                ? arrival_
+                : arrivalBuilder_.build();
             to_bitField0_ |= 0x00000004;
           }
           if (((from_bitField0_ & 0x00000008) != 0)) {
-            if (departureBuilder_ == null) {
-              result.departure_ = departure_;
-            } else {
-              result.departure_ = departureBuilder_.build();
-            }
+            result.departure_ = departureBuilder_ == null
+                ? departure_
+                : departureBuilder_.build();
             to_bitField0_ |= 0x00000008;
           }
           if (((from_bitField0_ & 0x00000010) != 0)) {
+            result.scheduleRelationship_ = scheduleRelationship_;
             to_bitField0_ |= 0x00000010;
           }
-          result.scheduleRelationship_ = scheduleRelationship_;
-          result.bitField0_ = to_bitField0_;
-          onBuilt();
-          return result;
+          result.bitField0_ |= to_bitField0_;
         }
 
-        @java.lang.Override
-        public Builder clone() {
-          return super.clone();
-        }
-        @java.lang.Override
-        public Builder setField(
-            com.google.protobuf.Descriptors.FieldDescriptor field,
-            java.lang.Object value) {
-          return super.setField(field, value);
-        }
-        @java.lang.Override
-        public Builder clearField(
-            com.google.protobuf.Descriptors.FieldDescriptor field) {
-          return super.clearField(field);
-        }
-        @java.lang.Override
-        public Builder clearOneof(
-            com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-          return super.clearOneof(oneof);
-        }
-        @java.lang.Override
-        public Builder setRepeatedField(
-            com.google.protobuf.Descriptors.FieldDescriptor field,
-            int index, java.lang.Object value) {
-          return super.setRepeatedField(field, index, value);
-        }
-        @java.lang.Override
-        public Builder addRepeatedField(
-            com.google.protobuf.Descriptors.FieldDescriptor field,
-            java.lang.Object value) {
-          return super.addRepeatedField(field, value);
-        }
-        @java.lang.Override
-        public <Type> Builder setExtension(
-            com.google.protobuf.GeneratedMessage.GeneratedExtension<
-                dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeUpdate, Type> extension,
-            Type value) {
-          return super.setExtension(extension, value);
-        }
-        @java.lang.Override
-        public <Type> Builder setExtension(
-            com.google.protobuf.GeneratedMessage.GeneratedExtension<
-                dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeUpdate, java.util.List<Type>> extension,
-            int index, Type value) {
-          return super.setExtension(extension, index, value);
-        }
-        @java.lang.Override
-        public <Type> Builder addExtension(
-            com.google.protobuf.GeneratedMessage.GeneratedExtension<
-                dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeUpdate, java.util.List<Type>> extension,
-            Type value) {
-          return super.addExtension(extension, value);
-        }
-        @java.lang.Override
-        public <Type> Builder clearExtension(
-            com.google.protobuf.GeneratedMessage.GeneratedExtension<
-                dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeUpdate, ?> extension) {
-          return super.clearExtension(extension);
-        }
         private int bitField0_;
 
         private int stopSequence_ ;
@@ -5128,8 +4814,9 @@ abstract class GTFSRealtimeProto {
          * @return This builder for chaining.
          */
         public Builder setStopSequence(int value) {
-          bitField0_ |= 0x00000001;
+
           stopSequence_ = value;
+          bitField0_ |= 0x00000001;
           onChanged();
           return this;
         }
@@ -5194,7 +4881,7 @@ abstract class GTFSRealtimeProto {
             getStopIdBytes() {
           java.lang.Object ref = stopId_;
           if (ref instanceof String) {
-            com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString b = 
                 com.google.protobuf.ByteString.copyFromUtf8(
                     (java.lang.String) ref);
             stopId_ = b;
@@ -5214,11 +4901,9 @@ abstract class GTFSRealtimeProto {
          */
         public Builder setStopId(
             java.lang.String value) {
-          if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
+          if (value == null) { throw new NullPointerException(); }
           stopId_ = value;
+          bitField0_ |= 0x00000002;
           onChanged();
           return this;
         }
@@ -5231,8 +4916,8 @@ abstract class GTFSRealtimeProto {
          * @return This builder for chaining.
          */
         public Builder clearStopId() {
-          bitField0_ = (bitField0_ & ~0x00000002);
           stopId_ = getDefaultInstance().getStopId();
+          bitField0_ = (bitField0_ & ~0x00000002);
           onChanged();
           return this;
         }
@@ -5247,11 +4932,9 @@ abstract class GTFSRealtimeProto {
          */
         public Builder setStopIdBytes(
             com.google.protobuf.ByteString value) {
-          if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
+          if (value == null) { throw new NullPointerException(); }
           stopId_ = value;
+          bitField0_ |= 0x00000002;
           onChanged();
           return this;
         }
@@ -5286,11 +4969,11 @@ abstract class GTFSRealtimeProto {
               throw new NullPointerException();
             }
             arrival_ = value;
-            onChanged();
           } else {
             arrivalBuilder_.setMessage(value);
           }
           bitField0_ |= 0x00000004;
+          onChanged();
           return this;
         }
         /**
@@ -5300,11 +4983,11 @@ abstract class GTFSRealtimeProto {
             dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeEvent.Builder builderForValue) {
           if (arrivalBuilder_ == null) {
             arrival_ = builderForValue.build();
-            onChanged();
           } else {
             arrivalBuilder_.setMessage(builderForValue.build());
           }
           bitField0_ |= 0x00000004;
+          onChanged();
           return this;
         }
         /**
@@ -5313,31 +4996,30 @@ abstract class GTFSRealtimeProto {
         public Builder mergeArrival(dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeEvent value) {
           if (arrivalBuilder_ == null) {
             if (((bitField0_ & 0x00000004) != 0) &&
-                arrival_ != null &&
-                arrival_ != dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeEvent.getDefaultInstance()) {
-              arrival_ =
-                dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeEvent.newBuilder(arrival_).mergeFrom(value).buildPartial();
+              arrival_ != null &&
+              arrival_ != dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeEvent.getDefaultInstance()) {
+              getArrivalBuilder().mergeFrom(value);
             } else {
               arrival_ = value;
             }
-            onChanged();
           } else {
             arrivalBuilder_.mergeFrom(value);
           }
           bitField0_ |= 0x00000004;
+          onChanged();
           return this;
         }
         /**
          * <code>optional .transit_realtime.TripUpdate.StopTimeEvent arrival = 2;</code>
          */
         public Builder clearArrival() {
-          if (arrivalBuilder_ == null) {
-            arrival_ = null;
-            onChanged();
-          } else {
-            arrivalBuilder_.clear();
-          }
           bitField0_ = (bitField0_ & ~0x00000004);
+          arrival_ = null;
+          if (arrivalBuilder_ != null) {
+            arrivalBuilder_.dispose();
+            arrivalBuilder_ = null;
+          }
+          onChanged();
           return this;
         }
         /**
@@ -5363,7 +5045,7 @@ abstract class GTFSRealtimeProto {
          * <code>optional .transit_realtime.TripUpdate.StopTimeEvent arrival = 2;</code>
          */
         private com.google.protobuf.SingleFieldBuilderV3<
-            dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeEvent, dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeEvent.Builder, dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeEventOrBuilder>
+            dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeEvent, dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeEvent.Builder, dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeEventOrBuilder> 
             getArrivalFieldBuilder() {
           if (arrivalBuilder_ == null) {
             arrivalBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -5406,11 +5088,11 @@ abstract class GTFSRealtimeProto {
               throw new NullPointerException();
             }
             departure_ = value;
-            onChanged();
           } else {
             departureBuilder_.setMessage(value);
           }
           bitField0_ |= 0x00000008;
+          onChanged();
           return this;
         }
         /**
@@ -5420,11 +5102,11 @@ abstract class GTFSRealtimeProto {
             dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeEvent.Builder builderForValue) {
           if (departureBuilder_ == null) {
             departure_ = builderForValue.build();
-            onChanged();
           } else {
             departureBuilder_.setMessage(builderForValue.build());
           }
           bitField0_ |= 0x00000008;
+          onChanged();
           return this;
         }
         /**
@@ -5433,31 +5115,30 @@ abstract class GTFSRealtimeProto {
         public Builder mergeDeparture(dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeEvent value) {
           if (departureBuilder_ == null) {
             if (((bitField0_ & 0x00000008) != 0) &&
-                departure_ != null &&
-                departure_ != dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeEvent.getDefaultInstance()) {
-              departure_ =
-                dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeEvent.newBuilder(departure_).mergeFrom(value).buildPartial();
+              departure_ != null &&
+              departure_ != dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeEvent.getDefaultInstance()) {
+              getDepartureBuilder().mergeFrom(value);
             } else {
               departure_ = value;
             }
-            onChanged();
           } else {
             departureBuilder_.mergeFrom(value);
           }
           bitField0_ |= 0x00000008;
+          onChanged();
           return this;
         }
         /**
          * <code>optional .transit_realtime.TripUpdate.StopTimeEvent departure = 3;</code>
          */
         public Builder clearDeparture() {
-          if (departureBuilder_ == null) {
-            departure_ = null;
-            onChanged();
-          } else {
-            departureBuilder_.clear();
-          }
           bitField0_ = (bitField0_ & ~0x00000008);
+          departure_ = null;
+          if (departureBuilder_ != null) {
+            departureBuilder_.dispose();
+            departureBuilder_ = null;
+          }
+          onChanged();
           return this;
         }
         /**
@@ -5483,7 +5164,7 @@ abstract class GTFSRealtimeProto {
          * <code>optional .transit_realtime.TripUpdate.StopTimeEvent departure = 3;</code>
          */
         private com.google.protobuf.SingleFieldBuilderV3<
-            dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeEvent, dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeEvent.Builder, dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeEventOrBuilder>
+            dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeEvent, dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeEvent.Builder, dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeEventOrBuilder> 
             getDepartureFieldBuilder() {
           if (departureBuilder_ == null) {
             departureBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -5510,8 +5191,7 @@ abstract class GTFSRealtimeProto {
          */
         @java.lang.Override
         public dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeUpdate.ScheduleRelationship getScheduleRelationship() {
-          @SuppressWarnings("deprecation")
-          dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeUpdate.ScheduleRelationship result = dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeUpdate.ScheduleRelationship.valueOf(scheduleRelationship_);
+          dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeUpdate.ScheduleRelationship result = dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeUpdate.ScheduleRelationship.forNumber(scheduleRelationship_);
           return result == null ? dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeUpdate.ScheduleRelationship.SCHEDULED : result;
         }
         /**
@@ -5576,10 +5256,11 @@ abstract class GTFSRealtimeProto {
             builder.mergeFrom(input, extensionRegistry);
           } catch (com.google.protobuf.InvalidProtocolBufferException e) {
             throw e.setUnfinishedMessage(builder.buildPartial());
+          } catch (com.google.protobuf.UninitializedMessageException e) {
+            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
           } catch (java.io.IOException e) {
-            throw new com.google.protobuf.InvalidProtocolBufferException(
-                e.getMessage()).setUnfinishedMessage(
-                    builder.buildPartial());
+            throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                .setUnfinishedMessage(builder.buildPartial());
           }
           return builder.buildPartial();
         }
@@ -5778,11 +5459,6 @@ abstract class GTFSRealtimeProto {
         return new TripProperties();
       }
 
-      @java.lang.Override
-      public final com.google.protobuf.UnknownFieldSet
-      getUnknownFields() {
-        return this.unknownFields;
-      }
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return dev.katsute.onemta.GTFSRealtimeProto.internal_static_transit_realtime_TripUpdate_TripProperties_descriptor;
@@ -5798,7 +5474,8 @@ abstract class GTFSRealtimeProto {
 
       private int bitField0_;
       public static final int TRIP_ID_FIELD_NUMBER = 1;
-      private volatile java.lang.Object tripId_;
+      @SuppressWarnings("serial")
+      private volatile java.lang.Object tripId_ = "";
       /**
        * <pre>
        * Defines the identifier of a new trip that is a duplicate of an existing trip defined in (CSV) GTFS trips.txt
@@ -5835,7 +5512,7 @@ abstract class GTFSRealtimeProto {
         if (ref instanceof java.lang.String) {
           return (java.lang.String) ref;
         } else {
-          com.google.protobuf.ByteString bs =
+          com.google.protobuf.ByteString bs = 
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           if (bs.isValidUtf8()) {
@@ -5862,7 +5539,7 @@ abstract class GTFSRealtimeProto {
           getTripIdBytes() {
         java.lang.Object ref = tripId_;
         if (ref instanceof java.lang.String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           tripId_ = b;
@@ -5873,7 +5550,8 @@ abstract class GTFSRealtimeProto {
       }
 
       public static final int START_DATE_FIELD_NUMBER = 2;
-      private volatile java.lang.Object startDate_;
+      @SuppressWarnings("serial")
+      private volatile java.lang.Object startDate_ = "";
       /**
        * <pre>
        * Service date on which the DUPLICATED trip will be run, in YYYYMMDD format. Required if
@@ -5904,7 +5582,7 @@ abstract class GTFSRealtimeProto {
         if (ref instanceof java.lang.String) {
           return (java.lang.String) ref;
         } else {
-          com.google.protobuf.ByteString bs =
+          com.google.protobuf.ByteString bs = 
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           if (bs.isValidUtf8()) {
@@ -5928,7 +5606,7 @@ abstract class GTFSRealtimeProto {
           getStartDateBytes() {
         java.lang.Object ref = startDate_;
         if (ref instanceof java.lang.String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           startDate_ = b;
@@ -5939,7 +5617,8 @@ abstract class GTFSRealtimeProto {
       }
 
       public static final int START_TIME_FIELD_NUMBER = 3;
-      private volatile java.lang.Object startTime_;
+      @SuppressWarnings("serial")
+      private volatile java.lang.Object startTime_ = "";
       /**
        * <pre>
        * Defines the departure start time of the trip when it’s duplicated. See definition of stop_times.departure_time
@@ -5988,7 +5667,7 @@ abstract class GTFSRealtimeProto {
         if (ref instanceof java.lang.String) {
           return (java.lang.String) ref;
         } else {
-          com.google.protobuf.ByteString bs =
+          com.google.protobuf.ByteString bs = 
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           if (bs.isValidUtf8()) {
@@ -6021,7 +5700,7 @@ abstract class GTFSRealtimeProto {
           getStartTimeBytes() {
         java.lang.Object ref = startTime_;
         if (ref instanceof java.lang.String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           startTime_ = b;
@@ -6149,28 +5828,21 @@ abstract class GTFSRealtimeProto {
 
         // Construct using dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties.newBuilder()
         private Builder() {
-          maybeForceBuilderInitialization();
+
         }
 
         private Builder(
             com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
           super(parent);
-          maybeForceBuilderInitialization();
-        }
-        private void maybeForceBuilderInitialization() {
-          if (com.google.protobuf.GeneratedMessageV3
-                  .alwaysUseFieldBuilders) {
-          }
+
         }
         @java.lang.Override
         public Builder clear() {
           super.clear();
+          bitField0_ = 0;
           tripId_ = "";
-          bitField0_ = (bitField0_ & ~0x00000001);
           startDate_ = "";
-          bitField0_ = (bitField0_ & ~0x00000002);
           startTime_ = "";
-          bitField0_ = (bitField0_ & ~0x00000004);
           return this;
         }
 
@@ -6197,84 +5869,29 @@ abstract class GTFSRealtimeProto {
         @java.lang.Override
         public dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties buildPartial() {
           dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties result = new dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties(this);
-          int from_bitField0_ = bitField0_;
-          int to_bitField0_ = 0;
-          if (((from_bitField0_ & 0x00000001) != 0)) {
-            to_bitField0_ |= 0x00000001;
-          }
-          result.tripId_ = tripId_;
-          if (((from_bitField0_ & 0x00000002) != 0)) {
-            to_bitField0_ |= 0x00000002;
-          }
-          result.startDate_ = startDate_;
-          if (((from_bitField0_ & 0x00000004) != 0)) {
-            to_bitField0_ |= 0x00000004;
-          }
-          result.startTime_ = startTime_;
-          result.bitField0_ = to_bitField0_;
+          if (bitField0_ != 0) { buildPartial0(result); }
           onBuilt();
           return result;
         }
 
-        @java.lang.Override
-        public Builder clone() {
-          return super.clone();
+        private void buildPartial0(dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties result) {
+          int from_bitField0_ = bitField0_;
+          int to_bitField0_ = 0;
+          if (((from_bitField0_ & 0x00000001) != 0)) {
+            result.tripId_ = tripId_;
+            to_bitField0_ |= 0x00000001;
+          }
+          if (((from_bitField0_ & 0x00000002) != 0)) {
+            result.startDate_ = startDate_;
+            to_bitField0_ |= 0x00000002;
+          }
+          if (((from_bitField0_ & 0x00000004) != 0)) {
+            result.startTime_ = startTime_;
+            to_bitField0_ |= 0x00000004;
+          }
+          result.bitField0_ |= to_bitField0_;
         }
-        @java.lang.Override
-        public Builder setField(
-            com.google.protobuf.Descriptors.FieldDescriptor field,
-            java.lang.Object value) {
-          return super.setField(field, value);
-        }
-        @java.lang.Override
-        public Builder clearField(
-            com.google.protobuf.Descriptors.FieldDescriptor field) {
-          return super.clearField(field);
-        }
-        @java.lang.Override
-        public Builder clearOneof(
-            com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-          return super.clearOneof(oneof);
-        }
-        @java.lang.Override
-        public Builder setRepeatedField(
-            com.google.protobuf.Descriptors.FieldDescriptor field,
-            int index, java.lang.Object value) {
-          return super.setRepeatedField(field, index, value);
-        }
-        @java.lang.Override
-        public Builder addRepeatedField(
-            com.google.protobuf.Descriptors.FieldDescriptor field,
-            java.lang.Object value) {
-          return super.addRepeatedField(field, value);
-        }
-        @java.lang.Override
-        public <Type> Builder setExtension(
-            com.google.protobuf.GeneratedMessage.GeneratedExtension<
-                dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties, Type> extension,
-            Type value) {
-          return super.setExtension(extension, value);
-        }
-        @java.lang.Override
-        public <Type> Builder setExtension(
-            com.google.protobuf.GeneratedMessage.GeneratedExtension<
-                dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties, java.util.List<Type>> extension,
-            int index, Type value) {
-          return super.setExtension(extension, index, value);
-        }
-        @java.lang.Override
-        public <Type> Builder addExtension(
-            com.google.protobuf.GeneratedMessage.GeneratedExtension<
-                dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties, java.util.List<Type>> extension,
-            Type value) {
-          return super.addExtension(extension, value);
-        }
-        @java.lang.Override
-        public <Type> Builder clearExtension(
-            com.google.protobuf.GeneratedMessage.GeneratedExtension<
-                dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties, ?> extension) {
-          return super.clearExtension(extension);
-        }
+
         private int bitField0_;
 
         private java.lang.Object tripId_ = "";
@@ -6338,7 +5955,7 @@ abstract class GTFSRealtimeProto {
             getTripIdBytes() {
           java.lang.Object ref = tripId_;
           if (ref instanceof String) {
-            com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString b = 
                 com.google.protobuf.ByteString.copyFromUtf8(
                     (java.lang.String) ref);
             tripId_ = b;
@@ -6363,11 +5980,9 @@ abstract class GTFSRealtimeProto {
          */
         public Builder setTripId(
             java.lang.String value) {
-          if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
+          if (value == null) { throw new NullPointerException(); }
           tripId_ = value;
+          bitField0_ |= 0x00000001;
           onChanged();
           return this;
         }
@@ -6385,8 +6000,8 @@ abstract class GTFSRealtimeProto {
          * @return This builder for chaining.
          */
         public Builder clearTripId() {
-          bitField0_ = (bitField0_ & ~0x00000001);
           tripId_ = getDefaultInstance().getTripId();
+          bitField0_ = (bitField0_ & ~0x00000001);
           onChanged();
           return this;
         }
@@ -6406,11 +6021,9 @@ abstract class GTFSRealtimeProto {
          */
         public Builder setTripIdBytes(
             com.google.protobuf.ByteString value) {
-          if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
+          if (value == null) { throw new NullPointerException(); }
           tripId_ = value;
+          bitField0_ |= 0x00000001;
           onChanged();
           return this;
         }
@@ -6467,7 +6080,7 @@ abstract class GTFSRealtimeProto {
             getStartDateBytes() {
           java.lang.Object ref = startDate_;
           if (ref instanceof String) {
-            com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString b = 
                 com.google.protobuf.ByteString.copyFromUtf8(
                     (java.lang.String) ref);
             startDate_ = b;
@@ -6489,11 +6102,9 @@ abstract class GTFSRealtimeProto {
          */
         public Builder setStartDate(
             java.lang.String value) {
-          if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
+          if (value == null) { throw new NullPointerException(); }
           startDate_ = value;
+          bitField0_ |= 0x00000002;
           onChanged();
           return this;
         }
@@ -6508,8 +6119,8 @@ abstract class GTFSRealtimeProto {
          * @return This builder for chaining.
          */
         public Builder clearStartDate() {
-          bitField0_ = (bitField0_ & ~0x00000002);
           startDate_ = getDefaultInstance().getStartDate();
+          bitField0_ = (bitField0_ & ~0x00000002);
           onChanged();
           return this;
         }
@@ -6526,11 +6137,9 @@ abstract class GTFSRealtimeProto {
          */
         public Builder setStartDateBytes(
             com.google.protobuf.ByteString value) {
-          if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
+          if (value == null) { throw new NullPointerException(); }
           startDate_ = value;
+          bitField0_ |= 0x00000002;
           onChanged();
           return this;
         }
@@ -6614,7 +6223,7 @@ abstract class GTFSRealtimeProto {
             getStartTimeBytes() {
           java.lang.Object ref = startTime_;
           if (ref instanceof String) {
-            com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString b = 
                 com.google.protobuf.ByteString.copyFromUtf8(
                     (java.lang.String) ref);
             startTime_ = b;
@@ -6645,11 +6254,9 @@ abstract class GTFSRealtimeProto {
          */
         public Builder setStartTime(
             java.lang.String value) {
-          if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000004;
+          if (value == null) { throw new NullPointerException(); }
           startTime_ = value;
+          bitField0_ |= 0x00000004;
           onChanged();
           return this;
         }
@@ -6673,8 +6280,8 @@ abstract class GTFSRealtimeProto {
          * @return This builder for chaining.
          */
         public Builder clearStartTime() {
-          bitField0_ = (bitField0_ & ~0x00000004);
           startTime_ = getDefaultInstance().getStartTime();
+          bitField0_ = (bitField0_ & ~0x00000004);
           onChanged();
           return this;
         }
@@ -6700,11 +6307,9 @@ abstract class GTFSRealtimeProto {
          */
         public Builder setStartTimeBytes(
             com.google.protobuf.ByteString value) {
-          if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000004;
+          if (value == null) { throw new NullPointerException(); }
           startTime_ = value;
+          bitField0_ |= 0x00000004;
           onChanged();
           return this;
         }
@@ -6746,10 +6351,11 @@ abstract class GTFSRealtimeProto {
             builder.mergeFrom(input, extensionRegistry);
           } catch (com.google.protobuf.InvalidProtocolBufferException e) {
             throw e.setUnfinishedMessage(builder.buildPartial());
+          } catch (com.google.protobuf.UninitializedMessageException e) {
+            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
           } catch (java.io.IOException e) {
-            throw new com.google.protobuf.InvalidProtocolBufferException(
-                e.getMessage()).setUnfinishedMessage(
-                    builder.buildPartial());
+            throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                .setUnfinishedMessage(builder.buildPartial());
           }
           return builder.buildPartial();
         }
@@ -6858,6 +6464,7 @@ abstract class GTFSRealtimeProto {
     }
 
     public static final int STOP_TIME_UPDATE_FIELD_NUMBER = 2;
+    @SuppressWarnings("serial")
     private java.util.List<dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeUpdate> stopTimeUpdate_;
     /**
      * <pre>
@@ -6865,10 +6472,12 @@ abstract class GTFSRealtimeProto {
      * some cases, past ones, i.e., those that already happened).
      * The updates must be sorted by stop_sequence, and apply for all the
      * following stops of the trip up to the next specified one.
+     *
      * Example 1:
      * For a trip with 20 stops, a StopTimeUpdate with arrival delay and departure
      * delay of 0 for stop_sequence of the current stop means that the trip is
      * exactly on time.
+     *
      * Example 2:
      * For the same trip instance, 3 StopTimeUpdates are provided:
      * - delay of 5 min for stop_sequence 3
@@ -6892,10 +6501,12 @@ abstract class GTFSRealtimeProto {
      * some cases, past ones, i.e., those that already happened).
      * The updates must be sorted by stop_sequence, and apply for all the
      * following stops of the trip up to the next specified one.
+     *
      * Example 1:
      * For a trip with 20 stops, a StopTimeUpdate with arrival delay and departure
      * delay of 0 for stop_sequence of the current stop means that the trip is
      * exactly on time.
+     *
      * Example 2:
      * For the same trip instance, 3 StopTimeUpdates are provided:
      * - delay of 5 min for stop_sequence 3
@@ -6910,7 +6521,7 @@ abstract class GTFSRealtimeProto {
      * <code>repeated .transit_realtime.TripUpdate.StopTimeUpdate stop_time_update = 2;</code>
      */
     @java.lang.Override
-    public java.util.List<? extends dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeUpdateOrBuilder>
+    public java.util.List<? extends dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeUpdateOrBuilder> 
         getStopTimeUpdateOrBuilderList() {
       return stopTimeUpdate_;
     }
@@ -6920,10 +6531,12 @@ abstract class GTFSRealtimeProto {
      * some cases, past ones, i.e., those that already happened).
      * The updates must be sorted by stop_sequence, and apply for all the
      * following stops of the trip up to the next specified one.
+     *
      * Example 1:
      * For a trip with 20 stops, a StopTimeUpdate with arrival delay and departure
      * delay of 0 for stop_sequence of the current stop means that the trip is
      * exactly on time.
+     *
      * Example 2:
      * For the same trip instance, 3 StopTimeUpdates are provided:
      * - delay of 5 min for stop_sequence 3
@@ -6947,10 +6560,12 @@ abstract class GTFSRealtimeProto {
      * some cases, past ones, i.e., those that already happened).
      * The updates must be sorted by stop_sequence, and apply for all the
      * following stops of the trip up to the next specified one.
+     *
      * Example 1:
      * For a trip with 20 stops, a StopTimeUpdate with arrival delay and departure
      * delay of 0 for stop_sequence of the current stop means that the trip is
      * exactly on time.
+     *
      * Example 2:
      * For the same trip instance, 3 StopTimeUpdates are provided:
      * - delay of 5 min for stop_sequence 3
@@ -6974,10 +6589,12 @@ abstract class GTFSRealtimeProto {
      * some cases, past ones, i.e., those that already happened).
      * The updates must be sorted by stop_sequence, and apply for all the
      * following stops of the trip up to the next specified one.
+     *
      * Example 1:
      * For a trip with 20 stops, a StopTimeUpdate with arrival delay and departure
      * delay of 0 for stop_sequence of the current stop means that the trip is
      * exactly on time.
+     *
      * Example 2:
      * For the same trip instance, 3 StopTimeUpdates are provided:
      * - delay of 5 min for stop_sequence 3
@@ -6998,7 +6615,7 @@ abstract class GTFSRealtimeProto {
     }
 
     public static final int TIMESTAMP_FIELD_NUMBER = 4;
-    private long timestamp_;
+    private long timestamp_ = 0L;
     /**
      * <pre>
      * Moment at which the vehicle's real-time progress was measured. In POSIX
@@ -7027,21 +6644,25 @@ abstract class GTFSRealtimeProto {
     }
 
     public static final int DELAY_FIELD_NUMBER = 5;
-    private int delay_;
+    private int delay_ = 0;
     /**
      * <pre>
      * The current schedule deviation for the trip.  Delay should only be
      * specified when the prediction is given relative to some existing schedule
      * in GTFS.
+     *
      * Delay (in seconds) can be positive (meaning that the vehicle is late) or
      * negative (meaning that the vehicle is ahead of schedule). Delay of 0
      * means that the vehicle is exactly on time.
+     *
      * Delay information in StopTimeUpdates take precedent of trip-level delay
      * information, such that trip-level delay is only propagated until the next
      * stop along the trip with a StopTimeUpdate delay value specified.
+     *
      * Feed providers are strongly encouraged to provide a TripUpdate.timestamp
      * value indicating when the delay value was last updated, in order to
      * evaluate the freshness of the data.
+     *
      * NOTE: This field is still experimental, and subject to change. It may be
      * formally adopted in the future.
      * </pre>
@@ -7058,15 +6679,19 @@ abstract class GTFSRealtimeProto {
      * The current schedule deviation for the trip.  Delay should only be
      * specified when the prediction is given relative to some existing schedule
      * in GTFS.
+     *
      * Delay (in seconds) can be positive (meaning that the vehicle is late) or
      * negative (meaning that the vehicle is ahead of schedule). Delay of 0
      * means that the vehicle is exactly on time.
+     *
      * Delay information in StopTimeUpdates take precedent of trip-level delay
      * information, such that trip-level delay is only propagated until the next
      * stop along the trip with a StopTimeUpdate delay value specified.
+     *
      * Feed providers are strongly encouraged to provide a TripUpdate.timestamp
      * value indicating when the delay value was last updated, in order to
      * evaluate the freshness of the data.
+     *
      * NOTE: This field is still experimental, and subject to change. It may be
      * formally adopted in the future.
      * </pre>
@@ -7202,6 +6827,7 @@ abstract class GTFSRealtimeProto {
      * - A trip that proceeds along the schedule.
      * - A trip that proceeds along a route but has no fixed schedule.
      * - A trip that have been added or removed with regard to schedule.
+     *
      * The updates can be for future, predicted arrival/departure events, or for
      * past events that already occurred.
      * Normally, updates should get more precise and more certain (see
@@ -7210,6 +6836,7 @@ abstract class GTFSRealtimeProto {
      * precise and certain. In particular, if an update points to time in the past
      * but its update's uncertainty is not 0, the client should conclude that the
      * update is a (wrong) prediction and that the trip has not completed yet.
+     *
      * Note that the update can describe a trip that is already completed.
      * To this end, it is enough to provide an update for the last stop of the trip.
      * If the time of that is in the past, the client will conclude from that that
@@ -7265,34 +6892,31 @@ abstract class GTFSRealtimeProto {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        if (tripBuilder_ == null) {
-          trip_ = null;
-        } else {
-          tripBuilder_.clear();
+        bitField0_ = 0;
+        trip_ = null;
+        if (tripBuilder_ != null) {
+          tripBuilder_.dispose();
+          tripBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000001);
-        if (vehicleBuilder_ == null) {
-          vehicle_ = null;
-        } else {
-          vehicleBuilder_.clear();
+        vehicle_ = null;
+        if (vehicleBuilder_ != null) {
+          vehicleBuilder_.dispose();
+          vehicleBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000002);
         if (stopTimeUpdateBuilder_ == null) {
           stopTimeUpdate_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000004);
         } else {
+          stopTimeUpdate_ = null;
           stopTimeUpdateBuilder_.clear();
         }
+        bitField0_ = (bitField0_ & ~0x00000004);
         timestamp_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000008);
         delay_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000010);
-        if (tripPropertiesBuilder_ == null) {
-          tripProperties_ = null;
-        } else {
-          tripPropertiesBuilder_.clear();
+        tripProperties_ = null;
+        if (tripPropertiesBuilder_ != null) {
+          tripPropertiesBuilder_.dispose();
+          tripPropertiesBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000020);
         return this;
       }
 
@@ -7319,24 +6943,13 @@ abstract class GTFSRealtimeProto {
       @java.lang.Override
       public dev.katsute.onemta.GTFSRealtimeProto.TripUpdate buildPartial() {
         dev.katsute.onemta.GTFSRealtimeProto.TripUpdate result = new dev.katsute.onemta.GTFSRealtimeProto.TripUpdate(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          if (tripBuilder_ == null) {
-            result.trip_ = trip_;
-          } else {
-            result.trip_ = tripBuilder_.build();
-          }
-          to_bitField0_ |= 0x00000001;
-        }
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          if (vehicleBuilder_ == null) {
-            result.vehicle_ = vehicle_;
-          } else {
-            result.vehicle_ = vehicleBuilder_.build();
-          }
-          to_bitField0_ |= 0x00000002;
-        }
+        buildPartialRepeatedFields(result);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartialRepeatedFields(dev.katsute.onemta.GTFSRealtimeProto.TripUpdate result) {
         if (stopTimeUpdateBuilder_ == null) {
           if (((bitField0_ & 0x00000004) != 0)) {
             stopTimeUpdate_ = java.util.Collections.unmodifiableList(stopTimeUpdate_);
@@ -7345,6 +6958,23 @@ abstract class GTFSRealtimeProto {
           result.stopTimeUpdate_ = stopTimeUpdate_;
         } else {
           result.stopTimeUpdate_ = stopTimeUpdateBuilder_.build();
+        }
+      }
+
+      private void buildPartial0(dev.katsute.onemta.GTFSRealtimeProto.TripUpdate result) {
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.trip_ = tripBuilder_ == null
+              ? trip_
+              : tripBuilder_.build();
+          to_bitField0_ |= 0x00000001;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.vehicle_ = vehicleBuilder_ == null
+              ? vehicle_
+              : vehicleBuilder_.build();
+          to_bitField0_ |= 0x00000002;
         }
         if (((from_bitField0_ & 0x00000008) != 0)) {
           result.timestamp_ = timestamp_;
@@ -7355,77 +6985,14 @@ abstract class GTFSRealtimeProto {
           to_bitField0_ |= 0x00000008;
         }
         if (((from_bitField0_ & 0x00000020) != 0)) {
-          if (tripPropertiesBuilder_ == null) {
-            result.tripProperties_ = tripProperties_;
-          } else {
-            result.tripProperties_ = tripPropertiesBuilder_.build();
-          }
+          result.tripProperties_ = tripPropertiesBuilder_ == null
+              ? tripProperties_
+              : tripPropertiesBuilder_.build();
           to_bitField0_ |= 0x00000010;
         }
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
+        result.bitField0_ |= to_bitField0_;
       }
 
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public <Type> Builder setExtension(
-          com.google.protobuf.GeneratedMessage.GeneratedExtension<
-              dev.katsute.onemta.GTFSRealtimeProto.TripUpdate, Type> extension,
-          Type value) {
-        return super.setExtension(extension, value);
-      }
-      @java.lang.Override
-      public <Type> Builder setExtension(
-          com.google.protobuf.GeneratedMessage.GeneratedExtension<
-              dev.katsute.onemta.GTFSRealtimeProto.TripUpdate, java.util.List<Type>> extension,
-          int index, Type value) {
-        return super.setExtension(extension, index, value);
-      }
-      @java.lang.Override
-      public <Type> Builder addExtension(
-          com.google.protobuf.GeneratedMessage.GeneratedExtension<
-              dev.katsute.onemta.GTFSRealtimeProto.TripUpdate, java.util.List<Type>> extension,
-          Type value) {
-        return super.addExtension(extension, value);
-      }
-      @java.lang.Override
-      public <Type> Builder clearExtension(
-          com.google.protobuf.GeneratedMessage.GeneratedExtension<
-              dev.katsute.onemta.GTFSRealtimeProto.TripUpdate, ?> extension) {
-        return super.clearExtension(extension);
-      }
       private int bitField0_;
 
       private dev.katsute.onemta.GTFSRealtimeProto.TripDescriptor trip_;
@@ -7479,11 +7046,11 @@ abstract class GTFSRealtimeProto {
             throw new NullPointerException();
           }
           trip_ = value;
-          onChanged();
         } else {
           tripBuilder_.setMessage(value);
         }
         bitField0_ |= 0x00000001;
+        onChanged();
         return this;
       }
       /**
@@ -7500,11 +7067,11 @@ abstract class GTFSRealtimeProto {
           dev.katsute.onemta.GTFSRealtimeProto.TripDescriptor.Builder builderForValue) {
         if (tripBuilder_ == null) {
           trip_ = builderForValue.build();
-          onChanged();
         } else {
           tripBuilder_.setMessage(builderForValue.build());
         }
         bitField0_ |= 0x00000001;
+        onChanged();
         return this;
       }
       /**
@@ -7520,18 +7087,17 @@ abstract class GTFSRealtimeProto {
       public Builder mergeTrip(dev.katsute.onemta.GTFSRealtimeProto.TripDescriptor value) {
         if (tripBuilder_ == null) {
           if (((bitField0_ & 0x00000001) != 0) &&
-              trip_ != null &&
-              trip_ != dev.katsute.onemta.GTFSRealtimeProto.TripDescriptor.getDefaultInstance()) {
-            trip_ =
-              dev.katsute.onemta.GTFSRealtimeProto.TripDescriptor.newBuilder(trip_).mergeFrom(value).buildPartial();
+            trip_ != null &&
+            trip_ != dev.katsute.onemta.GTFSRealtimeProto.TripDescriptor.getDefaultInstance()) {
+            getTripBuilder().mergeFrom(value);
           } else {
             trip_ = value;
           }
-          onChanged();
         } else {
           tripBuilder_.mergeFrom(value);
         }
         bitField0_ |= 0x00000001;
+        onChanged();
         return this;
       }
       /**
@@ -7545,13 +7111,13 @@ abstract class GTFSRealtimeProto {
        * <code>required .transit_realtime.TripDescriptor trip = 1;</code>
        */
       public Builder clearTrip() {
-        if (tripBuilder_ == null) {
-          trip_ = null;
-          onChanged();
-        } else {
-          tripBuilder_.clear();
-        }
         bitField0_ = (bitField0_ & ~0x00000001);
+        trip_ = null;
+        if (tripBuilder_ != null) {
+          tripBuilder_.dispose();
+          tripBuilder_ = null;
+        }
+        onChanged();
         return this;
       }
       /**
@@ -7598,7 +7164,7 @@ abstract class GTFSRealtimeProto {
        * <code>required .transit_realtime.TripDescriptor trip = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          dev.katsute.onemta.GTFSRealtimeProto.TripDescriptor, dev.katsute.onemta.GTFSRealtimeProto.TripDescriptor.Builder, dev.katsute.onemta.GTFSRealtimeProto.TripDescriptorOrBuilder>
+          dev.katsute.onemta.GTFSRealtimeProto.TripDescriptor, dev.katsute.onemta.GTFSRealtimeProto.TripDescriptor.Builder, dev.katsute.onemta.GTFSRealtimeProto.TripDescriptorOrBuilder> 
           getTripFieldBuilder() {
         if (tripBuilder_ == null) {
           tripBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -7653,11 +7219,11 @@ abstract class GTFSRealtimeProto {
             throw new NullPointerException();
           }
           vehicle_ = value;
-          onChanged();
         } else {
           vehicleBuilder_.setMessage(value);
         }
         bitField0_ |= 0x00000002;
+        onChanged();
         return this;
       }
       /**
@@ -7671,11 +7237,11 @@ abstract class GTFSRealtimeProto {
           dev.katsute.onemta.GTFSRealtimeProto.VehicleDescriptor.Builder builderForValue) {
         if (vehicleBuilder_ == null) {
           vehicle_ = builderForValue.build();
-          onChanged();
         } else {
           vehicleBuilder_.setMessage(builderForValue.build());
         }
         bitField0_ |= 0x00000002;
+        onChanged();
         return this;
       }
       /**
@@ -7688,18 +7254,17 @@ abstract class GTFSRealtimeProto {
       public Builder mergeVehicle(dev.katsute.onemta.GTFSRealtimeProto.VehicleDescriptor value) {
         if (vehicleBuilder_ == null) {
           if (((bitField0_ & 0x00000002) != 0) &&
-              vehicle_ != null &&
-              vehicle_ != dev.katsute.onemta.GTFSRealtimeProto.VehicleDescriptor.getDefaultInstance()) {
-            vehicle_ =
-              dev.katsute.onemta.GTFSRealtimeProto.VehicleDescriptor.newBuilder(vehicle_).mergeFrom(value).buildPartial();
+            vehicle_ != null &&
+            vehicle_ != dev.katsute.onemta.GTFSRealtimeProto.VehicleDescriptor.getDefaultInstance()) {
+            getVehicleBuilder().mergeFrom(value);
           } else {
             vehicle_ = value;
           }
-          onChanged();
         } else {
           vehicleBuilder_.mergeFrom(value);
         }
         bitField0_ |= 0x00000002;
+        onChanged();
         return this;
       }
       /**
@@ -7710,13 +7275,13 @@ abstract class GTFSRealtimeProto {
        * <code>optional .transit_realtime.VehicleDescriptor vehicle = 3;</code>
        */
       public Builder clearVehicle() {
-        if (vehicleBuilder_ == null) {
-          vehicle_ = null;
-          onChanged();
-        } else {
-          vehicleBuilder_.clear();
-        }
         bitField0_ = (bitField0_ & ~0x00000002);
+        vehicle_ = null;
+        if (vehicleBuilder_ != null) {
+          vehicleBuilder_.dispose();
+          vehicleBuilder_ = null;
+        }
+        onChanged();
         return this;
       }
       /**
@@ -7754,7 +7319,7 @@ abstract class GTFSRealtimeProto {
        * <code>optional .transit_realtime.VehicleDescriptor vehicle = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          dev.katsute.onemta.GTFSRealtimeProto.VehicleDescriptor, dev.katsute.onemta.GTFSRealtimeProto.VehicleDescriptor.Builder, dev.katsute.onemta.GTFSRealtimeProto.VehicleDescriptorOrBuilder>
+          dev.katsute.onemta.GTFSRealtimeProto.VehicleDescriptor, dev.katsute.onemta.GTFSRealtimeProto.VehicleDescriptor.Builder, dev.katsute.onemta.GTFSRealtimeProto.VehicleDescriptorOrBuilder> 
           getVehicleFieldBuilder() {
         if (vehicleBuilder_ == null) {
           vehicleBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -7785,10 +7350,12 @@ abstract class GTFSRealtimeProto {
        * some cases, past ones, i.e., those that already happened).
        * The updates must be sorted by stop_sequence, and apply for all the
        * following stops of the trip up to the next specified one.
+       *
        * Example 1:
        * For a trip with 20 stops, a StopTimeUpdate with arrival delay and departure
        * delay of 0 for stop_sequence of the current stop means that the trip is
        * exactly on time.
+       *
        * Example 2:
        * For the same trip instance, 3 StopTimeUpdates are provided:
        * - delay of 5 min for stop_sequence 3
@@ -7815,10 +7382,12 @@ abstract class GTFSRealtimeProto {
        * some cases, past ones, i.e., those that already happened).
        * The updates must be sorted by stop_sequence, and apply for all the
        * following stops of the trip up to the next specified one.
+       *
        * Example 1:
        * For a trip with 20 stops, a StopTimeUpdate with arrival delay and departure
        * delay of 0 for stop_sequence of the current stop means that the trip is
        * exactly on time.
+       *
        * Example 2:
        * For the same trip instance, 3 StopTimeUpdates are provided:
        * - delay of 5 min for stop_sequence 3
@@ -7845,10 +7414,12 @@ abstract class GTFSRealtimeProto {
        * some cases, past ones, i.e., those that already happened).
        * The updates must be sorted by stop_sequence, and apply for all the
        * following stops of the trip up to the next specified one.
+       *
        * Example 1:
        * For a trip with 20 stops, a StopTimeUpdate with arrival delay and departure
        * delay of 0 for stop_sequence of the current stop means that the trip is
        * exactly on time.
+       *
        * Example 2:
        * For the same trip instance, 3 StopTimeUpdates are provided:
        * - delay of 5 min for stop_sequence 3
@@ -7875,10 +7446,12 @@ abstract class GTFSRealtimeProto {
        * some cases, past ones, i.e., those that already happened).
        * The updates must be sorted by stop_sequence, and apply for all the
        * following stops of the trip up to the next specified one.
+       *
        * Example 1:
        * For a trip with 20 stops, a StopTimeUpdate with arrival delay and departure
        * delay of 0 for stop_sequence of the current stop means that the trip is
        * exactly on time.
+       *
        * Example 2:
        * For the same trip instance, 3 StopTimeUpdates are provided:
        * - delay of 5 min for stop_sequence 3
@@ -7912,10 +7485,12 @@ abstract class GTFSRealtimeProto {
        * some cases, past ones, i.e., those that already happened).
        * The updates must be sorted by stop_sequence, and apply for all the
        * following stops of the trip up to the next specified one.
+       *
        * Example 1:
        * For a trip with 20 stops, a StopTimeUpdate with arrival delay and departure
        * delay of 0 for stop_sequence of the current stop means that the trip is
        * exactly on time.
+       *
        * Example 2:
        * For the same trip instance, 3 StopTimeUpdates are provided:
        * - delay of 5 min for stop_sequence 3
@@ -7946,10 +7521,12 @@ abstract class GTFSRealtimeProto {
        * some cases, past ones, i.e., those that already happened).
        * The updates must be sorted by stop_sequence, and apply for all the
        * following stops of the trip up to the next specified one.
+       *
        * Example 1:
        * For a trip with 20 stops, a StopTimeUpdate with arrival delay and departure
        * delay of 0 for stop_sequence of the current stop means that the trip is
        * exactly on time.
+       *
        * Example 2:
        * For the same trip instance, 3 StopTimeUpdates are provided:
        * - delay of 5 min for stop_sequence 3
@@ -7982,10 +7559,12 @@ abstract class GTFSRealtimeProto {
        * some cases, past ones, i.e., those that already happened).
        * The updates must be sorted by stop_sequence, and apply for all the
        * following stops of the trip up to the next specified one.
+       *
        * Example 1:
        * For a trip with 20 stops, a StopTimeUpdate with arrival delay and departure
        * delay of 0 for stop_sequence of the current stop means that the trip is
        * exactly on time.
+       *
        * Example 2:
        * For the same trip instance, 3 StopTimeUpdates are provided:
        * - delay of 5 min for stop_sequence 3
@@ -8019,10 +7598,12 @@ abstract class GTFSRealtimeProto {
        * some cases, past ones, i.e., those that already happened).
        * The updates must be sorted by stop_sequence, and apply for all the
        * following stops of the trip up to the next specified one.
+       *
        * Example 1:
        * For a trip with 20 stops, a StopTimeUpdate with arrival delay and departure
        * delay of 0 for stop_sequence of the current stop means that the trip is
        * exactly on time.
+       *
        * Example 2:
        * For the same trip instance, 3 StopTimeUpdates are provided:
        * - delay of 5 min for stop_sequence 3
@@ -8053,10 +7634,12 @@ abstract class GTFSRealtimeProto {
        * some cases, past ones, i.e., those that already happened).
        * The updates must be sorted by stop_sequence, and apply for all the
        * following stops of the trip up to the next specified one.
+       *
        * Example 1:
        * For a trip with 20 stops, a StopTimeUpdate with arrival delay and departure
        * delay of 0 for stop_sequence of the current stop means that the trip is
        * exactly on time.
+       *
        * Example 2:
        * For the same trip instance, 3 StopTimeUpdates are provided:
        * - delay of 5 min for stop_sequence 3
@@ -8087,10 +7670,12 @@ abstract class GTFSRealtimeProto {
        * some cases, past ones, i.e., those that already happened).
        * The updates must be sorted by stop_sequence, and apply for all the
        * following stops of the trip up to the next specified one.
+       *
        * Example 1:
        * For a trip with 20 stops, a StopTimeUpdate with arrival delay and departure
        * delay of 0 for stop_sequence of the current stop means that the trip is
        * exactly on time.
+       *
        * Example 2:
        * For the same trip instance, 3 StopTimeUpdates are provided:
        * - delay of 5 min for stop_sequence 3
@@ -8122,10 +7707,12 @@ abstract class GTFSRealtimeProto {
        * some cases, past ones, i.e., those that already happened).
        * The updates must be sorted by stop_sequence, and apply for all the
        * following stops of the trip up to the next specified one.
+       *
        * Example 1:
        * For a trip with 20 stops, a StopTimeUpdate with arrival delay and departure
        * delay of 0 for stop_sequence of the current stop means that the trip is
        * exactly on time.
+       *
        * Example 2:
        * For the same trip instance, 3 StopTimeUpdates are provided:
        * - delay of 5 min for stop_sequence 3
@@ -8155,10 +7742,12 @@ abstract class GTFSRealtimeProto {
        * some cases, past ones, i.e., those that already happened).
        * The updates must be sorted by stop_sequence, and apply for all the
        * following stops of the trip up to the next specified one.
+       *
        * Example 1:
        * For a trip with 20 stops, a StopTimeUpdate with arrival delay and departure
        * delay of 0 for stop_sequence of the current stop means that the trip is
        * exactly on time.
+       *
        * Example 2:
        * For the same trip instance, 3 StopTimeUpdates are provided:
        * - delay of 5 min for stop_sequence 3
@@ -8188,10 +7777,12 @@ abstract class GTFSRealtimeProto {
        * some cases, past ones, i.e., those that already happened).
        * The updates must be sorted by stop_sequence, and apply for all the
        * following stops of the trip up to the next specified one.
+       *
        * Example 1:
        * For a trip with 20 stops, a StopTimeUpdate with arrival delay and departure
        * delay of 0 for stop_sequence of the current stop means that the trip is
        * exactly on time.
+       *
        * Example 2:
        * For the same trip instance, 3 StopTimeUpdates are provided:
        * - delay of 5 min for stop_sequence 3
@@ -8215,10 +7806,12 @@ abstract class GTFSRealtimeProto {
        * some cases, past ones, i.e., those that already happened).
        * The updates must be sorted by stop_sequence, and apply for all the
        * following stops of the trip up to the next specified one.
+       *
        * Example 1:
        * For a trip with 20 stops, a StopTimeUpdate with arrival delay and departure
        * delay of 0 for stop_sequence of the current stop means that the trip is
        * exactly on time.
+       *
        * Example 2:
        * For the same trip instance, 3 StopTimeUpdates are provided:
        * - delay of 5 min for stop_sequence 3
@@ -8245,10 +7838,12 @@ abstract class GTFSRealtimeProto {
        * some cases, past ones, i.e., those that already happened).
        * The updates must be sorted by stop_sequence, and apply for all the
        * following stops of the trip up to the next specified one.
+       *
        * Example 1:
        * For a trip with 20 stops, a StopTimeUpdate with arrival delay and departure
        * delay of 0 for stop_sequence of the current stop means that the trip is
        * exactly on time.
+       *
        * Example 2:
        * For the same trip instance, 3 StopTimeUpdates are provided:
        * - delay of 5 min for stop_sequence 3
@@ -8262,7 +7857,7 @@ abstract class GTFSRealtimeProto {
        *
        * <code>repeated .transit_realtime.TripUpdate.StopTimeUpdate stop_time_update = 2;</code>
        */
-      public java.util.List<? extends dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeUpdateOrBuilder>
+      public java.util.List<? extends dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeUpdateOrBuilder> 
            getStopTimeUpdateOrBuilderList() {
         if (stopTimeUpdateBuilder_ != null) {
           return stopTimeUpdateBuilder_.getMessageOrBuilderList();
@@ -8276,10 +7871,12 @@ abstract class GTFSRealtimeProto {
        * some cases, past ones, i.e., those that already happened).
        * The updates must be sorted by stop_sequence, and apply for all the
        * following stops of the trip up to the next specified one.
+       *
        * Example 1:
        * For a trip with 20 stops, a StopTimeUpdate with arrival delay and departure
        * delay of 0 for stop_sequence of the current stop means that the trip is
        * exactly on time.
+       *
        * Example 2:
        * For the same trip instance, 3 StopTimeUpdates are provided:
        * - delay of 5 min for stop_sequence 3
@@ -8303,10 +7900,12 @@ abstract class GTFSRealtimeProto {
        * some cases, past ones, i.e., those that already happened).
        * The updates must be sorted by stop_sequence, and apply for all the
        * following stops of the trip up to the next specified one.
+       *
        * Example 1:
        * For a trip with 20 stops, a StopTimeUpdate with arrival delay and departure
        * delay of 0 for stop_sequence of the current stop means that the trip is
        * exactly on time.
+       *
        * Example 2:
        * For the same trip instance, 3 StopTimeUpdates are provided:
        * - delay of 5 min for stop_sequence 3
@@ -8331,10 +7930,12 @@ abstract class GTFSRealtimeProto {
        * some cases, past ones, i.e., those that already happened).
        * The updates must be sorted by stop_sequence, and apply for all the
        * following stops of the trip up to the next specified one.
+       *
        * Example 1:
        * For a trip with 20 stops, a StopTimeUpdate with arrival delay and departure
        * delay of 0 for stop_sequence of the current stop means that the trip is
        * exactly on time.
+       *
        * Example 2:
        * For the same trip instance, 3 StopTimeUpdates are provided:
        * - delay of 5 min for stop_sequence 3
@@ -8348,12 +7949,12 @@ abstract class GTFSRealtimeProto {
        *
        * <code>repeated .transit_realtime.TripUpdate.StopTimeUpdate stop_time_update = 2;</code>
        */
-      public java.util.List<dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeUpdate.Builder>
+      public java.util.List<dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeUpdate.Builder> 
            getStopTimeUpdateBuilderList() {
         return getStopTimeUpdateFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeUpdate, dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeUpdate.Builder, dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeUpdateOrBuilder>
+          dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeUpdate, dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeUpdate.Builder, dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeUpdateOrBuilder> 
           getStopTimeUpdateFieldBuilder() {
         if (stopTimeUpdateBuilder_ == null) {
           stopTimeUpdateBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
@@ -8405,8 +8006,9 @@ abstract class GTFSRealtimeProto {
        * @return This builder for chaining.
        */
       public Builder setTimestamp(long value) {
-        bitField0_ |= 0x00000008;
+
         timestamp_ = value;
+        bitField0_ |= 0x00000008;
         onChanged();
         return this;
       }
@@ -8432,15 +8034,19 @@ abstract class GTFSRealtimeProto {
        * The current schedule deviation for the trip.  Delay should only be
        * specified when the prediction is given relative to some existing schedule
        * in GTFS.
+       *
        * Delay (in seconds) can be positive (meaning that the vehicle is late) or
        * negative (meaning that the vehicle is ahead of schedule). Delay of 0
        * means that the vehicle is exactly on time.
+       *
        * Delay information in StopTimeUpdates take precedent of trip-level delay
        * information, such that trip-level delay is only propagated until the next
        * stop along the trip with a StopTimeUpdate delay value specified.
+       *
        * Feed providers are strongly encouraged to provide a TripUpdate.timestamp
        * value indicating when the delay value was last updated, in order to
        * evaluate the freshness of the data.
+       *
        * NOTE: This field is still experimental, and subject to change. It may be
        * formally adopted in the future.
        * </pre>
@@ -8457,15 +8063,19 @@ abstract class GTFSRealtimeProto {
        * The current schedule deviation for the trip.  Delay should only be
        * specified when the prediction is given relative to some existing schedule
        * in GTFS.
+       *
        * Delay (in seconds) can be positive (meaning that the vehicle is late) or
        * negative (meaning that the vehicle is ahead of schedule). Delay of 0
        * means that the vehicle is exactly on time.
+       *
        * Delay information in StopTimeUpdates take precedent of trip-level delay
        * information, such that trip-level delay is only propagated until the next
        * stop along the trip with a StopTimeUpdate delay value specified.
+       *
        * Feed providers are strongly encouraged to provide a TripUpdate.timestamp
        * value indicating when the delay value was last updated, in order to
        * evaluate the freshness of the data.
+       *
        * NOTE: This field is still experimental, and subject to change. It may be
        * formally adopted in the future.
        * </pre>
@@ -8482,15 +8092,19 @@ abstract class GTFSRealtimeProto {
        * The current schedule deviation for the trip.  Delay should only be
        * specified when the prediction is given relative to some existing schedule
        * in GTFS.
+       *
        * Delay (in seconds) can be positive (meaning that the vehicle is late) or
        * negative (meaning that the vehicle is ahead of schedule). Delay of 0
        * means that the vehicle is exactly on time.
+       *
        * Delay information in StopTimeUpdates take precedent of trip-level delay
        * information, such that trip-level delay is only propagated until the next
        * stop along the trip with a StopTimeUpdate delay value specified.
+       *
        * Feed providers are strongly encouraged to provide a TripUpdate.timestamp
        * value indicating when the delay value was last updated, in order to
        * evaluate the freshness of the data.
+       *
        * NOTE: This field is still experimental, and subject to change. It may be
        * formally adopted in the future.
        * </pre>
@@ -8500,8 +8114,9 @@ abstract class GTFSRealtimeProto {
        * @return This builder for chaining.
        */
       public Builder setDelay(int value) {
-        bitField0_ |= 0x00000010;
+
         delay_ = value;
+        bitField0_ |= 0x00000010;
         onChanged();
         return this;
       }
@@ -8510,15 +8125,19 @@ abstract class GTFSRealtimeProto {
        * The current schedule deviation for the trip.  Delay should only be
        * specified when the prediction is given relative to some existing schedule
        * in GTFS.
+       *
        * Delay (in seconds) can be positive (meaning that the vehicle is late) or
        * negative (meaning that the vehicle is ahead of schedule). Delay of 0
        * means that the vehicle is exactly on time.
+       *
        * Delay information in StopTimeUpdates take precedent of trip-level delay
        * information, such that trip-level delay is only propagated until the next
        * stop along the trip with a StopTimeUpdate delay value specified.
+       *
        * Feed providers are strongly encouraged to provide a TripUpdate.timestamp
        * value indicating when the delay value was last updated, in order to
        * evaluate the freshness of the data.
+       *
        * NOTE: This field is still experimental, and subject to change. It may be
        * formally adopted in the future.
        * </pre>
@@ -8563,11 +8182,11 @@ abstract class GTFSRealtimeProto {
             throw new NullPointerException();
           }
           tripProperties_ = value;
-          onChanged();
         } else {
           tripPropertiesBuilder_.setMessage(value);
         }
         bitField0_ |= 0x00000020;
+        onChanged();
         return this;
       }
       /**
@@ -8577,11 +8196,11 @@ abstract class GTFSRealtimeProto {
           dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties.Builder builderForValue) {
         if (tripPropertiesBuilder_ == null) {
           tripProperties_ = builderForValue.build();
-          onChanged();
         } else {
           tripPropertiesBuilder_.setMessage(builderForValue.build());
         }
         bitField0_ |= 0x00000020;
+        onChanged();
         return this;
       }
       /**
@@ -8590,31 +8209,30 @@ abstract class GTFSRealtimeProto {
       public Builder mergeTripProperties(dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties value) {
         if (tripPropertiesBuilder_ == null) {
           if (((bitField0_ & 0x00000020) != 0) &&
-              tripProperties_ != null &&
-              tripProperties_ != dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties.getDefaultInstance()) {
-            tripProperties_ =
-              dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties.newBuilder(tripProperties_).mergeFrom(value).buildPartial();
+            tripProperties_ != null &&
+            tripProperties_ != dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties.getDefaultInstance()) {
+            getTripPropertiesBuilder().mergeFrom(value);
           } else {
             tripProperties_ = value;
           }
-          onChanged();
         } else {
           tripPropertiesBuilder_.mergeFrom(value);
         }
         bitField0_ |= 0x00000020;
+        onChanged();
         return this;
       }
       /**
        * <code>optional .transit_realtime.TripUpdate.TripProperties trip_properties = 6;</code>
        */
       public Builder clearTripProperties() {
-        if (tripPropertiesBuilder_ == null) {
-          tripProperties_ = null;
-          onChanged();
-        } else {
-          tripPropertiesBuilder_.clear();
-        }
         bitField0_ = (bitField0_ & ~0x00000020);
+        tripProperties_ = null;
+        if (tripPropertiesBuilder_ != null) {
+          tripPropertiesBuilder_.dispose();
+          tripPropertiesBuilder_ = null;
+        }
+        onChanged();
         return this;
       }
       /**
@@ -8640,7 +8258,7 @@ abstract class GTFSRealtimeProto {
        * <code>optional .transit_realtime.TripUpdate.TripProperties trip_properties = 6;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties, dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties.Builder, dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripPropertiesOrBuilder>
+          dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties, dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties.Builder, dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripPropertiesOrBuilder> 
           getTripPropertiesFieldBuilder() {
         if (tripPropertiesBuilder_ == null) {
           tripPropertiesBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -8690,10 +8308,11 @@ abstract class GTFSRealtimeProto {
           builder.mergeFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
         } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(
-              e.getMessage()).setUnfinishedMessage(
-                  builder.buildPartial());
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
         }
         return builder.buildPartial();
       }
@@ -8988,7 +8607,7 @@ abstract class GTFSRealtimeProto {
      *
      * <code>repeated .transit_realtime.VehiclePosition.CarriageDetails multi_carriage_details = 11;</code>
      */
-    java.util.List<dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails>
+    java.util.List<dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails> 
         getMultiCarriageDetailsList();
     /**
      * <pre>
@@ -9037,7 +8656,7 @@ abstract class GTFSRealtimeProto {
      *
      * <code>repeated .transit_realtime.VehiclePosition.CarriageDetails multi_carriage_details = 11;</code>
      */
-    java.util.List<? extends dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetailsOrBuilder>
+    java.util.List<? extends dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetailsOrBuilder> 
         getMultiCarriageDetailsOrBuilderList();
     /**
      * <pre>
@@ -9089,11 +8708,6 @@ abstract class GTFSRealtimeProto {
       return new VehiclePosition();
     }
 
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return dev.katsute.onemta.GTFSRealtimeProto.internal_static_transit_realtime_VehiclePosition_descriptor;
@@ -9815,11 +9429,6 @@ abstract class GTFSRealtimeProto {
         return new CarriageDetails();
       }
 
-      @java.lang.Override
-      public final com.google.protobuf.UnknownFieldSet
-      getUnknownFields() {
-        return this.unknownFields;
-      }
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return dev.katsute.onemta.GTFSRealtimeProto.internal_static_transit_realtime_VehiclePosition_CarriageDetails_descriptor;
@@ -9835,7 +9444,8 @@ abstract class GTFSRealtimeProto {
 
       private int bitField0_;
       public static final int ID_FIELD_NUMBER = 1;
-      private volatile java.lang.Object id_;
+      @SuppressWarnings("serial")
+      private volatile java.lang.Object id_ = "";
       /**
        * <pre>
        * Identification of the carriage. Should be unique per vehicle.
@@ -9862,7 +9472,7 @@ abstract class GTFSRealtimeProto {
         if (ref instanceof java.lang.String) {
           return (java.lang.String) ref;
         } else {
-          com.google.protobuf.ByteString bs =
+          com.google.protobuf.ByteString bs = 
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           if (bs.isValidUtf8()) {
@@ -9884,7 +9494,7 @@ abstract class GTFSRealtimeProto {
           getIdBytes() {
         java.lang.Object ref = id_;
         if (ref instanceof java.lang.String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           id_ = b;
@@ -9895,7 +9505,8 @@ abstract class GTFSRealtimeProto {
       }
 
       public static final int LABEL_FIELD_NUMBER = 2;
-      private volatile java.lang.Object label_;
+      @SuppressWarnings("serial")
+      private volatile java.lang.Object label_ = "";
       /**
        * <pre>
        * User visible label that may be shown to the passenger to help identify
@@ -9926,7 +9537,7 @@ abstract class GTFSRealtimeProto {
         if (ref instanceof java.lang.String) {
           return (java.lang.String) ref;
         } else {
-          com.google.protobuf.ByteString bs =
+          com.google.protobuf.ByteString bs = 
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           if (bs.isValidUtf8()) {
@@ -9950,7 +9561,7 @@ abstract class GTFSRealtimeProto {
           getLabelBytes() {
         java.lang.Object ref = label_;
         if (ref instanceof java.lang.String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           label_ = b;
@@ -9961,7 +9572,7 @@ abstract class GTFSRealtimeProto {
       }
 
       public static final int OCCUPANCY_STATUS_FIELD_NUMBER = 3;
-      private int occupancyStatus_;
+      private int occupancyStatus_ = 7;
       /**
        * <pre>
        * Occupancy status for this given carriage, in this vehicle
@@ -9984,13 +9595,12 @@ abstract class GTFSRealtimeProto {
        * @return The occupancyStatus.
        */
       @java.lang.Override public dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.OccupancyStatus getOccupancyStatus() {
-        @SuppressWarnings("deprecation")
-        dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.OccupancyStatus result = dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.OccupancyStatus.valueOf(occupancyStatus_);
+        dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.OccupancyStatus result = dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.OccupancyStatus.forNumber(occupancyStatus_);
         return result == null ? dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.OccupancyStatus.NO_DATA_AVAILABLE : result;
       }
 
       public static final int OCCUPANCY_PERCENTAGE_FIELD_NUMBER = 4;
-      private int occupancyPercentage_;
+      private int occupancyPercentage_ = -1;
       /**
        * <pre>
        * Occupancy percentage for this given carriage, in this vehicle.
@@ -10023,7 +9633,7 @@ abstract class GTFSRealtimeProto {
       }
 
       public static final int CARRIAGE_SEQUENCE_FIELD_NUMBER = 5;
-      private int carriageSequence_;
+      private int carriageSequence_ = 0;
       /**
        * <pre>
        * Identifies the order of this carriage with respect to the other
@@ -10187,32 +9797,23 @@ abstract class GTFSRealtimeProto {
 
         // Construct using dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails.newBuilder()
         private Builder() {
-          maybeForceBuilderInitialization();
+
         }
 
         private Builder(
             com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
           super(parent);
-          maybeForceBuilderInitialization();
-        }
-        private void maybeForceBuilderInitialization() {
-          if (com.google.protobuf.GeneratedMessageV3
-                  .alwaysUseFieldBuilders) {
-          }
+
         }
         @java.lang.Override
         public Builder clear() {
           super.clear();
+          bitField0_ = 0;
           id_ = "";
-          bitField0_ = (bitField0_ & ~0x00000001);
           label_ = "";
-          bitField0_ = (bitField0_ & ~0x00000002);
           occupancyStatus_ = 7;
-          bitField0_ = (bitField0_ & ~0x00000004);
           occupancyPercentage_ = -1;
-          bitField0_ = (bitField0_ & ~0x00000008);
           carriageSequence_ = 0;
-          bitField0_ = (bitField0_ & ~0x00000010);
           return this;
         }
 
@@ -10239,92 +9840,37 @@ abstract class GTFSRealtimeProto {
         @java.lang.Override
         public dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails buildPartial() {
           dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails result = new dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails(this);
-          int from_bitField0_ = bitField0_;
-          int to_bitField0_ = 0;
-          if (((from_bitField0_ & 0x00000001) != 0)) {
-            to_bitField0_ |= 0x00000001;
-          }
-          result.id_ = id_;
-          if (((from_bitField0_ & 0x00000002) != 0)) {
-            to_bitField0_ |= 0x00000002;
-          }
-          result.label_ = label_;
-          if (((from_bitField0_ & 0x00000004) != 0)) {
-            to_bitField0_ |= 0x00000004;
-          }
-          result.occupancyStatus_ = occupancyStatus_;
-          if (((from_bitField0_ & 0x00000008) != 0)) {
-            to_bitField0_ |= 0x00000008;
-          }
-          result.occupancyPercentage_ = occupancyPercentage_;
-          if (((from_bitField0_ & 0x00000010) != 0)) {
-            result.carriageSequence_ = carriageSequence_;
-            to_bitField0_ |= 0x00000010;
-          }
-          result.bitField0_ = to_bitField0_;
+          if (bitField0_ != 0) { buildPartial0(result); }
           onBuilt();
           return result;
         }
 
-        @java.lang.Override
-        public Builder clone() {
-          return super.clone();
+        private void buildPartial0(dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails result) {
+          int from_bitField0_ = bitField0_;
+          int to_bitField0_ = 0;
+          if (((from_bitField0_ & 0x00000001) != 0)) {
+            result.id_ = id_;
+            to_bitField0_ |= 0x00000001;
+          }
+          if (((from_bitField0_ & 0x00000002) != 0)) {
+            result.label_ = label_;
+            to_bitField0_ |= 0x00000002;
+          }
+          if (((from_bitField0_ & 0x00000004) != 0)) {
+            result.occupancyStatus_ = occupancyStatus_;
+            to_bitField0_ |= 0x00000004;
+          }
+          if (((from_bitField0_ & 0x00000008) != 0)) {
+            result.occupancyPercentage_ = occupancyPercentage_;
+            to_bitField0_ |= 0x00000008;
+          }
+          if (((from_bitField0_ & 0x00000010) != 0)) {
+            result.carriageSequence_ = carriageSequence_;
+            to_bitField0_ |= 0x00000010;
+          }
+          result.bitField0_ |= to_bitField0_;
         }
-        @java.lang.Override
-        public Builder setField(
-            com.google.protobuf.Descriptors.FieldDescriptor field,
-            java.lang.Object value) {
-          return super.setField(field, value);
-        }
-        @java.lang.Override
-        public Builder clearField(
-            com.google.protobuf.Descriptors.FieldDescriptor field) {
-          return super.clearField(field);
-        }
-        @java.lang.Override
-        public Builder clearOneof(
-            com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-          return super.clearOneof(oneof);
-        }
-        @java.lang.Override
-        public Builder setRepeatedField(
-            com.google.protobuf.Descriptors.FieldDescriptor field,
-            int index, java.lang.Object value) {
-          return super.setRepeatedField(field, index, value);
-        }
-        @java.lang.Override
-        public Builder addRepeatedField(
-            com.google.protobuf.Descriptors.FieldDescriptor field,
-            java.lang.Object value) {
-          return super.addRepeatedField(field, value);
-        }
-        @java.lang.Override
-        public <Type> Builder setExtension(
-            com.google.protobuf.GeneratedMessage.GeneratedExtension<
-                dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails, Type> extension,
-            Type value) {
-          return super.setExtension(extension, value);
-        }
-        @java.lang.Override
-        public <Type> Builder setExtension(
-            com.google.protobuf.GeneratedMessage.GeneratedExtension<
-                dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails, java.util.List<Type>> extension,
-            int index, Type value) {
-          return super.setExtension(extension, index, value);
-        }
-        @java.lang.Override
-        public <Type> Builder addExtension(
-            com.google.protobuf.GeneratedMessage.GeneratedExtension<
-                dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails, java.util.List<Type>> extension,
-            Type value) {
-          return super.addExtension(extension, value);
-        }
-        @java.lang.Override
-        public <Type> Builder clearExtension(
-            com.google.protobuf.GeneratedMessage.GeneratedExtension<
-                dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails, ?> extension) {
-          return super.clearExtension(extension);
-        }
+
         private int bitField0_;
 
         private java.lang.Object id_ = "";
@@ -10373,7 +9919,7 @@ abstract class GTFSRealtimeProto {
             getIdBytes() {
           java.lang.Object ref = id_;
           if (ref instanceof String) {
-            com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString b = 
                 com.google.protobuf.ByteString.copyFromUtf8(
                     (java.lang.String) ref);
             id_ = b;
@@ -10393,11 +9939,9 @@ abstract class GTFSRealtimeProto {
          */
         public Builder setId(
             java.lang.String value) {
-          if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
+          if (value == null) { throw new NullPointerException(); }
           id_ = value;
+          bitField0_ |= 0x00000001;
           onChanged();
           return this;
         }
@@ -10410,8 +9954,8 @@ abstract class GTFSRealtimeProto {
          * @return This builder for chaining.
          */
         public Builder clearId() {
-          bitField0_ = (bitField0_ & ~0x00000001);
           id_ = getDefaultInstance().getId();
+          bitField0_ = (bitField0_ & ~0x00000001);
           onChanged();
           return this;
         }
@@ -10426,11 +9970,9 @@ abstract class GTFSRealtimeProto {
          */
         public Builder setIdBytes(
             com.google.protobuf.ByteString value) {
-          if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
+          if (value == null) { throw new NullPointerException(); }
           id_ = value;
+          bitField0_ |= 0x00000001;
           onChanged();
           return this;
         }
@@ -10487,7 +10029,7 @@ abstract class GTFSRealtimeProto {
             getLabelBytes() {
           java.lang.Object ref = label_;
           if (ref instanceof String) {
-            com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString b = 
                 com.google.protobuf.ByteString.copyFromUtf8(
                     (java.lang.String) ref);
             label_ = b;
@@ -10509,11 +10051,9 @@ abstract class GTFSRealtimeProto {
          */
         public Builder setLabel(
             java.lang.String value) {
-          if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
+          if (value == null) { throw new NullPointerException(); }
           label_ = value;
+          bitField0_ |= 0x00000002;
           onChanged();
           return this;
         }
@@ -10528,8 +10068,8 @@ abstract class GTFSRealtimeProto {
          * @return This builder for chaining.
          */
         public Builder clearLabel() {
-          bitField0_ = (bitField0_ & ~0x00000002);
           label_ = getDefaultInstance().getLabel();
+          bitField0_ = (bitField0_ & ~0x00000002);
           onChanged();
           return this;
         }
@@ -10546,11 +10086,9 @@ abstract class GTFSRealtimeProto {
          */
         public Builder setLabelBytes(
             com.google.protobuf.ByteString value) {
-          if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
+          if (value == null) { throw new NullPointerException(); }
           label_ = value;
+          bitField0_ |= 0x00000002;
           onChanged();
           return this;
         }
@@ -10579,8 +10117,7 @@ abstract class GTFSRealtimeProto {
          */
         @java.lang.Override
         public dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.OccupancyStatus getOccupancyStatus() {
-          @SuppressWarnings("deprecation")
-          dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.OccupancyStatus result = dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.OccupancyStatus.valueOf(occupancyStatus_);
+          dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.OccupancyStatus result = dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.OccupancyStatus.forNumber(occupancyStatus_);
           return result == null ? dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.OccupancyStatus.NO_DATA_AVAILABLE : result;
         }
         /**
@@ -10662,8 +10199,9 @@ abstract class GTFSRealtimeProto {
          * @return This builder for chaining.
          */
         public Builder setOccupancyPercentage(int value) {
-          bitField0_ |= 0x00000008;
+
           occupancyPercentage_ = value;
+          bitField0_ |= 0x00000008;
           onChanged();
           return this;
         }
@@ -10750,8 +10288,9 @@ abstract class GTFSRealtimeProto {
          * @return This builder for chaining.
          */
         public Builder setCarriageSequence(int value) {
-          bitField0_ |= 0x00000010;
+
           carriageSequence_ = value;
+          bitField0_ |= 0x00000010;
           onChanged();
           return this;
         }
@@ -10817,10 +10356,11 @@ abstract class GTFSRealtimeProto {
             builder.mergeFrom(input, extensionRegistry);
           } catch (com.google.protobuf.InvalidProtocolBufferException e) {
             throw e.setUnfinishedMessage(builder.buildPartial());
+          } catch (com.google.protobuf.UninitializedMessageException e) {
+            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
           } catch (java.io.IOException e) {
-            throw new com.google.protobuf.InvalidProtocolBufferException(
-                e.getMessage()).setUnfinishedMessage(
-                    builder.buildPartial());
+            throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                .setUnfinishedMessage(builder.buildPartial());
           }
           return builder.buildPartial();
         }
@@ -10964,7 +10504,7 @@ abstract class GTFSRealtimeProto {
     }
 
     public static final int CURRENT_STOP_SEQUENCE_FIELD_NUMBER = 3;
-    private int currentStopSequence_;
+    private int currentStopSequence_ = 0;
     /**
      * <pre>
      * The stop sequence index of the current stop. The meaning of
@@ -10997,7 +10537,8 @@ abstract class GTFSRealtimeProto {
     }
 
     public static final int STOP_ID_FIELD_NUMBER = 7;
-    private volatile java.lang.Object stopId_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object stopId_ = "";
     /**
      * <pre>
      * Identifies the current stop. The value must be the same as in stops.txt in
@@ -11026,7 +10567,7 @@ abstract class GTFSRealtimeProto {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -11049,7 +10590,7 @@ abstract class GTFSRealtimeProto {
         getStopIdBytes() {
       java.lang.Object ref = stopId_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         stopId_ = b;
@@ -11060,7 +10601,7 @@ abstract class GTFSRealtimeProto {
     }
 
     public static final int CURRENT_STATUS_FIELD_NUMBER = 4;
-    private int currentStatus_;
+    private int currentStatus_ = 2;
     /**
      * <pre>
      * The exact status of the vehicle with respect to the current stop.
@@ -11083,13 +10624,12 @@ abstract class GTFSRealtimeProto {
      * @return The currentStatus.
      */
     @java.lang.Override public dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.VehicleStopStatus getCurrentStatus() {
-      @SuppressWarnings("deprecation")
-      dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.VehicleStopStatus result = dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.VehicleStopStatus.valueOf(currentStatus_);
+      dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.VehicleStopStatus result = dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.VehicleStopStatus.forNumber(currentStatus_);
       return result == null ? dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.VehicleStopStatus.IN_TRANSIT_TO : result;
     }
 
     public static final int TIMESTAMP_FIELD_NUMBER = 5;
-    private long timestamp_;
+    private long timestamp_ = 0L;
     /**
      * <pre>
      * Moment at which the vehicle's position was measured. In POSIX time
@@ -11118,7 +10658,7 @@ abstract class GTFSRealtimeProto {
     }
 
     public static final int CONGESTION_LEVEL_FIELD_NUMBER = 6;
-    private int congestionLevel_;
+    private int congestionLevel_ = 0;
     /**
      * <code>optional .transit_realtime.VehiclePosition.CongestionLevel congestion_level = 6;</code>
      * @return Whether the congestionLevel field is set.
@@ -11131,13 +10671,12 @@ abstract class GTFSRealtimeProto {
      * @return The congestionLevel.
      */
     @java.lang.Override public dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CongestionLevel getCongestionLevel() {
-      @SuppressWarnings("deprecation")
-      dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CongestionLevel result = dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CongestionLevel.valueOf(congestionLevel_);
+      dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CongestionLevel result = dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CongestionLevel.forNumber(congestionLevel_);
       return result == null ? dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CongestionLevel.UNKNOWN_CONGESTION_LEVEL : result;
     }
 
     public static final int OCCUPANCY_STATUS_FIELD_NUMBER = 9;
-    private int occupancyStatus_;
+    private int occupancyStatus_ = 0;
     /**
      * <pre>
      * If multi_carriage_status is populated with per-carriage OccupancyStatus,
@@ -11160,13 +10699,12 @@ abstract class GTFSRealtimeProto {
      * @return The occupancyStatus.
      */
     @java.lang.Override public dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.OccupancyStatus getOccupancyStatus() {
-      @SuppressWarnings("deprecation")
-      dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.OccupancyStatus result = dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.OccupancyStatus.valueOf(occupancyStatus_);
+      dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.OccupancyStatus result = dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.OccupancyStatus.forNumber(occupancyStatus_);
       return result == null ? dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.OccupancyStatus.EMPTY : result;
     }
 
     public static final int OCCUPANCY_PERCENTAGE_FIELD_NUMBER = 10;
-    private int occupancyPercentage_;
+    private int occupancyPercentage_ = 0;
     /**
      * <pre>
      * A percentage value representing the degree of passenger occupancy of the vehicle.
@@ -11209,6 +10747,7 @@ abstract class GTFSRealtimeProto {
     }
 
     public static final int MULTI_CARRIAGE_DETAILS_FIELD_NUMBER = 11;
+    @SuppressWarnings("serial")
     private java.util.List<dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails> multiCarriageDetails_;
     /**
      * <pre>
@@ -11245,7 +10784,7 @@ abstract class GTFSRealtimeProto {
      * <code>repeated .transit_realtime.VehiclePosition.CarriageDetails multi_carriage_details = 11;</code>
      */
     @java.lang.Override
-    public java.util.List<? extends dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetailsOrBuilder>
+    public java.util.List<? extends dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetailsOrBuilder> 
         getMultiCarriageDetailsOrBuilderList() {
       return multiCarriageDetails_;
     }
@@ -11445,44 +10984,36 @@ abstract class GTFSRealtimeProto {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        if (tripBuilder_ == null) {
-          trip_ = null;
-        } else {
-          tripBuilder_.clear();
+        bitField0_ = 0;
+        trip_ = null;
+        if (tripBuilder_ != null) {
+          tripBuilder_.dispose();
+          tripBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000001);
-        if (vehicleBuilder_ == null) {
-          vehicle_ = null;
-        } else {
-          vehicleBuilder_.clear();
+        vehicle_ = null;
+        if (vehicleBuilder_ != null) {
+          vehicleBuilder_.dispose();
+          vehicleBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000002);
-        if (positionBuilder_ == null) {
-          position_ = null;
-        } else {
-          positionBuilder_.clear();
+        position_ = null;
+        if (positionBuilder_ != null) {
+          positionBuilder_.dispose();
+          positionBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000004);
         currentStopSequence_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000008);
         stopId_ = "";
-        bitField0_ = (bitField0_ & ~0x00000010);
         currentStatus_ = 2;
-        bitField0_ = (bitField0_ & ~0x00000020);
         timestamp_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000040);
         congestionLevel_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000080);
         occupancyStatus_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000100);
         occupancyPercentage_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000200);
         if (multiCarriageDetailsBuilder_ == null) {
           multiCarriageDetails_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000400);
         } else {
+          multiCarriageDetails_ = null;
           multiCarriageDetailsBuilder_.clear();
         }
+        bitField0_ = (bitField0_ & ~0x00000400);
         return this;
       }
 
@@ -11509,60 +11040,13 @@ abstract class GTFSRealtimeProto {
       @java.lang.Override
       public dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition buildPartial() {
         dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition result = new dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          if (tripBuilder_ == null) {
-            result.trip_ = trip_;
-          } else {
-            result.trip_ = tripBuilder_.build();
-          }
-          to_bitField0_ |= 0x00000001;
-        }
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          if (vehicleBuilder_ == null) {
-            result.vehicle_ = vehicle_;
-          } else {
-            result.vehicle_ = vehicleBuilder_.build();
-          }
-          to_bitField0_ |= 0x00000002;
-        }
-        if (((from_bitField0_ & 0x00000004) != 0)) {
-          if (positionBuilder_ == null) {
-            result.position_ = position_;
-          } else {
-            result.position_ = positionBuilder_.build();
-          }
-          to_bitField0_ |= 0x00000004;
-        }
-        if (((from_bitField0_ & 0x00000008) != 0)) {
-          result.currentStopSequence_ = currentStopSequence_;
-          to_bitField0_ |= 0x00000008;
-        }
-        if (((from_bitField0_ & 0x00000010) != 0)) {
-          to_bitField0_ |= 0x00000010;
-        }
-        result.stopId_ = stopId_;
-        if (((from_bitField0_ & 0x00000020) != 0)) {
-          to_bitField0_ |= 0x00000020;
-        }
-        result.currentStatus_ = currentStatus_;
-        if (((from_bitField0_ & 0x00000040) != 0)) {
-          result.timestamp_ = timestamp_;
-          to_bitField0_ |= 0x00000040;
-        }
-        if (((from_bitField0_ & 0x00000080) != 0)) {
-          to_bitField0_ |= 0x00000080;
-        }
-        result.congestionLevel_ = congestionLevel_;
-        if (((from_bitField0_ & 0x00000100) != 0)) {
-          to_bitField0_ |= 0x00000100;
-        }
-        result.occupancyStatus_ = occupancyStatus_;
-        if (((from_bitField0_ & 0x00000200) != 0)) {
-          result.occupancyPercentage_ = occupancyPercentage_;
-          to_bitField0_ |= 0x00000200;
-        }
+        buildPartialRepeatedFields(result);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartialRepeatedFields(dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition result) {
         if (multiCarriageDetailsBuilder_ == null) {
           if (((bitField0_ & 0x00000400) != 0)) {
             multiCarriageDetails_ = java.util.Collections.unmodifiableList(multiCarriageDetails_);
@@ -11572,70 +11056,60 @@ abstract class GTFSRealtimeProto {
         } else {
           result.multiCarriageDetails_ = multiCarriageDetailsBuilder_.build();
         }
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
       }
 
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
+      private void buildPartial0(dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition result) {
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.trip_ = tripBuilder_ == null
+              ? trip_
+              : tripBuilder_.build();
+          to_bitField0_ |= 0x00000001;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.vehicle_ = vehicleBuilder_ == null
+              ? vehicle_
+              : vehicleBuilder_.build();
+          to_bitField0_ |= 0x00000002;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.position_ = positionBuilder_ == null
+              ? position_
+              : positionBuilder_.build();
+          to_bitField0_ |= 0x00000004;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.currentStopSequence_ = currentStopSequence_;
+          to_bitField0_ |= 0x00000008;
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.stopId_ = stopId_;
+          to_bitField0_ |= 0x00000010;
+        }
+        if (((from_bitField0_ & 0x00000020) != 0)) {
+          result.currentStatus_ = currentStatus_;
+          to_bitField0_ |= 0x00000020;
+        }
+        if (((from_bitField0_ & 0x00000040) != 0)) {
+          result.timestamp_ = timestamp_;
+          to_bitField0_ |= 0x00000040;
+        }
+        if (((from_bitField0_ & 0x00000080) != 0)) {
+          result.congestionLevel_ = congestionLevel_;
+          to_bitField0_ |= 0x00000080;
+        }
+        if (((from_bitField0_ & 0x00000100) != 0)) {
+          result.occupancyStatus_ = occupancyStatus_;
+          to_bitField0_ |= 0x00000100;
+        }
+        if (((from_bitField0_ & 0x00000200) != 0)) {
+          result.occupancyPercentage_ = occupancyPercentage_;
+          to_bitField0_ |= 0x00000200;
+        }
+        result.bitField0_ |= to_bitField0_;
       }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public <Type> Builder setExtension(
-          com.google.protobuf.GeneratedMessage.GeneratedExtension<
-              dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition, Type> extension,
-          Type value) {
-        return super.setExtension(extension, value);
-      }
-      @java.lang.Override
-      public <Type> Builder setExtension(
-          com.google.protobuf.GeneratedMessage.GeneratedExtension<
-              dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition, java.util.List<Type>> extension,
-          int index, Type value) {
-        return super.setExtension(extension, index, value);
-      }
-      @java.lang.Override
-      public <Type> Builder addExtension(
-          com.google.protobuf.GeneratedMessage.GeneratedExtension<
-              dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition, java.util.List<Type>> extension,
-          Type value) {
-        return super.addExtension(extension, value);
-      }
-      @java.lang.Override
-      public <Type> Builder clearExtension(
-          com.google.protobuf.GeneratedMessage.GeneratedExtension<
-              dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition, ?> extension) {
-        return super.clearExtension(extension);
-      }
+
       private int bitField0_;
 
       private dev.katsute.onemta.GTFSRealtimeProto.TripDescriptor trip_;
@@ -11686,11 +11160,11 @@ abstract class GTFSRealtimeProto {
             throw new NullPointerException();
           }
           trip_ = value;
-          onChanged();
         } else {
           tripBuilder_.setMessage(value);
         }
         bitField0_ |= 0x00000001;
+        onChanged();
         return this;
       }
       /**
@@ -11706,11 +11180,11 @@ abstract class GTFSRealtimeProto {
           dev.katsute.onemta.GTFSRealtimeProto.TripDescriptor.Builder builderForValue) {
         if (tripBuilder_ == null) {
           trip_ = builderForValue.build();
-          onChanged();
         } else {
           tripBuilder_.setMessage(builderForValue.build());
         }
         bitField0_ |= 0x00000001;
+        onChanged();
         return this;
       }
       /**
@@ -11725,18 +11199,17 @@ abstract class GTFSRealtimeProto {
       public Builder mergeTrip(dev.katsute.onemta.GTFSRealtimeProto.TripDescriptor value) {
         if (tripBuilder_ == null) {
           if (((bitField0_ & 0x00000001) != 0) &&
-              trip_ != null &&
-              trip_ != dev.katsute.onemta.GTFSRealtimeProto.TripDescriptor.getDefaultInstance()) {
-            trip_ =
-              dev.katsute.onemta.GTFSRealtimeProto.TripDescriptor.newBuilder(trip_).mergeFrom(value).buildPartial();
+            trip_ != null &&
+            trip_ != dev.katsute.onemta.GTFSRealtimeProto.TripDescriptor.getDefaultInstance()) {
+            getTripBuilder().mergeFrom(value);
           } else {
             trip_ = value;
           }
-          onChanged();
         } else {
           tripBuilder_.mergeFrom(value);
         }
         bitField0_ |= 0x00000001;
+        onChanged();
         return this;
       }
       /**
@@ -11749,13 +11222,13 @@ abstract class GTFSRealtimeProto {
        * <code>optional .transit_realtime.TripDescriptor trip = 1;</code>
        */
       public Builder clearTrip() {
-        if (tripBuilder_ == null) {
-          trip_ = null;
-          onChanged();
-        } else {
-          tripBuilder_.clear();
-        }
         bitField0_ = (bitField0_ & ~0x00000001);
+        trip_ = null;
+        if (tripBuilder_ != null) {
+          tripBuilder_.dispose();
+          tripBuilder_ = null;
+        }
+        onChanged();
         return this;
       }
       /**
@@ -11799,7 +11272,7 @@ abstract class GTFSRealtimeProto {
        * <code>optional .transit_realtime.TripDescriptor trip = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          dev.katsute.onemta.GTFSRealtimeProto.TripDescriptor, dev.katsute.onemta.GTFSRealtimeProto.TripDescriptor.Builder, dev.katsute.onemta.GTFSRealtimeProto.TripDescriptorOrBuilder>
+          dev.katsute.onemta.GTFSRealtimeProto.TripDescriptor, dev.katsute.onemta.GTFSRealtimeProto.TripDescriptor.Builder, dev.katsute.onemta.GTFSRealtimeProto.TripDescriptorOrBuilder> 
           getTripFieldBuilder() {
         if (tripBuilder_ == null) {
           tripBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -11854,11 +11327,11 @@ abstract class GTFSRealtimeProto {
             throw new NullPointerException();
           }
           vehicle_ = value;
-          onChanged();
         } else {
           vehicleBuilder_.setMessage(value);
         }
         bitField0_ |= 0x00000002;
+        onChanged();
         return this;
       }
       /**
@@ -11872,11 +11345,11 @@ abstract class GTFSRealtimeProto {
           dev.katsute.onemta.GTFSRealtimeProto.VehicleDescriptor.Builder builderForValue) {
         if (vehicleBuilder_ == null) {
           vehicle_ = builderForValue.build();
-          onChanged();
         } else {
           vehicleBuilder_.setMessage(builderForValue.build());
         }
         bitField0_ |= 0x00000002;
+        onChanged();
         return this;
       }
       /**
@@ -11889,18 +11362,17 @@ abstract class GTFSRealtimeProto {
       public Builder mergeVehicle(dev.katsute.onemta.GTFSRealtimeProto.VehicleDescriptor value) {
         if (vehicleBuilder_ == null) {
           if (((bitField0_ & 0x00000002) != 0) &&
-              vehicle_ != null &&
-              vehicle_ != dev.katsute.onemta.GTFSRealtimeProto.VehicleDescriptor.getDefaultInstance()) {
-            vehicle_ =
-              dev.katsute.onemta.GTFSRealtimeProto.VehicleDescriptor.newBuilder(vehicle_).mergeFrom(value).buildPartial();
+            vehicle_ != null &&
+            vehicle_ != dev.katsute.onemta.GTFSRealtimeProto.VehicleDescriptor.getDefaultInstance()) {
+            getVehicleBuilder().mergeFrom(value);
           } else {
             vehicle_ = value;
           }
-          onChanged();
         } else {
           vehicleBuilder_.mergeFrom(value);
         }
         bitField0_ |= 0x00000002;
+        onChanged();
         return this;
       }
       /**
@@ -11911,13 +11383,13 @@ abstract class GTFSRealtimeProto {
        * <code>optional .transit_realtime.VehicleDescriptor vehicle = 8;</code>
        */
       public Builder clearVehicle() {
-        if (vehicleBuilder_ == null) {
-          vehicle_ = null;
-          onChanged();
-        } else {
-          vehicleBuilder_.clear();
-        }
         bitField0_ = (bitField0_ & ~0x00000002);
+        vehicle_ = null;
+        if (vehicleBuilder_ != null) {
+          vehicleBuilder_.dispose();
+          vehicleBuilder_ = null;
+        }
+        onChanged();
         return this;
       }
       /**
@@ -11955,7 +11427,7 @@ abstract class GTFSRealtimeProto {
        * <code>optional .transit_realtime.VehicleDescriptor vehicle = 8;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          dev.katsute.onemta.GTFSRealtimeProto.VehicleDescriptor, dev.katsute.onemta.GTFSRealtimeProto.VehicleDescriptor.Builder, dev.katsute.onemta.GTFSRealtimeProto.VehicleDescriptorOrBuilder>
+          dev.katsute.onemta.GTFSRealtimeProto.VehicleDescriptor, dev.katsute.onemta.GTFSRealtimeProto.VehicleDescriptor.Builder, dev.katsute.onemta.GTFSRealtimeProto.VehicleDescriptorOrBuilder> 
           getVehicleFieldBuilder() {
         if (vehicleBuilder_ == null) {
           vehicleBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -12010,11 +11482,11 @@ abstract class GTFSRealtimeProto {
             throw new NullPointerException();
           }
           position_ = value;
-          onChanged();
         } else {
           positionBuilder_.setMessage(value);
         }
         bitField0_ |= 0x00000004;
+        onChanged();
         return this;
       }
       /**
@@ -12028,11 +11500,11 @@ abstract class GTFSRealtimeProto {
           dev.katsute.onemta.GTFSRealtimeProto.Position.Builder builderForValue) {
         if (positionBuilder_ == null) {
           position_ = builderForValue.build();
-          onChanged();
         } else {
           positionBuilder_.setMessage(builderForValue.build());
         }
         bitField0_ |= 0x00000004;
+        onChanged();
         return this;
       }
       /**
@@ -12045,18 +11517,17 @@ abstract class GTFSRealtimeProto {
       public Builder mergePosition(dev.katsute.onemta.GTFSRealtimeProto.Position value) {
         if (positionBuilder_ == null) {
           if (((bitField0_ & 0x00000004) != 0) &&
-              position_ != null &&
-              position_ != dev.katsute.onemta.GTFSRealtimeProto.Position.getDefaultInstance()) {
-            position_ =
-              dev.katsute.onemta.GTFSRealtimeProto.Position.newBuilder(position_).mergeFrom(value).buildPartial();
+            position_ != null &&
+            position_ != dev.katsute.onemta.GTFSRealtimeProto.Position.getDefaultInstance()) {
+            getPositionBuilder().mergeFrom(value);
           } else {
             position_ = value;
           }
-          onChanged();
         } else {
           positionBuilder_.mergeFrom(value);
         }
         bitField0_ |= 0x00000004;
+        onChanged();
         return this;
       }
       /**
@@ -12067,13 +11538,13 @@ abstract class GTFSRealtimeProto {
        * <code>optional .transit_realtime.Position position = 2;</code>
        */
       public Builder clearPosition() {
-        if (positionBuilder_ == null) {
-          position_ = null;
-          onChanged();
-        } else {
-          positionBuilder_.clear();
-        }
         bitField0_ = (bitField0_ & ~0x00000004);
+        position_ = null;
+        if (positionBuilder_ != null) {
+          positionBuilder_.dispose();
+          positionBuilder_ = null;
+        }
+        onChanged();
         return this;
       }
       /**
@@ -12111,7 +11582,7 @@ abstract class GTFSRealtimeProto {
        * <code>optional .transit_realtime.Position position = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          dev.katsute.onemta.GTFSRealtimeProto.Position, dev.katsute.onemta.GTFSRealtimeProto.Position.Builder, dev.katsute.onemta.GTFSRealtimeProto.PositionOrBuilder>
+          dev.katsute.onemta.GTFSRealtimeProto.Position, dev.katsute.onemta.GTFSRealtimeProto.Position.Builder, dev.katsute.onemta.GTFSRealtimeProto.PositionOrBuilder> 
           getPositionFieldBuilder() {
         if (positionBuilder_ == null) {
           positionBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -12168,8 +11639,9 @@ abstract class GTFSRealtimeProto {
        * @return This builder for chaining.
        */
       public Builder setCurrentStopSequence(int value) {
-        bitField0_ |= 0x00000008;
+
         currentStopSequence_ = value;
+        bitField0_ |= 0x00000008;
         onChanged();
         return this;
       }
@@ -12240,7 +11712,7 @@ abstract class GTFSRealtimeProto {
           getStopIdBytes() {
         java.lang.Object ref = stopId_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           stopId_ = b;
@@ -12261,11 +11733,9 @@ abstract class GTFSRealtimeProto {
        */
       public Builder setStopId(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000010;
+        if (value == null) { throw new NullPointerException(); }
         stopId_ = value;
+        bitField0_ |= 0x00000010;
         onChanged();
         return this;
       }
@@ -12279,8 +11749,8 @@ abstract class GTFSRealtimeProto {
        * @return This builder for chaining.
        */
       public Builder clearStopId() {
-        bitField0_ = (bitField0_ & ~0x00000010);
         stopId_ = getDefaultInstance().getStopId();
+        bitField0_ = (bitField0_ & ~0x00000010);
         onChanged();
         return this;
       }
@@ -12296,11 +11766,9 @@ abstract class GTFSRealtimeProto {
        */
       public Builder setStopIdBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000010;
+        if (value == null) { throw new NullPointerException(); }
         stopId_ = value;
+        bitField0_ |= 0x00000010;
         onChanged();
         return this;
       }
@@ -12329,8 +11797,7 @@ abstract class GTFSRealtimeProto {
        */
       @java.lang.Override
       public dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.VehicleStopStatus getCurrentStatus() {
-        @SuppressWarnings("deprecation")
-        dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.VehicleStopStatus result = dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.VehicleStopStatus.valueOf(currentStatus_);
+        dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.VehicleStopStatus result = dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.VehicleStopStatus.forNumber(currentStatus_);
         return result == null ? dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.VehicleStopStatus.IN_TRANSIT_TO : result;
       }
       /**
@@ -12406,8 +11873,9 @@ abstract class GTFSRealtimeProto {
        * @return This builder for chaining.
        */
       public Builder setTimestamp(long value) {
-        bitField0_ |= 0x00000040;
+
         timestamp_ = value;
+        bitField0_ |= 0x00000040;
         onChanged();
         return this;
       }
@@ -12441,8 +11909,7 @@ abstract class GTFSRealtimeProto {
        */
       @java.lang.Override
       public dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CongestionLevel getCongestionLevel() {
-        @SuppressWarnings("deprecation")
-        dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CongestionLevel result = dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CongestionLevel.valueOf(congestionLevel_);
+        dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CongestionLevel result = dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CongestionLevel.forNumber(congestionLevel_);
         return result == null ? dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CongestionLevel.UNKNOWN_CONGESTION_LEVEL : result;
       }
       /**
@@ -12494,8 +11961,7 @@ abstract class GTFSRealtimeProto {
        */
       @java.lang.Override
       public dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.OccupancyStatus getOccupancyStatus() {
-        @SuppressWarnings("deprecation")
-        dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.OccupancyStatus result = dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.OccupancyStatus.valueOf(occupancyStatus_);
+        dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.OccupancyStatus result = dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.OccupancyStatus.forNumber(occupancyStatus_);
         return result == null ? dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.OccupancyStatus.EMPTY : result;
       }
       /**
@@ -12592,8 +12058,9 @@ abstract class GTFSRealtimeProto {
        * @return This builder for chaining.
        */
       public Builder setOccupancyPercentage(int value) {
-        bitField0_ |= 0x00000200;
+
         occupancyPercentage_ = value;
+        bitField0_ |= 0x00000200;
         onChanged();
         return this;
       }
@@ -12995,7 +12462,7 @@ abstract class GTFSRealtimeProto {
        *
        * <code>repeated .transit_realtime.VehiclePosition.CarriageDetails multi_carriage_details = 11;</code>
        */
-      public java.util.List<? extends dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetailsOrBuilder>
+      public java.util.List<? extends dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetailsOrBuilder> 
            getMultiCarriageDetailsOrBuilderList() {
         if (multiCarriageDetailsBuilder_ != null) {
           return multiCarriageDetailsBuilder_.getMessageOrBuilderList();
@@ -13057,12 +12524,12 @@ abstract class GTFSRealtimeProto {
        *
        * <code>repeated .transit_realtime.VehiclePosition.CarriageDetails multi_carriage_details = 11;</code>
        */
-      public java.util.List<dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails.Builder>
+      public java.util.List<dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails.Builder> 
            getMultiCarriageDetailsBuilderList() {
         return getMultiCarriageDetailsFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails, dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails.Builder, dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetailsOrBuilder>
+          dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails, dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails.Builder, dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetailsOrBuilder> 
           getMultiCarriageDetailsFieldBuilder() {
         if (multiCarriageDetailsBuilder_ == null) {
           multiCarriageDetailsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
@@ -13113,10 +12580,11 @@ abstract class GTFSRealtimeProto {
           builder.mergeFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
         } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(
-              e.getMessage()).setUnfinishedMessage(
-                  builder.buildPartial());
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
         }
         return builder.buildPartial();
       }
@@ -13152,7 +12620,7 @@ abstract class GTFSRealtimeProto {
      *
      * <code>repeated .transit_realtime.TimeRange active_period = 1;</code>
      */
-    java.util.List<dev.katsute.onemta.GTFSRealtimeProto.TimeRange>
+    java.util.List<dev.katsute.onemta.GTFSRealtimeProto.TimeRange> 
         getActivePeriodList();
     /**
      * <pre>
@@ -13183,7 +12651,7 @@ abstract class GTFSRealtimeProto {
      *
      * <code>repeated .transit_realtime.TimeRange active_period = 1;</code>
      */
-    java.util.List<? extends dev.katsute.onemta.GTFSRealtimeProto.TimeRangeOrBuilder>
+    java.util.List<? extends dev.katsute.onemta.GTFSRealtimeProto.TimeRangeOrBuilder> 
         getActivePeriodOrBuilderList();
     /**
      * <pre>
@@ -13204,7 +12672,7 @@ abstract class GTFSRealtimeProto {
      *
      * <code>repeated .transit_realtime.EntitySelector informed_entity = 5;</code>
      */
-    java.util.List<dev.katsute.onemta.GTFSRealtimeProto.EntitySelector>
+    java.util.List<dev.katsute.onemta.GTFSRealtimeProto.EntitySelector> 
         getInformedEntityList();
     /**
      * <pre>
@@ -13229,7 +12697,7 @@ abstract class GTFSRealtimeProto {
      *
      * <code>repeated .transit_realtime.EntitySelector informed_entity = 5;</code>
      */
-    java.util.List<? extends dev.katsute.onemta.GTFSRealtimeProto.EntitySelectorOrBuilder>
+    java.util.List<? extends dev.katsute.onemta.GTFSRealtimeProto.EntitySelectorOrBuilder> 
         getInformedEntityOrBuilderList();
     /**
      * <pre>
@@ -13444,11 +12912,6 @@ abstract class GTFSRealtimeProto {
       return new Alert();
     }
 
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return dev.katsute.onemta.GTFSRealtimeProto.internal_static_transit_realtime_Alert_descriptor;
@@ -13989,6 +13452,7 @@ abstract class GTFSRealtimeProto {
 
     private int bitField0_;
     public static final int ACTIVE_PERIOD_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
     private java.util.List<dev.katsute.onemta.GTFSRealtimeProto.TimeRange> activePeriod_;
     /**
      * <pre>
@@ -14013,7 +13477,7 @@ abstract class GTFSRealtimeProto {
      * <code>repeated .transit_realtime.TimeRange active_period = 1;</code>
      */
     @java.lang.Override
-    public java.util.List<? extends dev.katsute.onemta.GTFSRealtimeProto.TimeRangeOrBuilder>
+    public java.util.List<? extends dev.katsute.onemta.GTFSRealtimeProto.TimeRangeOrBuilder> 
         getActivePeriodOrBuilderList() {
       return activePeriod_;
     }
@@ -14059,6 +13523,7 @@ abstract class GTFSRealtimeProto {
     }
 
     public static final int INFORMED_ENTITY_FIELD_NUMBER = 5;
+    @SuppressWarnings("serial")
     private java.util.List<dev.katsute.onemta.GTFSRealtimeProto.EntitySelector> informedEntity_;
     /**
      * <pre>
@@ -14079,7 +13544,7 @@ abstract class GTFSRealtimeProto {
      * <code>repeated .transit_realtime.EntitySelector informed_entity = 5;</code>
      */
     @java.lang.Override
-    public java.util.List<? extends dev.katsute.onemta.GTFSRealtimeProto.EntitySelectorOrBuilder>
+    public java.util.List<? extends dev.katsute.onemta.GTFSRealtimeProto.EntitySelectorOrBuilder> 
         getInformedEntityOrBuilderList() {
       return informedEntity_;
     }
@@ -14119,7 +13584,7 @@ abstract class GTFSRealtimeProto {
     }
 
     public static final int CAUSE_FIELD_NUMBER = 6;
-    private int cause_;
+    private int cause_ = 1;
     /**
      * <code>optional .transit_realtime.Alert.Cause cause = 6 [default = UNKNOWN_CAUSE];</code>
      * @return Whether the cause field is set.
@@ -14132,13 +13597,12 @@ abstract class GTFSRealtimeProto {
      * @return The cause.
      */
     @java.lang.Override public dev.katsute.onemta.GTFSRealtimeProto.Alert.Cause getCause() {
-      @SuppressWarnings("deprecation")
-      dev.katsute.onemta.GTFSRealtimeProto.Alert.Cause result = dev.katsute.onemta.GTFSRealtimeProto.Alert.Cause.valueOf(cause_);
+      dev.katsute.onemta.GTFSRealtimeProto.Alert.Cause result = dev.katsute.onemta.GTFSRealtimeProto.Alert.Cause.forNumber(cause_);
       return result == null ? dev.katsute.onemta.GTFSRealtimeProto.Alert.Cause.UNKNOWN_CAUSE : result;
     }
 
     public static final int EFFECT_FIELD_NUMBER = 7;
-    private int effect_;
+    private int effect_ = 8;
     /**
      * <code>optional .transit_realtime.Alert.Effect effect = 7 [default = UNKNOWN_EFFECT];</code>
      * @return Whether the effect field is set.
@@ -14151,8 +13615,7 @@ abstract class GTFSRealtimeProto {
      * @return The effect.
      */
     @java.lang.Override public dev.katsute.onemta.GTFSRealtimeProto.Alert.Effect getEffect() {
-      @SuppressWarnings("deprecation")
-      dev.katsute.onemta.GTFSRealtimeProto.Alert.Effect result = dev.katsute.onemta.GTFSRealtimeProto.Alert.Effect.valueOf(effect_);
+      dev.katsute.onemta.GTFSRealtimeProto.Alert.Effect result = dev.katsute.onemta.GTFSRealtimeProto.Alert.Effect.forNumber(effect_);
       return result == null ? dev.katsute.onemta.GTFSRealtimeProto.Alert.Effect.UNKNOWN_EFFECT : result;
     }
 
@@ -14350,7 +13813,7 @@ abstract class GTFSRealtimeProto {
     }
 
     public static final int SEVERITY_LEVEL_FIELD_NUMBER = 14;
-    private int severityLevel_;
+    private int severityLevel_ = 1;
     /**
      * <code>optional .transit_realtime.Alert.SeverityLevel severity_level = 14 [default = UNKNOWN_SEVERITY];</code>
      * @return Whether the severityLevel field is set.
@@ -14363,8 +13826,7 @@ abstract class GTFSRealtimeProto {
      * @return The severityLevel.
      */
     @java.lang.Override public dev.katsute.onemta.GTFSRealtimeProto.Alert.SeverityLevel getSeverityLevel() {
-      @SuppressWarnings("deprecation")
-      dev.katsute.onemta.GTFSRealtimeProto.Alert.SeverityLevel result = dev.katsute.onemta.GTFSRealtimeProto.Alert.SeverityLevel.valueOf(severityLevel_);
+      dev.katsute.onemta.GTFSRealtimeProto.Alert.SeverityLevel result = dev.katsute.onemta.GTFSRealtimeProto.Alert.SeverityLevel.forNumber(severityLevel_);
       return result == null ? dev.katsute.onemta.GTFSRealtimeProto.Alert.SeverityLevel.UNKNOWN_SEVERITY : result;
     }
 
@@ -14508,54 +13970,49 @@ abstract class GTFSRealtimeProto {
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         if (activePeriodBuilder_ == null) {
           activePeriod_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
         } else {
+          activePeriod_ = null;
           activePeriodBuilder_.clear();
         }
+        bitField0_ = (bitField0_ & ~0x00000001);
         if (informedEntityBuilder_ == null) {
           informedEntity_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
         } else {
+          informedEntity_ = null;
           informedEntityBuilder_.clear();
         }
+        bitField0_ = (bitField0_ & ~0x00000002);
         cause_ = 1;
-        bitField0_ = (bitField0_ & ~0x00000004);
         effect_ = 8;
-        bitField0_ = (bitField0_ & ~0x00000008);
-        if (urlBuilder_ == null) {
-          url_ = null;
-        } else {
-          urlBuilder_.clear();
+        url_ = null;
+        if (urlBuilder_ != null) {
+          urlBuilder_.dispose();
+          urlBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000010);
-        if (headerTextBuilder_ == null) {
-          headerText_ = null;
-        } else {
-          headerTextBuilder_.clear();
+        headerText_ = null;
+        if (headerTextBuilder_ != null) {
+          headerTextBuilder_.dispose();
+          headerTextBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000020);
-        if (descriptionTextBuilder_ == null) {
-          descriptionText_ = null;
-        } else {
-          descriptionTextBuilder_.clear();
+        descriptionText_ = null;
+        if (descriptionTextBuilder_ != null) {
+          descriptionTextBuilder_.dispose();
+          descriptionTextBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000040);
-        if (ttsHeaderTextBuilder_ == null) {
-          ttsHeaderText_ = null;
-        } else {
-          ttsHeaderTextBuilder_.clear();
+        ttsHeaderText_ = null;
+        if (ttsHeaderTextBuilder_ != null) {
+          ttsHeaderTextBuilder_.dispose();
+          ttsHeaderTextBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000080);
-        if (ttsDescriptionTextBuilder_ == null) {
-          ttsDescriptionText_ = null;
-        } else {
-          ttsDescriptionTextBuilder_.clear();
+        ttsDescriptionText_ = null;
+        if (ttsDescriptionTextBuilder_ != null) {
+          ttsDescriptionTextBuilder_.dispose();
+          ttsDescriptionTextBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000100);
         severityLevel_ = 1;
-        bitField0_ = (bitField0_ & ~0x00000200);
         return this;
       }
 
@@ -14582,8 +14039,13 @@ abstract class GTFSRealtimeProto {
       @java.lang.Override
       public dev.katsute.onemta.GTFSRealtimeProto.Alert buildPartial() {
         dev.katsute.onemta.GTFSRealtimeProto.Alert result = new dev.katsute.onemta.GTFSRealtimeProto.Alert(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
+        buildPartialRepeatedFields(result);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartialRepeatedFields(dev.katsute.onemta.GTFSRealtimeProto.Alert result) {
         if (activePeriodBuilder_ == null) {
           if (((bitField0_ & 0x00000001) != 0)) {
             activePeriod_ = java.util.Collections.unmodifiableList(activePeriod_);
@@ -14602,122 +14064,56 @@ abstract class GTFSRealtimeProto {
         } else {
           result.informedEntity_ = informedEntityBuilder_.build();
         }
+      }
+
+      private void buildPartial0(dev.katsute.onemta.GTFSRealtimeProto.Alert result) {
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.cause_ = cause_;
           to_bitField0_ |= 0x00000001;
         }
-        result.cause_ = cause_;
         if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.effect_ = effect_;
           to_bitField0_ |= 0x00000002;
         }
-        result.effect_ = effect_;
         if (((from_bitField0_ & 0x00000010) != 0)) {
-          if (urlBuilder_ == null) {
-            result.url_ = url_;
-          } else {
-            result.url_ = urlBuilder_.build();
-          }
+          result.url_ = urlBuilder_ == null
+              ? url_
+              : urlBuilder_.build();
           to_bitField0_ |= 0x00000004;
         }
         if (((from_bitField0_ & 0x00000020) != 0)) {
-          if (headerTextBuilder_ == null) {
-            result.headerText_ = headerText_;
-          } else {
-            result.headerText_ = headerTextBuilder_.build();
-          }
+          result.headerText_ = headerTextBuilder_ == null
+              ? headerText_
+              : headerTextBuilder_.build();
           to_bitField0_ |= 0x00000008;
         }
         if (((from_bitField0_ & 0x00000040) != 0)) {
-          if (descriptionTextBuilder_ == null) {
-            result.descriptionText_ = descriptionText_;
-          } else {
-            result.descriptionText_ = descriptionTextBuilder_.build();
-          }
+          result.descriptionText_ = descriptionTextBuilder_ == null
+              ? descriptionText_
+              : descriptionTextBuilder_.build();
           to_bitField0_ |= 0x00000010;
         }
         if (((from_bitField0_ & 0x00000080) != 0)) {
-          if (ttsHeaderTextBuilder_ == null) {
-            result.ttsHeaderText_ = ttsHeaderText_;
-          } else {
-            result.ttsHeaderText_ = ttsHeaderTextBuilder_.build();
-          }
+          result.ttsHeaderText_ = ttsHeaderTextBuilder_ == null
+              ? ttsHeaderText_
+              : ttsHeaderTextBuilder_.build();
           to_bitField0_ |= 0x00000020;
         }
         if (((from_bitField0_ & 0x00000100) != 0)) {
-          if (ttsDescriptionTextBuilder_ == null) {
-            result.ttsDescriptionText_ = ttsDescriptionText_;
-          } else {
-            result.ttsDescriptionText_ = ttsDescriptionTextBuilder_.build();
-          }
+          result.ttsDescriptionText_ = ttsDescriptionTextBuilder_ == null
+              ? ttsDescriptionText_
+              : ttsDescriptionTextBuilder_.build();
           to_bitField0_ |= 0x00000040;
         }
         if (((from_bitField0_ & 0x00000200) != 0)) {
+          result.severityLevel_ = severityLevel_;
           to_bitField0_ |= 0x00000080;
         }
-        result.severityLevel_ = severityLevel_;
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
+        result.bitField0_ |= to_bitField0_;
       }
 
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public <Type> Builder setExtension(
-          com.google.protobuf.GeneratedMessage.GeneratedExtension<
-              dev.katsute.onemta.GTFSRealtimeProto.Alert, Type> extension,
-          Type value) {
-        return super.setExtension(extension, value);
-      }
-      @java.lang.Override
-      public <Type> Builder setExtension(
-          com.google.protobuf.GeneratedMessage.GeneratedExtension<
-              dev.katsute.onemta.GTFSRealtimeProto.Alert, java.util.List<Type>> extension,
-          int index, Type value) {
-        return super.setExtension(extension, index, value);
-      }
-      @java.lang.Override
-      public <Type> Builder addExtension(
-          com.google.protobuf.GeneratedMessage.GeneratedExtension<
-              dev.katsute.onemta.GTFSRealtimeProto.Alert, java.util.List<Type>> extension,
-          Type value) {
-        return super.addExtension(extension, value);
-      }
-      @java.lang.Override
-      public <Type> Builder clearExtension(
-          com.google.protobuf.GeneratedMessage.GeneratedExtension<
-              dev.katsute.onemta.GTFSRealtimeProto.Alert, ?> extension) {
-        return super.clearExtension(extension);
-      }
       private int bitField0_;
 
       private java.util.List<dev.katsute.onemta.GTFSRealtimeProto.TimeRange> activePeriod_ =
@@ -15005,7 +14401,7 @@ abstract class GTFSRealtimeProto {
        *
        * <code>repeated .transit_realtime.TimeRange active_period = 1;</code>
        */
-      public java.util.List<? extends dev.katsute.onemta.GTFSRealtimeProto.TimeRangeOrBuilder>
+      public java.util.List<? extends dev.katsute.onemta.GTFSRealtimeProto.TimeRangeOrBuilder> 
            getActivePeriodOrBuilderList() {
         if (activePeriodBuilder_ != null) {
           return activePeriodBuilder_.getMessageOrBuilderList();
@@ -15049,12 +14445,12 @@ abstract class GTFSRealtimeProto {
        *
        * <code>repeated .transit_realtime.TimeRange active_period = 1;</code>
        */
-      public java.util.List<dev.katsute.onemta.GTFSRealtimeProto.TimeRange.Builder>
+      public java.util.List<dev.katsute.onemta.GTFSRealtimeProto.TimeRange.Builder> 
            getActivePeriodBuilderList() {
         return getActivePeriodFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          dev.katsute.onemta.GTFSRealtimeProto.TimeRange, dev.katsute.onemta.GTFSRealtimeProto.TimeRange.Builder, dev.katsute.onemta.GTFSRealtimeProto.TimeRangeOrBuilder>
+          dev.katsute.onemta.GTFSRealtimeProto.TimeRange, dev.katsute.onemta.GTFSRealtimeProto.TimeRange.Builder, dev.katsute.onemta.GTFSRealtimeProto.TimeRangeOrBuilder> 
           getActivePeriodFieldBuilder() {
         if (activePeriodBuilder_ == null) {
           activePeriodBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
@@ -15323,7 +14719,7 @@ abstract class GTFSRealtimeProto {
        *
        * <code>repeated .transit_realtime.EntitySelector informed_entity = 5;</code>
        */
-      public java.util.List<? extends dev.katsute.onemta.GTFSRealtimeProto.EntitySelectorOrBuilder>
+      public java.util.List<? extends dev.katsute.onemta.GTFSRealtimeProto.EntitySelectorOrBuilder> 
            getInformedEntityOrBuilderList() {
         if (informedEntityBuilder_ != null) {
           return informedEntityBuilder_.getMessageOrBuilderList();
@@ -15361,12 +14757,12 @@ abstract class GTFSRealtimeProto {
        *
        * <code>repeated .transit_realtime.EntitySelector informed_entity = 5;</code>
        */
-      public java.util.List<dev.katsute.onemta.GTFSRealtimeProto.EntitySelector.Builder>
+      public java.util.List<dev.katsute.onemta.GTFSRealtimeProto.EntitySelector.Builder> 
            getInformedEntityBuilderList() {
         return getInformedEntityFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          dev.katsute.onemta.GTFSRealtimeProto.EntitySelector, dev.katsute.onemta.GTFSRealtimeProto.EntitySelector.Builder, dev.katsute.onemta.GTFSRealtimeProto.EntitySelectorOrBuilder>
+          dev.katsute.onemta.GTFSRealtimeProto.EntitySelector, dev.katsute.onemta.GTFSRealtimeProto.EntitySelector.Builder, dev.katsute.onemta.GTFSRealtimeProto.EntitySelectorOrBuilder> 
           getInformedEntityFieldBuilder() {
         if (informedEntityBuilder_ == null) {
           informedEntityBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
@@ -15394,8 +14790,7 @@ abstract class GTFSRealtimeProto {
        */
       @java.lang.Override
       public dev.katsute.onemta.GTFSRealtimeProto.Alert.Cause getCause() {
-        @SuppressWarnings("deprecation")
-        dev.katsute.onemta.GTFSRealtimeProto.Alert.Cause result = dev.katsute.onemta.GTFSRealtimeProto.Alert.Cause.valueOf(cause_);
+        dev.katsute.onemta.GTFSRealtimeProto.Alert.Cause result = dev.katsute.onemta.GTFSRealtimeProto.Alert.Cause.forNumber(cause_);
         return result == null ? dev.katsute.onemta.GTFSRealtimeProto.Alert.Cause.UNKNOWN_CAUSE : result;
       }
       /**
@@ -15437,8 +14832,7 @@ abstract class GTFSRealtimeProto {
        */
       @java.lang.Override
       public dev.katsute.onemta.GTFSRealtimeProto.Alert.Effect getEffect() {
-        @SuppressWarnings("deprecation")
-        dev.katsute.onemta.GTFSRealtimeProto.Alert.Effect result = dev.katsute.onemta.GTFSRealtimeProto.Alert.Effect.valueOf(effect_);
+        dev.katsute.onemta.GTFSRealtimeProto.Alert.Effect result = dev.katsute.onemta.GTFSRealtimeProto.Alert.Effect.forNumber(effect_);
         return result == null ? dev.katsute.onemta.GTFSRealtimeProto.Alert.Effect.UNKNOWN_EFFECT : result;
       }
       /**
@@ -15508,11 +14902,11 @@ abstract class GTFSRealtimeProto {
             throw new NullPointerException();
           }
           url_ = value;
-          onChanged();
         } else {
           urlBuilder_.setMessage(value);
         }
         bitField0_ |= 0x00000010;
+        onChanged();
         return this;
       }
       /**
@@ -15526,11 +14920,11 @@ abstract class GTFSRealtimeProto {
           dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Builder builderForValue) {
         if (urlBuilder_ == null) {
           url_ = builderForValue.build();
-          onChanged();
         } else {
           urlBuilder_.setMessage(builderForValue.build());
         }
         bitField0_ |= 0x00000010;
+        onChanged();
         return this;
       }
       /**
@@ -15543,18 +14937,17 @@ abstract class GTFSRealtimeProto {
       public Builder mergeUrl(dev.katsute.onemta.GTFSRealtimeProto.TranslatedString value) {
         if (urlBuilder_ == null) {
           if (((bitField0_ & 0x00000010) != 0) &&
-              url_ != null &&
-              url_ != dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.getDefaultInstance()) {
-            url_ =
-              dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.newBuilder(url_).mergeFrom(value).buildPartial();
+            url_ != null &&
+            url_ != dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.getDefaultInstance()) {
+            getUrlBuilder().mergeFrom(value);
           } else {
             url_ = value;
           }
-          onChanged();
         } else {
           urlBuilder_.mergeFrom(value);
         }
         bitField0_ |= 0x00000010;
+        onChanged();
         return this;
       }
       /**
@@ -15565,13 +14958,13 @@ abstract class GTFSRealtimeProto {
        * <code>optional .transit_realtime.TranslatedString url = 8;</code>
        */
       public Builder clearUrl() {
-        if (urlBuilder_ == null) {
-          url_ = null;
-          onChanged();
-        } else {
-          urlBuilder_.clear();
-        }
         bitField0_ = (bitField0_ & ~0x00000010);
+        url_ = null;
+        if (urlBuilder_ != null) {
+          urlBuilder_.dispose();
+          urlBuilder_ = null;
+        }
+        onChanged();
         return this;
       }
       /**
@@ -15609,7 +15002,7 @@ abstract class GTFSRealtimeProto {
        * <code>optional .transit_realtime.TranslatedString url = 8;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          dev.katsute.onemta.GTFSRealtimeProto.TranslatedString, dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Builder, dev.katsute.onemta.GTFSRealtimeProto.TranslatedStringOrBuilder>
+          dev.katsute.onemta.GTFSRealtimeProto.TranslatedString, dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Builder, dev.katsute.onemta.GTFSRealtimeProto.TranslatedStringOrBuilder> 
           getUrlFieldBuilder() {
         if (urlBuilder_ == null) {
           urlBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -15664,11 +15057,11 @@ abstract class GTFSRealtimeProto {
             throw new NullPointerException();
           }
           headerText_ = value;
-          onChanged();
         } else {
           headerTextBuilder_.setMessage(value);
         }
         bitField0_ |= 0x00000020;
+        onChanged();
         return this;
       }
       /**
@@ -15682,11 +15075,11 @@ abstract class GTFSRealtimeProto {
           dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Builder builderForValue) {
         if (headerTextBuilder_ == null) {
           headerText_ = builderForValue.build();
-          onChanged();
         } else {
           headerTextBuilder_.setMessage(builderForValue.build());
         }
         bitField0_ |= 0x00000020;
+        onChanged();
         return this;
       }
       /**
@@ -15699,18 +15092,17 @@ abstract class GTFSRealtimeProto {
       public Builder mergeHeaderText(dev.katsute.onemta.GTFSRealtimeProto.TranslatedString value) {
         if (headerTextBuilder_ == null) {
           if (((bitField0_ & 0x00000020) != 0) &&
-              headerText_ != null &&
-              headerText_ != dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.getDefaultInstance()) {
-            headerText_ =
-              dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.newBuilder(headerText_).mergeFrom(value).buildPartial();
+            headerText_ != null &&
+            headerText_ != dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.getDefaultInstance()) {
+            getHeaderTextBuilder().mergeFrom(value);
           } else {
             headerText_ = value;
           }
-          onChanged();
         } else {
           headerTextBuilder_.mergeFrom(value);
         }
         bitField0_ |= 0x00000020;
+        onChanged();
         return this;
       }
       /**
@@ -15721,13 +15113,13 @@ abstract class GTFSRealtimeProto {
        * <code>optional .transit_realtime.TranslatedString header_text = 10;</code>
        */
       public Builder clearHeaderText() {
-        if (headerTextBuilder_ == null) {
-          headerText_ = null;
-          onChanged();
-        } else {
-          headerTextBuilder_.clear();
-        }
         bitField0_ = (bitField0_ & ~0x00000020);
+        headerText_ = null;
+        if (headerTextBuilder_ != null) {
+          headerTextBuilder_.dispose();
+          headerTextBuilder_ = null;
+        }
+        onChanged();
         return this;
       }
       /**
@@ -15765,7 +15157,7 @@ abstract class GTFSRealtimeProto {
        * <code>optional .transit_realtime.TranslatedString header_text = 10;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          dev.katsute.onemta.GTFSRealtimeProto.TranslatedString, dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Builder, dev.katsute.onemta.GTFSRealtimeProto.TranslatedStringOrBuilder>
+          dev.katsute.onemta.GTFSRealtimeProto.TranslatedString, dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Builder, dev.katsute.onemta.GTFSRealtimeProto.TranslatedStringOrBuilder> 
           getHeaderTextFieldBuilder() {
         if (headerTextBuilder_ == null) {
           headerTextBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -15823,11 +15215,11 @@ abstract class GTFSRealtimeProto {
             throw new NullPointerException();
           }
           descriptionText_ = value;
-          onChanged();
         } else {
           descriptionTextBuilder_.setMessage(value);
         }
         bitField0_ |= 0x00000040;
+        onChanged();
         return this;
       }
       /**
@@ -15842,11 +15234,11 @@ abstract class GTFSRealtimeProto {
           dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Builder builderForValue) {
         if (descriptionTextBuilder_ == null) {
           descriptionText_ = builderForValue.build();
-          onChanged();
         } else {
           descriptionTextBuilder_.setMessage(builderForValue.build());
         }
         bitField0_ |= 0x00000040;
+        onChanged();
         return this;
       }
       /**
@@ -15860,18 +15252,17 @@ abstract class GTFSRealtimeProto {
       public Builder mergeDescriptionText(dev.katsute.onemta.GTFSRealtimeProto.TranslatedString value) {
         if (descriptionTextBuilder_ == null) {
           if (((bitField0_ & 0x00000040) != 0) &&
-              descriptionText_ != null &&
-              descriptionText_ != dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.getDefaultInstance()) {
-            descriptionText_ =
-              dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.newBuilder(descriptionText_).mergeFrom(value).buildPartial();
+            descriptionText_ != null &&
+            descriptionText_ != dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.getDefaultInstance()) {
+            getDescriptionTextBuilder().mergeFrom(value);
           } else {
             descriptionText_ = value;
           }
-          onChanged();
         } else {
           descriptionTextBuilder_.mergeFrom(value);
         }
         bitField0_ |= 0x00000040;
+        onChanged();
         return this;
       }
       /**
@@ -15883,13 +15274,13 @@ abstract class GTFSRealtimeProto {
        * <code>optional .transit_realtime.TranslatedString description_text = 11;</code>
        */
       public Builder clearDescriptionText() {
-        if (descriptionTextBuilder_ == null) {
-          descriptionText_ = null;
-          onChanged();
-        } else {
-          descriptionTextBuilder_.clear();
-        }
         bitField0_ = (bitField0_ & ~0x00000040);
+        descriptionText_ = null;
+        if (descriptionTextBuilder_ != null) {
+          descriptionTextBuilder_.dispose();
+          descriptionTextBuilder_ = null;
+        }
+        onChanged();
         return this;
       }
       /**
@@ -15930,7 +15321,7 @@ abstract class GTFSRealtimeProto {
        * <code>optional .transit_realtime.TranslatedString description_text = 11;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          dev.katsute.onemta.GTFSRealtimeProto.TranslatedString, dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Builder, dev.katsute.onemta.GTFSRealtimeProto.TranslatedStringOrBuilder>
+          dev.katsute.onemta.GTFSRealtimeProto.TranslatedString, dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Builder, dev.katsute.onemta.GTFSRealtimeProto.TranslatedStringOrBuilder> 
           getDescriptionTextFieldBuilder() {
         if (descriptionTextBuilder_ == null) {
           descriptionTextBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -15985,11 +15376,11 @@ abstract class GTFSRealtimeProto {
             throw new NullPointerException();
           }
           ttsHeaderText_ = value;
-          onChanged();
         } else {
           ttsHeaderTextBuilder_.setMessage(value);
         }
         bitField0_ |= 0x00000080;
+        onChanged();
         return this;
       }
       /**
@@ -16003,11 +15394,11 @@ abstract class GTFSRealtimeProto {
           dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Builder builderForValue) {
         if (ttsHeaderTextBuilder_ == null) {
           ttsHeaderText_ = builderForValue.build();
-          onChanged();
         } else {
           ttsHeaderTextBuilder_.setMessage(builderForValue.build());
         }
         bitField0_ |= 0x00000080;
+        onChanged();
         return this;
       }
       /**
@@ -16020,18 +15411,17 @@ abstract class GTFSRealtimeProto {
       public Builder mergeTtsHeaderText(dev.katsute.onemta.GTFSRealtimeProto.TranslatedString value) {
         if (ttsHeaderTextBuilder_ == null) {
           if (((bitField0_ & 0x00000080) != 0) &&
-              ttsHeaderText_ != null &&
-              ttsHeaderText_ != dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.getDefaultInstance()) {
-            ttsHeaderText_ =
-              dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.newBuilder(ttsHeaderText_).mergeFrom(value).buildPartial();
+            ttsHeaderText_ != null &&
+            ttsHeaderText_ != dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.getDefaultInstance()) {
+            getTtsHeaderTextBuilder().mergeFrom(value);
           } else {
             ttsHeaderText_ = value;
           }
-          onChanged();
         } else {
           ttsHeaderTextBuilder_.mergeFrom(value);
         }
         bitField0_ |= 0x00000080;
+        onChanged();
         return this;
       }
       /**
@@ -16042,13 +15432,13 @@ abstract class GTFSRealtimeProto {
        * <code>optional .transit_realtime.TranslatedString tts_header_text = 12;</code>
        */
       public Builder clearTtsHeaderText() {
-        if (ttsHeaderTextBuilder_ == null) {
-          ttsHeaderText_ = null;
-          onChanged();
-        } else {
-          ttsHeaderTextBuilder_.clear();
-        }
         bitField0_ = (bitField0_ & ~0x00000080);
+        ttsHeaderText_ = null;
+        if (ttsHeaderTextBuilder_ != null) {
+          ttsHeaderTextBuilder_.dispose();
+          ttsHeaderTextBuilder_ = null;
+        }
+        onChanged();
         return this;
       }
       /**
@@ -16086,7 +15476,7 @@ abstract class GTFSRealtimeProto {
        * <code>optional .transit_realtime.TranslatedString tts_header_text = 12;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          dev.katsute.onemta.GTFSRealtimeProto.TranslatedString, dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Builder, dev.katsute.onemta.GTFSRealtimeProto.TranslatedStringOrBuilder>
+          dev.katsute.onemta.GTFSRealtimeProto.TranslatedString, dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Builder, dev.katsute.onemta.GTFSRealtimeProto.TranslatedStringOrBuilder> 
           getTtsHeaderTextFieldBuilder() {
         if (ttsHeaderTextBuilder_ == null) {
           ttsHeaderTextBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -16141,11 +15531,11 @@ abstract class GTFSRealtimeProto {
             throw new NullPointerException();
           }
           ttsDescriptionText_ = value;
-          onChanged();
         } else {
           ttsDescriptionTextBuilder_.setMessage(value);
         }
         bitField0_ |= 0x00000100;
+        onChanged();
         return this;
       }
       /**
@@ -16159,11 +15549,11 @@ abstract class GTFSRealtimeProto {
           dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Builder builderForValue) {
         if (ttsDescriptionTextBuilder_ == null) {
           ttsDescriptionText_ = builderForValue.build();
-          onChanged();
         } else {
           ttsDescriptionTextBuilder_.setMessage(builderForValue.build());
         }
         bitField0_ |= 0x00000100;
+        onChanged();
         return this;
       }
       /**
@@ -16176,18 +15566,17 @@ abstract class GTFSRealtimeProto {
       public Builder mergeTtsDescriptionText(dev.katsute.onemta.GTFSRealtimeProto.TranslatedString value) {
         if (ttsDescriptionTextBuilder_ == null) {
           if (((bitField0_ & 0x00000100) != 0) &&
-              ttsDescriptionText_ != null &&
-              ttsDescriptionText_ != dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.getDefaultInstance()) {
-            ttsDescriptionText_ =
-              dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.newBuilder(ttsDescriptionText_).mergeFrom(value).buildPartial();
+            ttsDescriptionText_ != null &&
+            ttsDescriptionText_ != dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.getDefaultInstance()) {
+            getTtsDescriptionTextBuilder().mergeFrom(value);
           } else {
             ttsDescriptionText_ = value;
           }
-          onChanged();
         } else {
           ttsDescriptionTextBuilder_.mergeFrom(value);
         }
         bitField0_ |= 0x00000100;
+        onChanged();
         return this;
       }
       /**
@@ -16198,13 +15587,13 @@ abstract class GTFSRealtimeProto {
        * <code>optional .transit_realtime.TranslatedString tts_description_text = 13;</code>
        */
       public Builder clearTtsDescriptionText() {
-        if (ttsDescriptionTextBuilder_ == null) {
-          ttsDescriptionText_ = null;
-          onChanged();
-        } else {
-          ttsDescriptionTextBuilder_.clear();
-        }
         bitField0_ = (bitField0_ & ~0x00000100);
+        ttsDescriptionText_ = null;
+        if (ttsDescriptionTextBuilder_ != null) {
+          ttsDescriptionTextBuilder_.dispose();
+          ttsDescriptionTextBuilder_ = null;
+        }
+        onChanged();
         return this;
       }
       /**
@@ -16242,7 +15631,7 @@ abstract class GTFSRealtimeProto {
        * <code>optional .transit_realtime.TranslatedString tts_description_text = 13;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          dev.katsute.onemta.GTFSRealtimeProto.TranslatedString, dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Builder, dev.katsute.onemta.GTFSRealtimeProto.TranslatedStringOrBuilder>
+          dev.katsute.onemta.GTFSRealtimeProto.TranslatedString, dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Builder, dev.katsute.onemta.GTFSRealtimeProto.TranslatedStringOrBuilder> 
           getTtsDescriptionTextFieldBuilder() {
         if (ttsDescriptionTextBuilder_ == null) {
           ttsDescriptionTextBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -16269,8 +15658,7 @@ abstract class GTFSRealtimeProto {
        */
       @java.lang.Override
       public dev.katsute.onemta.GTFSRealtimeProto.Alert.SeverityLevel getSeverityLevel() {
-        @SuppressWarnings("deprecation")
-        dev.katsute.onemta.GTFSRealtimeProto.Alert.SeverityLevel result = dev.katsute.onemta.GTFSRealtimeProto.Alert.SeverityLevel.valueOf(severityLevel_);
+        dev.katsute.onemta.GTFSRealtimeProto.Alert.SeverityLevel result = dev.katsute.onemta.GTFSRealtimeProto.Alert.SeverityLevel.forNumber(severityLevel_);
         return result == null ? dev.katsute.onemta.GTFSRealtimeProto.Alert.SeverityLevel.UNKNOWN_SEVERITY : result;
       }
       /**
@@ -16335,10 +15723,11 @@ abstract class GTFSRealtimeProto {
           builder.mergeFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
         } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(
-              e.getMessage()).setUnfinishedMessage(
-                  builder.buildPartial());
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
         }
         return builder.buildPartial();
       }
@@ -16439,11 +15828,6 @@ abstract class GTFSRealtimeProto {
       return new TimeRange();
     }
 
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return dev.katsute.onemta.GTFSRealtimeProto.internal_static_transit_realtime_TimeRange_descriptor;
@@ -16459,7 +15843,7 @@ abstract class GTFSRealtimeProto {
 
     private int bitField0_;
     public static final int START_FIELD_NUMBER = 1;
-    private long start_;
+    private long start_ = 0L;
     /**
      * <pre>
      * Start time, in POSIX time (i.e., number of seconds since January 1st 1970
@@ -16490,7 +15874,7 @@ abstract class GTFSRealtimeProto {
     }
 
     public static final int END_FIELD_NUMBER = 2;
-    private long end_;
+    private long end_ = 0L;
     /**
      * <pre>
      * End time, in POSIX time (i.e., number of seconds since January 1st 1970
@@ -16638,26 +16022,20 @@ abstract class GTFSRealtimeProto {
 
       // Construct using dev.katsute.onemta.GTFSRealtimeProto.TimeRange.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         start_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000001);
         end_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
@@ -16684,6 +16062,12 @@ abstract class GTFSRealtimeProto {
       @java.lang.Override
       public dev.katsute.onemta.GTFSRealtimeProto.TimeRange buildPartial() {
         dev.katsute.onemta.GTFSRealtimeProto.TimeRange result = new dev.katsute.onemta.GTFSRealtimeProto.TimeRange(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(dev.katsute.onemta.GTFSRealtimeProto.TimeRange result) {
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -16694,70 +16078,9 @@ abstract class GTFSRealtimeProto {
           result.end_ = end_;
           to_bitField0_ |= 0x00000002;
         }
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
+        result.bitField0_ |= to_bitField0_;
       }
 
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public <Type> Builder setExtension(
-          com.google.protobuf.GeneratedMessage.GeneratedExtension<
-              dev.katsute.onemta.GTFSRealtimeProto.TimeRange, Type> extension,
-          Type value) {
-        return super.setExtension(extension, value);
-      }
-      @java.lang.Override
-      public <Type> Builder setExtension(
-          com.google.protobuf.GeneratedMessage.GeneratedExtension<
-              dev.katsute.onemta.GTFSRealtimeProto.TimeRange, java.util.List<Type>> extension,
-          int index, Type value) {
-        return super.setExtension(extension, index, value);
-      }
-      @java.lang.Override
-      public <Type> Builder addExtension(
-          com.google.protobuf.GeneratedMessage.GeneratedExtension<
-              dev.katsute.onemta.GTFSRealtimeProto.TimeRange, java.util.List<Type>> extension,
-          Type value) {
-        return super.addExtension(extension, value);
-      }
-      @java.lang.Override
-      public <Type> Builder clearExtension(
-          com.google.protobuf.GeneratedMessage.GeneratedExtension<
-              dev.katsute.onemta.GTFSRealtimeProto.TimeRange, ?> extension) {
-        return super.clearExtension(extension);
-      }
       private int bitField0_;
 
       private long start_ ;
@@ -16801,8 +16124,9 @@ abstract class GTFSRealtimeProto {
        * @return This builder for chaining.
        */
       public Builder setStart(long value) {
-        bitField0_ |= 0x00000001;
+
         start_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -16864,8 +16188,9 @@ abstract class GTFSRealtimeProto {
        * @return This builder for chaining.
        */
       public Builder setEnd(long value) {
-        bitField0_ |= 0x00000002;
+
         end_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -16923,10 +16248,11 @@ abstract class GTFSRealtimeProto {
           builder.mergeFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
         } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(
-              e.getMessage()).setUnfinishedMessage(
-                  builder.buildPartial());
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
         }
         return builder.buildPartial();
       }
@@ -17083,11 +16409,6 @@ abstract class GTFSRealtimeProto {
       return new Position();
     }
 
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return dev.katsute.onemta.GTFSRealtimeProto.internal_static_transit_realtime_Position_descriptor;
@@ -17103,7 +16424,7 @@ abstract class GTFSRealtimeProto {
 
     private int bitField0_;
     public static final int LATITUDE_FIELD_NUMBER = 1;
-    private float latitude_;
+    private float latitude_ = 0F;
     /**
      * <pre>
      * Degrees North, in the WGS-84 coordinate system.
@@ -17130,7 +16451,7 @@ abstract class GTFSRealtimeProto {
     }
 
     public static final int LONGITUDE_FIELD_NUMBER = 2;
-    private float longitude_;
+    private float longitude_ = 0F;
     /**
      * <pre>
      * Degrees East, in the WGS-84 coordinate system.
@@ -17157,7 +16478,7 @@ abstract class GTFSRealtimeProto {
     }
 
     public static final int BEARING_FIELD_NUMBER = 3;
-    private float bearing_;
+    private float bearing_ = 0F;
     /**
      * <pre>
      * Bearing, in degrees, clockwise from North, i.e., 0 is North and 90 is East.
@@ -17192,7 +16513,7 @@ abstract class GTFSRealtimeProto {
     }
 
     public static final int ODOMETER_FIELD_NUMBER = 4;
-    private double odometer_;
+    private double odometer_ = 0D;
     /**
      * <pre>
      * Odometer value, in meters.
@@ -17219,7 +16540,7 @@ abstract class GTFSRealtimeProto {
     }
 
     public static final int SPEED_FIELD_NUMBER = 5;
-    private float speed_;
+    private float speed_ = 0F;
     /**
      * <pre>
      * Momentary speed measured by the vehicle, in meters per second.
@@ -17362,32 +16683,23 @@ abstract class GTFSRealtimeProto {
 
       // Construct using dev.katsute.onemta.GTFSRealtimeProto.Position.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         latitude_ = 0F;
-        bitField0_ = (bitField0_ & ~0x00000001);
         longitude_ = 0F;
-        bitField0_ = (bitField0_ & ~0x00000002);
         bearing_ = 0F;
-        bitField0_ = (bitField0_ & ~0x00000004);
         odometer_ = 0D;
-        bitField0_ = (bitField0_ & ~0x00000008);
         speed_ = 0F;
-        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
 
@@ -17414,6 +16726,12 @@ abstract class GTFSRealtimeProto {
       @java.lang.Override
       public dev.katsute.onemta.GTFSRealtimeProto.Position buildPartial() {
         dev.katsute.onemta.GTFSRealtimeProto.Position result = new dev.katsute.onemta.GTFSRealtimeProto.Position(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(dev.katsute.onemta.GTFSRealtimeProto.Position result) {
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -17436,70 +16754,9 @@ abstract class GTFSRealtimeProto {
           result.speed_ = speed_;
           to_bitField0_ |= 0x00000010;
         }
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
+        result.bitField0_ |= to_bitField0_;
       }
 
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public <Type> Builder setExtension(
-          com.google.protobuf.GeneratedMessage.GeneratedExtension<
-              dev.katsute.onemta.GTFSRealtimeProto.Position, Type> extension,
-          Type value) {
-        return super.setExtension(extension, value);
-      }
-      @java.lang.Override
-      public <Type> Builder setExtension(
-          com.google.protobuf.GeneratedMessage.GeneratedExtension<
-              dev.katsute.onemta.GTFSRealtimeProto.Position, java.util.List<Type>> extension,
-          int index, Type value) {
-        return super.setExtension(extension, index, value);
-      }
-      @java.lang.Override
-      public <Type> Builder addExtension(
-          com.google.protobuf.GeneratedMessage.GeneratedExtension<
-              dev.katsute.onemta.GTFSRealtimeProto.Position, java.util.List<Type>> extension,
-          Type value) {
-        return super.addExtension(extension, value);
-      }
-      @java.lang.Override
-      public <Type> Builder clearExtension(
-          com.google.protobuf.GeneratedMessage.GeneratedExtension<
-              dev.katsute.onemta.GTFSRealtimeProto.Position, ?> extension) {
-        return super.clearExtension(extension);
-      }
       private int bitField0_;
 
       private float latitude_ ;
@@ -17537,8 +16794,9 @@ abstract class GTFSRealtimeProto {
        * @return This builder for chaining.
        */
       public Builder setLatitude(float value) {
-        bitField0_ |= 0x00000001;
+
         latitude_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -17592,8 +16850,9 @@ abstract class GTFSRealtimeProto {
        * @return This builder for chaining.
        */
       public Builder setLongitude(float value) {
-        bitField0_ |= 0x00000002;
+
         longitude_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -17659,8 +16918,9 @@ abstract class GTFSRealtimeProto {
        * @return This builder for chaining.
        */
       public Builder setBearing(float value) {
-        bitField0_ |= 0x00000004;
+
         bearing_ = value;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
@@ -17718,8 +16978,9 @@ abstract class GTFSRealtimeProto {
        * @return This builder for chaining.
        */
       public Builder setOdometer(double value) {
-        bitField0_ |= 0x00000008;
+
         odometer_ = value;
+        bitField0_ |= 0x00000008;
         onChanged();
         return this;
       }
@@ -17773,8 +17034,9 @@ abstract class GTFSRealtimeProto {
        * @return This builder for chaining.
        */
       public Builder setSpeed(float value) {
-        bitField0_ |= 0x00000010;
+
         speed_ = value;
+        bitField0_ |= 0x00000010;
         onChanged();
         return this;
       }
@@ -17830,10 +17092,11 @@ abstract class GTFSRealtimeProto {
           builder.mergeFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
         } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(
-              e.getMessage()).setUnfinishedMessage(
-                  builder.buildPartial());
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
         }
         return builder.buildPartial();
       }
@@ -18132,11 +17395,6 @@ abstract class GTFSRealtimeProto {
       return new TripDescriptor();
     }
 
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return dev.katsute.onemta.GTFSRealtimeProto.internal_static_transit_realtime_TripDescriptor_descriptor;
@@ -18383,7 +17641,8 @@ abstract class GTFSRealtimeProto {
 
     private int bitField0_;
     public static final int TRIP_ID_FIELD_NUMBER = 1;
-    private volatile java.lang.Object tripId_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object tripId_ = "";
     /**
      * <pre>
      * The trip_id from the GTFS feed that this selector refers to.
@@ -18420,7 +17679,7 @@ abstract class GTFSRealtimeProto {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -18447,7 +17706,7 @@ abstract class GTFSRealtimeProto {
         getTripIdBytes() {
       java.lang.Object ref = tripId_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         tripId_ = b;
@@ -18458,7 +17717,8 @@ abstract class GTFSRealtimeProto {
     }
 
     public static final int ROUTE_ID_FIELD_NUMBER = 5;
-    private volatile java.lang.Object routeId_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object routeId_ = "";
     /**
      * <pre>
      * The route_id from the GTFS that this selector refers to.
@@ -18485,7 +17745,7 @@ abstract class GTFSRealtimeProto {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -18507,7 +17767,7 @@ abstract class GTFSRealtimeProto {
         getRouteIdBytes() {
       java.lang.Object ref = routeId_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         routeId_ = b;
@@ -18518,7 +17778,7 @@ abstract class GTFSRealtimeProto {
     }
 
     public static final int DIRECTION_ID_FIELD_NUMBER = 6;
-    private int directionId_;
+    private int directionId_ = 0;
     /**
      * <pre>
      * The direction_id from the GTFS feed trips.txt file, indicating the
@@ -18547,7 +17807,8 @@ abstract class GTFSRealtimeProto {
     }
 
     public static final int START_TIME_FIELD_NUMBER = 2;
-    private volatile java.lang.Object startTime_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object startTime_ = "";
     /**
      * <pre>
      * The initially scheduled start time of this trip instance.
@@ -18602,7 +17863,7 @@ abstract class GTFSRealtimeProto {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -18638,7 +17899,7 @@ abstract class GTFSRealtimeProto {
         getStartTimeBytes() {
       java.lang.Object ref = startTime_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         startTime_ = b;
@@ -18649,7 +17910,8 @@ abstract class GTFSRealtimeProto {
     }
 
     public static final int START_DATE_FIELD_NUMBER = 3;
-    private volatile java.lang.Object startDate_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object startDate_ = "";
     /**
      * <pre>
      * The scheduled start date of this trip instance.
@@ -18694,7 +17956,7 @@ abstract class GTFSRealtimeProto {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -18725,7 +17987,7 @@ abstract class GTFSRealtimeProto {
         getStartDateBytes() {
       java.lang.Object ref = startDate_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         startDate_ = b;
@@ -18736,7 +17998,7 @@ abstract class GTFSRealtimeProto {
     }
 
     public static final int SCHEDULE_RELATIONSHIP_FIELD_NUMBER = 4;
-    private int scheduleRelationship_;
+    private int scheduleRelationship_ = 0;
     /**
      * <code>optional .transit_realtime.TripDescriptor.ScheduleRelationship schedule_relationship = 4;</code>
      * @return Whether the scheduleRelationship field is set.
@@ -18749,8 +18011,7 @@ abstract class GTFSRealtimeProto {
      * @return The scheduleRelationship.
      */
     @java.lang.Override public dev.katsute.onemta.GTFSRealtimeProto.TripDescriptor.ScheduleRelationship getScheduleRelationship() {
-      @SuppressWarnings("deprecation")
-      dev.katsute.onemta.GTFSRealtimeProto.TripDescriptor.ScheduleRelationship result = dev.katsute.onemta.GTFSRealtimeProto.TripDescriptor.ScheduleRelationship.valueOf(scheduleRelationship_);
+      dev.katsute.onemta.GTFSRealtimeProto.TripDescriptor.ScheduleRelationship result = dev.katsute.onemta.GTFSRealtimeProto.TripDescriptor.ScheduleRelationship.forNumber(scheduleRelationship_);
       return result == null ? dev.katsute.onemta.GTFSRealtimeProto.TripDescriptor.ScheduleRelationship.SCHEDULED : result;
     }
 
@@ -18879,34 +18140,24 @@ abstract class GTFSRealtimeProto {
 
       // Construct using dev.katsute.onemta.GTFSRealtimeProto.TripDescriptor.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         tripId_ = "";
-        bitField0_ = (bitField0_ & ~0x00000001);
         routeId_ = "";
-        bitField0_ = (bitField0_ & ~0x00000002);
         directionId_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000004);
         startTime_ = "";
-        bitField0_ = (bitField0_ & ~0x00000008);
         startDate_ = "";
-        bitField0_ = (bitField0_ & ~0x00000010);
         scheduleRelationship_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000020);
         return this;
       }
 
@@ -18933,96 +18184,41 @@ abstract class GTFSRealtimeProto {
       @java.lang.Override
       public dev.katsute.onemta.GTFSRealtimeProto.TripDescriptor buildPartial() {
         dev.katsute.onemta.GTFSRealtimeProto.TripDescriptor result = new dev.katsute.onemta.GTFSRealtimeProto.TripDescriptor(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(dev.katsute.onemta.GTFSRealtimeProto.TripDescriptor result) {
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.tripId_ = tripId_;
           to_bitField0_ |= 0x00000001;
         }
-        result.tripId_ = tripId_;
         if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.routeId_ = routeId_;
           to_bitField0_ |= 0x00000002;
         }
-        result.routeId_ = routeId_;
         if (((from_bitField0_ & 0x00000004) != 0)) {
           result.directionId_ = directionId_;
           to_bitField0_ |= 0x00000004;
         }
         if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.startTime_ = startTime_;
           to_bitField0_ |= 0x00000008;
         }
-        result.startTime_ = startTime_;
         if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.startDate_ = startDate_;
           to_bitField0_ |= 0x00000010;
         }
-        result.startDate_ = startDate_;
         if (((from_bitField0_ & 0x00000020) != 0)) {
+          result.scheduleRelationship_ = scheduleRelationship_;
           to_bitField0_ |= 0x00000020;
         }
-        result.scheduleRelationship_ = scheduleRelationship_;
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
+        result.bitField0_ |= to_bitField0_;
       }
 
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public <Type> Builder setExtension(
-          com.google.protobuf.GeneratedMessage.GeneratedExtension<
-              dev.katsute.onemta.GTFSRealtimeProto.TripDescriptor, Type> extension,
-          Type value) {
-        return super.setExtension(extension, value);
-      }
-      @java.lang.Override
-      public <Type> Builder setExtension(
-          com.google.protobuf.GeneratedMessage.GeneratedExtension<
-              dev.katsute.onemta.GTFSRealtimeProto.TripDescriptor, java.util.List<Type>> extension,
-          int index, Type value) {
-        return super.setExtension(extension, index, value);
-      }
-      @java.lang.Override
-      public <Type> Builder addExtension(
-          com.google.protobuf.GeneratedMessage.GeneratedExtension<
-              dev.katsute.onemta.GTFSRealtimeProto.TripDescriptor, java.util.List<Type>> extension,
-          Type value) {
-        return super.addExtension(extension, value);
-      }
-      @java.lang.Override
-      public <Type> Builder clearExtension(
-          com.google.protobuf.GeneratedMessage.GeneratedExtension<
-              dev.katsute.onemta.GTFSRealtimeProto.TripDescriptor, ?> extension) {
-        return super.clearExtension(extension);
-      }
       private int bitField0_;
 
       private java.lang.Object tripId_ = "";
@@ -19086,7 +18282,7 @@ abstract class GTFSRealtimeProto {
           getTripIdBytes() {
         java.lang.Object ref = tripId_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           tripId_ = b;
@@ -19111,11 +18307,9 @@ abstract class GTFSRealtimeProto {
        */
       public Builder setTripId(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
+        if (value == null) { throw new NullPointerException(); }
         tripId_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -19133,8 +18327,8 @@ abstract class GTFSRealtimeProto {
        * @return This builder for chaining.
        */
       public Builder clearTripId() {
-        bitField0_ = (bitField0_ & ~0x00000001);
         tripId_ = getDefaultInstance().getTripId();
+        bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
         return this;
       }
@@ -19154,11 +18348,9 @@ abstract class GTFSRealtimeProto {
        */
       public Builder setTripIdBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
+        if (value == null) { throw new NullPointerException(); }
         tripId_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -19209,7 +18401,7 @@ abstract class GTFSRealtimeProto {
           getRouteIdBytes() {
         java.lang.Object ref = routeId_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           routeId_ = b;
@@ -19229,11 +18421,9 @@ abstract class GTFSRealtimeProto {
        */
       public Builder setRouteId(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
+        if (value == null) { throw new NullPointerException(); }
         routeId_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -19246,8 +18436,8 @@ abstract class GTFSRealtimeProto {
        * @return This builder for chaining.
        */
       public Builder clearRouteId() {
-        bitField0_ = (bitField0_ & ~0x00000002);
         routeId_ = getDefaultInstance().getRouteId();
+        bitField0_ = (bitField0_ & ~0x00000002);
         onChanged();
         return this;
       }
@@ -19262,11 +18452,9 @@ abstract class GTFSRealtimeProto {
        */
       public Builder setRouteIdBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
+        if (value == null) { throw new NullPointerException(); }
         routeId_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -19309,8 +18497,9 @@ abstract class GTFSRealtimeProto {
        * @return This builder for chaining.
        */
       public Builder setDirectionId(int value) {
-        bitField0_ |= 0x00000004;
+
         directionId_ = value;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
@@ -19418,7 +18607,7 @@ abstract class GTFSRealtimeProto {
           getStartTimeBytes() {
         java.lang.Object ref = startTime_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           startTime_ = b;
@@ -19452,11 +18641,9 @@ abstract class GTFSRealtimeProto {
        */
       public Builder setStartTime(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000008;
+        if (value == null) { throw new NullPointerException(); }
         startTime_ = value;
+        bitField0_ |= 0x00000008;
         onChanged();
         return this;
       }
@@ -19483,8 +18670,8 @@ abstract class GTFSRealtimeProto {
        * @return This builder for chaining.
        */
       public Builder clearStartTime() {
-        bitField0_ = (bitField0_ & ~0x00000008);
         startTime_ = getDefaultInstance().getStartTime();
+        bitField0_ = (bitField0_ & ~0x00000008);
         onChanged();
         return this;
       }
@@ -19513,11 +18700,9 @@ abstract class GTFSRealtimeProto {
        */
       public Builder setStartTimeBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000008;
+        if (value == null) { throw new NullPointerException(); }
         startTime_ = value;
+        bitField0_ |= 0x00000008;
         onChanged();
         return this;
       }
@@ -19595,7 +18780,7 @@ abstract class GTFSRealtimeProto {
           getStartDateBytes() {
         java.lang.Object ref = startDate_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           startDate_ = b;
@@ -19624,11 +18809,9 @@ abstract class GTFSRealtimeProto {
        */
       public Builder setStartDate(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000010;
+        if (value == null) { throw new NullPointerException(); }
         startDate_ = value;
+        bitField0_ |= 0x00000010;
         onChanged();
         return this;
       }
@@ -19650,8 +18833,8 @@ abstract class GTFSRealtimeProto {
        * @return This builder for chaining.
        */
       public Builder clearStartDate() {
-        bitField0_ = (bitField0_ & ~0x00000010);
         startDate_ = getDefaultInstance().getStartDate();
+        bitField0_ = (bitField0_ & ~0x00000010);
         onChanged();
         return this;
       }
@@ -19675,11 +18858,9 @@ abstract class GTFSRealtimeProto {
        */
       public Builder setStartDateBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000010;
+        if (value == null) { throw new NullPointerException(); }
         startDate_ = value;
+        bitField0_ |= 0x00000010;
         onChanged();
         return this;
       }
@@ -19698,8 +18879,7 @@ abstract class GTFSRealtimeProto {
        */
       @java.lang.Override
       public dev.katsute.onemta.GTFSRealtimeProto.TripDescriptor.ScheduleRelationship getScheduleRelationship() {
-        @SuppressWarnings("deprecation")
-        dev.katsute.onemta.GTFSRealtimeProto.TripDescriptor.ScheduleRelationship result = dev.katsute.onemta.GTFSRealtimeProto.TripDescriptor.ScheduleRelationship.valueOf(scheduleRelationship_);
+        dev.katsute.onemta.GTFSRealtimeProto.TripDescriptor.ScheduleRelationship result = dev.katsute.onemta.GTFSRealtimeProto.TripDescriptor.ScheduleRelationship.forNumber(scheduleRelationship_);
         return result == null ? dev.katsute.onemta.GTFSRealtimeProto.TripDescriptor.ScheduleRelationship.SCHEDULED : result;
       }
       /**
@@ -19764,10 +18944,11 @@ abstract class GTFSRealtimeProto {
           builder.mergeFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
         } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(
-              e.getMessage()).setUnfinishedMessage(
-                  builder.buildPartial());
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
         }
         return builder.buildPartial();
       }
@@ -19920,11 +19101,6 @@ abstract class GTFSRealtimeProto {
       return new VehicleDescriptor();
     }
 
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return dev.katsute.onemta.GTFSRealtimeProto.internal_static_transit_realtime_VehicleDescriptor_descriptor;
@@ -19940,7 +19116,8 @@ abstract class GTFSRealtimeProto {
 
     private int bitField0_;
     public static final int ID_FIELD_NUMBER = 1;
-    private volatile java.lang.Object id_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object id_ = "";
     /**
      * <pre>
      * Internal system identification of the vehicle. Should be unique per
@@ -19971,7 +19148,7 @@ abstract class GTFSRealtimeProto {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -19995,7 +19172,7 @@ abstract class GTFSRealtimeProto {
         getIdBytes() {
       java.lang.Object ref = id_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         id_ = b;
@@ -20006,7 +19183,8 @@ abstract class GTFSRealtimeProto {
     }
 
     public static final int LABEL_FIELD_NUMBER = 2;
-    private volatile java.lang.Object label_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object label_ = "";
     /**
      * <pre>
      * User visible label, i.e., something that must be shown to the passenger to
@@ -20035,7 +19213,7 @@ abstract class GTFSRealtimeProto {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -20058,7 +19236,7 @@ abstract class GTFSRealtimeProto {
         getLabelBytes() {
       java.lang.Object ref = label_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         label_ = b;
@@ -20069,7 +19247,8 @@ abstract class GTFSRealtimeProto {
     }
 
     public static final int LICENSE_PLATE_FIELD_NUMBER = 3;
-    private volatile java.lang.Object licensePlate_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object licensePlate_ = "";
     /**
      * <pre>
      * The license plate of the vehicle.
@@ -20096,7 +19275,7 @@ abstract class GTFSRealtimeProto {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -20118,7 +19297,7 @@ abstract class GTFSRealtimeProto {
         getLicensePlateBytes() {
       java.lang.Object ref = licensePlate_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         licensePlate_ = b;
@@ -20245,28 +19424,21 @@ abstract class GTFSRealtimeProto {
 
       // Construct using dev.katsute.onemta.GTFSRealtimeProto.VehicleDescriptor.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         id_ = "";
-        bitField0_ = (bitField0_ & ~0x00000001);
         label_ = "";
-        bitField0_ = (bitField0_ & ~0x00000002);
         licensePlate_ = "";
-        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
 
@@ -20293,84 +19465,29 @@ abstract class GTFSRealtimeProto {
       @java.lang.Override
       public dev.katsute.onemta.GTFSRealtimeProto.VehicleDescriptor buildPartial() {
         dev.katsute.onemta.GTFSRealtimeProto.VehicleDescriptor result = new dev.katsute.onemta.GTFSRealtimeProto.VehicleDescriptor(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.id_ = id_;
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.label_ = label_;
-        if (((from_bitField0_ & 0x00000004) != 0)) {
-          to_bitField0_ |= 0x00000004;
-        }
-        result.licensePlate_ = licensePlate_;
-        result.bitField0_ = to_bitField0_;
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
+      private void buildPartial0(dev.katsute.onemta.GTFSRealtimeProto.VehicleDescriptor result) {
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.id_ = id_;
+          to_bitField0_ |= 0x00000001;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.label_ = label_;
+          to_bitField0_ |= 0x00000002;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.licensePlate_ = licensePlate_;
+          to_bitField0_ |= 0x00000004;
+        }
+        result.bitField0_ |= to_bitField0_;
       }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public <Type> Builder setExtension(
-          com.google.protobuf.GeneratedMessage.GeneratedExtension<
-              dev.katsute.onemta.GTFSRealtimeProto.VehicleDescriptor, Type> extension,
-          Type value) {
-        return super.setExtension(extension, value);
-      }
-      @java.lang.Override
-      public <Type> Builder setExtension(
-          com.google.protobuf.GeneratedMessage.GeneratedExtension<
-              dev.katsute.onemta.GTFSRealtimeProto.VehicleDescriptor, java.util.List<Type>> extension,
-          int index, Type value) {
-        return super.setExtension(extension, index, value);
-      }
-      @java.lang.Override
-      public <Type> Builder addExtension(
-          com.google.protobuf.GeneratedMessage.GeneratedExtension<
-              dev.katsute.onemta.GTFSRealtimeProto.VehicleDescriptor, java.util.List<Type>> extension,
-          Type value) {
-        return super.addExtension(extension, value);
-      }
-      @java.lang.Override
-      public <Type> Builder clearExtension(
-          com.google.protobuf.GeneratedMessage.GeneratedExtension<
-              dev.katsute.onemta.GTFSRealtimeProto.VehicleDescriptor, ?> extension) {
-        return super.clearExtension(extension);
-      }
+
       private int bitField0_;
 
       private java.lang.Object id_ = "";
@@ -20425,7 +19542,7 @@ abstract class GTFSRealtimeProto {
           getIdBytes() {
         java.lang.Object ref = id_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           id_ = b;
@@ -20447,11 +19564,9 @@ abstract class GTFSRealtimeProto {
        */
       public Builder setId(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
+        if (value == null) { throw new NullPointerException(); }
         id_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -20466,8 +19581,8 @@ abstract class GTFSRealtimeProto {
        * @return This builder for chaining.
        */
       public Builder clearId() {
-        bitField0_ = (bitField0_ & ~0x00000001);
         id_ = getDefaultInstance().getId();
+        bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
         return this;
       }
@@ -20484,11 +19599,9 @@ abstract class GTFSRealtimeProto {
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
+        if (value == null) { throw new NullPointerException(); }
         id_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -20542,7 +19655,7 @@ abstract class GTFSRealtimeProto {
           getLabelBytes() {
         java.lang.Object ref = label_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           label_ = b;
@@ -20563,11 +19676,9 @@ abstract class GTFSRealtimeProto {
        */
       public Builder setLabel(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
+        if (value == null) { throw new NullPointerException(); }
         label_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -20581,8 +19692,8 @@ abstract class GTFSRealtimeProto {
        * @return This builder for chaining.
        */
       public Builder clearLabel() {
-        bitField0_ = (bitField0_ & ~0x00000002);
         label_ = getDefaultInstance().getLabel();
+        bitField0_ = (bitField0_ & ~0x00000002);
         onChanged();
         return this;
       }
@@ -20598,11 +19709,9 @@ abstract class GTFSRealtimeProto {
        */
       public Builder setLabelBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
+        if (value == null) { throw new NullPointerException(); }
         label_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -20653,7 +19762,7 @@ abstract class GTFSRealtimeProto {
           getLicensePlateBytes() {
         java.lang.Object ref = licensePlate_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           licensePlate_ = b;
@@ -20673,11 +19782,9 @@ abstract class GTFSRealtimeProto {
        */
       public Builder setLicensePlate(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000004;
+        if (value == null) { throw new NullPointerException(); }
         licensePlate_ = value;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
@@ -20690,8 +19797,8 @@ abstract class GTFSRealtimeProto {
        * @return This builder for chaining.
        */
       public Builder clearLicensePlate() {
-        bitField0_ = (bitField0_ & ~0x00000004);
         licensePlate_ = getDefaultInstance().getLicensePlate();
+        bitField0_ = (bitField0_ & ~0x00000004);
         onChanged();
         return this;
       }
@@ -20706,11 +19813,9 @@ abstract class GTFSRealtimeProto {
        */
       public Builder setLicensePlateBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000004;
+        if (value == null) { throw new NullPointerException(); }
         licensePlate_ = value;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
@@ -20752,10 +19857,11 @@ abstract class GTFSRealtimeProto {
           builder.mergeFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
         } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(
-              e.getMessage()).setUnfinishedMessage(
-                  builder.buildPartial());
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
         }
         return builder.buildPartial();
       }
@@ -20939,11 +20045,6 @@ abstract class GTFSRealtimeProto {
       return new EntitySelector();
     }
 
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return dev.katsute.onemta.GTFSRealtimeProto.internal_static_transit_realtime_EntitySelector_descriptor;
@@ -20959,7 +20060,8 @@ abstract class GTFSRealtimeProto {
 
     private int bitField0_;
     public static final int AGENCY_ID_FIELD_NUMBER = 1;
-    private volatile java.lang.Object agencyId_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object agencyId_ = "";
     /**
      * <pre>
      * The values of the fields should correspond to the appropriate fields in the
@@ -20992,7 +20094,7 @@ abstract class GTFSRealtimeProto {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -21017,7 +20119,7 @@ abstract class GTFSRealtimeProto {
         getAgencyIdBytes() {
       java.lang.Object ref = agencyId_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         agencyId_ = b;
@@ -21028,7 +20130,8 @@ abstract class GTFSRealtimeProto {
     }
 
     public static final int ROUTE_ID_FIELD_NUMBER = 2;
-    private volatile java.lang.Object routeId_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object routeId_ = "";
     /**
      * <code>optional string route_id = 2;</code>
      * @return Whether the routeId field is set.
@@ -21047,7 +20150,7 @@ abstract class GTFSRealtimeProto {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -21065,7 +20168,7 @@ abstract class GTFSRealtimeProto {
         getRouteIdBytes() {
       java.lang.Object ref = routeId_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         routeId_ = b;
@@ -21076,7 +20179,7 @@ abstract class GTFSRealtimeProto {
     }
 
     public static final int ROUTE_TYPE_FIELD_NUMBER = 3;
-    private int routeType_;
+    private int routeType_ = 0;
     /**
      * <pre>
      * corresponds to route_type in GTFS.
@@ -21129,7 +20232,8 @@ abstract class GTFSRealtimeProto {
     }
 
     public static final int STOP_ID_FIELD_NUMBER = 5;
-    private volatile java.lang.Object stopId_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object stopId_ = "";
     /**
      * <code>optional string stop_id = 5;</code>
      * @return Whether the stopId field is set.
@@ -21148,7 +20252,7 @@ abstract class GTFSRealtimeProto {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -21166,7 +20270,7 @@ abstract class GTFSRealtimeProto {
         getStopIdBytes() {
       java.lang.Object ref = stopId_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         stopId_ = b;
@@ -21177,7 +20281,7 @@ abstract class GTFSRealtimeProto {
     }
 
     public static final int DIRECTION_ID_FIELD_NUMBER = 6;
-    private int directionId_;
+    private int directionId_ = 0;
     /**
      * <pre>
      * Corresponds to trip direction_id in GTFS trips.txt. If provided the
@@ -21339,22 +20443,17 @@ abstract class GTFSRealtimeProto {
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         agencyId_ = "";
-        bitField0_ = (bitField0_ & ~0x00000001);
         routeId_ = "";
-        bitField0_ = (bitField0_ & ~0x00000002);
         routeType_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000004);
-        if (tripBuilder_ == null) {
-          trip_ = null;
-        } else {
-          tripBuilder_.clear();
+        trip_ = null;
+        if (tripBuilder_ != null) {
+          tripBuilder_.dispose();
+          tripBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000008);
         stopId_ = "";
-        bitField0_ = (bitField0_ & ~0x00000010);
         directionId_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000020);
         return this;
       }
 
@@ -21381,100 +20480,43 @@ abstract class GTFSRealtimeProto {
       @java.lang.Override
       public dev.katsute.onemta.GTFSRealtimeProto.EntitySelector buildPartial() {
         dev.katsute.onemta.GTFSRealtimeProto.EntitySelector result = new dev.katsute.onemta.GTFSRealtimeProto.EntitySelector(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(dev.katsute.onemta.GTFSRealtimeProto.EntitySelector result) {
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.agencyId_ = agencyId_;
           to_bitField0_ |= 0x00000001;
         }
-        result.agencyId_ = agencyId_;
         if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.routeId_ = routeId_;
           to_bitField0_ |= 0x00000002;
         }
-        result.routeId_ = routeId_;
         if (((from_bitField0_ & 0x00000004) != 0)) {
           result.routeType_ = routeType_;
           to_bitField0_ |= 0x00000004;
         }
         if (((from_bitField0_ & 0x00000008) != 0)) {
-          if (tripBuilder_ == null) {
-            result.trip_ = trip_;
-          } else {
-            result.trip_ = tripBuilder_.build();
-          }
+          result.trip_ = tripBuilder_ == null
+              ? trip_
+              : tripBuilder_.build();
           to_bitField0_ |= 0x00000008;
         }
         if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.stopId_ = stopId_;
           to_bitField0_ |= 0x00000010;
         }
-        result.stopId_ = stopId_;
         if (((from_bitField0_ & 0x00000020) != 0)) {
           result.directionId_ = directionId_;
           to_bitField0_ |= 0x00000020;
         }
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
+        result.bitField0_ |= to_bitField0_;
       }
 
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public <Type> Builder setExtension(
-          com.google.protobuf.GeneratedMessage.GeneratedExtension<
-              dev.katsute.onemta.GTFSRealtimeProto.EntitySelector, Type> extension,
-          Type value) {
-        return super.setExtension(extension, value);
-      }
-      @java.lang.Override
-      public <Type> Builder setExtension(
-          com.google.protobuf.GeneratedMessage.GeneratedExtension<
-              dev.katsute.onemta.GTFSRealtimeProto.EntitySelector, java.util.List<Type>> extension,
-          int index, Type value) {
-        return super.setExtension(extension, index, value);
-      }
-      @java.lang.Override
-      public <Type> Builder addExtension(
-          com.google.protobuf.GeneratedMessage.GeneratedExtension<
-              dev.katsute.onemta.GTFSRealtimeProto.EntitySelector, java.util.List<Type>> extension,
-          Type value) {
-        return super.addExtension(extension, value);
-      }
-      @java.lang.Override
-      public <Type> Builder clearExtension(
-          com.google.protobuf.GeneratedMessage.GeneratedExtension<
-              dev.katsute.onemta.GTFSRealtimeProto.EntitySelector, ?> extension) {
-        return super.clearExtension(extension);
-      }
       private int bitField0_;
 
       private java.lang.Object agencyId_ = "";
@@ -21532,7 +20574,7 @@ abstract class GTFSRealtimeProto {
           getAgencyIdBytes() {
         java.lang.Object ref = agencyId_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           agencyId_ = b;
@@ -21555,11 +20597,9 @@ abstract class GTFSRealtimeProto {
        */
       public Builder setAgencyId(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
+        if (value == null) { throw new NullPointerException(); }
         agencyId_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -21575,8 +20615,8 @@ abstract class GTFSRealtimeProto {
        * @return This builder for chaining.
        */
       public Builder clearAgencyId() {
-        bitField0_ = (bitField0_ & ~0x00000001);
         agencyId_ = getDefaultInstance().getAgencyId();
+        bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
         return this;
       }
@@ -21594,11 +20634,9 @@ abstract class GTFSRealtimeProto {
        */
       public Builder setAgencyIdBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
+        if (value == null) { throw new NullPointerException(); }
         agencyId_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -21637,7 +20675,7 @@ abstract class GTFSRealtimeProto {
           getRouteIdBytes() {
         java.lang.Object ref = routeId_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           routeId_ = b;
@@ -21653,11 +20691,9 @@ abstract class GTFSRealtimeProto {
        */
       public Builder setRouteId(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
+        if (value == null) { throw new NullPointerException(); }
         routeId_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -21666,8 +20702,8 @@ abstract class GTFSRealtimeProto {
        * @return This builder for chaining.
        */
       public Builder clearRouteId() {
-        bitField0_ = (bitField0_ & ~0x00000002);
         routeId_ = getDefaultInstance().getRouteId();
+        bitField0_ = (bitField0_ & ~0x00000002);
         onChanged();
         return this;
       }
@@ -21678,11 +20714,9 @@ abstract class GTFSRealtimeProto {
        */
       public Builder setRouteIdBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
+        if (value == null) { throw new NullPointerException(); }
         routeId_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -21722,8 +20756,9 @@ abstract class GTFSRealtimeProto {
        * @return This builder for chaining.
        */
       public Builder setRouteType(int value) {
-        bitField0_ |= 0x00000004;
+
         routeType_ = value;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
@@ -21772,11 +20807,11 @@ abstract class GTFSRealtimeProto {
             throw new NullPointerException();
           }
           trip_ = value;
-          onChanged();
         } else {
           tripBuilder_.setMessage(value);
         }
         bitField0_ |= 0x00000008;
+        onChanged();
         return this;
       }
       /**
@@ -21786,11 +20821,11 @@ abstract class GTFSRealtimeProto {
           dev.katsute.onemta.GTFSRealtimeProto.TripDescriptor.Builder builderForValue) {
         if (tripBuilder_ == null) {
           trip_ = builderForValue.build();
-          onChanged();
         } else {
           tripBuilder_.setMessage(builderForValue.build());
         }
         bitField0_ |= 0x00000008;
+        onChanged();
         return this;
       }
       /**
@@ -21799,31 +20834,30 @@ abstract class GTFSRealtimeProto {
       public Builder mergeTrip(dev.katsute.onemta.GTFSRealtimeProto.TripDescriptor value) {
         if (tripBuilder_ == null) {
           if (((bitField0_ & 0x00000008) != 0) &&
-              trip_ != null &&
-              trip_ != dev.katsute.onemta.GTFSRealtimeProto.TripDescriptor.getDefaultInstance()) {
-            trip_ =
-              dev.katsute.onemta.GTFSRealtimeProto.TripDescriptor.newBuilder(trip_).mergeFrom(value).buildPartial();
+            trip_ != null &&
+            trip_ != dev.katsute.onemta.GTFSRealtimeProto.TripDescriptor.getDefaultInstance()) {
+            getTripBuilder().mergeFrom(value);
           } else {
             trip_ = value;
           }
-          onChanged();
         } else {
           tripBuilder_.mergeFrom(value);
         }
         bitField0_ |= 0x00000008;
+        onChanged();
         return this;
       }
       /**
        * <code>optional .transit_realtime.TripDescriptor trip = 4;</code>
        */
       public Builder clearTrip() {
-        if (tripBuilder_ == null) {
-          trip_ = null;
-          onChanged();
-        } else {
-          tripBuilder_.clear();
-        }
         bitField0_ = (bitField0_ & ~0x00000008);
+        trip_ = null;
+        if (tripBuilder_ != null) {
+          tripBuilder_.dispose();
+          tripBuilder_ = null;
+        }
+        onChanged();
         return this;
       }
       /**
@@ -21849,7 +20883,7 @@ abstract class GTFSRealtimeProto {
        * <code>optional .transit_realtime.TripDescriptor trip = 4;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          dev.katsute.onemta.GTFSRealtimeProto.TripDescriptor, dev.katsute.onemta.GTFSRealtimeProto.TripDescriptor.Builder, dev.katsute.onemta.GTFSRealtimeProto.TripDescriptorOrBuilder>
+          dev.katsute.onemta.GTFSRealtimeProto.TripDescriptor, dev.katsute.onemta.GTFSRealtimeProto.TripDescriptor.Builder, dev.katsute.onemta.GTFSRealtimeProto.TripDescriptorOrBuilder> 
           getTripFieldBuilder() {
         if (tripBuilder_ == null) {
           tripBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -21896,7 +20930,7 @@ abstract class GTFSRealtimeProto {
           getStopIdBytes() {
         java.lang.Object ref = stopId_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           stopId_ = b;
@@ -21912,11 +20946,9 @@ abstract class GTFSRealtimeProto {
        */
       public Builder setStopId(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000010;
+        if (value == null) { throw new NullPointerException(); }
         stopId_ = value;
+        bitField0_ |= 0x00000010;
         onChanged();
         return this;
       }
@@ -21925,8 +20957,8 @@ abstract class GTFSRealtimeProto {
        * @return This builder for chaining.
        */
       public Builder clearStopId() {
-        bitField0_ = (bitField0_ & ~0x00000010);
         stopId_ = getDefaultInstance().getStopId();
+        bitField0_ = (bitField0_ & ~0x00000010);
         onChanged();
         return this;
       }
@@ -21937,11 +20969,9 @@ abstract class GTFSRealtimeProto {
        */
       public Builder setStopIdBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000010;
+        if (value == null) { throw new NullPointerException(); }
         stopId_ = value;
+        bitField0_ |= 0x00000010;
         onChanged();
         return this;
       }
@@ -21984,8 +21014,9 @@ abstract class GTFSRealtimeProto {
        * @return This builder for chaining.
        */
       public Builder setDirectionId(int value) {
-        bitField0_ |= 0x00000020;
+
         directionId_ = value;
+        bitField0_ |= 0x00000020;
         onChanged();
         return this;
       }
@@ -22042,10 +21073,11 @@ abstract class GTFSRealtimeProto {
           builder.mergeFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
         } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(
-              e.getMessage()).setUnfinishedMessage(
-                  builder.buildPartial());
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
         }
         return builder.buildPartial();
       }
@@ -22079,7 +21111,7 @@ abstract class GTFSRealtimeProto {
      *
      * <code>repeated .transit_realtime.TranslatedString.Translation translation = 1;</code>
      */
-    java.util.List<dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Translation>
+    java.util.List<dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Translation> 
         getTranslationList();
     /**
      * <pre>
@@ -22104,7 +21136,7 @@ abstract class GTFSRealtimeProto {
      *
      * <code>repeated .transit_realtime.TranslatedString.Translation translation = 1;</code>
      */
-    java.util.List<? extends dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.TranslationOrBuilder>
+    java.util.List<? extends dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.TranslationOrBuilder> 
         getTranslationOrBuilderList();
     /**
      * <pre>
@@ -22153,11 +21185,6 @@ abstract class GTFSRealtimeProto {
       return new TranslatedString();
     }
 
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return dev.katsute.onemta.GTFSRealtimeProto.internal_static_transit_realtime_TranslatedString_descriptor;
@@ -22265,11 +21292,6 @@ abstract class GTFSRealtimeProto {
         return new Translation();
       }
 
-      @java.lang.Override
-      public final com.google.protobuf.UnknownFieldSet
-      getUnknownFields() {
-        return this.unknownFields;
-      }
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return dev.katsute.onemta.GTFSRealtimeProto.internal_static_transit_realtime_TranslatedString_Translation_descriptor;
@@ -22285,7 +21307,8 @@ abstract class GTFSRealtimeProto {
 
       private int bitField0_;
       public static final int TEXT_FIELD_NUMBER = 1;
-      private volatile java.lang.Object text_;
+      @SuppressWarnings("serial")
+      private volatile java.lang.Object text_ = "";
       /**
        * <pre>
        * A UTF-8 string containing the message.
@@ -22312,7 +21335,7 @@ abstract class GTFSRealtimeProto {
         if (ref instanceof java.lang.String) {
           return (java.lang.String) ref;
         } else {
-          com.google.protobuf.ByteString bs =
+          com.google.protobuf.ByteString bs = 
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           if (bs.isValidUtf8()) {
@@ -22334,7 +21357,7 @@ abstract class GTFSRealtimeProto {
           getTextBytes() {
         java.lang.Object ref = text_;
         if (ref instanceof java.lang.String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           text_ = b;
@@ -22345,7 +21368,8 @@ abstract class GTFSRealtimeProto {
       }
 
       public static final int LANGUAGE_FIELD_NUMBER = 2;
-      private volatile java.lang.Object language_;
+      @SuppressWarnings("serial")
+      private volatile java.lang.Object language_ = "";
       /**
        * <pre>
        * BCP-47 language code. Can be omitted if the language is unknown or if
@@ -22376,7 +21400,7 @@ abstract class GTFSRealtimeProto {
         if (ref instanceof java.lang.String) {
           return (java.lang.String) ref;
         } else {
-          com.google.protobuf.ByteString bs =
+          com.google.protobuf.ByteString bs = 
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           if (bs.isValidUtf8()) {
@@ -22400,7 +21424,7 @@ abstract class GTFSRealtimeProto {
           getLanguageBytes() {
         java.lang.Object ref = language_;
         if (ref instanceof java.lang.String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           language_ = b;
@@ -22523,26 +21547,20 @@ abstract class GTFSRealtimeProto {
 
         // Construct using dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Translation.newBuilder()
         private Builder() {
-          maybeForceBuilderInitialization();
+
         }
 
         private Builder(
             com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
           super(parent);
-          maybeForceBuilderInitialization();
-        }
-        private void maybeForceBuilderInitialization() {
-          if (com.google.protobuf.GeneratedMessageV3
-                  .alwaysUseFieldBuilders) {
-          }
+
         }
         @java.lang.Override
         public Builder clear() {
           super.clear();
+          bitField0_ = 0;
           text_ = "";
-          bitField0_ = (bitField0_ & ~0x00000001);
           language_ = "";
-          bitField0_ = (bitField0_ & ~0x00000002);
           return this;
         }
 
@@ -22569,80 +21587,25 @@ abstract class GTFSRealtimeProto {
         @java.lang.Override
         public dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Translation buildPartial() {
           dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Translation result = new dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Translation(this);
-          int from_bitField0_ = bitField0_;
-          int to_bitField0_ = 0;
-          if (((from_bitField0_ & 0x00000001) != 0)) {
-            to_bitField0_ |= 0x00000001;
-          }
-          result.text_ = text_;
-          if (((from_bitField0_ & 0x00000002) != 0)) {
-            to_bitField0_ |= 0x00000002;
-          }
-          result.language_ = language_;
-          result.bitField0_ = to_bitField0_;
+          if (bitField0_ != 0) { buildPartial0(result); }
           onBuilt();
           return result;
         }
 
-        @java.lang.Override
-        public Builder clone() {
-          return super.clone();
+        private void buildPartial0(dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Translation result) {
+          int from_bitField0_ = bitField0_;
+          int to_bitField0_ = 0;
+          if (((from_bitField0_ & 0x00000001) != 0)) {
+            result.text_ = text_;
+            to_bitField0_ |= 0x00000001;
+          }
+          if (((from_bitField0_ & 0x00000002) != 0)) {
+            result.language_ = language_;
+            to_bitField0_ |= 0x00000002;
+          }
+          result.bitField0_ |= to_bitField0_;
         }
-        @java.lang.Override
-        public Builder setField(
-            com.google.protobuf.Descriptors.FieldDescriptor field,
-            java.lang.Object value) {
-          return super.setField(field, value);
-        }
-        @java.lang.Override
-        public Builder clearField(
-            com.google.protobuf.Descriptors.FieldDescriptor field) {
-          return super.clearField(field);
-        }
-        @java.lang.Override
-        public Builder clearOneof(
-            com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-          return super.clearOneof(oneof);
-        }
-        @java.lang.Override
-        public Builder setRepeatedField(
-            com.google.protobuf.Descriptors.FieldDescriptor field,
-            int index, java.lang.Object value) {
-          return super.setRepeatedField(field, index, value);
-        }
-        @java.lang.Override
-        public Builder addRepeatedField(
-            com.google.protobuf.Descriptors.FieldDescriptor field,
-            java.lang.Object value) {
-          return super.addRepeatedField(field, value);
-        }
-        @java.lang.Override
-        public <Type> Builder setExtension(
-            com.google.protobuf.GeneratedMessage.GeneratedExtension<
-                dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Translation, Type> extension,
-            Type value) {
-          return super.setExtension(extension, value);
-        }
-        @java.lang.Override
-        public <Type> Builder setExtension(
-            com.google.protobuf.GeneratedMessage.GeneratedExtension<
-                dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Translation, java.util.List<Type>> extension,
-            int index, Type value) {
-          return super.setExtension(extension, index, value);
-        }
-        @java.lang.Override
-        public <Type> Builder addExtension(
-            com.google.protobuf.GeneratedMessage.GeneratedExtension<
-                dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Translation, java.util.List<Type>> extension,
-            Type value) {
-          return super.addExtension(extension, value);
-        }
-        @java.lang.Override
-        public <Type> Builder clearExtension(
-            com.google.protobuf.GeneratedMessage.GeneratedExtension<
-                dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Translation, ?> extension) {
-          return super.clearExtension(extension);
-        }
+
         private int bitField0_;
 
         private java.lang.Object text_ = "";
@@ -22691,7 +21654,7 @@ abstract class GTFSRealtimeProto {
             getTextBytes() {
           java.lang.Object ref = text_;
           if (ref instanceof String) {
-            com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString b = 
                 com.google.protobuf.ByteString.copyFromUtf8(
                     (java.lang.String) ref);
             text_ = b;
@@ -22711,11 +21674,9 @@ abstract class GTFSRealtimeProto {
          */
         public Builder setText(
             java.lang.String value) {
-          if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
+          if (value == null) { throw new NullPointerException(); }
           text_ = value;
+          bitField0_ |= 0x00000001;
           onChanged();
           return this;
         }
@@ -22728,8 +21689,8 @@ abstract class GTFSRealtimeProto {
          * @return This builder for chaining.
          */
         public Builder clearText() {
-          bitField0_ = (bitField0_ & ~0x00000001);
           text_ = getDefaultInstance().getText();
+          bitField0_ = (bitField0_ & ~0x00000001);
           onChanged();
           return this;
         }
@@ -22744,11 +21705,9 @@ abstract class GTFSRealtimeProto {
          */
         public Builder setTextBytes(
             com.google.protobuf.ByteString value) {
-          if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
+          if (value == null) { throw new NullPointerException(); }
           text_ = value;
+          bitField0_ |= 0x00000001;
           onChanged();
           return this;
         }
@@ -22805,7 +21764,7 @@ abstract class GTFSRealtimeProto {
             getLanguageBytes() {
           java.lang.Object ref = language_;
           if (ref instanceof String) {
-            com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString b = 
                 com.google.protobuf.ByteString.copyFromUtf8(
                     (java.lang.String) ref);
             language_ = b;
@@ -22827,11 +21786,9 @@ abstract class GTFSRealtimeProto {
          */
         public Builder setLanguage(
             java.lang.String value) {
-          if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
+          if (value == null) { throw new NullPointerException(); }
           language_ = value;
+          bitField0_ |= 0x00000002;
           onChanged();
           return this;
         }
@@ -22846,8 +21803,8 @@ abstract class GTFSRealtimeProto {
          * @return This builder for chaining.
          */
         public Builder clearLanguage() {
-          bitField0_ = (bitField0_ & ~0x00000002);
           language_ = getDefaultInstance().getLanguage();
+          bitField0_ = (bitField0_ & ~0x00000002);
           onChanged();
           return this;
         }
@@ -22864,11 +21821,9 @@ abstract class GTFSRealtimeProto {
          */
         public Builder setLanguageBytes(
             com.google.protobuf.ByteString value) {
-          if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
+          if (value == null) { throw new NullPointerException(); }
           language_ = value;
+          bitField0_ |= 0x00000002;
           onChanged();
           return this;
         }
@@ -22910,10 +21865,11 @@ abstract class GTFSRealtimeProto {
             builder.mergeFrom(input, extensionRegistry);
           } catch (com.google.protobuf.InvalidProtocolBufferException e) {
             throw e.setUnfinishedMessage(builder.buildPartial());
+          } catch (com.google.protobuf.UninitializedMessageException e) {
+            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
           } catch (java.io.IOException e) {
-            throw new com.google.protobuf.InvalidProtocolBufferException(
-                e.getMessage()).setUnfinishedMessage(
-                    builder.buildPartial());
+            throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                .setUnfinishedMessage(builder.buildPartial());
           }
           return builder.buildPartial();
         }
@@ -22936,6 +21892,7 @@ abstract class GTFSRealtimeProto {
     }
 
     public static final int TRANSLATION_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
     private java.util.List<dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Translation> translation_;
     /**
      * <pre>
@@ -22956,7 +21913,7 @@ abstract class GTFSRealtimeProto {
      * <code>repeated .transit_realtime.TranslatedString.Translation translation = 1;</code>
      */
     @java.lang.Override
-    public java.util.List<? extends dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.TranslationOrBuilder>
+    public java.util.List<? extends dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.TranslationOrBuilder> 
         getTranslationOrBuilderList() {
       return translation_;
     }
@@ -23121,29 +22078,25 @@ abstract class GTFSRealtimeProto {
 
       // Construct using dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-          getTranslationFieldBuilder();
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         if (translationBuilder_ == null) {
           translation_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
         } else {
+          translation_ = null;
           translationBuilder_.clear();
         }
+        bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
 
@@ -23170,7 +22123,13 @@ abstract class GTFSRealtimeProto {
       @java.lang.Override
       public dev.katsute.onemta.GTFSRealtimeProto.TranslatedString buildPartial() {
         dev.katsute.onemta.GTFSRealtimeProto.TranslatedString result = new dev.katsute.onemta.GTFSRealtimeProto.TranslatedString(this);
-        int from_bitField0_ = bitField0_;
+        buildPartialRepeatedFields(result);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartialRepeatedFields(dev.katsute.onemta.GTFSRealtimeProto.TranslatedString result) {
         if (translationBuilder_ == null) {
           if (((bitField0_ & 0x00000001) != 0)) {
             translation_ = java.util.Collections.unmodifiableList(translation_);
@@ -23180,69 +22139,12 @@ abstract class GTFSRealtimeProto {
         } else {
           result.translation_ = translationBuilder_.build();
         }
-        onBuilt();
-        return result;
       }
 
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
+      private void buildPartial0(dev.katsute.onemta.GTFSRealtimeProto.TranslatedString result) {
+        int from_bitField0_ = bitField0_;
       }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public <Type> Builder setExtension(
-          com.google.protobuf.GeneratedMessage.GeneratedExtension<
-              dev.katsute.onemta.GTFSRealtimeProto.TranslatedString, Type> extension,
-          Type value) {
-        return super.setExtension(extension, value);
-      }
-      @java.lang.Override
-      public <Type> Builder setExtension(
-          com.google.protobuf.GeneratedMessage.GeneratedExtension<
-              dev.katsute.onemta.GTFSRealtimeProto.TranslatedString, java.util.List<Type>> extension,
-          int index, Type value) {
-        return super.setExtension(extension, index, value);
-      }
-      @java.lang.Override
-      public <Type> Builder addExtension(
-          com.google.protobuf.GeneratedMessage.GeneratedExtension<
-              dev.katsute.onemta.GTFSRealtimeProto.TranslatedString, java.util.List<Type>> extension,
-          Type value) {
-        return super.addExtension(extension, value);
-      }
-      @java.lang.Override
-      public <Type> Builder clearExtension(
-          com.google.protobuf.GeneratedMessage.GeneratedExtension<
-              dev.katsute.onemta.GTFSRealtimeProto.TranslatedString, ?> extension) {
-        return super.clearExtension(extension);
-      }
+
       private int bitField0_;
 
       private java.util.List<dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Translation> translation_ =
@@ -23500,7 +22402,7 @@ abstract class GTFSRealtimeProto {
        *
        * <code>repeated .transit_realtime.TranslatedString.Translation translation = 1;</code>
        */
-      public java.util.List<? extends dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.TranslationOrBuilder>
+      public java.util.List<? extends dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.TranslationOrBuilder> 
            getTranslationOrBuilderList() {
         if (translationBuilder_ != null) {
           return translationBuilder_.getMessageOrBuilderList();
@@ -23538,12 +22440,12 @@ abstract class GTFSRealtimeProto {
        *
        * <code>repeated .transit_realtime.TranslatedString.Translation translation = 1;</code>
        */
-      public java.util.List<dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Translation.Builder>
+      public java.util.List<dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Translation.Builder> 
            getTranslationBuilderList() {
         return getTranslationFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Translation, dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Translation.Builder, dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.TranslationOrBuilder>
+          dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Translation, dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Translation.Builder, dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.TranslationOrBuilder> 
           getTranslationFieldBuilder() {
         if (translationBuilder_ == null) {
           translationBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
@@ -23594,10 +22496,11 @@ abstract class GTFSRealtimeProto {
           builder.mergeFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
         } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(
-              e.getMessage()).setUnfinishedMessage(
-                  builder.buildPartial());
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
         }
         return builder.buildPartial();
       }
@@ -23621,87 +22524,87 @@ abstract class GTFSRealtimeProto {
 
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_transit_realtime_FeedMessage_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_transit_realtime_FeedMessage_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_transit_realtime_FeedHeader_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_transit_realtime_FeedHeader_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_transit_realtime_FeedEntity_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_transit_realtime_FeedEntity_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_transit_realtime_TripUpdate_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_transit_realtime_TripUpdate_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_transit_realtime_TripUpdate_StopTimeEvent_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_transit_realtime_TripUpdate_StopTimeEvent_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_transit_realtime_TripUpdate_StopTimeUpdate_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_transit_realtime_TripUpdate_StopTimeUpdate_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_transit_realtime_TripUpdate_TripProperties_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_transit_realtime_TripUpdate_TripProperties_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_transit_realtime_VehiclePosition_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_transit_realtime_VehiclePosition_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_transit_realtime_VehiclePosition_CarriageDetails_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_transit_realtime_VehiclePosition_CarriageDetails_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_transit_realtime_Alert_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_transit_realtime_Alert_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_transit_realtime_TimeRange_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_transit_realtime_TimeRange_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_transit_realtime_Position_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_transit_realtime_Position_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_transit_realtime_TripDescriptor_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_transit_realtime_TripDescriptor_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_transit_realtime_VehicleDescriptor_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_transit_realtime_VehicleDescriptor_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_transit_realtime_EntitySelector_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_transit_realtime_EntitySelector_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_transit_realtime_TranslatedString_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_transit_realtime_TranslatedString_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_transit_realtime_TranslatedString_Translation_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_transit_realtime_TranslatedString_Translation_fieldAccessorTable;
 

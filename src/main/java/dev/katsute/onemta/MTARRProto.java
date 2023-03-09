@@ -79,11 +79,6 @@ abstract class MTARRProto {
       return new MtaRailroadStopTimeUpdate();
     }
 
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return dev.katsute.onemta.MTARRProto.internal_static_transit_realtime_MtaRailroadStopTimeUpdate_descriptor;
@@ -99,7 +94,8 @@ abstract class MTARRProto {
 
     private int bitField0_;
     public static final int TRACK_FIELD_NUMBER = 1;
-    private volatile java.lang.Object track_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object track_ = "";
     /**
      * <code>optional string track = 1;</code>
      * @return Whether the track field is set.
@@ -118,7 +114,7 @@ abstract class MTARRProto {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -136,7 +132,7 @@ abstract class MTARRProto {
         getTrackBytes() {
       java.lang.Object ref = track_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         track_ = b;
@@ -147,7 +143,8 @@ abstract class MTARRProto {
     }
 
     public static final int TRAINSTATUS_FIELD_NUMBER = 2;
-    private volatile java.lang.Object trainStatus_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object trainStatus_ = "";
     /**
      * <code>optional string trainStatus = 2;</code>
      * @return Whether the trainStatus field is set.
@@ -166,7 +163,7 @@ abstract class MTARRProto {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -184,7 +181,7 @@ abstract class MTARRProto {
         getTrainStatusBytes() {
       java.lang.Object ref = trainStatus_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         trainStatus_ = b;
@@ -306,26 +303,20 @@ abstract class MTARRProto {
 
       // Construct using dev.katsute.onemta.MTARRProto.MtaRailroadStopTimeUpdate.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         track_ = "";
-        bitField0_ = (bitField0_ & ~0x00000001);
         trainStatus_ = "";
-        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
@@ -352,53 +343,25 @@ abstract class MTARRProto {
       @java.lang.Override
       public dev.katsute.onemta.MTARRProto.MtaRailroadStopTimeUpdate buildPartial() {
         dev.katsute.onemta.MTARRProto.MtaRailroadStopTimeUpdate result = new dev.katsute.onemta.MTARRProto.MtaRailroadStopTimeUpdate(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.track_ = track_;
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.trainStatus_ = trainStatus_;
-        result.bitField0_ = to_bitField0_;
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
+      private void buildPartial0(dev.katsute.onemta.MTARRProto.MtaRailroadStopTimeUpdate result) {
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.track_ = track_;
+          to_bitField0_ |= 0x00000001;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.trainStatus_ = trainStatus_;
+          to_bitField0_ |= 0x00000002;
+        }
+        result.bitField0_ |= to_bitField0_;
       }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
+
       private int bitField0_;
 
       private java.lang.Object track_ = "";
@@ -435,7 +398,7 @@ abstract class MTARRProto {
           getTrackBytes() {
         java.lang.Object ref = track_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           track_ = b;
@@ -451,11 +414,9 @@ abstract class MTARRProto {
        */
       public Builder setTrack(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
+        if (value == null) { throw new NullPointerException(); }
         track_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -464,8 +425,8 @@ abstract class MTARRProto {
        * @return This builder for chaining.
        */
       public Builder clearTrack() {
-        bitField0_ = (bitField0_ & ~0x00000001);
         track_ = getDefaultInstance().getTrack();
+        bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
         return this;
       }
@@ -476,11 +437,9 @@ abstract class MTARRProto {
        */
       public Builder setTrackBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
+        if (value == null) { throw new NullPointerException(); }
         track_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -519,7 +478,7 @@ abstract class MTARRProto {
           getTrainStatusBytes() {
         java.lang.Object ref = trainStatus_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           trainStatus_ = b;
@@ -535,11 +494,9 @@ abstract class MTARRProto {
        */
       public Builder setTrainStatus(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
+        if (value == null) { throw new NullPointerException(); }
         trainStatus_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -548,8 +505,8 @@ abstract class MTARRProto {
        * @return This builder for chaining.
        */
       public Builder clearTrainStatus() {
-        bitField0_ = (bitField0_ & ~0x00000002);
         trainStatus_ = getDefaultInstance().getTrainStatus();
+        bitField0_ = (bitField0_ & ~0x00000002);
         onChanged();
         return this;
       }
@@ -560,11 +517,9 @@ abstract class MTARRProto {
        */
       public Builder setTrainStatusBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
+        if (value == null) { throw new NullPointerException(); }
         trainStatus_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -606,10 +561,11 @@ abstract class MTARRProto {
           builder.mergeFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
         } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(
-              e.getMessage()).setUnfinishedMessage(
-                  builder.buildPartial());
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
         }
         return builder.buildPartial();
       }
@@ -732,11 +688,6 @@ abstract class MTARRProto {
       return new MtaRailroadCarriageDetails();
     }
 
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return dev.katsute.onemta.MTARRProto.internal_static_transit_realtime_MtaRailroadCarriageDetails_descriptor;
@@ -1022,7 +973,7 @@ abstract class MTARRProto {
 
     private int bitField0_;
     public static final int BICYCLES_ALLOWED_FIELD_NUMBER = 1;
-    private int bicyclesAllowed_;
+    private int bicyclesAllowed_ = 0;
     /**
      * <pre>
      *Indicates the number of bikes permitted per carriage.
@@ -1051,7 +1002,8 @@ abstract class MTARRProto {
     }
 
     public static final int CARRIAGE_CLASS_FIELD_NUMBER = 2;
-    private volatile java.lang.Object carriageClass_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object carriageClass_ = "";
     /**
      * <pre>
      *A description of the carriage type/model.
@@ -1078,7 +1030,7 @@ abstract class MTARRProto {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -1100,7 +1052,7 @@ abstract class MTARRProto {
         getCarriageClassBytes() {
       java.lang.Object ref = carriageClass_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         carriageClass_ = b;
@@ -1111,7 +1063,7 @@ abstract class MTARRProto {
     }
 
     public static final int QUIET_CARRIAGE_FIELD_NUMBER = 3;
-    private int quietCarriage_;
+    private int quietCarriage_ = 0;
     /**
      * <code>optional .transit_realtime.MtaRailroadCarriageDetails.QuietCarriage quiet_carriage = 3 [default = UNKNOWN_QUIET_CARRIAGE];</code>
      * @return Whether the quietCarriage field is set.
@@ -1124,13 +1076,12 @@ abstract class MTARRProto {
      * @return The quietCarriage.
      */
     @java.lang.Override public dev.katsute.onemta.MTARRProto.MtaRailroadCarriageDetails.QuietCarriage getQuietCarriage() {
-      @SuppressWarnings("deprecation")
-      dev.katsute.onemta.MTARRProto.MtaRailroadCarriageDetails.QuietCarriage result = dev.katsute.onemta.MTARRProto.MtaRailroadCarriageDetails.QuietCarriage.valueOf(quietCarriage_);
+      dev.katsute.onemta.MTARRProto.MtaRailroadCarriageDetails.QuietCarriage result = dev.katsute.onemta.MTARRProto.MtaRailroadCarriageDetails.QuietCarriage.forNumber(quietCarriage_);
       return result == null ? dev.katsute.onemta.MTARRProto.MtaRailroadCarriageDetails.QuietCarriage.UNKNOWN_QUIET_CARRIAGE : result;
     }
 
     public static final int TOILET_FACILITIES_FIELD_NUMBER = 4;
-    private int toiletFacilities_;
+    private int toiletFacilities_ = 0;
     /**
      * <code>optional .transit_realtime.MtaRailroadCarriageDetails.ToiletFacilities toilet_facilities = 4 [default = UNKNOWN_TOILET_FACILITIES];</code>
      * @return Whether the toiletFacilities field is set.
@@ -1143,8 +1094,7 @@ abstract class MTARRProto {
      * @return The toiletFacilities.
      */
     @java.lang.Override public dev.katsute.onemta.MTARRProto.MtaRailroadCarriageDetails.ToiletFacilities getToiletFacilities() {
-      @SuppressWarnings("deprecation")
-      dev.katsute.onemta.MTARRProto.MtaRailroadCarriageDetails.ToiletFacilities result = dev.katsute.onemta.MTARRProto.MtaRailroadCarriageDetails.ToiletFacilities.valueOf(toiletFacilities_);
+      dev.katsute.onemta.MTARRProto.MtaRailroadCarriageDetails.ToiletFacilities result = dev.katsute.onemta.MTARRProto.MtaRailroadCarriageDetails.ToiletFacilities.forNumber(toiletFacilities_);
       return result == null ? dev.katsute.onemta.MTARRProto.MtaRailroadCarriageDetails.ToiletFacilities.UNKNOWN_TOILET_FACILITIES : result;
     }
 
@@ -1260,30 +1210,22 @@ abstract class MTARRProto {
 
       // Construct using dev.katsute.onemta.MTARRProto.MtaRailroadCarriageDetails.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         bicyclesAllowed_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000001);
         carriageClass_ = "";
-        bitField0_ = (bitField0_ & ~0x00000002);
         quietCarriage_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000004);
         toiletFacilities_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
 
@@ -1310,6 +1252,12 @@ abstract class MTARRProto {
       @java.lang.Override
       public dev.katsute.onemta.MTARRProto.MtaRailroadCarriageDetails buildPartial() {
         dev.katsute.onemta.MTARRProto.MtaRailroadCarriageDetails result = new dev.katsute.onemta.MTARRProto.MtaRailroadCarriageDetails(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(dev.katsute.onemta.MTARRProto.MtaRailroadCarriageDetails result) {
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -1317,54 +1265,20 @@ abstract class MTARRProto {
           to_bitField0_ |= 0x00000001;
         }
         if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.carriageClass_ = carriageClass_;
           to_bitField0_ |= 0x00000002;
         }
-        result.carriageClass_ = carriageClass_;
         if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.quietCarriage_ = quietCarriage_;
           to_bitField0_ |= 0x00000004;
         }
-        result.quietCarriage_ = quietCarriage_;
         if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.toiletFacilities_ = toiletFacilities_;
           to_bitField0_ |= 0x00000008;
         }
-        result.toiletFacilities_ = toiletFacilities_;
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
+        result.bitField0_ |= to_bitField0_;
       }
 
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
       private int bitField0_;
 
       private int bicyclesAllowed_ ;
@@ -1405,8 +1319,9 @@ abstract class MTARRProto {
        * @return This builder for chaining.
        */
       public Builder setBicyclesAllowed(int value) {
-        bitField0_ |= 0x00000001;
+
         bicyclesAllowed_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -1472,7 +1387,7 @@ abstract class MTARRProto {
           getCarriageClassBytes() {
         java.lang.Object ref = carriageClass_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           carriageClass_ = b;
@@ -1492,11 +1407,9 @@ abstract class MTARRProto {
        */
       public Builder setCarriageClass(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
+        if (value == null) { throw new NullPointerException(); }
         carriageClass_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -1509,8 +1422,8 @@ abstract class MTARRProto {
        * @return This builder for chaining.
        */
       public Builder clearCarriageClass() {
-        bitField0_ = (bitField0_ & ~0x00000002);
         carriageClass_ = getDefaultInstance().getCarriageClass();
+        bitField0_ = (bitField0_ & ~0x00000002);
         onChanged();
         return this;
       }
@@ -1525,11 +1438,9 @@ abstract class MTARRProto {
        */
       public Builder setCarriageClassBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
+        if (value == null) { throw new NullPointerException(); }
         carriageClass_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -1548,8 +1459,7 @@ abstract class MTARRProto {
        */
       @java.lang.Override
       public dev.katsute.onemta.MTARRProto.MtaRailroadCarriageDetails.QuietCarriage getQuietCarriage() {
-        @SuppressWarnings("deprecation")
-        dev.katsute.onemta.MTARRProto.MtaRailroadCarriageDetails.QuietCarriage result = dev.katsute.onemta.MTARRProto.MtaRailroadCarriageDetails.QuietCarriage.valueOf(quietCarriage_);
+        dev.katsute.onemta.MTARRProto.MtaRailroadCarriageDetails.QuietCarriage result = dev.katsute.onemta.MTARRProto.MtaRailroadCarriageDetails.QuietCarriage.forNumber(quietCarriage_);
         return result == null ? dev.katsute.onemta.MTARRProto.MtaRailroadCarriageDetails.QuietCarriage.UNKNOWN_QUIET_CARRIAGE : result;
       }
       /**
@@ -1591,8 +1501,7 @@ abstract class MTARRProto {
        */
       @java.lang.Override
       public dev.katsute.onemta.MTARRProto.MtaRailroadCarriageDetails.ToiletFacilities getToiletFacilities() {
-        @SuppressWarnings("deprecation")
-        dev.katsute.onemta.MTARRProto.MtaRailroadCarriageDetails.ToiletFacilities result = dev.katsute.onemta.MTARRProto.MtaRailroadCarriageDetails.ToiletFacilities.valueOf(toiletFacilities_);
+        dev.katsute.onemta.MTARRProto.MtaRailroadCarriageDetails.ToiletFacilities result = dev.katsute.onemta.MTARRProto.MtaRailroadCarriageDetails.ToiletFacilities.forNumber(toiletFacilities_);
         return result == null ? dev.katsute.onemta.MTARRProto.MtaRailroadCarriageDetails.ToiletFacilities.UNKNOWN_TOILET_FACILITIES : result;
       }
       /**
@@ -1657,10 +1566,11 @@ abstract class MTARRProto {
           builder.mergeFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
         } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(
-              e.getMessage()).setUnfinishedMessage(
-                  builder.buildPartial());
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
         }
         return builder.buildPartial();
       }
@@ -1706,12 +1616,12 @@ abstract class MTARRProto {
         dev.katsute.onemta.MTARRProto.MtaRailroadCarriageDetails.getDefaultInstance());
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_transit_realtime_MtaRailroadStopTimeUpdate_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_transit_realtime_MtaRailroadStopTimeUpdate_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_transit_realtime_MtaRailroadCarriageDetails_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_transit_realtime_MtaRailroadCarriageDetails_fieldAccessorTable;
 
