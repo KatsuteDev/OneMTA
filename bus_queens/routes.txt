@@ -78,6 +78,8 @@ BX15,MTA NYCT,Bx15,Fordham Plaza - The Hub,via 3rd Av,3,FAA61A,FFFFFF
 BX16,MTA NYCT,Bx16,Pelham - Norwood,via E 233rd St / Nereid Av,3,00AEEF,FFFFFF
 BX17,MTA NYCT,Bx17,Fordham Plaza - Port Morris,via Crotona Av / Prospect Av,3,006CB7,FFFFFF
 BX18,MTA NYCT,Bx18,Morris Heights/High Bridge Circulator,via 168th St / Undercliff Av / Sedgwick Av,3,6CBE45,FFFFFF
+BX18B,MTA NYCT,Bx18B,Morris Heights/High Bridge Circulator,via 168 St / Sedgwick Av,3,6CBE45,FFFFFF
+BX18A,MTA NYCT,Bx18A,Morris Heights/High Bridge Circulator,via 168 St / Undercliff Av,3,6CBE45,FFFFFF
 BX19,MTA NYCT,Bx19,NY Botanical Garden - Riverbank Park,via Southern Bl / E 149th St,3,B933AD,FFFFFF
 BX2,MTA NYCT,Bx2,Kingsbridge Heights - Mott Haven,via Grand Concourse / E 149th St,3,FAA61A,FFFFFF
 BX20,MTA NYCT,Bx20,Riverdale - Inwood,via Broadway / Henry Hudson Pkwy,3,00AEEF,FFFFFF
@@ -106,6 +108,9 @@ BX46,MTA NYCT,Bx46,Prospect Av - Westchester Av / Hunts Point Market,via Barrett
 BX99,MTA NYCT,Bx99,Woodlawn - West Village,via 8 av / Grand Concourse,3,EE352E,FFFFFF
 D99,MTA NYCT,D99,Stillwell Terminal - Bay 50 St,via Stillwell Av,3,EE352E,FFFFFF
 J99,MTA NYCT,J99,121 St Station - Jamaica Van Wyck Station ,via Jamaica Av,3,EE352E,FFFFFF
+J90,MTA NYCT,J90,J Shuttle Bus - Crescent St - Jamaica Van Wyck Station ,via Jamaica Av,3,EE352E,FFFFFF
+D90,MTA NYCT,D90,D Shuttle Bus - Mosholu Pkwy #4 - 205 St,via Crand Concourse,3,EE352E,FFFFFF
+L92,MTA NYCT,L92,L Shuttle Bus - Abingdon Sq - FDR Drive, via 14 St,3,EE352E,FFFFFF
 EBUS,MTA NYCT,EBUS,Van Wyck Bl - Jamaica Ctr,via Jamaica Av and Archer Av,3,EE352E,FFFFFF
 SHGRD,MTA NYCT,SHGRD,Grand St D Loop, via Grand St and Houston St,3,EE352E,FFFFFF
 SHNRD,MTA NYCT,SHNRD,Atlantic Av - 9 Av, via 4 Av,3,EE352E,FFFFFF

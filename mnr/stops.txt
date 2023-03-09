@@ -1,5 +1,5 @@
 stop_id,stop_code,stop_name,stop_desc,stop_lat,stop_lon,zone_id,stop_url,location_type,parent_station,wheelchair_boarding
-1,0NY,Grand Central Terminal,,40.752998,-73.977056,,http://as0.mta.info/mnr/stations/station_detail.cfm?key=1,0,,1
+1,0NY,Grand Central,,40.752998,-73.977056,,http://as0.mta.info/mnr/stations/station_detail.cfm?key=1,0,,1
 4,0HL,Harlem-125 St,,40.805157,-73.939149,,http://as0.mta.info/mnr/stations/station_detail.cfm?key=2,0,,1
 622,0YS,Yankees-E 153 St,,40.8253,-73.9299,,http://as0.mta.info/mnr/stations/station_detail.cfm?key=3,0,,1
 184,0HI,Highbridge Yard,,40.8359,-73.9315,,http://as0.mta.info/mnr/stations/station_detail.cfm?key=,0,,0
