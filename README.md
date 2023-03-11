@@ -125,8 +125,8 @@ MNR.Alert[] mnrAlerts       = mta.getMNRAlerts();
 
 <!-- Copilot -->
 <table>
-    <img alt="GitHub Copilot" align="left" src="https://raw.githubusercontent.com/KatsuteDev/.github/main/profile/copilot-dark.png#gh-dark-mode-only" width="50">
-    <img alt="GitHub Copilot" align="left" src="https://raw.githubusercontent.com/KatsuteDev/.github/main/profile/copilot-light.png#gh-light-mode-only" width="50">
+    <img alt="GitHub Copilot" align="left" src="https://raw.githubusercontent.com/Katsute/Repository-Manager/main/assets/copilot-dark.png#gh-dark-mode-only" width="50">
+    <img alt="GitHub Copilot" align="left" src="https://raw.githubusercontent.com/Katsute/Repository-Manager/main/assets/copilot-light.png#gh-light-mode-only" width="50">
     <p>GitHub Copilot is <b>strictly prohibited</b> on this repository.<br>Pulls using this will be rejected.</p>
 </table>
 <!-- Copilot -->
