@@ -1,5 +1,20 @@
 # Changelog
 
+## 2.0.1
+
+### 📘 Dependencies
+
+* Bump maven-surefire-plugin from 3.0.0-M7 to 3.0.0-M8 [#114](https://github.com/KatsuteDev/OneMTA/pull/114) ([@dependabot](https://github.com/dependabot))
+* Bump maven-surefire-plugin from 3.0.0-M8 to 3.0.0-M9 [#115](https://github.com/KatsuteDev/OneMTA/pull/115) ([@dependabot](https://github.com/dependabot))
+* Bump maven-javadoc-plugin from 3.4.1 to 3.5.0 [#116](https://github.com/KatsuteDev/OneMTA/pull/116) ([@dependabot](https://github.com/dependabot))
+* Bump maven-compiler-plugin from 3.10.1 to 3.11.0 [#120](https://github.com/KatsuteDev/OneMTA/pull/120) ([@dependabot](https://github.com/dependabot))
+* Bump protobuf-java from 3.21.12 to 3.22.1 [#123](https://github.com/KatsuteDev/OneMTA/pull/123) ([@mashiro-san](https://github.com/mashiro-san))
+* Bump protobuf-java from 3.22.1 to 3.22.2 [#125](https://github.com/KatsuteDev/OneMTA/pull/125) ([@dependabot](https://github.com/dependabot))
+* Bump protobuf-java-util from 3.22.1 to 3.22.2 [#126](https://github.com/KatsuteDev/OneMTA/pull/126) ([@dependabot](https://github.com/dependabot))
+* Bump maven-surefire-plugin from 3.0.0-M9 to 3.0.0 [#127](https://github.com/KatsuteDev/OneMTA/pull/127) ([@dependabot](https://github.com/dependabot))
+
+**Full Changelog**: [`2.0.0...2.0.1`](https://github.com/KatsuteDev/OneMTA/compare/2.0.0...2.0.1)
+
 ## 2.0.0
 
 ### ⚠️ Breaking Change
