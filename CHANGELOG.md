@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.0.2
+
+### 🐞 Bug Fixes
+
+* Update service status [`4fb9157`](https://github.com/KatsuteDev/OneMTA/commit/4fb9157feb763a77e02573800eaae0be4b47dcbf) ([@Katsute](https://github.com/Katsute))
+
+**Full Changelog**: [`2.0.1...2.0.2`](https://github.com/KatsuteDev/OneMTA/compare/2.0.1...2.0.2)
+
 ## 2.0.1
 
 ### 📘 Dependencies
