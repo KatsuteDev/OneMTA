@@ -464,7 +464,6 @@ abstract class CrowdingProto {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:transit_realtime.CrowdingDescriptor)
     }
 
@@ -529,7 +528,7 @@ abstract class CrowdingProto {
         dev.katsute.onemta.CrowdingProto.CrowdingDescriptor.getDefaultInstance());
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_transit_realtime_CrowdingDescriptor_descriptor;
-  private static final 
+  private static final
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_transit_realtime_CrowdingDescriptor_fieldAccessorTable;
 

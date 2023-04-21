@@ -126,7 +126,7 @@ abstract class ServiceStatusProto {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
+        com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -149,7 +149,7 @@ abstract class ServiceStatusProto {
         getMercuryVersionBytes() {
       java.lang.Object ref = mercuryVersion_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
+        com.google.protobuf.ByteString b =
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         mercuryVersion_ = b;
@@ -380,7 +380,7 @@ abstract class ServiceStatusProto {
           getMercuryVersionBytes() {
         java.lang.Object ref = mercuryVersion_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString b =
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           mercuryVersion_ = b;
@@ -451,7 +451,6 @@ abstract class ServiceStatusProto {
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
       }
-
 
       // @@protoc_insertion_point(builder_scope:transit_realtime.MercuryFeedHeader)
     }
@@ -924,7 +923,7 @@ abstract class ServiceStatusProto {
        * <code>required .transit_realtime.EntitySelector affected_entity = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          dev.katsute.onemta.GTFSRealtimeProto.EntitySelector, dev.katsute.onemta.GTFSRealtimeProto.EntitySelector.Builder, dev.katsute.onemta.GTFSRealtimeProto.EntitySelectorOrBuilder> 
+          dev.katsute.onemta.GTFSRealtimeProto.EntitySelector, dev.katsute.onemta.GTFSRealtimeProto.EntitySelector.Builder, dev.katsute.onemta.GTFSRealtimeProto.EntitySelectorOrBuilder>
           getAffectedEntityFieldBuilder() {
         if (affectedEntityBuilder_ == null) {
           affectedEntityBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -1043,7 +1042,7 @@ abstract class ServiceStatusProto {
        * <code>required .transit_realtime.TranslatedString notes = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          dev.katsute.onemta.GTFSRealtimeProto.TranslatedString, dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Builder, dev.katsute.onemta.GTFSRealtimeProto.TranslatedStringOrBuilder> 
+          dev.katsute.onemta.GTFSRealtimeProto.TranslatedString, dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Builder, dev.katsute.onemta.GTFSRealtimeProto.TranslatedStringOrBuilder>
           getNotesFieldBuilder() {
         if (notesBuilder_ == null) {
           notesBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -1066,7 +1065,6 @@ abstract class ServiceStatusProto {
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
       }
-
 
       // @@protoc_insertion_point(builder_scope:transit_realtime.MercuryStationAlternative)
     }
@@ -1165,7 +1163,7 @@ abstract class ServiceStatusProto {
     /**
      * <code>repeated .transit_realtime.MercuryStationAlternative station_alternative = 4;</code>
      */
-    java.util.List<dev.katsute.onemta.ServiceStatusProto.MercuryStationAlternative> 
+    java.util.List<dev.katsute.onemta.ServiceStatusProto.MercuryStationAlternative>
         getStationAlternativeList();
     /**
      * <code>repeated .transit_realtime.MercuryStationAlternative station_alternative = 4;</code>
@@ -1178,7 +1176,7 @@ abstract class ServiceStatusProto {
     /**
      * <code>repeated .transit_realtime.MercuryStationAlternative station_alternative = 4;</code>
      */
-    java.util.List<? extends dev.katsute.onemta.ServiceStatusProto.MercuryStationAlternativeOrBuilder> 
+    java.util.List<? extends dev.katsute.onemta.ServiceStatusProto.MercuryStationAlternativeOrBuilder>
         getStationAlternativeOrBuilderList();
     /**
      * <code>repeated .transit_realtime.MercuryStationAlternative station_alternative = 4;</code>
@@ -1307,7 +1305,7 @@ abstract class ServiceStatusProto {
     /**
      * <code>repeated .transit_realtime.EntitySelector affected_stations = 10;</code>
      */
-    java.util.List<dev.katsute.onemta.GTFSRealtimeProto.EntitySelector> 
+    java.util.List<dev.katsute.onemta.GTFSRealtimeProto.EntitySelector>
         getAffectedStationsList();
     /**
      * <code>repeated .transit_realtime.EntitySelector affected_stations = 10;</code>
@@ -1320,7 +1318,7 @@ abstract class ServiceStatusProto {
     /**
      * <code>repeated .transit_realtime.EntitySelector affected_stations = 10;</code>
      */
-    java.util.List<? extends dev.katsute.onemta.GTFSRealtimeProto.EntitySelectorOrBuilder> 
+    java.util.List<? extends dev.katsute.onemta.GTFSRealtimeProto.EntitySelectorOrBuilder>
         getAffectedStationsOrBuilderList();
     /**
      * <code>repeated .transit_realtime.EntitySelector affected_stations = 10;</code>
@@ -1490,7 +1488,7 @@ abstract class ServiceStatusProto {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
+        com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -1508,7 +1506,7 @@ abstract class ServiceStatusProto {
         getAlertTypeBytes() {
       java.lang.Object ref = alertType_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
+        com.google.protobuf.ByteString b =
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         alertType_ = b;
@@ -1532,7 +1530,7 @@ abstract class ServiceStatusProto {
      * <code>repeated .transit_realtime.MercuryStationAlternative station_alternative = 4;</code>
      */
     @java.lang.Override
-    public java.util.List<? extends dev.katsute.onemta.ServiceStatusProto.MercuryStationAlternativeOrBuilder> 
+    public java.util.List<? extends dev.katsute.onemta.ServiceStatusProto.MercuryStationAlternativeOrBuilder>
         getStationAlternativeOrBuilderList() {
       return stationAlternative_;
     }
@@ -1742,7 +1740,7 @@ abstract class ServiceStatusProto {
      * <code>repeated .transit_realtime.EntitySelector affected_stations = 10;</code>
      */
     @java.lang.Override
-    public java.util.List<? extends dev.katsute.onemta.GTFSRealtimeProto.EntitySelectorOrBuilder> 
+    public java.util.List<? extends dev.katsute.onemta.GTFSRealtimeProto.EntitySelectorOrBuilder>
         getAffectedStationsOrBuilderList() {
       return affectedStations_;
     }
@@ -1843,7 +1841,7 @@ abstract class ServiceStatusProto {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
+        com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -1865,7 +1863,7 @@ abstract class ServiceStatusProto {
         getCloneIdBytes() {
       java.lang.Object ref = cloneId_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
+        com.google.protobuf.ByteString b =
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         cloneId_ = b;
@@ -2270,7 +2268,7 @@ abstract class ServiceStatusProto {
           getAlertTypeBytes() {
         java.lang.Object ref = alertType_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString b =
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           alertType_ = b;
@@ -2511,7 +2509,7 @@ abstract class ServiceStatusProto {
       /**
        * <code>repeated .transit_realtime.MercuryStationAlternative station_alternative = 4;</code>
        */
-      public java.util.List<? extends dev.katsute.onemta.ServiceStatusProto.MercuryStationAlternativeOrBuilder> 
+      public java.util.List<? extends dev.katsute.onemta.ServiceStatusProto.MercuryStationAlternativeOrBuilder>
            getStationAlternativeOrBuilderList() {
         if (stationAlternativeBuilder_ != null) {
           return stationAlternativeBuilder_.getMessageOrBuilderList();
@@ -2537,12 +2535,12 @@ abstract class ServiceStatusProto {
       /**
        * <code>repeated .transit_realtime.MercuryStationAlternative station_alternative = 4;</code>
        */
-      public java.util.List<dev.katsute.onemta.ServiceStatusProto.MercuryStationAlternative.Builder> 
+      public java.util.List<dev.katsute.onemta.ServiceStatusProto.MercuryStationAlternative.Builder>
            getStationAlternativeBuilderList() {
         return getStationAlternativeFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          dev.katsute.onemta.ServiceStatusProto.MercuryStationAlternative, dev.katsute.onemta.ServiceStatusProto.MercuryStationAlternative.Builder, dev.katsute.onemta.ServiceStatusProto.MercuryStationAlternativeOrBuilder> 
+          dev.katsute.onemta.ServiceStatusProto.MercuryStationAlternative, dev.katsute.onemta.ServiceStatusProto.MercuryStationAlternative.Builder, dev.katsute.onemta.ServiceStatusProto.MercuryStationAlternativeOrBuilder>
           getStationAlternativeFieldBuilder() {
         if (stationAlternativeBuilder_ == null) {
           stationAlternativeBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
@@ -2999,7 +2997,7 @@ abstract class ServiceStatusProto {
        * <code>optional .transit_realtime.TranslatedString human_readable_active_period = 8;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          dev.katsute.onemta.GTFSRealtimeProto.TranslatedString, dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Builder, dev.katsute.onemta.GTFSRealtimeProto.TranslatedStringOrBuilder> 
+          dev.katsute.onemta.GTFSRealtimeProto.TranslatedString, dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Builder, dev.katsute.onemta.GTFSRealtimeProto.TranslatedStringOrBuilder>
           getHumanReadableActivePeriodFieldBuilder() {
         if (humanReadableActivePeriodBuilder_ == null) {
           humanReadableActivePeriodBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -3247,7 +3245,7 @@ abstract class ServiceStatusProto {
       /**
        * <code>repeated .transit_realtime.EntitySelector affected_stations = 10;</code>
        */
-      public java.util.List<? extends dev.katsute.onemta.GTFSRealtimeProto.EntitySelectorOrBuilder> 
+      public java.util.List<? extends dev.katsute.onemta.GTFSRealtimeProto.EntitySelectorOrBuilder>
            getAffectedStationsOrBuilderList() {
         if (affectedStationsBuilder_ != null) {
           return affectedStationsBuilder_.getMessageOrBuilderList();
@@ -3273,12 +3271,12 @@ abstract class ServiceStatusProto {
       /**
        * <code>repeated .transit_realtime.EntitySelector affected_stations = 10;</code>
        */
-      public java.util.List<dev.katsute.onemta.GTFSRealtimeProto.EntitySelector.Builder> 
+      public java.util.List<dev.katsute.onemta.GTFSRealtimeProto.EntitySelector.Builder>
            getAffectedStationsBuilderList() {
         return getAffectedStationsFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          dev.katsute.onemta.GTFSRealtimeProto.EntitySelector, dev.katsute.onemta.GTFSRealtimeProto.EntitySelector.Builder, dev.katsute.onemta.GTFSRealtimeProto.EntitySelectorOrBuilder> 
+          dev.katsute.onemta.GTFSRealtimeProto.EntitySelector, dev.katsute.onemta.GTFSRealtimeProto.EntitySelector.Builder, dev.katsute.onemta.GTFSRealtimeProto.EntitySelectorOrBuilder>
           getAffectedStationsFieldBuilder() {
         if (affectedStationsBuilder_ == null) {
           affectedStationsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
@@ -3398,7 +3396,7 @@ abstract class ServiceStatusProto {
        * <code>optional .transit_realtime.TranslatedString screens_summary = 11;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          dev.katsute.onemta.GTFSRealtimeProto.TranslatedString, dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Builder, dev.katsute.onemta.GTFSRealtimeProto.TranslatedStringOrBuilder> 
+          dev.katsute.onemta.GTFSRealtimeProto.TranslatedString, dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Builder, dev.katsute.onemta.GTFSRealtimeProto.TranslatedStringOrBuilder>
           getScreensSummaryFieldBuilder() {
         if (screensSummaryBuilder_ == null) {
           screensSummaryBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -3497,7 +3495,7 @@ abstract class ServiceStatusProto {
           getCloneIdBytes() {
         java.lang.Object ref = cloneId_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString b =
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           cloneId_ = b;
@@ -3565,7 +3563,6 @@ abstract class ServiceStatusProto {
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
       }
-
 
       // @@protoc_insertion_point(builder_scope:transit_realtime.MercuryAlert)
     }
@@ -4035,7 +4032,6 @@ abstract class ServiceStatusProto {
        */
       public static final int PRIORITY_SUSPENDED_VALUE = 42;
 
-
       public final int getNumber() {
         return value;
       }
@@ -4177,7 +4173,7 @@ abstract class ServiceStatusProto {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
+        com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -4199,7 +4195,7 @@ abstract class ServiceStatusProto {
         getSortOrderBytes() {
       java.lang.Object ref = sortOrder_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
+        com.google.protobuf.ByteString b =
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         sortOrder_ = b;
@@ -4427,7 +4423,7 @@ abstract class ServiceStatusProto {
           getSortOrderBytes() {
         java.lang.Object ref = sortOrder_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString b =
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           sortOrder_ = b;
@@ -4495,7 +4491,6 @@ abstract class ServiceStatusProto {
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
       }
-
 
       // @@protoc_insertion_point(builder_scope:transit_realtime.MercuryEntitySelector)
     }
@@ -4583,22 +4578,22 @@ abstract class ServiceStatusProto {
         dev.katsute.onemta.ServiceStatusProto.MercuryEntitySelector.getDefaultInstance());
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_transit_realtime_MercuryFeedHeader_descriptor;
-  private static final 
+  private static final
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_transit_realtime_MercuryFeedHeader_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_transit_realtime_MercuryStationAlternative_descriptor;
-  private static final 
+  private static final
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_transit_realtime_MercuryStationAlternative_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_transit_realtime_MercuryAlert_descriptor;
-  private static final 
+  private static final
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_transit_realtime_MercuryAlert_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_transit_realtime_MercuryEntitySelector_descriptor;
-  private static final 
+  private static final
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_transit_realtime_MercuryEntitySelector_fieldAccessorTable;
 

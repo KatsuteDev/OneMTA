@@ -504,7 +504,6 @@ abstract class OneBusAwayProto {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:transit_realtime.OneBusAwayFeedHeader)
     }
 
@@ -655,7 +654,7 @@ abstract class OneBusAwayProto {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
+        com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -677,7 +676,7 @@ abstract class OneBusAwayProto {
         getSourceBytes() {
       java.lang.Object ref = source_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
+        com.google.protobuf.ByteString b =
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         source_ = b;
@@ -901,7 +900,7 @@ abstract class OneBusAwayProto {
           getSourceBytes() {
         java.lang.Object ref = source_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString b =
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           source_ = b;
@@ -969,7 +968,6 @@ abstract class OneBusAwayProto {
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
       }
-
 
       // @@protoc_insertion_point(builder_scope:transit_realtime.OneBusAwayFeedEntity)
     }
@@ -1287,7 +1285,7 @@ abstract class OneBusAwayProto {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
+        com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -1309,7 +1307,7 @@ abstract class OneBusAwayProto {
         getTripHeadsignBytes() {
       java.lang.Object ref = tripHeadsign_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
+        com.google.protobuf.ByteString b =
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         tripHeadsign_ = b;
@@ -1348,7 +1346,7 @@ abstract class OneBusAwayProto {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
+        com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -1370,7 +1368,7 @@ abstract class OneBusAwayProto {
         getTripDirectionBytes() {
       java.lang.Object ref = tripDirection_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
+        com.google.protobuf.ByteString b =
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         tripDirection_ = b;
@@ -1765,7 +1763,7 @@ abstract class OneBusAwayProto {
           getTripHeadsignBytes() {
         java.lang.Object ref = tripHeadsign_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString b =
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           tripHeadsign_ = b;
@@ -1869,7 +1867,7 @@ abstract class OneBusAwayProto {
           getTripDirectionBytes() {
         java.lang.Object ref = tripDirection_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString b =
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           tripDirection_ = b;
@@ -1937,7 +1935,6 @@ abstract class OneBusAwayProto {
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
       }
-
 
       // @@protoc_insertion_point(builder_scope:transit_realtime.OneBusAwayTripUpdate)
     }
@@ -2069,7 +2066,7 @@ abstract class OneBusAwayProto {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
+        com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -2087,7 +2084,7 @@ abstract class OneBusAwayProto {
         getStopHeadsignBytes() {
       java.lang.Object ref = stopHeadsign_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
+        com.google.protobuf.ByteString b =
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         stopHeadsign_ = b;
@@ -2299,7 +2296,7 @@ abstract class OneBusAwayProto {
           getStopHeadsignBytes() {
         java.lang.Object ref = stopHeadsign_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString b =
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           stopHeadsign_ = b;
@@ -2355,7 +2352,6 @@ abstract class OneBusAwayProto {
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
       }
-
 
       // @@protoc_insertion_point(builder_scope:transit_realtime.OneBusAwayStopTimeUpdate)
     }
@@ -2487,7 +2483,7 @@ abstract class OneBusAwayProto {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
+        com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -2505,7 +2501,7 @@ abstract class OneBusAwayProto {
         getElevatorIdBytes() {
       java.lang.Object ref = elevatorId_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
+        com.google.protobuf.ByteString b =
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         elevatorId_ = b;
@@ -2717,7 +2713,7 @@ abstract class OneBusAwayProto {
           getElevatorIdBytes() {
         java.lang.Object ref = elevatorId_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString b =
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           elevatorId_ = b;
@@ -2773,7 +2769,6 @@ abstract class OneBusAwayProto {
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
       }
-
 
       // @@protoc_insertion_point(builder_scope:transit_realtime.OneBusAwayEntitySelector)
     }
@@ -2883,27 +2878,27 @@ abstract class OneBusAwayProto {
         dev.katsute.onemta.OneBusAwayProto.OneBusAwayEntitySelector.getDefaultInstance());
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_transit_realtime_OneBusAwayFeedHeader_descriptor;
-  private static final 
+  private static final
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_transit_realtime_OneBusAwayFeedHeader_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_transit_realtime_OneBusAwayFeedEntity_descriptor;
-  private static final 
+  private static final
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_transit_realtime_OneBusAwayFeedEntity_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_transit_realtime_OneBusAwayTripUpdate_descriptor;
-  private static final 
+  private static final
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_transit_realtime_OneBusAwayTripUpdate_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_transit_realtime_OneBusAwayStopTimeUpdate_descriptor;
-  private static final 
+  private static final
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_transit_realtime_OneBusAwayStopTimeUpdate_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_transit_realtime_OneBusAwayEntitySelector_descriptor;
-  private static final 
+  private static final
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_transit_realtime_OneBusAwayEntitySelector_fieldAccessorTable;
 

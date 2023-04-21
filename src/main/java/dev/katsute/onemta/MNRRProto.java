@@ -133,7 +133,7 @@ abstract class MNRRProto {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
+        com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -155,7 +155,7 @@ abstract class MNRRProto {
         getTrackBytes() {
       java.lang.Object ref = track_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
+        com.google.protobuf.ByteString b =
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         track_ = b;
@@ -186,7 +186,7 @@ abstract class MNRRProto {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
+        com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -204,7 +204,7 @@ abstract class MNRRProto {
         getTrainStatusBytes() {
       java.lang.Object ref = trainStatus_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
+        com.google.protobuf.ByteString b =
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         trainStatus_ = b;
@@ -433,7 +433,7 @@ abstract class MNRRProto {
           getTrackBytes() {
         java.lang.Object ref = track_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString b =
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           track_ = b;
@@ -525,7 +525,7 @@ abstract class MNRRProto {
           getTrainStatusBytes() {
         java.lang.Object ref = trainStatus_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString b =
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           trainStatus_ = b;
@@ -581,7 +581,6 @@ abstract class MNRRProto {
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
       }
-
 
       // @@protoc_insertion_point(builder_scope:transit_realtime.MnrStopTimeUpdate)
     }
@@ -647,7 +646,7 @@ abstract class MNRRProto {
         dev.katsute.onemta.MNRRProto.MnrStopTimeUpdate.getDefaultInstance());
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_transit_realtime_MnrStopTimeUpdate_descriptor;
-  private static final 
+  private static final
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_transit_realtime_MnrStopTimeUpdate_fieldAccessorTable;
 

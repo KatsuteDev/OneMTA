@@ -147,7 +147,7 @@ abstract class NYCTSubwayProto {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
+        com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -169,7 +169,7 @@ abstract class NYCTSubwayProto {
         getRouteIdBytes() {
       java.lang.Object ref = routeId_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
+        com.google.protobuf.ByteString b =
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         routeId_ = b;
@@ -451,7 +451,7 @@ abstract class NYCTSubwayProto {
           getRouteIdBytes() {
         java.lang.Object ref = routeId_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString b =
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           routeId_ = b;
@@ -660,7 +660,7 @@ abstract class NYCTSubwayProto {
        * <code>optional .transit_realtime.TimeRange replacement_period = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          dev.katsute.onemta.GTFSRealtimeProto.TimeRange, dev.katsute.onemta.GTFSRealtimeProto.TimeRange.Builder, dev.katsute.onemta.GTFSRealtimeProto.TimeRangeOrBuilder> 
+          dev.katsute.onemta.GTFSRealtimeProto.TimeRange, dev.katsute.onemta.GTFSRealtimeProto.TimeRange.Builder, dev.katsute.onemta.GTFSRealtimeProto.TimeRangeOrBuilder>
           getReplacementPeriodFieldBuilder() {
         if (replacementPeriodBuilder_ == null) {
           replacementPeriodBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -683,7 +683,6 @@ abstract class NYCTSubwayProto {
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
       }
-
 
       // @@protoc_insertion_point(builder_scope:TripReplacementPeriod)
     }
@@ -786,7 +785,7 @@ abstract class NYCTSubwayProto {
      *
      * <code>repeated .TripReplacementPeriod trip_replacement_period = 2;</code>
      */
-    java.util.List<dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriod> 
+    java.util.List<dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriod>
         getTripReplacementPeriodList();
     /**
      * <pre>
@@ -832,7 +831,7 @@ abstract class NYCTSubwayProto {
      *
      * <code>repeated .TripReplacementPeriod trip_replacement_period = 2;</code>
      */
-    java.util.List<? extends dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriodOrBuilder> 
+    java.util.List<? extends dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriodOrBuilder>
         getTripReplacementPeriodOrBuilderList();
     /**
      * <pre>
@@ -924,7 +923,7 @@ abstract class NYCTSubwayProto {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
+        com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -947,7 +946,7 @@ abstract class NYCTSubwayProto {
         getNyctSubwayVersionBytes() {
       java.lang.Object ref = nyctSubwayVersion_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
+        com.google.protobuf.ByteString b =
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         nyctSubwayVersion_ = b;
@@ -993,7 +992,7 @@ abstract class NYCTSubwayProto {
      * <code>repeated .TripReplacementPeriod trip_replacement_period = 2;</code>
      */
     @java.lang.Override
-    public java.util.List<? extends dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriodOrBuilder> 
+    public java.util.List<? extends dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriodOrBuilder>
         getTripReplacementPeriodOrBuilderList() {
       return tripReplacementPeriod_;
     }
@@ -1294,7 +1293,7 @@ abstract class NYCTSubwayProto {
           getNyctSubwayVersionBytes() {
         java.lang.Object ref = nyctSubwayVersion_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString b =
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           nyctSubwayVersion_ = b;
@@ -1715,7 +1714,7 @@ abstract class NYCTSubwayProto {
        *
        * <code>repeated .TripReplacementPeriod trip_replacement_period = 2;</code>
        */
-      public java.util.List<? extends dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriodOrBuilder> 
+      public java.util.List<? extends dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriodOrBuilder>
            getTripReplacementPeriodOrBuilderList() {
         if (tripReplacementPeriodBuilder_ != null) {
           return tripReplacementPeriodBuilder_.getMessageOrBuilderList();
@@ -1774,12 +1773,12 @@ abstract class NYCTSubwayProto {
        *
        * <code>repeated .TripReplacementPeriod trip_replacement_period = 2;</code>
        */
-      public java.util.List<dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriod.Builder> 
+      public java.util.List<dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriod.Builder>
            getTripReplacementPeriodBuilderList() {
         return getTripReplacementPeriodFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriod, dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriod.Builder, dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriodOrBuilder> 
+          dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriod, dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriod.Builder, dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriodOrBuilder>
           getTripReplacementPeriodFieldBuilder() {
         if (tripReplacementPeriodBuilder_ == null) {
           tripReplacementPeriodBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
@@ -1803,7 +1802,6 @@ abstract class NYCTSubwayProto {
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
       }
-
 
       // @@protoc_insertion_point(builder_scope:NyctFeedHeader)
     }
@@ -2108,7 +2106,6 @@ abstract class NYCTSubwayProto {
        */
       public static final int WEST_VALUE = 4;
 
-
       public final int getNumber() {
         return value;
       }
@@ -2252,7 +2249,7 @@ abstract class NYCTSubwayProto {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
+        com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -2294,7 +2291,7 @@ abstract class NYCTSubwayProto {
         getTrainIdBytes() {
       java.lang.Object ref = trainId_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
+        com.google.protobuf.ByteString b =
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         trainId_ = b;
@@ -2681,7 +2678,7 @@ abstract class NYCTSubwayProto {
           getTrainIdBytes() {
         java.lang.Object ref = trainId_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString b =
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           trainId_ = b;
@@ -2996,7 +2993,6 @@ abstract class NYCTSubwayProto {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:NyctTripDescriptor)
     }
 
@@ -3287,7 +3283,7 @@ abstract class NYCTSubwayProto {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
+        com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -3323,7 +3319,7 @@ abstract class NYCTSubwayProto {
         getScheduledTrackBytes() {
       java.lang.Object ref = scheduledTrack_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
+        com.google.protobuf.ByteString b =
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         scheduledTrack_ = b;
@@ -3386,7 +3382,7 @@ abstract class NYCTSubwayProto {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
+        com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -3420,7 +3416,7 @@ abstract class NYCTSubwayProto {
         getActualTrackBytes() {
       java.lang.Object ref = actualTrack_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
+        com.google.protobuf.ByteString b =
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         actualTrack_ = b;
@@ -3695,7 +3691,7 @@ abstract class NYCTSubwayProto {
           getScheduledTrackBytes() {
         java.lang.Object ref = scheduledTrack_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString b =
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           scheduledTrack_ = b;
@@ -3877,7 +3873,7 @@ abstract class NYCTSubwayProto {
           getActualTrackBytes() {
         java.lang.Object ref = actualTrack_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString b =
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           actualTrack_ = b;
@@ -3982,7 +3978,6 @@ abstract class NYCTSubwayProto {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:NyctStopTimeUpdate)
     }
 
@@ -4069,22 +4064,22 @@ abstract class NYCTSubwayProto {
         dev.katsute.onemta.NYCTSubwayProto.NyctStopTimeUpdate.getDefaultInstance());
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_TripReplacementPeriod_descriptor;
-  private static final 
+  private static final
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_TripReplacementPeriod_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_NyctFeedHeader_descriptor;
-  private static final 
+  private static final
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_NyctFeedHeader_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_NyctTripDescriptor_descriptor;
-  private static final 
+  private static final
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_NyctTripDescriptor_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_NyctStopTimeUpdate_descriptor;
-  private static final 
+  private static final
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_NyctStopTimeUpdate_fieldAccessorTable;
 
