@@ -114,7 +114,7 @@ abstract class MTARRProto {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
+        com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -132,7 +132,7 @@ abstract class MTARRProto {
         getTrackBytes() {
       java.lang.Object ref = track_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
+        com.google.protobuf.ByteString b =
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         track_ = b;
@@ -163,7 +163,7 @@ abstract class MTARRProto {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
+        com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -181,7 +181,7 @@ abstract class MTARRProto {
         getTrainStatusBytes() {
       java.lang.Object ref = trainStatus_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
+        com.google.protobuf.ByteString b =
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         trainStatus_ = b;
@@ -398,7 +398,7 @@ abstract class MTARRProto {
           getTrackBytes() {
         java.lang.Object ref = track_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString b =
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           track_ = b;
@@ -478,7 +478,7 @@ abstract class MTARRProto {
           getTrainStatusBytes() {
         java.lang.Object ref = trainStatus_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString b =
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           trainStatus_ = b;
@@ -534,7 +534,6 @@ abstract class MTARRProto {
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
       }
-
 
       // @@protoc_insertion_point(builder_scope:transit_realtime.MtaRailroadStopTimeUpdate)
     }
@@ -763,7 +762,6 @@ abstract class MTARRProto {
        */
       public static final int NOT_QUIET_CARRIAGE_VALUE = 2;
 
-
       public final int getNumber() {
         return value;
       }
@@ -898,7 +896,6 @@ abstract class MTARRProto {
        */
       public static final int NO_TOILET_ONBOARD_VALUE = 2;
 
-
       public final int getNumber() {
         return value;
       }
@@ -1030,7 +1027,7 @@ abstract class MTARRProto {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
+        com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -1052,7 +1049,7 @@ abstract class MTARRProto {
         getCarriageClassBytes() {
       java.lang.Object ref = carriageClass_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
+        com.google.protobuf.ByteString b =
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         carriageClass_ = b;
@@ -1387,7 +1384,7 @@ abstract class MTARRProto {
           getCarriageClassBytes() {
         java.lang.Object ref = carriageClass_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString b =
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           carriageClass_ = b;
@@ -1540,7 +1537,6 @@ abstract class MTARRProto {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:transit_realtime.MtaRailroadCarriageDetails)
     }
 
@@ -1616,12 +1612,12 @@ abstract class MTARRProto {
         dev.katsute.onemta.MTARRProto.MtaRailroadCarriageDetails.getDefaultInstance());
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_transit_realtime_MtaRailroadStopTimeUpdate_descriptor;
-  private static final 
+  private static final
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_transit_realtime_MtaRailroadStopTimeUpdate_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_transit_realtime_MtaRailroadCarriageDetails_descriptor;
-  private static final 
+  private static final
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_transit_realtime_MtaRailroadCarriageDetails_fieldAccessorTable;
 
