@@ -4,7 +4,7 @@ target
 
 /reference
 
-/protobuf/**/*.java
+/protobuf
 
 /src/test/java/resources/*.txt
 /src/test/java/resources/*.zip
