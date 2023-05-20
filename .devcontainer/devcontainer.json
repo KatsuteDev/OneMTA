@@ -1,6 +1,6 @@
 {
     "image": "maven:3-eclipse-temurin-17",
-    "postAttachCommand": "install.sh; mvn compile",
+    "postAttachCommand": "chmod u+x install.sh; ./install.sh; mvn compile",
     "shutdownAction": "stopContainer",
     "customizations": {
         "vscode": {

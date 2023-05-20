@@ -9,6 +9,8 @@ if [ "$(expr substr $(uname -s) 1 10)" == "MINGW64_NT" ]; then
     curl -L -k -o protobuf/protobuf.zip "https://github.com/protocolbuffers/protobuf/releases/download/v$version/protoc-$version-win64.zip"
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     echo "Installing protobuf $version for ubuntu"
+    apt-get update
+    apt-get install unzip
     curl -L -k -o protobuf/protobuf.zip "https://github.com/protocolbuffers/protobuf/releases/download/v$version/protoc-$version-linux-x86_64.zip"
 elif [ "$(uname)" == "Darwin" ]; then
     echo "Installing protobuf $version for OSX"
