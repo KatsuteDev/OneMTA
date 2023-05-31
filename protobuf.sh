@@ -6,7 +6,6 @@ echo ""
 echo "⚠️ Make sure to include required options in proto file"
 echo ""
 
-# import "gtfs-realtime.proto";
 # option java_package = "dev.katsute.onemta";
 # option java_outer_classname = "GTFSRealtimeProto";
 # option optimize_for = CODE_SIZE;
