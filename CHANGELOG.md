@@ -1,5 +1,27 @@
 # Changelog
 
+## 2.0.3
+
+### Dependencies
+
+* Bump protobuf-java from 3.22.2 to 3.22.3 [#130](https://github.com/KatsuteDev/OneMTA/pull/130) ([@dependabot](https://github.com/dependabot))
+* Bump protobuf-java-util from 3.22.2 to 3.22.3 [#131](https://github.com/KatsuteDev/OneMTA/pull/131) ([@dependabot](https://github.com/dependabot))
+* Bump junit-jupiter-api from 5.9.2 to 5.9.3 [#135](https://github.com/KatsuteDev/OneMTA/pull/135) ([@dependabot](https://github.com/dependabot))
+* Bump junit-jupiter-params from 5.9.2 to 5.9.3 [#134](https://github.com/KatsuteDev/OneMTA/pull/134) ([@dependabot](https://github.com/dependabot))
+* Bump protobuf-java from 3.22.3 to 3.22.4 [#139](https://github.com/KatsuteDev/OneMTA/pull/139) ([@dependabot](https://github.com/dependabot))
+* Bump protobuf-java-util from 3.22.3 to 3.22.4 [#137](https://github.com/KatsuteDev/OneMTA/pull/137) ([@dependabot](https://github.com/dependabot))
+* Bump maven-surefire-plugin from 3.0.0 to 3.1.0 [#136](https://github.com/KatsuteDev/OneMTA/pull/136) ([@dependabot](https://github.com/dependabot))
+* Bump maven-gpg-plugin from 3.0.1 to 3.1.0 [#138](https://github.com/KatsuteDev/OneMTA/pull/138) ([@dependabot](https://github.com/dependabot))
+* Bump protobuf-java from 3.22.4 to 3.23.0 [#141](https://github.com/KatsuteDev/OneMTA/pull/141) ([@dependabot](https://github.com/dependabot))
+* Bump protobuf-java-util from 3.22.4 to 3.23.0 [#142](https://github.com/KatsuteDev/OneMTA/pull/142) ([@dependabot](https://github.com/dependabot))
+* Bump protobuf-java from 3.23.0 to 3.23.1 [#144](https://github.com/KatsuteDev/OneMTA/pull/144) ([@dependabot](https://github.com/dependabot))
+* Bump protobuf-java-util from 3.23.0 to 3.23.1 [#143](https://github.com/KatsuteDev/OneMTA/pull/143) ([@dependabot](https://github.com/dependabot))
+* Bump maven-source-plugin from 3.2.1 to 3.3.0 [#145](https://github.com/KatsuteDev/OneMTA/pull/145) ([@dependabot](https://github.com/dependabot))
+* Bump protobuf-java from 3.23.1 to 3.23.2 [#147](https://github.com/KatsuteDev/OneMTA/pull/147) ([@dependabot](https://github.com/dependabot))
+* Bump protobuf-java-util from 3.23.1 to 3.23.2 [#146](https://github.com/KatsuteDev/OneMTA/pull/146) ([@dependabot](https://github.com/dependabot))
+
+**Full Changelog**: [`2.0.2...2.0.3`](https://github.com/KatsuteDev/OneMTA/compare/2.0.2...2.0.3)
+
 ## 2.0.2
 
 ### 🐞 Bug Fixes
