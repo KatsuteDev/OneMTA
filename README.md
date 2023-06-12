@@ -71,7 +71,7 @@ Compiled binaries can be installed from:
     );
     ```
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+<div align="right"><a href="#top"><code>▲</code></a></div>
 
 ## ✨ Features
 
@@ -119,7 +119,7 @@ LIRR.Alert[] lirrAlerts     = FLS.getAlerts();
 MNR.Alert[] mnrAlerts       = mta.getMNRAlerts();
 ```
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+<div align="right"><a href="#top"><code>▲</code></a></div>
 
 ## 👨‍💻 Contributing
 
@@ -165,7 +165,7 @@ For local tests you can use Java 8+, however only methods in the Java 8 API may 
 
 Devs running remote tests through GitHub Actions may do so by running the `MTA CI` workflow manually in the actions tab of your fork. Note that this requires two secrets, a `BUS_TOKEN` which contains the bus token, and a `SUBWAY_TOKEN` which contains the subway token.
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+<div align="right"><a href="#top"><code>▲</code></a></div>
 
 <hr>
 
@@ -180,4 +180,4 @@ This library is released under the [GNU General Public License (GPL) v2.0](https
 
    > In developing your app, you will provide that the MTA data feed is available to others only from a non-MTA server. Accordingly, you will download and store the MTA data feed on a non-MTA server which users of your App will access in order to obtain data. MTA prohibits the development of an app that would make the data available to others directly from MTA's server(s).
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+<div align="right"><a href="#top"><code>▲</code></a></div>
