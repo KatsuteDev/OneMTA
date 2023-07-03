@@ -20,3 +20,8 @@ updates:
       time: "07:00"
       timezone: US/Eastern
     open-pull-requests-limit: 10
+    groups:
+      protobuf:
+        patterns: [protobuf-*]
+      junit:
+        patterns: [junit-jupiter-*]
