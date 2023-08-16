@@ -1,5 +1,20 @@
 # Changelog
 
+## 2.0.4
+
+### Dependencies
+
+* Bump maven-surefire-plugin from 3.1.0 to 3.1.2 [#148](https://github.com/KatsuteDev/OneMTA/pull/148) ([@dependabot](https://github.com/dependabot))
+* Bump protobuf-java from 3.23.2 to 3.23.3 [#149](https://github.com/KatsuteDev/OneMTA/pull/149) ([@dependabot](https://github.com/dependabot))
+* Bump protobuf-java-util from 3.23.2 to 3.23.3 [#150](https://github.com/KatsuteDev/OneMTA/pull/150) ([@dependabot](https://github.com/dependabot))
+* Bump protobuf-java from 3.23.3 to 3.23.4 [#153](https://github.com/KatsuteDev/OneMTA/pull/153) ([@dependabot](https://github.com/dependabot))
+* Bump protobuf-java-util from 3.23.3 to 3.23.4 [#152](https://github.com/KatsuteDev/OneMTA/pull/152) ([@dependabot](https://github.com/dependabot))
+* Bump the junit group with 2 updates [#154](https://github.com/KatsuteDev/OneMTA/pull/154) ([@dependabot](https://github.com/dependabot))
+* Bump the protobuf group with 2 updates [#155](https://github.com/KatsuteDev/OneMTA/pull/155) ([@dependabot](https://github.com/dependabot))
+* Upgrade to protobuf 24 [#156](https://github.com/KatsuteDev/OneMTA/pull/156) ([@Katsute](https://github.com/Katsute))
+
+**Full Changelog**: [`2.0.3...2.0.4`](https://github.com/KatsuteDev/OneMTA/compare/2.0.3...2.0.4)
+
 ## 2.0.3
 
 ### Dependencies
