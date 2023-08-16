@@ -284,11 +284,13 @@ abstract class GTFSRealtimeProto {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
+
     public static dev.katsute.onemta.GTFSRealtimeProto.FeedMessage parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
+
     public static dev.katsute.onemta.GTFSRealtimeProto.FeedMessage parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -452,6 +454,65 @@ abstract class GTFSRealtimeProto {
         result.bitField0_ |= to_bitField0_;
       }
 
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public <Type> Builder setExtension(
+          com.google.protobuf.GeneratedMessage.GeneratedExtension<
+              dev.katsute.onemta.GTFSRealtimeProto.FeedMessage, Type> extension,
+          Type value) {
+        return super.setExtension(extension, value);
+      }
+      @java.lang.Override
+      public <Type> Builder setExtension(
+          com.google.protobuf.GeneratedMessage.GeneratedExtension<
+              dev.katsute.onemta.GTFSRealtimeProto.FeedMessage, java.util.List<Type>> extension,
+          int index, Type value) {
+        return super.setExtension(extension, index, value);
+      }
+      @java.lang.Override
+      public <Type> Builder addExtension(
+          com.google.protobuf.GeneratedMessage.GeneratedExtension<
+              dev.katsute.onemta.GTFSRealtimeProto.FeedMessage, java.util.List<Type>> extension,
+          Type value) {
+        return super.addExtension(extension, value);
+      }
+      @java.lang.Override
+      public <T> Builder clearExtension(
+          com.google.protobuf.GeneratedMessage.GeneratedExtension<
+              dev.katsute.onemta.GTFSRealtimeProto.FeedMessage, T> extension) {
+        return super.clearExtension(extension);
+      }
       private int bitField0_;
 
       private dev.katsute.onemta.GTFSRealtimeProto.FeedHeader header_;
@@ -540,8 +601,10 @@ abstract class GTFSRealtimeProto {
         } else {
           headerBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000001;
-        onChanged();
+        if (header_ != null) {
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
         return this;
       }
       /**
@@ -1357,11 +1420,13 @@ abstract class GTFSRealtimeProto {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
+
     public static dev.katsute.onemta.GTFSRealtimeProto.FeedHeader parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
+
     public static dev.katsute.onemta.GTFSRealtimeProto.FeedHeader parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -1494,6 +1559,65 @@ abstract class GTFSRealtimeProto {
         result.bitField0_ |= to_bitField0_;
       }
 
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public <Type> Builder setExtension(
+          com.google.protobuf.GeneratedMessage.GeneratedExtension<
+              dev.katsute.onemta.GTFSRealtimeProto.FeedHeader, Type> extension,
+          Type value) {
+        return super.setExtension(extension, value);
+      }
+      @java.lang.Override
+      public <Type> Builder setExtension(
+          com.google.protobuf.GeneratedMessage.GeneratedExtension<
+              dev.katsute.onemta.GTFSRealtimeProto.FeedHeader, java.util.List<Type>> extension,
+          int index, Type value) {
+        return super.setExtension(extension, index, value);
+      }
+      @java.lang.Override
+      public <Type> Builder addExtension(
+          com.google.protobuf.GeneratedMessage.GeneratedExtension<
+              dev.katsute.onemta.GTFSRealtimeProto.FeedHeader, java.util.List<Type>> extension,
+          Type value) {
+        return super.addExtension(extension, value);
+      }
+      @java.lang.Override
+      public <T> Builder clearExtension(
+          com.google.protobuf.GeneratedMessage.GeneratedExtension<
+              dev.katsute.onemta.GTFSRealtimeProto.FeedHeader, T> extension) {
+        return super.clearExtension(extension);
+      }
       private int bitField0_;
 
       private java.lang.Object gtfsRealtimeVersion_ = "";
@@ -2200,11 +2324,13 @@ abstract class GTFSRealtimeProto {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
+
     public static dev.katsute.onemta.GTFSRealtimeProto.FeedEntity parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
+
     public static dev.katsute.onemta.GTFSRealtimeProto.FeedEntity parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -2373,6 +2499,65 @@ abstract class GTFSRealtimeProto {
         result.bitField0_ |= to_bitField0_;
       }
 
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public <Type> Builder setExtension(
+          com.google.protobuf.GeneratedMessage.GeneratedExtension<
+              dev.katsute.onemta.GTFSRealtimeProto.FeedEntity, Type> extension,
+          Type value) {
+        return super.setExtension(extension, value);
+      }
+      @java.lang.Override
+      public <Type> Builder setExtension(
+          com.google.protobuf.GeneratedMessage.GeneratedExtension<
+              dev.katsute.onemta.GTFSRealtimeProto.FeedEntity, java.util.List<Type>> extension,
+          int index, Type value) {
+        return super.setExtension(extension, index, value);
+      }
+      @java.lang.Override
+      public <Type> Builder addExtension(
+          com.google.protobuf.GeneratedMessage.GeneratedExtension<
+              dev.katsute.onemta.GTFSRealtimeProto.FeedEntity, java.util.List<Type>> extension,
+          Type value) {
+        return super.addExtension(extension, value);
+      }
+      @java.lang.Override
+      public <T> Builder clearExtension(
+          com.google.protobuf.GeneratedMessage.GeneratedExtension<
+              dev.katsute.onemta.GTFSRealtimeProto.FeedEntity, T> extension) {
+        return super.clearExtension(extension);
+      }
       private int bitField0_;
 
       private java.lang.Object id_ = "";
@@ -2672,8 +2857,10 @@ abstract class GTFSRealtimeProto {
         } else {
           tripUpdateBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000004;
-        onChanged();
+        if (tripUpdate_ != null) {
+          bitField0_ |= 0x00000004;
+          onChanged();
+        }
         return this;
       }
       /**
@@ -2811,8 +2998,10 @@ abstract class GTFSRealtimeProto {
         } else {
           vehicleBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000008;
-        onChanged();
+        if (vehicle_ != null) {
+          bitField0_ |= 0x00000008;
+          onChanged();
+        }
         return this;
       }
       /**
@@ -2930,8 +3119,10 @@ abstract class GTFSRealtimeProto {
         } else {
           alertBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000010;
-        onChanged();
+        if (alert_ != null) {
+          bitField0_ |= 0x00000010;
+          onChanged();
+        }
         return this;
       }
       /**
@@ -3672,11 +3863,13 @@ abstract class GTFSRealtimeProto {
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input, extensionRegistry);
       }
+
       public static dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeEvent parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseDelimitedWithIOException(PARSER, input);
       }
+
       public static dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeEvent parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -3823,6 +4016,65 @@ abstract class GTFSRealtimeProto {
           result.bitField0_ |= to_bitField0_;
         }
 
+        @java.lang.Override
+        public Builder clone() {
+          return super.clone();
+        }
+        @java.lang.Override
+        public Builder setField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return super.setField(field, value);
+        }
+        @java.lang.Override
+        public Builder clearField(
+            com.google.protobuf.Descriptors.FieldDescriptor field) {
+          return super.clearField(field);
+        }
+        @java.lang.Override
+        public Builder clearOneof(
+            com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          return super.clearOneof(oneof);
+        }
+        @java.lang.Override
+        public Builder setRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            int index, java.lang.Object value) {
+          return super.setRepeatedField(field, index, value);
+        }
+        @java.lang.Override
+        public Builder addRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return super.addRepeatedField(field, value);
+        }
+        @java.lang.Override
+        public <Type> Builder setExtension(
+            com.google.protobuf.GeneratedMessage.GeneratedExtension<
+                dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeEvent, Type> extension,
+            Type value) {
+          return super.setExtension(extension, value);
+        }
+        @java.lang.Override
+        public <Type> Builder setExtension(
+            com.google.protobuf.GeneratedMessage.GeneratedExtension<
+                dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeEvent, java.util.List<Type>> extension,
+            int index, Type value) {
+          return super.setExtension(extension, index, value);
+        }
+        @java.lang.Override
+        public <Type> Builder addExtension(
+            com.google.protobuf.GeneratedMessage.GeneratedExtension<
+                dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeEvent, java.util.List<Type>> extension,
+            Type value) {
+          return super.addExtension(extension, value);
+        }
+        @java.lang.Override
+        public <T> Builder clearExtension(
+            com.google.protobuf.GeneratedMessage.GeneratedExtension<
+                dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeEvent, T> extension) {
+          return super.clearExtension(extension);
+        }
         private int bitField0_;
 
         private int delay_ ;
@@ -4603,11 +4855,13 @@ abstract class GTFSRealtimeProto {
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input, extensionRegistry);
       }
+
       public static dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeUpdate parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseDelimitedWithIOException(PARSER, input);
       }
+
       public static dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeUpdate parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -4771,6 +5025,65 @@ abstract class GTFSRealtimeProto {
           result.bitField0_ |= to_bitField0_;
         }
 
+        @java.lang.Override
+        public Builder clone() {
+          return super.clone();
+        }
+        @java.lang.Override
+        public Builder setField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return super.setField(field, value);
+        }
+        @java.lang.Override
+        public Builder clearField(
+            com.google.protobuf.Descriptors.FieldDescriptor field) {
+          return super.clearField(field);
+        }
+        @java.lang.Override
+        public Builder clearOneof(
+            com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          return super.clearOneof(oneof);
+        }
+        @java.lang.Override
+        public Builder setRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            int index, java.lang.Object value) {
+          return super.setRepeatedField(field, index, value);
+        }
+        @java.lang.Override
+        public Builder addRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return super.addRepeatedField(field, value);
+        }
+        @java.lang.Override
+        public <Type> Builder setExtension(
+            com.google.protobuf.GeneratedMessage.GeneratedExtension<
+                dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeUpdate, Type> extension,
+            Type value) {
+          return super.setExtension(extension, value);
+        }
+        @java.lang.Override
+        public <Type> Builder setExtension(
+            com.google.protobuf.GeneratedMessage.GeneratedExtension<
+                dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeUpdate, java.util.List<Type>> extension,
+            int index, Type value) {
+          return super.setExtension(extension, index, value);
+        }
+        @java.lang.Override
+        public <Type> Builder addExtension(
+            com.google.protobuf.GeneratedMessage.GeneratedExtension<
+                dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeUpdate, java.util.List<Type>> extension,
+            Type value) {
+          return super.addExtension(extension, value);
+        }
+        @java.lang.Override
+        public <T> Builder clearExtension(
+            com.google.protobuf.GeneratedMessage.GeneratedExtension<
+                dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.StopTimeUpdate, T> extension) {
+          return super.clearExtension(extension);
+        }
         private int bitField0_;
 
         private int stopSequence_ ;
@@ -4999,8 +5312,10 @@ abstract class GTFSRealtimeProto {
           } else {
             arrivalBuilder_.mergeFrom(value);
           }
-          bitField0_ |= 0x00000004;
-          onChanged();
+          if (arrival_ != null) {
+            bitField0_ |= 0x00000004;
+            onChanged();
+          }
           return this;
         }
         /**
@@ -5118,8 +5433,10 @@ abstract class GTFSRealtimeProto {
           } else {
             departureBuilder_.mergeFrom(value);
           }
-          bitField0_ |= 0x00000008;
-          onChanged();
+          if (departure_ != null) {
+            bitField0_ |= 0x00000008;
+            onChanged();
+          }
           return this;
         }
         /**
@@ -5747,11 +6064,13 @@ abstract class GTFSRealtimeProto {
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input, extensionRegistry);
       }
+
       public static dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseDelimitedWithIOException(PARSER, input);
       }
+
       public static dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -5885,6 +6204,65 @@ abstract class GTFSRealtimeProto {
           result.bitField0_ |= to_bitField0_;
         }
 
+        @java.lang.Override
+        public Builder clone() {
+          return super.clone();
+        }
+        @java.lang.Override
+        public Builder setField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return super.setField(field, value);
+        }
+        @java.lang.Override
+        public Builder clearField(
+            com.google.protobuf.Descriptors.FieldDescriptor field) {
+          return super.clearField(field);
+        }
+        @java.lang.Override
+        public Builder clearOneof(
+            com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          return super.clearOneof(oneof);
+        }
+        @java.lang.Override
+        public Builder setRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            int index, java.lang.Object value) {
+          return super.setRepeatedField(field, index, value);
+        }
+        @java.lang.Override
+        public Builder addRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return super.addRepeatedField(field, value);
+        }
+        @java.lang.Override
+        public <Type> Builder setExtension(
+            com.google.protobuf.GeneratedMessage.GeneratedExtension<
+                dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties, Type> extension,
+            Type value) {
+          return super.setExtension(extension, value);
+        }
+        @java.lang.Override
+        public <Type> Builder setExtension(
+            com.google.protobuf.GeneratedMessage.GeneratedExtension<
+                dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties, java.util.List<Type>> extension,
+            int index, Type value) {
+          return super.setExtension(extension, index, value);
+        }
+        @java.lang.Override
+        public <Type> Builder addExtension(
+            com.google.protobuf.GeneratedMessage.GeneratedExtension<
+                dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties, java.util.List<Type>> extension,
+            Type value) {
+          return super.addExtension(extension, value);
+        }
+        @java.lang.Override
+        public <T> Builder clearExtension(
+            com.google.protobuf.GeneratedMessage.GeneratedExtension<
+                dev.katsute.onemta.GTFSRealtimeProto.TripUpdate.TripProperties, T> extension) {
+          return super.clearExtension(extension);
+        }
         private int bitField0_;
 
         private java.lang.Object tripId_ = "";
@@ -6766,11 +7144,13 @@ abstract class GTFSRealtimeProto {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
+
     public static dev.katsute.onemta.GTFSRealtimeProto.TripUpdate parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
+
     public static dev.katsute.onemta.GTFSRealtimeProto.TripUpdate parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -6985,6 +7365,65 @@ abstract class GTFSRealtimeProto {
         result.bitField0_ |= to_bitField0_;
       }
 
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public <Type> Builder setExtension(
+          com.google.protobuf.GeneratedMessage.GeneratedExtension<
+              dev.katsute.onemta.GTFSRealtimeProto.TripUpdate, Type> extension,
+          Type value) {
+        return super.setExtension(extension, value);
+      }
+      @java.lang.Override
+      public <Type> Builder setExtension(
+          com.google.protobuf.GeneratedMessage.GeneratedExtension<
+              dev.katsute.onemta.GTFSRealtimeProto.TripUpdate, java.util.List<Type>> extension,
+          int index, Type value) {
+        return super.setExtension(extension, index, value);
+      }
+      @java.lang.Override
+      public <Type> Builder addExtension(
+          com.google.protobuf.GeneratedMessage.GeneratedExtension<
+              dev.katsute.onemta.GTFSRealtimeProto.TripUpdate, java.util.List<Type>> extension,
+          Type value) {
+        return super.addExtension(extension, value);
+      }
+      @java.lang.Override
+      public <T> Builder clearExtension(
+          com.google.protobuf.GeneratedMessage.GeneratedExtension<
+              dev.katsute.onemta.GTFSRealtimeProto.TripUpdate, T> extension) {
+        return super.clearExtension(extension);
+      }
       private int bitField0_;
 
       private dev.katsute.onemta.GTFSRealtimeProto.TripDescriptor trip_;
@@ -7088,8 +7527,10 @@ abstract class GTFSRealtimeProto {
         } else {
           tripBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000001;
-        onChanged();
+        if (trip_ != null) {
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
         return this;
       }
       /**
@@ -7255,8 +7696,10 @@ abstract class GTFSRealtimeProto {
         } else {
           vehicleBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000002;
-        onChanged();
+        if (vehicle_ != null) {
+          bitField0_ |= 0x00000002;
+          onChanged();
+        }
         return this;
       }
       /**
@@ -8210,8 +8653,10 @@ abstract class GTFSRealtimeProto {
         } else {
           tripPropertiesBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000020;
-        onChanged();
+        if (tripProperties_ != null) {
+          bitField0_ |= 0x00000020;
+          onChanged();
+        }
         return this;
       }
       /**
@@ -9711,11 +10156,13 @@ abstract class GTFSRealtimeProto {
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input, extensionRegistry);
       }
+
       public static dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseDelimitedWithIOException(PARSER, input);
       }
+
       public static dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -9859,6 +10306,65 @@ abstract class GTFSRealtimeProto {
           result.bitField0_ |= to_bitField0_;
         }
 
+        @java.lang.Override
+        public Builder clone() {
+          return super.clone();
+        }
+        @java.lang.Override
+        public Builder setField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return super.setField(field, value);
+        }
+        @java.lang.Override
+        public Builder clearField(
+            com.google.protobuf.Descriptors.FieldDescriptor field) {
+          return super.clearField(field);
+        }
+        @java.lang.Override
+        public Builder clearOneof(
+            com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          return super.clearOneof(oneof);
+        }
+        @java.lang.Override
+        public Builder setRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            int index, java.lang.Object value) {
+          return super.setRepeatedField(field, index, value);
+        }
+        @java.lang.Override
+        public Builder addRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return super.addRepeatedField(field, value);
+        }
+        @java.lang.Override
+        public <Type> Builder setExtension(
+            com.google.protobuf.GeneratedMessage.GeneratedExtension<
+                dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails, Type> extension,
+            Type value) {
+          return super.setExtension(extension, value);
+        }
+        @java.lang.Override
+        public <Type> Builder setExtension(
+            com.google.protobuf.GeneratedMessage.GeneratedExtension<
+                dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails, java.util.List<Type>> extension,
+            int index, Type value) {
+          return super.setExtension(extension, index, value);
+        }
+        @java.lang.Override
+        public <Type> Builder addExtension(
+            com.google.protobuf.GeneratedMessage.GeneratedExtension<
+                dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails, java.util.List<Type>> extension,
+            Type value) {
+          return super.addExtension(extension, value);
+        }
+        @java.lang.Override
+        public <T> Builder clearExtension(
+            com.google.protobuf.GeneratedMessage.GeneratedExtension<
+                dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition.CarriageDetails, T> extension) {
+          return super.clearExtension(extension);
+        }
         private int bitField0_;
 
         private java.lang.Object id_ = "";
@@ -10878,11 +11384,13 @@ abstract class GTFSRealtimeProto {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
+
     public static dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
+
     public static dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -11097,6 +11605,65 @@ abstract class GTFSRealtimeProto {
         result.bitField0_ |= to_bitField0_;
       }
 
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public <Type> Builder setExtension(
+          com.google.protobuf.GeneratedMessage.GeneratedExtension<
+              dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition, Type> extension,
+          Type value) {
+        return super.setExtension(extension, value);
+      }
+      @java.lang.Override
+      public <Type> Builder setExtension(
+          com.google.protobuf.GeneratedMessage.GeneratedExtension<
+              dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition, java.util.List<Type>> extension,
+          int index, Type value) {
+        return super.setExtension(extension, index, value);
+      }
+      @java.lang.Override
+      public <Type> Builder addExtension(
+          com.google.protobuf.GeneratedMessage.GeneratedExtension<
+              dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition, java.util.List<Type>> extension,
+          Type value) {
+        return super.addExtension(extension, value);
+      }
+      @java.lang.Override
+      public <T> Builder clearExtension(
+          com.google.protobuf.GeneratedMessage.GeneratedExtension<
+              dev.katsute.onemta.GTFSRealtimeProto.VehiclePosition, T> extension) {
+        return super.clearExtension(extension);
+      }
       private int bitField0_;
 
       private dev.katsute.onemta.GTFSRealtimeProto.TripDescriptor trip_;
@@ -11195,8 +11762,10 @@ abstract class GTFSRealtimeProto {
         } else {
           tripBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000001;
-        onChanged();
+        if (trip_ != null) {
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
         return this;
       }
       /**
@@ -11358,8 +11927,10 @@ abstract class GTFSRealtimeProto {
         } else {
           vehicleBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000002;
-        onChanged();
+        if (vehicle_ != null) {
+          bitField0_ |= 0x00000002;
+          onChanged();
+        }
         return this;
       }
       /**
@@ -11513,8 +12084,10 @@ abstract class GTFSRealtimeProto {
         } else {
           positionBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000004;
-        onChanged();
+        if (position_ != null) {
+          bitField0_ |= 0x00000004;
+          onChanged();
+        }
         return this;
       }
       /**
@@ -13857,11 +14430,13 @@ abstract class GTFSRealtimeProto {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
+
     public static dev.katsute.onemta.GTFSRealtimeProto.Alert parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
+
     public static dev.katsute.onemta.GTFSRealtimeProto.Alert parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -14097,6 +14672,65 @@ abstract class GTFSRealtimeProto {
         result.bitField0_ |= to_bitField0_;
       }
 
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public <Type> Builder setExtension(
+          com.google.protobuf.GeneratedMessage.GeneratedExtension<
+              dev.katsute.onemta.GTFSRealtimeProto.Alert, Type> extension,
+          Type value) {
+        return super.setExtension(extension, value);
+      }
+      @java.lang.Override
+      public <Type> Builder setExtension(
+          com.google.protobuf.GeneratedMessage.GeneratedExtension<
+              dev.katsute.onemta.GTFSRealtimeProto.Alert, java.util.List<Type>> extension,
+          int index, Type value) {
+        return super.setExtension(extension, index, value);
+      }
+      @java.lang.Override
+      public <Type> Builder addExtension(
+          com.google.protobuf.GeneratedMessage.GeneratedExtension<
+              dev.katsute.onemta.GTFSRealtimeProto.Alert, java.util.List<Type>> extension,
+          Type value) {
+        return super.addExtension(extension, value);
+      }
+      @java.lang.Override
+      public <T> Builder clearExtension(
+          com.google.protobuf.GeneratedMessage.GeneratedExtension<
+              dev.katsute.onemta.GTFSRealtimeProto.Alert, T> extension) {
+        return super.clearExtension(extension);
+      }
       private int bitField0_;
 
       private java.util.List<dev.katsute.onemta.GTFSRealtimeProto.TimeRange> activePeriod_ =
@@ -14929,8 +15563,10 @@ abstract class GTFSRealtimeProto {
         } else {
           urlBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000010;
-        onChanged();
+        if (url_ != null) {
+          bitField0_ |= 0x00000010;
+          onChanged();
+        }
         return this;
       }
       /**
@@ -15084,8 +15720,10 @@ abstract class GTFSRealtimeProto {
         } else {
           headerTextBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000020;
-        onChanged();
+        if (headerText_ != null) {
+          bitField0_ |= 0x00000020;
+          onChanged();
+        }
         return this;
       }
       /**
@@ -15244,8 +15882,10 @@ abstract class GTFSRealtimeProto {
         } else {
           descriptionTextBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000040;
-        onChanged();
+        if (descriptionText_ != null) {
+          bitField0_ |= 0x00000040;
+          onChanged();
+        }
         return this;
       }
       /**
@@ -15403,8 +16043,10 @@ abstract class GTFSRealtimeProto {
         } else {
           ttsHeaderTextBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000080;
-        onChanged();
+        if (ttsHeaderText_ != null) {
+          bitField0_ |= 0x00000080;
+          onChanged();
+        }
         return this;
       }
       /**
@@ -15558,8 +16200,10 @@ abstract class GTFSRealtimeProto {
         } else {
           ttsDescriptionTextBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000100;
-        onChanged();
+        if (ttsDescriptionText_ != null) {
+          bitField0_ |= 0x00000100;
+          onChanged();
+        }
         return this;
       }
       /**
@@ -15930,11 +16574,13 @@ abstract class GTFSRealtimeProto {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
+
     public static dev.katsute.onemta.GTFSRealtimeProto.TimeRange parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
+
     public static dev.katsute.onemta.GTFSRealtimeProto.TimeRange parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -16063,6 +16709,65 @@ abstract class GTFSRealtimeProto {
         result.bitField0_ |= to_bitField0_;
       }
 
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public <Type> Builder setExtension(
+          com.google.protobuf.GeneratedMessage.GeneratedExtension<
+              dev.katsute.onemta.GTFSRealtimeProto.TimeRange, Type> extension,
+          Type value) {
+        return super.setExtension(extension, value);
+      }
+      @java.lang.Override
+      public <Type> Builder setExtension(
+          com.google.protobuf.GeneratedMessage.GeneratedExtension<
+              dev.katsute.onemta.GTFSRealtimeProto.TimeRange, java.util.List<Type>> extension,
+          int index, Type value) {
+        return super.setExtension(extension, index, value);
+      }
+      @java.lang.Override
+      public <Type> Builder addExtension(
+          com.google.protobuf.GeneratedMessage.GeneratedExtension<
+              dev.katsute.onemta.GTFSRealtimeProto.TimeRange, java.util.List<Type>> extension,
+          Type value) {
+        return super.addExtension(extension, value);
+      }
+      @java.lang.Override
+      public <T> Builder clearExtension(
+          com.google.protobuf.GeneratedMessage.GeneratedExtension<
+              dev.katsute.onemta.GTFSRealtimeProto.TimeRange, T> extension) {
+        return super.clearExtension(extension);
+      }
       private int bitField0_;
 
       private long start_ ;
@@ -16591,11 +17296,13 @@ abstract class GTFSRealtimeProto {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
+
     public static dev.katsute.onemta.GTFSRealtimeProto.Position parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
+
     public static dev.katsute.onemta.GTFSRealtimeProto.Position parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -16738,6 +17445,65 @@ abstract class GTFSRealtimeProto {
         result.bitField0_ |= to_bitField0_;
       }
 
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public <Type> Builder setExtension(
+          com.google.protobuf.GeneratedMessage.GeneratedExtension<
+              dev.katsute.onemta.GTFSRealtimeProto.Position, Type> extension,
+          Type value) {
+        return super.setExtension(extension, value);
+      }
+      @java.lang.Override
+      public <Type> Builder setExtension(
+          com.google.protobuf.GeneratedMessage.GeneratedExtension<
+              dev.katsute.onemta.GTFSRealtimeProto.Position, java.util.List<Type>> extension,
+          int index, Type value) {
+        return super.setExtension(extension, index, value);
+      }
+      @java.lang.Override
+      public <Type> Builder addExtension(
+          com.google.protobuf.GeneratedMessage.GeneratedExtension<
+              dev.katsute.onemta.GTFSRealtimeProto.Position, java.util.List<Type>> extension,
+          Type value) {
+        return super.addExtension(extension, value);
+      }
+      @java.lang.Override
+      public <T> Builder clearExtension(
+          com.google.protobuf.GeneratedMessage.GeneratedExtension<
+              dev.katsute.onemta.GTFSRealtimeProto.Position, T> extension) {
+        return super.clearExtension(extension);
+      }
       private int bitField0_;
 
       private float latitude_ ;
@@ -18038,11 +18804,13 @@ abstract class GTFSRealtimeProto {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
+
     public static dev.katsute.onemta.GTFSRealtimeProto.TripDescriptor parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
+
     public static dev.katsute.onemta.GTFSRealtimeProto.TripDescriptor parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -18198,6 +18966,65 @@ abstract class GTFSRealtimeProto {
         result.bitField0_ |= to_bitField0_;
       }
 
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public <Type> Builder setExtension(
+          com.google.protobuf.GeneratedMessage.GeneratedExtension<
+              dev.katsute.onemta.GTFSRealtimeProto.TripDescriptor, Type> extension,
+          Type value) {
+        return super.setExtension(extension, value);
+      }
+      @java.lang.Override
+      public <Type> Builder setExtension(
+          com.google.protobuf.GeneratedMessage.GeneratedExtension<
+              dev.katsute.onemta.GTFSRealtimeProto.TripDescriptor, java.util.List<Type>> extension,
+          int index, Type value) {
+        return super.setExtension(extension, index, value);
+      }
+      @java.lang.Override
+      public <Type> Builder addExtension(
+          com.google.protobuf.GeneratedMessage.GeneratedExtension<
+              dev.katsute.onemta.GTFSRealtimeProto.TripDescriptor, java.util.List<Type>> extension,
+          Type value) {
+        return super.addExtension(extension, value);
+      }
+      @java.lang.Override
+      public <T> Builder clearExtension(
+          com.google.protobuf.GeneratedMessage.GeneratedExtension<
+              dev.katsute.onemta.GTFSRealtimeProto.TripDescriptor, T> extension) {
+        return super.clearExtension(extension);
+      }
       private int bitField0_;
 
       private java.lang.Object tripId_ = "";
@@ -19329,11 +20156,13 @@ abstract class GTFSRealtimeProto {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
+
     public static dev.katsute.onemta.GTFSRealtimeProto.VehicleDescriptor parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
+
     public static dev.katsute.onemta.GTFSRealtimeProto.VehicleDescriptor parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -19466,6 +20295,65 @@ abstract class GTFSRealtimeProto {
         result.bitField0_ |= to_bitField0_;
       }
 
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public <Type> Builder setExtension(
+          com.google.protobuf.GeneratedMessage.GeneratedExtension<
+              dev.katsute.onemta.GTFSRealtimeProto.VehicleDescriptor, Type> extension,
+          Type value) {
+        return super.setExtension(extension, value);
+      }
+      @java.lang.Override
+      public <Type> Builder setExtension(
+          com.google.protobuf.GeneratedMessage.GeneratedExtension<
+              dev.katsute.onemta.GTFSRealtimeProto.VehicleDescriptor, java.util.List<Type>> extension,
+          int index, Type value) {
+        return super.setExtension(extension, index, value);
+      }
+      @java.lang.Override
+      public <Type> Builder addExtension(
+          com.google.protobuf.GeneratedMessage.GeneratedExtension<
+              dev.katsute.onemta.GTFSRealtimeProto.VehicleDescriptor, java.util.List<Type>> extension,
+          Type value) {
+        return super.addExtension(extension, value);
+      }
+      @java.lang.Override
+      public <T> Builder clearExtension(
+          com.google.protobuf.GeneratedMessage.GeneratedExtension<
+              dev.katsute.onemta.GTFSRealtimeProto.VehicleDescriptor, T> extension) {
+        return super.clearExtension(extension);
+      }
       private int bitField0_;
 
       private java.lang.Object id_ = "";
@@ -20330,11 +21218,13 @@ abstract class GTFSRealtimeProto {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
+
     public static dev.katsute.onemta.GTFSRealtimeProto.EntitySelector parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
+
     public static dev.katsute.onemta.GTFSRealtimeProto.EntitySelector parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -20494,6 +21384,65 @@ abstract class GTFSRealtimeProto {
         result.bitField0_ |= to_bitField0_;
       }
 
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public <Type> Builder setExtension(
+          com.google.protobuf.GeneratedMessage.GeneratedExtension<
+              dev.katsute.onemta.GTFSRealtimeProto.EntitySelector, Type> extension,
+          Type value) {
+        return super.setExtension(extension, value);
+      }
+      @java.lang.Override
+      public <Type> Builder setExtension(
+          com.google.protobuf.GeneratedMessage.GeneratedExtension<
+              dev.katsute.onemta.GTFSRealtimeProto.EntitySelector, java.util.List<Type>> extension,
+          int index, Type value) {
+        return super.setExtension(extension, index, value);
+      }
+      @java.lang.Override
+      public <Type> Builder addExtension(
+          com.google.protobuf.GeneratedMessage.GeneratedExtension<
+              dev.katsute.onemta.GTFSRealtimeProto.EntitySelector, java.util.List<Type>> extension,
+          Type value) {
+        return super.addExtension(extension, value);
+      }
+      @java.lang.Override
+      public <T> Builder clearExtension(
+          com.google.protobuf.GeneratedMessage.GeneratedExtension<
+              dev.katsute.onemta.GTFSRealtimeProto.EntitySelector, T> extension) {
+        return super.clearExtension(extension);
+      }
       private int bitField0_;
 
       private java.lang.Object agencyId_ = "";
@@ -20820,8 +21769,10 @@ abstract class GTFSRealtimeProto {
         } else {
           tripBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000008;
-        onChanged();
+        if (trip_ != null) {
+          bitField0_ |= 0x00000008;
+          onChanged();
+        }
         return this;
       }
       /**
@@ -21454,11 +22405,13 @@ abstract class GTFSRealtimeProto {
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input, extensionRegistry);
       }
+
       public static dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Translation parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseDelimitedWithIOException(PARSER, input);
       }
+
       public static dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Translation parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -21582,6 +22535,65 @@ abstract class GTFSRealtimeProto {
           result.bitField0_ |= to_bitField0_;
         }
 
+        @java.lang.Override
+        public Builder clone() {
+          return super.clone();
+        }
+        @java.lang.Override
+        public Builder setField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return super.setField(field, value);
+        }
+        @java.lang.Override
+        public Builder clearField(
+            com.google.protobuf.Descriptors.FieldDescriptor field) {
+          return super.clearField(field);
+        }
+        @java.lang.Override
+        public Builder clearOneof(
+            com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          return super.clearOneof(oneof);
+        }
+        @java.lang.Override
+        public Builder setRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            int index, java.lang.Object value) {
+          return super.setRepeatedField(field, index, value);
+        }
+        @java.lang.Override
+        public Builder addRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return super.addRepeatedField(field, value);
+        }
+        @java.lang.Override
+        public <Type> Builder setExtension(
+            com.google.protobuf.GeneratedMessage.GeneratedExtension<
+                dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Translation, Type> extension,
+            Type value) {
+          return super.setExtension(extension, value);
+        }
+        @java.lang.Override
+        public <Type> Builder setExtension(
+            com.google.protobuf.GeneratedMessage.GeneratedExtension<
+                dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Translation, java.util.List<Type>> extension,
+            int index, Type value) {
+          return super.setExtension(extension, index, value);
+        }
+        @java.lang.Override
+        public <Type> Builder addExtension(
+            com.google.protobuf.GeneratedMessage.GeneratedExtension<
+                dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Translation, java.util.List<Type>> extension,
+            Type value) {
+          return super.addExtension(extension, value);
+        }
+        @java.lang.Override
+        public <T> Builder clearExtension(
+            com.google.protobuf.GeneratedMessage.GeneratedExtension<
+                dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Translation, T> extension) {
+          return super.clearExtension(extension);
+        }
         private int bitField0_;
 
         private java.lang.Object text_ = "";
@@ -21971,11 +22983,13 @@ abstract class GTFSRealtimeProto {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
+
     public static dev.katsute.onemta.GTFSRealtimeProto.TranslatedString parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
+
     public static dev.katsute.onemta.GTFSRealtimeProto.TranslatedString parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -22120,6 +23134,65 @@ abstract class GTFSRealtimeProto {
         int from_bitField0_ = bitField0_;
       }
 
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public <Type> Builder setExtension(
+          com.google.protobuf.GeneratedMessage.GeneratedExtension<
+              dev.katsute.onemta.GTFSRealtimeProto.TranslatedString, Type> extension,
+          Type value) {
+        return super.setExtension(extension, value);
+      }
+      @java.lang.Override
+      public <Type> Builder setExtension(
+          com.google.protobuf.GeneratedMessage.GeneratedExtension<
+              dev.katsute.onemta.GTFSRealtimeProto.TranslatedString, java.util.List<Type>> extension,
+          int index, Type value) {
+        return super.setExtension(extension, index, value);
+      }
+      @java.lang.Override
+      public <Type> Builder addExtension(
+          com.google.protobuf.GeneratedMessage.GeneratedExtension<
+              dev.katsute.onemta.GTFSRealtimeProto.TranslatedString, java.util.List<Type>> extension,
+          Type value) {
+        return super.addExtension(extension, value);
+      }
+      @java.lang.Override
+      public <T> Builder clearExtension(
+          com.google.protobuf.GeneratedMessage.GeneratedExtension<
+              dev.katsute.onemta.GTFSRealtimeProto.TranslatedString, T> extension) {
+        return super.clearExtension(extension);
+      }
       private int bitField0_;
 
       private java.util.List<dev.katsute.onemta.GTFSRealtimeProto.TranslatedString.Translation> translation_ =

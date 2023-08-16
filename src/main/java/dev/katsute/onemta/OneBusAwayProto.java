@@ -224,11 +224,13 @@ abstract class OneBusAwayProto {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
+
     public static dev.katsute.onemta.OneBusAwayProto.OneBusAwayFeedHeader parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
+
     public static dev.katsute.onemta.OneBusAwayProto.OneBusAwayFeedHeader parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -351,6 +353,38 @@ abstract class OneBusAwayProto {
         result.bitField0_ |= to_bitField0_;
       }
 
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
       private int bitField0_;
 
       private long incrementalIndex_ ;
@@ -730,11 +764,13 @@ abstract class OneBusAwayProto {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
+
     public static dev.katsute.onemta.OneBusAwayProto.OneBusAwayFeedEntity parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
+
     public static dev.katsute.onemta.OneBusAwayProto.OneBusAwayFeedEntity parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -852,6 +888,38 @@ abstract class OneBusAwayProto {
         result.bitField0_ |= to_bitField0_;
       }
 
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
       private int bitField0_;
 
       private java.lang.Object source_ = "";
@@ -1035,7 +1103,7 @@ abstract class OneBusAwayProto {
      *
      * <code>optional int32 delay = 1 [deprecated = true];</code>
      * @deprecated transit_realtime.OneBusAwayTripUpdate.delay is deprecated.
-     *     See gtfs-realtime-OneBusAway.proto;l=50
+     *     See gtfs-realtime-OneBusAway.proto;l=48
      * @return Whether the delay field is set.
      */
     @java.lang.Deprecated boolean hasDelay();
@@ -1050,7 +1118,7 @@ abstract class OneBusAwayProto {
      *
      * <code>optional int32 delay = 1 [deprecated = true];</code>
      * @deprecated transit_realtime.OneBusAwayTripUpdate.delay is deprecated.
-     *     See gtfs-realtime-OneBusAway.proto;l=50
+     *     See gtfs-realtime-OneBusAway.proto;l=48
      * @return The delay.
      */
     @java.lang.Deprecated int getDelay();
@@ -1065,7 +1133,7 @@ abstract class OneBusAwayProto {
      *
      * <code>optional uint64 timestamp = 2 [deprecated = true];</code>
      * @deprecated transit_realtime.OneBusAwayTripUpdate.timestamp is deprecated.
-     *     See gtfs-realtime-OneBusAway.proto;l=56
+     *     See gtfs-realtime-OneBusAway.proto;l=54
      * @return Whether the timestamp field is set.
      */
     @java.lang.Deprecated boolean hasTimestamp();
@@ -1079,7 +1147,7 @@ abstract class OneBusAwayProto {
      *
      * <code>optional uint64 timestamp = 2 [deprecated = true];</code>
      * @deprecated transit_realtime.OneBusAwayTripUpdate.timestamp is deprecated.
-     *     See gtfs-realtime-OneBusAway.proto;l=56
+     *     See gtfs-realtime-OneBusAway.proto;l=54
      * @return The timestamp.
      */
     @java.lang.Deprecated long getTimestamp();
@@ -1193,7 +1261,7 @@ abstract class OneBusAwayProto {
      *
      * <code>optional int32 delay = 1 [deprecated = true];</code>
      * @deprecated transit_realtime.OneBusAwayTripUpdate.delay is deprecated.
-     *     See gtfs-realtime-OneBusAway.proto;l=50
+     *     See gtfs-realtime-OneBusAway.proto;l=48
      * @return Whether the delay field is set.
      */
     @java.lang.Override
@@ -1211,7 +1279,7 @@ abstract class OneBusAwayProto {
      *
      * <code>optional int32 delay = 1 [deprecated = true];</code>
      * @deprecated transit_realtime.OneBusAwayTripUpdate.delay is deprecated.
-     *     See gtfs-realtime-OneBusAway.proto;l=50
+     *     See gtfs-realtime-OneBusAway.proto;l=48
      * @return The delay.
      */
     @java.lang.Override
@@ -1231,7 +1299,7 @@ abstract class OneBusAwayProto {
      *
      * <code>optional uint64 timestamp = 2 [deprecated = true];</code>
      * @deprecated transit_realtime.OneBusAwayTripUpdate.timestamp is deprecated.
-     *     See gtfs-realtime-OneBusAway.proto;l=56
+     *     See gtfs-realtime-OneBusAway.proto;l=54
      * @return Whether the timestamp field is set.
      */
     @java.lang.Override
@@ -1248,7 +1316,7 @@ abstract class OneBusAwayProto {
      *
      * <code>optional uint64 timestamp = 2 [deprecated = true];</code>
      * @deprecated transit_realtime.OneBusAwayTripUpdate.timestamp is deprecated.
-     *     See gtfs-realtime-OneBusAway.proto;l=56
+     *     See gtfs-realtime-OneBusAway.proto;l=54
      * @return The timestamp.
      */
     @java.lang.Override
@@ -1422,11 +1490,13 @@ abstract class OneBusAwayProto {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
+
     public static dev.katsute.onemta.OneBusAwayProto.OneBusAwayTripUpdate parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
+
     public static dev.katsute.onemta.OneBusAwayProto.OneBusAwayTripUpdate parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -1559,6 +1629,38 @@ abstract class OneBusAwayProto {
         result.bitField0_ |= to_bitField0_;
       }
 
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
       private int bitField0_;
 
       private int delay_ ;
@@ -1573,7 +1675,7 @@ abstract class OneBusAwayProto {
        *
        * <code>optional int32 delay = 1 [deprecated = true];</code>
        * @deprecated transit_realtime.OneBusAwayTripUpdate.delay is deprecated.
-       *     See gtfs-realtime-OneBusAway.proto;l=50
+       *     See gtfs-realtime-OneBusAway.proto;l=48
        * @return Whether the delay field is set.
        */
       @java.lang.Override
@@ -1591,7 +1693,7 @@ abstract class OneBusAwayProto {
        *
        * <code>optional int32 delay = 1 [deprecated = true];</code>
        * @deprecated transit_realtime.OneBusAwayTripUpdate.delay is deprecated.
-       *     See gtfs-realtime-OneBusAway.proto;l=50
+       *     See gtfs-realtime-OneBusAway.proto;l=48
        * @return The delay.
        */
       @java.lang.Override
@@ -1609,7 +1711,7 @@ abstract class OneBusAwayProto {
        *
        * <code>optional int32 delay = 1 [deprecated = true];</code>
        * @deprecated transit_realtime.OneBusAwayTripUpdate.delay is deprecated.
-       *     See gtfs-realtime-OneBusAway.proto;l=50
+       *     See gtfs-realtime-OneBusAway.proto;l=48
        * @param value The delay to set.
        * @return This builder for chaining.
        */
@@ -1631,7 +1733,7 @@ abstract class OneBusAwayProto {
        *
        * <code>optional int32 delay = 1 [deprecated = true];</code>
        * @deprecated transit_realtime.OneBusAwayTripUpdate.delay is deprecated.
-       *     See gtfs-realtime-OneBusAway.proto;l=50
+       *     See gtfs-realtime-OneBusAway.proto;l=48
        * @return This builder for chaining.
        */
       @java.lang.Deprecated public Builder clearDelay() {
@@ -1652,7 +1754,7 @@ abstract class OneBusAwayProto {
        *
        * <code>optional uint64 timestamp = 2 [deprecated = true];</code>
        * @deprecated transit_realtime.OneBusAwayTripUpdate.timestamp is deprecated.
-       *     See gtfs-realtime-OneBusAway.proto;l=56
+       *     See gtfs-realtime-OneBusAway.proto;l=54
        * @return Whether the timestamp field is set.
        */
       @java.lang.Override
@@ -1669,7 +1771,7 @@ abstract class OneBusAwayProto {
        *
        * <code>optional uint64 timestamp = 2 [deprecated = true];</code>
        * @deprecated transit_realtime.OneBusAwayTripUpdate.timestamp is deprecated.
-       *     See gtfs-realtime-OneBusAway.proto;l=56
+       *     See gtfs-realtime-OneBusAway.proto;l=54
        * @return The timestamp.
        */
       @java.lang.Override
@@ -1686,7 +1788,7 @@ abstract class OneBusAwayProto {
        *
        * <code>optional uint64 timestamp = 2 [deprecated = true];</code>
        * @deprecated transit_realtime.OneBusAwayTripUpdate.timestamp is deprecated.
-       *     See gtfs-realtime-OneBusAway.proto;l=56
+       *     See gtfs-realtime-OneBusAway.proto;l=54
        * @param value The timestamp to set.
        * @return This builder for chaining.
        */
@@ -1707,7 +1809,7 @@ abstract class OneBusAwayProto {
        *
        * <code>optional uint64 timestamp = 2 [deprecated = true];</code>
        * @deprecated transit_realtime.OneBusAwayTripUpdate.timestamp is deprecated.
-       *     See gtfs-realtime-OneBusAway.proto;l=56
+       *     See gtfs-realtime-OneBusAway.proto;l=54
        * @return This builder for chaining.
        */
       @java.lang.Deprecated public Builder clearTimestamp() {
@@ -2138,11 +2240,13 @@ abstract class OneBusAwayProto {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
+
     public static dev.katsute.onemta.OneBusAwayProto.OneBusAwayStopTimeUpdate parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
+
     public static dev.katsute.onemta.OneBusAwayProto.OneBusAwayStopTimeUpdate parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -2260,6 +2364,38 @@ abstract class OneBusAwayProto {
         result.bitField0_ |= to_bitField0_;
       }
 
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
       private int bitField0_;
 
       private java.lang.Object stopHeadsign_ = "";
@@ -2555,11 +2691,13 @@ abstract class OneBusAwayProto {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
+
     public static dev.katsute.onemta.OneBusAwayProto.OneBusAwayEntitySelector parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
+
     public static dev.katsute.onemta.OneBusAwayProto.OneBusAwayEntitySelector parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -2677,6 +2815,38 @@ abstract class OneBusAwayProto {
         result.bitField0_ |= to_bitField0_;
       }
 
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
       private int bitField0_;
 
       private java.lang.Object elevatorId_ = "";

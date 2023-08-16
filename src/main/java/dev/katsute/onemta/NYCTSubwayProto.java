@@ -19,7 +19,7 @@ abstract class NYCTSubwayProto {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   public interface TripReplacementPeriodOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:TripReplacementPeriod)
+      // @@protoc_insertion_point(interface_extends:transit_realtime.TripReplacementPeriod)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -82,11 +82,11 @@ abstract class NYCTSubwayProto {
     dev.katsute.onemta.GTFSRealtimeProto.TimeRangeOrBuilder getReplacementPeriodOrBuilder();
   }
   /**
-   * Protobuf type {@code TripReplacementPeriod}
+   * Protobuf type {@code transit_realtime.TripReplacementPeriod}
    */
   public static final class TripReplacementPeriod extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:TripReplacementPeriod)
+      // @@protoc_insertion_point(message_implements:transit_realtime.TripReplacementPeriod)
       TripReplacementPeriodOrBuilder {
   private static final long serialVersionUID = 0L;
     // Use TripReplacementPeriod.newBuilder() to construct.
@@ -106,13 +106,13 @@ abstract class NYCTSubwayProto {
 
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return dev.katsute.onemta.NYCTSubwayProto.internal_static_TripReplacementPeriod_descriptor;
+      return dev.katsute.onemta.NYCTSubwayProto.internal_static_transit_realtime_TripReplacementPeriod_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return dev.katsute.onemta.NYCTSubwayProto.internal_static_TripReplacementPeriod_fieldAccessorTable
+      return dev.katsute.onemta.NYCTSubwayProto.internal_static_transit_realtime_TripReplacementPeriod_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriod.class, dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriod.Builder.class);
     }
@@ -264,11 +264,13 @@ abstract class NYCTSubwayProto {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
+
     public static dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriod parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
+
     public static dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriod parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -311,21 +313,21 @@ abstract class NYCTSubwayProto {
       return builder;
     }
     /**
-     * Protobuf type {@code TripReplacementPeriod}
+     * Protobuf type {@code transit_realtime.TripReplacementPeriod}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:TripReplacementPeriod)
+        // @@protoc_insertion_point(builder_implements:transit_realtime.TripReplacementPeriod)
         dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriodOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return dev.katsute.onemta.NYCTSubwayProto.internal_static_TripReplacementPeriod_descriptor;
+        return dev.katsute.onemta.NYCTSubwayProto.internal_static_transit_realtime_TripReplacementPeriod_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return dev.katsute.onemta.NYCTSubwayProto.internal_static_TripReplacementPeriod_fieldAccessorTable
+        return dev.katsute.onemta.NYCTSubwayProto.internal_static_transit_realtime_TripReplacementPeriod_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
                 dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriod.class, dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriod.Builder.class);
       }
@@ -362,7 +364,7 @@ abstract class NYCTSubwayProto {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return dev.katsute.onemta.NYCTSubwayProto.internal_static_TripReplacementPeriod_descriptor;
+        return dev.katsute.onemta.NYCTSubwayProto.internal_static_transit_realtime_TripReplacementPeriod_descriptor;
       }
 
       @java.lang.Override
@@ -403,6 +405,38 @@ abstract class NYCTSubwayProto {
         result.bitField0_ |= to_bitField0_;
       }
 
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
       private int bitField0_;
 
       private java.lang.Object routeId_ = "";
@@ -600,8 +634,10 @@ abstract class NYCTSubwayProto {
         } else {
           replacementPeriodBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000002;
-        onChanged();
+        if (replacementPeriod_ != null) {
+          bitField0_ |= 0x00000002;
+          onChanged();
+        }
         return this;
       }
       /**
@@ -684,10 +720,10 @@ abstract class NYCTSubwayProto {
         return super.mergeUnknownFields(unknownFields);
       }
 
-      // @@protoc_insertion_point(builder_scope:TripReplacementPeriod)
+      // @@protoc_insertion_point(builder_scope:transit_realtime.TripReplacementPeriod)
     }
 
-    // @@protoc_insertion_point(class_scope:TripReplacementPeriod)
+    // @@protoc_insertion_point(class_scope:transit_realtime.TripReplacementPeriod)
     private static final dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriod DEFAULT_INSTANCE;
     static {
       DEFAULT_INSTANCE = new dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriod();
@@ -736,7 +772,7 @@ abstract class NYCTSubwayProto {
   }
 
   public interface NyctFeedHeaderOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:NyctFeedHeader)
+      // @@protoc_insertion_point(interface_extends:transit_realtime.NyctFeedHeader)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -783,7 +819,7 @@ abstract class NYCTSubwayProto {
      * scheduled trips within the replacement period.
      * </pre>
      *
-     * <code>repeated .TripReplacementPeriod trip_replacement_period = 2;</code>
+     * <code>repeated .transit_realtime.TripReplacementPeriod trip_replacement_period = 2;</code>
      */
     java.util.List<dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriod>
         getTripReplacementPeriodList();
@@ -799,7 +835,7 @@ abstract class NYCTSubwayProto {
      * scheduled trips within the replacement period.
      * </pre>
      *
-     * <code>repeated .TripReplacementPeriod trip_replacement_period = 2;</code>
+     * <code>repeated .transit_realtime.TripReplacementPeriod trip_replacement_period = 2;</code>
      */
     dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriod getTripReplacementPeriod(int index);
     /**
@@ -814,7 +850,7 @@ abstract class NYCTSubwayProto {
      * scheduled trips within the replacement period.
      * </pre>
      *
-     * <code>repeated .TripReplacementPeriod trip_replacement_period = 2;</code>
+     * <code>repeated .transit_realtime.TripReplacementPeriod trip_replacement_period = 2;</code>
      */
     int getTripReplacementPeriodCount();
     /**
@@ -829,7 +865,7 @@ abstract class NYCTSubwayProto {
      * scheduled trips within the replacement period.
      * </pre>
      *
-     * <code>repeated .TripReplacementPeriod trip_replacement_period = 2;</code>
+     * <code>repeated .transit_realtime.TripReplacementPeriod trip_replacement_period = 2;</code>
      */
     java.util.List<? extends dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriodOrBuilder>
         getTripReplacementPeriodOrBuilderList();
@@ -845,7 +881,7 @@ abstract class NYCTSubwayProto {
      * scheduled trips within the replacement period.
      * </pre>
      *
-     * <code>repeated .TripReplacementPeriod trip_replacement_period = 2;</code>
+     * <code>repeated .transit_realtime.TripReplacementPeriod trip_replacement_period = 2;</code>
      */
     dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriodOrBuilder getTripReplacementPeriodOrBuilder(
         int index);
@@ -855,11 +891,11 @@ abstract class NYCTSubwayProto {
    * NYCT Subway extensions for the feed header
    * </pre>
    *
-   * Protobuf type {@code NyctFeedHeader}
+   * Protobuf type {@code transit_realtime.NyctFeedHeader}
    */
   public static final class NyctFeedHeader extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:NyctFeedHeader)
+      // @@protoc_insertion_point(message_implements:transit_realtime.NyctFeedHeader)
       NyctFeedHeaderOrBuilder {
   private static final long serialVersionUID = 0L;
     // Use NyctFeedHeader.newBuilder() to construct.
@@ -880,13 +916,13 @@ abstract class NYCTSubwayProto {
 
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return dev.katsute.onemta.NYCTSubwayProto.internal_static_NyctFeedHeader_descriptor;
+      return dev.katsute.onemta.NYCTSubwayProto.internal_static_transit_realtime_NyctFeedHeader_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return dev.katsute.onemta.NYCTSubwayProto.internal_static_NyctFeedHeader_fieldAccessorTable
+      return dev.katsute.onemta.NYCTSubwayProto.internal_static_transit_realtime_NyctFeedHeader_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               dev.katsute.onemta.NYCTSubwayProto.NyctFeedHeader.class, dev.katsute.onemta.NYCTSubwayProto.NyctFeedHeader.Builder.class);
     }
@@ -971,7 +1007,7 @@ abstract class NYCTSubwayProto {
      * scheduled trips within the replacement period.
      * </pre>
      *
-     * <code>repeated .TripReplacementPeriod trip_replacement_period = 2;</code>
+     * <code>repeated .transit_realtime.TripReplacementPeriod trip_replacement_period = 2;</code>
      */
     @java.lang.Override
     public java.util.List<dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriod> getTripReplacementPeriodList() {
@@ -989,7 +1025,7 @@ abstract class NYCTSubwayProto {
      * scheduled trips within the replacement period.
      * </pre>
      *
-     * <code>repeated .TripReplacementPeriod trip_replacement_period = 2;</code>
+     * <code>repeated .transit_realtime.TripReplacementPeriod trip_replacement_period = 2;</code>
      */
     @java.lang.Override
     public java.util.List<? extends dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriodOrBuilder>
@@ -1008,7 +1044,7 @@ abstract class NYCTSubwayProto {
      * scheduled trips within the replacement period.
      * </pre>
      *
-     * <code>repeated .TripReplacementPeriod trip_replacement_period = 2;</code>
+     * <code>repeated .transit_realtime.TripReplacementPeriod trip_replacement_period = 2;</code>
      */
     @java.lang.Override
     public int getTripReplacementPeriodCount() {
@@ -1026,7 +1062,7 @@ abstract class NYCTSubwayProto {
      * scheduled trips within the replacement period.
      * </pre>
      *
-     * <code>repeated .TripReplacementPeriod trip_replacement_period = 2;</code>
+     * <code>repeated .transit_realtime.TripReplacementPeriod trip_replacement_period = 2;</code>
      */
     @java.lang.Override
     public dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriod getTripReplacementPeriod(int index) {
@@ -1044,7 +1080,7 @@ abstract class NYCTSubwayProto {
      * scheduled trips within the replacement period.
      * </pre>
      *
-     * <code>repeated .TripReplacementPeriod trip_replacement_period = 2;</code>
+     * <code>repeated .transit_realtime.TripReplacementPeriod trip_replacement_period = 2;</code>
      */
     @java.lang.Override
     public dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriodOrBuilder getTripReplacementPeriodOrBuilder(
@@ -1096,11 +1132,13 @@ abstract class NYCTSubwayProto {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
+
     public static dev.katsute.onemta.NYCTSubwayProto.NyctFeedHeader parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
+
     public static dev.katsute.onemta.NYCTSubwayProto.NyctFeedHeader parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -1147,21 +1185,21 @@ abstract class NYCTSubwayProto {
      * NYCT Subway extensions for the feed header
      * </pre>
      *
-     * Protobuf type {@code NyctFeedHeader}
+     * Protobuf type {@code transit_realtime.NyctFeedHeader}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:NyctFeedHeader)
+        // @@protoc_insertion_point(builder_implements:transit_realtime.NyctFeedHeader)
         dev.katsute.onemta.NYCTSubwayProto.NyctFeedHeaderOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return dev.katsute.onemta.NYCTSubwayProto.internal_static_NyctFeedHeader_descriptor;
+        return dev.katsute.onemta.NYCTSubwayProto.internal_static_transit_realtime_NyctFeedHeader_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return dev.katsute.onemta.NYCTSubwayProto.internal_static_NyctFeedHeader_fieldAccessorTable
+        return dev.katsute.onemta.NYCTSubwayProto.internal_static_transit_realtime_NyctFeedHeader_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
                 dev.katsute.onemta.NYCTSubwayProto.NyctFeedHeader.class, dev.katsute.onemta.NYCTSubwayProto.NyctFeedHeader.Builder.class);
       }
@@ -1194,7 +1232,7 @@ abstract class NYCTSubwayProto {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return dev.katsute.onemta.NYCTSubwayProto.internal_static_NyctFeedHeader_descriptor;
+        return dev.katsute.onemta.NYCTSubwayProto.internal_static_transit_realtime_NyctFeedHeader_descriptor;
       }
 
       @java.lang.Override
@@ -1242,6 +1280,38 @@ abstract class NYCTSubwayProto {
         result.bitField0_ |= to_bitField0_;
       }
 
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
       private int bitField0_;
 
       private java.lang.Object nyctSubwayVersion_ = "";
@@ -1378,7 +1448,7 @@ abstract class NYCTSubwayProto {
        * scheduled trips within the replacement period.
        * </pre>
        *
-       * <code>repeated .TripReplacementPeriod trip_replacement_period = 2;</code>
+       * <code>repeated .transit_realtime.TripReplacementPeriod trip_replacement_period = 2;</code>
        */
       public java.util.List<dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriod> getTripReplacementPeriodList() {
         if (tripReplacementPeriodBuilder_ == null) {
@@ -1399,7 +1469,7 @@ abstract class NYCTSubwayProto {
        * scheduled trips within the replacement period.
        * </pre>
        *
-       * <code>repeated .TripReplacementPeriod trip_replacement_period = 2;</code>
+       * <code>repeated .transit_realtime.TripReplacementPeriod trip_replacement_period = 2;</code>
        */
       public int getTripReplacementPeriodCount() {
         if (tripReplacementPeriodBuilder_ == null) {
@@ -1420,7 +1490,7 @@ abstract class NYCTSubwayProto {
        * scheduled trips within the replacement period.
        * </pre>
        *
-       * <code>repeated .TripReplacementPeriod trip_replacement_period = 2;</code>
+       * <code>repeated .transit_realtime.TripReplacementPeriod trip_replacement_period = 2;</code>
        */
       public dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriod getTripReplacementPeriod(int index) {
         if (tripReplacementPeriodBuilder_ == null) {
@@ -1441,7 +1511,7 @@ abstract class NYCTSubwayProto {
        * scheduled trips within the replacement period.
        * </pre>
        *
-       * <code>repeated .TripReplacementPeriod trip_replacement_period = 2;</code>
+       * <code>repeated .transit_realtime.TripReplacementPeriod trip_replacement_period = 2;</code>
        */
       public Builder setTripReplacementPeriod(
           int index, dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriod value) {
@@ -1469,7 +1539,7 @@ abstract class NYCTSubwayProto {
        * scheduled trips within the replacement period.
        * </pre>
        *
-       * <code>repeated .TripReplacementPeriod trip_replacement_period = 2;</code>
+       * <code>repeated .transit_realtime.TripReplacementPeriod trip_replacement_period = 2;</code>
        */
       public Builder setTripReplacementPeriod(
           int index, dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriod.Builder builderForValue) {
@@ -1494,7 +1564,7 @@ abstract class NYCTSubwayProto {
        * scheduled trips within the replacement period.
        * </pre>
        *
-       * <code>repeated .TripReplacementPeriod trip_replacement_period = 2;</code>
+       * <code>repeated .transit_realtime.TripReplacementPeriod trip_replacement_period = 2;</code>
        */
       public Builder addTripReplacementPeriod(dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriod value) {
         if (tripReplacementPeriodBuilder_ == null) {
@@ -1521,7 +1591,7 @@ abstract class NYCTSubwayProto {
        * scheduled trips within the replacement period.
        * </pre>
        *
-       * <code>repeated .TripReplacementPeriod trip_replacement_period = 2;</code>
+       * <code>repeated .transit_realtime.TripReplacementPeriod trip_replacement_period = 2;</code>
        */
       public Builder addTripReplacementPeriod(
           int index, dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriod value) {
@@ -1549,7 +1619,7 @@ abstract class NYCTSubwayProto {
        * scheduled trips within the replacement period.
        * </pre>
        *
-       * <code>repeated .TripReplacementPeriod trip_replacement_period = 2;</code>
+       * <code>repeated .transit_realtime.TripReplacementPeriod trip_replacement_period = 2;</code>
        */
       public Builder addTripReplacementPeriod(
           dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriod.Builder builderForValue) {
@@ -1574,7 +1644,7 @@ abstract class NYCTSubwayProto {
        * scheduled trips within the replacement period.
        * </pre>
        *
-       * <code>repeated .TripReplacementPeriod trip_replacement_period = 2;</code>
+       * <code>repeated .transit_realtime.TripReplacementPeriod trip_replacement_period = 2;</code>
        */
       public Builder addTripReplacementPeriod(
           int index, dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriod.Builder builderForValue) {
@@ -1599,7 +1669,7 @@ abstract class NYCTSubwayProto {
        * scheduled trips within the replacement period.
        * </pre>
        *
-       * <code>repeated .TripReplacementPeriod trip_replacement_period = 2;</code>
+       * <code>repeated .transit_realtime.TripReplacementPeriod trip_replacement_period = 2;</code>
        */
       public Builder addAllTripReplacementPeriod(
           java.lang.Iterable<? extends dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriod> values) {
@@ -1625,7 +1695,7 @@ abstract class NYCTSubwayProto {
        * scheduled trips within the replacement period.
        * </pre>
        *
-       * <code>repeated .TripReplacementPeriod trip_replacement_period = 2;</code>
+       * <code>repeated .transit_realtime.TripReplacementPeriod trip_replacement_period = 2;</code>
        */
       public Builder clearTripReplacementPeriod() {
         if (tripReplacementPeriodBuilder_ == null) {
@@ -1649,7 +1719,7 @@ abstract class NYCTSubwayProto {
        * scheduled trips within the replacement period.
        * </pre>
        *
-       * <code>repeated .TripReplacementPeriod trip_replacement_period = 2;</code>
+       * <code>repeated .transit_realtime.TripReplacementPeriod trip_replacement_period = 2;</code>
        */
       public Builder removeTripReplacementPeriod(int index) {
         if (tripReplacementPeriodBuilder_ == null) {
@@ -1673,7 +1743,7 @@ abstract class NYCTSubwayProto {
        * scheduled trips within the replacement period.
        * </pre>
        *
-       * <code>repeated .TripReplacementPeriod trip_replacement_period = 2;</code>
+       * <code>repeated .transit_realtime.TripReplacementPeriod trip_replacement_period = 2;</code>
        */
       public dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriod.Builder getTripReplacementPeriodBuilder(
           int index) {
@@ -1691,7 +1761,7 @@ abstract class NYCTSubwayProto {
        * scheduled trips within the replacement period.
        * </pre>
        *
-       * <code>repeated .TripReplacementPeriod trip_replacement_period = 2;</code>
+       * <code>repeated .transit_realtime.TripReplacementPeriod trip_replacement_period = 2;</code>
        */
       public dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriodOrBuilder getTripReplacementPeriodOrBuilder(
           int index) {
@@ -1712,7 +1782,7 @@ abstract class NYCTSubwayProto {
        * scheduled trips within the replacement period.
        * </pre>
        *
-       * <code>repeated .TripReplacementPeriod trip_replacement_period = 2;</code>
+       * <code>repeated .transit_realtime.TripReplacementPeriod trip_replacement_period = 2;</code>
        */
       public java.util.List<? extends dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriodOrBuilder>
            getTripReplacementPeriodOrBuilderList() {
@@ -1734,7 +1804,7 @@ abstract class NYCTSubwayProto {
        * scheduled trips within the replacement period.
        * </pre>
        *
-       * <code>repeated .TripReplacementPeriod trip_replacement_period = 2;</code>
+       * <code>repeated .transit_realtime.TripReplacementPeriod trip_replacement_period = 2;</code>
        */
       public dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriod.Builder addTripReplacementPeriodBuilder() {
         return getTripReplacementPeriodFieldBuilder().addBuilder(
@@ -1752,7 +1822,7 @@ abstract class NYCTSubwayProto {
        * scheduled trips within the replacement period.
        * </pre>
        *
-       * <code>repeated .TripReplacementPeriod trip_replacement_period = 2;</code>
+       * <code>repeated .transit_realtime.TripReplacementPeriod trip_replacement_period = 2;</code>
        */
       public dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriod.Builder addTripReplacementPeriodBuilder(
           int index) {
@@ -1771,7 +1841,7 @@ abstract class NYCTSubwayProto {
        * scheduled trips within the replacement period.
        * </pre>
        *
-       * <code>repeated .TripReplacementPeriod trip_replacement_period = 2;</code>
+       * <code>repeated .transit_realtime.TripReplacementPeriod trip_replacement_period = 2;</code>
        */
       public java.util.List<dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriod.Builder>
            getTripReplacementPeriodBuilderList() {
@@ -1803,10 +1873,10 @@ abstract class NYCTSubwayProto {
         return super.mergeUnknownFields(unknownFields);
       }
 
-      // @@protoc_insertion_point(builder_scope:NyctFeedHeader)
+      // @@protoc_insertion_point(builder_scope:transit_realtime.NyctFeedHeader)
     }
 
-    // @@protoc_insertion_point(class_scope:NyctFeedHeader)
+    // @@protoc_insertion_point(class_scope:transit_realtime.NyctFeedHeader)
     private static final dev.katsute.onemta.NYCTSubwayProto.NyctFeedHeader DEFAULT_INSTANCE;
     static {
       DEFAULT_INSTANCE = new dev.katsute.onemta.NYCTSubwayProto.NyctFeedHeader();
@@ -1855,7 +1925,7 @@ abstract class NYCTSubwayProto {
   }
 
   public interface NyctTripDescriptorOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:NyctTripDescriptor)
+      // @@protoc_insertion_point(interface_extends:transit_realtime.NyctTripDescriptor)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -2001,7 +2071,7 @@ abstract class NYCTSubwayProto {
      * EAST and WEST are not used currently.
      * </pre>
      *
-     * <code>optional .NyctTripDescriptor.Direction direction = 3;</code>
+     * <code>optional .transit_realtime.NyctTripDescriptor.Direction direction = 3;</code>
      * @return Whether the direction field is set.
      */
     boolean hasDirection();
@@ -2016,7 +2086,7 @@ abstract class NYCTSubwayProto {
      * EAST and WEST are not used currently.
      * </pre>
      *
-     * <code>optional .NyctTripDescriptor.Direction direction = 3;</code>
+     * <code>optional .transit_realtime.NyctTripDescriptor.Direction direction = 3;</code>
      * @return The direction.
      */
     dev.katsute.onemta.NYCTSubwayProto.NyctTripDescriptor.Direction getDirection();
@@ -2026,11 +2096,11 @@ abstract class NYCTSubwayProto {
    * NYCT Subway extensions for the trip descriptor
    * </pre>
    *
-   * Protobuf type {@code NyctTripDescriptor}
+   * Protobuf type {@code transit_realtime.NyctTripDescriptor}
    */
   public static final class NyctTripDescriptor extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:NyctTripDescriptor)
+      // @@protoc_insertion_point(message_implements:transit_realtime.NyctTripDescriptor)
       NyctTripDescriptorOrBuilder {
   private static final long serialVersionUID = 0L;
     // Use NyctTripDescriptor.newBuilder() to construct.
@@ -2051,13 +2121,13 @@ abstract class NYCTSubwayProto {
 
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return dev.katsute.onemta.NYCTSubwayProto.internal_static_NyctTripDescriptor_descriptor;
+      return dev.katsute.onemta.NYCTSubwayProto.internal_static_transit_realtime_NyctTripDescriptor_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return dev.katsute.onemta.NYCTSubwayProto.internal_static_NyctTripDescriptor_fieldAccessorTable
+      return dev.katsute.onemta.NYCTSubwayProto.internal_static_transit_realtime_NyctTripDescriptor_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               dev.katsute.onemta.NYCTSubwayProto.NyctTripDescriptor.class, dev.katsute.onemta.NYCTSubwayProto.NyctTripDescriptor.Builder.class);
     }
@@ -2067,7 +2137,7 @@ abstract class NYCTSubwayProto {
      * The direction the train is moving.
      * </pre>
      *
-     * Protobuf enum {@code NyctTripDescriptor.Direction}
+     * Protobuf enum {@code transit_realtime.NyctTripDescriptor.Direction}
      */
     public enum Direction
         implements com.google.protobuf.ProtocolMessageEnum {
@@ -2176,7 +2246,7 @@ abstract class NYCTSubwayProto {
         this.value = value;
       }
 
-      // @@protoc_insertion_point(enum_scope:NyctTripDescriptor.Direction)
+      // @@protoc_insertion_point(enum_scope:transit_realtime.NyctTripDescriptor.Direction)
     }
 
     private int bitField0_;
@@ -2365,7 +2435,7 @@ abstract class NYCTSubwayProto {
      * EAST and WEST are not used currently.
      * </pre>
      *
-     * <code>optional .NyctTripDescriptor.Direction direction = 3;</code>
+     * <code>optional .transit_realtime.NyctTripDescriptor.Direction direction = 3;</code>
      * @return Whether the direction field is set.
      */
     @java.lang.Override public boolean hasDirection() {
@@ -2382,7 +2452,7 @@ abstract class NYCTSubwayProto {
      * EAST and WEST are not used currently.
      * </pre>
      *
-     * <code>optional .NyctTripDescriptor.Direction direction = 3;</code>
+     * <code>optional .transit_realtime.NyctTripDescriptor.Direction direction = 3;</code>
      * @return The direction.
      */
     @java.lang.Override public dev.katsute.onemta.NYCTSubwayProto.NyctTripDescriptor.Direction getDirection() {
@@ -2434,11 +2504,13 @@ abstract class NYCTSubwayProto {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
+
     public static dev.katsute.onemta.NYCTSubwayProto.NyctTripDescriptor parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
+
     public static dev.katsute.onemta.NYCTSubwayProto.NyctTripDescriptor parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -2485,21 +2557,21 @@ abstract class NYCTSubwayProto {
      * NYCT Subway extensions for the trip descriptor
      * </pre>
      *
-     * Protobuf type {@code NyctTripDescriptor}
+     * Protobuf type {@code transit_realtime.NyctTripDescriptor}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:NyctTripDescriptor)
+        // @@protoc_insertion_point(builder_implements:transit_realtime.NyctTripDescriptor)
         dev.katsute.onemta.NYCTSubwayProto.NyctTripDescriptorOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return dev.katsute.onemta.NYCTSubwayProto.internal_static_NyctTripDescriptor_descriptor;
+        return dev.katsute.onemta.NYCTSubwayProto.internal_static_transit_realtime_NyctTripDescriptor_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return dev.katsute.onemta.NYCTSubwayProto.internal_static_NyctTripDescriptor_fieldAccessorTable
+        return dev.katsute.onemta.NYCTSubwayProto.internal_static_transit_realtime_NyctTripDescriptor_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
                 dev.katsute.onemta.NYCTSubwayProto.NyctTripDescriptor.class, dev.katsute.onemta.NYCTSubwayProto.NyctTripDescriptor.Builder.class);
       }
@@ -2527,7 +2599,7 @@ abstract class NYCTSubwayProto {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return dev.katsute.onemta.NYCTSubwayProto.internal_static_NyctTripDescriptor_descriptor;
+        return dev.katsute.onemta.NYCTSubwayProto.internal_static_transit_realtime_NyctTripDescriptor_descriptor;
       }
 
       @java.lang.Override
@@ -2570,6 +2642,38 @@ abstract class NYCTSubwayProto {
         result.bitField0_ |= to_bitField0_;
       }
 
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
       private int bitField0_;
 
       private java.lang.Object trainId_ = "";
@@ -2912,7 +3016,7 @@ abstract class NYCTSubwayProto {
        * EAST and WEST are not used currently.
        * </pre>
        *
-       * <code>optional .NyctTripDescriptor.Direction direction = 3;</code>
+       * <code>optional .transit_realtime.NyctTripDescriptor.Direction direction = 3;</code>
        * @return Whether the direction field is set.
        */
       @java.lang.Override public boolean hasDirection() {
@@ -2929,7 +3033,7 @@ abstract class NYCTSubwayProto {
        * EAST and WEST are not used currently.
        * </pre>
        *
-       * <code>optional .NyctTripDescriptor.Direction direction = 3;</code>
+       * <code>optional .transit_realtime.NyctTripDescriptor.Direction direction = 3;</code>
        * @return The direction.
        */
       @java.lang.Override
@@ -2948,7 +3052,7 @@ abstract class NYCTSubwayProto {
        * EAST and WEST are not used currently.
        * </pre>
        *
-       * <code>optional .NyctTripDescriptor.Direction direction = 3;</code>
+       * <code>optional .transit_realtime.NyctTripDescriptor.Direction direction = 3;</code>
        * @param value The direction to set.
        * @return This builder for chaining.
        */
@@ -2972,7 +3076,7 @@ abstract class NYCTSubwayProto {
        * EAST and WEST are not used currently.
        * </pre>
        *
-       * <code>optional .NyctTripDescriptor.Direction direction = 3;</code>
+       * <code>optional .transit_realtime.NyctTripDescriptor.Direction direction = 3;</code>
        * @return This builder for chaining.
        */
       public Builder clearDirection() {
@@ -2993,10 +3097,10 @@ abstract class NYCTSubwayProto {
         return super.mergeUnknownFields(unknownFields);
       }
 
-      // @@protoc_insertion_point(builder_scope:NyctTripDescriptor)
+      // @@protoc_insertion_point(builder_scope:transit_realtime.NyctTripDescriptor)
     }
 
-    // @@protoc_insertion_point(class_scope:NyctTripDescriptor)
+    // @@protoc_insertion_point(class_scope:transit_realtime.NyctTripDescriptor)
     private static final dev.katsute.onemta.NYCTSubwayProto.NyctTripDescriptor DEFAULT_INSTANCE;
     static {
       DEFAULT_INSTANCE = new dev.katsute.onemta.NYCTSubwayProto.NyctTripDescriptor();
@@ -3045,7 +3149,7 @@ abstract class NYCTSubwayProto {
   }
 
   public interface NyctStopTimeUpdateOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:NyctStopTimeUpdate)
+      // @@protoc_insertion_point(interface_extends:transit_realtime.NyctStopTimeUpdate)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -3189,11 +3293,11 @@ abstract class NYCTSubwayProto {
    * NYCT Subway extensions for the stop time update
    * </pre>
    *
-   * Protobuf type {@code NyctStopTimeUpdate}
+   * Protobuf type {@code transit_realtime.NyctStopTimeUpdate}
    */
   public static final class NyctStopTimeUpdate extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:NyctStopTimeUpdate)
+      // @@protoc_insertion_point(message_implements:transit_realtime.NyctStopTimeUpdate)
       NyctStopTimeUpdateOrBuilder {
   private static final long serialVersionUID = 0L;
     // Use NyctStopTimeUpdate.newBuilder() to construct.
@@ -3214,13 +3318,13 @@ abstract class NYCTSubwayProto {
 
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return dev.katsute.onemta.NYCTSubwayProto.internal_static_NyctStopTimeUpdate_descriptor;
+      return dev.katsute.onemta.NYCTSubwayProto.internal_static_transit_realtime_NyctStopTimeUpdate_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return dev.katsute.onemta.NYCTSubwayProto.internal_static_NyctStopTimeUpdate_fieldAccessorTable
+      return dev.katsute.onemta.NYCTSubwayProto.internal_static_transit_realtime_NyctStopTimeUpdate_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               dev.katsute.onemta.NYCTSubwayProto.NyctStopTimeUpdate.class, dev.katsute.onemta.NYCTSubwayProto.NyctStopTimeUpdate.Builder.class);
     }
@@ -3470,11 +3574,13 @@ abstract class NYCTSubwayProto {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
+
     public static dev.katsute.onemta.NYCTSubwayProto.NyctStopTimeUpdate parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
+
     public static dev.katsute.onemta.NYCTSubwayProto.NyctStopTimeUpdate parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -3521,21 +3627,21 @@ abstract class NYCTSubwayProto {
      * NYCT Subway extensions for the stop time update
      * </pre>
      *
-     * Protobuf type {@code NyctStopTimeUpdate}
+     * Protobuf type {@code transit_realtime.NyctStopTimeUpdate}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:NyctStopTimeUpdate)
+        // @@protoc_insertion_point(builder_implements:transit_realtime.NyctStopTimeUpdate)
         dev.katsute.onemta.NYCTSubwayProto.NyctStopTimeUpdateOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return dev.katsute.onemta.NYCTSubwayProto.internal_static_NyctStopTimeUpdate_descriptor;
+        return dev.katsute.onemta.NYCTSubwayProto.internal_static_transit_realtime_NyctStopTimeUpdate_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return dev.katsute.onemta.NYCTSubwayProto.internal_static_NyctStopTimeUpdate_fieldAccessorTable
+        return dev.katsute.onemta.NYCTSubwayProto.internal_static_transit_realtime_NyctStopTimeUpdate_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
                 dev.katsute.onemta.NYCTSubwayProto.NyctStopTimeUpdate.class, dev.katsute.onemta.NYCTSubwayProto.NyctStopTimeUpdate.Builder.class);
       }
@@ -3562,7 +3668,7 @@ abstract class NYCTSubwayProto {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return dev.katsute.onemta.NYCTSubwayProto.internal_static_NyctStopTimeUpdate_descriptor;
+        return dev.katsute.onemta.NYCTSubwayProto.internal_static_transit_realtime_NyctStopTimeUpdate_descriptor;
       }
 
       @java.lang.Override
@@ -3601,6 +3707,38 @@ abstract class NYCTSubwayProto {
         result.bitField0_ |= to_bitField0_;
       }
 
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
       private int bitField0_;
 
       private java.lang.Object scheduledTrack_ = "";
@@ -3978,10 +4116,10 @@ abstract class NYCTSubwayProto {
         return super.mergeUnknownFields(unknownFields);
       }
 
-      // @@protoc_insertion_point(builder_scope:NyctStopTimeUpdate)
+      // @@protoc_insertion_point(builder_scope:transit_realtime.NyctStopTimeUpdate)
     }
 
-    // @@protoc_insertion_point(class_scope:NyctStopTimeUpdate)
+    // @@protoc_insertion_point(class_scope:transit_realtime.NyctStopTimeUpdate)
     private static final dev.katsute.onemta.NYCTSubwayProto.NyctStopTimeUpdate DEFAULT_INSTANCE;
     static {
       DEFAULT_INSTANCE = new dev.katsute.onemta.NYCTSubwayProto.NyctStopTimeUpdate();
@@ -4063,25 +4201,25 @@ abstract class NYCTSubwayProto {
         dev.katsute.onemta.NYCTSubwayProto.NyctStopTimeUpdate.class,
         dev.katsute.onemta.NYCTSubwayProto.NyctStopTimeUpdate.getDefaultInstance());
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_TripReplacementPeriod_descriptor;
+    internal_static_transit_realtime_TripReplacementPeriod_descriptor;
   private static final
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_TripReplacementPeriod_fieldAccessorTable;
+      internal_static_transit_realtime_TripReplacementPeriod_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_NyctFeedHeader_descriptor;
+    internal_static_transit_realtime_NyctFeedHeader_descriptor;
   private static final
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_NyctFeedHeader_fieldAccessorTable;
+      internal_static_transit_realtime_NyctFeedHeader_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_NyctTripDescriptor_descriptor;
+    internal_static_transit_realtime_NyctTripDescriptor_descriptor;
   private static final
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_NyctTripDescriptor_fieldAccessorTable;
+      internal_static_transit_realtime_NyctTripDescriptor_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_NyctStopTimeUpdate_descriptor;
+    internal_static_transit_realtime_NyctStopTimeUpdate_descriptor;
   private static final
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_NyctStopTimeUpdate_fieldAccessorTable;
+      internal_static_transit_realtime_NyctStopTimeUpdate_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -4091,55 +4229,58 @@ abstract class NYCTSubwayProto {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\030gtfs-realtime-NYCT.proto\032\023gtfs-realtim" +
-      "e.proto\"b\n\025TripReplacementPeriod\022\020\n\010rout" +
-      "e_id\030\001 \001(\t\0227\n\022replacement_period\030\002 \001(\0132\033" +
-      ".transit_realtime.TimeRange\"f\n\016NyctFeedH" +
-      "eader\022\033\n\023nyct_subway_version\030\001 \002(\t\0227\n\027tr" +
-      "ip_replacement_period\030\002 \003(\0132\026.TripReplac" +
-      "ementPeriod\"\244\001\n\022NyctTripDescriptor\022\020\n\010tr" +
-      "ain_id\030\001 \001(\t\022\023\n\013is_assigned\030\002 \001(\010\0220\n\tdir" +
-      "ection\030\003 \001(\0162\035.NyctTripDescriptor.Direct" +
-      "ion\"5\n\tDirection\022\t\n\005NORTH\020\001\022\010\n\004EAST\020\002\022\t\n" +
-      "\005SOUTH\020\003\022\010\n\004WEST\020\004\"C\n\022NyctStopTimeUpdate" +
-      "\022\027\n\017scheduled_track\030\001 \001(\t\022\024\n\014actual_trac" +
-      "k\030\002 \001(\t:H\n\020nyct_feed_header\022\034.transit_re" +
-      "altime.FeedHeader\030\351\007 \001(\0132\017.NyctFeedHeade" +
-      "r:T\n\024nyct_trip_descriptor\022 .transit_real" +
-      "time.TripDescriptor\030\351\007 \001(\0132\023.NyctTripDes" +
-      "criptor:`\n\025nyct_stop_time_update\022+.trans" +
-      "it_realtime.TripUpdate.StopTimeUpdate\030\351\007" +
-      " \001(\0132\023.NyctStopTimeUpdateB\'\n\022dev.katsute" +
-      ".onemtaB\017NYCTSubwayProtoH\002"
+      "\n\030gtfs-realtime-NYCT.proto\022\020transit_real" +
+      "time\032\023gtfs-realtime.proto\"b\n\025TripReplace" +
+      "mentPeriod\022\020\n\010route_id\030\001 \001(\t\0227\n\022replacem" +
+      "ent_period\030\002 \001(\0132\033.transit_realtime.Time" +
+      "Range\"w\n\016NyctFeedHeader\022\033\n\023nyct_subway_v" +
+      "ersion\030\001 \002(\t\022H\n\027trip_replacement_period\030" +
+      "\002 \003(\0132\'.transit_realtime.TripReplacement" +
+      "Period\"\265\001\n\022NyctTripDescriptor\022\020\n\010train_i" +
+      "d\030\001 \001(\t\022\023\n\013is_assigned\030\002 \001(\010\022A\n\tdirectio" +
+      "n\030\003 \001(\0162..transit_realtime.NyctTripDescr" +
+      "iptor.Direction\"5\n\tDirection\022\t\n\005NORTH\020\001\022" +
+      "\010\n\004EAST\020\002\022\t\n\005SOUTH\020\003\022\010\n\004WEST\020\004\"C\n\022NyctSt" +
+      "opTimeUpdate\022\027\n\017scheduled_track\030\001 \001(\t\022\024\n" +
+      "\014actual_track\030\002 \001(\t:Y\n\020nyct_feed_header\022" +
+      "\034.transit_realtime.FeedHeader\030\351\007 \001(\0132 .t" +
+      "ransit_realtime.NyctFeedHeader:e\n\024nyct_t" +
+      "rip_descriptor\022 .transit_realtime.TripDe" +
+      "scriptor\030\351\007 \001(\0132$.transit_realtime.NyctT" +
+      "ripDescriptor:q\n\025nyct_stop_time_update\022+" +
+      ".transit_realtime.TripUpdate.StopTimeUpd" +
+      "ate\030\351\007 \001(\0132$.transit_realtime.NyctStopTi" +
+      "meUpdateB\'\n\022dev.katsute.onemtaB\017NYCTSubw" +
+      "ayProtoH\002"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           dev.katsute.onemta.GTFSRealtimeProto.getDescriptor(),
         });
-    internal_static_TripReplacementPeriod_descriptor =
+    internal_static_transit_realtime_TripReplacementPeriod_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_TripReplacementPeriod_fieldAccessorTable = new
+    internal_static_transit_realtime_TripReplacementPeriod_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_TripReplacementPeriod_descriptor,
+        internal_static_transit_realtime_TripReplacementPeriod_descriptor,
         new java.lang.String[] { "RouteId", "ReplacementPeriod", });
-    internal_static_NyctFeedHeader_descriptor =
+    internal_static_transit_realtime_NyctFeedHeader_descriptor =
       getDescriptor().getMessageTypes().get(1);
-    internal_static_NyctFeedHeader_fieldAccessorTable = new
+    internal_static_transit_realtime_NyctFeedHeader_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_NyctFeedHeader_descriptor,
+        internal_static_transit_realtime_NyctFeedHeader_descriptor,
         new java.lang.String[] { "NyctSubwayVersion", "TripReplacementPeriod", });
-    internal_static_NyctTripDescriptor_descriptor =
+    internal_static_transit_realtime_NyctTripDescriptor_descriptor =
       getDescriptor().getMessageTypes().get(2);
-    internal_static_NyctTripDescriptor_fieldAccessorTable = new
+    internal_static_transit_realtime_NyctTripDescriptor_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_NyctTripDescriptor_descriptor,
+        internal_static_transit_realtime_NyctTripDescriptor_descriptor,
         new java.lang.String[] { "TrainId", "IsAssigned", "Direction", });
-    internal_static_NyctStopTimeUpdate_descriptor =
+    internal_static_transit_realtime_NyctStopTimeUpdate_descriptor =
       getDescriptor().getMessageTypes().get(3);
-    internal_static_NyctStopTimeUpdate_fieldAccessorTable = new
+    internal_static_transit_realtime_NyctStopTimeUpdate_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_NyctStopTimeUpdate_descriptor,
+        internal_static_transit_realtime_NyctStopTimeUpdate_descriptor,
         new java.lang.String[] { "ScheduledTrack", "ActualTrack", });
     nyctFeedHeader.internalInit(descriptor.getExtensions().get(0));
     nyctTripDescriptor.internalInit(descriptor.getExtensions().get(1));
