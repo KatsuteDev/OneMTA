@@ -19,36 +19,37 @@ jobs:
       fail-fast: false
       max-parallel: 1
     steps:
-      - name: 📤 Checkout Repository
+      - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: ☕ Install Java
+      - name: Install Java
         uses: actions/setup-java@v3
         with:
           architecture: x64
           distribution: temurin
           java-version: ${{ matrix.java }}
 
-      - name: 📁 Create Folder
-        run: mkdir "src/test/java/resources"
+      - name: Create Folder
+        shell: bash
+        run: mkdir -p "src/test/java/resources"
 
-      - name: 🔐 Load Client ID
+      - name: Load Client ID
         run: |
           echo ${{ secrets.BUS_TOKEN }} > src/test/java/resources/bus.txt
 
-      - name: 🔐 Load OAuth Token
+      - name: Load OAuth Token
         run: |
           echo ${{ secrets.SUBWAY_TOKEN }} > src/test/java/resources/subway.txt
 
-      - name: 📄 Load Test Group
+      - name: Load Test Group
         run: |
           echo ${{ matrix.group }} > src/test/java/resources/TEST_GROUP
 
-      - name: ✔️ Test with Maven
+      - name: Test with Maven
         continue-on-error: true
         run: mvn test -fae --no-transfer-progress
 
-      - name: 📤 Checkout JUnit Report
+      - name: Checkout JUnit Report
         uses: actions/checkout@v3
         with:
           repository: Katsute/JUnit-Report
@@ -56,5 +57,5 @@ jobs:
           path: ./.github/junit-report
           token: ${{ secrets.BOT }}
 
-      - name: ✔️ Generate Report
+      - name: Generate Report
         uses: ./.github/junit-report
