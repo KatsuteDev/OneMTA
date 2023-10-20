@@ -3808,169 +3808,133 @@ abstract class ServiceStatusProto {
        */
       PRIORITY_NO_SCHEDULED_SERVICE(1),
       /**
-       * <code>PRIORITY_NO_MIDDAY_SERVICE = 2;</code>
+       * <code>INFORMATION_OUTAGE = 2;</code>
        */
-      PRIORITY_NO_MIDDAY_SERVICE(2),
+      INFORMATION_OUTAGE(2),
       /**
-       * <code>PRIORITY_NO_OVERNIGHT_SERVICE = 3;</code>
+       * <code>STATION_NOTICE = 3;</code>
        */
-      PRIORITY_NO_OVERNIGHT_SERVICE(3),
+      STATION_NOTICE(3),
       /**
-       * <code>PRIORITY_NO_WEEKEND_SERVICE = 4;</code>
+       * <code>SPECIAL_NOTICE = 4;</code>
        */
-      PRIORITY_NO_WEEKEND_SERVICE(4),
+      SPECIAL_NOTICE(4),
       /**
-       * <code>PRIORITY_WEEKDAY_SCHEDULE = 5;</code>
+       * <code>WEEKDAY_SCHEDULE = 5;</code>
        */
-      PRIORITY_WEEKDAY_SCHEDULE(5),
+      WEEKDAY_SCHEDULE(5),
       /**
-       * <code>PRIORITY_WEEKEND_SCHEDULE = 6;</code>
+       * <code>WEEKEND_SCHEDULE = 6;</code>
        */
-      PRIORITY_WEEKEND_SCHEDULE(6),
+      WEEKEND_SCHEDULE(6),
       /**
-       * <code>PRIORITY_SATURDAY_SCHEDULE = 7;</code>
+       * <code>SATURDAY_SCHEDULE = 7;</code>
        */
-      PRIORITY_SATURDAY_SCHEDULE(7),
+      SATURDAY_SCHEDULE(7),
       /**
-       * <code>PRIORITY_SUNDAY_SCHEDULE = 8;</code>
+       * <code>SUNDAY_SCHEDULE = 8;</code>
        */
-      PRIORITY_SUNDAY_SCHEDULE(8),
+      SUNDAY_SCHEDULE(8),
       /**
-       * <code>PRIORITY_EXTRA_SERVICE = 9;</code>
+       * <code>EXTRA_SERVICE = 9;</code>
        */
-      PRIORITY_EXTRA_SERVICE(9),
+      EXTRA_SERVICE(9),
       /**
-       * <code>PRIORITY_SPECIAL_SCHEDULE = 10;</code>
+       * <code>BOARDING_CHANGE = 10;</code>
        */
-      PRIORITY_SPECIAL_SCHEDULE(10),
+      BOARDING_CHANGE(10),
       /**
-       * <code>PRIORITY_STATION_NOTICE = 11;</code>
+       * <code>SPECIAL_SCHEDULE = 11;</code>
        */
-      PRIORITY_STATION_NOTICE(11),
+      SPECIAL_SCHEDULE(11),
       /**
-       * <code>PRIORITY_SPECIAL_EVENT = 12;</code>
+       * <code>EXPECT_DELAYS = 12;</code>
        */
-      PRIORITY_SPECIAL_EVENT(12),
+      EXPECT_DELAYS(12),
       /**
-       * <code>PRIORITY_PLANNED_BOARDING_CHANGE = 13;</code>
+       * <code>REDUCED_SERVICE = 13;</code>
        */
-      PRIORITY_PLANNED_BOARDING_CHANGE(13),
+      REDUCED_SERVICE(13),
       /**
-       * <code>PRIORITY_BOARDING_CHANGE = 14;</code>
+       * <code>PLANNED_EXPRESS_TO_LOCAL = 14;</code>
        */
-      PRIORITY_BOARDING_CHANGE(14),
+      PLANNED_EXPRESS_TO_LOCAL(14),
       /**
-       * <code>PRIORITY_REDUCED_SERVICE = 15;</code>
+       * <code>PLANNED_EXTRA_TRANSFER = 15;</code>
        */
-      PRIORITY_REDUCED_SERVICE(15),
+      PLANNED_EXTRA_TRANSFER(15),
       /**
-       * <code>PRIORITY_PLANNED_WORK = 16;</code>
+       * <code>PLANNED_STOPS_SKIPPED = 16;</code>
        */
-      PRIORITY_PLANNED_WORK(16),
+      PLANNED_STOPS_SKIPPED(16),
       /**
-       * <code>PRIORITY_PLANNED_STATIONS_SKIPPED = 17;</code>
+       * <code>PLANNED_DETOUR = 17;</code>
        */
-      PRIORITY_PLANNED_STATIONS_SKIPPED(17),
+      PLANNED_DETOUR(17),
       /**
-       * <code>PRIORITY_PLANNED_EXPRESS_TO_LOCAL = 18;</code>
+       * <code>PLANNED_REROUTE = 18;</code>
        */
-      PRIORITY_PLANNED_EXPRESS_TO_LOCAL(18),
+      PLANNED_REROUTE(18),
       /**
-       * <code>PRIORITY_SLOW_SPEEDS = 19;</code>
+       * <code>PLANNED_SUBSTITUTE_BUSES = 19;</code>
        */
-      PRIORITY_SLOW_SPEEDS(19),
+      PLANNED_SUBSTITUTE_BUSES(19),
       /**
-       * <code>PRIORITY_EXPECT_DELAYS = 20;</code>
+       * <code>PLANNED_PART_SUSPENDED = 20;</code>
        */
-      PRIORITY_EXPECT_DELAYS(20),
+      PLANNED_PART_SUSPENDED(20),
       /**
-       * <code>PRIORITY_PLANNED_LOCAL_TO_EXPRESS = 21;</code>
+       * <code>PLANNED_SUSPENDED = 21;</code>
        */
-      PRIORITY_PLANNED_LOCAL_TO_EXPRESS(21),
+      PLANNED_SUSPENDED(21),
       /**
-       * <code>PRIORITY_PLANNED_BUSES_DETOURED = 22;</code>
+       * <code>SOME_DELAYS = 22;</code>
        */
-      PRIORITY_PLANNED_BUSES_DETOURED(22),
+      SOME_DELAYS(22),
       /**
-       * <code>PRIORITY_PLANNED_TRAINS_REROUTED = 23;</code>
+       * <code>EXPRESS_TO_LOCAL = 23;</code>
        */
-      PRIORITY_PLANNED_TRAINS_REROUTED(23),
+      EXPRESS_TO_LOCAL(23),
       /**
-       * <code>PRIORITY_PLANNED_SUBSTITUTE_BUSES = 24;</code>
+       * <code>DELAYS = 24;</code>
        */
-      PRIORITY_PLANNED_SUBSTITUTE_BUSES(24),
+      DELAYS(24),
       /**
-       * <code>PRIORITY_PLANNED_PART_SUSPENDED = 25;</code>
+       * <code>CANCELLATIONS = 25;</code>
        */
-      PRIORITY_PLANNED_PART_SUSPENDED(25),
+      CANCELLATIONS(25),
       /**
-       * <code>PRIORITY_PLANNED_MULTIPLE_CHANGES = 26;</code>
+       * <code>DELAYS_AND_CANCELLATIONS = 26;</code>
        */
-      PRIORITY_PLANNED_MULTIPLE_CHANGES(26),
+      DELAYS_AND_CANCELLATIONS(26),
       /**
-       * <code>PRIORITY_ARRIVAL_INFORMATION_OUTAGE = 27;</code>
+       * <code>STOPS_SKIPPED = 27;</code>
        */
-      PRIORITY_ARRIVAL_INFORMATION_OUTAGE(27),
+      STOPS_SKIPPED(27),
       /**
-       * <code>PRIORITY_SHUTTLE_BUSES_DETOURED = 28;</code>
+       * <code>SEVERE_DELAYS = 28;</code>
        */
-      PRIORITY_SHUTTLE_BUSES_DETOURED(28),
+      SEVERE_DELAYS(28),
       /**
-       * <code>PRIORITY_SOME_DELAYS = 29;</code>
+       * <code>DETOUR = 29;</code>
        */
-      PRIORITY_SOME_DELAYS(29),
+      DETOUR(29),
       /**
-       * <code>PRIORITY_STATIONS_SKIPPED = 30;</code>
+       * <code>REROUTE = 30;</code>
        */
-      PRIORITY_STATIONS_SKIPPED(30),
+      REROUTE(30),
       /**
-       * <code>PRIORITY_EXPRESS_TO_LOCAL = 31;</code>
+       * <code>SUBSTITUTE_BUSES = 31;</code>
        */
-      PRIORITY_EXPRESS_TO_LOCAL(31),
+      SUBSTITUTE_BUSES(31),
       /**
-       * <code>PRIORITY_DELAYS = 32;</code>
+       * <code>PART_SUSPENDED = 32;</code>
        */
-      PRIORITY_DELAYS(32),
+      PART_SUSPENDED(32),
       /**
-       * <code>PRIORITY_SOME_REROUTES = 33;</code>
+       * <code>SUSPENDED = 33;</code>
        */
-      PRIORITY_SOME_REROUTES(33),
-      /**
-       * <code>PRIORITY_LOCAL_TO_EXPRESS = 34;</code>
-       */
-      PRIORITY_LOCAL_TO_EXPRESS(34),
-      /**
-       * <code>PRIORITY_BUSES_DETOURED = 35;</code>
-       */
-      PRIORITY_BUSES_DETOURED(35),
-      /**
-       * <code>PRIORITY_SERVICE_CHANGE = 36;</code>
-       */
-      PRIORITY_SERVICE_CHANGE(36),
-      /**
-       * <code>PRIORITY_TRAINS_REROUTED = 37;</code>
-       */
-      PRIORITY_TRAINS_REROUTED(37),
-      /**
-       * <code>PRIORITY_SUBSTITUTE_BUSES = 38;</code>
-       */
-      PRIORITY_SUBSTITUTE_BUSES(38),
-      /**
-       * <code>PRIORITY_PART_SUSPENDED = 39;</code>
-       */
-      PRIORITY_PART_SUSPENDED(39),
-      /**
-       * <code>PRIORITY_MULTIPLE_CHANGES = 40;</code>
-       */
-      PRIORITY_MULTIPLE_CHANGES(40),
-      /**
-       * <code>PRIORITY_PLANNED_SUSPENDED = 41;</code>
-       */
-      PRIORITY_PLANNED_SUSPENDED(41),
-      /**
-       * <code>PRIORITY_SUSPENDED = 42;</code>
-       */
-      PRIORITY_SUSPENDED(42),
+      SUSPENDED(33),
       ;
 
       /**
@@ -3978,169 +3942,133 @@ abstract class ServiceStatusProto {
        */
       public static final int PRIORITY_NO_SCHEDULED_SERVICE_VALUE = 1;
       /**
-       * <code>PRIORITY_NO_MIDDAY_SERVICE = 2;</code>
+       * <code>INFORMATION_OUTAGE = 2;</code>
        */
-      public static final int PRIORITY_NO_MIDDAY_SERVICE_VALUE = 2;
+      public static final int INFORMATION_OUTAGE_VALUE = 2;
       /**
-       * <code>PRIORITY_NO_OVERNIGHT_SERVICE = 3;</code>
+       * <code>STATION_NOTICE = 3;</code>
        */
-      public static final int PRIORITY_NO_OVERNIGHT_SERVICE_VALUE = 3;
+      public static final int STATION_NOTICE_VALUE = 3;
       /**
-       * <code>PRIORITY_NO_WEEKEND_SERVICE = 4;</code>
+       * <code>SPECIAL_NOTICE = 4;</code>
        */
-      public static final int PRIORITY_NO_WEEKEND_SERVICE_VALUE = 4;
+      public static final int SPECIAL_NOTICE_VALUE = 4;
       /**
-       * <code>PRIORITY_WEEKDAY_SCHEDULE = 5;</code>
+       * <code>WEEKDAY_SCHEDULE = 5;</code>
        */
-      public static final int PRIORITY_WEEKDAY_SCHEDULE_VALUE = 5;
+      public static final int WEEKDAY_SCHEDULE_VALUE = 5;
       /**
-       * <code>PRIORITY_WEEKEND_SCHEDULE = 6;</code>
+       * <code>WEEKEND_SCHEDULE = 6;</code>
        */
-      public static final int PRIORITY_WEEKEND_SCHEDULE_VALUE = 6;
+      public static final int WEEKEND_SCHEDULE_VALUE = 6;
       /**
-       * <code>PRIORITY_SATURDAY_SCHEDULE = 7;</code>
+       * <code>SATURDAY_SCHEDULE = 7;</code>
        */
-      public static final int PRIORITY_SATURDAY_SCHEDULE_VALUE = 7;
+      public static final int SATURDAY_SCHEDULE_VALUE = 7;
       /**
-       * <code>PRIORITY_SUNDAY_SCHEDULE = 8;</code>
+       * <code>SUNDAY_SCHEDULE = 8;</code>
        */
-      public static final int PRIORITY_SUNDAY_SCHEDULE_VALUE = 8;
+      public static final int SUNDAY_SCHEDULE_VALUE = 8;
       /**
-       * <code>PRIORITY_EXTRA_SERVICE = 9;</code>
+       * <code>EXTRA_SERVICE = 9;</code>
        */
-      public static final int PRIORITY_EXTRA_SERVICE_VALUE = 9;
+      public static final int EXTRA_SERVICE_VALUE = 9;
       /**
-       * <code>PRIORITY_SPECIAL_SCHEDULE = 10;</code>
+       * <code>BOARDING_CHANGE = 10;</code>
        */
-      public static final int PRIORITY_SPECIAL_SCHEDULE_VALUE = 10;
+      public static final int BOARDING_CHANGE_VALUE = 10;
       /**
-       * <code>PRIORITY_STATION_NOTICE = 11;</code>
+       * <code>SPECIAL_SCHEDULE = 11;</code>
        */
-      public static final int PRIORITY_STATION_NOTICE_VALUE = 11;
+      public static final int SPECIAL_SCHEDULE_VALUE = 11;
       /**
-       * <code>PRIORITY_SPECIAL_EVENT = 12;</code>
+       * <code>EXPECT_DELAYS = 12;</code>
        */
-      public static final int PRIORITY_SPECIAL_EVENT_VALUE = 12;
+      public static final int EXPECT_DELAYS_VALUE = 12;
       /**
-       * <code>PRIORITY_PLANNED_BOARDING_CHANGE = 13;</code>
+       * <code>REDUCED_SERVICE = 13;</code>
        */
-      public static final int PRIORITY_PLANNED_BOARDING_CHANGE_VALUE = 13;
+      public static final int REDUCED_SERVICE_VALUE = 13;
       /**
-       * <code>PRIORITY_BOARDING_CHANGE = 14;</code>
+       * <code>PLANNED_EXPRESS_TO_LOCAL = 14;</code>
        */
-      public static final int PRIORITY_BOARDING_CHANGE_VALUE = 14;
+      public static final int PLANNED_EXPRESS_TO_LOCAL_VALUE = 14;
       /**
-       * <code>PRIORITY_REDUCED_SERVICE = 15;</code>
+       * <code>PLANNED_EXTRA_TRANSFER = 15;</code>
        */
-      public static final int PRIORITY_REDUCED_SERVICE_VALUE = 15;
+      public static final int PLANNED_EXTRA_TRANSFER_VALUE = 15;
       /**
-       * <code>PRIORITY_PLANNED_WORK = 16;</code>
+       * <code>PLANNED_STOPS_SKIPPED = 16;</code>
        */
-      public static final int PRIORITY_PLANNED_WORK_VALUE = 16;
+      public static final int PLANNED_STOPS_SKIPPED_VALUE = 16;
       /**
-       * <code>PRIORITY_PLANNED_STATIONS_SKIPPED = 17;</code>
+       * <code>PLANNED_DETOUR = 17;</code>
        */
-      public static final int PRIORITY_PLANNED_STATIONS_SKIPPED_VALUE = 17;
+      public static final int PLANNED_DETOUR_VALUE = 17;
       /**
-       * <code>PRIORITY_PLANNED_EXPRESS_TO_LOCAL = 18;</code>
+       * <code>PLANNED_REROUTE = 18;</code>
        */
-      public static final int PRIORITY_PLANNED_EXPRESS_TO_LOCAL_VALUE = 18;
+      public static final int PLANNED_REROUTE_VALUE = 18;
       /**
-       * <code>PRIORITY_SLOW_SPEEDS = 19;</code>
+       * <code>PLANNED_SUBSTITUTE_BUSES = 19;</code>
        */
-      public static final int PRIORITY_SLOW_SPEEDS_VALUE = 19;
+      public static final int PLANNED_SUBSTITUTE_BUSES_VALUE = 19;
       /**
-       * <code>PRIORITY_EXPECT_DELAYS = 20;</code>
+       * <code>PLANNED_PART_SUSPENDED = 20;</code>
        */
-      public static final int PRIORITY_EXPECT_DELAYS_VALUE = 20;
+      public static final int PLANNED_PART_SUSPENDED_VALUE = 20;
       /**
-       * <code>PRIORITY_PLANNED_LOCAL_TO_EXPRESS = 21;</code>
+       * <code>PLANNED_SUSPENDED = 21;</code>
        */
-      public static final int PRIORITY_PLANNED_LOCAL_TO_EXPRESS_VALUE = 21;
+      public static final int PLANNED_SUSPENDED_VALUE = 21;
       /**
-       * <code>PRIORITY_PLANNED_BUSES_DETOURED = 22;</code>
+       * <code>SOME_DELAYS = 22;</code>
        */
-      public static final int PRIORITY_PLANNED_BUSES_DETOURED_VALUE = 22;
+      public static final int SOME_DELAYS_VALUE = 22;
       /**
-       * <code>PRIORITY_PLANNED_TRAINS_REROUTED = 23;</code>
+       * <code>EXPRESS_TO_LOCAL = 23;</code>
        */
-      public static final int PRIORITY_PLANNED_TRAINS_REROUTED_VALUE = 23;
+      public static final int EXPRESS_TO_LOCAL_VALUE = 23;
       /**
-       * <code>PRIORITY_PLANNED_SUBSTITUTE_BUSES = 24;</code>
+       * <code>DELAYS = 24;</code>
        */
-      public static final int PRIORITY_PLANNED_SUBSTITUTE_BUSES_VALUE = 24;
+      public static final int DELAYS_VALUE = 24;
       /**
-       * <code>PRIORITY_PLANNED_PART_SUSPENDED = 25;</code>
+       * <code>CANCELLATIONS = 25;</code>
        */
-      public static final int PRIORITY_PLANNED_PART_SUSPENDED_VALUE = 25;
+      public static final int CANCELLATIONS_VALUE = 25;
       /**
-       * <code>PRIORITY_PLANNED_MULTIPLE_CHANGES = 26;</code>
+       * <code>DELAYS_AND_CANCELLATIONS = 26;</code>
        */
-      public static final int PRIORITY_PLANNED_MULTIPLE_CHANGES_VALUE = 26;
+      public static final int DELAYS_AND_CANCELLATIONS_VALUE = 26;
       /**
-       * <code>PRIORITY_ARRIVAL_INFORMATION_OUTAGE = 27;</code>
+       * <code>STOPS_SKIPPED = 27;</code>
        */
-      public static final int PRIORITY_ARRIVAL_INFORMATION_OUTAGE_VALUE = 27;
+      public static final int STOPS_SKIPPED_VALUE = 27;
       /**
-       * <code>PRIORITY_SHUTTLE_BUSES_DETOURED = 28;</code>
+       * <code>SEVERE_DELAYS = 28;</code>
        */
-      public static final int PRIORITY_SHUTTLE_BUSES_DETOURED_VALUE = 28;
+      public static final int SEVERE_DELAYS_VALUE = 28;
       /**
-       * <code>PRIORITY_SOME_DELAYS = 29;</code>
+       * <code>DETOUR = 29;</code>
        */
-      public static final int PRIORITY_SOME_DELAYS_VALUE = 29;
+      public static final int DETOUR_VALUE = 29;
       /**
-       * <code>PRIORITY_STATIONS_SKIPPED = 30;</code>
+       * <code>REROUTE = 30;</code>
        */
-      public static final int PRIORITY_STATIONS_SKIPPED_VALUE = 30;
+      public static final int REROUTE_VALUE = 30;
       /**
-       * <code>PRIORITY_EXPRESS_TO_LOCAL = 31;</code>
+       * <code>SUBSTITUTE_BUSES = 31;</code>
        */
-      public static final int PRIORITY_EXPRESS_TO_LOCAL_VALUE = 31;
+      public static final int SUBSTITUTE_BUSES_VALUE = 31;
       /**
-       * <code>PRIORITY_DELAYS = 32;</code>
+       * <code>PART_SUSPENDED = 32;</code>
        */
-      public static final int PRIORITY_DELAYS_VALUE = 32;
+      public static final int PART_SUSPENDED_VALUE = 32;
       /**
-       * <code>PRIORITY_SOME_REROUTES = 33;</code>
+       * <code>SUSPENDED = 33;</code>
        */
-      public static final int PRIORITY_SOME_REROUTES_VALUE = 33;
-      /**
-       * <code>PRIORITY_LOCAL_TO_EXPRESS = 34;</code>
-       */
-      public static final int PRIORITY_LOCAL_TO_EXPRESS_VALUE = 34;
-      /**
-       * <code>PRIORITY_BUSES_DETOURED = 35;</code>
-       */
-      public static final int PRIORITY_BUSES_DETOURED_VALUE = 35;
-      /**
-       * <code>PRIORITY_SERVICE_CHANGE = 36;</code>
-       */
-      public static final int PRIORITY_SERVICE_CHANGE_VALUE = 36;
-      /**
-       * <code>PRIORITY_TRAINS_REROUTED = 37;</code>
-       */
-      public static final int PRIORITY_TRAINS_REROUTED_VALUE = 37;
-      /**
-       * <code>PRIORITY_SUBSTITUTE_BUSES = 38;</code>
-       */
-      public static final int PRIORITY_SUBSTITUTE_BUSES_VALUE = 38;
-      /**
-       * <code>PRIORITY_PART_SUSPENDED = 39;</code>
-       */
-      public static final int PRIORITY_PART_SUSPENDED_VALUE = 39;
-      /**
-       * <code>PRIORITY_MULTIPLE_CHANGES = 40;</code>
-       */
-      public static final int PRIORITY_MULTIPLE_CHANGES_VALUE = 40;
-      /**
-       * <code>PRIORITY_PLANNED_SUSPENDED = 41;</code>
-       */
-      public static final int PRIORITY_PLANNED_SUSPENDED_VALUE = 41;
-      /**
-       * <code>PRIORITY_SUSPENDED = 42;</code>
-       */
-      public static final int PRIORITY_SUSPENDED_VALUE = 42;
+      public static final int SUSPENDED_VALUE = 33;
 
       public final int getNumber() {
         return value;
@@ -4163,47 +4091,38 @@ abstract class ServiceStatusProto {
       public static Priority forNumber(int value) {
         switch (value) {
           case 1: return PRIORITY_NO_SCHEDULED_SERVICE;
-          case 2: return PRIORITY_NO_MIDDAY_SERVICE;
-          case 3: return PRIORITY_NO_OVERNIGHT_SERVICE;
-          case 4: return PRIORITY_NO_WEEKEND_SERVICE;
-          case 5: return PRIORITY_WEEKDAY_SCHEDULE;
-          case 6: return PRIORITY_WEEKEND_SCHEDULE;
-          case 7: return PRIORITY_SATURDAY_SCHEDULE;
-          case 8: return PRIORITY_SUNDAY_SCHEDULE;
-          case 9: return PRIORITY_EXTRA_SERVICE;
-          case 10: return PRIORITY_SPECIAL_SCHEDULE;
-          case 11: return PRIORITY_STATION_NOTICE;
-          case 12: return PRIORITY_SPECIAL_EVENT;
-          case 13: return PRIORITY_PLANNED_BOARDING_CHANGE;
-          case 14: return PRIORITY_BOARDING_CHANGE;
-          case 15: return PRIORITY_REDUCED_SERVICE;
-          case 16: return PRIORITY_PLANNED_WORK;
-          case 17: return PRIORITY_PLANNED_STATIONS_SKIPPED;
-          case 18: return PRIORITY_PLANNED_EXPRESS_TO_LOCAL;
-          case 19: return PRIORITY_SLOW_SPEEDS;
-          case 20: return PRIORITY_EXPECT_DELAYS;
-          case 21: return PRIORITY_PLANNED_LOCAL_TO_EXPRESS;
-          case 22: return PRIORITY_PLANNED_BUSES_DETOURED;
-          case 23: return PRIORITY_PLANNED_TRAINS_REROUTED;
-          case 24: return PRIORITY_PLANNED_SUBSTITUTE_BUSES;
-          case 25: return PRIORITY_PLANNED_PART_SUSPENDED;
-          case 26: return PRIORITY_PLANNED_MULTIPLE_CHANGES;
-          case 27: return PRIORITY_ARRIVAL_INFORMATION_OUTAGE;
-          case 28: return PRIORITY_SHUTTLE_BUSES_DETOURED;
-          case 29: return PRIORITY_SOME_DELAYS;
-          case 30: return PRIORITY_STATIONS_SKIPPED;
-          case 31: return PRIORITY_EXPRESS_TO_LOCAL;
-          case 32: return PRIORITY_DELAYS;
-          case 33: return PRIORITY_SOME_REROUTES;
-          case 34: return PRIORITY_LOCAL_TO_EXPRESS;
-          case 35: return PRIORITY_BUSES_DETOURED;
-          case 36: return PRIORITY_SERVICE_CHANGE;
-          case 37: return PRIORITY_TRAINS_REROUTED;
-          case 38: return PRIORITY_SUBSTITUTE_BUSES;
-          case 39: return PRIORITY_PART_SUSPENDED;
-          case 40: return PRIORITY_MULTIPLE_CHANGES;
-          case 41: return PRIORITY_PLANNED_SUSPENDED;
-          case 42: return PRIORITY_SUSPENDED;
+          case 2: return INFORMATION_OUTAGE;
+          case 3: return STATION_NOTICE;
+          case 4: return SPECIAL_NOTICE;
+          case 5: return WEEKDAY_SCHEDULE;
+          case 6: return WEEKEND_SCHEDULE;
+          case 7: return SATURDAY_SCHEDULE;
+          case 8: return SUNDAY_SCHEDULE;
+          case 9: return EXTRA_SERVICE;
+          case 10: return BOARDING_CHANGE;
+          case 11: return SPECIAL_SCHEDULE;
+          case 12: return EXPECT_DELAYS;
+          case 13: return REDUCED_SERVICE;
+          case 14: return PLANNED_EXPRESS_TO_LOCAL;
+          case 15: return PLANNED_EXTRA_TRANSFER;
+          case 16: return PLANNED_STOPS_SKIPPED;
+          case 17: return PLANNED_DETOUR;
+          case 18: return PLANNED_REROUTE;
+          case 19: return PLANNED_SUBSTITUTE_BUSES;
+          case 20: return PLANNED_PART_SUSPENDED;
+          case 21: return PLANNED_SUSPENDED;
+          case 22: return SOME_DELAYS;
+          case 23: return EXPRESS_TO_LOCAL;
+          case 24: return DELAYS;
+          case 25: return CANCELLATIONS;
+          case 26: return DELAYS_AND_CANCELLATIONS;
+          case 27: return STOPS_SKIPPED;
+          case 28: return SEVERE_DELAYS;
+          case 29: return DETOUR;
+          case 30: return REROUTE;
+          case 31: return SUBSTITUTE_BUSES;
+          case 32: return PART_SUSPENDED;
+          case 33: return SUSPENDED;
           default: return null;
         }
       }
@@ -4768,50 +4687,34 @@ abstract class ServiceStatusProto {
       "altime.EntitySelector\022;\n\017screens_summary" +
       "\030\013 \001(\0132\".transit_realtime.TranslatedStri" +
       "ng\022\034\n\024no_affected_stations\030\014 \001(\010\022\020\n\010clon" +
-      "e_id\030\r \001(\t\"\366\n\n\025MercuryEntitySelector\022\022\n\n" +
-      "sort_order\030\001 \002(\t\"\310\n\n\010Priority\022!\n\035PRIORIT" +
-      "Y_NO_SCHEDULED_SERVICE\020\001\022\036\n\032PRIORITY_NO_" +
-      "MIDDAY_SERVICE\020\002\022!\n\035PRIORITY_NO_OVERNIGH" +
-      "T_SERVICE\020\003\022\037\n\033PRIORITY_NO_WEEKEND_SERVI" +
-      "CE\020\004\022\035\n\031PRIORITY_WEEKDAY_SCHEDULE\020\005\022\035\n\031P" +
-      "RIORITY_WEEKEND_SCHEDULE\020\006\022\036\n\032PRIORITY_S" +
-      "ATURDAY_SCHEDULE\020\007\022\034\n\030PRIORITY_SUNDAY_SC" +
-      "HEDULE\020\010\022\032\n\026PRIORITY_EXTRA_SERVICE\020\t\022\035\n\031" +
-      "PRIORITY_SPECIAL_SCHEDULE\020\n\022\033\n\027PRIORITY_" +
-      "STATION_NOTICE\020\013\022\032\n\026PRIORITY_SPECIAL_EVE" +
-      "NT\020\014\022$\n PRIORITY_PLANNED_BOARDING_CHANGE" +
-      "\020\r\022\034\n\030PRIORITY_BOARDING_CHANGE\020\016\022\034\n\030PRIO" +
-      "RITY_REDUCED_SERVICE\020\017\022\031\n\025PRIORITY_PLANN" +
-      "ED_WORK\020\020\022%\n!PRIORITY_PLANNED_STATIONS_S" +
-      "KIPPED\020\021\022%\n!PRIORITY_PLANNED_EXPRESS_TO_" +
-      "LOCAL\020\022\022\030\n\024PRIORITY_SLOW_SPEEDS\020\023\022\032\n\026PRI" +
-      "ORITY_EXPECT_DELAYS\020\024\022%\n!PRIORITY_PLANNE" +
-      "D_LOCAL_TO_EXPRESS\020\025\022#\n\037PRIORITY_PLANNED" +
-      "_BUSES_DETOURED\020\026\022$\n PRIORITY_PLANNED_TR" +
-      "AINS_REROUTED\020\027\022%\n!PRIORITY_PLANNED_SUBS" +
-      "TITUTE_BUSES\020\030\022#\n\037PRIORITY_PLANNED_PART_" +
-      "SUSPENDED\020\031\022%\n!PRIORITY_PLANNED_MULTIPLE" +
-      "_CHANGES\020\032\022\'\n#PRIORITY_ARRIVAL_INFORMATI" +
-      "ON_OUTAGE\020\033\022#\n\037PRIORITY_SHUTTLE_BUSES_DE" +
-      "TOURED\020\034\022\030\n\024PRIORITY_SOME_DELAYS\020\035\022\035\n\031PR" +
-      "IORITY_STATIONS_SKIPPED\020\036\022\035\n\031PRIORITY_EX" +
-      "PRESS_TO_LOCAL\020\037\022\023\n\017PRIORITY_DELAYS\020 \022\032\n" +
-      "\026PRIORITY_SOME_REROUTES\020!\022\035\n\031PRIORITY_LO" +
-      "CAL_TO_EXPRESS\020\"\022\033\n\027PRIORITY_BUSES_DETOU" +
-      "RED\020#\022\033\n\027PRIORITY_SERVICE_CHANGE\020$\022\034\n\030PR" +
-      "IORITY_TRAINS_REROUTED\020%\022\035\n\031PRIORITY_SUB" +
-      "STITUTE_BUSES\020&\022\033\n\027PRIORITY_PART_SUSPEND" +
-      "ED\020\'\022\035\n\031PRIORITY_MULTIPLE_CHANGES\020(\022\036\n\032P" +
-      "RIORITY_PLANNED_SUSPENDED\020)\022\026\n\022PRIORITY_" +
-      "SUSPENDED\020*:_\n\023mercury_feed_header\022\034.tra" +
-      "nsit_realtime.FeedHeader\030\351\007 \001(\0132#.transi" +
-      "t_realtime.MercuryFeedHeader:O\n\rmercury_" +
-      "alert\022\027.transit_realtime.Alert\030\351\007 \001(\0132\036." +
-      "transit_realtime.MercuryAlert:k\n\027mercury" +
-      "_entity_selector\022 .transit_realtime.Enti" +
-      "tySelector\030\351\007 \001(\0132\'.transit_realtime.Mer" +
-      "curyEntitySelectorB*\n\022dev.katsute.onemta" +
-      "B\022ServiceStatusProtoH\002"
+      "e_id\030\r \001(\t\"\204\006\n\025MercuryEntitySelector\022\022\n\n" +
+      "sort_order\030\001 \002(\t\"\326\005\n\010Priority\022!\n\035PRIORIT" +
+      "Y_NO_SCHEDULED_SERVICE\020\001\022\026\n\022INFORMATION_" +
+      "OUTAGE\020\002\022\022\n\016STATION_NOTICE\020\003\022\022\n\016SPECIAL_" +
+      "NOTICE\020\004\022\024\n\020WEEKDAY_SCHEDULE\020\005\022\024\n\020WEEKEN" +
+      "D_SCHEDULE\020\006\022\025\n\021SATURDAY_SCHEDULE\020\007\022\023\n\017S" +
+      "UNDAY_SCHEDULE\020\010\022\021\n\rEXTRA_SERVICE\020\t\022\023\n\017B" +
+      "OARDING_CHANGE\020\n\022\024\n\020SPECIAL_SCHEDULE\020\013\022\021" +
+      "\n\rEXPECT_DELAYS\020\014\022\023\n\017REDUCED_SERVICE\020\r\022\034" +
+      "\n\030PLANNED_EXPRESS_TO_LOCAL\020\016\022\032\n\026PLANNED_" +
+      "EXTRA_TRANSFER\020\017\022\031\n\025PLANNED_STOPS_SKIPPE" +
+      "D\020\020\022\022\n\016PLANNED_DETOUR\020\021\022\023\n\017PLANNED_REROU" +
+      "TE\020\022\022\034\n\030PLANNED_SUBSTITUTE_BUSES\020\023\022\032\n\026PL" +
+      "ANNED_PART_SUSPENDED\020\024\022\025\n\021PLANNED_SUSPEN" +
+      "DED\020\025\022\017\n\013SOME_DELAYS\020\026\022\024\n\020EXPRESS_TO_LOC" +
+      "AL\020\027\022\n\n\006DELAYS\020\030\022\021\n\rCANCELLATIONS\020\031\022\034\n\030D" +
+      "ELAYS_AND_CANCELLATIONS\020\032\022\021\n\rSTOPS_SKIPP" +
+      "ED\020\033\022\021\n\rSEVERE_DELAYS\020\034\022\n\n\006DETOUR\020\035\022\013\n\007R" +
+      "EROUTE\020\036\022\024\n\020SUBSTITUTE_BUSES\020\037\022\022\n\016PART_S" +
+      "USPENDED\020 \022\r\n\tSUSPENDED\020!:_\n\023mercury_fee" +
+      "d_header\022\034.transit_realtime.FeedHeader\030\351" +
+      "\007 \001(\0132#.transit_realtime.MercuryFeedHead" +
+      "er:O\n\rmercury_alert\022\027.transit_realtime.A" +
+      "lert\030\351\007 \001(\0132\036.transit_realtime.MercuryAl" +
+      "ert:k\n\027mercury_entity_selector\022 .transit" +
+      "_realtime.EntitySelector\030\351\007 \001(\0132\'.transi" +
+      "t_realtime.MercuryEntitySelectorB*\n\022dev." +
+      "katsute.onemtaB\022ServiceStatusProtoH\002"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
