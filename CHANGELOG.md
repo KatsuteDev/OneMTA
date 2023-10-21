@@ -1,5 +1,20 @@
 # Changelog
 
+## 2.0.5
+
+### Dependencies
+
+* Bump the protobuf group with 2 updates [#157](https://github.com/KatsuteDev/OneMTA/pull/157) ([@dependabot](https://github.com/dependabot))
+* Bump the protobuf group with 2 updates [#158](https://github.com/KatsuteDev/OneMTA/pull/158) ([@dependabot](https://github.com/dependabot))
+* Bump actions/checkout from 3 to 4 [#160](https://github.com/KatsuteDev/OneMTA/pull/160) ([@dependabot](https://github.com/dependabot))
+* Bump the protobuf group with 2 updates [#161](https://github.com/KatsuteDev/OneMTA/pull/161) ([@dependabot](https://github.com/dependabot))
+* Bump org.apache.maven.plugins:maven-javadoc-plugin from 3.5.0 to 3.6.0 [#162](https://github.com/KatsuteDev/OneMTA/pull/162) ([@dependabot](https://github.com/dependabot))
+* Bump the protobuf group with 2 updates [#165](https://github.com/KatsuteDev/OneMTA/pull/165) ([@dependabot](https://github.com/dependabot))
+* Upgrade to Java 21 [#163](https://github.com/KatsuteDev/OneMTA/pull/163) ([@Katsute](https://github.com/Katsute))
+* Update service status proto [#166](https://github.com/KatsuteDev/OneMTA/pull/166) ([@Katsute](https://github.com/Katsute))
+
+**Full Changelog**: [`2.0.4...2.0.5`](https://github.com/KatsuteDev/OneMTA/compare/2.0.4...2.0.5)
+
 ## 2.0.4
 
 ### Dependencies
