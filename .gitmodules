@@ -1,0 +1,3 @@
+[submodule "onebusaway-gtfs-realtime-api"]
+	path = onebusaway-gtfs-realtime-api
+	url = https://github.com/OneBusAway/onebusaway-gtfs-realtime-api.git

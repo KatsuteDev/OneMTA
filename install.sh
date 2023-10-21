@@ -2,6 +2,10 @@
 
 version=24.0
 
+if [ -d protobuf ]; then
+    exit 0
+fi
+
 mkdir protobuf
 
 if [ "$(expr substr $(uname -s) 1 10)" == "MINGW64_NT" ]; then
@@ -21,11 +25,11 @@ unzip protobuf/protobuf.zip -d protobuf
 rm protobuf/protobuf.zip -f
 rm protobuf/readme.txt -f
 
-curl -L -k -o protobuf/gtfs-realtime-LIRR.proto "https://raw.githubusercontent.com/OneBusAway/onebusaway-gtfs-realtime-api/master/src/main/proto/com/google/transit/realtime/gtfs-realtime-LIRR.proto"
-curl -L -k -o protobuf/gtfs-realtime-MNR.proto "https://raw.githubusercontent.com/OneBusAway/onebusaway-gtfs-realtime-api/master/src/main/proto/com/google/transit/realtime/gtfs-realtime-MNR.proto"
-curl -L -k -o protobuf/gtfs-realtime-MTARR.proto "https://raw.githubusercontent.com/OneBusAway/onebusaway-gtfs-realtime-api/master/src/main/proto/com/google/transit/realtime/gtfs-realtime-MTARR.proto"
-curl -L -k -o protobuf/gtfs-realtime-NYCT.proto "https://raw.githubusercontent.com/OneBusAway/onebusaway-gtfs-realtime-api/master/src/main/proto/com/google/transit/realtime/gtfs-realtime-NYCT.proto"
-curl -L -k -o protobuf/gtfs-realtime-OneBusAway.proto "https://raw.githubusercontent.com/OneBusAway/onebusaway-gtfs-realtime-api/master/src/main/proto/com/google/transit/realtime/gtfs-realtime-OneBusAway.proto"
-curl -L -k -o protobuf/gtfs-realtime-crowding.proto "https://raw.githubusercontent.com/OneBusAway/onebusaway-gtfs-realtime-api/master/src/main/proto/com/google/transit/realtime/gtfs-realtime-crowding.proto"
-curl -L -k -o protobuf/gtfs-realtime-service-status.proto "https://raw.githubusercontent.com/OneBusAway/onebusaway-gtfs-realtime-api/master/src/main/proto/com/google/transit/realtime/gtfs-realtime-service-status.proto"
-curl -L -k -o protobuf/gtfs-realtime.proto "https://raw.githubusercontent.com/OneBusAway/onebusaway-gtfs-realtime-api/master/src/main/proto/com/google/transit/realtime/gtfs-realtime.proto"
+cp "onebusaway-gtfs-realtime-api/src/main/proto/com/google/transit/realtime/gtfs-realtime-LIRR.proto" "protobuf/gtfs-realtime-LIRR.proto"
+cp "onebusaway-gtfs-realtime-api/src/main/proto/com/google/transit/realtime/gtfs-realtime-MNR.proto" "protobuf/gtfs-realtime-MNR.proto"
+cp "onebusaway-gtfs-realtime-api/src/main/proto/com/google/transit/realtime/gtfs-realtime-MTARR.proto" "protobuf/gtfs-realtime-MTARR.proto"
+cp "onebusaway-gtfs-realtime-api/src/main/proto/com/google/transit/realtime/gtfs-realtime-NYCT.proto" "protobuf/gtfs-realtime-NYCT.proto"
+cp "onebusaway-gtfs-realtime-api/src/main/proto/com/google/transit/realtime/gtfs-realtime-OneBusAway.proto" "protobuf/gtfs-realtime-OneBusAway.proto"
+cp "onebusaway-gtfs-realtime-api/src/main/proto/com/google/transit/realtime/gtfs-realtime-crowding.proto" "protobuf/gtfs-realtime-crowding.proto"
+cp "onebusaway-gtfs-realtime-api/src/main/proto/com/google/transit/realtime/gtfs-realtime-service-status.proto" "protobuf/gtfs-realtime-service-status.proto"
+cp "onebusaway-gtfs-realtime-api/src/main/proto/com/google/transit/realtime/gtfs-realtime.proto" "protobuf/gtfs-realtime.proto"
