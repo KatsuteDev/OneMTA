@@ -13,6 +13,7 @@ abstract class OneBusAwayProto {
     registry.add(dev.katsute.onemta.OneBusAwayProto.obaTripUpdate);
     registry.add(dev.katsute.onemta.OneBusAwayProto.obaStopTimeUpdate);
     registry.add(dev.katsute.onemta.OneBusAwayProto.obaEntitySelector);
+    registry.add(dev.katsute.onemta.OneBusAwayProto.obaVehicleDescriptor);
   }
 
   public static void registerAllExtensions(
@@ -1103,7 +1104,7 @@ abstract class OneBusAwayProto {
      *
      * <code>optional int32 delay = 1 [deprecated = true];</code>
      * @deprecated transit_realtime.OneBusAwayTripUpdate.delay is deprecated.
-     *     See gtfs-realtime-OneBusAway.proto;l=48
+     *     See gtfs-realtime-OneBusAway.proto;l=50
      * @return Whether the delay field is set.
      */
     @java.lang.Deprecated boolean hasDelay();
@@ -1118,7 +1119,7 @@ abstract class OneBusAwayProto {
      *
      * <code>optional int32 delay = 1 [deprecated = true];</code>
      * @deprecated transit_realtime.OneBusAwayTripUpdate.delay is deprecated.
-     *     See gtfs-realtime-OneBusAway.proto;l=48
+     *     See gtfs-realtime-OneBusAway.proto;l=50
      * @return The delay.
      */
     @java.lang.Deprecated int getDelay();
@@ -1133,7 +1134,7 @@ abstract class OneBusAwayProto {
      *
      * <code>optional uint64 timestamp = 2 [deprecated = true];</code>
      * @deprecated transit_realtime.OneBusAwayTripUpdate.timestamp is deprecated.
-     *     See gtfs-realtime-OneBusAway.proto;l=54
+     *     See gtfs-realtime-OneBusAway.proto;l=56
      * @return Whether the timestamp field is set.
      */
     @java.lang.Deprecated boolean hasTimestamp();
@@ -1147,7 +1148,7 @@ abstract class OneBusAwayProto {
      *
      * <code>optional uint64 timestamp = 2 [deprecated = true];</code>
      * @deprecated transit_realtime.OneBusAwayTripUpdate.timestamp is deprecated.
-     *     See gtfs-realtime-OneBusAway.proto;l=54
+     *     See gtfs-realtime-OneBusAway.proto;l=56
      * @return The timestamp.
      */
     @java.lang.Deprecated long getTimestamp();
@@ -1209,6 +1210,25 @@ abstract class OneBusAwayProto {
      */
     com.google.protobuf.ByteString
         getTripDirectionBytes();
+
+    /**
+     * <pre>
+     * spooking aka zombie buses missing real-time but confirmed in revenue service
+     * </pre>
+     *
+     * <code>optional bool is_estimated_realtime = 5 [default = false];</code>
+     * @return Whether the isEstimatedRealtime field is set.
+     */
+    boolean hasIsEstimatedRealtime();
+    /**
+     * <pre>
+     * spooking aka zombie buses missing real-time but confirmed in revenue service
+     * </pre>
+     *
+     * <code>optional bool is_estimated_realtime = 5 [default = false];</code>
+     * @return The isEstimatedRealtime.
+     */
+    boolean getIsEstimatedRealtime();
   }
   /**
    * Protobuf type {@code transit_realtime.OneBusAwayTripUpdate}
@@ -1261,7 +1281,7 @@ abstract class OneBusAwayProto {
      *
      * <code>optional int32 delay = 1 [deprecated = true];</code>
      * @deprecated transit_realtime.OneBusAwayTripUpdate.delay is deprecated.
-     *     See gtfs-realtime-OneBusAway.proto;l=48
+     *     See gtfs-realtime-OneBusAway.proto;l=50
      * @return Whether the delay field is set.
      */
     @java.lang.Override
@@ -1279,7 +1299,7 @@ abstract class OneBusAwayProto {
      *
      * <code>optional int32 delay = 1 [deprecated = true];</code>
      * @deprecated transit_realtime.OneBusAwayTripUpdate.delay is deprecated.
-     *     See gtfs-realtime-OneBusAway.proto;l=48
+     *     See gtfs-realtime-OneBusAway.proto;l=50
      * @return The delay.
      */
     @java.lang.Override
@@ -1299,7 +1319,7 @@ abstract class OneBusAwayProto {
      *
      * <code>optional uint64 timestamp = 2 [deprecated = true];</code>
      * @deprecated transit_realtime.OneBusAwayTripUpdate.timestamp is deprecated.
-     *     See gtfs-realtime-OneBusAway.proto;l=54
+     *     See gtfs-realtime-OneBusAway.proto;l=56
      * @return Whether the timestamp field is set.
      */
     @java.lang.Override
@@ -1316,7 +1336,7 @@ abstract class OneBusAwayProto {
      *
      * <code>optional uint64 timestamp = 2 [deprecated = true];</code>
      * @deprecated transit_realtime.OneBusAwayTripUpdate.timestamp is deprecated.
-     *     See gtfs-realtime-OneBusAway.proto;l=54
+     *     See gtfs-realtime-OneBusAway.proto;l=56
      * @return The timestamp.
      */
     @java.lang.Override
@@ -1444,6 +1464,33 @@ abstract class OneBusAwayProto {
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
+    }
+
+    public static final int IS_ESTIMATED_REALTIME_FIELD_NUMBER = 5;
+    private boolean isEstimatedRealtime_ = false;
+    /**
+     * <pre>
+     * spooking aka zombie buses missing real-time but confirmed in revenue service
+     * </pre>
+     *
+     * <code>optional bool is_estimated_realtime = 5 [default = false];</code>
+     * @return Whether the isEstimatedRealtime field is set.
+     */
+    @java.lang.Override
+    public boolean hasIsEstimatedRealtime() {
+      return ((bitField0_ & 0x00000010) != 0);
+    }
+    /**
+     * <pre>
+     * spooking aka zombie buses missing real-time but confirmed in revenue service
+     * </pre>
+     *
+     * <code>optional bool is_estimated_realtime = 5 [default = false];</code>
+     * @return The isEstimatedRealtime.
+     */
+    @java.lang.Override
+    public boolean getIsEstimatedRealtime() {
+      return isEstimatedRealtime_;
     }
 
     public static dev.katsute.onemta.OneBusAwayProto.OneBusAwayTripUpdate parseFrom(
@@ -1576,6 +1623,7 @@ abstract class OneBusAwayProto {
         timestamp_ = 0L;
         tripHeadsign_ = "";
         tripDirection_ = "";
+        isEstimatedRealtime_ = false;
         return this;
       }
 
@@ -1626,6 +1674,10 @@ abstract class OneBusAwayProto {
           result.tripDirection_ = tripDirection_;
           to_bitField0_ |= 0x00000008;
         }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.isEstimatedRealtime_ = isEstimatedRealtime_;
+          to_bitField0_ |= 0x00000010;
+        }
         result.bitField0_ |= to_bitField0_;
       }
 
@@ -1675,7 +1727,7 @@ abstract class OneBusAwayProto {
        *
        * <code>optional int32 delay = 1 [deprecated = true];</code>
        * @deprecated transit_realtime.OneBusAwayTripUpdate.delay is deprecated.
-       *     See gtfs-realtime-OneBusAway.proto;l=48
+       *     See gtfs-realtime-OneBusAway.proto;l=50
        * @return Whether the delay field is set.
        */
       @java.lang.Override
@@ -1693,7 +1745,7 @@ abstract class OneBusAwayProto {
        *
        * <code>optional int32 delay = 1 [deprecated = true];</code>
        * @deprecated transit_realtime.OneBusAwayTripUpdate.delay is deprecated.
-       *     See gtfs-realtime-OneBusAway.proto;l=48
+       *     See gtfs-realtime-OneBusAway.proto;l=50
        * @return The delay.
        */
       @java.lang.Override
@@ -1711,7 +1763,7 @@ abstract class OneBusAwayProto {
        *
        * <code>optional int32 delay = 1 [deprecated = true];</code>
        * @deprecated transit_realtime.OneBusAwayTripUpdate.delay is deprecated.
-       *     See gtfs-realtime-OneBusAway.proto;l=48
+       *     See gtfs-realtime-OneBusAway.proto;l=50
        * @param value The delay to set.
        * @return This builder for chaining.
        */
@@ -1733,7 +1785,7 @@ abstract class OneBusAwayProto {
        *
        * <code>optional int32 delay = 1 [deprecated = true];</code>
        * @deprecated transit_realtime.OneBusAwayTripUpdate.delay is deprecated.
-       *     See gtfs-realtime-OneBusAway.proto;l=48
+       *     See gtfs-realtime-OneBusAway.proto;l=50
        * @return This builder for chaining.
        */
       @java.lang.Deprecated public Builder clearDelay() {
@@ -1754,7 +1806,7 @@ abstract class OneBusAwayProto {
        *
        * <code>optional uint64 timestamp = 2 [deprecated = true];</code>
        * @deprecated transit_realtime.OneBusAwayTripUpdate.timestamp is deprecated.
-       *     See gtfs-realtime-OneBusAway.proto;l=54
+       *     See gtfs-realtime-OneBusAway.proto;l=56
        * @return Whether the timestamp field is set.
        */
       @java.lang.Override
@@ -1771,7 +1823,7 @@ abstract class OneBusAwayProto {
        *
        * <code>optional uint64 timestamp = 2 [deprecated = true];</code>
        * @deprecated transit_realtime.OneBusAwayTripUpdate.timestamp is deprecated.
-       *     See gtfs-realtime-OneBusAway.proto;l=54
+       *     See gtfs-realtime-OneBusAway.proto;l=56
        * @return The timestamp.
        */
       @java.lang.Override
@@ -1788,7 +1840,7 @@ abstract class OneBusAwayProto {
        *
        * <code>optional uint64 timestamp = 2 [deprecated = true];</code>
        * @deprecated transit_realtime.OneBusAwayTripUpdate.timestamp is deprecated.
-       *     See gtfs-realtime-OneBusAway.proto;l=54
+       *     See gtfs-realtime-OneBusAway.proto;l=56
        * @param value The timestamp to set.
        * @return This builder for chaining.
        */
@@ -1809,7 +1861,7 @@ abstract class OneBusAwayProto {
        *
        * <code>optional uint64 timestamp = 2 [deprecated = true];</code>
        * @deprecated transit_realtime.OneBusAwayTripUpdate.timestamp is deprecated.
-       *     See gtfs-realtime-OneBusAway.proto;l=54
+       *     See gtfs-realtime-OneBusAway.proto;l=56
        * @return This builder for chaining.
        */
       @java.lang.Deprecated public Builder clearTimestamp() {
@@ -2023,6 +2075,62 @@ abstract class OneBusAwayProto {
         if (value == null) { throw new NullPointerException(); }
         tripDirection_ = value;
         bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+
+      private boolean isEstimatedRealtime_ ;
+      /**
+       * <pre>
+       * spooking aka zombie buses missing real-time but confirmed in revenue service
+       * </pre>
+       *
+       * <code>optional bool is_estimated_realtime = 5 [default = false];</code>
+       * @return Whether the isEstimatedRealtime field is set.
+       */
+      @java.lang.Override
+      public boolean hasIsEstimatedRealtime() {
+        return ((bitField0_ & 0x00000010) != 0);
+      }
+      /**
+       * <pre>
+       * spooking aka zombie buses missing real-time but confirmed in revenue service
+       * </pre>
+       *
+       * <code>optional bool is_estimated_realtime = 5 [default = false];</code>
+       * @return The isEstimatedRealtime.
+       */
+      @java.lang.Override
+      public boolean getIsEstimatedRealtime() {
+        return isEstimatedRealtime_;
+      }
+      /**
+       * <pre>
+       * spooking aka zombie buses missing real-time but confirmed in revenue service
+       * </pre>
+       *
+       * <code>optional bool is_estimated_realtime = 5 [default = false];</code>
+       * @param value The isEstimatedRealtime to set.
+       * @return This builder for chaining.
+       */
+      public Builder setIsEstimatedRealtime(boolean value) {
+
+        isEstimatedRealtime_ = value;
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * spooking aka zombie buses missing real-time but confirmed in revenue service
+       * </pre>
+       *
+       * <code>optional bool is_estimated_realtime = 5 [default = false];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearIsEstimatedRealtime() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        isEstimatedRealtime_ = false;
         onChanged();
         return this;
       }
@@ -2991,6 +3099,550 @@ abstract class OneBusAwayProto {
 
   }
 
+  public interface OneBusAwayVehicleDescriptorOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:transit_realtime.OneBusAwayVehicleDescriptor)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * list features of this vehicle, like kneeling, wifi, etc.
+     * </pre>
+     *
+     * <code>repeated string vehicleFeature = 1;</code>
+     * @return A list containing the vehicleFeature.
+     */
+    java.util.List<java.lang.String>
+        getVehicleFeatureList();
+    /**
+     * <pre>
+     * list features of this vehicle, like kneeling, wifi, etc.
+     * </pre>
+     *
+     * <code>repeated string vehicleFeature = 1;</code>
+     * @return The count of vehicleFeature.
+     */
+    int getVehicleFeatureCount();
+    /**
+     * <pre>
+     * list features of this vehicle, like kneeling, wifi, etc.
+     * </pre>
+     *
+     * <code>repeated string vehicleFeature = 1;</code>
+     * @param index The index of the element to return.
+     * @return The vehicleFeature at the given index.
+     */
+    java.lang.String getVehicleFeature(int index);
+    /**
+     * <pre>
+     * list features of this vehicle, like kneeling, wifi, etc.
+     * </pre>
+     *
+     * <code>repeated string vehicleFeature = 1;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the vehicleFeature at the given index.
+     */
+    com.google.protobuf.ByteString
+        getVehicleFeatureBytes(int index);
+  }
+  /**
+   * Protobuf type {@code transit_realtime.OneBusAwayVehicleDescriptor}
+   */
+  public static final class OneBusAwayVehicleDescriptor extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:transit_realtime.OneBusAwayVehicleDescriptor)
+      OneBusAwayVehicleDescriptorOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use OneBusAwayVehicleDescriptor.newBuilder() to construct.
+    private OneBusAwayVehicleDescriptor(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private OneBusAwayVehicleDescriptor() {
+      vehicleFeature_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new OneBusAwayVehicleDescriptor();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return dev.katsute.onemta.OneBusAwayProto.internal_static_transit_realtime_OneBusAwayVehicleDescriptor_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return dev.katsute.onemta.OneBusAwayProto.internal_static_transit_realtime_OneBusAwayVehicleDescriptor_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              dev.katsute.onemta.OneBusAwayProto.OneBusAwayVehicleDescriptor.class, dev.katsute.onemta.OneBusAwayProto.OneBusAwayVehicleDescriptor.Builder.class);
+    }
+
+    public static final int VEHICLEFEATURE_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.LazyStringArrayList vehicleFeature_ =
+        com.google.protobuf.LazyStringArrayList.emptyList();
+    /**
+     * <pre>
+     * list features of this vehicle, like kneeling, wifi, etc.
+     * </pre>
+     *
+     * <code>repeated string vehicleFeature = 1;</code>
+     * @return A list containing the vehicleFeature.
+     */
+    public com.google.protobuf.ProtocolStringList
+        getVehicleFeatureList() {
+      return vehicleFeature_;
+    }
+    /**
+     * <pre>
+     * list features of this vehicle, like kneeling, wifi, etc.
+     * </pre>
+     *
+     * <code>repeated string vehicleFeature = 1;</code>
+     * @return The count of vehicleFeature.
+     */
+    public int getVehicleFeatureCount() {
+      return vehicleFeature_.size();
+    }
+    /**
+     * <pre>
+     * list features of this vehicle, like kneeling, wifi, etc.
+     * </pre>
+     *
+     * <code>repeated string vehicleFeature = 1;</code>
+     * @param index The index of the element to return.
+     * @return The vehicleFeature at the given index.
+     */
+    public java.lang.String getVehicleFeature(int index) {
+      return vehicleFeature_.get(index);
+    }
+    /**
+     * <pre>
+     * list features of this vehicle, like kneeling, wifi, etc.
+     * </pre>
+     *
+     * <code>repeated string vehicleFeature = 1;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the vehicleFeature at the given index.
+     */
+    public com.google.protobuf.ByteString
+        getVehicleFeatureBytes(int index) {
+      return vehicleFeature_.getByteString(index);
+    }
+
+    public static dev.katsute.onemta.OneBusAwayProto.OneBusAwayVehicleDescriptor parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static dev.katsute.onemta.OneBusAwayProto.OneBusAwayVehicleDescriptor parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static dev.katsute.onemta.OneBusAwayProto.OneBusAwayVehicleDescriptor parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static dev.katsute.onemta.OneBusAwayProto.OneBusAwayVehicleDescriptor parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static dev.katsute.onemta.OneBusAwayProto.OneBusAwayVehicleDescriptor parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static dev.katsute.onemta.OneBusAwayProto.OneBusAwayVehicleDescriptor parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static dev.katsute.onemta.OneBusAwayProto.OneBusAwayVehicleDescriptor parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static dev.katsute.onemta.OneBusAwayProto.OneBusAwayVehicleDescriptor parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static dev.katsute.onemta.OneBusAwayProto.OneBusAwayVehicleDescriptor parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static dev.katsute.onemta.OneBusAwayProto.OneBusAwayVehicleDescriptor parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static dev.katsute.onemta.OneBusAwayProto.OneBusAwayVehicleDescriptor parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static dev.katsute.onemta.OneBusAwayProto.OneBusAwayVehicleDescriptor parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(dev.katsute.onemta.OneBusAwayProto.OneBusAwayVehicleDescriptor prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code transit_realtime.OneBusAwayVehicleDescriptor}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:transit_realtime.OneBusAwayVehicleDescriptor)
+        dev.katsute.onemta.OneBusAwayProto.OneBusAwayVehicleDescriptorOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return dev.katsute.onemta.OneBusAwayProto.internal_static_transit_realtime_OneBusAwayVehicleDescriptor_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return dev.katsute.onemta.OneBusAwayProto.internal_static_transit_realtime_OneBusAwayVehicleDescriptor_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                dev.katsute.onemta.OneBusAwayProto.OneBusAwayVehicleDescriptor.class, dev.katsute.onemta.OneBusAwayProto.OneBusAwayVehicleDescriptor.Builder.class);
+      }
+
+      // Construct using dev.katsute.onemta.OneBusAwayProto.OneBusAwayVehicleDescriptor.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        vehicleFeature_ =
+            com.google.protobuf.LazyStringArrayList.emptyList();
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return dev.katsute.onemta.OneBusAwayProto.internal_static_transit_realtime_OneBusAwayVehicleDescriptor_descriptor;
+      }
+
+      @java.lang.Override
+      public dev.katsute.onemta.OneBusAwayProto.OneBusAwayVehicleDescriptor getDefaultInstanceForType() {
+        return dev.katsute.onemta.OneBusAwayProto.OneBusAwayVehicleDescriptor.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public dev.katsute.onemta.OneBusAwayProto.OneBusAwayVehicleDescriptor build() {
+        dev.katsute.onemta.OneBusAwayProto.OneBusAwayVehicleDescriptor result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public dev.katsute.onemta.OneBusAwayProto.OneBusAwayVehicleDescriptor buildPartial() {
+        dev.katsute.onemta.OneBusAwayProto.OneBusAwayVehicleDescriptor result = new dev.katsute.onemta.OneBusAwayProto.OneBusAwayVehicleDescriptor(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(dev.katsute.onemta.OneBusAwayProto.OneBusAwayVehicleDescriptor result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          vehicleFeature_.makeImmutable();
+          result.vehicleFeature_ = vehicleFeature_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      private int bitField0_;
+
+      private com.google.protobuf.LazyStringArrayList vehicleFeature_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+      private void ensureVehicleFeatureIsMutable() {
+        if (!vehicleFeature_.isModifiable()) {
+          vehicleFeature_ = new com.google.protobuf.LazyStringArrayList(vehicleFeature_);
+        }
+        bitField0_ |= 0x00000001;
+      }
+      /**
+       * <pre>
+       * list features of this vehicle, like kneeling, wifi, etc.
+       * </pre>
+       *
+       * <code>repeated string vehicleFeature = 1;</code>
+       * @return A list containing the vehicleFeature.
+       */
+      public com.google.protobuf.ProtocolStringList
+          getVehicleFeatureList() {
+        vehicleFeature_.makeImmutable();
+        return vehicleFeature_;
+      }
+      /**
+       * <pre>
+       * list features of this vehicle, like kneeling, wifi, etc.
+       * </pre>
+       *
+       * <code>repeated string vehicleFeature = 1;</code>
+       * @return The count of vehicleFeature.
+       */
+      public int getVehicleFeatureCount() {
+        return vehicleFeature_.size();
+      }
+      /**
+       * <pre>
+       * list features of this vehicle, like kneeling, wifi, etc.
+       * </pre>
+       *
+       * <code>repeated string vehicleFeature = 1;</code>
+       * @param index The index of the element to return.
+       * @return The vehicleFeature at the given index.
+       */
+      public java.lang.String getVehicleFeature(int index) {
+        return vehicleFeature_.get(index);
+      }
+      /**
+       * <pre>
+       * list features of this vehicle, like kneeling, wifi, etc.
+       * </pre>
+       *
+       * <code>repeated string vehicleFeature = 1;</code>
+       * @param index The index of the value to return.
+       * @return The bytes of the vehicleFeature at the given index.
+       */
+      public com.google.protobuf.ByteString
+          getVehicleFeatureBytes(int index) {
+        return vehicleFeature_.getByteString(index);
+      }
+      /**
+       * <pre>
+       * list features of this vehicle, like kneeling, wifi, etc.
+       * </pre>
+       *
+       * <code>repeated string vehicleFeature = 1;</code>
+       * @param index The index to set the value at.
+       * @param value The vehicleFeature to set.
+       * @return This builder for chaining.
+       */
+      public Builder setVehicleFeature(
+          int index, java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureVehicleFeatureIsMutable();
+        vehicleFeature_.set(index, value);
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * list features of this vehicle, like kneeling, wifi, etc.
+       * </pre>
+       *
+       * <code>repeated string vehicleFeature = 1;</code>
+       * @param value The vehicleFeature to add.
+       * @return This builder for chaining.
+       */
+      public Builder addVehicleFeature(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureVehicleFeatureIsMutable();
+        vehicleFeature_.add(value);
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * list features of this vehicle, like kneeling, wifi, etc.
+       * </pre>
+       *
+       * <code>repeated string vehicleFeature = 1;</code>
+       * @param values The vehicleFeature to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllVehicleFeature(
+          java.lang.Iterable<java.lang.String> values) {
+        ensureVehicleFeatureIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, vehicleFeature_);
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * list features of this vehicle, like kneeling, wifi, etc.
+       * </pre>
+       *
+       * <code>repeated string vehicleFeature = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearVehicleFeature() {
+        vehicleFeature_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000001);;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * list features of this vehicle, like kneeling, wifi, etc.
+       * </pre>
+       *
+       * <code>repeated string vehicleFeature = 1;</code>
+       * @param value The bytes of the vehicleFeature to add.
+       * @return This builder for chaining.
+       */
+      public Builder addVehicleFeatureBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureVehicleFeatureIsMutable();
+        vehicleFeature_.add(value);
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+      // @@protoc_insertion_point(builder_scope:transit_realtime.OneBusAwayVehicleDescriptor)
+    }
+
+    // @@protoc_insertion_point(class_scope:transit_realtime.OneBusAwayVehicleDescriptor)
+    private static final dev.katsute.onemta.OneBusAwayProto.OneBusAwayVehicleDescriptor DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new dev.katsute.onemta.OneBusAwayProto.OneBusAwayVehicleDescriptor();
+    }
+
+    public static dev.katsute.onemta.OneBusAwayProto.OneBusAwayVehicleDescriptor getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<OneBusAwayVehicleDescriptor>
+        PARSER = new com.google.protobuf.AbstractParser<OneBusAwayVehicleDescriptor>() {
+      @java.lang.Override
+      public OneBusAwayVehicleDescriptor parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<OneBusAwayVehicleDescriptor> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<OneBusAwayVehicleDescriptor> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public dev.katsute.onemta.OneBusAwayProto.OneBusAwayVehicleDescriptor getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public static final int OBA_FEED_HEADER_FIELD_NUMBER = 1000;
   /**
    * <code>extend .transit_realtime.FeedHeader { ... }</code>
@@ -3046,6 +3698,17 @@ abstract class OneBusAwayProto {
           .newFileScopedGeneratedExtension(
         dev.katsute.onemta.OneBusAwayProto.OneBusAwayEntitySelector.class,
         dev.katsute.onemta.OneBusAwayProto.OneBusAwayEntitySelector.getDefaultInstance());
+  public static final int OBA_VEHICLE_DESCRIPTOR_FIELD_NUMBER = 1000;
+  /**
+   * <code>extend .transit_realtime.VehicleDescriptor { ... }</code>
+   */
+  public static final
+    com.google.protobuf.GeneratedMessage.GeneratedExtension<
+      dev.katsute.onemta.GTFSRealtimeProto.VehicleDescriptor,
+      dev.katsute.onemta.OneBusAwayProto.OneBusAwayVehicleDescriptor> obaVehicleDescriptor = com.google.protobuf.GeneratedMessage
+          .newFileScopedGeneratedExtension(
+        dev.katsute.onemta.OneBusAwayProto.OneBusAwayVehicleDescriptor.class,
+        dev.katsute.onemta.OneBusAwayProto.OneBusAwayVehicleDescriptor.getDefaultInstance());
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_transit_realtime_OneBusAwayFeedHeader_descriptor;
   private static final
@@ -3071,6 +3734,11 @@ abstract class OneBusAwayProto {
   private static final
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_transit_realtime_OneBusAwayEntitySelector_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_transit_realtime_OneBusAwayVehicleDescriptor_descriptor;
+  private static final
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_transit_realtime_OneBusAwayVehicleDescriptor_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -3085,26 +3753,31 @@ abstract class OneBusAwayProto {
       "sAwayFeedHeader\022\031\n\021incremental_index\030\001 \001" +
       "(\004\022&\n\036incremental_heartbeat_interval\030\002 \001" +
       "(\r\"&\n\024OneBusAwayFeedEntity\022\016\n\006source\030\001 \001" +
-      "(\t\"m\n\024OneBusAwayTripUpdate\022\021\n\005delay\030\001 \001(" +
-      "\005B\002\030\001\022\025\n\ttimestamp\030\002 \001(\004B\002\030\001\022\024\n\014tripHead" +
-      "sign\030\003 \001(\t\022\025\n\rtripDirection\030\004 \001(\t\"0\n\030One" +
-      "BusAwayStopTimeUpdate\022\024\n\014stopHeadsign\030\001 " +
-      "\001(\t\".\n\030OneBusAwayEntitySelector\022\022\n\neleva" +
-      "torId\030\001 \001(\t:^\n\017oba_feed_header\022\034.transit" +
-      "_realtime.FeedHeader\030\350\007 \001(\0132&.transit_re" +
-      "altime.OneBusAwayFeedHeader:^\n\017oba_feed_" +
-      "entity\022\034.transit_realtime.FeedEntity\030\350\007 " +
-      "\001(\0132&.transit_realtime.OneBusAwayFeedEnt" +
-      "ity:^\n\017oba_trip_update\022\034.transit_realtim" +
-      "e.TripUpdate\030\350\007 \001(\0132&.transit_realtime.O" +
-      "neBusAwayTripUpdate:v\n\024oba_stop_time_upd" +
-      "ate\022+.transit_realtime.TripUpdate.StopTi" +
-      "meUpdate\030\350\007 \001(\0132*.transit_realtime.OneBu" +
-      "sAwayStopTimeUpdate:j\n\023oba_entity_select" +
-      "or\022 .transit_realtime.EntitySelector\030\350\007 " +
-      "\001(\0132*.transit_realtime.OneBusAwayEntityS" +
-      "electorB\'\n\022dev.katsute.onemtaB\017OneBusAwa" +
-      "yProtoH\002"
+      "(\t\"\223\001\n\024OneBusAwayTripUpdate\022\021\n\005delay\030\001 \001" +
+      "(\005B\002\030\001\022\025\n\ttimestamp\030\002 \001(\004B\002\030\001\022\024\n\014tripHea" +
+      "dsign\030\003 \001(\t\022\025\n\rtripDirection\030\004 \001(\t\022$\n\025is" +
+      "_estimated_realtime\030\005 \001(\010:\005false\"0\n\030OneB" +
+      "usAwayStopTimeUpdate\022\024\n\014stopHeadsign\030\001 \001" +
+      "(\t\".\n\030OneBusAwayEntitySelector\022\022\n\nelevat" +
+      "orId\030\001 \001(\t\"5\n\033OneBusAwayVehicleDescripto" +
+      "r\022\026\n\016vehicleFeature\030\001 \003(\t:^\n\017oba_feed_he" +
+      "ader\022\034.transit_realtime.FeedHeader\030\350\007 \001(" +
+      "\0132&.transit_realtime.OneBusAwayFeedHeade" +
+      "r:^\n\017oba_feed_entity\022\034.transit_realtime." +
+      "FeedEntity\030\350\007 \001(\0132&.transit_realtime.One" +
+      "BusAwayFeedEntity:^\n\017oba_trip_update\022\034.t" +
+      "ransit_realtime.TripUpdate\030\350\007 \001(\0132&.tran" +
+      "sit_realtime.OneBusAwayTripUpdate:v\n\024oba" +
+      "_stop_time_update\022+.transit_realtime.Tri" +
+      "pUpdate.StopTimeUpdate\030\350\007 \001(\0132*.transit_" +
+      "realtime.OneBusAwayStopTimeUpdate:j\n\023oba" +
+      "_entity_selector\022 .transit_realtime.Enti" +
+      "tySelector\030\350\007 \001(\0132*.transit_realtime.One" +
+      "BusAwayEntitySelector:s\n\026oba_vehicle_des" +
+      "criptor\022#.transit_realtime.VehicleDescri" +
+      "ptor\030\350\007 \001(\0132-.transit_realtime.OneBusAwa" +
+      "yVehicleDescriptorB\'\n\022dev.katsute.onemta" +
+      "B\017OneBusAwayProtoH\002"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -3128,7 +3801,7 @@ abstract class OneBusAwayProto {
     internal_static_transit_realtime_OneBusAwayTripUpdate_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_transit_realtime_OneBusAwayTripUpdate_descriptor,
-        new java.lang.String[] { "Delay", "Timestamp", "TripHeadsign", "TripDirection", });
+        new java.lang.String[] { "Delay", "Timestamp", "TripHeadsign", "TripDirection", "IsEstimatedRealtime", });
     internal_static_transit_realtime_OneBusAwayStopTimeUpdate_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_transit_realtime_OneBusAwayStopTimeUpdate_fieldAccessorTable = new
@@ -3141,11 +3814,18 @@ abstract class OneBusAwayProto {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_transit_realtime_OneBusAwayEntitySelector_descriptor,
         new java.lang.String[] { "ElevatorId", });
+    internal_static_transit_realtime_OneBusAwayVehicleDescriptor_descriptor =
+      getDescriptor().getMessageTypes().get(5);
+    internal_static_transit_realtime_OneBusAwayVehicleDescriptor_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_transit_realtime_OneBusAwayVehicleDescriptor_descriptor,
+        new java.lang.String[] { "VehicleFeature", });
     obaFeedHeader.internalInit(descriptor.getExtensions().get(0));
     obaFeedEntity.internalInit(descriptor.getExtensions().get(1));
     obaTripUpdate.internalInit(descriptor.getExtensions().get(2));
     obaStopTimeUpdate.internalInit(descriptor.getExtensions().get(3));
     obaEntitySelector.internalInit(descriptor.getExtensions().get(4));
+    obaVehicleDescriptor.internalInit(descriptor.getExtensions().get(5));
     dev.katsute.onemta.GTFSRealtimeProto.getDescriptor();
   }
 
