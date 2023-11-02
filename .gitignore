@@ -2,10 +2,7 @@
 target
 *.iml
 
-/reference
 
 /protobuf
 
-/src/test/java/resources/*.txt
-/src/test/java/resources/*.zip
-/src/test/java/resources/TEST_*
+/src/test/java/resources
