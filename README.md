@@ -45,7 +45,7 @@ Compiled binaries can be installed from:
  3. OneMTA requires static data from the MTA for most route and stop information.
     Latest static data for the MTA is available at <http://web.mta.info/developers/developer-data-terms.html#data>.
 
-    Static data is only required for the endpoints you are using. For busses all boroughs are required, along with bus company.
+    Static data is only required for the endpoints you are using. All boroughs are required for buses, including bus company.
 
     [![static datafeeds](https://raw.githubusercontent.com/KatsuteDev/OneMTA/main/assets/static-datafeeds.png)](http://web.mta.info/developers/developer-data-terms.html#data)
  4. Initialize OneMTA
@@ -96,10 +96,10 @@ MNR.Stop WLN    = mta.getMNRStop("1WN");
 Retrieve live vehicle information from stops and routes.
 
 ```java
-Bus.Vehicle[] busses     = stop.getVehicles();
-Subway.Vehicle[] subways = SI.getVehicles();
-LIRR.Vehicle[] lirr      = PW.getVehicles();
-MNR.Vehicle[] mnr        = WLN.getVehicles();
+Bus.Vehicle[] bus       = stop.getVehicles();
+Subway.Vehicle[] subway = SI.getVehicles();
+LIRR.Vehicle[] lirr     = PW.getVehicles();
+MNR.Vehicle[] mnr       = WLN.getVehicles();
 ```
 
 #### Alerts

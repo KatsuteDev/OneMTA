@@ -47,8 +47,8 @@ abstract class CompilerTests {
 
         // vehicle
 
-        Bus.Vehicle[] busses = stop.getVehicles();
-        Subway.Vehicle[] subways = SI.getVehicles();
+        Bus.Vehicle[] bus = stop.getVehicles();
+        Subway.Vehicle[] subway = SI.getVehicles();
         LIRR.Vehicle[] lirr = PW.getVehicles();
         MNR.Vehicle[] mnr = WLN.getVehicles();
 
