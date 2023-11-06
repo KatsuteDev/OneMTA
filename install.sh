@@ -1,6 +1,6 @@
 #!/bin/bash
 
-version=24.0
+version=25.0
 
 if [ -d protobuf ]; then
     exit 0
