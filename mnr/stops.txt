@@ -94,7 +94,7 @@ stop_id,stop_code,stop_name,stop_desc,stop_lat,stop_lon,zone_id,stop_url,locatio
 162,4BV,Branchville,,41.26763,-73.441421,,http://as0.mta.info/mnr/stations/station_detail.cfm?key=274,0,,1
 163,4RD,Redding,,41.325684,-73.4338,,http://as0.mta.info/mnr/stations/station_detail.cfm?key=276,0,,1
 164,4BE,Bethel,,41.376225,-73.418171,,http://as0.mta.info/mnr/stations/station_detail.cfm?key=278,0,,1
-165,4DN,Danbury,,41.396363,-73.450163,,http://as0.mta.info/mnr/stations/station_detail.cfm?key=280,0,,1
+165,4DN,Danbury,,41.396146,-73.44879,,http://as0.mta.info/mnr/stations/station_detail.cfm?key=280,0,,1
 133,2EN,East Norwalk,,41.103996,-73.404588,,http://as0.mta.info/mnr/stations/station_detail.cfm?key=236,0,,0
 134,2WP,Westport,,41.118928,-73.371413,,http://as0.mta.info/mnr/stations/station_detail.cfm?key=238,0,,1
 136,2GF,Green's Farms,,41.122265,-73.315408,,http://as0.mta.info/mnr/stations/station_detail.cfm?key=240,0,,0

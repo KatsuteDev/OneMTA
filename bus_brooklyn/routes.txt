@@ -106,11 +106,6 @@ BX41+,MTA NYCT,Bx41-SBS,Williamsbridge - The Hub,Select Bus Service via Webster 
 BX42,MTA NYCT,Bx42,Throgs Neck - River Park Towers,via E Tremont Av / E 180th St / Burnside Av,3,EE352E,FFFFFF
 BX46,MTA NYCT,Bx46,Prospect Av - Westchester Av / Hunts Point Market,via Barretto PK,3,EE352E,FFFFFF
 BX99,MTA NYCT,Bx99,Woodlawn - West Village,via 8 av / Grand Concourse,3,EE352E,FFFFFF
-D99,MTA NYCT,D99,Stillwell Terminal - Bay 50 St,via Stillwell Av,3,EE352E,FFFFFF
-J99,MTA NYCT,J99,121 St Station - Jamaica Van Wyck Station ,via Jamaica Av,3,EE352E,FFFFFF
-J90,MTA NYCT,J90,J Shuttle Bus - Crescent St - Jamaica Van Wyck Station ,via Jamaica Av,3,EE352E,FFFFFF
-D90,MTA NYCT,D90,D Shuttle Bus - Mosholu Pkwy #4 - 205 St,via Crand Concourse,3,EE352E,FFFFFF
-L92,MTA NYCT,L92,L Shuttle Bus - Abingdon Sq - FDR Drive, via 14 St,3,EE352E,FFFFFF
 EBUS,MTA NYCT,EBUS,Van Wyck Bl - Jamaica Ctr,via Jamaica Av and Archer Av,3,EE352E,FFFFFF
 SHGRD,MTA NYCT,SHGRD,Grand St D Loop, via Grand St and Houston St,3,EE352E,FFFFFF
 SHNRD,MTA NYCT,SHNRD,Atlantic Av - 9 Av, via 4 Av,3,EE352E,FFFFFF
@@ -128,12 +123,6 @@ JGAS,MTA NYCT,JGAS,Brooklyn As Assigned,Jackie Gleason Brooklyn As Assigned,3,EE
 CSAS,MTA NYCT,CSAS,Queens As Assigned,Casey Stengel Queens As Assigned,3,EE352E,FFFFFF
 KBAS,MTA NYCT,KBAS,Bronx As Assigned,Kingbridge Bronx As Assigned,3,EE352E,FFFFFF
 WFAS,MTA NYCT,WFAS,Bronx As Assigned,West Farms Bronx As Assigned,3,EE352E,FFFFFF
-JBLAF,MTA NYCT,JBLAF,J/M Shuttle Bus-Broadway/Lafayette and Hewes St,via Williamsburg Bridge,3,EE352E,FFFFFF
-L1227,MTA NYCT,BJ-MW,L Shuttle Bus-Broadway Junction and Myrtle-Wyckoff,via Fulton/Van Sinderen Ave and Mrtyle/Wyckoff Ave,3,EE352E,FFFFFF
-L0719,MTA NYCT,BEDLOOP,L Shuttle Bus-Marcy Avenue and Lorimer Street,via Broadway,3,EE352E,FFFFFF
-L0202,MTA NYCT,MW-ML,L Shuttle Bus-Myrtle-Wyckoff Avenue and Lorimer Street,via Wyckoff/Gates and Metropolitan/Union Ave,3,EE352E,FFFFFF
-F1,MTA NYCT,F1, CULVER LINK F Shuttle Bus-Church Avenue and McDonald Avenue,via McDonald Avenue and Surf Avenue and Stillwell Avenue,3,EE352E,FFFFFF
-M191,MTA NYCT,M191,191 ST Shuttle Loop, via St Nicholas Av and Broadway,3,EE352E,FFFFFF
 M1,MTA NYCT,M1,Harlem - East Village,via 5th Av / Madison Av,3,EE352E,FFFFFF
 M2,MTA NYCT,M2,Washington Heights - East Village,via 5th Av / Madison Av / AC Powell Blvd,3,B933AD,FFFFFF
 M3,MTA NYCT,M3,Fort George - East Village,via 5th Av / Madison Av / St Nicholas Av,3,B933AD,FFFFFF
@@ -217,6 +206,7 @@ Q83,MTA NYCT,Q83,Cambria Heights - Jamaica,via Murdock Av / Liberty Av (Local an
 Q84,MTA NYCT,Q84,Laurelton - Jamaica,via Merrick Blvd / 120th Av,3,B933AD,FFFFFF
 Q85,MTA NYCT,Q85,Rosedale or Green Acres Shopping Mall - Jamaica,via Merrick Blvd / Conduit Av,3,EE352E,FFFFFF
 Q88,MTA NYCT,Q88,Elmhurst - Queens Village,via Horace Harding Expwy / 73rd Av / Springfield Blvd,3,FAA61A,FFFFFF
+Q110,MTA NYCT,Q110,Floral Park - Jamaica,via Jamaica Av / Jericho Turnpike,3,6CBE45,FFFFFF
 SIM1,MTA NYCT,SIM1,Eltingville - Lower Manhattan Express,via Hylan Bl / Richmond Av,3,00933C,FFFFFF
 SIM1C,MTA NYCT,SIM1C,Eltingville - Manhattan Express,via Hylan Bl / Richmond Av,3,00933C,FFFFFF
 SIM2,MTA NYCT,SIM2,Tottenville - Lower Manhattan Express,via Huguenot Av / Hylan Bl,3,00933C,FFFFFF
@@ -284,6 +274,25 @@ X38,MTA NYCT,X38,Sea Gate / Bensonhurst - Midtown Manhattan Express,via Surf Av 
 X63,MTA NYCT,X63,Rosedale - Midtown Manhattan Express,via Merrick Bl / Francis Lewis Bl,3,00933C,FFFFFF
 X64,MTA NYCT,X64,Cambria Heights - Midtown Manhattan Express,via Linden Bl / Farmers Bl / Liberty Av,3,00933C,FFFFFF
 X68,MTA NYCT,X68,Floral Park - Midtown Manhattan Express,via Hillside Av / Queens Bl,3,00933C,FFFFFF
-S96B1,MTA NYCT,S96B1,1 Shuttle Bus-Broadway/137St and Central Park West/110 St, via Broadway,3,EE352E,FFFFFF
-S96B2,MTA NYCT,S96B2,2 Shuttle Bus-149 St/Grand Concourse and Central Park West/110 St, via Lenox Av,3,EE352E,FFFFFF
-S96B3,MTA NYCT,S96B3,3 Shuttle Bus-148 St/3rd Av and Central Park West/110 St, via Lenox Av,3,EE352E,FFFFFF
+D99,MTA NYCT,D99,Stillwell Terminal - Bay 50 St,via Stillwell Av,711,EE352E,FFFFFF
+J99,MTA NYCT,J99,121 St Station - Jamaica Van Wyck Station,via Jamaica Av,711,EE352E,FFFFFF
+J90,MTA NYCT,J90,J Shuttle Bus - Crescent St - Jamaica Van Wyck Station ,via Jamaica Av,711,EE352E,FFFFFF
+B90,MTA NYCT,B90,F Shuttle Bus - Church Av - Stillwell Av,via McDonald Av,711,EE352E,FFFFFF
+D90,MTA NYCT,D90,D Shuttle Bus - Mosholu Pkwy #4 - 205 St,via Crand Concourse,711,EE352E,FFFFFF
+L92,MTA NYCT,L92,L Shuttle Bus - Abingdon Sq - FDR Drive, via 14 St,711,EE352E,FFFFFF
+L90,MTA NYCT,L90,L Shuttle Bus - Lorimer St - Myrtle Wyckoff Avs,via Wyckoff Av / Metropolitan Av,711,EE352E,FFFFFF
+M90,MTA NYCT,M90,M Shuttle Bus - Metropolitan Av - Myrtle Av,via Myrtle Av,711,EE352E,FFFFFF
+Q90,MTA NYCT,Q90,Q Shuttle Bus - Barclays Ctr - Prospect Park,via Flatbush Av,711,00933C,FFFFFF
+Q92,MTA NYCT,Q92,7 Shuttle Bus - Times Square - Hudson Yards, via 42 St,711,00933C,FFFFFF
+Q93,MTA NYCT,Q93,7 Shuttle Bus - Queensboro Plz - Vernon Bl-Jackson Av,via Jackson Av,711,6CBE45,FFFFFF
+Q94,MTA NYCT,Q94,F Shuttle Bus - Roosevelt Island - Queens Plaza,via Jackson Av,711,6CBE45,FFFFFF
+Q95,MTA NYCT,Q95,F Shuttle Bus - 21 St/Queensbridge  - Queens Plaza,via Jackson Av,711,6CBE45,FFFFFF
+JBLAF,MTA NYCT,JBLAF,J/M Shuttle Bus-Broadway/Lafayette and Hewes St,via Williamsburg Bridge,3,EE352E,FFFFFF
+L1227,MTA NYCT,BJ-MW,L Shuttle Bus-Broadway Junction and Myrtle-Wyckoff,via Fulton/Van Sinderen Ave and Mrtyle/Wyckoff Ave,711,EE352E,FFFFFF
+L0719,MTA NYCT,BEDLOOP,L Shuttle Bus-Marcy Avenue and Lorimer Street,via Broadway,711,EE352E,FFFFFF
+L0202,MTA NYCT,MW-ML,L Shuttle Bus-Myrtle-Wyckoff Avenue and Lorimer Street,via Wyckoff/Gates and Metropolitan/Union Ave,711,EE352E,FFFFFF
+F1,MTA NYCT,F1, CULVER LINK F Shuttle Bus-Church Avenue and McDonald Avenue,via McDonald Avenue and Surf Avenue and Stillwell Avenue,711,EE352E,FFFFFF
+M191,MTA NYCT,M191,191 ST Shuttle Loop, via St Nicholas Av and Broadway,711,EE352E,FFFFFF
+S96B1,MTA NYCT,S96B1,1 Shuttle Bus-Broadway/137St and Central Park West/110 St, via Broadway,711,EE352E,FFFFFF
+S96B2,MTA NYCT,S96B2,2 Shuttle Bus-149 St/Grand Concourse and Central Park West/110 St, via Lenox Av,711,EE352E,FFFFFF
+S96B3,MTA NYCT,S96B3,3 Shuttle Bus-148 St/3rd Av and Central Park West/110 St, via Lenox Av,711,EE352E,FFFFFF
