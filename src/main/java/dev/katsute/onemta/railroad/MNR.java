@@ -66,15 +66,6 @@ public abstract class MNR {
         public abstract String getStopCode();
 
         /**
-         * Returns the stop description.
-         *
-         * @return route description
-         *
-         * @since 1.0.0
-         */
-        public abstract String getStopDescription();
-
-        /**
          * Returns if the stop is wheelchair accessible.
          *
          * @return wheelchair accessible

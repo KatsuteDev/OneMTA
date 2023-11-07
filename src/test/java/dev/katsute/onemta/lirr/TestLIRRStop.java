@@ -34,7 +34,6 @@ final class TestLIRRStop {
     @Test
     final void testStop(){
         assertNotNull(stop.getStopCode());
-        assertNotNull(stop.getStopDescription());
         assertNotNull(stop.hasWheelchairBoarding());
     }
 
