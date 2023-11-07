@@ -2,7 +2,6 @@
 target
 *.iml
 
-
 /protobuf
 
 /src/test/java/resources
