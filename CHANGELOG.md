@@ -1,5 +1,19 @@
 # Changelog
 
+## 2.1.0
+
+### Removed
+
+* LIRR / MNR - Remove stop description [#174](https://github.com/KatsuteDev/OneMTA/pull/174) ([@Katsute](https://github.com/Katsute))
+
+### Dependencies
+
+* Bump org.apache.maven.plugins:maven-surefire-plugin from 3.1.2 to 3.2.1 [#169](https://github.com/KatsuteDev/OneMTA/pull/169) ([@dependabot](https://github.com/dependabot))
+* Bump the junit group with 2 updates [#171](https://github.com/KatsuteDev/OneMTA/pull/171) ([@dependabot](https://github.com/dependabot))
+* Upgrade to protobuf 25 [#172](https://github.com/KatsuteDev/OneMTA/pull/172) ([@Katsute](https://github.com/Katsute))
+
+**Full Changelog**: [`2.0.5...2.1.0`](https://github.com/KatsuteDev/OneMTA/compare/2.0.5...2.1.0)
+
 ## 2.0.5
 
 ### Dependencies
