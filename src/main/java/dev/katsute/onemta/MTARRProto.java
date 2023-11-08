@@ -192,6 +192,90 @@ abstract class MTARRProto {
       }
     }
 
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, track_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, trainStatus_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, track_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, trainStatus_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof dev.katsute.onemta.MTARRProto.MtaRailroadStopTimeUpdate)) {
+        return super.equals(obj);
+      }
+      dev.katsute.onemta.MTARRProto.MtaRailroadStopTimeUpdate other = (dev.katsute.onemta.MTARRProto.MtaRailroadStopTimeUpdate) obj;
+
+      if (hasTrack() != other.hasTrack()) return false;
+      if (hasTrack()) {
+        if (!getTrack()
+            .equals(other.getTrack())) return false;
+      }
+      if (hasTrainStatus() != other.hasTrainStatus()) return false;
+      if (hasTrainStatus()) {
+        if (!getTrainStatus()
+            .equals(other.getTrainStatus())) return false;
+      }
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasTrack()) {
+        hash = (37 * hash) + TRACK_FIELD_NUMBER;
+        hash = (53 * hash) + getTrack().hashCode();
+      }
+      if (hasTrainStatus()) {
+        hash = (37 * hash) + TRAINSTATUS_FIELD_NUMBER;
+        hash = (53 * hash) + getTrainStatus().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static dev.katsute.onemta.MTARRProto.MtaRailroadStopTimeUpdate parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -396,6 +480,79 @@ abstract class MTARRProto {
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof dev.katsute.onemta.MTARRProto.MtaRailroadStopTimeUpdate) {
+          return mergeFrom((dev.katsute.onemta.MTARRProto.MtaRailroadStopTimeUpdate)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(dev.katsute.onemta.MTARRProto.MtaRailroadStopTimeUpdate other) {
+        if (other == dev.katsute.onemta.MTARRProto.MtaRailroadStopTimeUpdate.getDefaultInstance()) return this;
+        if (other.hasTrack()) {
+          track_ = other.track_;
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        if (other.hasTrainStatus()) {
+          trainStatus_ = other.trainStatus_;
+          bitField0_ |= 0x00000002;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                track_ = input.readBytes();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 18: {
+                trainStatus_ = input.readBytes();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
       }
       private int bitField0_;
 
@@ -1130,6 +1287,121 @@ abstract class MTARRProto {
       return result == null ? dev.katsute.onemta.MTARRProto.MtaRailroadCarriageDetails.ToiletFacilities.UNKNOWN_TOILET_FACILITIES : result;
     }
 
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        output.writeInt32(1, bicyclesAllowed_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, carriageClass_);
+      }
+      if (((bitField0_ & 0x00000004) != 0)) {
+        output.writeEnum(3, quietCarriage_);
+      }
+      if (((bitField0_ & 0x00000008) != 0)) {
+        output.writeEnum(4, toiletFacilities_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, bicyclesAllowed_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, carriageClass_);
+      }
+      if (((bitField0_ & 0x00000004) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(3, quietCarriage_);
+      }
+      if (((bitField0_ & 0x00000008) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(4, toiletFacilities_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof dev.katsute.onemta.MTARRProto.MtaRailroadCarriageDetails)) {
+        return super.equals(obj);
+      }
+      dev.katsute.onemta.MTARRProto.MtaRailroadCarriageDetails other = (dev.katsute.onemta.MTARRProto.MtaRailroadCarriageDetails) obj;
+
+      if (hasBicyclesAllowed() != other.hasBicyclesAllowed()) return false;
+      if (hasBicyclesAllowed()) {
+        if (getBicyclesAllowed()
+            != other.getBicyclesAllowed()) return false;
+      }
+      if (hasCarriageClass() != other.hasCarriageClass()) return false;
+      if (hasCarriageClass()) {
+        if (!getCarriageClass()
+            .equals(other.getCarriageClass())) return false;
+      }
+      if (hasQuietCarriage() != other.hasQuietCarriage()) return false;
+      if (hasQuietCarriage()) {
+        if (quietCarriage_ != other.quietCarriage_) return false;
+      }
+      if (hasToiletFacilities() != other.hasToiletFacilities()) return false;
+      if (hasToiletFacilities()) {
+        if (toiletFacilities_ != other.toiletFacilities_) return false;
+      }
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasBicyclesAllowed()) {
+        hash = (37 * hash) + BICYCLES_ALLOWED_FIELD_NUMBER;
+        hash = (53 * hash) + getBicyclesAllowed();
+      }
+      if (hasCarriageClass()) {
+        hash = (37 * hash) + CARRIAGE_CLASS_FIELD_NUMBER;
+        hash = (53 * hash) + getCarriageClass().hashCode();
+      }
+      if (hasQuietCarriage()) {
+        hash = (37 * hash) + QUIET_CARRIAGE_FIELD_NUMBER;
+        hash = (53 * hash) + quietCarriage_;
+      }
+      if (hasToiletFacilities()) {
+        hash = (37 * hash) + TOILET_FACILITIES_FIELD_NUMBER;
+        hash = (53 * hash) + toiletFacilities_;
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static dev.katsute.onemta.MTARRProto.MtaRailroadCarriageDetails parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1344,6 +1616,107 @@ abstract class MTARRProto {
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof dev.katsute.onemta.MTARRProto.MtaRailroadCarriageDetails) {
+          return mergeFrom((dev.katsute.onemta.MTARRProto.MtaRailroadCarriageDetails)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(dev.katsute.onemta.MTARRProto.MtaRailroadCarriageDetails other) {
+        if (other == dev.katsute.onemta.MTARRProto.MtaRailroadCarriageDetails.getDefaultInstance()) return this;
+        if (other.hasBicyclesAllowed()) {
+          setBicyclesAllowed(other.getBicyclesAllowed());
+        }
+        if (other.hasCarriageClass()) {
+          carriageClass_ = other.carriageClass_;
+          bitField0_ |= 0x00000002;
+          onChanged();
+        }
+        if (other.hasQuietCarriage()) {
+          setQuietCarriage(other.getQuietCarriage());
+        }
+        if (other.hasToiletFacilities()) {
+          setToiletFacilities(other.getToiletFacilities());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                bicyclesAllowed_ = input.readInt32();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 8
+              case 18: {
+                carriageClass_ = input.readBytes();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              case 24: {
+                int tmpRaw = input.readEnum();
+                dev.katsute.onemta.MTARRProto.MtaRailroadCarriageDetails.QuietCarriage tmpValue =
+                    dev.katsute.onemta.MTARRProto.MtaRailroadCarriageDetails.QuietCarriage.forNumber(tmpRaw);
+                if (tmpValue == null) {
+                  mergeUnknownVarintField(3, tmpRaw);
+                } else {
+                  quietCarriage_ = tmpRaw;
+                  bitField0_ |= 0x00000004;
+                }
+                break;
+              } // case 24
+              case 32: {
+                int tmpRaw = input.readEnum();
+                dev.katsute.onemta.MTARRProto.MtaRailroadCarriageDetails.ToiletFacilities tmpValue =
+                    dev.katsute.onemta.MTARRProto.MtaRailroadCarriageDetails.ToiletFacilities.forNumber(tmpRaw);
+                if (tmpValue == null) {
+                  mergeUnknownVarintField(4, tmpRaw);
+                } else {
+                  toiletFacilities_ = tmpRaw;
+                  bitField0_ |= 0x00000008;
+                }
+                break;
+              } // case 32
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
       }
       private int bitField0_;
 
@@ -1721,7 +2094,7 @@ abstract class MTARRProto {
       "ealtime.VehiclePosition.CarriageDetails\030" +
       "\355\007 \001(\0132,.transit_realtime.MtaRailroadCar" +
       "riageDetailsB\"\n\022dev.katsute.onemtaB\nMTAR" +
-      "RProtoH\002"
+      "RProtoH\001"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

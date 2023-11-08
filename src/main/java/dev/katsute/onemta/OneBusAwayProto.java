@@ -182,6 +182,93 @@ abstract class OneBusAwayProto {
       return incrementalHeartbeatInterval_;
     }
 
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        output.writeUInt64(1, incrementalIndex_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        output.writeUInt32(2, incrementalHeartbeatInterval_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt64Size(1, incrementalIndex_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(2, incrementalHeartbeatInterval_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof dev.katsute.onemta.OneBusAwayProto.OneBusAwayFeedHeader)) {
+        return super.equals(obj);
+      }
+      dev.katsute.onemta.OneBusAwayProto.OneBusAwayFeedHeader other = (dev.katsute.onemta.OneBusAwayProto.OneBusAwayFeedHeader) obj;
+
+      if (hasIncrementalIndex() != other.hasIncrementalIndex()) return false;
+      if (hasIncrementalIndex()) {
+        if (getIncrementalIndex()
+            != other.getIncrementalIndex()) return false;
+      }
+      if (hasIncrementalHeartbeatInterval() != other.hasIncrementalHeartbeatInterval()) return false;
+      if (hasIncrementalHeartbeatInterval()) {
+        if (getIncrementalHeartbeatInterval()
+            != other.getIncrementalHeartbeatInterval()) return false;
+      }
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasIncrementalIndex()) {
+        hash = (37 * hash) + INCREMENTAL_INDEX_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+            getIncrementalIndex());
+      }
+      if (hasIncrementalHeartbeatInterval()) {
+        hash = (37 * hash) + INCREMENTAL_HEARTBEAT_INTERVAL_FIELD_NUMBER;
+        hash = (53 * hash) + getIncrementalHeartbeatInterval();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static dev.katsute.onemta.OneBusAwayProto.OneBusAwayFeedHeader parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -386,6 +473,75 @@ abstract class OneBusAwayProto {
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof dev.katsute.onemta.OneBusAwayProto.OneBusAwayFeedHeader) {
+          return mergeFrom((dev.katsute.onemta.OneBusAwayProto.OneBusAwayFeedHeader)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(dev.katsute.onemta.OneBusAwayProto.OneBusAwayFeedHeader other) {
+        if (other == dev.katsute.onemta.OneBusAwayProto.OneBusAwayFeedHeader.getDefaultInstance()) return this;
+        if (other.hasIncrementalIndex()) {
+          setIncrementalIndex(other.getIncrementalIndex());
+        }
+        if (other.hasIncrementalHeartbeatInterval()) {
+          setIncrementalHeartbeatInterval(other.getIncrementalHeartbeatInterval());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                incrementalIndex_ = input.readUInt64();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 8
+              case 16: {
+                incrementalHeartbeatInterval_ = input.readUInt32();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
       }
       private int bitField0_;
 
@@ -722,6 +878,75 @@ abstract class OneBusAwayProto {
       }
     }
 
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, source_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, source_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof dev.katsute.onemta.OneBusAwayProto.OneBusAwayFeedEntity)) {
+        return super.equals(obj);
+      }
+      dev.katsute.onemta.OneBusAwayProto.OneBusAwayFeedEntity other = (dev.katsute.onemta.OneBusAwayProto.OneBusAwayFeedEntity) obj;
+
+      if (hasSource() != other.hasSource()) return false;
+      if (hasSource()) {
+        if (!getSource()
+            .equals(other.getSource())) return false;
+      }
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasSource()) {
+        hash = (37 * hash) + SOURCE_FIELD_NUMBER;
+        hash = (53 * hash) + getSource().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static dev.katsute.onemta.OneBusAwayProto.OneBusAwayFeedEntity parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -921,6 +1146,69 @@ abstract class OneBusAwayProto {
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof dev.katsute.onemta.OneBusAwayProto.OneBusAwayFeedEntity) {
+          return mergeFrom((dev.katsute.onemta.OneBusAwayProto.OneBusAwayFeedEntity)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(dev.katsute.onemta.OneBusAwayProto.OneBusAwayFeedEntity other) {
+        if (other == dev.katsute.onemta.OneBusAwayProto.OneBusAwayFeedEntity.getDefaultInstance()) return this;
+        if (other.hasSource()) {
+          source_ = other.source_;
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                source_ = input.readBytes();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
       }
       private int bitField0_;
 
@@ -1494,6 +1782,140 @@ abstract class OneBusAwayProto {
       return isEstimatedRealtime_;
     }
 
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        output.writeInt32(1, delay_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        output.writeUInt64(2, timestamp_);
+      }
+      if (((bitField0_ & 0x00000004) != 0)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, tripHeadsign_);
+      }
+      if (((bitField0_ & 0x00000008) != 0)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, tripDirection_);
+      }
+      if (((bitField0_ & 0x00000010) != 0)) {
+        output.writeBool(5, isEstimatedRealtime_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, delay_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt64Size(2, timestamp_);
+      }
+      if (((bitField0_ & 0x00000004) != 0)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, tripHeadsign_);
+      }
+      if (((bitField0_ & 0x00000008) != 0)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, tripDirection_);
+      }
+      if (((bitField0_ & 0x00000010) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(5, isEstimatedRealtime_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof dev.katsute.onemta.OneBusAwayProto.OneBusAwayTripUpdate)) {
+        return super.equals(obj);
+      }
+      dev.katsute.onemta.OneBusAwayProto.OneBusAwayTripUpdate other = (dev.katsute.onemta.OneBusAwayProto.OneBusAwayTripUpdate) obj;
+
+      if (hasDelay() != other.hasDelay()) return false;
+      if (hasDelay()) {
+        if (getDelay()
+            != other.getDelay()) return false;
+      }
+      if (hasTimestamp() != other.hasTimestamp()) return false;
+      if (hasTimestamp()) {
+        if (getTimestamp()
+            != other.getTimestamp()) return false;
+      }
+      if (hasTripHeadsign() != other.hasTripHeadsign()) return false;
+      if (hasTripHeadsign()) {
+        if (!getTripHeadsign()
+            .equals(other.getTripHeadsign())) return false;
+      }
+      if (hasTripDirection() != other.hasTripDirection()) return false;
+      if (hasTripDirection()) {
+        if (!getTripDirection()
+            .equals(other.getTripDirection())) return false;
+      }
+      if (hasIsEstimatedRealtime() != other.hasIsEstimatedRealtime()) return false;
+      if (hasIsEstimatedRealtime()) {
+        if (getIsEstimatedRealtime()
+            != other.getIsEstimatedRealtime()) return false;
+      }
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasDelay()) {
+        hash = (37 * hash) + DELAY_FIELD_NUMBER;
+        hash = (53 * hash) + getDelay();
+      }
+      if (hasTimestamp()) {
+        hash = (37 * hash) + TIMESTAMP_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+            getTimestamp());
+      }
+      if (hasTripHeadsign()) {
+        hash = (37 * hash) + TRIPHEADSIGN_FIELD_NUMBER;
+        hash = (53 * hash) + getTripHeadsign().hashCode();
+      }
+      if (hasTripDirection()) {
+        hash = (37 * hash) + TRIPDIRECTION_FIELD_NUMBER;
+        hash = (53 * hash) + getTripDirection().hashCode();
+      }
+      if (hasIsEstimatedRealtime()) {
+        hash = (37 * hash) + IS_ESTIMATED_REALTIME_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+            getIsEstimatedRealtime());
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static dev.katsute.onemta.OneBusAwayProto.OneBusAwayTripUpdate parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1713,6 +2135,103 @@ abstract class OneBusAwayProto {
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof dev.katsute.onemta.OneBusAwayProto.OneBusAwayTripUpdate) {
+          return mergeFrom((dev.katsute.onemta.OneBusAwayProto.OneBusAwayTripUpdate)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(dev.katsute.onemta.OneBusAwayProto.OneBusAwayTripUpdate other) {
+        if (other == dev.katsute.onemta.OneBusAwayProto.OneBusAwayTripUpdate.getDefaultInstance()) return this;
+        if (other.hasDelay()) {
+          setDelay(other.getDelay());
+        }
+        if (other.hasTimestamp()) {
+          setTimestamp(other.getTimestamp());
+        }
+        if (other.hasTripHeadsign()) {
+          tripHeadsign_ = other.tripHeadsign_;
+          bitField0_ |= 0x00000004;
+          onChanged();
+        }
+        if (other.hasTripDirection()) {
+          tripDirection_ = other.tripDirection_;
+          bitField0_ |= 0x00000008;
+          onChanged();
+        }
+        if (other.hasIsEstimatedRealtime()) {
+          setIsEstimatedRealtime(other.getIsEstimatedRealtime());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                delay_ = input.readInt32();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 8
+              case 16: {
+                timestamp_ = input.readUInt64();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              case 26: {
+                tripHeadsign_ = input.readBytes();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 26
+              case 34: {
+                tripDirection_ = input.readBytes();
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 34
+              case 40: {
+                isEstimatedRealtime_ = input.readBool();
+                bitField0_ |= 0x00000010;
+                break;
+              } // case 40
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
       }
       private int bitField0_;
 
@@ -2305,6 +2824,75 @@ abstract class OneBusAwayProto {
       }
     }
 
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, stopHeadsign_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, stopHeadsign_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof dev.katsute.onemta.OneBusAwayProto.OneBusAwayStopTimeUpdate)) {
+        return super.equals(obj);
+      }
+      dev.katsute.onemta.OneBusAwayProto.OneBusAwayStopTimeUpdate other = (dev.katsute.onemta.OneBusAwayProto.OneBusAwayStopTimeUpdate) obj;
+
+      if (hasStopHeadsign() != other.hasStopHeadsign()) return false;
+      if (hasStopHeadsign()) {
+        if (!getStopHeadsign()
+            .equals(other.getStopHeadsign())) return false;
+      }
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasStopHeadsign()) {
+        hash = (37 * hash) + STOPHEADSIGN_FIELD_NUMBER;
+        hash = (53 * hash) + getStopHeadsign().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static dev.katsute.onemta.OneBusAwayProto.OneBusAwayStopTimeUpdate parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -2504,6 +3092,69 @@ abstract class OneBusAwayProto {
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof dev.katsute.onemta.OneBusAwayProto.OneBusAwayStopTimeUpdate) {
+          return mergeFrom((dev.katsute.onemta.OneBusAwayProto.OneBusAwayStopTimeUpdate)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(dev.katsute.onemta.OneBusAwayProto.OneBusAwayStopTimeUpdate other) {
+        if (other == dev.katsute.onemta.OneBusAwayProto.OneBusAwayStopTimeUpdate.getDefaultInstance()) return this;
+        if (other.hasStopHeadsign()) {
+          stopHeadsign_ = other.stopHeadsign_;
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                stopHeadsign_ = input.readBytes();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
       }
       private int bitField0_;
 
@@ -2756,6 +3407,75 @@ abstract class OneBusAwayProto {
       }
     }
 
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, elevatorId_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, elevatorId_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof dev.katsute.onemta.OneBusAwayProto.OneBusAwayEntitySelector)) {
+        return super.equals(obj);
+      }
+      dev.katsute.onemta.OneBusAwayProto.OneBusAwayEntitySelector other = (dev.katsute.onemta.OneBusAwayProto.OneBusAwayEntitySelector) obj;
+
+      if (hasElevatorId() != other.hasElevatorId()) return false;
+      if (hasElevatorId()) {
+        if (!getElevatorId()
+            .equals(other.getElevatorId())) return false;
+      }
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasElevatorId()) {
+        hash = (37 * hash) + ELEVATORID_FIELD_NUMBER;
+        hash = (53 * hash) + getElevatorId().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static dev.katsute.onemta.OneBusAwayProto.OneBusAwayEntitySelector parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -2955,6 +3675,69 @@ abstract class OneBusAwayProto {
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof dev.katsute.onemta.OneBusAwayProto.OneBusAwayEntitySelector) {
+          return mergeFrom((dev.katsute.onemta.OneBusAwayProto.OneBusAwayEntitySelector)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(dev.katsute.onemta.OneBusAwayProto.OneBusAwayEntitySelector other) {
+        if (other == dev.katsute.onemta.OneBusAwayProto.OneBusAwayEntitySelector.getDefaultInstance()) return this;
+        if (other.hasElevatorId()) {
+          elevatorId_ = other.elevatorId_;
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                elevatorId_ = input.readBytes();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
       }
       private int bitField0_;
 
@@ -3235,6 +4018,77 @@ abstract class OneBusAwayProto {
       return vehicleFeature_.getByteString(index);
     }
 
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      for (int i = 0; i < vehicleFeature_.size(); i++) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, vehicleFeature_.getRaw(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      {
+        int dataSize = 0;
+        for (int i = 0; i < vehicleFeature_.size(); i++) {
+          dataSize += computeStringSizeNoTag(vehicleFeature_.getRaw(i));
+        }
+        size += dataSize;
+        size += 1 * getVehicleFeatureList().size();
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof dev.katsute.onemta.OneBusAwayProto.OneBusAwayVehicleDescriptor)) {
+        return super.equals(obj);
+      }
+      dev.katsute.onemta.OneBusAwayProto.OneBusAwayVehicleDescriptor other = (dev.katsute.onemta.OneBusAwayProto.OneBusAwayVehicleDescriptor) obj;
+
+      if (!getVehicleFeatureList()
+          .equals(other.getVehicleFeatureList())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (getVehicleFeatureCount() > 0) {
+        hash = (37 * hash) + VEHICLEFEATURE_FIELD_NUMBER;
+        hash = (53 * hash) + getVehicleFeatureList().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static dev.katsute.onemta.OneBusAwayProto.OneBusAwayVehicleDescriptor parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -3433,6 +4287,75 @@ abstract class OneBusAwayProto {
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof dev.katsute.onemta.OneBusAwayProto.OneBusAwayVehicleDescriptor) {
+          return mergeFrom((dev.katsute.onemta.OneBusAwayProto.OneBusAwayVehicleDescriptor)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(dev.katsute.onemta.OneBusAwayProto.OneBusAwayVehicleDescriptor other) {
+        if (other == dev.katsute.onemta.OneBusAwayProto.OneBusAwayVehicleDescriptor.getDefaultInstance()) return this;
+        if (!other.vehicleFeature_.isEmpty()) {
+          if (vehicleFeature_.isEmpty()) {
+            vehicleFeature_ = other.vehicleFeature_;
+            bitField0_ |= 0x00000001;
+          } else {
+            ensureVehicleFeatureIsMutable();
+            vehicleFeature_.addAll(other.vehicleFeature_);
+          }
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                com.google.protobuf.ByteString bs = input.readBytes();
+                ensureVehicleFeatureIsMutable();
+                vehicleFeature_.add(bs);
+                break;
+              } // case 10
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
       }
       private int bitField0_;
 
@@ -3778,7 +4701,7 @@ abstract class OneBusAwayProto {
       "criptor\022#.transit_realtime.VehicleDescri" +
       "ptor\030\350\007 \001(\0132-.transit_realtime.OneBusAwa" +
       "yVehicleDescriptorB\'\n\022dev.katsute.onemta" +
-      "B\017OneBusAwayProtoH\002"
+      "B\017OneBusAwayProtoH\001"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

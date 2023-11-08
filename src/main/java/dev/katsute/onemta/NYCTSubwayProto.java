@@ -221,6 +221,97 @@ abstract class NYCTSubwayProto {
       return replacementPeriod_ == null ? dev.katsute.onemta.GTFSRealtimeProto.TimeRange.getDefaultInstance() : replacementPeriod_;
     }
 
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (hasReplacementPeriod()) {
+        if (!getReplacementPeriod().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, routeId_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        output.writeMessage(2, getReplacementPeriod());
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, routeId_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getReplacementPeriod());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriod)) {
+        return super.equals(obj);
+      }
+      dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriod other = (dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriod) obj;
+
+      if (hasRouteId() != other.hasRouteId()) return false;
+      if (hasRouteId()) {
+        if (!getRouteId()
+            .equals(other.getRouteId())) return false;
+      }
+      if (hasReplacementPeriod() != other.hasReplacementPeriod()) return false;
+      if (hasReplacementPeriod()) {
+        if (!getReplacementPeriod()
+            .equals(other.getReplacementPeriod())) return false;
+      }
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasRouteId()) {
+        hash = (37 * hash) + ROUTE_ID_FIELD_NUMBER;
+        hash = (53 * hash) + getRouteId().hashCode();
+      }
+      if (hasReplacementPeriod()) {
+        hash = (37 * hash) + REPLACEMENT_PERIOD_FIELD_NUMBER;
+        hash = (53 * hash) + getReplacementPeriod().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriod parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -437,6 +528,84 @@ abstract class NYCTSubwayProto {
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriod) {
+          return mergeFrom((dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriod)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriod other) {
+        if (other == dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriod.getDefaultInstance()) return this;
+        if (other.hasRouteId()) {
+          routeId_ = other.routeId_;
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        if (other.hasReplacementPeriod()) {
+          mergeReplacementPeriod(other.getReplacementPeriod());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        if (hasReplacementPeriod()) {
+          if (!getReplacementPeriod().isInitialized()) {
+            return false;
+          }
+        }
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                routeId_ = input.readBytes();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 18: {
+                input.readMessage(
+                    getReplacementPeriodFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
       }
       private int bitField0_;
 
@@ -1089,6 +1258,98 @@ abstract class NYCTSubwayProto {
       return tripReplacementPeriod_.get(index);
     }
 
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasNyctSubwayVersion()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      for (int i = 0; i < getTripReplacementPeriodCount(); i++) {
+        if (!getTripReplacementPeriod(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, nyctSubwayVersion_);
+      }
+      for (int i = 0; i < tripReplacementPeriod_.size(); i++) {
+        output.writeMessage(2, tripReplacementPeriod_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, nyctSubwayVersion_);
+      }
+      for (int i = 0; i < tripReplacementPeriod_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, tripReplacementPeriod_.get(i));
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof dev.katsute.onemta.NYCTSubwayProto.NyctFeedHeader)) {
+        return super.equals(obj);
+      }
+      dev.katsute.onemta.NYCTSubwayProto.NyctFeedHeader other = (dev.katsute.onemta.NYCTSubwayProto.NyctFeedHeader) obj;
+
+      if (hasNyctSubwayVersion() != other.hasNyctSubwayVersion()) return false;
+      if (hasNyctSubwayVersion()) {
+        if (!getNyctSubwayVersion()
+            .equals(other.getNyctSubwayVersion())) return false;
+      }
+      if (!getTripReplacementPeriodList()
+          .equals(other.getTripReplacementPeriodList())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasNyctSubwayVersion()) {
+        hash = (37 * hash) + NYCT_SUBWAY_VERSION_FIELD_NUMBER;
+        hash = (53 * hash) + getNyctSubwayVersion().hashCode();
+      }
+      if (getTripReplacementPeriodCount() > 0) {
+        hash = (37 * hash) + TRIP_REPLACEMENT_PERIOD_FIELD_NUMBER;
+        hash = (53 * hash) + getTripReplacementPeriodList().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static dev.katsute.onemta.NYCTSubwayProto.NyctFeedHeader parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1312,6 +1573,116 @@ abstract class NYCTSubwayProto {
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof dev.katsute.onemta.NYCTSubwayProto.NyctFeedHeader) {
+          return mergeFrom((dev.katsute.onemta.NYCTSubwayProto.NyctFeedHeader)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(dev.katsute.onemta.NYCTSubwayProto.NyctFeedHeader other) {
+        if (other == dev.katsute.onemta.NYCTSubwayProto.NyctFeedHeader.getDefaultInstance()) return this;
+        if (other.hasNyctSubwayVersion()) {
+          nyctSubwayVersion_ = other.nyctSubwayVersion_;
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        if (tripReplacementPeriodBuilder_ == null) {
+          if (!other.tripReplacementPeriod_.isEmpty()) {
+            if (tripReplacementPeriod_.isEmpty()) {
+              tripReplacementPeriod_ = other.tripReplacementPeriod_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+            } else {
+              ensureTripReplacementPeriodIsMutable();
+              tripReplacementPeriod_.addAll(other.tripReplacementPeriod_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.tripReplacementPeriod_.isEmpty()) {
+            if (tripReplacementPeriodBuilder_.isEmpty()) {
+              tripReplacementPeriodBuilder_.dispose();
+              tripReplacementPeriodBuilder_ = null;
+              tripReplacementPeriod_ = other.tripReplacementPeriod_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+              tripReplacementPeriodBuilder_ =
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getTripReplacementPeriodFieldBuilder() : null;
+            } else {
+              tripReplacementPeriodBuilder_.addAllMessages(other.tripReplacementPeriod_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        if (!hasNyctSubwayVersion()) {
+          return false;
+        }
+        for (int i = 0; i < getTripReplacementPeriodCount(); i++) {
+          if (!getTripReplacementPeriod(i).isInitialized()) {
+            return false;
+          }
+        }
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                nyctSubwayVersion_ = input.readBytes();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 18: {
+                dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriod m =
+                    input.readMessage(
+                        dev.katsute.onemta.NYCTSubwayProto.TripReplacementPeriod.PARSER,
+                        extensionRegistry);
+                if (tripReplacementPeriodBuilder_ == null) {
+                  ensureTripReplacementPeriodIsMutable();
+                  tripReplacementPeriod_.add(m);
+                } else {
+                  tripReplacementPeriodBuilder_.addMessage(m);
+                }
+                break;
+              } // case 18
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
       }
       private int bitField0_;
 
@@ -2461,6 +2832,107 @@ abstract class NYCTSubwayProto {
       return result == null ? dev.katsute.onemta.NYCTSubwayProto.NyctTripDescriptor.Direction.NORTH : result;
     }
 
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, trainId_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        output.writeBool(2, isAssigned_);
+      }
+      if (((bitField0_ & 0x00000004) != 0)) {
+        output.writeEnum(3, direction_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, trainId_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(2, isAssigned_);
+      }
+      if (((bitField0_ & 0x00000004) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(3, direction_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof dev.katsute.onemta.NYCTSubwayProto.NyctTripDescriptor)) {
+        return super.equals(obj);
+      }
+      dev.katsute.onemta.NYCTSubwayProto.NyctTripDescriptor other = (dev.katsute.onemta.NYCTSubwayProto.NyctTripDescriptor) obj;
+
+      if (hasTrainId() != other.hasTrainId()) return false;
+      if (hasTrainId()) {
+        if (!getTrainId()
+            .equals(other.getTrainId())) return false;
+      }
+      if (hasIsAssigned() != other.hasIsAssigned()) return false;
+      if (hasIsAssigned()) {
+        if (getIsAssigned()
+            != other.getIsAssigned()) return false;
+      }
+      if (hasDirection() != other.hasDirection()) return false;
+      if (hasDirection()) {
+        if (direction_ != other.direction_) return false;
+      }
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasTrainId()) {
+        hash = (37 * hash) + TRAIN_ID_FIELD_NUMBER;
+        hash = (53 * hash) + getTrainId().hashCode();
+      }
+      if (hasIsAssigned()) {
+        hash = (37 * hash) + IS_ASSIGNED_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+            getIsAssigned());
+      }
+      if (hasDirection()) {
+        hash = (37 * hash) + DIRECTION_FIELD_NUMBER;
+        hash = (53 * hash) + direction_;
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static dev.katsute.onemta.NYCTSubwayProto.NyctTripDescriptor parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -2674,6 +3146,92 @@ abstract class NYCTSubwayProto {
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof dev.katsute.onemta.NYCTSubwayProto.NyctTripDescriptor) {
+          return mergeFrom((dev.katsute.onemta.NYCTSubwayProto.NyctTripDescriptor)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(dev.katsute.onemta.NYCTSubwayProto.NyctTripDescriptor other) {
+        if (other == dev.katsute.onemta.NYCTSubwayProto.NyctTripDescriptor.getDefaultInstance()) return this;
+        if (other.hasTrainId()) {
+          trainId_ = other.trainId_;
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        if (other.hasIsAssigned()) {
+          setIsAssigned(other.getIsAssigned());
+        }
+        if (other.hasDirection()) {
+          setDirection(other.getDirection());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                trainId_ = input.readBytes();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 16: {
+                isAssigned_ = input.readBool();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              case 24: {
+                int tmpRaw = input.readEnum();
+                dev.katsute.onemta.NYCTSubwayProto.NyctTripDescriptor.Direction tmpValue =
+                    dev.katsute.onemta.NYCTSubwayProto.NyctTripDescriptor.Direction.forNumber(tmpRaw);
+                if (tmpValue == null) {
+                  mergeUnknownVarintField(3, tmpRaw);
+                } else {
+                  direction_ = tmpRaw;
+                  bitField0_ |= 0x00000004;
+                }
+                break;
+              } // case 24
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
       }
       private int bitField0_;
 
@@ -3531,6 +4089,90 @@ abstract class NYCTSubwayProto {
       }
     }
 
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, scheduledTrack_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, actualTrack_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, scheduledTrack_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, actualTrack_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof dev.katsute.onemta.NYCTSubwayProto.NyctStopTimeUpdate)) {
+        return super.equals(obj);
+      }
+      dev.katsute.onemta.NYCTSubwayProto.NyctStopTimeUpdate other = (dev.katsute.onemta.NYCTSubwayProto.NyctStopTimeUpdate) obj;
+
+      if (hasScheduledTrack() != other.hasScheduledTrack()) return false;
+      if (hasScheduledTrack()) {
+        if (!getScheduledTrack()
+            .equals(other.getScheduledTrack())) return false;
+      }
+      if (hasActualTrack() != other.hasActualTrack()) return false;
+      if (hasActualTrack()) {
+        if (!getActualTrack()
+            .equals(other.getActualTrack())) return false;
+      }
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasScheduledTrack()) {
+        hash = (37 * hash) + SCHEDULED_TRACK_FIELD_NUMBER;
+        hash = (53 * hash) + getScheduledTrack().hashCode();
+      }
+      if (hasActualTrack()) {
+        hash = (37 * hash) + ACTUAL_TRACK_FIELD_NUMBER;
+        hash = (53 * hash) + getActualTrack().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static dev.katsute.onemta.NYCTSubwayProto.NyctStopTimeUpdate parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -3739,6 +4381,79 @@ abstract class NYCTSubwayProto {
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof dev.katsute.onemta.NYCTSubwayProto.NyctStopTimeUpdate) {
+          return mergeFrom((dev.katsute.onemta.NYCTSubwayProto.NyctStopTimeUpdate)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(dev.katsute.onemta.NYCTSubwayProto.NyctStopTimeUpdate other) {
+        if (other == dev.katsute.onemta.NYCTSubwayProto.NyctStopTimeUpdate.getDefaultInstance()) return this;
+        if (other.hasScheduledTrack()) {
+          scheduledTrack_ = other.scheduledTrack_;
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        if (other.hasActualTrack()) {
+          actualTrack_ = other.actualTrack_;
+          bitField0_ |= 0x00000002;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                scheduledTrack_ = input.readBytes();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 18: {
+                actualTrack_ = input.readBytes();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
       }
       private int bitField0_;
 
@@ -4252,7 +4967,7 @@ abstract class NYCTSubwayProto {
       ".transit_realtime.TripUpdate.StopTimeUpd" +
       "ate\030\351\007 \001(\0132$.transit_realtime.NyctStopTi" +
       "meUpdateB\'\n\022dev.katsute.onemtaB\017NYCTSubw" +
-      "ayProtoH\002"
+      "ayProtoH\001"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

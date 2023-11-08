@@ -215,6 +215,90 @@ abstract class MNRRProto {
       }
     }
 
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, track_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, trainStatus_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, track_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, trainStatus_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof dev.katsute.onemta.MNRRProto.MnrStopTimeUpdate)) {
+        return super.equals(obj);
+      }
+      dev.katsute.onemta.MNRRProto.MnrStopTimeUpdate other = (dev.katsute.onemta.MNRRProto.MnrStopTimeUpdate) obj;
+
+      if (hasTrack() != other.hasTrack()) return false;
+      if (hasTrack()) {
+        if (!getTrack()
+            .equals(other.getTrack())) return false;
+      }
+      if (hasTrainStatus() != other.hasTrainStatus()) return false;
+      if (hasTrainStatus()) {
+        if (!getTrainStatus()
+            .equals(other.getTrainStatus())) return false;
+      }
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasTrack()) {
+        hash = (37 * hash) + TRACK_FIELD_NUMBER;
+        hash = (53 * hash) + getTrack().hashCode();
+      }
+      if (hasTrainStatus()) {
+        hash = (37 * hash) + TRAINSTATUS_FIELD_NUMBER;
+        hash = (53 * hash) + getTrainStatus().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static dev.katsute.onemta.MNRRProto.MnrStopTimeUpdate parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -419,6 +503,79 @@ abstract class MNRRProto {
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof dev.katsute.onemta.MNRRProto.MnrStopTimeUpdate) {
+          return mergeFrom((dev.katsute.onemta.MNRRProto.MnrStopTimeUpdate)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(dev.katsute.onemta.MNRRProto.MnrStopTimeUpdate other) {
+        if (other == dev.katsute.onemta.MNRRProto.MnrStopTimeUpdate.getDefaultInstance()) return this;
+        if (other.hasTrack()) {
+          track_ = other.track_;
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        if (other.hasTrainStatus()) {
+          trainStatus_ = other.trainStatus_;
+          bitField0_ |= 0x00000002;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                track_ = input.readBytes();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 18: {
+                trainStatus_ = input.readBytes();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
       }
       private int bitField0_;
 
@@ -699,7 +856,7 @@ abstract class MNRRProto {
       "\t:o\n\024mnr_stop_time_update\022+.transit_real" +
       "time.TripUpdate.StopTimeUpdate\030\355\007 \001(\0132#." +
       "transit_realtime.MnrStopTimeUpdateB!\n\022de" +
-      "v.katsute.onemtaB\tMNRRProtoH\002"
+      "v.katsute.onemtaB\tMNRRProtoH\001"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
