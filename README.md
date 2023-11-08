@@ -136,9 +136,7 @@ Sample response data available on the [`reference`](https://github.com/KatsuteDe
     or
 
     Install [protobuf](https://github.com/protocolbuffers/protobuf/releases) and [gtfs realtime proto](https://github.com/OneBusAway/onebusaway-gtfs-realtime-api/tree/master/src/main/proto/com/google/transit/realtime) manually
- 2. Change options and imports as defined in the `protobuf.sh` comments.
- 3. Run `protobuf.sh`.
- 4. Change all classes to abstract package private and add `SuppressWarnings("all")`.
+ 2. Run `protobuf.sh`.
 
 #### Notice About Tests
 
