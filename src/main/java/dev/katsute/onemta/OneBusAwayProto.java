@@ -1393,7 +1393,7 @@ abstract class OneBusAwayProto {
      *
      * <code>optional int32 delay = 1 [deprecated = true];</code>
      * @deprecated transit_realtime.OneBusAwayTripUpdate.delay is deprecated.
-     *     See gtfs-realtime-OneBusAway.proto;l=49
+     *     See gtfs-realtime-OneBusAway.proto;l=50
      * @return Whether the delay field is set.
      */
     @java.lang.Deprecated boolean hasDelay();
@@ -1408,7 +1408,7 @@ abstract class OneBusAwayProto {
      *
      * <code>optional int32 delay = 1 [deprecated = true];</code>
      * @deprecated transit_realtime.OneBusAwayTripUpdate.delay is deprecated.
-     *     See gtfs-realtime-OneBusAway.proto;l=49
+     *     See gtfs-realtime-OneBusAway.proto;l=50
      * @return The delay.
      */
     @java.lang.Deprecated int getDelay();
@@ -1423,7 +1423,7 @@ abstract class OneBusAwayProto {
      *
      * <code>optional uint64 timestamp = 2 [deprecated = true];</code>
      * @deprecated transit_realtime.OneBusAwayTripUpdate.timestamp is deprecated.
-     *     See gtfs-realtime-OneBusAway.proto;l=55
+     *     See gtfs-realtime-OneBusAway.proto;l=56
      * @return Whether the timestamp field is set.
      */
     @java.lang.Deprecated boolean hasTimestamp();
@@ -1437,7 +1437,7 @@ abstract class OneBusAwayProto {
      *
      * <code>optional uint64 timestamp = 2 [deprecated = true];</code>
      * @deprecated transit_realtime.OneBusAwayTripUpdate.timestamp is deprecated.
-     *     See gtfs-realtime-OneBusAway.proto;l=55
+     *     See gtfs-realtime-OneBusAway.proto;l=56
      * @return The timestamp.
      */
     @java.lang.Deprecated long getTimestamp();
@@ -1570,7 +1570,7 @@ abstract class OneBusAwayProto {
      *
      * <code>optional int32 delay = 1 [deprecated = true];</code>
      * @deprecated transit_realtime.OneBusAwayTripUpdate.delay is deprecated.
-     *     See gtfs-realtime-OneBusAway.proto;l=49
+     *     See gtfs-realtime-OneBusAway.proto;l=50
      * @return Whether the delay field is set.
      */
     @java.lang.Override
@@ -1588,7 +1588,7 @@ abstract class OneBusAwayProto {
      *
      * <code>optional int32 delay = 1 [deprecated = true];</code>
      * @deprecated transit_realtime.OneBusAwayTripUpdate.delay is deprecated.
-     *     See gtfs-realtime-OneBusAway.proto;l=49
+     *     See gtfs-realtime-OneBusAway.proto;l=50
      * @return The delay.
      */
     @java.lang.Override
@@ -1608,7 +1608,7 @@ abstract class OneBusAwayProto {
      *
      * <code>optional uint64 timestamp = 2 [deprecated = true];</code>
      * @deprecated transit_realtime.OneBusAwayTripUpdate.timestamp is deprecated.
-     *     See gtfs-realtime-OneBusAway.proto;l=55
+     *     See gtfs-realtime-OneBusAway.proto;l=56
      * @return Whether the timestamp field is set.
      */
     @java.lang.Override
@@ -1625,7 +1625,7 @@ abstract class OneBusAwayProto {
      *
      * <code>optional uint64 timestamp = 2 [deprecated = true];</code>
      * @deprecated transit_realtime.OneBusAwayTripUpdate.timestamp is deprecated.
-     *     See gtfs-realtime-OneBusAway.proto;l=55
+     *     See gtfs-realtime-OneBusAway.proto;l=56
      * @return The timestamp.
      */
     @java.lang.Override
@@ -2247,7 +2247,7 @@ abstract class OneBusAwayProto {
        *
        * <code>optional int32 delay = 1 [deprecated = true];</code>
        * @deprecated transit_realtime.OneBusAwayTripUpdate.delay is deprecated.
-       *     See gtfs-realtime-OneBusAway.proto;l=49
+       *     See gtfs-realtime-OneBusAway.proto;l=50
        * @return Whether the delay field is set.
        */
       @java.lang.Override
@@ -2265,7 +2265,7 @@ abstract class OneBusAwayProto {
        *
        * <code>optional int32 delay = 1 [deprecated = true];</code>
        * @deprecated transit_realtime.OneBusAwayTripUpdate.delay is deprecated.
-       *     See gtfs-realtime-OneBusAway.proto;l=49
+       *     See gtfs-realtime-OneBusAway.proto;l=50
        * @return The delay.
        */
       @java.lang.Override
@@ -2283,7 +2283,7 @@ abstract class OneBusAwayProto {
        *
        * <code>optional int32 delay = 1 [deprecated = true];</code>
        * @deprecated transit_realtime.OneBusAwayTripUpdate.delay is deprecated.
-       *     See gtfs-realtime-OneBusAway.proto;l=49
+       *     See gtfs-realtime-OneBusAway.proto;l=50
        * @param value The delay to set.
        * @return This builder for chaining.
        */
@@ -2305,7 +2305,7 @@ abstract class OneBusAwayProto {
        *
        * <code>optional int32 delay = 1 [deprecated = true];</code>
        * @deprecated transit_realtime.OneBusAwayTripUpdate.delay is deprecated.
-       *     See gtfs-realtime-OneBusAway.proto;l=49
+       *     See gtfs-realtime-OneBusAway.proto;l=50
        * @return This builder for chaining.
        */
       @java.lang.Deprecated public Builder clearDelay() {
@@ -2326,7 +2326,7 @@ abstract class OneBusAwayProto {
        *
        * <code>optional uint64 timestamp = 2 [deprecated = true];</code>
        * @deprecated transit_realtime.OneBusAwayTripUpdate.timestamp is deprecated.
-       *     See gtfs-realtime-OneBusAway.proto;l=55
+       *     See gtfs-realtime-OneBusAway.proto;l=56
        * @return Whether the timestamp field is set.
        */
       @java.lang.Override
@@ -2343,7 +2343,7 @@ abstract class OneBusAwayProto {
        *
        * <code>optional uint64 timestamp = 2 [deprecated = true];</code>
        * @deprecated transit_realtime.OneBusAwayTripUpdate.timestamp is deprecated.
-       *     See gtfs-realtime-OneBusAway.proto;l=55
+       *     See gtfs-realtime-OneBusAway.proto;l=56
        * @return The timestamp.
        */
       @java.lang.Override
@@ -2360,7 +2360,7 @@ abstract class OneBusAwayProto {
        *
        * <code>optional uint64 timestamp = 2 [deprecated = true];</code>
        * @deprecated transit_realtime.OneBusAwayTripUpdate.timestamp is deprecated.
-       *     See gtfs-realtime-OneBusAway.proto;l=55
+       *     See gtfs-realtime-OneBusAway.proto;l=56
        * @param value The timestamp to set.
        * @return This builder for chaining.
        */
@@ -2381,7 +2381,7 @@ abstract class OneBusAwayProto {
        *
        * <code>optional uint64 timestamp = 2 [deprecated = true];</code>
        * @deprecated transit_realtime.OneBusAwayTripUpdate.timestamp is deprecated.
-       *     See gtfs-realtime-OneBusAway.proto;l=55
+       *     See gtfs-realtime-OneBusAway.proto;l=56
        * @return This builder for chaining.
        */
       @java.lang.Deprecated public Builder clearTimestamp() {
