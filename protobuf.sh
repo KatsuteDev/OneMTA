@@ -2,6 +2,11 @@
 
 # https://github.com/OneBusAway/onebusaway-gtfs-realtime-api/tree/master/src/main/proto/com/google/transit/realtime
 
+if [ ! -d protobuf ]; then
+    echo "Missing protobuf directory, run install.sh first"
+    exit 0
+fi
+
 echo "Compiling proto files for Java, do not run this script more than once"
 
 sed -i -E 's/(^option java_package = ")(.*)("; *$)/\1dev.katsute.onemta\3/i' protobuf/gtfs-realtime.proto
@@ -18,7 +23,7 @@ truncate -s -1 protobuf/dev/katsute/onemta/GTFSRealtimeProto.java
 
 # OneBusAway
 
-sed -i -E 's/(^import ")(.*)("; *$)/\1gtfs-realtime.proto\3/mi;' protobuf/gtfs-realtime-OneBusAway.proto
+sed -i -E 's/(^import ")(.*)("; *$)/\1gtfs-realtime.proto\3/i;' protobuf/gtfs-realtime-OneBusAway.proto
 sed -i -E 's/(^option java_package = ")(.*)("; *$)/\1dev.katsute.onemta\3/i' protobuf/gtfs-realtime-OneBusAway.proto
 sed -i -E 's/(^package transit_realtime;$)/option java_outer_classname = "OneBusAwayProto";\n\1/' protobuf/gtfs-realtime-OneBusAway.proto
 sed -i -E 's/(^package transit_realtime;$)/option optimize_for = CODE_SIZE;\n\1/' protobuf/gtfs-realtime-OneBusAway.proto
@@ -33,7 +38,7 @@ truncate -s -1 protobuf/dev/katsute/onemta/OneBusAwayProto.java
 
 # NYCT
 
-sed -i -E 's/(^import ")(.*)("; *$)/\1gtfs-realtime.proto\3/mi;' protobuf/gtfs-realtime-NYCT.proto
+sed -i -E 's/(^import ")(.*)("; *$)/\1gtfs-realtime.proto\3/i;' protobuf/gtfs-realtime-NYCT.proto
 sed -i -E 's/(^option java_package = ")(.*)("; *$)/\1dev.katsute.onemta\3/i' protobuf/gtfs-realtime-NYCT.proto
 sed -i -E 's/(^package transit_realtime;$)/option java_outer_classname = "NYCTSubwayProto";\n\1/' protobuf/gtfs-realtime-NYCT.proto
 sed -i -E 's/(^package transit_realtime;$)/option optimize_for = CODE_SIZE;\n\1/' protobuf/gtfs-realtime-NYCT.proto
@@ -48,7 +53,7 @@ truncate -s -1 protobuf/dev/katsute/onemta/NYCTSubwayProto.java
 
 # MTARR
 
-sed -i -E 's/(^import ")(.*)("; *$)/\1gtfs-realtime.proto\3/mi;' protobuf/gtfs-realtime-MTARR.proto
+sed -i -E 's/(^import ")(.*)("; *$)/\1gtfs-realtime.proto\3/i;' protobuf/gtfs-realtime-MTARR.proto
 sed -i -E 's/(^option java_package = ")(.*)("; *$)/\1dev.katsute.onemta\3/i' protobuf/gtfs-realtime-MTARR.proto
 sed -i -E 's/(^package transit_realtime;$)/option java_outer_classname = "MTARRProto";\n\1/' protobuf/gtfs-realtime-MTARR.proto
 sed -i -E 's/(^package transit_realtime;$)/option optimize_for = CODE_SIZE;\n\1/' protobuf/gtfs-realtime-MTARR.proto
@@ -63,7 +68,7 @@ truncate -s -1 protobuf/dev/katsute/onemta/MTARRProto.java
 
 # LIRR
 
-sed -i -E 's/(^import ")(.*)("; *$)/\1gtfs-realtime.proto\3/mi;' protobuf/gtfs-realtime-LIRR.proto
+sed -i -E 's/(^import ")(.*)("; *$)/\1gtfs-realtime.proto\3/i;' protobuf/gtfs-realtime-LIRR.proto
 sed -i -E 's/(^option java_package = ")(.*)("; *$)/\1dev.katsute.onemta\3/i' protobuf/gtfs-realtime-LIRR.proto
 sed -i -E 's/(^package transit_realtime;$)/option java_outer_classname = "LIRRProto";\n\1/' protobuf/gtfs-realtime-LIRR.proto
 sed -i -E 's/(^package transit_realtime;$)/option optimize_for = CODE_SIZE;\n\1/' protobuf/gtfs-realtime-LIRR.proto
@@ -78,7 +83,7 @@ truncate -s -1 protobuf/dev/katsute/onemta/LIRRProto.java
 
 # MNR
 
-sed -i -E 's/(^import ")(.*)("; *$)/\1gtfs-realtime.proto\3/mi;' protobuf/gtfs-realtime-MNR.proto
+sed -i -E 's/(^import ")(.*)("; *$)/\1gtfs-realtime.proto\3/i;' protobuf/gtfs-realtime-MNR.proto
 sed -i -E 's/(^option java_package = ")(.*)("; *$)/\1dev.katsute.onemta\3/i' protobuf/gtfs-realtime-MNR.proto
 sed -i -E 's/(^package transit_realtime;$)/option java_outer_classname = "MNRRProto";\n\1/' protobuf/gtfs-realtime-MNR.proto
 sed -i -E 's/(^package transit_realtime;$)/option optimize_for = CODE_SIZE;\n\1/' protobuf/gtfs-realtime-MNR.proto
@@ -93,7 +98,7 @@ truncate -s -1 protobuf/dev/katsute/onemta/MNRRProto.java
 
 # crowding
 
-sed -i -E 's/(^import ")(.*)("; *$)/\1gtfs-realtime.proto\3/mi;' protobuf/gtfs-realtime-crowding.proto
+sed -i -E 's/(^import ")(.*)("; *$)/\1gtfs-realtime.proto\3/i;' protobuf/gtfs-realtime-crowding.proto
 sed -i -E 's/(^option java_package = ")(.*)("; *$)/\1dev.katsute.onemta\3/i' protobuf/gtfs-realtime-crowding.proto
 sed -i -E 's/(^package transit_realtime;$)/option java_outer_classname = "CrowdingProto";\n\1/' protobuf/gtfs-realtime-crowding.proto
 sed -i -E 's/(^package transit_realtime;$)/option optimize_for = CODE_SIZE;\n\1/' protobuf/gtfs-realtime-crowding.proto
@@ -108,7 +113,7 @@ truncate -s -1 protobuf/dev/katsute/onemta/CrowdingProto.java
 
 # service status
 
-sed -i -E 's/(^import ")(.*)("; *$)/\1gtfs-realtime.proto\3/mi;' protobuf/gtfs-realtime-service-status.proto
+sed -i -E 's/(^import ")(.*)("; *$)/\1gtfs-realtime.proto\3/i;' protobuf/gtfs-realtime-service-status.proto
 sed -i -E 's/(^option java_package = ")(.*)("; *$)/\1dev.katsute.onemta\3/i' protobuf/gtfs-realtime-service-status.proto
 sed -i -E 's/(^package transit_realtime;$)/option java_outer_classname = "ServiceStatusProto";\n\1/' protobuf/gtfs-realtime-service-status.proto
 sed -i -E 's/(^package transit_realtime;$)/option optimize_for = CODE_SIZE;\n\1/' protobuf/gtfs-realtime-service-status.proto
