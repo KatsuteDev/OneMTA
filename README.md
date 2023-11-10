@@ -136,7 +136,7 @@ Sample response data available on the [`reference`](https://github.com/KatsuteDe
     or
 
     Install [protobuf](https://github.com/protocolbuffers/protobuf/releases) and [gtfs realtime proto](https://github.com/OneBusAway/onebusaway-gtfs-realtime-api/tree/master/src/main/proto/com/google/transit/realtime) manually
- 2. Run `protobuf.sh`.
+ 2. Run `protobuf.sh`
 
 #### Notice About Tests
 
