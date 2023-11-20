@@ -257,13 +257,13 @@
         <dependency>
             <groupId>com.google.protobuf</groupId>
             <artifactId>protobuf-java</artifactId>
-            <version>3.25.0</version>
+            <version>3.25.1</version>
         </dependency>
         <!-- tests -->
         <dependency>
             <groupId>com.google.protobuf</groupId>
             <artifactId>protobuf-java-util</artifactId>
-            <version>3.25.0</version>
+            <version>3.25.1</version>
             <scope>test</scope>
         </dependency>
         <dependency>
