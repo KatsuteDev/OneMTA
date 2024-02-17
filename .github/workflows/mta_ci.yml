@@ -29,21 +29,18 @@ jobs:
           distribution: temurin
           java-version: ${{ matrix.java }}
 
-      - name: Create Folder
+      - name: Install resources
         shell: bash
-        run: mkdir -p "src/test/java/resources"
+        run: ./install.sh
 
       - name: Load Client ID
-        run: |-
-          echo ${{ secrets.BUS_TOKEN }} > src/test/java/resources/bus.txt
+        run: echo ${{ secrets.BUS_TOKEN }} > src/test/java/resources/bus.txt
 
       - name: Load OAuth Token
-        run: |-
-          echo ${{ secrets.SUBWAY_TOKEN }} > src/test/java/resources/subway.txt
+        run: echo ${{ secrets.SUBWAY_TOKEN }} > src/test/java/resources/subway.txt
 
       - name: Load Test Group
-        run: |-
-          echo ${{ matrix.group }} > src/test/java/resources/TEST_GROUP
+        run: echo ${{ matrix.group }} > src/test/java/resources/TEST_GROUP
 
       - name: Test with Maven
         continue-on-error: true

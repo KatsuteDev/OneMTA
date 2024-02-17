@@ -80,17 +80,17 @@ public abstract class TestProvider {
     private static final boolean hasBus = bus.exists();
     private static final boolean hasSubway = subway.exists();
 
-    private static final Map<DataResourceType,String> resources = new HashMap<DataResourceType,String>(){{
-        put(DataResourceType.Subway             , "http://web.mta.info/developers/data/nyct/subway/google_transit.zip");
-        put(DataResourceType.Bus_Bronx          , "http://web.mta.info/developers/data/nyct/bus/google_transit_bronx.zip");
-        put(DataResourceType.Bus_Brooklyn       , "http://web.mta.info/developers/data/nyct/bus/google_transit_brooklyn.zip");
-        put(DataResourceType.Bus_Manhattan      , "http://web.mta.info/developers/data/nyct/bus/google_transit_manhattan.zip");
-        put(DataResourceType.Bus_Queens         , "http://web.mta.info/developers/data/nyct/bus/google_transit_queens.zip");
-        put(DataResourceType.Bus_StatenIsland   , "http://web.mta.info/developers/data/nyct/bus/google_transit_staten_island.zip");
-        put(DataResourceType.LongIslandRailroad , "http://web.mta.info/developers/data/lirr/google_transit.zip");
-        put(DataResourceType.MetroNorthRailroad , "http://web.mta.info/developers/data/mnr/google_transit.zip");
-        put(DataResourceType.Bus_Company        , "http://web.mta.info/developers/data/busco/google_transit.zip");
-    }};
+    private static final List<DataResourceType> resources = Arrays.asList(
+        DataResourceType.Subway,
+        DataResourceType.Bus_Bronx,
+        DataResourceType.Bus_Brooklyn,
+        DataResourceType.Bus_Manhattan,
+        DataResourceType.Bus_Queens,
+        DataResourceType.Bus_StatenIsland,
+        DataResourceType.LongIslandRailroad,
+        DataResourceType.MetroNorthRailroad,
+        DataResourceType.Bus_Company
+    );
 
     public static MTA mta;
 
@@ -101,24 +101,8 @@ public abstract class TestProvider {
 
             acquireTestLock();
 
-            for(final Map.Entry<DataResourceType,String> entry : resources.entrySet())
-                try(final BufferedInputStream IN = new BufferedInputStream(new URL(entry.getValue()).openStream())){
-                    final File file = new File(test_resources, "resource_" + entry.getKey().name().toLowerCase() + ".zip");
-                    System.out.println("[↻] Checking for data resource " + file.getName());
-                    if(!file.exists()){
-                        System.out.println("[⚠] " + file.getName() + " not found, downloading from the MTA...");
-                        try(final FileOutputStream OUT = new FileOutputStream(file)){
-                            byte[] buffer = new byte[1024];
-                            int bytesReads;
-                            while((bytesReads = IN.read(buffer, 0, 1024)) != -1)
-                                OUT.write(buffer, 0, bytesReads);
-                        }
-                    }
-                    System.out.println("[✔] Added " + file.getName() + " as " + entry.getKey().name());
-                }
-
             final List<DataResource> resources = new ArrayList<>();
-            for(final DataResourceType type : TestProvider.resources.keySet())
+            for(final DataResourceType type : TestProvider.resources)
                 resources.add(DataResource.create(type, new File(test_resources, "resource_" + type.name().toLowerCase() + ".zip")));
 
             return mta = MTA.create(strip(readFile(bus)), strip(readFile(subway)), resources.toArray(new DataResource[0]));
