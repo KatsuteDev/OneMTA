@@ -150,12 +150,13 @@ Sample response data available on the [`reference`](https://github.com/KatsuteDe
 
 For local tests you can use Java 8+, however only methods in the Java 8 API may be used. The `src/main/java9` folder should not be marked as a source root.
 
+ - You must run `install.sh` to initialize test resources.
  - (Bus) Run tests locally by adding a text file named `bus.txt` that contains the bus token in the `src/test/java/resources` directory.
  - (Subway) Run tests locally by adding a text file named `subway.txt` that contains the subway in the `src/test/java/resources` directory.
 
 #### Running Tests using GitHub Actions
 
-Devs running remote tests through GitHub Actions may do so by running the `MTA CI` workflow manually in the actions tab of your fork. Note that this requires two secrets, a `BUS_TOKEN` which contains the bus token, and a `SUBWAY_TOKEN` which contains the subway token.
+Developers running remote tests through GitHub Actions may do so by running the `MTA CI` workflow manually in the actions tab of your fork. Note that this requires two secrets, a `BUS_TOKEN` which contains the bus token, and a `SUBWAY_TOKEN` which contains the subway token.
 
 <div align="right"><a href="#top"><code>▲</code></a></div>
 
