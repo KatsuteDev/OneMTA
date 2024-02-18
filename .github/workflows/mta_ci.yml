@@ -78,5 +78,5 @@ jobs:
         if: ${{ env.authenticated }}
         uses: ./.junit-report
         with:
-          name: MTA CI [${{ matrix.group }}] (Java ${{ matrix.java }})
+          job: MTA CI [${{ matrix.group }}] (Java ${{ matrix.java }})
           token: ${{ steps.auth.outputs.token }}
