@@ -117,16 +117,6 @@ MNR.Alert[] mnrAlerts       = mta.getMNRAlerts();
 
 ##  Contributing
 
-<!-- Copilot -->
-<table>
-    <img alt="GitHub Copilot" align="left" src="https://raw.githubusercontent.com/KatsuteDev/kdevbot/main/assets/copilot-dark.png#gh-dark-mode-only" width="50">
-    <img alt="Open AI" align="left" src="https://raw.githubusercontent.com/KatsuteDev/kdevbot/main/assets/openai-dark.png#gh-dark-mode-only" width="50">
-    <img alt="GitHub Copilot" align="left" src="https://raw.githubusercontent.com/KatsuteDev/kdevbot/main/assets/copilot-light.png#gh-light-mode-only" width="50">
-    <img alt="Open AI" align="left" src="https://raw.githubusercontent.com/KatsuteDev/kdevbot/main/assets/openai-light.png#gh-light-mode-only" width="50">
-    <p>AI generated code is <b>strictly prohibited</b> on this repository.</p>
-</table>
-<!-- Copilot -->
-
 Sample response data available on the [`reference`](https://github.com/KatsuteDev/OneMTA/tree/reference) branch.
 
 #### Updating Protobuf Files
