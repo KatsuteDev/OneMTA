@@ -24,7 +24,7 @@
 > ⚠️ The MTA API [Terms and Conditions](https://api.mta.info/#/DataFeedAgreement) prohibits developers from giving users direct access to MTA servers.
 > Any realtime data that is retrieved in this library **must be served to users on your own servers.**
 
-OneMTA is a Java wrapper for the [MTA SIRI REST API](https://bustime.mta.info/wiki/Developers/SIRIIntro) and [MTA Realtime GTFS API](https://api.mta.info/#/landing).
+OneMTA is a Java wrapper for the [MTA SIRI REST API](https://bustime.mta.info/wiki/Developers/SIRIIntro) and [MTA Realtime GTFS API](https://api.mta.info/).
 
 ## Installation
 
@@ -41,13 +41,15 @@ Compiled binaries can be installed from:
 #### Authentication
 
  1. Request a bus token at <https://bt.mta.info/wiki/Developers/Index>.
- 2. Request a subway token at <https://api.mta.info/#/signup>.
+ 2. ~~Request a subway token at <https://api.mta.info/#/signup>.~~
+
+    API keys are no longer required to access GTFS feeds.
  3. OneMTA requires static data from the MTA for most route and stop information.
-    Latest static data for the MTA is available at <http://web.mta.info/developers/developer-data-terms.html#data>.
+    Latest static data for the MTA is available at <https://new.mta.info/developers>.
 
     Static data is only required for the endpoints you are using. All boroughs are required for buses, including bus company.
 
-    [![static datafeeds](https://raw.githubusercontent.com/KatsuteDev/OneMTA/main/assets/static-datafeeds.png)](http://web.mta.info/developers/developer-data-terms.html#data)
+    [![static datafeeds](https://raw.githubusercontent.com/KatsuteDev/OneMTA/main/assets/static-gtfs-data.png)](https://new.mta.info/developers)
  4. Initialize OneMTA
     ```java
     MTA mta = MTA.create(
@@ -142,11 +144,10 @@ For local tests you can use Java 8+, however only methods in the Java 8 API may 
 
  - You must run `install.sh` to initialize test resources.
  - (Bus) Run tests locally by adding a text file named `bus.txt` that contains the bus token in the `src/test/java/resources` directory.
- - (Subway) Run tests locally by adding a text file named `subway.txt` that contains the subway in the `src/test/java/resources` directory.
 
 #### Running Tests using GitHub Actions
 
-Developers running remote tests through GitHub Actions may do so by running the `MTA CI` workflow manually in the actions tab of your fork. Note that this requires two secrets, a `BUS_TOKEN` which contains the bus token, and a `SUBWAY_TOKEN` which contains the subway token.
+Developers running remote tests through GitHub Actions may do so by running the `MTA CI` workflow manually in the actions tab of your fork. Note that this requires a single secret, a `BUS_TOKEN` which contains the bus token.
 
 <div align="right"><a href="#top"><code>▲</code></a></div>
 
@@ -155,6 +156,6 @@ Developers running remote tests through GitHub Actions may do so by running the 
 This library is released under the [GNU General Public License (GPL) v2.0](https://github.com/KatsuteDev/OneMTA/blob/main/LICENSE).
 
  * [@Katsute](https://github.com/Katsute) and [@KatsuteDev](https://github.com/KatsuteDev) are not affiliated with the MTA.
- * By using the MTA API you are subject to their [Terms and Conditions](https://api.mta.info/#/DataFeedAgreement).
+ * By using the MTA API you are subject to their [Terms and Conditions](https://new.mta.info/developers/terms-and-conditions).
 
    > In developing your app, you will provide that the MTA data feed is available to others only from a non-MTA server. Accordingly, you will download and store the MTA data feed on a non-MTA server which users of your App will access in order to obtain data. MTA prohibits the development of an app that would make the data available to others directly from MTA's server(s).
