@@ -75,10 +75,8 @@ public abstract class TestProvider {
     //
 
     private static final File bus = new File(test_resources, "bus.txt");
-    private static final File subway = new File(test_resources, "subway.txt");
 
     private static final boolean hasBus = bus.exists();
-    private static final boolean hasSubway = subway.exists();
 
     private static final List<DataResourceType> resources = Arrays.asList(
         DataResourceType.Subway,
@@ -96,7 +94,7 @@ public abstract class TestProvider {
 
     public static MTA getOneMTA(){
         try{
-            if(!hasBus && !hasSubway)
+            if(!hasBus)
                 assumeTrue(false, "No token defined, skipping tests");
 
             acquireTestLock();
@@ -105,7 +103,7 @@ public abstract class TestProvider {
             for(final DataResourceType type : TestProvider.resources)
                 resources.add(DataResource.create(type, new File(test_resources, "resource_" + type.name().toLowerCase() + ".zip")));
 
-            return mta = MTA.create(strip(readFile(bus)), strip(readFile(subway)), resources.toArray(new DataResource[0]));
+            return mta = MTA.create(strip(readFile(bus)), resources.toArray(new DataResource[0]));
         }catch(final IOException e){
             fail(e);
             return null;

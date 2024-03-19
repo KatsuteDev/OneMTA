@@ -36,9 +36,6 @@ jobs:
       - name: Load Client ID
         run: echo ${{ secrets.BUS_TOKEN }} > src/test/java/resources/bus.txt
 
-      - name: Load OAuth Token
-        run: echo ${{ secrets.SUBWAY_TOKEN }} > src/test/java/resources/subway.txt
-
       - name: Load Test Group
         run: echo ${{ matrix.group }} > src/test/java/resources/TEST_GROUP
 

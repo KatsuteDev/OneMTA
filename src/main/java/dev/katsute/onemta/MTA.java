@@ -30,7 +30,7 @@ import dev.katsute.onemta.subway.SubwayDirection;
  * Authenticate using {@link #create(String, String, DataResource...)}
  *
  * @since 1.0.0
- * @version 1.0.0
+ * @version 3.0.0
  * @author Katsute
  */
 @SuppressWarnings({"SpellCheckingInspection", "UnusedReturnValue"})
@@ -42,15 +42,14 @@ public abstract class MTA {
      * Creates an MTA API interface. Note that bus alerts require a subway token.
      *
      * @param busToken bus token
-     * @param subwayToken subway token
      * @param resources <b>(required)</b> static data resource, see {@link DataResource}
      * @return MTA
      *
      * @see #create(String, String, int, DataResource...)
-     * @since 1.0.0
+     * @since 3.0.0
      */
-    public static MTA create(final String busToken, final String subwayToken, final DataResource... resources){
-        return create(busToken, subwayToken, -1, resources);
+    public static MTA create(final String busToken, final DataResource... resources){
+        return create(busToken, -1, resources);
     }
 
     /**
@@ -63,10 +62,10 @@ public abstract class MTA {
      * @return MTA
      *
      * @see #create(String, String, DataResource...)
-     * @since 1.0.0
+     * @since 3.0.0
      */
-    public static MTA create(final String busToken, final String subwayToken, final int cacheSeconds, final DataResource... resources){
-        return new MTAImpl(busToken, subwayToken, cacheSeconds, resources);
+    public static MTA create(final String busToken, final int cacheSeconds, final DataResource... resources){
+        return new MTAImpl(busToken, cacheSeconds, resources);
     }
 
 // bus methods
