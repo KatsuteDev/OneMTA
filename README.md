@@ -21,7 +21,7 @@
 
 <br>
 
-> ⚠️ The MTA API [Terms and Conditions](https://api.mta.info/#/DataFeedAgreement) prohibits developers from giving users direct access to MTA servers.
+> ⚠️ The MTA API [Terms and Conditions](https://new.mta.info/developers/terms-and-conditions) prohibits developers from giving users direct access to MTA servers.
 > Any realtime data that is retrieved in this library **must be served to users on your own servers.**
 
 OneMTA is a Java wrapper for the [MTA SIRI REST API](https://bustime.mta.info/wiki/Developers/SIRIIntro) and [MTA Realtime GTFS API](https://api.mta.info/).
