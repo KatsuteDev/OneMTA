@@ -56,7 +56,6 @@ public abstract class MTA {
      * Creates an MTA API interface. Note that bus alerts require a subway token.
      *
      * @param busToken bus token
-     * @param subwayToken subway token
      * @param cacheSeconds how long to cache responses for
      * @param resources <b>(required)</b> static data resource, see {@link DataResource}
      * @return MTA

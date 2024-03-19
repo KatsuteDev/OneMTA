@@ -54,7 +54,6 @@ Compiled binaries can be installed from:
     ```java
     MTA mta = MTA.create(
         busToken,
-        subwayToken,
         DataResource.create(DataResourceType.Bus_Bronx, new File("google_transit_bronx.zip")),
         DataResource.create(DataResourceType.Bus_Brooklyn, new File("google_transit_brooklyn.zip")),
         DataResource.create(DataResourceType.Bus_Manhattan, new File("google_transit_manhattan.zip")),
