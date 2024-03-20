@@ -1,6 +1,6 @@
 {
     "image": "maven:3-eclipse-temurin-21",
-    "postAttachCommand": "git submodule update --init; ./install.sh; mvn compile",
+    "postAttachCommand": "git submodule update --init; mvn compile",
     "shutdownAction": "stopContainer",
     "customizations": {
         "vscode": {

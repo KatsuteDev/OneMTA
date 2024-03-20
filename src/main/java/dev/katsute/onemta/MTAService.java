@@ -31,13 +31,11 @@ final class MTAService {
 
     private final RequestCache cache;
 
-    private final Map<String,String> busAuth, subwayAuth;
+    private final Map<String,String> busAuth;
 
-    MTAService(final String busToken, final String subwayToken, final int cacheSeconds){
+    MTAService(final String busToken, final int cacheSeconds){
         this.cache = new RequestCache(cacheSeconds);
-
         busAuth = Collections.singletonMap("key", busToken);
-        subwayAuth = Collections.singletonMap("x-api-key", subwayToken);
     }
 
     private static String encodeUTF8(final String string){
@@ -96,7 +94,7 @@ final class MTAService {
             return cache.getProtobuf(
                 baseURL + "nyct%2Fgtfs-ace",
                 Collections.emptyMap(),
-                subwayAuth
+                Collections.emptyMap()
             );
         }
 
@@ -104,7 +102,7 @@ final class MTAService {
             return cache.getProtobuf(
                 baseURL + "nyct%2Fgtfs-bdfm",
                 Collections.emptyMap(),
-                subwayAuth
+                Collections.emptyMap()
             );
         }
 
@@ -112,7 +110,7 @@ final class MTAService {
             return cache.getProtobuf(
                 baseURL + "nyct%2Fgtfs-g",
                 Collections.emptyMap(),
-                subwayAuth
+                Collections.emptyMap()
             );
         }
 
@@ -120,7 +118,7 @@ final class MTAService {
             return cache.getProtobuf(
                 baseURL + "nyct%2Fgtfs-jz",
                 Collections.emptyMap(),
-                subwayAuth
+                Collections.emptyMap()
             );
         }
 
@@ -128,7 +126,7 @@ final class MTAService {
             return cache.getProtobuf(
                 baseURL + "nyct%2Fgtfs-nqrw",
                 Collections.emptyMap(),
-                subwayAuth
+                Collections.emptyMap()
             );
         }
 
@@ -136,7 +134,7 @@ final class MTAService {
             return cache.getProtobuf(
                 baseURL + "nyct%2Fgtfs-l",
                 Collections.emptyMap(),
-                subwayAuth
+                Collections.emptyMap()
             );
         }
 
@@ -144,7 +142,7 @@ final class MTAService {
             return cache.getProtobuf(
                 baseURL + "nyct%2Fgtfs",
                 Collections.emptyMap(),
-                subwayAuth
+                Collections.emptyMap()
             );
         }
 
@@ -152,7 +150,7 @@ final class MTAService {
             return cache.getProtobuf(
                 baseURL + "nyct%2Fgtfs-si",
                 Collections.emptyMap(),
-                subwayAuth
+                Collections.emptyMap()
             );
         }
 
@@ -168,7 +166,7 @@ final class MTAService {
             return cache.getProtobuf(
                 baseURL + "lirr%2Fgtfs-lirr",
                 Collections.emptyMap(),
-                subwayAuth
+                Collections.emptyMap()
             );
         }
 
@@ -185,7 +183,7 @@ final class MTAService {
             return cache.getProtobuf(
                 baseURL + "mnr%2Fgtfs-mnr",
                 Collections.emptyMap(),
-                subwayAuth
+                Collections.emptyMap()
             );
         }
 
@@ -201,7 +199,7 @@ final class MTAService {
             return cache.getProtobuf(
                 baseURL + "camsys%2Fbus-alerts",
                 Collections.emptyMap(),
-                subwayAuth
+                Collections.emptyMap()
             );
         }
 
@@ -209,7 +207,7 @@ final class MTAService {
             return cache.getProtobuf(
                 baseURL + "camsys%2Fsubway-alerts",
                 Collections.emptyMap(),
-                subwayAuth
+                Collections.emptyMap()
             );
         }
 
@@ -217,7 +215,7 @@ final class MTAService {
             return cache.getProtobuf(
                 baseURL + "camsys%2Flirr-alerts",
                 Collections.emptyMap(),
-                subwayAuth
+                Collections.emptyMap()
             );
         }
 
@@ -225,7 +223,7 @@ final class MTAService {
             return cache.getProtobuf(
                 baseURL + "camsys%2Fmnr-alerts",
                 Collections.emptyMap(),
-                subwayAuth
+                Collections.emptyMap()
             );
         }
 
