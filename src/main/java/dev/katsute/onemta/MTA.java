@@ -45,7 +45,7 @@ public abstract class MTA {
      * @param resources <b>(required)</b> static data resource, see {@link DataResource}
      * @return MTA
      *
-     * @see #create(String, String, int, DataResource...)
+     * @see #create(String, int, DataResource...)
      * @since 3.0.0
      */
     public static MTA create(final String busToken, final DataResource... resources){
@@ -60,7 +60,7 @@ public abstract class MTA {
      * @param resources <b>(required)</b> static data resource, see {@link DataResource}
      * @return MTA
      *
-     * @see #create(String, String, DataResource...)
+     * @see #create(String, DataResource...)
      * @since 3.0.0
      */
     public static MTA create(final String busToken, final int cacheSeconds, final DataResource... resources){
