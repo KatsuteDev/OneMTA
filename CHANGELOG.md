@@ -1,5 +1,36 @@
 # Changelog
 
+## 3.0.0
+
+### Breaking Change
+
+* Tokens are no longer required for GTFS feeds [#204](https://github.com/KatsuteDev/OneMTA/pull/204) ([@Katsute](https://github.com/Katsute))
+
+  API tokens are no longer required for GTFS requests, this includes all alerts, subway, LIRR, and MNR.
+
+  The `subwayToken` parameter has been removed from the `MTA.create` method.
+
+### Dependencies
+
+* Bump org.apache.maven.plugins:maven-javadoc-plugin from 3.6.0 to 3.6.2 [#180](https://github.com/KatsuteDev/OneMTA/pull/180) ([@dependabot](https://github.com/dependabot))
+* Bump org.apache.maven.plugins:maven-surefire-plugin from 3.2.1 to 3.2.2 [#179](https://github.com/KatsuteDev/OneMTA/pull/179) ([@dependabot](https://github.com/dependabot))
+* Bump the protobuf group with 2 updates [#178](https://github.com/KatsuteDev/OneMTA/pull/178) ([@dependabot](https://github.com/dependabot))
+* Bump the protobuf group with 2 updates [#182](https://github.com/KatsuteDev/OneMTA/pull/182) ([@dependabot](https://github.com/dependabot))
+* Bump actions/setup-java from 3 to 4 [#184](https://github.com/KatsuteDev/OneMTA/pull/184) ([@dependabot](https://github.com/dependabot))
+* Bump org.apache.maven.plugins:maven-javadoc-plugin from 3.6.2 to 3.6.3 [#185](https://github.com/KatsuteDev/OneMTA/pull/185) ([@dependabot](https://github.com/dependabot))
+* Bump org.apache.maven.plugins:maven-surefire-plugin from 3.2.2 to 3.2.3 [#186](https://github.com/KatsuteDev/OneMTA/pull/186) ([@dependabot](https://github.com/dependabot))
+* Bump org.apache.maven.plugins:maven-compiler-plugin from 3.11.0 to 3.12.1 [#187](https://github.com/KatsuteDev/OneMTA/pull/187) ([@dependabot](https://github.com/dependabot))
+* Bump onebusaway-gtfs-realtime-api from `fa611a5` to `f1105e7` [#190](https://github.com/KatsuteDev/OneMTA/pull/190) ([@dependabot](https://github.com/dependabot))
+* Bump the protobuf group with 2 updates [#191](https://github.com/KatsuteDev/OneMTA/pull/191) ([@dependabot](https://github.com/dependabot))
+* Bump org.apache.maven.plugins:maven-surefire-plugin from 3.2.3 to 3.2.5 [#192](https://github.com/KatsuteDev/OneMTA/pull/192) ([@dependabot](https://github.com/dependabot))
+* Bump the junit group with 2 updates [#194](https://github.com/KatsuteDev/OneMTA/pull/194) ([@dependabot](https://github.com/dependabot))
+* Bump the protobuf group with 2 updates [#198](https://github.com/KatsuteDev/OneMTA/pull/198) ([@dependabot](https://github.com/dependabot))
+* Bump org.apache.maven.plugins:maven-gpg-plugin from 3.1.0 to 3.2.0 [#200](https://github.com/KatsuteDev/OneMTA/pull/200) ([@dependabot](https://github.com/dependabot))
+* Bump org.apache.maven.plugins:maven-gpg-plugin from 3.2.0 to 3.2.1 [#202](https://github.com/KatsuteDev/OneMTA/pull/202) ([@dependabot](https://github.com/dependabot))
+* Bump protobuf from 3.25.3 to 4.26.0 [#203](https://github.com/KatsuteDev/OneMTA/pull/203) ([@kdevbot](https://github.com/kdevbot))
+
+**Full Changelog**: [`2.1.0...3.0.0`](https://github.com/KatsuteDev/OneMTA/compare/2.1.0...3.0.0)
+
 ## 2.1.0
 
 ### Removed
