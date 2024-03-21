@@ -1,5 +1,13 @@
 # Changelog
 
+## 3.0.1
+
+### Documentation
+
+* Fix create javadoc [#205](https://github.com/KatsuteDev/OneMTA/pull/205) ([@Katsute](https://github.com/Katsute))
+
+**Full Changelog**: [`3.0.0...3.0.1`](https://github.com/KatsuteDev/OneMTA/compare/3.0.0...3.0.1)
+
 ## 3.0.0
 
 ### Breaking Change
