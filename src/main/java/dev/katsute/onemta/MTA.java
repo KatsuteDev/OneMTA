@@ -27,7 +27,7 @@ import dev.katsute.onemta.subway.SubwayDirection;
 /**
  * Represents the MTA API.
  * <br>
- * Authenticate using {@link #create(String, String, DataResource...)}
+ * Authenticate using {@link #create(String, DataResource...)}
  *
  * @since 1.0.0
  * @version 3.0.0
@@ -45,7 +45,7 @@ public abstract class MTA {
      * @param resources <b>(required)</b> static data resource, see {@link DataResource}
      * @return MTA
      *
-     * @see #create(String, String, int, DataResource...)
+     * @see #create(String, int, DataResource...)
      * @since 3.0.0
      */
     public static MTA create(final String busToken, final DataResource... resources){
@@ -60,7 +60,7 @@ public abstract class MTA {
      * @param resources <b>(required)</b> static data resource, see {@link DataResource}
      * @return MTA
      *
-     * @see #create(String, String, DataResource...)
+     * @see #create(String, DataResource...)
      * @since 3.0.0
      */
     public static MTA create(final String busToken, final int cacheSeconds, final DataResource... resources){
@@ -86,7 +86,7 @@ public abstract class MTA {
      * Returns a bus route.
      *
      * @param route_id bus route ID
-     * @param type data resource that the bus route is in, must have been added to {@link #create(String, String, DataResource...)}
+     * @param type data resource that the bus route is in, must have been added to {@link #create(String, DataResource...)}
      * @return bus route
      *
      * @see DataResourceType
@@ -112,7 +112,7 @@ public abstract class MTA {
      * Returns a bus stop.
      *
      * @param stop_id bus stop ID
-     * @param type data resource that the bus stop is in, must have been added to {@link #create(String, String, DataResource...)}
+     * @param type data resource that the bus stop is in, must have been added to {@link #create(String, DataResource...)}
      *
      * @return bus stop
      *
