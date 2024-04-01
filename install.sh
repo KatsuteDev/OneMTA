@@ -1,6 +1,6 @@
 #!/bin/bash
 
-version=26.0
+version=26.1
 
 mkdir protobuf
 
