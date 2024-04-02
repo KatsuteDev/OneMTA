@@ -1,5 +1,15 @@
 # Changelog
 
+## 3.0.2
+
+### Dependencies
+
+* Bump org.apache.maven.plugins:maven-compiler-plugin from 3.12.1 to 3.13.0 [#206](https://github.com/KatsuteDev/OneMTA/pull/206) ([@dependabot](https://github.com/dependabot))
+* Bump org.apache.maven.plugins:maven-gpg-plugin from 3.2.1 to 3.2.2 [#208](https://github.com/KatsuteDev/OneMTA/pull/208) ([@dependabot](https://github.com/dependabot))
+* Update GTFS protobuf [#210](https://github.com/KatsuteDev/OneMTA/pull/210) ([@Katsute](https://github.com/Katsute))
+
+**Full Changelog**: [`3.0.1...3.0.2`](https://github.com/KatsuteDev/OneMTA/compare/3.0.1...3.0.2)
+
 ## 3.0.1
 
 ### Documentation
