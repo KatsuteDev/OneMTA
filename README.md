@@ -41,16 +41,13 @@ Compiled binaries can be installed from:
 #### Authentication
 
  1. Request a bus token at <https://bt.mta.info/wiki/Developers/Index>.
- 2. ~~Request a subway token at <https://api.mta.info/#/signup>.~~
-
-    API keys are no longer required to access GTFS feeds.
- 3. OneMTA requires static data from the MTA for most route and stop information.
+ 2. OneMTA requires static data from the MTA for most route and stop information.
     Latest static data for the MTA is available at <https://new.mta.info/developers>.
 
     Static data is only required for the endpoints you are using. All boroughs are required for buses, including bus company.
 
     [![static datafeeds](https://raw.githubusercontent.com/KatsuteDev/OneMTA/main/assets/static-gtfs-data.png)](https://new.mta.info/developers)
- 4. Initialize OneMTA
+ 3. Initialize OneMTA
     ```java
     MTA mta = MTA.create(
         busToken,
