@@ -1,0 +1,30 @@
+name: Update protobuf files
+
+on: workflow_dispatch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+
+      - name: Run install.sh
+        run: |-
+          chmod +x ./install.sh
+          ./install.sh
+
+      - name: Run protobuf.sh
+        run: |-
+          chmod +x ./protobuf.sh
+          ./protobuf.sh
+
+      - name: Commit and push if it changed
+        run: |-
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git diff --quiet && git diff --staged --quiet || (git add . ; git commit -m 'Update protobuf classes')
+          git push
