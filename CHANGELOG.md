@@ -1,5 +1,50 @@
 # Changelog
 
+## 3.0.3
+
+### Dependencies
+
+* Bump org.apache.maven.plugins:maven-source-plugin from 3.3.0 to 3.3.1 [#211](https://github.com/KatsuteDev/OneMTA/pull/211) ([@dependabot](https://github.com/dependabot))
+* Bump org.apache.maven.plugins:maven-gpg-plugin from 3.2.2 to 3.2.3 [#212](https://github.com/KatsuteDev/OneMTA/pull/212) ([@dependabot](https://github.com/dependabot))
+* Bump org.apache.maven.plugins:maven-jar-plugin from 3.3.0 to 3.4.0 [#213](https://github.com/KatsuteDev/OneMTA/pull/213) ([@dependabot](https://github.com/dependabot))
+* Bump org.apache.maven.plugins:maven-jar-plugin from 3.4.0 to 3.4.1 [#214](https://github.com/KatsuteDev/OneMTA/pull/214) ([@dependabot](https://github.com/dependabot))
+* Bump org.apache.maven.plugins:maven-gpg-plugin from 3.2.3 to 3.2.4 [#215](https://github.com/KatsuteDev/OneMTA/pull/215) ([@dependabot](https://github.com/dependabot))
+* Bump the protobuf group with 2 updates [#216](https://github.com/KatsuteDev/OneMTA/pull/216) ([@dependabot](https://github.com/dependabot))
+* Bump actions/checkout from 3 to 4 [#218](https://github.com/KatsuteDev/OneMTA/pull/218) ([@dependabot](https://github.com/dependabot))
+* Bump org.apache.maven.plugins:maven-javadoc-plugin from 3.6.3 to 3.7.0 [#220](https://github.com/KatsuteDev/OneMTA/pull/220) ([@dependabot](https://github.com/dependabot))
+* Bump org.sonatype.plugins:nexus-staging-maven-plugin from 1.6.13 to 1.7.0 [#221](https://github.com/KatsuteDev/OneMTA/pull/221) ([@dependabot](https://github.com/dependabot))
+* Bump the protobuf group with 2 updates [#222](https://github.com/KatsuteDev/OneMTA/pull/222) ([@dependabot](https://github.com/dependabot))
+* Bump org.apache.maven.plugins:maven-surefire-plugin from 3.2.5 to 3.3.0 [#224](https://github.com/KatsuteDev/OneMTA/pull/224) ([@dependabot](https://github.com/dependabot))
+* Bump org.apache.maven.plugins:maven-jar-plugin from 3.4.1 to 3.4.2 [#225](https://github.com/KatsuteDev/OneMTA/pull/225) ([@dependabot](https://github.com/dependabot))
+* Bump the junit group with 2 updates [#227](https://github.com/KatsuteDev/OneMTA/pull/227) ([@dependabot](https://github.com/dependabot))
+* Bump the protobuf group with 2 updates [#226](https://github.com/KatsuteDev/OneMTA/pull/226) ([@dependabot](https://github.com/dependabot))
+* Bump org.apache.maven.plugins:maven-surefire-plugin from 3.3.0 to 3.3.1 [#228](https://github.com/KatsuteDev/OneMTA/pull/228) ([@dependabot](https://github.com/dependabot))
+* Bump org.apache.maven.plugins:maven-javadoc-plugin from 3.7.0 to 3.8.0 [#229](https://github.com/KatsuteDev/OneMTA/pull/229) ([@dependabot](https://github.com/dependabot))
+* Bump the protobuf group with 2 updates [#230](https://github.com/KatsuteDev/OneMTA/pull/230) ([@dependabot](https://github.com/dependabot))
+* Bump org.apache.maven.plugins:maven-gpg-plugin from 3.2.4 to 3.2.5 [#231](https://github.com/KatsuteDev/OneMTA/pull/231) ([@dependabot](https://github.com/dependabot))
+* Bump the junit group with 2 updates [#232](https://github.com/KatsuteDev/OneMTA/pull/232) ([@dependabot](https://github.com/dependabot))
+* Bump org.apache.maven.plugins:maven-surefire-plugin from 3.3.1 to 3.4.0 [#233](https://github.com/KatsuteDev/OneMTA/pull/233) ([@dependabot](https://github.com/dependabot))
+* Bump org.apache.maven.plugins:maven-javadoc-plugin from 3.8.0 to 3.10.0 [#236](https://github.com/KatsuteDev/OneMTA/pull/236) ([@dependabot](https://github.com/dependabot))
+* Bump org.apache.maven.plugins:maven-surefire-plugin from 3.4.0 to 3.5.0 [#235](https://github.com/KatsuteDev/OneMTA/pull/235) ([@dependabot](https://github.com/dependabot))
+* Bump the protobuf group with 2 updates [#234](https://github.com/KatsuteDev/OneMTA/pull/234) ([@dependabot](https://github.com/dependabot))
+* Bump org.apache.maven.plugins:maven-gpg-plugin from 3.2.5 to 3.2.6 [#238](https://github.com/KatsuteDev/OneMTA/pull/238) ([@dependabot](https://github.com/dependabot))
+* Bump the protobuf group with 2 updates [#237](https://github.com/KatsuteDev/OneMTA/pull/237) ([@dependabot](https://github.com/dependabot))
+* Bump the protobuf group with 2 updates [#241](https://github.com/KatsuteDev/OneMTA/pull/241) ([@dependabot](https://github.com/dependabot))
+* Bump the junit group with 2 updates [#242](https://github.com/KatsuteDev/OneMTA/pull/242) ([@dependabot](https://github.com/dependabot))
+* Bump org.apache.maven.plugins:maven-gpg-plugin from 3.2.6 to 3.2.7 [#243](https://github.com/KatsuteDev/OneMTA/pull/243) ([@dependabot](https://github.com/dependabot))
+* Bump org.apache.maven.plugins:maven-surefire-plugin from 3.5.0 to 3.5.1 [#245](https://github.com/KatsuteDev/OneMTA/pull/245) ([@dependabot](https://github.com/dependabot))
+* Bump org.apache.maven.plugins:maven-javadoc-plugin from 3.10.0 to 3.10.1 [#246](https://github.com/KatsuteDev/OneMTA/pull/246) ([@dependabot](https://github.com/dependabot))
+* Bump the junit group with 2 updates [#244](https://github.com/KatsuteDev/OneMTA/pull/244) ([@dependabot](https://github.com/dependabot))
+* Bump the protobuf group with 2 updates [#247](https://github.com/KatsuteDev/OneMTA/pull/247) ([@dependabot](https://github.com/dependabot))
+* Bump the junit group with 2 updates [#248](https://github.com/KatsuteDev/OneMTA/pull/248) ([@dependabot](https://github.com/dependabot))
+* Bump org.apache.maven.plugins:maven-javadoc-plugin from 3.10.1 to 3.11.1 [#249](https://github.com/KatsuteDev/OneMTA/pull/249) ([@dependabot](https://github.com/dependabot))
+* Bump org.apache.maven.plugins:maven-surefire-plugin from 3.5.1 to 3.5.2 [#250](https://github.com/KatsuteDev/OneMTA/pull/250) ([@dependabot](https://github.com/dependabot))
+* Bump the protobuf group with 2 updates [#251](https://github.com/KatsuteDev/OneMTA/pull/251) ([@dependabot](https://github.com/dependabot))
+* Bump org.apache.maven.plugins:maven-javadoc-plugin from 3.11.1 to 3.11.2 [#253](https://github.com/KatsuteDev/OneMTA/pull/253) ([@dependabot](https://github.com/dependabot))
+* Bump the protobuf group with 2 updates [#252](https://github.com/KatsuteDev/OneMTA/pull/252) ([@dependabot](https://github.com/dependabot))
+
+**Full Changelog**: [`3.0.2...3.0.3`](https://github.com/KatsuteDev/OneMTA/compare/3.0.2...3.0.3)
+
 ## 3.0.2
 
 ### Dependencies
