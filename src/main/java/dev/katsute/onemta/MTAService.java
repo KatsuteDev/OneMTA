@@ -38,6 +38,7 @@ final class MTAService {
         busAuth = Collections.singletonMap("key", busToken);
     }
 
+    @SuppressWarnings("unused")
     private static String encodeUTF8(final String string){
         try{
             return URLEncoder.encode(string, StandardCharsets.UTF_8.name());

@@ -295,6 +295,7 @@ abstract class MTASchema_Bus extends MTASchema {
         return asStop(mta, stop_id, null);
     }
 
+    @SuppressWarnings("unused")
     static Stop asStop(final MTA mta, final int stop_id, final DataResourceType type){
         // populate bus resources
         final List<DataResource> resources = new ArrayList<>();
