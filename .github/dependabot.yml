@@ -35,3 +35,6 @@ updates:
         patterns: [com.google.protobuf:*]
       junit:
         patterns: [org.junit.jupiter:*]
+    ignore:
+      - dependency-name: "org.junit.jupiter:*" # 6.0.0 requires Java 17 which is above our minimum 8 support
+        update-types: [version-update:semver-major]
